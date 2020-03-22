@@ -61,7 +61,8 @@
     "MultiPolygon": "_a"
   },
   "dominios": [
-    {"nome": "administracao",
+    {
+      "nome": "administracao",
       "valores": [
         {
           "code": 0,
@@ -100,7 +101,8 @@
         }
       ]
     },
-    {"nome": "booleano",
+    {
+      "nome": "booleano",
       "valores": [
         {
           "code": 1,
@@ -114,7 +116,8 @@
         }
       ]
     },
-    {"nome": "booleano_estendido",
+    {
+      "nome": "booleano_estendido",
       "valores": [
         {
           "code": 0,
@@ -133,7 +136,8 @@
         }
       ]
     },
-    {"nome": "tipo_sumidouro_vertedouro",
+    {
+      "nome": "tipo_sumidouro_vertedouro",
       "valores": [
         {
           "code": 1,
@@ -147,7 +151,8 @@
         }
       ]
     },
-    {"nome": "causa_sumidouro_vertedouro",
+    {
+      "nome": "causa_sumidouro_vertedouro",
       "valores": [
         {
           "code": 0,
@@ -171,7 +176,8 @@
         }
       ]
     },
-    {"nome": "canteiro_divisorio",
+    {
+      "nome": "canteiro_divisorio",
       "valores": [
         {
           "code": 1,
@@ -185,7 +191,8 @@
         }
       ]
     },
-    {"nome": "finalidade",
+    {
+      "nome": "finalidade",
       "valores": [
         {
           "code": 0,
@@ -214,7 +221,8 @@
         }
       ]
     },
-    {"nome": "forma_extracao",
+    {
+      "nome": "forma_extracao",
       "valores": [
         {
           "code": 5,
@@ -228,29 +236,28 @@
         }
       ]
     },
-    {"nome": "indice",
+    {
+      "nome": "indice",
       "valores": [
         {
           "code": 1,
           "value": "Mestra",
-          "descricao":
-            "Curva múltipla do quíntuplo da equidistância empregada, sendo a primeira, a relativa ao nível de referência, de altitude igual a zero."
+          "descricao": "Curva múltipla do quíntuplo da equidistância empregada, sendo a primeira, a relativa ao nível de referência, de altitude igual a zero."
         },
         {
           "code": 2,
           "value": "Normal",
-          "descricao":
-            "Curva traçada no intervalo das curvas de nível mestras, sendo múltipla da equidistância empregada."
+          "descricao": "Curva traçada no intervalo das curvas de nível mestras, sendo múltipla da equidistância empregada."
         },
         {
           "code": 3,
           "value": "Auxiliar",
-          "descricao":
-            "Curva traçada com o valor adicional de meia equidistância, com o intuito de melhor representar o relevo."
+          "descricao": "Curva traçada com o valor adicional de meia equidistância, com o intuito de melhor representar o relevo."
         }
       ]
     },
-    {"nome": "jurisdicao",
+    {
+      "nome": "jurisdicao",
       "valores": [
         {
           "code": 0,
@@ -284,7 +291,8 @@
         }
       ]
     },
-    {"nome": "material_construcao",
+    {
+      "nome": "material_construcao",
       "valores": [
         {
           "code": 0,
@@ -338,7 +346,8 @@
         }
       ]
     },
-    {"nome": "modal_uso",
+    {
+      "nome": "modal_uso",
       "valores": [
         {
           "code": 4,
@@ -367,7 +376,8 @@
         }
       ]
     },
-    {"nome": "nr_linhas",
+    {
+      "nome": "nr_linhas",
       "valores": [
         {
           "code": 0,
@@ -391,7 +401,8 @@
         }
       ]
     },
-    {"nome": "posicao_pista",
+    {
+      "nome": "posicao_pista",
       "valores": [
         {
           "code": 12,
@@ -410,7 +421,8 @@
         }
       ]
     },
-    {"nome": "posicao_relativa",
+    {
+      "nome": "posicao_relativa",
       "valores": [
         {
           "code": 2,
@@ -459,7 +471,8 @@
         }
       ]
     },
-    {"nome": "referencial_altim",
+    {
+      "nome": "referencial_altim",
       "valores": [
         {
           "code": 1,
@@ -483,7 +496,8 @@
         }
       ]
     },
-    {"nome": "referencial_grav",
+    {
+      "nome": "referencial_grav",
       "valores": [
         {
           "code": 1,
@@ -512,7 +526,8 @@
         }
       ]
     },
-    {"nome": "regime",
+    {
+      "nome": "regime",
       "valores": [
         {
           "code": 1,
@@ -531,7 +546,8 @@
         }
       ]
     },
-    {"nome": "revestimento",
+    {
+      "nome": "revestimento",
       "valores": [
         {
           "code": 0,
@@ -560,7 +576,8 @@
         }
       ]
     },
-    {"nome": "sistema_geodesico",
+    {
+      "nome": "sistema_geodesico",
       "valores": [
         {
           "code": 1,
@@ -589,7 +606,8 @@
         }
       ]
     },
-    {"nome": "situacao_fisica",
+    {
+      "nome": "situacao_fisica",
       "valores": [
         {
           "code": 0,
@@ -623,7 +641,8 @@
         }
       ]
     },
-    {"nome": "situacao_marco",
+    {
+      "nome": "situacao_marco",
       "valores": [
         {
           "code": 0,
@@ -667,7 +686,8 @@
         }
       ]
     },
-    {"nome": "tipo_massa_dagua",
+    {
+      "nome": "tipo_massa_dagua",
       "valores": [
         {
           "code": 1,
@@ -721,7 +741,8 @@
         }
       ]
     },
-    {"nome": "tipo_delimitacao_fisica",
+    {
+      "nome": "tipo_delimitacao_fisica",
       "valores": [
         {
           "code": 1,
@@ -735,7 +756,8 @@
         }
       ]
     },
-    {"nome": "tipo_deposito",
+    {
+      "nome": "tipo_deposito",
       "valores": [
         {
           "code": 108,
@@ -830,7 +852,8 @@
       ],
       "filtro": true
     },
-    {"nome": "tipo_edificacao",
+    {
+      "nome": "tipo_edificacao",
       "valores": [
         {
           "code": 0,
@@ -972,15 +995,13 @@
         },
         {
           "code": 521,
-          "value":
-            "Ens - Edificação de educação superior – graduação e pós-graduação",
+          "value": "Ens - Edificação de educação superior – graduação e pós-graduação",
           "descricao": "-",
           "valor_filtro": "Edificação de ensino"
         },
         {
           "code": 522,
-          "value":
-            "Ens - Edificação de educação superior – pós-graduação e extensão",
+          "value": "Ens - Edificação de educação superior – pós-graduação e extensão",
           "descricao": "-",
           "valor_filtro": "Edificação de ensino"
         },
@@ -992,8 +1013,7 @@
         },
         {
           "code": 524,
-          "value":
-            "Ens - Edificação de educação profissional de nível tecnológico",
+          "value": "Ens - Edificação de educação profissional de nível tecnológico",
           "descricao": "-",
           "valor_filtro": "Edificação de ensino"
         },
@@ -1209,8 +1229,7 @@
         },
         {
           "code": 1019,
-          "value":
-            "Ind - Preparação de couros, artefatos de couro, artigos de viagem e calçados",
+          "value": "Ind - Preparação de couros, artefatos de couro, artigos de viagem e calçados",
           "descricao": "-",
           "valor_filtro": "Edificação industrial"
         },
@@ -1228,15 +1247,13 @@
         },
         {
           "code": 1022,
-          "value":
-            "Ind - Industria de edição, impressão e reprodução de gravações",
+          "value": "Ind - Industria de edição, impressão e reprodução de gravações",
           "descricao": "-",
           "valor_filtro": "Edificação industrial"
         },
         {
           "code": 1023,
-          "value":
-            "Ind - Fabricação de coque, refino de petróleo, elaboração de combustíveis nucleares e produção de álcool",
+          "value": "Ind - Fabricação de coque, refino de petróleo, elaboração de combustíveis nucleares e produção de álcool",
           "descricao": "-",
           "valor_filtro": "Edificação industrial"
         },
@@ -1248,8 +1265,7 @@
         },
         {
           "code": 1025,
-          "value":
-            "Ind - Fabricação de artigos de borracha e material plástico",
+          "value": "Ind - Fabricação de artigos de borracha e material plástico",
           "descricao": "-",
           "valor_filtro": "Edificação industrial"
         },
@@ -1279,36 +1295,31 @@
         },
         {
           "code": 1030,
-          "value":
-            "Ind - Fabriação de máquinas de escritório e equipamentos de informática",
+          "value": "Ind - Fabriação de máquinas de escritório e equipamentos de informática",
           "descricao": "-",
           "valor_filtro": "Edificação industrial"
         },
         {
           "code": 1031,
-          "value":
-            "Ind - Fabricação de máquinas, aparelhos e materiais elétricos",
+          "value": "Ind - Fabricação de máquinas, aparelhos e materiais elétricos",
           "descricao": "-",
           "valor_filtro": "Edificação industrial"
         },
         {
           "code": 1032,
-          "value":
-            "Ind - Fabricação de material eletrônico, de aparelhos e equipamentos de comunicações",
+          "value": "Ind - Fabricação de material eletrônico, de aparelhos e equipamentos de comunicações",
           "descricao": "-",
           "valor_filtro": "Edificação industrial"
         },
         {
           "code": 1033,
-          "value":
-            "Ind - Fabricação de equipamentos de instrumentação médico-hospitalares, instrumentos de precisão e ópticos, automação industrial, cronômetros e relógios",
+          "value": "Ind - Fabricação de equipamentos de instrumentação médico-hospitalares, instrumentos de precisão e ópticos, automação industrial, cronômetros e relógios",
           "descricao": "-",
           "valor_filtro": "Edificação industrial"
         },
         {
           "code": 1034,
-          "value":
-            "Ind - Fabricação e montagem de veículos automotores, reboques e carrocerias",
+          "value": "Ind - Fabricação e montagem de veículos automotores, reboques e carrocerias",
           "descricao": "-",
           "valor_filtro": "Edificação industrial"
         },
@@ -1644,8 +1655,7 @@
         },
         {
           "code": 2027,
-          "value":
-            "Sau - Atendimento a urgência e emergências (pronto socorro)",
+          "value": "Sau - Atendimento a urgência e emergências (pronto socorro)",
           "descricao": "-",
           "valor_filtro": "Edificação de saúde"
         },
@@ -1657,15 +1667,13 @@
         },
         {
           "code": 2029,
-          "value":
-            "Sau - Serviços de complementação diagnóstica ou terapêutica",
+          "value": "Sau - Serviços de complementação diagnóstica ou terapêutica",
           "descricao": "-",
           "valor_filtro": "Edificação de saúde"
         },
         {
           "code": 2030,
-          "value":
-            "Sau - Outras atividades relacionadas com a atenção à saúde (instituto de pesquisa)",
+          "value": "Sau - Outras atividades relacionadas com a atenção à saúde (instituto de pesquisa)",
           "descricao": "-",
           "valor_filtro": "Edificação de saúde"
         },
@@ -1822,7 +1830,8 @@
       ],
       "filtro": true
     },
-    {"nome": "tipo_elemento_fisiografico",
+    {
+      "nome": "tipo_elemento_fisiografico",
       "valores": [
         {
           "code": 1,
@@ -1966,7 +1975,8 @@
         }
       ]
     },
-    {"nome": "tipo_ilha",
+    {
+      "nome": "tipo_ilha",
       "valores": [
         {
           "code": 1,
@@ -1985,7 +1995,8 @@
         }
       ]
     },
-    {"nome": "tipo_elemento_hidrografico",
+    {
+      "nome": "tipo_elemento_hidrografico",
       "valores": [
         {
           "code": 1,
@@ -2074,7 +2085,8 @@
         }
       ]
     },
-    {"nome": "tipo_elemento_infraestrutura",
+    {
+      "nome": "tipo_elemento_infraestrutura",
       "valores": [
         {
           "code": 201,
@@ -2325,7 +2337,8 @@
       ],
       "filtro": true
     },
-    {"nome": "tipo_elemento_transportes",
+    {
+      "nome": "tipo_elemento_transportes",
       "valores": [
         {
           "code": 101,
@@ -2498,7 +2511,8 @@
       ],
       "filtro": true
     },
-    {"nome": "tipo_elemento_viario",
+    {
+      "nome": "tipo_elemento_viario",
       "valores": [
         {
           "code": 101,
@@ -2569,7 +2583,8 @@
       ],
       "filtro": true
     },
-    {"nome": "tipo_exposicao",
+    {
+      "nome": "tipo_exposicao",
       "valores": [
         {
           "code": 3,
@@ -2593,7 +2608,8 @@
         }
       ]
     },
-    {"nome": "tipo_extracao_mineral",
+    {
+      "nome": "tipo_extracao_mineral",
       "valores": [
         {
           "code": 0,
@@ -2632,7 +2648,8 @@
         }
       ]
     },
-    {"nome": "tipo_ferrovia",
+    {
+      "nome": "tipo_ferrovia",
       "valores": [
         {
           "code": 5,
@@ -2656,7 +2673,8 @@
         }
       ]
     },
-    {"nome": "tipo_limite_especial",
+    {
+      "nome": "tipo_limite_especial",
       "valores": [
         {
           "code": 1,
@@ -2790,7 +2808,8 @@
         }
       ]
     },
-    {"nome": "tipo_limite_legal",
+    {
+      "nome": "tipo_limite_legal",
       "valores": [
         {
           "code": 1,
@@ -2839,7 +2858,8 @@
         }
       ]
     },
-    {"nome": "tipo_linha_limites",
+    {
+      "nome": "tipo_linha_limites",
       "valores": [
         {
           "code": 2,
@@ -2893,7 +2913,8 @@
         }
       ]
     },
-    {"nome": "tipo_localidade",
+    {
+      "nome": "tipo_localidade",
       "valores": [
         {
           "code": 1,
@@ -2944,10 +2965,16 @@
           "code": 10,
           "value": "Praça",
           "descricao": "-"
+        },
+        {
+          "code": 97,
+          "value": "Não aplicável",
+          "descricao": "-"
         }
       ]
     },
-    {"nome": "tipo_ocupacao_solo",
+    {
+      "nome": "tipo_ocupacao_solo",
       "valores": [
         {
           "code": 101,
@@ -3126,7 +3153,8 @@
       ],
       "filtro": true
     },
-    {"nome": "tipo_pista_pouso",
+    {
+      "nome": "tipo_pista_pouso",
       "valores": [
         {
           "code": 9,
@@ -3145,7 +3173,8 @@
         }
       ]
     },
-    {"nome": "tipo_produto_residuo",
+    {
+      "nome": "tipo_produto_residuo",
       "valores": [
         {
           "code": 0,
@@ -3349,7 +3378,8 @@
         }
       ]
     },
-    {"nome": "tipo_pto",
+    {
+      "nome": "tipo_pto",
       "valores": [
         {
           "code": 1,
@@ -3423,7 +3453,8 @@
         }
       ]
     },
-    {"nome": "tipo_ref",
+    {
+      "nome": "tipo_ref",
       "valores": [
         {
           "code": 1,
@@ -3447,7 +3478,8 @@
         }
       ]
     },
-    {"nome": "tipo_trecho_drenagem",
+    {
+      "nome": "tipo_trecho_drenagem",
       "valores": [
         {
           "code": 1,
@@ -3476,7 +3508,8 @@
         }
       ]
     },
-    {"nome": "tipo_hid",
+    {
+      "nome": "tipo_hid",
       "valores": [
         {
           "code": 1,
@@ -3535,7 +3568,8 @@
         }
       ]
     },
-    {"nome": "tipo_veg",
+    {
+      "nome": "tipo_veg",
       "valores": [
         {
           "code": 102,
@@ -3744,7 +3778,8 @@
       ],
       "filtro": true
     },
-    {"nome": "tipo_via_deslocamento",
+    {
+      "nome": "tipo_via_deslocamento",
       "valores": [
         {
           "code": 2,
@@ -3773,7 +3808,8 @@
         }
       ]
     },
-    {"nome": "trafego",
+    {
+      "nome": "trafego",
       "valores": [
         {
           "code": 0,
@@ -3792,7 +3828,8 @@
         }
       ]
     },
-    {"nome": "uso_pista",
+    {
+      "nome": "uso_pista",
       "valores": [
         {
           "code": 0,
@@ -3823,7 +3860,8 @@
     }
   ],
   "classes": [
-    {"nome": "area_construida",
+    {
+      "nome": "area_construida",
       "categoria": "cobter",
       "descricao": "-",
       "primitivas": ["MultiPolygon"],
@@ -3833,6 +3871,48 @@
           "tipo": "varchar(255)",
           "descricao": "-",
           "cardinalidade": "0..1"
+        },
+        {
+          "nome": "tipo",
+          "tipo": "smallint",
+          "descricao": "-",
+          "cardinalidade": "1..1",
+          "mapa_valor": "tipo_localidade",
+          "valores": [
+            {
+              "code": 1
+            },
+            {
+              "code": 2
+            },
+            {
+              "code": 3
+            },
+            {
+              "code": 4
+            },
+            {
+              "code": 5
+            },
+            {
+              "code": 6
+            },
+            {
+              "code": 7
+            },
+            {
+              "code": 8
+            },
+            {
+              "code": 9
+            },
+            {
+              "code": 10
+            },
+            {
+              "code": 97
+            }
+          ]
         },
         {
           "nome": "densamente_edificada",
@@ -3851,10 +3931,10 @@
         }
       ]
     },
-    {"nome": "massa_dagua",
+    {
+      "nome": "massa_dagua",
       "categoria": "cobter",
-      "descricao":
-        "Massa d’água representada por polígono, que possuem ou não fluxo d'água",
+      "descricao": "Massa d’água representada por polígono, que possuem ou não fluxo d'água",
       "primitivas": ["MultiPolygon"],
       "atributos": [
         {
@@ -3911,8 +3991,7 @@
         {
           "nome": "regime",
           "tipo": "smallint",
-          "descricao":
-            "Indica o regime da ocorrência da água, para a massa dágua",
+          "descricao": "Indica o regime da ocorrência da água, para a massa dágua",
           "cardinalidade": "1..1",
           "mapa_valor": "regime",
           "valores": [
@@ -3943,7 +4022,8 @@
         }
       ]
     },
-    {"nome": "trecho_drenagem",
+    {
+      "nome": "trecho_drenagem",
       "categoria": "elemnat",
       "descricao": "-",
       "primitivas": ["MultiLinestring"],
@@ -4010,13 +4090,15 @@
         }
       ]
     },
-    {"nome": "vala",
+    {
+      "nome": "vala",
       "categoria": "infra",
       "descricao": "-",
       "primitivas": ["MultiLinestring"],
       "atributos": []
     },
-    {"nome": "barragem",
+    {
+      "nome": "barragem",
       "categoria": "infra",
       "descricao": "-",
       "primitivas": ["MultiPolygon", "MultiLinestring"],
@@ -4095,7 +4177,8 @@
         }
       ]
     },
-    {"nome": "sumidouro_vertedouro",
+    {
+      "nome": "sumidouro_vertedouro",
       "categoria": "elemnat",
       "descricao": "-",
       "primitivas": ["MultiPoint"],
@@ -4145,7 +4228,8 @@
       ]
     },
 
-    {"nome": "elemento_hidrografico",
+    {
+      "nome": "elemento_hidrografico",
       "categoria": "elemnat",
       "descricao": "-",
       "primitivas": ["MultiPolygon", "MultiLinestring", "MultiPoint"],
@@ -4231,7 +4315,8 @@
         }
       ]
     },
-    {"nome": "ponto_cotado",
+    {
+      "nome": "ponto_cotado",
       "categoria": "elemnat",
       "descricao": "-",
       "primitivas": ["MultiPoint"],
@@ -4259,7 +4344,8 @@
         }
       ]
     },
-    {"nome": "curva_nivel",
+    {
+      "nome": "curva_nivel",
       "categoria": "elemnat",
       "descricao": "-",
       "primitivas": ["MultiLinestring"],
@@ -4305,7 +4391,8 @@
         }
       ]
     },
-    {"nome": "ferrovia",
+    {
+      "nome": "ferrovia",
       "categoria": "infra",
       "descricao": "-",
       "primitivas": ["MultiLinestring"],
@@ -4474,7 +4561,8 @@
         }
       ]
     },
-    {"nome": "via_deslocamento",
+    {
+      "nome": "via_deslocamento",
       "categoria": "infra",
       "descricao": "-",
       "primitivas": ["MultiLinestring"],
@@ -4646,7 +4734,8 @@
         }
       ]
     },
-    {"nome": "elemento_viario",
+    {
+      "nome": "elemento_viario",
       "categoria": "infra",
       "descricao": "-",
       "primitivas": ["MultiLinestring", "MultiPoint"],
@@ -4818,7 +4907,8 @@
         }
       ]
     },
-    {"nome": "limite_especial",
+    {
+      "nome": "limite_especial",
       "categoria": "llp",
       "descricao": "-",
       "primitivas": ["MultiPolygon", "MultiLinestring"],
@@ -4939,7 +5029,8 @@
         }
       ]
     },
-    {"nome": "limite_legal",
+    {
+      "nome": "limite_legal",
       "categoria": "llp",
       "descricao": "-",
       "primitivas": ["MultiPolygon", "MultiLinestring"],
@@ -5051,7 +5142,8 @@
         }
       ]
     },
-    {"nome": "delimitacao_fisica",
+    {
+      "nome": "delimitacao_fisica",
       "categoria": "llp",
       "descricao": "-",
       "primitivas": ["MultiLinestring"],
@@ -5100,7 +5192,8 @@
         }
       ]
     },
-    {"nome": "vegetacao",
+    {
+      "nome": "vegetacao",
       "categoria": "cobter",
       "descricao": "-",
       "primitivas": ["MultiPolygon"],
@@ -5245,7 +5338,8 @@
         }
       ]
     },
-    {"nome": "deposito",
+    {
+      "nome": "deposito",
       "categoria": "constr",
       "descricao": "-",
       "primitivas": ["MultiPolygon", "MultiPoint"],
@@ -5516,7 +5610,8 @@
         }
       ]
     },
-    {"nome": "edificacao",
+    {
+      "nome": "edificacao",
       "categoria": "constr",
       "descricao": "-",
       "primitivas": ["MultiPolygon", "MultiPoint"],
@@ -6069,7 +6164,8 @@
         }
       ]
     },
-    {"nome": "pista_pouso",
+    {
+      "nome": "pista_pouso",
       "categoria": "infra",
       "descricao": "-",
       "primitivas": ["MultiPolygon", "MultiLinestring", "MultiPoint"],
@@ -6196,7 +6292,8 @@
         }
       ]
     },
-    {"nome": "localidade",
+    {
+      "nome": "localidade",
       "categoria": "llp",
       "descricao": "-",
       "primitivas": ["MultiPoint"],
@@ -6248,7 +6345,8 @@
         }
       ]
     },
-    {"nome": "extracao_mineral",
+    {
+      "nome": "extracao_mineral",
       "categoria": "constr",
       "descricao": "-",
       "primitivas": ["MultiPolygon", "MultiPoint"],
@@ -6397,7 +6495,8 @@
         }
       ]
     },
-    {"nome": "ocupacao_solo",
+    {
+      "nome": "ocupacao_solo",
       "categoria": "constr",
       "descricao": "-",
       "primitivas": ["MultiPolygon", "MultiLinestring", "MultiPoint"],
@@ -6556,7 +6655,8 @@
         }
       ]
     },
-    {"nome": "elemento_fisiografico",
+    {
+      "nome": "elemento_fisiografico",
       "categoria": "elemnat",
       "descricao": "-",
       "primitivas": ["MultiPolygon", "MultiLinestring", "MultiPoint"],
@@ -6705,7 +6805,8 @@
         }
       ]
     },
-    {"nome": "toponimo_fisiografico_natural",
+    {
+      "nome": "toponimo_fisiografico_natural",
       "categoria": "elemnat",
       "descricao": "-",
       "primitivas": ["MultiLinestring", "MultiPoint"],
@@ -6771,7 +6872,8 @@
         }
       ]
     },
-    {"nome": "elemento_infraestrutura",
+    {
+      "nome": "elemento_infraestrutura",
       "categoria": "infra",
       "descricao": "-",
       "primitivas": ["MultiPolygon", "MultiLinestring", "MultiPoint"],
@@ -7042,7 +7144,8 @@
         }
       ]
     },
-    {"nome": "elemento_transportes",
+    {
+      "nome": "elemento_transportes",
       "categoria": "infra",
       "descricao": "-",
       "primitivas": ["MultiPolygon", "MultiLinestring", "MultiPoint"],
@@ -7191,7 +7294,8 @@
         }
       ]
     },
-    {"nome": "ponto_controle",
+    {
+      "nome": "ponto_controle",
       "categoria": "llp",
       "descricao": "-",
       "primitivas": ["MultiPoint"],
@@ -7404,7 +7508,8 @@
     }
   ],
   "extension_classes": [
-    {"nome": "objeto_desconhecido",
+    {
+      "nome": "objeto_desconhecido",
       "categoria": "aux",
       "descricao": "-",
       "primitivas": ["MultiPolygon", "MultiLinestring", "MultiPoint"],
@@ -7417,7 +7522,8 @@
         }
       ]
     },
-    {"nome": "validacao",
+    {
+      "nome": "validacao",
       "categoria": "aux",
       "descricao": "-",
       "primitivas": ["MultiPolygon", "MultiLinestring", "MultiPoint"],
@@ -7436,7 +7542,8 @@
         }
       ]
     },
-    {"nome": "revisao",
+    {
+      "nome": "revisao",
       "categoria": "aux",
       "descricao": "-",
       "primitivas": ["MultiPolygon", "MultiLinestring", "MultiPoint"],
@@ -7467,7 +7574,8 @@
         }
       ]
     },
-    {"nome": "reambulacao",
+    {
+      "nome": "reambulacao",
       "categoria": "aux",
       "descricao": "-",
       "primitivas": ["MultiPolygon", "MultiLinestring", "MultiPoint"],
@@ -7480,7 +7588,8 @@
         }
       ]
     },
-    {"nome": "insumo_externo",
+    {
+      "nome": "insumo_externo",
       "categoria": "aux",
       "descricao": "-",
       "primitivas": ["MultiPolygon", "MultiLinestring", "MultiPoint"],
@@ -7496,10 +7605,11 @@
           "tipo": "varchar(255)",
           "descricao": "-",
           "cardinalidade": "0..1"
-        }        
+        }
       ]
     },
-    {"nome": "moldura",
+    {
+      "nome": "moldura",
       "categoria": "aux",
       "descricao": "-",
       "primitivas": ["MultiPolygon"],
@@ -7518,7 +7628,8 @@
         }
       ]
     },
-    {"nome": "moldura_area_continua",
+    {
+      "nome": "moldura_area_continua",
       "categoria": "aux",
       "descricao": "-",
       "primitivas": ["MultiPolygon"],
@@ -7531,25 +7642,29 @@
         }
       ]
     },
-    {"nome": "limite_vegetacao",
+    {
+      "nome": "limite_vegetacao",
       "categoria": "aquisicao",
       "descricao": "-",
       "primitivas": ["MultiLinestring"],
       "atributos": []
     },
-    {"nome": "limite_massa_dagua",
+    {
+      "nome": "limite_massa_dagua",
       "categoria": "aquisicao",
       "descricao": "-",
       "primitivas": ["MultiLinestring"],
       "atributos": []
     },
-    {"nome": "limite_area_construida",
+    {
+      "nome": "limite_area_construida",
       "categoria": "aquisicao",
       "descricao": "-",
       "primitivas": ["MultiLinestring"],
       "atributos": []
     },
-    {"nome": "centroide_vegetacao",
+    {
+      "nome": "centroide_vegetacao",
       "categoria": "aquisicao",
       "descricao": "-",
       "primitivas": ["MultiPoint"],
@@ -7687,7 +7802,8 @@
         }
       ]
     },
-    {"nome": "centroide_massa_dagua",
+    {
+      "nome": "centroide_massa_dagua",
       "categoria": "aquisicao",
       "descricao": "-",
       "primitivas": ["MultiPoint"],
@@ -7749,8 +7865,7 @@
         {
           "nome": "regime",
           "tipo": "smallint",
-          "descricao":
-            "Indica o regime da ocorrência da água, para a massa dágua",
+          "descricao": "Indica o regime da ocorrência da água, para a massa dágua",
           "cardinalidade": "1..1",
           "mapa_valor": "regime",
           "valores": [
@@ -7778,10 +7893,11 @@
               ]
             }
           ]
-        }      
+        }
       ]
     },
-    {"nome": "centroide_area_construida",
+    {
+      "nome": "centroide_area_construida",
       "categoria": "aquisicao",
       "descricao": "-",
       "primitivas": ["MultiPoint"],
@@ -7809,7 +7925,8 @@
         }
       ]
     },
-    {"nome": "identificacao_antropizacao",
+    {
+      "nome": "identificacao_antropizacao",
       "categoria": "aquisicao",
       "descricao": "-",
       "primitivas": ["MultiPolygon"],
@@ -7822,7 +7939,8 @@
         }
       ]
     },
-    {"nome": "ilha",
+    {
+      "nome": "ilha",
       "categoria": "aquisicao",
       "descricao": "-",
       "primitivas": ["MultiPoint"],
