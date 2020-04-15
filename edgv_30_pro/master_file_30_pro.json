@@ -7509,6 +7509,14 @@
   ],
   "extension_classes": [
     {
+      "nome": "area_nao_mapeada",
+      "categoria": "aux",
+      "descricao": "-",
+      "primitivas": ["MultiPolygon"],
+      "atributos": [
+      ]
+    },
+    {
       "nome": "objeto_desconhecido",
       "categoria": "aux",
       "descricao": "-",

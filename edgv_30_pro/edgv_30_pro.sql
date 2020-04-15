@@ -2800,6 +2800,16 @@ ALTER TABLE edgv.infra_elemento_infraestrutura_p
 
 ALTER TABLE edgv.infra_elemento_infraestrutura_p ALTER COLUMN posicao_relativa SET DEFAULT 9999;
 
+CREATE TABLE edgv.aux_area_nao_mapeada_a(
+	 id serial NOT NULL,
+	 CONSTRAINT aux_area_nao_mapeada_a_a_pk PRIMARY KEY (id)
+	 WITH (FILLFACTOR = 80)
+);
+CREATE INDEX aux_area_nao_mapeada_a_geom ON edgv.aux_area_nao_mapeada_a USING gist (geom);
+
+ALTER TABLE edgv.aux_area_nao_mapeada_a OWNER TO postgres;
+
+
 CREATE TABLE edgv.infra_elemento_transportes_a(
 	 id serial NOT NULL,
 	 nome varchar(255),
