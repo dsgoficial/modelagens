@@ -4000,39 +4000,6 @@
           "cardinalidade": "0..1"
         },
         {
-          "nome": "tipo",
-          "tipo": "smallint",
-          "descricao": "-",
-          "cardinalidade": "1..1",
-          "mapa_valor": "tipo_localidade",
-          "valores": [
-            {
-              "code": 1
-            },
-            {
-              "code": 2
-            },
-            {
-              "code": 3
-            },
-            {
-              "code": 4
-            },
-            {
-              "code": 5
-            },
-            {
-              "code": 6
-            },
-            {
-              "code": 7
-            },
-            {
-              "code": 97
-            }
-          ]
-        },
-        {
           "nome": "densamente_edificada",
           "tipo": "smallint",
           "descricao": "Indica se a área construída é densamente edificada",
@@ -7453,6 +7420,53 @@
       "atributos": []
     },
     {
+      "nome": "localidade",
+      "categoria": "aquisicao",
+      "descricao": "-",
+      "primitivas": ["MultiPolygon"],
+      "atributos": [
+        {
+          "nome": "nome",
+          "tipo": "varchar(255)",
+          "descricao": "-",
+          "cardinalidade": "0..1"
+        },
+        {
+          "nome": "tipo",
+          "tipo": "smallint",
+          "descricao": "-",
+          "cardinalidade": "1..1",
+          "mapa_valor": "tipo_localidade",
+          "valores": [
+            {
+              "code": 1
+            },
+            {
+              "code": 2
+            },
+            {
+              "code": 3
+            },
+            {
+              "code": 4
+            },
+            {
+              "code": 5
+            },
+            {
+              "code": 6
+            },
+            {
+              "code": 7
+            },
+            {
+              "code": 97
+            }
+          ]
+        }
+      ]
+    },
+    {
       "nome": "objeto_desconhecido",
       "categoria": "aux",
       "descricao": "-",
@@ -7768,39 +7782,6 @@
           "tipo": "varchar(255)",
           "descricao": "-",
           "cardinalidade": "0..1"
-        },
-        {
-          "nome": "tipo",
-          "tipo": "smallint",
-          "descricao": "-",
-          "cardinalidade": "1..1",
-          "mapa_valor": "tipo_localidade",
-          "valores": [
-            {
-              "code": 1
-            },
-            {
-              "code": 2
-            },
-            {
-              "code": 3
-            },
-            {
-              "code": 4
-            },
-            {
-              "code": 5
-            },
-            {
-              "code": 6
-            },
-            {
-              "code": 7
-            },
-            {
-              "code": 97
-            }
-          ]
         },
         {
           "nome": "densamente_edificada",
