@@ -9,7 +9,7 @@ class MasterGen():
     PostGIS, GPKG, Spatialite = range(3)
     def __init__(self, master_path):
         try:
-            with open(master_path) as master_file:
+            with open(master_path, 'r', encoding='utf-8') as master_file:
                 self.master = json.load(master_file)
         except EOFError as e:
             print("Caught the EOF error.")
@@ -197,7 +197,7 @@ class MasterGen():
                                 sql.append(u"")
 
         try:
-            with open(dest, 'w') as sql_file:
+            with open(dest, 'wb') as sql_file:
                 sql_text = "\r".join(sql).encode('utf-8')
                 sql_file.write(sql_text)
                 return "Arquivo de modelagem SQL gerado com sucesso em {0}".format(dest)
