@@ -620,11 +620,6 @@
       "nome": "situacao_fisica",
       "valores": [
         {
-          "code": 0,
-          "value": "Desconhecida",
-          "descricao": "-"
-        },
-        {
           "code": 1,
           "value": "Abandonada",
           "descricao": "-"
@@ -642,11 +637,6 @@
         {
           "code": 4,
           "value": "Em construção",
-          "descricao": "-"
-        },
-        {
-          "code": 6,
-          "value": "Construída mas em obras",
           "descricao": "-"
         }
       ]
@@ -7458,6 +7448,9 @@
             },
             {
               "code": 7
+            },
+            {
+              "code": 9
             },
             {
               "code": 97
