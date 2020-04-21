@@ -11,9 +11,8 @@ class FeatureProcessor(object):
         self.mappingType = FME_MacroValues['direcao']
 
     def buildFileDict(self, mappingPath):
-        file = open(mappingPath, 'r')
-        data = file.read()
-        mapDict = json.loads(data)
+        with open(mappingPath, 'r', encoding='utf-8') as file:
+            mapDict = json.loads(file.read())
         return mapDict
 
     def buildFeatureDict(self, feature):
@@ -208,7 +207,7 @@ class FeatureProcessor(object):
         return mappedFeat
 
     def mapDictToFeature(self, feat, featDict):
-        for attr, value in featDict.iteritems():
+        for attr, value in featDict.items():
             if value or value == 0:
                 feat.setAttribute(attr, u'{0}'.format(value))
             else:
