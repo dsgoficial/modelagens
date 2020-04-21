@@ -65,20 +65,20 @@ END$$;
 
 CREATE TABLE public.layer_styles
 (
-  id serial NOT NULL,
+  id serial NOT NULL PRIMARY KEY,
   f_table_catalog character varying,
   f_table_schema character varying,
   f_table_name character varying,
   f_geometry_column character varying,
   stylename character varying(255),
   styleqml text,
-  stylesld xml,
+  stylesld text,
   useasdefault boolean,
   description text,
   owner character varying(30),
-  ui xml,
+  ui text,
   update_time timestamp without time zone DEFAULT now(),
-  CONSTRAINT layer_styles_pkey PRIMARY KEY (id)
+  CONSTRAINT unique_styles UNIQUE (f_table_schema,f_table_name,stylename)
 )
 WITH (
   OIDS=FALSE
@@ -108,34 +108,65 @@ GRANT EXECUTE ON FUNCTION public.estilo() TO PUBLIC;
 --########################################################
 --Cria tabela menu profile
 
-CREATE TABLE public.menu_profile
+CREATE TABLE public.layer_menus
 (
     id SERIAL NOT NULL PRIMARY KEY,
-    nome_menu VARCHAR(255) NOT NULL,
-    definicao_menu TEXT NOT NULL
+    nome VARCHAR(255) NOT NULL,
+    definicao_menu TEXT NOT NULL,
+    owner varchar(255) NOT NULL,
+	  update_time timestamp without time zone NOT NULL DEFAULT now(),
+    CONSTRAINT unique_menus UNIQUE (nome)
 );
 
-ALTER TABLE public.menu_profile
+ALTER TABLE public.layer_menus
     OWNER to postgres;
 
-GRANT ALL ON TABLE public.menu_profile TO PUBLIC;
+GRANT ALL ON TABLE public.layer_menus TO PUBLIC;
 
 --########################################################
 --Cria tabela de regras
-CREATE TABLE public.layer_rules
-(
-    id SERIAL NOT NULL PRIMARY KEY,
-    grupo_regra VARCHAR(255) NOT NULL,
-    schema VARCHAR(255) NOT NULL,
-    camada VARCHAR(255) NOT NULL,
-    atributo VARCHAR(255) NOT NULL,
-    regra TEXT NOT NULL,
-    cor_rgb VARCHAR(255) NOT NULL,
-    descricao TEXT NOT NULL,
-    ordem INTEGER NOT NULL
+CREATE TABLE public.group_rules(
+  	id SERIAL NOT NULL PRIMARY KEY,
+    grupo_regra varchar(255) NOT NULL,
+    cor_rgb varchar(255) NOT NULL,
+    UNIQUE(grupo_regra)
+);
+
+ALTER TABLE public.group_rules
+    OWNER to postgres;
+
+GRANT ALL ON TABLE public.group_rules TO PUBLIC;
+
+CREATE TABLE public.layer_rules(
+	id SERIAL NOT NULL PRIMARY KEY,
+  grupo_regra_id INTEGER NOT NULL REFERENCES public.group_rules (id),
+  schema varchar(255) NOT NULL,
+  camada varchar(255) NOT NULL,
+  atributo varchar(255) NOT NULL,
+  regra TEXT NOT NULL,
+  descricao TEXT NOT NULL,
+  owner varchar(255) NOT NULL,
+	update_time timestamp without time zone NOT NULL DEFAULT now()
 );
 
 ALTER TABLE public.layer_rules
     OWNER to postgres;
 
 GRANT ALL ON TABLE public.layer_rules TO PUBLIC;
+
+--########################################################
+--Cria tabela de modelos
+
+CREATE TABLE public.layer_qgis_models(
+	id SERIAL NOT NULL PRIMARY KEY,
+  nome varchar(255) NOT NULL UNIQUE,
+  descricao TEXT NOT NULL,
+  model_xml TEXT NOT NULL,
+  owner varchar(255) NOT NULL,
+	update_time timestamp without time zone NOT NULL DEFAULT now()
+);
+
+ALTER TABLE public.layer_qgis_models
+    OWNER to postgres;
+
+GRANT ALL ON TABLE public.layer_qgis_models TO PUBLIC;

@@ -1,6 +1,6 @@
 {
   "modelo": "EDGV 3.0 Pro",
-  "versao": "0.1",
+  "versao": "0.9",
   "schema_dados": "edgv",
   "schema_dominios": "dominios",
   "a_ser_preenchido": {
@@ -1539,12 +1539,6 @@
           "valor_filtro": "Edificação agropecuária"
         },
         {
-          "code": 1301,
-          "value": "Pub Civ - Policial",
-          "descricao": "-",
-          "valor_filtro": "Edificação pública civil"
-        },
-        {
           "code": 1302,
           "value": "Pub Civ - Prisional",
           "descricao": "-",
@@ -1741,18 +1735,6 @@
           "value": "Pub Mil - Outros",
           "descricao": "-",
           "valor_filtro": "Edificação militar"
-        },
-        {
-          "code": 1820,
-          "value": "Pol Rod - Posto polícia rodoviária militar",
-          "descricao": "-",
-          "valor_filtro": "Posto de polícia rodoviária"
-        },
-        {
-          "code": 1821,
-          "value": "Pol Rod - Posto polícia rodoviária federal",
-          "descricao": "-",
-          "valor_filtro": "Posto de polícia rodoviária"
         },
         {
           "code": 1910,
@@ -2334,38 +2316,8 @@
           "valor_filtro": "Estação geradora de energia"
         },
         {
-          "code": 410,
-          "value": "Estação geradora – Termelétrica a carvão",
-          "descricao": "-",
-          "valor_filtro": "Estação geradora de energia"
-        },
-        {
-          "code": 411,
-          "value": "Estação geradora – Termelétrica a diesel",
-          "descricao": "-",
-          "valor_filtro": "Estação geradora de energia"
-        },
-        {
-          "code": 412,
-          "value": "Estação geradora – Termelétrica a gás",
-          "descricao": "-",
-          "valor_filtro": "Estação geradora de energia"
-        },
-        {
-          "code": 413,
-          "value": "Estação geradora – Termelétrica a biomassa",
-          "descricao": "-",
-          "valor_filtro": "Estação geradora de energia"
-        },
-        {
           "code": 409,
-          "value": "Estação geradora – Termelétrica nuclear",
-          "descricao": "-",
-          "valor_filtro": "Estação geradora de energia"
-        },
-        {
-          "code": 497,
-          "value": "Estação geradora – Termelétrica outras",
+          "value": "Estação geradora – Termelétrica",
           "descricao": "-",
           "valor_filtro": "Estação geradora de energia"
         }
@@ -2931,11 +2883,6 @@
       "nome": "tipo_extracao_mineral",
       "valores": [
         {
-          "code": 0,
-          "value": "Desconhecido",
-          "descricao": "-"
-        },
-        {
           "code": 1,
           "value": "Poço",
           "descricao": "-"
@@ -2953,16 +2900,6 @@
         {
           "code": 6,
           "value": "Salina",
-          "descricao": "-"
-        },
-        {
-          "code": 7,
-          "value": "Pedreira",
-          "descricao": "-"
-        },
-        {
-          "code": 8,
-          "value": "Ponto de prospecção",
           "descricao": "-"
         }
       ]
@@ -5295,24 +5232,6 @@
               "code": 409
             },
             {
-              "code": 410
-            },
-            {
-              "code": 411
-            },
-            {
-              "code": 412
-            },
-            {
-              "code": 413
-            },
-            {
-              "code": 495
-            },
-            {
-              "code": 497
-            },
-            {
               "code": 498
             }
           ]
@@ -5866,6 +5785,9 @@
           "cardinalidade": "1..1",
           "mapa_valor": "revestimento",
           "valores": [
+            {
+              "code": 0
+            },
             {
               "code": 1
             },
