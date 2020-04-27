@@ -1613,6 +1613,12 @@
           "valor_filtro": "Edificação pública civil"
         },
         {
+          "code": 1323,
+          "value": "Pub Civ - Bombeiros",
+          "descricao": "-",
+          "valor_filtro": "Edificação pública civil"
+        },
+        {
           "code": 1398,
           "value": "Pub Civ - Outros",
           "descricao": "-",
@@ -7134,6 +7140,9 @@
             },
             {
               "code": 1322
+            },
+            {
+              "code": 1323
             },
             {
               "code": 1398
