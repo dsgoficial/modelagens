@@ -5674,7 +5674,7 @@
       "atributos": [
         {
           "nome": "cota",
-          "tipo": "varchar(255)",
+          "tipo": "real",
           "descricao": "-",
           "cardinalidade": "1..1"
         },
