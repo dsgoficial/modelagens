@@ -899,6 +899,7 @@ INSERT INTO dominios.tipo_limite_especial (code,code_name) VALUES (1,'Terra púb
 INSERT INTO dominios.tipo_limite_especial (code,code_name) VALUES (2,'Terra indígena (2)');
 INSERT INTO dominios.tipo_limite_especial (code,code_name) VALUES (3,'Quilombo (3)');
 INSERT INTO dominios.tipo_limite_especial (code,code_name) VALUES (4,'Assentamento rural (4)');
+INSERT INTO dominios.tipo_limite_especial (code,code_name) VALUES (5,'Unidade de conservação (5)');
 INSERT INTO dominios.tipo_limite_especial (code,code_name) VALUES (8,'Área de preservação permanente (8)');
 INSERT INTO dominios.tipo_limite_especial (code,code_name) VALUES (9,'Reserva legal (9)');
 INSERT INTO dominios.tipo_limite_especial (code,code_name) VALUES (10,'Mosaico (10)');
@@ -2882,9 +2883,6 @@ ALTER TABLE edgv.llp_limite_especial_a
 	 REFERENCES dominios.tipo_limite_especial (code) MATCH FULL
 	 ON UPDATE NO ACTION ON DELETE NO ACTION;
 
-ALTER TABLE edgv.llp_limite_especial_a
-	 ADD CONSTRAINT llp_limite_especial_a_tipo_check 
-	 CHECK (tipo = ANY(ARRAY[1 :: SMALLINT, 2 :: SMALLINT, 24 :: SMALLINT, 25 :: SMALLINT, 26 :: SMALLINT, 27 :: SMALLINT, 28 :: SMALLINT, 29 :: SMALLINT, 30 :: SMALLINT, 31 :: SMALLINT, 32 :: SMALLINT, 33 :: SMALLINT, 34 :: SMALLINT, 35 :: SMALLINT, 36 :: SMALLINT, 9999 :: SMALLINT])); 
 ALTER TABLE edgv.llp_limite_especial_a ALTER COLUMN tipo SET DEFAULT 9999;
 
 ALTER TABLE edgv.llp_limite_especial_a
@@ -2927,9 +2925,6 @@ ALTER TABLE edgv.llp_limite_especial_l
 	 REFERENCES dominios.tipo_limite_especial (code) MATCH FULL
 	 ON UPDATE NO ACTION ON DELETE NO ACTION;
 
-ALTER TABLE edgv.llp_limite_especial_l
-	 ADD CONSTRAINT llp_limite_especial_l_tipo_check 
-	 CHECK (tipo = ANY(ARRAY[1 :: SMALLINT, 2 :: SMALLINT, 24 :: SMALLINT, 25 :: SMALLINT, 26 :: SMALLINT, 27 :: SMALLINT, 28 :: SMALLINT, 29 :: SMALLINT, 30 :: SMALLINT, 31 :: SMALLINT, 32 :: SMALLINT, 33 :: SMALLINT, 34 :: SMALLINT, 35 :: SMALLINT, 36 :: SMALLINT, 9999 :: SMALLINT])); 
 ALTER TABLE edgv.llp_limite_especial_l ALTER COLUMN tipo SET DEFAULT 9999;
 
 ALTER TABLE edgv.llp_limite_especial_l

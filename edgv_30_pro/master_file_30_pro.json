@@ -2949,48 +2949,8 @@
           "descricao": "-"
         },
         {
-          "code": 8,
-          "value": "Área de preservação permanente",
-          "descricao": "-"
-        },
-        {
-          "code": 9,
-          "value": "Reserva legal",
-          "descricao": "-"
-        },
-        {
-          "code": 10,
-          "value": "Mosaico",
-          "descricao": "-"
-        },
-        {
-          "code": 11,
-          "value": "Distrito florestal",
-          "descricao": "-"
-        },
-        {
-          "code": 12,
-          "value": "Corredor ecológico",
-          "descricao": "-"
-        },
-        {
-          "code": 13,
-          "value": "Floresta pública",
-          "descricao": "-"
-        },
-        {
-          "code": 14,
-          "value": "Sítios RAMSAR",
-          "descricao": "-"
-        },
-        {
-          "code": 15,
-          "value": "Sítios do patrimônio",
-          "descricao": "-"
-        },
-        {
-          "code": 16,
-          "value": "Reserva da biosfera",
+          "code": 5,
+          "value": "Unidade de Conservação",
           "descricao": "-"
         },
         {
@@ -6092,6 +6052,15 @@
             },
             {
               "code": 2
+            },
+            {
+              "code": 3
+            },
+            {
+              "code": 4
+            },
+            {
+              "code": 5
             },
             {
               "code": 24
