@@ -348,7 +348,7 @@ INSERT INTO dominios.tipo_corpo_dagua (code,code_name) VALUES (2,'Canal (2)');
 INSERT INTO dominios.tipo_corpo_dagua (code,code_name) VALUES (3,'Oceano (3)');
 INSERT INTO dominios.tipo_corpo_dagua (code,code_name) VALUES (4,'Baía (4)');
 INSERT INTO dominios.tipo_corpo_dagua (code,code_name) VALUES (5,'Enseada (5)');
-INSERT INTO dominios.tipo_corpo_dagua (code,code_name) VALUES (6,'Meando Abandonado (6)');
+INSERT INTO dominios.tipo_corpo_dagua (code,code_name) VALUES (6,'Meandro abandonado (6)');
 INSERT INTO dominios.tipo_corpo_dagua (code,code_name) VALUES (7,'Lago ou Lagoa (7)');
 INSERT INTO dominios.tipo_corpo_dagua (code,code_name) VALUES (9,'Laguna (9)');
 INSERT INTO dominios.tipo_corpo_dagua (code,code_name) VALUES (10,'Represa (10)');

@@ -276,20 +276,17 @@
         {
           "code": 1,
           "value": "Mestra",
-          "descricao":
-            "Curva múltipla do quíntuplo da equidistância empregada, sendo a primeira, a relativa ao nível de referência, de altitude igual a zero."
+          "descricao": "Curva múltipla do quíntuplo da equidistância empregada, sendo a primeira, a relativa ao nível de referência, de altitude igual a zero."
         },
         {
           "code": 2,
           "value": "Normal",
-          "descricao":
-            "Curva traçada no intervalo das curvas de nível mestras, sendo múltipla da equidistância empregada."
+          "descricao": "Curva traçada no intervalo das curvas de nível mestras, sendo múltipla da equidistância empregada."
         },
         {
           "code": 3,
           "value": "Auxiliar",
-          "descricao":
-            "Curva traçada com o valor adicional de meia equidistância, com o intuito de melhor representar o relevo."
+          "descricao": "Curva traçada com o valor adicional de meia equidistância, com o intuito de melhor representar o relevo."
         }
       ]
     },
@@ -758,7 +755,7 @@
         },
         {
           "code": 6,
-          "value": "Meando Abandonado",
+          "value": "Meandro abandonado",
           "descricao": "-"
         },
         {
@@ -1037,15 +1034,13 @@
         },
         {
           "code": 521,
-          "value":
-            "Ens - Edificação de educação superior – graduação e pós-graduação",
+          "value": "Ens - Edificação de educação superior – graduação e pós-graduação",
           "descricao": "-",
           "valor_filtro": "Edificação de ensino"
         },
         {
           "code": 522,
-          "value":
-            "Ens - Edificação de educação superior – pós-graduação e extensão",
+          "value": "Ens - Edificação de educação superior – pós-graduação e extensão",
           "descricao": "-",
           "valor_filtro": "Edificação de ensino"
         },
@@ -1057,8 +1052,7 @@
         },
         {
           "code": 524,
-          "value":
-            "Ens - Edificação de educação profissional de nível tecnológico",
+          "value": "Ens - Edificação de educação profissional de nível tecnológico",
           "descricao": "-",
           "valor_filtro": "Edificação de ensino"
         },
@@ -1274,8 +1268,7 @@
         },
         {
           "code": 1019,
-          "value":
-            "Ind - Preparação de couros, artefatos de couro, artigos de viagem e calçados",
+          "value": "Ind - Preparação de couros, artefatos de couro, artigos de viagem e calçados",
           "descricao": "-",
           "valor_filtro": "Edificação industrial"
         },
@@ -1293,15 +1286,13 @@
         },
         {
           "code": 1022,
-          "value":
-            "Ind - Industria de edição, impressão e reprodução de gravações",
+          "value": "Ind - Industria de edição, impressão e reprodução de gravações",
           "descricao": "-",
           "valor_filtro": "Edificação industrial"
         },
         {
           "code": 1023,
-          "value":
-            "Ind - Fabricação de coque, refino de petróleo, elaboração de combustíveis nucleares e produção de álcool",
+          "value": "Ind - Fabricação de coque, refino de petróleo, elaboração de combustíveis nucleares e produção de álcool",
           "descricao": "-",
           "valor_filtro": "Edificação industrial"
         },
@@ -1313,8 +1304,7 @@
         },
         {
           "code": 1025,
-          "value":
-            "Ind - Fabricação de artigos de borracha e material plástico",
+          "value": "Ind - Fabricação de artigos de borracha e material plástico",
           "descricao": "-",
           "valor_filtro": "Edificação industrial"
         },
@@ -1344,36 +1334,31 @@
         },
         {
           "code": 1030,
-          "value":
-            "Ind - Fabriação de máquinas de escritório e equipamentos de informática",
+          "value": "Ind - Fabriação de máquinas de escritório e equipamentos de informática",
           "descricao": "-",
           "valor_filtro": "Edificação industrial"
         },
         {
           "code": 1031,
-          "value":
-            "Ind - Fabricação de máquinas, aparelhos e materiais elétricos",
+          "value": "Ind - Fabricação de máquinas, aparelhos e materiais elétricos",
           "descricao": "-",
           "valor_filtro": "Edificação industrial"
         },
         {
           "code": 1032,
-          "value":
-            "Ind - Fabricação de material eletrônico, de aparelhos e equipamentos de comunicações",
+          "value": "Ind - Fabricação de material eletrônico, de aparelhos e equipamentos de comunicações",
           "descricao": "-",
           "valor_filtro": "Edificação industrial"
         },
         {
           "code": 1033,
-          "value":
-            "Ind - Fabricação de equipamentos de instrumentação médico-hospitalares, instrumentos de precisão e ópticos, automação industrial, cronômetros e relógios",
+          "value": "Ind - Fabricação de equipamentos de instrumentação médico-hospitalares, instrumentos de precisão e ópticos, automação industrial, cronômetros e relógios",
           "descricao": "-",
           "valor_filtro": "Edificação industrial"
         },
         {
           "code": 1034,
-          "value":
-            "Ind - Fabricação e montagem de veículos automotores, reboques e carrocerias",
+          "value": "Ind - Fabricação e montagem de veículos automotores, reboques e carrocerias",
           "descricao": "-",
           "valor_filtro": "Edificação industrial"
         },
@@ -1709,8 +1694,7 @@
         },
         {
           "code": 2027,
-          "value":
-            "Sau - Atendimento a urgência e emergências (pronto socorro)",
+          "value": "Sau - Atendimento a urgência e emergências (pronto socorro)",
           "descricao": "-",
           "valor_filtro": "Edificação de saúde"
         },
@@ -1722,15 +1706,13 @@
         },
         {
           "code": 2029,
-          "value":
-            "Sau - Serviços de complementação diagnóstica ou terapêutica",
+          "value": "Sau - Serviços de complementação diagnóstica ou terapêutica",
           "descricao": "-",
           "valor_filtro": "Edificação de saúde"
         },
         {
           "code": 2030,
-          "value":
-            "Sau - Outras atividades relacionadas com a atenção à saúde (instituto de pesquisa)",
+          "value": "Sau - Outras atividades relacionadas com a atenção à saúde (instituto de pesquisa)",
           "descricao": "-",
           "valor_filtro": "Edificação de saúde"
         },
@@ -3981,8 +3963,7 @@
     {
       "nome": "corpo_dagua",
       "categoria": "cobter",
-      "descricao":
-        "Corpo d’água representado por polígono, que possuem ou não fluxo d'água",
+      "descricao": "Corpo d’água representado por polígono, que possuem ou não fluxo d'água",
       "primitivas": ["MultiPolygon"],
       "atributos": [
         {
@@ -4039,8 +4020,7 @@
         {
           "nome": "regime",
           "tipo": "smallint",
-          "descricao":
-            "Indica o regime da ocorrência da água, para a massa dágua",
+          "descricao": "Indica o regime da ocorrência da água, para a massa dágua",
           "cardinalidade": "1..1",
           "mapa_valor": "regime",
           "valores": [
@@ -7776,8 +7756,7 @@
       "categoria": "aux",
       "descricao": "-",
       "primitivas": ["MultiLinestring", "MultiPolygon"],
-      "atributos": [
-      ]
+      "atributos": []
     },
     {
       "nome": "limite_vegetacao",
@@ -7998,7 +7977,7 @@
               "code": 12
             }
           ]
-        }        
+        }
       ]
     }
   ]
