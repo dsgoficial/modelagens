@@ -3225,9 +3225,9 @@
         },
         {
           "code": 601,
-          "value": "Area de ruinas",
+          "value": "Área de ruinas",
           "descricao": "-",
-          "valor_filtro": "Area de ruinas"
+          "valor_filtro": "Área de ruinas"
         },
         {
           "code": 701,
@@ -3237,9 +3237,9 @@
         },
         {
           "code": 801,
-          "value": "Area de energia",
+          "value": "Área de energia",
           "descricao": "-",
-          "valor_filtro": "Area de energia"
+          "valor_filtro": "Área de energia"
         }
       ],
       "filtro": true

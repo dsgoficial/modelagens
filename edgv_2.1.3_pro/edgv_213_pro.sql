@@ -933,9 +933,9 @@ INSERT INTO dominios.tipo_ocupacao_solo (code,code_name, filter) VALUES (409,'P�
 INSERT INTO dominios.tipo_ocupacao_solo (code,code_name, filter) VALUES (414,'Pátio portuário (414)','Pátio');
 INSERT INTO dominios.tipo_ocupacao_solo (code,code_name, filter) VALUES (495,'Pátio misto (495)','Pátio');
 INSERT INTO dominios.tipo_ocupacao_solo (code,code_name, filter) VALUES (501,'Piscina (501)','Piscina');
-INSERT INTO dominios.tipo_ocupacao_solo (code,code_name, filter) VALUES (601,'Area de ruinas (601)','Area de ruinas');
+INSERT INTO dominios.tipo_ocupacao_solo (code,code_name, filter) VALUES (601,'Área de ruinas (601)','Área de ruinas');
 INSERT INTO dominios.tipo_ocupacao_solo (code,code_name, filter) VALUES (701,'Ruina (701)','Ruina');
-INSERT INTO dominios.tipo_ocupacao_solo (code,code_name, filter) VALUES (801,'Area de energia (801)','Area de energia');
+INSERT INTO dominios.tipo_ocupacao_solo (code,code_name, filter) VALUES (801,'Área de energia (801)','Área de energia');
 INSERT INTO dominios.tipo_ocupacao_solo (code,code_name, filter) VALUES (999,'A SER PREENCHIDO (999)','A SER PREENCHIDO (999)');
 
 ALTER TABLE dominios.tipo_ocupacao_solo OWNER TO postgres;
