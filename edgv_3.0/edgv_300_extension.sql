@@ -101,61 +101,11 @@ $BODY$
 ALTER FUNCTION public.estilo()
   OWNER TO postgres;
 
---########################################################
---Cria tabela menu profile
+  --########################################################
 
-CREATE TABLE public.menu_profile
-(
-    id serial NOT NULL,
-    nome_do_perfil text NOT NULL,
-    descricao text,
-    perfil json NOT NULL,
-    ordem_menu json NOT NULL,
-    CONSTRAINT menu_profile_pkey PRIMARY KEY (id)
-)
-WITH (
-    OIDS = FALSE
-)
-TABLESPACE pg_default;
-
-ALTER TABLE public.menu_profile
-    OWNER to postgres;
-
-GRANT ALL ON TABLE public.menu_profile TO postgres;
-GRANT ALL ON TABLE public.menu_profile TO PUBLIC;
-
---########################################################
---Cria tabela de regras
-CREATE TABLE public.layer_rules
-(
-    id serial NOT NULL,
-    camada text NOT NULL,
-    tipo_regra text NOT NULL,
-    nome text NOT NULL,
-    cor_rgb text NOT NULL,
-    regra text NOT NULL,
-    tipo_estilo text NOT NULL,
-    atributo text NOT NULL,
-    descricao text NOT NULL,
-    ordem integer NOT NULL,
-    CONSTRAINT layer_rules_pkey PRIMARY KEY (id)
-)
-WITH (
-    OIDS = FALSE
-)
-TABLESPACE pg_default;
-
-ALTER TABLE public.layer_rules
-    OWNER to postgres;
-
-GRANT ALL ON TABLE public.layer_rules TO postgres;
-GRANT ALL ON TABLE public.layer_rules TO PUBLIC;
-
---########################################################
-
-GRANT USAGE ON SCHEMA edgv TO public;
-GRANT SELECT, INSERT, UPDATE, DELETE ON ALL TABLES IN SCHEMA edgv TO public;
-GRANT ALL ON ALL SEQUENCES IN SCHEMA edgv TO public;
+GRANT USAGE ON SCHEMA cb TO public;
+GRANT SELECT, INSERT, UPDATE, DELETE ON ALL TABLES IN SCHEMA cb TO public;
+GRANT ALL ON ALL SEQUENCES IN SCHEMA cb TO public;
 
 GRANT USAGE ON SCHEMA dominios TO public;
 GRANT SELECT, INSERT, UPDATE, DELETE ON ALL TABLES IN SCHEMA dominios TO public;

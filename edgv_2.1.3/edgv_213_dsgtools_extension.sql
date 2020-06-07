@@ -71,11 +71,11 @@ CREATE TABLE public.layer_styles
   f_geometry_column character varying,
   stylename character varying(255),
   styleqml text,
-  stylesld xml,
+  stylesld text,
   useasdefault boolean,
   description text,
   owner character varying(30),
-  ui xml,
+  ui text,
   update_time timestamp without time zone DEFAULT now(),
   CONSTRAINT layer_styles_pkey PRIMARY KEY (id)
 )

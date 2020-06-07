@@ -170,3 +170,13 @@ ALTER TABLE public.layer_qgis_models
     OWNER to postgres;
 
 GRANT ALL ON TABLE public.layer_qgis_models TO PUBLIC;
+
+--########################################################
+
+GRANT USAGE ON SCHEMA cb TO public;
+GRANT SELECT, INSERT, UPDATE, DELETE ON ALL TABLES IN SCHEMA cb TO public;
+GRANT ALL ON ALL SEQUENCES IN SCHEMA cb TO public;
+
+GRANT USAGE ON SCHEMA dominios TO public;
+GRANT SELECT, INSERT, UPDATE, DELETE ON ALL TABLES IN SCHEMA dominios TO public;
+GRANT ALL ON ALL SEQUENCES IN SCHEMA dominios TO public;

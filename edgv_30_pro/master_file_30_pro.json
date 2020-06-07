@@ -620,6 +620,11 @@
       "nome": "situacao_fisica",
       "valores": [
         {
+          "code": 0,
+          "value": "Desconhecida",
+          "descricao": "-"
+        },
+        {
           "code": 1,
           "value": "Abandonada",
           "descricao": "-"
@@ -4128,6 +4133,9 @@
           "mapa_valor": "situacao_fisica",
           "valores": [
             {
+              "code": 0
+            },
+            {
               "code": 1,
               "restricao_atributo_incomum": []
             },
@@ -4385,6 +4393,9 @@
           "cardinalidade": "1..1",
           "mapa_valor": "situacao_fisica",
           "valores": [
+            {
+              "code": 0
+            },
             {
               "code": 1,
               "restricao_atributo_incomum": []
@@ -5042,6 +5053,9 @@
           "mapa_valor": "situacao_fisica",
           "valores": [
             {
+              "code": 0
+            },
+            {
               "code": 1,
               "restricao_atributo_incomum": []
             },
@@ -5118,6 +5132,9 @@
           "cardinalidade": "1..1",
           "mapa_valor": "situacao_fisica",
           "valores": [
+            {
+              "code": 0
+            },
             {
               "code": 1,
               "restricao_atributo_incomum": []
@@ -5199,6 +5216,9 @@
           "cardinalidade": "1..1",
           "mapa_valor": "situacao_fisica",
           "valores": [
+            {
+              "code": 0
+            },
             {
               "code": 1,
               "restricao_atributo_incomum": []
@@ -5330,6 +5350,9 @@
           "cardinalidade": "1..1",
           "mapa_valor": "situacao_fisica",
           "valores": [
+            {
+              "code": 0
+            },
             {
               "code": 1,
               "restricao_atributo_incomum": []
@@ -5516,6 +5539,9 @@
           "mapa_valor": "situacao_fisica",
           "valores": [
             {
+              "code": 0
+            },
+            {
               "code": 1,
               "restricao_atributo_incomum": []
             },
@@ -5574,6 +5600,9 @@
           "cardinalidade": "1..1",
           "mapa_valor": "situacao_fisica",
           "valores": [
+            {
+              "code": 0
+            },
             {
               "code": 1,
               "restricao_atributo_incomum": []
@@ -5787,6 +5816,9 @@
           "mapa_valor": "situacao_fisica",
           "valores": [
             {
+              "code": 0
+            },
+            {
               "code": 1,
               "restricao_atributo_incomum": []
             },
@@ -5912,16 +5944,22 @@
           "mapa_valor": "situacao_fisica",
           "valores": [
             {
-              "code": 1
+              "code": 0
             },
             {
-              "code": 2
+              "code": 1,
+              "restricao_atributo_incomum": []
+            },
+            {
+              "code": 2,
+              "restricao_atributo_incomum": []
             },
             {
               "code": 3
             },
             {
-              "code": 4
+              "code": 4,
+              "restricao_atributo_incomum": []
             }
           ]
         },
@@ -6652,6 +6690,9 @@
           "cardinalidade": "1..1",
           "mapa_valor": "situacao_fisica",
           "valores": [
+            {
+              "code": 0
+            },
             {
               "code": 1
             },
