@@ -20,7 +20,12 @@ class FeatureProcessor(object):
         for attr in feature.getAllAttributeNames():
             if attr == 'fme_feature_type' or ('multi_writer' not in attr and 'multi_reader_' not in attr and 'fme_' not in attr and 'postgis_' not in attr):
                 if feature.getAttribute(attr) or feature.getAttribute(attr) == 0:
-                    featDict[attr] = feature.getAttribute(attr)
+                    if feature.getAttribute(attr) == 'f':
+                        featDict[attr] = 'False'
+                    elif feature.getAttribute(attr) == 't':
+                        featDict[attr] = 'True'
+                    else:
+                        featDict[attr] = feature.getAttribute(attr)
                 else:
                     featDict[attr] = None
         if feature.performFunction('@GeometryType()') == 'fme_polygon' or feature.performFunction('@GeometryType()') == 'fme_donut':
