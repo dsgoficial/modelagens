@@ -2,7 +2,6 @@
     "modelo": "EDGV 3.0",
     "comentario": "Modelo da EDGV 3.0 sem atributos multivalorados, e com modificações de forma a ser compatível com a EDGV 2.1.3",
     "versao": "1.0",
-    "versao_implementacao" : 4,
     "schema_dados": "edgv",
     "schema_dominios": "dominios",
     "a_ser_preenchido": {
@@ -11,7 +10,6 @@
     },
     "coord_sys": 4674,
     "fill_factor": 80,
-    "dsgtools_output_sql" : false,
     "nome_geom": "geom",
     "nome_id": "id",
     "geom_suffix": {

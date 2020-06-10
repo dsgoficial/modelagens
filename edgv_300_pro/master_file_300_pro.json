@@ -1,6 +1,6 @@
 {
   "modelo": "EDGV 3.0 Pro",
-  "versao": "0.9",
+  "versao": "0.91",
   "schema_dados": "edgv",
   "schema_dominios": "dominios",
   "a_ser_preenchido": {
@@ -3350,8 +3350,14 @@
           "valor_filtro": "Pátio"
         },
         {
-          "code": 495,
-          "value": "Pátio misto",
+          "code": 415,
+          "value": "Pátio hidroviário",
+          "descricao": "-",
+          "valor_filtro": "Pátio"
+        },
+        {
+          "code": 416,
+          "value": "Pátio de dutos",
           "descricao": "-",
           "valor_filtro": "Pátio"
         },
@@ -4273,6 +4279,14 @@
             },
             {
               "code": 414,
+              "primitivas": ["MultiPolygon"]
+            },
+            {
+              "code": 415,
+              "primitivas": ["MultiPolygon"]
+            },
+            {
+              "code": 416,
               "primitivas": ["MultiPolygon"]
             },
             {
