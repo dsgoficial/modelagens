@@ -3790,7 +3790,13 @@
         },
         {
           "code": 901,
-          "value": "Campo",
+          "value": "Campo sujo",
+          "descricao": "-",
+          "valor_filtro": "Campo"
+        },
+        {
+          "code": 902,
+          "value": "Campo limpo",
           "descricao": "-",
           "valor_filtro": "Campo"
         },
@@ -4054,6 +4060,9 @@
             },
             {
               "code": 901
+            },
+            {
+              "code": 902
             },
             {
               "code": 601
@@ -7605,6 +7614,9 @@
             },
             {
               "code": 901
+            },
+            {
+              "code": 902
             },
             {
               "code": 601
