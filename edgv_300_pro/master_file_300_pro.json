@@ -3404,6 +3404,18 @@
           "valor_filtro": "Equipamento agropecuário"
         },
         {
+          "code": 805,
+          "value": "Elevador de grãos",
+          "descricao": "-",
+          "valor_filtro": "Equipamento agropecuário"
+        },
+        {
+          "code": 806,
+          "value": "Pivô central",
+          "descricao": "-",
+          "valor_filtro": "Equipamento agropecuário"
+        },
+        {
           "code": 901,
           "value": "Estacionamento",
           "descricao": "-",
@@ -4326,6 +4338,14 @@
             },
             {
               "code": 804,
+              "primitivas": ["MultiPolygon", "MultiPoint"]
+            },
+            {
+              "code": 805,
+              "primitivas": ["MultiPolygon", "MultiPoint"]
+            },
+            {
+              "code": 806,
               "primitivas": ["MultiPolygon", "MultiPoint"]
             },
             {
