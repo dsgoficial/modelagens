@@ -7106,7 +7106,48 @@
           "tipo": "smallint",
           "descricao": "-",
           "cardinalidade": "1..1",
-          "mapa_valor": "tipo_dep_geral"
+          "mapa_valor": "tipo_dep_geral",
+          "valores": [
+            {
+              "code": 0
+            },
+            {
+              "code": 1
+            },
+            {
+              "code": 4
+            },
+            {
+              "code": 5
+            },
+            {
+              "code": 6
+            },
+            {
+              "code": 8
+            },
+            {
+              "code": 9
+            },
+            {
+              "code": 10
+            },
+            {
+              "code": 11
+            },
+            {
+              "code": 19
+            },
+            {
+              "code": 26
+            },
+            {
+              "code": 32
+            },
+            {
+              "code": 99
+            }
+          ]
         },
         {
           "nome": "matconstr",
