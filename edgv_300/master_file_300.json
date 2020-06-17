@@ -5233,17 +5233,17 @@
         },
         {
           "code": 1,
-          "value": "Aglomerado rural",
+          "value": "Aglomerado rural isolado - Núcleo",
           "descricao": "-"
         },
         {
           "code": 2,
-          "value": "Aglomerado rural de extensão urbana",
+          "value": "Aglomerado rural isolado - Povoado",
           "descricao": "-"
         },
         {
           "code": 3,
-          "value": "Aglomerado rural isolado",
+          "value": "Outros aglomerados rurais",
           "descricao": "-"
         },
         {
