@@ -2882,6 +2882,11 @@
       "nome": "tipo_exposicao",
       "valores": [
         {
+          "code": 0,
+          "value": "Desconhecido",
+          "descricao": "-"
+        },
+        {
           "code": 3,
           "value": "Fechado",
           "descricao": "-"
@@ -6737,21 +6742,7 @@
           "tipo": "smallint",
           "descricao": "-",
           "cardinalidade": "1..1",
-          "mapa_valor": "tipo_exposicao",
-          "valores": [
-            {
-              "code": 3
-            },
-            {
-              "code": 4
-            },
-            {
-              "code": 5
-            },
-            {
-              "code": 97
-            }
-          ]
+          "mapa_valor": "tipo_exposicao"
         },
         {
           "nome": "situacao_fisica",
