@@ -2759,6 +2759,36 @@
       "filtro": true
     },
     {
+      "nome": "tipo_embarcacao",
+      "valores": [
+        {
+          "code": 0,
+          "value": "Desconhecido",
+          "descricao": "-"
+        },
+        {
+          "code": 1,
+          "value": "Balsa",
+          "descricao": "-"
+        },
+        {
+          "code": 2,
+          "value": "Embarcação de pequeno porte",
+          "descricao": "-"
+        },
+        {
+          "code": 3,
+          "value": "Empurrador-balsa",
+          "descricao": "-"
+        },
+        {
+          "code": 4,
+          "value": "Lancha",
+          "descricao": "-"
+        }
+      ]
+    },
+    {
       "nome": "tipo_elemento_viario",
       "valores": [
         {
@@ -2818,18 +2848,6 @@
         {
           "code": 402,
           "value": "Travessia - Vau construído",
-          "descricao": "-",
-          "valor_filtro": "Travessia"
-        },
-        {
-          "code": 403,
-          "value": "Travessia - Bote transportador",
-          "descricao": "-",
-          "valor_filtro": "Travessia"
-        },
-        {
-          "code": 404,
-          "value": "Travessia - Balsa",
           "descricao": "-",
           "valor_filtro": "Travessia"
         },
@@ -5021,6 +5039,13 @@
           "tipo": "varchar(255)",
           "descricao": "-",
           "cardinalidade": "0..1"
+        },
+        {
+          "nome": "tipo",
+          "tipo": "smallint",
+          "descricao": "-",
+          "cardinalidade": "1..1",
+          "mapa_valor": "tipo_embarcacao"
         }
       ]
     },
@@ -5468,12 +5493,6 @@
             },
             {
               "code": 402
-            },
-            {
-              "code": 403
-            },
-            {
-              "code": 404
             },
             {
               "code": 501
