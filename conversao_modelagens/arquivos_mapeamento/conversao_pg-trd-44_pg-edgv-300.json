@@ -202,8 +202,8 @@
           },
           {
             "$not": {
-              "nome_atributo": "nome",
-              "valor": "NULL"
+              "nome_atributo": "nome", 
+              "valor": ""
             }
           }
         ]
@@ -236,7 +236,7 @@
         },
         {
           "nome_atributo": "possuitrechodrenagem",
-          "valor": 2
+          "valor": false
         }
       ],
       "filtro_volta": {
@@ -512,7 +512,7 @@
         },
         {
           "nome_atributo": "possuitrechodrenagem",
-          "valor": 1
+          "valor": true
         }
       ],
       "filtro_volta": {
@@ -575,7 +575,7 @@
         },
         {
           "nome_atributo":"geometriaaproximada",
-          "valor": 1
+          "valor": true
         }
       ],
       "filtro_volta": {
@@ -607,15 +607,16 @@
           "traducao": [
             {
               "valor_ida": 1000,
-              "valor_volta": 0
+              "valor_volta": false
             },
             {
               "valor_ida": 1001,
-              "valor_volta": 1
+              "valor_volta": true
             },
             {
               "valor_ida": 0,
-              "valor_volta": 9999
+              "valor_volta": false,
+              "sentido":"ida" 
             }
           ]
         }
@@ -684,7 +685,7 @@
         },
         {
           "nome_atributo": "possuitrechodrenagem",
-          "valor": 0
+          "valor": false
         }
       ],
       "filtro_volta": {
@@ -921,11 +922,16 @@
           "traducao": [
             {
               "valor_ida": 1000,
-              "valor_volta": 0
+              "valor_volta": false
             },
             {
               "valor_ida": 1001,
-              "valor_volta": 1
+              "valor_volta": true
+            },
+            {
+              "valor_ida":0,
+              "valor_volta":false,
+              "sentido":"ida"
             }
           ]
         },
@@ -979,7 +985,7 @@
         },
         {
           "nome_atributo": "possuitrechodrenagem",
-          "valor": 0 
+          "valor": false
         }
       ],
       "atributos_default_volta": [
@@ -1041,7 +1047,7 @@
       "atributos_default_ida": [
         {
           "nome_atributo": "geometriaaproximada",
-          "valor": 1
+          "valor": true
         }
       ],
       "atributos_default_volta": [
@@ -9407,11 +9413,11 @@
       "traducao": [
         {
           "valor_ida": 1,
-          "valor_volta": 0
+          "valor_volta": false
         },
         {
           "valor_ida": 2,
-          "valor_volta": 1
+          "valor_volta": true
         }
       ]
     },
@@ -9664,7 +9670,8 @@
         }
       ]
     },
-    {"__comment": "RST Load-bearing Surface Type  <-> revestimento",
+    {
+      "__comment": "RST Load-bearing Surface Type  <-> revestimento",
       "attr_ida": "rst",
       "attr_volta": "revestimento",
       "traducao": [
@@ -9937,9 +9944,11 @@
         }
       ]
     },
-    { "__comment": "TXT Text <-> obs",
-        "attr_ida": "txt",
-        "attr_volta": "obs" }
+    {
+      "__comment": "TXT Text <-> obs",
+      "attr_ida": "txt",
+      "attr_volta": "obs" 
+    }
   ],
   "atributos_default_ida": [
     {
