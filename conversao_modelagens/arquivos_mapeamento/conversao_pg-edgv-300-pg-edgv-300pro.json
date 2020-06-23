@@ -314,6 +314,10 @@
         {
           "nome_atributo": "tipo",
           "valor": 2
+        },
+        {
+          "nome_atributo": "dentro_poligono",
+          "valor": 2
         }
       ],
       "filtro_volta":
@@ -2650,6 +2654,12 @@
           }
         ]
       },
+      "atributos_default_ida": [
+        {
+          "nome_atributo": "dentro_poligono",
+          "valor": 2
+        }
+      ],
       "atributos_default_volta":[
         {
           "nome_atributo":"geometriaaproximada",

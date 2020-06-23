@@ -4993,6 +4993,13 @@
           ]
         },
         {
+          "nome": "dentro_poligono",
+          "tipo": "smallint",
+          "descricao": "-",
+          "cardinalidade": "1..1",
+          "mapa_valor": "booleano"
+        },
+        {
           "nome": "regime",
           "tipo": "smallint",
           "descricao": "-",
