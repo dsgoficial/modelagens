@@ -197,6 +197,31 @@
       ]
     },
     {
+      "nome": "situacao_em_poligono",
+      "valores": [
+        {
+          "code": 1,
+          "value": "Fora de polígono",
+          "descricao": "-"
+        },
+        {
+          "code": 2,
+          "value": "Trecho principal",
+          "descricao": "-"
+        },
+        {
+          "code": 3,
+          "value": "Trecho secundário",
+          "descricao": "-"
+        },
+        {
+          "code": 4,
+          "value": "Trecho compartilhado",
+          "descricao": "-"
+        }
+      ]
+    },
+    {
       "nome": "forma_extracao",
       "valores": [
         {
@@ -4993,11 +5018,11 @@
           ]
         },
         {
-          "nome": "dentro_poligono",
+          "nome": "situacao_em_poligono",
           "tipo": "smallint",
           "descricao": "-",
           "cardinalidade": "1..1",
-          "mapa_valor": "booleano"
+          "mapa_valor": "situacao_em_poligono"
         },
         {
           "nome": "regime",
