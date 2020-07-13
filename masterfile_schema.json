@@ -1,0 +1,43 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "Masterfile",
+  "description": "Arquivo que descreve a modelagem de uma especificação",
+  "type": "object",
+  "definitions": {},
+  "properties": {
+    "dominios": {
+      "type": "array",
+      "items": { "$ref": "#/definitions/dominios" }
+    },
+    "classes": {
+      "type": "array",
+      "items": { "$ref": "#/definitions/classes" }
+    },
+    "extension_classes": {
+      "type": "array",
+      "items": { "$ref": "#/definitions/classes" }
+    },
+    "modelo": { "type": "string" },
+    "comentario": { "type": "string" },
+    "versao": { "type": "string" },
+    "schema_dados": { "type": "string" },
+    "coord_sys": { "type": "number" },
+    "fill_factor": { "type": "number" },
+    "nome_geom": { "type": "string" },
+    "nome_id": { "type": "string" },
+    "a_ser_preenchido": {
+      "$ref": "#/definitions/a_ser_preenchido"
+    },
+    "geom_suffix": {
+      "$ref": "#/definitions/geom_affix"
+    },
+    "geom_prefix": {
+      "$ref": "#/definitions/geom_affix"
+    },
+    "__comment": {
+      "type": "string"
+    }
+  },
+  "additionalProperties": false,
+  "required": ["modelo", "versao", "coord_sys", "nome_id", "classes"]
+}

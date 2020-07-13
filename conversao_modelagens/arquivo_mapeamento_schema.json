@@ -23,12 +23,7 @@
       "properties": {
         "nome_atributo": { "type": "string" },
         "valor": {
-          "type": [
-            "string",
-            "number",
-            "boolean",
-            "null"
-          ]
+          "type": ["string", "number", "boolean", "null"]
         }
       },
       "required": ["nome_atributo", "valor"],
@@ -40,12 +35,7 @@
         "nome_atributo": { "type": "string" },
         "concatenar": { "type": "boolean" },
         "valor": {
-          "type": [
-            "string",
-            "number",
-            "boolean",
-            "null"
-          ]
+          "type": ["string", "number", "boolean", "null"]
         }
       },
       "required": ["nome_atributo", "valor"],
@@ -53,10 +43,10 @@
     },
     "filtro": {
       "oneOf": [
-        { 
+        {
           "type": "object",
           "properties": {
-            "$or": { 
+            "$or": {
               "type": "array",
               "items": { "$ref": "#/definitions/filtro" },
               "minItems": 2
@@ -65,10 +55,10 @@
           "required": ["$or"],
           "additionalProperties": false
         },
-        { 
+        {
           "type": "object",
           "properties": {
-            "$and": { 
+            "$and": {
               "type": "array",
               "items": { "$ref": "#/definitions/filtro" },
               "minItems": 2
@@ -77,22 +67,22 @@
           "required": ["$and"],
           "additionalProperties": false
         },
-        { 
+        {
           "type": "object",
           "properties": {
-            "$not": { 
+            "$not": {
               "$ref": "#/definitions/filtro"
             }
           },
           "required": ["$not"],
           "additionalProperties": false
         },
-        { 
+        {
           "$ref": "#/definitions/valores"
         }
       ]
     },
-    "mapeamento_atributo": {
+    "mapeamento_atributos": {
       "type": "object",
       "properties": {
         "__comment": { "type": "string" },
@@ -104,20 +94,10 @@
             "type": "object",
             "properties": {
               "valor_ida": {
-                "type": [
-                  "string",
-                  "number",
-                  "boolean",
-                  "null"
-                ]
+                "type": ["string", "number", "boolean", "null"]
               },
               "valor_volta": {
-                "type": [
-                  "string",
-                  "number",
-                  "boolean",
-                  "null"
-                ]
+                "type": ["string", "number", "boolean", "null"]
               },
               "sentido": {
                 "type": "string",
@@ -133,7 +113,7 @@
       "required": ["attr_ida", "attr_volta"],
       "additionalProperties": false
     },
-    "mapeamento_classe": {
+    "mapeamento_classes": {
       "type": "object",
       "properties": {
         "__comment": { "type": "string" },
@@ -161,7 +141,7 @@
         },
         "mapeamento_atributos": {
           "type": "array",
-          "items": { "$ref": "#/definitions/mapeamento_atributo" },
+          "items": { "$ref": "#/definitions/mapeamento_atributos" },
           "minItems": 1
         },
         "filtro_ida": {
@@ -206,12 +186,12 @@
   "properties": {
     "mapeamento_classes": {
       "type": "array",
-      "items": { "$ref": "#/definitions/mapeamento_classe" }
+      "items": { "$ref": "#/definitions/mapeamento_classes" }
     },
     "mapeamento_atributos": {
       "description": "Mapeamento de atributos aplicado as feições de todas as classes. Segundo mapeamento a ser realizado.",
       "type": "array",
-      "items": { "$ref": "#/definitions/mapeamento_atributo" }
+      "items": { "$ref": "#/definitions/mapeamento_atributos" }
     },
     "atributos_default_ida": {
       "description": "Valores default aplicado a todas as classes no mapeamento de ida. Primeiro mapeamento a ser realizado.",
@@ -238,5 +218,13 @@
     }
   },
   "additionalProperties": false,
-  "required": ["mapeamento_classes"]
+  "required": [
+    "mapeamento_classes",
+    "agregar_geom_ida",
+    "agregar_geom_volta",
+    "schema_ida",
+    "schema_volta",
+    "afixo_geom_ida",
+    "afixo_geom_volta"
+  ]
 }
