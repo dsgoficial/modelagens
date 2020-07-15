@@ -5,16 +5,55 @@ import json
 from osgeo import gdal
 from osgeo import ogr
 from osgeo import osr
-from sqlParser import SqlParser
+
+SQL = 'd:/Desenvolvimento/modelagens/edgv_300/edgv_300.sql'
+MASTERFILE = 'd:/Desenvolvimento/modelagens/edgv_300/master_file_300.json'
+output = 'd:/edgv30.gpkg'
+
+
+class SqlParser():
+
+    def __init__(self, path):
+        with open(path, 'r') as sql:
+            self.sql = sql.read()
+
+    def getCreateTables(self):
+        return re.findall(r'(?s)CREATE TABLE edgv\.([A-Za-z_]+)\(\n(.+?)(?=\n\);)', self.sql)
+        
+    def parseFields(self, tableIter):
+        fields = []
+        keys = tableIter.strip(' ').replace('\n', '').replace('\t', '').split(',')
+        for key in keys:
+            splits = key.split(' ')
+            if len(splits) <= 2:
+                continue
+            elif 'VARCHAR' in splits[2] or 'varchar' in splits[2]:
+                fields.append((splits[1], ogr.OFTString))
+            elif 'smallint' in splits[2]:
+                fields.append((splits[1], ogr.OFTInteger))
+            elif 'timestamp' in splits[2]:
+                fields.append((splits[1], ogr.OFTDateTime))
+            else:
+                continue
+        return fields
+
+    def getGeomType(self, classe):
+        suffix = classe.split('_')[-1]
+        if suffix == 'a':
+            return ogr.wkbPolygon
+        elif suffix == 'l':
+            return ogr.wkbLineString
+        elif suffix == 'p':
+            return ogr.wkbPoint
 
 # Options
 gdal.SetConfigOption('CREATE_METADATA_TABLES', 'NO')
 dataset_options = ['VERSION=1.2', 'ADD_GPKG_OGR_CONTENTS=YES']
 layer_options = ['SPATIAL_INDEX=YES']
-output = 'edgv30.gpkg'
 
-parser = SqlParser('edgv30.sql')
-with open('masterfile_edgv30.json', 'r') as f:
+
+parser = SqlParser(SQL)
+with open(MASTERFILE, 'r') as f:
     mf = json.load(f)
 
 srs = osr.SpatialReference()
