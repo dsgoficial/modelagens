@@ -2,13 +2,13 @@
 
 import sys
 import json
-from osgeo import gdal
-from osgeo import ogr
-from osgeo import osr
+import re
+from pathlib import Path
+from osgeo import gdal, ogr, osr
 
-SQL = 'd:/Desenvolvimento/modelagens/edgv_300/edgv_300.sql'
-MASTERFILE = 'd:/Desenvolvimento/modelagens/edgv_300/master_file_300.json'
-output = 'd:/edgv30.gpkg'
+SQL = Path(__file__, '../../edgv_300/edgv_300.sql').resolve()
+MASTERFILE = Path(__file__, '../../edgv_300/master_file_300.json').resolve()
+output = Path.cwd() / 'teste.gpkg'
 
 
 class SqlParser():
@@ -31,8 +31,14 @@ class SqlParser():
                 fields.append((splits[1], ogr.OFTString))
             elif 'smallint' in splits[2]:
                 fields.append((splits[1], ogr.OFTInteger))
+            elif 'real' in splits[2]:
+                fields.append((splits[1], ogr.OFTReal))
+            elif 'integer' in splits[2]:
+                fields.append((splits[1], ogr.OFTInteger))
             elif 'timestamp' in splits[2]:
                 fields.append((splits[1], ogr.OFTDateTime))
+            elif 'boolean' in splits[2]:
+                fields.append((splits[1], ogr.OFSTBoolean))
             else:
                 continue
         return fields
@@ -40,11 +46,11 @@ class SqlParser():
     def getGeomType(self, classe):
         suffix = classe.split('_')[-1]
         if suffix == 'a':
-            return ogr.wkbPolygon
+            return ogr.wkbMultiPolygon
         elif suffix == 'l':
-            return ogr.wkbLineString
+            return ogr.wkbMultiLineString
         elif suffix == 'p':
-            return ogr.wkbPoint
+            return ogr.wkbMultiPoint
 
 # Options
 gdal.SetConfigOption('CREATE_METADATA_TABLES', 'NO')
@@ -75,20 +81,25 @@ for classe in mf['classes']:
     classSet = (classe['nome'], attr_in_class)
     full_codelist.append(classSet)
 
-ds = ogr.GetDriverByName('GPKG').CreateDataSource(output, options = dataset_options)
+# ds = ogr.GetDriverByName('GPKG').CreateDataSource(output, options = dataset_options)
 
+ds = gdal.GetDriverByName('GPKG').Create(str(output), 0,0,0,0)
 # Insert classes
 for item in parser.getCreateTables():
     lyr = ds.CreateLayer(item[0], geom_type = parser.getGeomType(item[0]), options = layer_options, srs = srs)
     for field in parser.parseFields(item[1]):
-        lyr.CreateField(ogr.FieldDefn(field[0], field[1]))
+        defn = ogr.FieldDefn(field[0])
+        defn.SetType(field[1])
+        if defn.GetTypeName() == 'Integer':
+            defn.SetSubType(ogr.OFSTInt16)
+        lyr.CreateField(defn)
 
-# Insert domain restrictions
-lyr_domain = ds.CreateLayer('domain', geom_type = ogr.wkbNone, options=layer_options)
-lyr_domain.CreateField(ogr.FieldDefn('classe', ogr.OFTString))
-lyr_domain.CreateField(ogr.FieldDefn('keylist', ogr.OFTString))
-for item in full_codelist:
-    feat = ogr.Feature(lyr_domain.GetLayerDefn())
-    feat['classe'] = item[0]
-    feat['keylist'] = str(item[1])
-    lyr_domain.CreateFeature(feat)
+# # Insert domain restrictions
+# lyr_domain = ds.CreateLayer('domain', geom_type = ogr.wkbNone, options=layer_options)
+# lyr_domain.CreateField(ogr.FieldDefn('classe', ogr.OFTString))
+# lyr_domain.CreateField(ogr.FieldDefn('keylist', ogr.OFTString))
+# for item in full_codelist:
+#     feat = ogr.Feature(lyr_domain.GetLayerDefn())
+#     feat['classe'] = item[0]
+#     feat['keylist'] = str(item[1])
+#     lyr_domain.CreateFeature(feat)
