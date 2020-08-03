@@ -21,49 +21,6 @@ with open(MASTERFILE, 'r') as f:
 srs = osr.SpatialReference()
 srs.ImportFromEPSG(mf['coord_sys'])
 
-
-class SqlParser():
-
-    def __init__(self, path):
-        with open(path, 'r') as sql:
-            self.sql = sql.read()
-
-    def getCreateTables(self):
-        return re.findall(r'(?s)CREATE TABLE edgv\.([A-Za-z_]+)\(\n(.+?)(?=\n\);)', self.sql)
-
-    def parseFields(self, tableIter):
-        fields = []
-        keys = tableIter.strip(' ').replace(
-            '\n', '').replace('\t', '').split(',')
-        for key in keys:
-            splits = key.split(' ')
-            if len(splits) <= 2:
-                continue
-            elif 'VARCHAR' in splits[2] or 'varchar' in splits[2]:
-                fields.append((splits[1], ogr.OFTString))
-            elif 'smallint' in splits[2]:
-                fields.append((splits[1], ogr.OFTInteger))
-            elif 'real' in splits[2]:
-                fields.append((splits[1], ogr.OFTReal))
-            elif 'integer' in splits[2]:
-                fields.append((splits[1], ogr.OFTInteger))
-            elif 'timestamp' in splits[2]:
-                fields.append((splits[1], ogr.OFTDateTime))
-            elif 'boolean' in splits[2]:
-                fields.append((splits[1], ogr.OFSTBoolean))
-            else:
-                continue
-        return fields
-
-    def getGeomType(self, classe):
-        suffix = classe.split('_')[-1]
-        if suffix == 'a':
-            return ogr.wkbMultiPolygon
-        elif suffix == 'l':
-            return ogr.wkbMultiLineString
-        elif suffix == 'p':
-            return ogr.wkbMultiPoint
-
 def getGeomType(geom_type):
     mapGeomType = {
         'MultiPoint': ogr.wkbMultiPoint,
@@ -72,7 +29,7 @@ def getGeomType(geom_type):
     }
     return mapGeomType[geom_type]
 
-def getAttrDataType(x):
+def getAttrDataType(data_type):
     mapDataType = {
         'boolean': (ogr.OFTInteger, ogr.OFSTBoolean),
         'timestamp': (ogr.OFTDateTime, ogr.OFSTNone),
@@ -80,15 +37,11 @@ def getAttrDataType(x):
         'integer': (ogr.OFTInteger, ogr.OFSTNone),
         'real': (ogr.OFTReal, ogr.OFSTNone)
     }
-    # Needs to return varchar with size
-    if str(x).lower().startswith('varchar'):
-        length = re.search(r'varchar\((.+)\)', x)
+    if str(data_type).lower().startswith('varchar'):
+        length = re.search(r'varchar\((.+)\)', data_type)
         return (ogr.OFTString, ogr.OFSTNone ,length.group(1))
     else:
-        return mapDataType[x]
-
-
-parser = SqlParser(SQL)
+        return mapDataType[data_type]
 
 # Organizing masterfile to get domain restrictions
 full_codelist = []
@@ -114,11 +67,11 @@ for classe in mf['classes']:
             attr_in_class)
         full_codelist.append(classSet)
 
-# ds = ogr.GetDriverByName('GPKG').CreateDataSource(output, options = dataset_options)
-
-ds = gdal.GetDriverByName('GPKG').Create(str(output), 0,0,0,0)
 # print(full_codelist)
 
+ds = gdal.GetDriverByName('GPKG').Create(str(output), 0,0,0,0)
+
+# Creating layers
 for item in full_codelist:
     lyr = ds.CreateLayer(item[0], geom_type = item[1], options = layer_options, srs = srs)
     for field in item[2]:
@@ -131,12 +84,22 @@ for item in full_codelist:
             defn.SetWidth(int(extra[0]))
         lyr.CreateField(defn)
 
-# # Insert domain restrictions
-# lyr_domain = ds.CreateLayer('domain', geom_type = ogr.wkbNone, options=layer_options)
-# lyr_domain.CreateField(ogr.FieldDefn('classe', ogr.OFTString))
-# lyr_domain.CreateField(ogr.FieldDefn('keylist', ogr.OFTString))
-# for item in full_codelist:
-#     feat = ogr.Feature(lyr_domain.GetLayerDefn())
-#     feat['classe'] = item[0]
-#     feat['keylist'] = str(item[1])
-#     lyr_domain.CreateFeature(feat)
+# Inserting domain restrictions
+lyr_domain = ds.CreateLayer('domain', geom_type = ogr.wkbNone, options=layer_options)
+lyr_domain.CreateField(ogr.FieldDefn('classe', ogr.OFTString))
+lyr_domain.CreateField(ogr.FieldDefn('keylist', ogr.OFTString))
+for item in full_codelist:
+    feat = ogr.Feature(lyr_domain.GetLayerDefn())
+    fn = map(lambda x: x[0] if len(x) == 2 else (x[0], x[-1]), item[2])
+    feat['classe'] = item[0]
+    feat['keylist'] = str(list(fn))
+    lyr_domain.CreateFeature(feat)
+
+# Inserting metadata table
+lyr_metadata = ds.CreateLayer('metadata', geom_type = ogr.wkbNone, options=layer_options)
+lyr_metadata.CreateField(ogr.FieldDefn('item', ogr.OFTString))
+lyr_metadata.CreateField(ogr.FieldDefn('version', ogr.OFTString))
+feat = ogr.Feature(lyr_metadata.GetLayerDefn())
+feat['item'] = 'Generator version'
+feat['version'] = '0.0'
+lyr_metadata.CreateFeature(feat)
