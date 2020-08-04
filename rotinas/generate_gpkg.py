@@ -29,17 +29,18 @@ def getGeomType(geom_type):
     }
     return mapGeomType[geom_type]
 
-def getAttrDataType(data_type):
+def getAttrDataType(data_type, cardinality):
+    required = bool(int(re.search(r'(\d)..(\d)', cardinality).group(1)))
     mapDataType = {
-        'boolean': (ogr.OFTInteger, ogr.OFSTBoolean),
-        'timestamp': (ogr.OFTDateTime, ogr.OFSTNone),
-        'smallint': (ogr.OFTInteger, ogr.OFSTInt16),
-        'integer': (ogr.OFTInteger, ogr.OFSTNone),
-        'real': (ogr.OFTReal, ogr.OFSTNone)
+        'boolean': (ogr.OFTInteger, ogr.OFSTBoolean, {'required':required}),
+        'timestamp': (ogr.OFTDateTime, ogr.OFSTNone, {'required':required}),
+        'smallint': (ogr.OFTInteger, ogr.OFSTInt16, {'required':required, 'default':'9999' if required else None}),
+        'integer': (ogr.OFTInteger, ogr.OFSTNone, {'required':required, 'default':'9999' if required else None}),
+        'real': (ogr.OFTReal, ogr.OFSTNone, {'required':required, 'default':'9999' if required else None})
     }
     if str(data_type).lower().startswith('varchar'):
         length = re.search(r'varchar\((.+)\)', data_type)
-        return (ogr.OFTString, ogr.OFSTNone ,length.group(1))
+        return (ogr.OFTString, ogr.OFSTNone , {'length' : length.group(1),'required':required, 'default':'PREENCHA ESTE CAMPO' if required else None })
     else:
         return mapDataType[data_type]
 
@@ -56,13 +57,13 @@ for classe in mf['classes']:
                     domain = [x for x in mf['dominios']
                                 if x['nome'] == attr['mapa_valor']][0]
                     value_map = [x['code'] for x in domain['valores']]
-                valueSet = (attr['nome'],getAttrDataType(attr['tipo']), value_map)
+                valueSet = (attr['nome'],getAttrDataType(attr['tipo'], attr['cardinalidade']), value_map)
                 attr_in_class.append(valueSet)
             else:
-                valueSet = (attr['nome'], getAttrDataType(attr['tipo']))
+                valueSet = (attr['nome'], getAttrDataType(attr['tipo'], attr['cardinalidade']))
                 attr_in_class.append(valueSet)
         classSet = (
-            f"{mf['schema_dados']}_{classe['nome']}{mf['geom_suffix'][prim]}",
+            f"{classe['nome']}{mf['geom_suffix'][prim]}",
             getGeomType(prim),
             attr_in_class)
         full_codelist.append(classSet)
@@ -74,14 +75,20 @@ ds = gdal.GetDriverByName('GPKG').Create(str(output), 0,0,0,0)
 # Creating layers
 for item in full_codelist:
     lyr = ds.CreateLayer(item[0], geom_type = item[1], options = layer_options, srs = srs)
+    lyr.GetLayerDefn().GetGeomFieldDefn(0).SetNullable(False)
     for field in item[2]:
         defn = ogr.FieldDefn(field[0])
         typ, styp, *extra = field[1]
+        extra = extra[0] if extra else None
         defn.SetType(typ)
         if styp:
             defn.SetSubType(styp)
         if extra and typ == ogr.OFTString:
-            defn.SetWidth(int(extra[0]))
+            defn.SetWidth(int(extra['length']))
+        if extra.get('required'):
+            defn.SetNullable(False)
+        if extra.get('default') and extra['default']:
+            defn.SetDefault(extra['default'])
         lyr.CreateField(defn)
 
 # Inserting domain restrictions
