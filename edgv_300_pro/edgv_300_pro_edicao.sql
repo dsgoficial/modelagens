@@ -31,7 +31,7 @@ DO $$DECLARE r record;
 BEGIN
 	FOR r in select f_table_schema, f_table_name from public.geometry_columns
     LOOP
-	IF r.f_table_schema = 'edgv' AND r.f_table_name !~ 'edicao_%' THEN
+	IF r.f_table_schema = 'edgv' AND r.f_table_name not like 'edicao_%' THEN
 		EXECUTE 'ALTER TABLE edgv.' || quote_ident(r.f_table_name) || ' ADD COLUMN visivel BOOLEAN NOT NULL DEFAULT TRUE, ADD COLUMN texto VARCHAR(255), ADD COLUMN label_x REAL, ADD COLUMN label_y REAL, ADD COLUMN justificativa_txt VARCHAR(255), ADD COLUMN simb_x REAL, ADD COLUMN simb_y REAL, ADD COLUMN simb_rot REAL';
 	END IF;
     END LOOP;
