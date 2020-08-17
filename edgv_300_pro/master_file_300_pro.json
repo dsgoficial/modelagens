@@ -6324,16 +6324,13 @@
           "mapa_valor": "tipo_limite_legal",
           "valores": [
             {
-              "code": 1,
-              "primitivas": ["MultiLinestring"]
+              "code": 1
             },
             {
-              "code": 2,
-              "primitivas": ["MultiLinestring"]
+              "code": 2
             },
             {
-              "code": 3,
-              "primitivas": ["MultiLinestring"]
+              "code": 3
             },
             {
               "code": 4,

@@ -27,6 +27,10 @@ CREATE INDEX edicao_simb_hidrografia_l_geom ON edgv.edicao_simb_hidrografia_l US
 
 ALTER TABLE edgv.edicao_simb_hidrografia_l OWNER TO postgres;
 
+ALTER TABLE edgv.llp_localidade_p ADD COLUMN populacao REAL;
+ALTER TABLE edgv.cobter_massa_dagua_a ADD COLUMN largura_media REAL;
+ALTER TABLE edgv.elemnat_trecho_drenagem_l ADD COLUMN comprimento REAL;
+
 DO $$DECLARE r record;
 BEGIN
 	FOR r in select f_table_schema, f_table_name from public.geometry_columns
