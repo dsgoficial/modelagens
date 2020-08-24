@@ -1,3 +1,6 @@
+ALTER TABLE edgv.aux_area_nao_mapeada_a
+    ADD COLUMN massa_dagua boolean NOT NULL DEFAULT FALSE;
+
 CREATE TABLE public.gambiarra_edicao_a
 (
     id serial NOT NULL,
