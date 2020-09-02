@@ -3168,7 +3168,12 @@
         },
         {
           "code": 9,
-          "value": "Massa dágua",
+          "value": "Massa dágua largura menor/igual 2mm",
+          "descricao": "-"
+        },
+        {
+          "code": 10,
+          "value": "Massa dágua largura maior 2mm",
           "descricao": "-"
         },
         {
@@ -4820,6 +4825,12 @@
               "code": 23
             }
           ]
+        },
+        {
+          "nome": "em_via_deslocamento",
+          "tipo": "boolean",
+          "descricao": "-",
+          "cardinalidade": "1..1"
         }
       ]
     },
@@ -6278,6 +6289,9 @@
             },
             {
               "code": 9
+            },
+            {
+              "code": 10
             },
             {
               "code": 96

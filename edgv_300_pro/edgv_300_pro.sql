@@ -979,7 +979,8 @@ INSERT INTO dominios.tipo_linha_limites (code,code_name) VALUES (5,'Costa visív
 INSERT INTO dominios.tipo_linha_limites (code,code_name) VALUES (6,'Rodovia (6)');
 INSERT INTO dominios.tipo_linha_limites (code,code_name) VALUES (7,'Ferrovia (7)');
 INSERT INTO dominios.tipo_linha_limites (code,code_name) VALUES (8,'Trecho de drenagem (8)');
-INSERT INTO dominios.tipo_linha_limites (code,code_name) VALUES (9,'Massa dágua (9)');
+INSERT INTO dominios.tipo_linha_limites (code,code_name) VALUES (9,'Massa dágua largura menor/igual 2mm (9)');
+INSERT INTO dominios.tipo_linha_limites (code,code_name) VALUES (10,'Massa dágua largura maior 2mm (10)');
 INSERT INTO dominios.tipo_linha_limites (code,code_name) VALUES (96,'Não identificado (96)');
 INSERT INTO dominios.tipo_linha_limites (code,code_name) VALUES (97,'Não aplicável (97)');
 INSERT INTO dominios.tipo_linha_limites (code,code_name) VALUES (9999,'A SER PREENCHIDO (9999)');
@@ -1812,6 +1813,7 @@ CREATE TABLE edgv.infra_barragem_l(
 	 nome varchar(255),
 	 tipo smallint NOT NULL,
 	 material_construcao smallint NOT NULL,
+	 em_via_deslocamento boolean NOT NULL,
 	 observacao VARCHAR(255),
 	 data_modificacao timestamp with time zone,
 	 controle_uuid VARCHAR(255),
