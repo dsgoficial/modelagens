@@ -3769,11 +3769,6 @@
           "code": 11,
           "value": "Açude",
           "descricao": "-"
-        },
-        {
-          "code": 12,
-          "value": "Terreno Sujeito a Inundação",
-          "descricao": "-"
         }
       ]
     },
@@ -7441,56 +7436,6 @@
       "atributos": []
     },
     {
-      "nome": "localidade",
-      "categoria": "aquisicao",
-      "descricao": "-",
-      "primitivas": ["MultiPolygon"],
-      "atributos": [
-        {
-          "nome": "nome",
-          "tipo": "varchar(255)",
-          "descricao": "-",
-          "cardinalidade": "0..1"
-        },
-        {
-          "nome": "tipo",
-          "tipo": "smallint",
-          "descricao": "-",
-          "cardinalidade": "1..1",
-          "mapa_valor": "tipo_localidade",
-          "valores": [
-            {
-              "code": 1
-            },
-            {
-              "code": 2
-            },
-            {
-              "code": 3
-            },
-            {
-              "code": 4
-            },
-            {
-              "code": 5
-            },
-            {
-              "code": 6
-            },
-            {
-              "code": 7
-            },
-            {
-              "code": 9
-            },
-            {
-              "code": 97
-            }
-          ]
-        }
-      ]
-    },
-    {
       "nome": "objeto_desconhecido",
       "categoria": "aux",
       "descricao": "-",
@@ -7704,6 +7649,13 @@
               "code": 1000
             }
           ]
+        },
+        {
+          "nome": "sujeito_inundacao",
+          "tipo": "smallint",
+          "descricao": "Indica se o terreno é sujeito a inundação",
+          "cardinalidade": "1..1",
+          "mapa_valor": "booleano"
         }
       ]
     },
