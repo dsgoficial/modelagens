@@ -2619,12 +2619,6 @@
       "nome": "tipo_elemento_transportes",
       "valores": [
         {
-          "code": 101,
-          "value": "Passagem de nível",
-          "descricao": "-",
-          "valor_filtro": "Passagem de nível"
-        },
-        {
           "code": 238,
           "value": "Atrac - Cais",
           "descricao": "-",
@@ -2899,6 +2893,12 @@
           "value": "Pedestre - Pinguela",
           "descricao": "-",
           "valor_filtro": "Travessia pedestre"
+        },
+        {
+          "code": 701,
+          "value": "Ferrov - Passagem em nível",
+          "descricao": "-",
+          "valor_filtro": "Cruzamento ferroviário"
         }
       ],
       "filtro": true
@@ -5505,51 +5505,7 @@
           "tipo": "smallint",
           "descricao": "-",
           "cardinalidade": "1..1",
-          "mapa_valor": "tipo_elemento_viario",
-          "valores": [
-            {
-              "code": 101
-            },
-            {
-              "code": 102
-            },
-            {
-              "code": 201
-            },
-            {
-              "code": 202
-            },
-            {
-              "code": 203
-            },
-            {
-              "code": 204
-            },
-            {
-              "code": 301
-            },
-            {
-              "code": 302
-            },
-            {
-              "code": 401
-            },
-            {
-              "code": 402
-            },
-            {
-              "code": 501
-            },
-            {
-              "code": 607
-            },
-            {
-              "code": 608
-            },
-            {
-              "code": 609
-            }
-          ]
+          "mapa_valor": "tipo_elemento_viario"
         },
         {
           "nome": "material_construcao",
