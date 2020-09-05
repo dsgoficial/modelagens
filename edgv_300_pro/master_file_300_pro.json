@@ -3168,7 +3168,12 @@
         },
         {
           "code": 9,
-          "value": "Massa dágua",
+          "value": "Massa dágua largura menor/igual 2mm",
+          "descricao": "-"
+        },
+        {
+          "code": 10,
+          "value": "Massa dágua largura maior 2mm",
           "descricao": "-"
         },
         {
@@ -3763,11 +3768,6 @@
         {
           "code": 11,
           "value": "Açude",
-          "descricao": "-"
-        },
-        {
-          "code": 12,
-          "value": "Terreno Sujeito a Inundação",
           "descricao": "-"
         }
       ]
@@ -4820,6 +4820,12 @@
               "code": 23
             }
           ]
+        },
+        {
+          "nome": "em_via_deslocamento",
+          "tipo": "boolean",
+          "descricao": "-",
+          "cardinalidade": "1..1"
         }
       ]
     },
@@ -6280,6 +6286,9 @@
               "code": 9
             },
             {
+              "code": 10
+            },
+            {
               "code": 96
             },
             {
@@ -7427,56 +7436,6 @@
       "atributos": []
     },
     {
-      "nome": "localidade",
-      "categoria": "aquisicao",
-      "descricao": "-",
-      "primitivas": ["MultiPolygon"],
-      "atributos": [
-        {
-          "nome": "nome",
-          "tipo": "varchar(255)",
-          "descricao": "-",
-          "cardinalidade": "0..1"
-        },
-        {
-          "nome": "tipo",
-          "tipo": "smallint",
-          "descricao": "-",
-          "cardinalidade": "1..1",
-          "mapa_valor": "tipo_localidade",
-          "valores": [
-            {
-              "code": 1
-            },
-            {
-              "code": 2
-            },
-            {
-              "code": 3
-            },
-            {
-              "code": 4
-            },
-            {
-              "code": 5
-            },
-            {
-              "code": 6
-            },
-            {
-              "code": 7
-            },
-            {
-              "code": 9
-            },
-            {
-              "code": 97
-            }
-          ]
-        }
-      ]
-    },
-    {
       "nome": "objeto_desconhecido",
       "categoria": "aux",
       "descricao": "-",
@@ -7690,6 +7649,13 @@
               "code": 1000
             }
           ]
+        },
+        {
+          "nome": "sujeito_inundacao",
+          "tipo": "smallint",
+          "descricao": "Indica se o terreno é sujeito a inundação",
+          "cardinalidade": "1..1",
+          "mapa_valor": "booleano"
         }
       ]
     },
