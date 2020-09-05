@@ -1564,12 +1564,6 @@
           "valor_filtro": "Edificação agropecuária"
         },
         {
-          "code": 1302,
-          "value": "Pub Civ - Prisional",
-          "descricao": "-",
-          "valor_filtro": "Edificação pública civil"
-        },
-        {
           "code": 1303,
           "value": "Pub Civ - Cartorial",
           "descricao": "-",
@@ -1991,39 +1985,45 @@
         },
         {
           "code": 3001,
-          "value": "Pol – Delegacia de polícia civil",
+          "value": "Seg – Delegacia de polícia civil",
           "descricao": "-",
-          "valor_filtro": "Edificação de polícia"
+          "valor_filtro": "Edificação de segurança pública"
         },
         {
           "code": 3002,
-          "value": "Pol – Posto policia militar",
+          "value": "Seg – Posto policia militar",
           "descricao": "-",
-          "valor_filtro": "Edificação de polícia"
+          "valor_filtro": "Edificação de segurança pública"
         },
         {
           "code": 3003,
-          "value": "Pol – Posto guarda municipal",
+          "value": "Seg – Posto guarda municipal",
           "descricao": "-",
-          "valor_filtro": "Edificação de polícia"
+          "valor_filtro": "Edificação de segurança pública"
         },
         {
           "code": 3004,
-          "value": "Pol – Posto de polícia rodoviária federal",
+          "value": "Seg – Posto de polícia rodoviária federal",
           "descricao": "-",
-          "valor_filtro": "Edificação de polícia"
+          "valor_filtro": "Edificação de segurança pública"
         },
         {
           "code": 3005,
-          "value": "Pol – Polícia militar",
+          "value": "Seg – Polícia militar",
           "descricao": "-",
-          "valor_filtro": "Edificação de polícia"
+          "valor_filtro": "Edificação de segurança pública"
+        },
+        {
+          "code": 3006,
+          "value": "Seg - Prisional",
+          "descricao": "-",
+          "valor_filtro": "Edificação de segurança pública"
         },
         {
           "code": 3098,
-          "value": "Pol – Outras polícias",
+          "value": "Seg – Outras polícias",
           "descricao": "-",
-          "valor_filtro": "Edificação de polícia"
+          "valor_filtro": "Edificação de segurança pública"
         }
       ],
       "filtro": true
