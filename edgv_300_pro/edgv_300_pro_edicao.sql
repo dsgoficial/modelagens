@@ -1,17 +1,3 @@
-CREATE TABLE edgv.edicao_moldura_edicao_a(
-	 id serial NOT NULL,
-	 nome varchar(255),
-     mi varchar(255),
-     inom varchar(255),
-	 denominador_escala varchar(255) NOT NULL,
-	 geom geometry(MultiPolygon, 4674),
-	 CONSTRAINT aux_moldura_edicao_a_pk PRIMARY KEY (id)
-	 WITH (FILLFACTOR = 80)
-);
-CREATE INDEX aux_moldura_edicao_a_geom ON edgv.aux_moldura_edicao_a USING gist (geom);
-
-ALTER TABLE edgv.aux_moldura_edicao_a OWNER TO postgres;
-
 CREATE TABLE edgv.edicao_simb_hidrografia_l(
 	 id serial NOT NULL,
 	 texto varchar(255) not null,
@@ -19,6 +5,7 @@ CREATE TABLE edgv.edicao_simb_hidrografia_l(
      parte integer,
 	 espacamento_letra real not null default 0,
 	 espacamento_palavra real not null default 0,
+	 carta_mini boolean not null DEFAULT FALSE,
 	 geom geometry(MultiLineString, 31982),
 	 CONSTRAINT edicao_simb_hidrografia_l_pk PRIMARY KEY (id)
 	 WITH (FILLFACTOR = 80)
@@ -27,9 +14,20 @@ CREATE INDEX edicao_simb_hidrografia_l_geom ON edgv.edicao_simb_hidrografia_l US
 
 ALTER TABLE edgv.edicao_simb_hidrografia_l OWNER TO postgres;
 
+CREATE TABLE edgv.edicao_identificador_trecho_rod_p(
+	 id serial NOT NULL,
+	 sigla varchar(255) not null,
+	 geom geometry(MultiPoint, 31982),
+	 carta_mini boolean not null DEFAULT FALSE,
+	 CONSTRAINT edicao_identificador_trecho_rod_p_pk PRIMARY KEY (id)
+	 WITH (FILLFACTOR = 80)
+);
+CREATE INDEX edicao_identificador_trecho_rod_p_geom ON edgv.edicao_identificador_trecho_rod_p USING gist (geom);
+
+ALTER TABLE edgv.edicao_identificador_trecho_rod_p OWNER TO postgres;
+
 ALTER TABLE edgv.llp_localidade_p ADD COLUMN populacao REAL;
 ALTER TABLE edgv.cobter_massa_dagua_a ADD COLUMN largura_media REAL;
-ALTER TABLE edgv.elemnat_trecho_drenagem_l ADD COLUMN comprimento REAL;
 
 DO $$DECLARE r record;
 BEGIN
