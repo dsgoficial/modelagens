@@ -1423,9 +1423,7 @@
           "mapa_valor": "tipo_edificacao"
         }
       ]
-    }
-  ],
-  "extension_classes": [
+    },
     {
       "nome": "area_nao_mapeada",
       "categoria": "aux",
@@ -1433,6 +1431,79 @@
       "primitivas": ["MultiPolygon"],
       "atributos": []
     },
+    {
+      "nome": "area_nao_mapeada",
+      "categoria": "aux",
+      "descricao": "-",
+      "primitivas": ["MultiPolygon"],
+      "atributos": []
+    },
+    {
+      "nome": "moldura_edicao",
+      "categoria": "aux",
+      "descricao": "-",
+      "primitivas": ["MultiPolygon"],
+      "atributos": [
+        {
+          "nome": "denominador_escala",
+          "tipo": "varchar(255)",
+          "descricao": "-",
+          "cardinalidade": "0..1"
+        },
+        {
+          "nome": "inom",
+          "tipo": "varchar(255)",
+          "descricao": "-",
+          "cardinalidade": "0..1"
+        },
+        {
+          "nome": "mi",
+          "tipo": "varchar(255)",
+          "descricao": "-",
+          "cardinalidade": "0..1"
+        },
+        {
+          "nome": "nome",
+          "tipo": "varchar(80)",
+          "descricao": "-",
+          "cardinalidade": "0..1"
+        }
+      ]
+    },
+    {
+      "nome": "mascara_rotulo",
+      "categoria": "aux",
+      "descricao": "-",
+      "primitivas": ["MultiPolygon"],
+      "atributos": [
+        {
+          "nome": "denominador_escala",
+          "tipo": "varchar(255)",
+          "descricao": "-",
+          "cardinalidade": "0..1"
+        },
+        {
+          "nome": "inom",
+          "tipo": "varchar(255)",
+          "descricao": "-",
+          "cardinalidade": "0..1"
+        },
+        {
+          "nome": "mi",
+          "tipo": "varchar(255)",
+          "descricao": "-",
+          "cardinalidade": "0..1"
+        },
+        {
+          "nome": "nome",
+          "tipo": "varchar(80)",
+          "descricao": "-",
+          "cardinalidade": "0..1"
+        }
+      ]
+    }
+  ],
+  "extension_classes": [
     {
       "nome": "validacao",
       "categoria": "aux",
