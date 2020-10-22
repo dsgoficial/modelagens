@@ -14,8 +14,8 @@
       "LINESTRING": "L",
       "POLYGON": "A"
     },
-    "agregar_geom_ida": true,
-    "agregar_geom_volta": false,
+    "agregar_geom_ida": false,
+    "agregar_geom_volta": true,
     "mapeamento_classes": [
     {
         "classe_ida": "aa010",
