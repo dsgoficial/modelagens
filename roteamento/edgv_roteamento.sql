@@ -280,26 +280,17 @@ CREATE TRIGGER a_explode_geom
     EXECUTE PROCEDURE public.explode_geom();
 
 
-CREATE TABLE public.layer_styles
+CREATE TABLE edgv.rot_restricao
 (
-    id serial NOT NULL PRIMARY KEY,
-    f_table_catalog character varying,
-    f_table_schema character varying,
-    f_table_name character varying,
-    f_geometry_column character varying,
-    stylename character varying(255),
-    styleqml text,
-    stylesld text,
-    useasdefault boolean,
-    description text,
-    owner character varying(30),
-    ui text,
-    update_time timestamp without time zone DEFAULT now(),
-    CONSTRAINT unique_styles UNIQUE (f_table_schema,f_table_name,stylename)
+    id serial NOT NULL,
+    id_1 integer,
+    id_2 integer,
+    CONSTRAINT rot_restricao_pk PRIMARY KEY (id)
+        WITH (FILLFACTOR=80)
 )
-WITH (
-    OIDS=FALSE
-);
-ALTER TABLE public.layer_styles OWNER TO postgres;
+TABLESPACE pg_default;
 
-GRANT ALL ON TABLE public.layer_styles TO public;
+ALTER TABLE edgv.rot_restricao
+    OWNER to postgres;
+
+GRANT ALL ON TABLE edgv.rot_restricao TO postgres;
