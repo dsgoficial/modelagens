@@ -108,7 +108,7 @@ GRANT EXECUTE ON FUNCTION public.estilo() TO PUBLIC;
 --########################################################
 --Cria tabela menu profile
 
-CREATE TABLE public.layer_menus
+CREATE TABLE public.qgis_menus
 (
     id SERIAL NOT NULL PRIMARY KEY,
     nome VARCHAR(255) NOT NULL,
@@ -118,10 +118,10 @@ CREATE TABLE public.layer_menus
     CONSTRAINT unique_menus UNIQUE (nome)
 );
 
-ALTER TABLE public.layer_menus
+ALTER TABLE public.qgis_menus
     OWNER to postgres;
 
-GRANT ALL ON TABLE public.layer_menus TO PUBLIC;
+GRANT ALL ON TABLE public.qgis_menus TO PUBLIC;
 
 --########################################################
 --Cria tabela de regras
@@ -157,7 +157,7 @@ GRANT ALL ON TABLE public.layer_rules TO PUBLIC;
 --########################################################
 --Cria tabela de modelos
 
-CREATE TABLE public.layer_qgis_models(
+CREATE TABLE public.qgis_models(
 	id SERIAL NOT NULL PRIMARY KEY,
   nome varchar(255) NOT NULL UNIQUE,
   descricao TEXT NOT NULL,
@@ -166,10 +166,41 @@ CREATE TABLE public.layer_qgis_models(
 	update_time timestamp without time zone NOT NULL DEFAULT now()
 );
 
-ALTER TABLE public.layer_qgis_models
+ALTER TABLE public.qgis_models
     OWNER to postgres;
 
-GRANT ALL ON TABLE public.layer_qgis_models TO PUBLIC;
+GRANT ALL ON TABLE public.qgis_models TO PUBLIC;
+
+--########################################################
+--Cria tabela de atalhos
+
+CREATE TABLE public.qgis_shortcuts(
+	id SERIAL NOT NULL PRIMARY KEY,
+  descricao VARCHAR(255) NOT NULL,
+  ferramenta VARCHAR(255) NOT NULL,
+  atalho VARCHAR(255) NOT NULL,
+  owner varchar(255) NOT NULL,
+	update_time timestamp without time zone NOT NULL DEFAULT now()
+);
+
+ALTER TABLE public.qgis_shortcuts
+    OWNER to postgres;
+
+GRANT ALL ON TABLE public.qgis_shortcuts TO PUBLIC;
+
+--########################################################
+--Cria tabela de unidades de trabalho
+
+CREATE TABLE public.work_areas(
+	id SERIAL NOT NULL PRIMARY KEY,
+  nome VARCHAR(255) NOT NULL,
+  geom geometry(POLYGON, 4326)
+);
+
+ALTER TABLE public.work_areas
+    OWNER to postgres;
+
+GRANT ALL ON TABLE public.work_areas TO PUBLIC;
 
 --########################################################
 
