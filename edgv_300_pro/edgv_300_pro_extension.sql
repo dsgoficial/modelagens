@@ -177,7 +177,6 @@ GRANT ALL ON TABLE public.qgis_models TO PUBLIC;
 
 CREATE TABLE public.qgis_shortcuts(
 	id SERIAL NOT NULL PRIMARY KEY,
-  descricao VARCHAR(255) NOT NULL,
   ferramenta VARCHAR(255) NOT NULL,
   atalho VARCHAR(255) NOT NULL,
   owner varchar(255) NOT NULL,
