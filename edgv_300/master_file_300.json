@@ -582,27 +582,27 @@
           "descricao": "-"
         },
         {
-          "code": 2,
+          "code": 1,
           "value": "Federal",
           "descricao": "-"
         },
         {
-          "code": 3,
+          "code": 2,
           "value": "Estadual/Distrital",
           "descricao": "-"
         },
         {
-          "code": 4,
+          "code": 3,
           "value": "Municipal",
           "descricao": "-"
         },
         {
-          "code": 5,
+          "code": 7,
           "value": "Concessionada",
           "descricao": "-"
         },
         {
-          "code": 6,
+          "code": 15,
           "value": "Privada",
           "descricao": "-"
         },
@@ -1093,7 +1093,7 @@
         },
         {
           "code": 42,
-          "value": "Uva",
+          "value": "Videira",
           "descricao": "-"
         },
         {
@@ -1470,6 +1470,11 @@
           "code": 125,
           "value": "Graviola",
           "descricao": "-"
+        },
+        {
+          "code": 126,
+          "value": "Uva",
+          "descricao": "-"
         }
       ]
     },
@@ -1752,6 +1757,11 @@
           "descricao": "-"
         },
         {
+          "code": 2,
+          "value": "Ciclismo",
+          "descricao": "-"
+        },
+        {
           "code": 3,
           "value": "Motociclismo",
           "descricao": "-"
@@ -1773,11 +1783,6 @@
         },
         {
           "code": 7,
-          "value": "Ciclismo",
-          "descricao": "-"
-        },
-        {
-          "code": 8,
           "value": "Motocross",
           "descricao": "-"
         },
@@ -2137,67 +2142,67 @@
           "descricao": "-"
         },
         {
-          "code": 5,
+          "code": 12,
           "value": "Aquartelamento",
           "descricao": "-"
         },
         {
-          "code": 6,
+          "code": 13,
           "value": "Campo de instrução",
           "descricao": "-"
         },
         {
-          "code": 7,
+          "code": 14,
           "value": "Campo de tiro",
           "descricao": "-"
         },
         {
-          "code": 8,
+          "code": 15,
           "value": "Base aérea",
           "descricao": "-"
         },
         {
-          "code": 9,
+          "code": 16,
           "value": "Distrito naval",
           "descricao": "-"
         },
         {
-          "code": 10,
+          "code": 17,
           "value": "Hotel de trânsito",
           "descricao": "-"
         },
         {
-          "code": 11,
+          "code": 18,
           "value": "Delegacia de serviço militar",
           "descricao": "-"
         },
         {
-          "code": 12,
+          "code": 20,
           "value": "Quartel general",
           "descricao": "-"
         },
         {
-          "code": 13,
+          "code": 21,
           "value": "Posto de vigilância",
           "descricao": "-"
         },
         {
-          "code": 14,
+          "code": 22,
           "value": "Posto de policiamento urbano",
           "descricao": "-"
         },
         {
-          "code": 15,
+          "code": 23,
           "value": "Posto de policiamento rodoviário",
           "descricao": "-"
         },
         {
-          "code": 16,
+          "code": 24,
           "value": "Capitania dos portos",
           "descricao": "-"
         },
         {
-          "code": 17,
+          "code": 25,
           "value": "Base naval",
           "descricao": "-"
         },
@@ -2477,18 +2482,18 @@
           "descricao": "-"
         },
         {
-          "code": 2,
-          "value": "Absorção",
+          "code": 1,
+          "value": "Canalização",
           "descricao": "-"
         },
         {
-          "code": 4,
+          "code": 2,
           "value": "Gruta ou fenda",
           "descricao": "-"
         },
         {
-          "code": 5,
-          "value": "Canalização",
+          "code": 3,
+          "value": "Absorção",
           "descricao": "-"
         }
       ]
@@ -2568,12 +2573,12 @@
         },
         {
           "code": 2,
-          "value": "Distribuição",
+          "value": "Transmissão",
           "descricao": "-"
         },
         {
           "code": 3,
-          "value": "Transmissão",
+          "value": "Distribuição",
           "descricao": "-"
         }
       ]
@@ -3847,12 +3852,12 @@
           "descricao": "-"
         },
         {
-          "code": 2,
+          "code": 4,
           "value": "Natural",
           "descricao": "-"
         },
         {
-          "code": 3,
+          "code": 5,
           "value": "Artificial",
           "descricao": "-"
         }
@@ -4637,178 +4642,178 @@
           "descricao": "-"
         },
         {
-          "code": 2,
+          "code": 1,
           "value": "Produção de energia elétrica",
           "descricao": "-"
         },
         {
-          "code": 3,
+          "code": 2,
           "value": "Transmissão de energia elétrica",
           "descricao": "-"
         },
         {
-          "code": 4,
+          "code": 3,
           "value": "Distribuição de energia elétrica",
           "descricao": "-"
         },
         {
-          "code": 5,
+          "code": 4,
           "value": "Captação, tratamento e distribuição de água",
           "descricao": "-"
         },
         {
-          "code": 6,
+          "code": 5,
           "value": "Telecomunicações",
           "descricao": "-"
         },
         {
-          "code": 7,
+          "code": 6,
           "value": "Administração pública em geral",
           "descricao": "-"
         },
         {
-          "code": 8,
+          "code": 7,
           "value": "Seguridade social",
           "descricao": "-"
         },
         {
-          "code": 9,
+          "code": 8,
           "value": "Regulação das atividades econômicas",
           "descricao": "-"
         },
         {
-          "code": 10,
+          "code": 9,
           "value": "Atividades de apoio à administração pública",
           "descricao": "-"
         },
         {
-          "code": 11,
+          "code": 10,
           "value": "Relações exteriores",
           "descricao": "-"
         },
         {
-          "code": 12,
+          "code": 11,
           "value": "Defesa",
           "descricao": "-"
         },
         {
-          "code": 13,
+          "code": 12,
           "value": "Justiça",
           "descricao": "-"
         },
         {
-          "code": 14,
+          "code": 13,
           "value": "Segurança e ordem pública",
           "descricao": "-"
         },
         {
-          "code": 15,
+          "code": 14,
           "value": "Defesa civil",
           "descricao": "-"
         },
         {
           "code": 16,
-          "value": "Regulação das atividades sociais e culturais",
-          "descricao": "-"
-        },
-        {
-          "code": 17,
           "value": "Educação infantil - creche",
           "descricao": "-"
         },
         {
-          "code": 18,
+          "code": 17,
           "value": "Educação infantil - pré-escola",
           "descricao": "-"
         },
         {
-          "code": 19,
+          "code": 18,
           "value": "Ensino fundamental",
           "descricao": "-"
         },
         {
-          "code": 20,
+          "code": 19,
           "value": "Ensino médio",
           "descricao": "-"
         },
         {
-          "code": 21,
+          "code": 20,
           "value": "Educação superior - graduação",
           "descricao": "-"
         },
         {
-          "code": 22,
+          "code": 21,
           "value": "Educação superior - graduação e pós-graduação",
           "descricao": "-"
         },
         {
-          "code": 23,
+          "code": 22,
           "value": "Educação superior - pós-graduação e extensão",
           "descricao": "-"
         },
         {
-          "code": 24,
+          "code": 23,
           "value": "Educação profissional de nível técnico",
           "descricao": "-"
         },
         {
-          "code": 25,
+          "code": 24,
           "value": "Educação profissional de nível tecnológico",
           "descricao": "-"
         },
         {
-          "code": 26,
+          "code": 25,
           "value": "Outras atividades de ensino",
           "descricao": "-"
         },
         {
-          "code": 27,
+          "code": 26,
           "value": "Atendimento hospitalar (hospital)",
           "descricao": "-"
         },
         {
-          "code": 28,
+          "code": 27,
           "value": "Atendimento às urgências e emergências (pronto-socorro)",
           "descricao": "-"
         },
         {
-          "code": 29,
+          "code": 28,
           "value": "Atenção ambulatorial (posto e centro de saúde)",
           "descricao": "-"
         },
         {
-          "code": 30,
+          "code": 29,
           "value": "Serviços de complementação diagnóstica ou terapêutica",
           "descricao": "-"
         },
         {
-          "code": 31,
-          "value": "Atividades de organizações religiosas",
-          "descricao": "-"
-        },
-        {
-          "code": 32,
+          "code": 30,
           "value": "Outras atividades relacionadas com atenção à saúde (instituto de pesquisa)",
           "descricao": "-"
         },
         {
-          "code": 33,
+          "code": 31,
+          "value": "Serviços veterinários",
+          "descricao": "-"
+        },
+        {
+          "code": 32,
           "value": "Serviços sociais com alojamento",
           "descricao": "-"
         },
         {
-          "code": 34,
+          "code": 33,
           "value": "Serviços sociais sem alojamento",
           "descricao": "-"
         },
         {
-          "code": 35,
+          "code": 34,
           "value": "Limpeza urbana e atividades relacionadas",
           "descricao": "-"
         },
         {
+          "code": 35,
+          "value": "Atividades de organizações religiosas",
+          "descricao": "-"
+        },
+        {
           "code": 36,
-          "value": "Serviços veterinários",
+          "value": "Regulação das atividades sociais e culturais",
           "descricao": "-"
         },
         {
@@ -5357,8 +5362,13 @@
           "descricao": "-"
         },
         {
+          "code": 1,
+          "value": "Arbórea",
+          "descricao": "-"
+        },
+        {
           "code": 2,
-          "value": "Rasteira",
+          "value": "Arbustiva",
           "descricao": "-"
         },
         {
@@ -5368,12 +5378,7 @@
         },
         {
           "code": 4,
-          "value": "Arbórea",
-          "descricao": "-"
-        },
-        {
-          "code": 5,
-          "value": "Arbustiva",
+          "value": "Rasteira",
           "descricao": "-"
         }
       ]
@@ -5543,12 +5548,12 @@
         },
         {
           "code": 2,
-          "value": "Residencial",
+          "value": "Serviço",
           "descricao": "-"
         },
         {
           "code": 4,
-          "value": "Serviço",
+          "value": "Residencial",
           "descricao": "-"
         },
         {
@@ -7053,10 +7058,10 @@
           "mapa_valor": "classe_ativ_econ",
           "valores": [
             {
-              "code": 3
+              "code": 2
             },
             {
-              "code": 4
+              "code": 3
             }
           ]
         },
@@ -10436,7 +10441,10 @@
           "mapa_valor": "tipo_instal_militar",
           "valores": [
             {
-              "code": 14
+              "code": 22
+            },
+            {
+              "code": 22
             }
           ]
         },
@@ -13326,19 +13334,19 @@
               "code": 0
             },
             {
+              "code": 1
+            },
+            {
               "code": 2
             },
             {
               "code": 3
             },
             {
-              "code": 4
+              "code": 7
             },
             {
-              "code": 5
-            },
-            {
-              "code": 6
+              "code": 15
             }
           ]
         }
@@ -15023,13 +15031,13 @@
               "code": 0
             },
             {
+              "code": 1
+            },
+            {
               "code": 2
             },
             {
               "code": 3
-            },
-            {
-              "code": 4
             }
           ]
         },
@@ -17261,10 +17269,10 @@
               "code": 0
             },
             {
-              "code": 4
+              "code": 1
             },
             {
-              "code": 5
+              "code": 2
             }
           ]
         },
@@ -17728,7 +17736,7 @@
               "code": 3
             },
             {
-              "code": 5
+              "code": 4
             }
           ]
         },
