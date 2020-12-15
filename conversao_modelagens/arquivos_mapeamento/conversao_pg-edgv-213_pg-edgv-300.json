@@ -2120,8 +2120,8 @@
                     "attr_ida": "tiporocha",
                     "attr_volta": "formarocha",
                     "traducao": [
-                        {   "__comment": "pode mapear de code para null?",
-                          "valor_ida": null,
+                        { 
+                          "valor_ida": 999,
                           "valor_volta": 0,
                           "sentido": "volta"
                         }
@@ -2819,7 +2819,7 @@
                 },
                 {   "__comment": "o que fazer com tipo via?",
                     "nome_atributo": "tipovia",
-                    "valor": 0
+                    "valor": 9999
                 },
                 {
                     "nome_atributo": "meiofio",
@@ -2850,7 +2850,7 @@
             "atributos_default_ida": [
                 {   "__comment": "o que fazer com aptidao operacional?",
                     "nome_atributo": "aptidaooperacional",
-                    "valor": null
+                    "valor": 9999
                 }
             ],
             "mapeamento_atributos": [
@@ -3078,6 +3078,10 @@
                 "$or":[
                     {
                         "nome_atributo": "tipotrechorod",
+                        "valor": 1
+                    },
+                    {
+                        "nome_atributo": "tipotrechorod",
                         "valor": 2
                     },
                     {
@@ -3132,11 +3136,16 @@
                     "attr_volta": "tipovia",
                     "traducao": [
                         {
+                            "valor_ida": 1,
+                            "valor_volta": 2,
+                            "sentido": "ida"
+                        },
+                        {
                             "valor_ida": 2,
                             "valor_volta": 3,
                             "sentido": "volta"
                         },
-                        {   "__comment": "acesso?",
+                        {   
                             "valor_ida": 2,
                             "valor_volta": 5,
                             "sentido": "volta"
