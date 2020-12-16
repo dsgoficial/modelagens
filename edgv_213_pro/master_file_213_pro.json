@@ -7766,7 +7766,14 @@
       "atributos": []
     },
     {
-      "nome": "limite_hidrografia",
+      "nome": "limite_massa_dagua",
+      "categoria": "aquisicao",
+      "descricao": "-",
+      "primitivas": ["MultiLinestring"],
+      "atributos": []
+    },
+    {
+      "nome": "limite_area_edificada",
       "categoria": "aquisicao",
       "descricao": "-",
       "primitivas": ["MultiLinestring"],
@@ -7778,13 +7785,6 @@
       "descricao": "-",
       "primitivas": ["MultiPoint"],
       "atributos": [
-        {
-          "nome": "nome",
-          "tipo": "varchar(255)",
-          "descricao": "Nome completo da instância",
-          "cardinalidade": "0..1",
-          "restricao_atributo_incomum": []
-        },
         {
           "nome": "tipo",
           "tipo": "smallint",
@@ -7915,13 +7915,20 @@
               "code": 1000
             }
           ]
+        },
+        {
+          "nome": "sujeito_inundacao",
+          "tipo": "smallint",
+          "descricao": "Indica se o terreno é sujeito a inundação",
+          "cardinalidade": "1..1",
+          "mapa_valor": "booleano"
         }
       ]
     },
     {
-      "nome": "centroide_hidrografia",
+      "nome": "centroide_corpo_dagua",
       "categoria": "aquisicao",
-      "descricao": "-",
+      "descricao": "",
       "primitivas": ["MultiPoint"],
       "atributos": [
         {
@@ -7933,9 +7940,9 @@
         {
           "nome": "tipo",
           "tipo": "smallint",
-          "descricao": "Indica o tipo de centroide de hidrografia",
+          "descricao": "Indica o tipo do corpo dágua",
           "cardinalidade": "1..1",
-          "mapa_valor": "tipo_hid",
+          "mapa_valor": "tipo_corpo_dagua",
           "valores": [
             {
               "code": 1
@@ -7972,11 +7979,54 @@
             },
             {
               "code": 11
-            },
-            {
-              "code": 12
             }
           ]
+        },
+        {
+          "nome": "regime",
+          "tipo": "smallint",
+          "descricao": "Indica o regime da ocorrência da água, para a massa dágua",
+          "cardinalidade": "1..1",
+          "mapa_valor": "regime",
+          "valores": [
+            {
+              "code": 1
+            },
+            {
+              "code": 3,
+              "restricao_atributo_incomum": [],
+              "restricao": [
+                {
+                  "atributo": "tipo",
+                  "valores": [1, 2, 6, 7, 10, 11]
+                }
+              ]
+            },
+            {
+              "code": 5,
+              "restricao_atributo_incomum": [],
+              "restricao": [
+                {
+                  "atributo": "tipo",
+                  "valores": [1, 2, 6, 7, 10, 11]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "nome": "centroide_area_edificada",
+      "categoria": "aquisicao",
+      "descricao": "-",
+      "primitivas": ["MultiPoint"],
+      "atributos": [
+        {
+          "nome": "nome",
+          "tipo": "varchar(255)",
+          "descricao": "-",
+          "cardinalidade": "0..1"
         }
       ]
     }
