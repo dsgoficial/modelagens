@@ -756,23 +756,23 @@
                 },
                 {
                     "nome_atributo": "jurisdicao",
-                    "valor": 0
+                    "valor": 0//teria que atributar isso aqui, vai ficar estranho
                 },
                 {
                     "nome_atributo": "administracao",
-                    "valor": 0
+                    "valor": 0//teria que atributar isso aqui, vai ficar estranho
                 },
                 {
-                    "nome_atributo": "classeativecon",
+                    "nome_atributo": "classeativecon",//Existem valores validos para adm pub civil
                     "valor": 0
                 },
                 {
                     "nome_atributo": "divisaoativecon",
-                    "valor": 0
+                    "valor": 99
                 },
                 {
                     "nome_atributo": "grupoativecon",
-                    "valor": 0
+                    "valor": 0//Existem valores validos para adm pub civil
                 },
                 {
                     "nome_atributo": "proprioadm",
@@ -841,23 +841,23 @@
                 },
                 {
                     "nome_atributo": "jurisdicao",
-                    "valor": 0
+                    "valor": 0//teria que atributar isso aqui, vai ficar estranho
                 },
                 {
                     "nome_atributo": "administracao",
-                    "valor": 0
+                    "valor": 0//teria que atributar isso aqui, vai ficar estranho
                 },
                 {
                     "nome_atributo": "classeativecon",
-                    "valor": 0
+                    "valor": 0//Existem valores validos
                 },
                 {
                     "nome_atributo": "divisaoativecon",
-                    "valor": 0
+                    "valor": 99
                 },
                 {
                     "nome_atributo": "grupoativecon",
-                    "valor": 0
+                    "valor": 99
                 },
                 {
                     "nome_atributo": "proprioadm",
