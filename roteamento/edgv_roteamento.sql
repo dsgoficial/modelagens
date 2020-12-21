@@ -294,3 +294,102 @@ ALTER TABLE edgv.rot_restricao
     OWNER to postgres;
 
 GRANT ALL ON TABLE edgv.rot_restricao TO postgres;
+
+
+
+
+CREATE TABLE dominios.modal (
+	 code smallint NOT NULL,
+	 code_name text NOT NULL,
+	 CONSTRAINT modal_pk PRIMARY KEY (code)
+);
+
+INSERT INTO dominios.modal (code,code_name) VALUES (1,'Aeroportuário (1)');
+INSERT INTO dominios.modal (code,code_name) VALUES (2,'Dutoviário (2)');
+INSERT INTO dominios.modal (code,code_name) VALUES (3,'Ferroviário (3)');
+INSERT INTO dominios.modal (code,code_name) VALUES (4,'Hidroviário (4)');
+INSERT INTO dominios.modal (code,code_name) VALUES (5,'Rodoviário (5)');
+
+ALTER TABLE dominios.modal OWNER TO postgres;
+
+CREATE TABLE edgv.rede_transporte
+(
+    id serial NOT NULL,
+    nome character varying(80),
+    modal  smallint NOT NULL DEFAULT 9999,
+    CONSTRAINT rede_transporte_modal_fk FOREIGN KEY (modal)
+    REFERENCES dominios.modal (code) MATCH FULL
+    ON UPDATE NO ACTION
+    ON DELETE NO ACTION,
+    CONSTRAINT rede_transporte_pk PRIMARY KEY (id)
+        WITH (FILLFACTOR=80)
+)
+TABLESPACE pg_default;
+
+ALTER TABLE edgv.rede_transporte
+    OWNER to postgres;
+
+GRANT ALL ON TABLE edgv.rede_transporte TO postgres;
+
+
+CREATE TABLE edgv.no_transporte
+(
+    id serial NOT NULL,
+    nome character varying(80),
+    produtor character varying(80),
+    datareferencia date,
+    escalareferencia integer,
+    status boolean,
+    redeid integer not null,
+    CONSTRAINT elemento_rede_redeid_fk FOREIGN KEY (redeid)
+    REFERENCES edgv.rede_transporte (id) MATCH FULL
+    ON UPDATE NO ACTION
+    ON DELETE NO ACTION,
+    geom geometry(Point,4674),
+    CONSTRAINT no_transporte_pk PRIMARY KEY (id)
+        WITH (FILLFACTOR=80)
+)
+TABLESPACE pg_default;
+
+ALTER TABLE edgv.no_transporte
+    OWNER to postgres;
+
+GRANT ALL ON TABLE edgv.no_transporte TO postgres;
+
+CREATE TABLE edgv.arco_transporte
+(
+    id serial NOT NULL,
+    comprimento real,
+    classe smallint,
+    custodireto real,
+    custoinverso real,
+    noinicial integer not null,
+    CONSTRAINT arco_transporte_noinicial_fk FOREIGN KEY (noinicial)
+    REFERENCES edgv.no_transporte (id) MATCH FULL
+    ON UPDATE NO ACTION
+    ON DELETE NO ACTION,
+    nofinal integer not null,
+    CONSTRAINT arco_transporte_nofinal_fk FOREIGN KEY (nofinal)
+    REFERENCES edgv.no_transporte (id) MATCH FULL
+    ON UPDATE NO ACTION
+    ON DELETE NO ACTION,
+    nome character varying(80),
+    produtor character varying(80),
+    datareferencia date,
+    escalareferencia integer,
+    status boolean,
+    redeid integer not null,
+    CONSTRAINT elemento_rede_redeid_fk FOREIGN KEY (redeid)
+    REFERENCES edgv.rede_transporte (id) MATCH FULL
+    ON UPDATE NO ACTION
+    ON DELETE NO ACTION,
+    geom geometry(Linestring,4674),
+    CONSTRAINT arco_transporte_pk PRIMARY KEY (id)
+        WITH (FILLFACTOR=80)
+)
+TABLESPACE pg_default;
+
+ALTER TABLE edgv.arco_transporte
+    OWNER to postgres;
+
+GRANT ALL ON TABLE edgv.arco_transporte TO postgres;
