@@ -2992,11 +2992,6 @@
           "descricao": "-"
         },
         {
-          "code": 17,
-          "value": "Concha",
-          "descricao": "-"
-        },
-        {
           "code": 18,
           "value": "Cascalho",
           "descricao": "-"
@@ -3009,6 +3004,11 @@
         {
           "code": 20,
           "value": "Coral",
+          "descricao": "-"
+        },
+        {
+          "code": 21,
+          "value": "Concha",
           "descricao": "-"
         },
         {
