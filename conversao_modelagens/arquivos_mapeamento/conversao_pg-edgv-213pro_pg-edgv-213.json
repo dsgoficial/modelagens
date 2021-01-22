@@ -802,11 +802,11 @@
               "tupla_volta": [
                   {
                       "nome_atributo":"tipolavoura",
-                      "valor": 1
+                      "valor": 2
                   },
                   {
                       "nome_atributo":"classificacaoporte",
-                      "valor": 1
+                      "valor": 3
                   }
               ]
           },
@@ -844,7 +844,7 @@
                   },
                   {
                       "nome_atributo":"classificacaoporte",
-                      "valor": 1
+                      "valor": 3
                   }
               ]
           },
@@ -863,7 +863,7 @@
                   },
                   {
                       "nome_atributo":"classificacaoporte",
-                      "valor": 1
+                      "valor": 2
                   }
               ]
           },
