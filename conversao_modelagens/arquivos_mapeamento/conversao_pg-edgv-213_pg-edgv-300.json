@@ -756,14 +756,14 @@
                 },
                 {
                     "nome_atributo": "jurisdicao",
-                    "valor": 0//teria que atributar isso aqui, vai ficar estranho
+                    "valor": 0
                 },
                 {
                     "nome_atributo": "administracao",
-                    "valor": 0//teria que atributar isso aqui, vai ficar estranho
+                    "valor": 0
                 },
                 {
-                    "nome_atributo": "classeativecon",//Existem valores validos para adm pub civil
+                    "nome_atributo": "classeativecon",
                     "valor": 0
                 },
                 {
@@ -772,7 +772,7 @@
                 },
                 {
                     "nome_atributo": "grupoativecon",
-                    "valor": 0//Existem valores validos para adm pub civil
+                    "valor": 0
                 },
                 {
                     "nome_atributo": "proprioadm",
@@ -836,15 +836,15 @@
                 },
                 {
                     "nome_atributo": "jurisdicao",
-                    "valor": 0//teria que atributar isso aqui, vai ficar estranho
+                    "valor": 0
                 },
                 {
                     "nome_atributo": "administracao",
-                    "valor": 0//teria que atributar isso aqui, vai ficar estranho
+                    "valor": 0
                 },
                 {
                     "nome_atributo": "classeativecon",
-                    "valor": 0//Existem valores validos
+                    "valor": 0
                 },
                 {
                     "nome_atributo": "divisaoativecon",
@@ -1049,7 +1049,7 @@
             "classe_volta": "cbge_deposito_geral",
             "filtro_volta":  {
                 "$or":[
-                    {   "__comment": "todo deposito desconhecido será levado para deposito geral na volta ?",
+                    {
                         "nome_atributo": "tipodepgeral",
                         "valor": 0
                     },
@@ -1081,7 +1081,7 @@
                         "nome_atributo": "tipodepgeral",
                         "valor": 32
                     },
-                    {   "__comment": "todo deposito outros será levado para deposito geral na volta ?",
+                    {
                         "nome_atributo": "tipodepgeral",
                         "valor": 99
                     }
@@ -1427,8 +1427,8 @@
             ]
         },
         {            "__comment": "eco_ext_mineral <-> eco_ext_mineral ",
-            "classe_ida": "eco_ext_mineral ",
-            "classe_volta": "eco_ext_mineral ",
+            "classe_ida": "eco_ext_mineral",
+            "classe_volta": "eco_ext_mineral",
             "atributos_default_ida": [
                 {
                     "nome_atributo": "tipoalterantrop",
@@ -2481,7 +2481,7 @@
             },
             "atributos_default_volta": [
                 {   
-                    "nome": "tipocampoquadra",
+                    "nome_atributo": "tipocampoquadra",
                     "valor": 99
                 }
             ]
@@ -2491,13 +2491,13 @@
             "classe_volta": "enc_trecho_energia",
             "atributos_default_ida": [
                 {   
-                    "nome": "sin",
+                    "nome_atributo": "sin",
                     "valor": 0
                 }
             ],
             "atributos_default_volta": [
                 {   
-                    "nome": "emduto",
+                    "nome_atributo": "emduto",
                     "valor": 2
                 }
             ]
@@ -2537,21 +2537,21 @@
             },
             "atributos_default_ida": [
                 {   
-                    "nome": "encoberto",
+                    "nome_atributo": "encoberto",
                     "valor": false
                 }
             ],
             "atributos_default_volta": [
                 {   
-                    "nome": "compartilhado",
+                    "nome_atributo": "compartilhado",
                     "valor": 2
                 },
                 {   
-                    "nome": "dentrodepoligono",
+                    "nome_atributo": "dentrodepoligono",
                     "valor": 999
                 },
                 {   
-                    "nome": "eixoprincipal",
+                    "nome_atributo": "eixoprincipal",
                     "valor": 1
                 }
             ],
@@ -2629,53 +2629,53 @@
             },
             "atributos_default_ida": [
                 {   
-                    "nome": "tipoalterantrop",
+                    "nome_atributo": "tipoalterantrop",
                     "valor": 30
                 },
                 {   
-                    "nome": "operacional",
+                    "nome_atributo": "operacional",
                     "valor": 0
                 },
                 {   
-                    "nome": "situacaofisica",
+                    "nome_atributo": "situacaofisica",
                     "valor": 5
                 },
                 {   
-                    "nome": "matconstr",
+                    "nome_atributo": "matconstr",
                     "valor": 0
                 },
                 {   
-                    "nome": "usoprincipal",
+                    "nome_atributo": "usoprincipal",
                     "valor": 0
                 },
                 {   
-                    "nome": "finalidade",
+                    "nome_atributo": "finalidade",
                     "valor": 0
                 }
             ],
             "atributos_default_volta": [
                 {   
-                    "nome": "coincidecomdentrode",
+                    "nome_atributo": "coincidecomdentrode",
                     "valor": 2
                 },
                 {   
-                    "nome": "compartilhado",
+                    "nome_atributo": "compartilhado",
                     "valor": 2
                 },
                 {   
-                    "nome": "dentrodepoligono",
+                    "nome_atributo": "dentrodepoligono",
                     "valor": 999
                 },
                 {   
-                    "nome": "eixoprincipal",
+                    "nome_atributo": "eixoprincipal",
                     "valor": 1
                 },
                 {   
-                    "nome": "regime",
+                    "nome_atributo": "regime",
                     "valor": 1
                 },
                 {   
-                    "nome": "navegabilidade",
+                    "nome_atributo": "navegabilidade",
                     "valor": 0
                 }
             ]
@@ -2693,53 +2693,53 @@
             },
             "atributos_default_ida": [
                 {   
-                    "nome": "tipoalterantrop",
+                    "nome_atributo": "tipoalterantrop",
                     "valor": 31
                 },
                 {   
-                    "nome": "operacional",
+                    "nome_atributo": "operacional",
                     "valor": 0
                 },
                 {   
-                    "nome": "situacaofisica",
+                    "nome_atributo": "situacaofisica",
                     "valor": 5
                 },
                 {   
-                    "nome": "matconstr",
+                    "nome_atributo": "matconstr",
                     "valor": 0
                 },
                 {   
-                    "nome": "usoprincipal",
+                    "nome_atributo": "usoprincipal",
                     "valor": 0
                 },
                 {   
-                    "nome": "finalidade",
+                    "nome_atributo": "finalidade",
                     "valor": 0
                 }
             ],
             "atributos_default_volta": [
                 {   
-                    "nome": "coincidecomdentrode",
+                    "nome_atributo": "coincidecomdentrode",
                     "valor": 11
                 },
                 {   
-                    "nome": "compartilhado",
+                    "nome_atributo": "compartilhado",
                     "valor": 2
                 },
                 {   
-                    "nome": "dentrodepoligono",
+                    "nome_atributo": "dentrodepoligono",
                     "valor": 999
                 },
                 {   
-                    "nome": "eixoprincipal",
+                    "nome_atributo": "eixoprincipal",
                     "valor": 1
                 },
                 {   
-                    "nome": "regime",
+                    "nome_atributo": "regime",
                     "valor": 1
                 },
                 {   
-                    "nome": "navegabilidade",
+                    "nome_atributo": "navegabilidade",
                     "valor": 0
                 }
             ],
@@ -2804,7 +2804,7 @@
                     "nome_atributo": "administracao",
                     "valor": 0
                 },
-                {   "__comment": "o que fazer com nr de pistas?",
+                {
                     "nome_atributo": "nrpistas",
                     "valor": null
                 },
@@ -2812,7 +2812,7 @@
                     "nome_atributo": "tipopavimentacao",
                     "valor": 0
                 },
-                {   "__comment": "o que fazer com tipo via?",
+                {
                     "nome_atributo": "tipovia",
                     "valor": 9999
                 },
@@ -2843,7 +2843,7 @@
             "classe_ida": "tra_atracadouro",
             "classe_volta": "hdv_atracadouro_terminal",
             "atributos_default_ida": [
-                {   "__comment": "o que fazer com aptidao operacional?",
+                {
                     "nome_atributo": "aptidaooperacional",
                     "valor": 9999
                 }
@@ -3622,6 +3622,40 @@
                             "sentido": "volta"
                         }
                     ]
+                }
+            ]
+        },
+        {            "__comment": "pto_edif_constr_est_med_fen <-> edf_edif_constr_est_med_fen_p",
+            "classe_ida": "pto_edif_constr_est_med_fen",
+            "classe_volta": "edf_edif_constr_est_med_fen_p",
+            "atributos_default_ida": [
+                {
+                    "nome_atributo": "turistica",
+                    "valor": 0
+                },
+                {
+                    "nome_atributo": "cultura",
+                    "valor": 0
+                },
+                {
+                    "nome_atributo": "administracao",
+                    "valor": 0
+                },
+                {
+                    "nome_atributo": "classeativecon",
+                    "valor": 0
+                },
+                {
+                    "nome_atributo": "divisaoativecon",
+                    "valor": 0
+                },
+                {
+                    "nome_atributo": "grupoativecon",
+                    "valor": 0
+                },
+                {
+                    "nome_atributo": "proprioadm",
+                    "valor": 0
                 }
             ]
         },
