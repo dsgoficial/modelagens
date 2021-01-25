@@ -1447,6 +1447,10 @@
         {
           "attr_ida": "capaccarga",
           "attr_volta": "pesoMaxSuportTon"
+        },
+        {
+          "attr_ida": "codtrechorodov",
+          "attr_volta": "sigla"
         }
       ]
     },
