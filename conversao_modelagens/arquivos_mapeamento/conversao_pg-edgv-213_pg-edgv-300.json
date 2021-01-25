@@ -3116,6 +3116,10 @@
                     ]
                 },
                 {   
+                    "attr_ida": "codtrechorodov",
+                    "attr_volta": "sigla"
+                },
+                {   
                     "attr_ida": "canteirodivisorio",
                     "attr_volta": "canteirodivisorio",
                     "traducao": [
