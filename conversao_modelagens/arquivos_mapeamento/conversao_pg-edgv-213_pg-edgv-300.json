@@ -742,9 +742,15 @@
             ]
     
         },
-        {            "__comment": "adm_edif_pub_civil <-> edf_edif_pub_civil",
+        {            "__comment": "adm_edif_pub_civil | menos policial <-> edf_edif_pub_civil",
             "classe_ida": "adm_edif_pub_civil",
             "classe_volta": "edf_edif_pub_civil",
+            "filtro_ida": {
+                "$not":{
+                    "nome_atributo": "tipoedifcivil",
+                    "valor": 1
+                    }
+                },
             "atributos_default_ida": [
                 {
                     "nome_atributo": "turistica",
@@ -816,6 +822,65 @@
                         {
                             "valor_ida": 16,
                             "valor_volta": 99,
+                            "sentido": "volta"
+                        }
+                    ]
+                }
+            ]
+        },
+        {            "__comment": "adm_edif_pub_civil | policial <-> edf_edif_policia",
+            "classe_ida": "adm_edif_pub_civil",
+            "classe_volta": "edf_edif_policia",
+            "filtro_ida": {
+                "nome_atributo": "tipoedifcivil",
+                "valor": 1
+                },
+            "atributos_default_ida": [
+                {
+                    "nome_atributo": "turistica",
+                    "valor": 0
+                },
+                {
+                    "nome_atributo": "cultura",
+                    "valor": 0
+                },
+                {
+                    "nome_atributo": "jurisdicao",
+                    "valor": 0
+                },
+                {
+                    "nome_atributo": "administracao",
+                    "valor": 0
+                },
+                {
+                    "nome_atributo": "classeativecon",
+                    "valor": 0
+                },
+                {
+                    "nome_atributo": "divisaoativecon",
+                    "valor": 99
+                },
+                {
+                    "nome_atributo": "grupoativecon",
+                    "valor": 0
+                },
+                {
+                    "nome_atributo": "proprioadm",
+                    "valor": 0
+                }
+            ],
+            "mapeamento_atributos": [
+                {   "attr_ida": "tipoedifcivil",
+                    "attr_volta": "tipoedifpubcivil",
+                    "traducao": [
+                        {
+                            "valor_ida": 1,
+                            "valor_volta": 2,
+                            "sentido": "volta"
+                        },
+                        {
+                            "valor_ida": 1,
+                            "valor_volta": 11,
                             "sentido": "volta"
                         }
                     ]
@@ -1432,7 +1497,7 @@
             "atributos_default_ida": [
                 {
                     "nome_atributo": "tipoalterantrop",
-                    "valor": 0
+                    "valor": 32
                 }
             ],
             "mapeamento_atributos": [
@@ -1468,12 +1533,19 @@
                     ]
                 },
                 {   
-                    "attr_ida": "tiposecaocnae",
-                    "attr_volta": "secaoativecon"
+                    "attr_ida": "tipoprodutoresiduo",
+                    "attr_volta": "tipoproduto",
+                    "traducao": [
+                        {
+                            "valor_ida": 98,
+                            "valor_volta": 0,
+                            "sentido": "ida"
+                        }
+                    ]
                 },
                 {   
-                    "attr_ida": "atividade",
-                    "attr_volta": "atividade"
+                    "attr_ida": "tiposecaocnae",
+                    "attr_volta": "secaoativecon"
                 }
             ]
         },
@@ -1673,7 +1745,7 @@
             "atributos_default_ida": [
                 {
                     "nome_atributo": "turistica",
-                    "valor": 0
+                    "valor": 1
                 },
                 {
                     "nome_atributo": "cultura",
@@ -1755,7 +1827,7 @@
                     "valor": 0
                 },
                 {
-                    "nome_atributo": "classeativecon",
+                    "nome_atributo": "divisaoativecon",
                     "valor": 0
                 },
                 {
@@ -1769,35 +1841,8 @@
             ],
             "mapeamento_atributos": [
                 {   
-                    "attr_ida": "tipoedifturist",
-                    "attr_volta": "tipoedifturist",
-                    "traducao": [
-                        {
-                          "valor_ida": 99,
-                            "valor_volta": 14,
-                          "sentido": "volta"
-                        },
-                        {
-                          "valor_ida": 99,
-                            "valor_volta": 16,
-                          "sentido": "volta"
-                        },
-                        {
-                          "valor_ida": 99,
-                            "valor_volta": 17,
-                          "sentido": "volta"
-                        },
-                        {
-                          "valor_ida": 99,
-                            "valor_volta": 18,
-                          "sentido": "volta"
-                        },
-                        {
-                          "valor_ida": 99,
-                            "valor_volta": 19,
-                          "sentido": "volta"
-                        }
-                    ]
+                    "attr_ida": "tipoclassecnae",
+                    "attr_volta": "classeativecon"
                 }
             ]
         },
@@ -2055,20 +2100,37 @@
                 }
             ]
         },
-        {            "__comment": "rel_alter_fisiog_antropica <-> rel_alteracao_fisiografica_antropica",
+        {            "__comment": "rel_alter_fisiog_antropica | menos tipoalterantrop Corte e Aterro <-> rel_alteracao_fisiografica_antropica",
             "classe_ida": "rel_alter_fisiog_antropica",
             "classe_volta": "rel_alteracao_fisiografica_antropica",
+            "filtro_ida":  {
+                "$not":{
+                    "$or":[
+                            {
+                                "nome_atributo": "tipoalterantrop",
+                                "valor": 26
+                            },
+                            {
+                                "nome_atributo": "tipoalterantrop",
+                                "valor": 27
+                            }
+                        ]
+                }
+                
+            },
             "filtro_volta":  {
                 "$or":[
-                    {
-                        "nome_atributo": "$GEOM_TYPE",
-                        "valor": "POLYGON"
-                    },
-                    {
-                        "nome_atributo": "$GEOM_TYPE",
-                        "valor": "LINESTRING"
-                    }
+                            {
+                                "nome_atributo": "$GEOM_TYPE",
+                                "valor": "POLYGON"
+                            },
+                            {
+                                "nome_atributo": "$GEOM_TYPE",
+                                "valor": "LINESTRING"
+                            }
                 ]
+            
+                
             },
             "mapeamento_atributos": [
                 {   
@@ -2086,6 +2148,62 @@
                           "sentido": "volta"
                         }
                     ]
+                }
+            ]
+        },
+        {            "__comment": "rel_alter_fisiog_antropica | tipoalterantrop Corte <-> rel_corte",
+            "classe_ida": "rel_alter_fisiog_antropica",
+            "classe_volta": "rel_corte",
+            "filtro_ida":  {
+                "nome_atributo": "tipoalterantrop",
+                "valor": 26
+            },
+            "filtro_volta":  {
+                "$or":[
+                            {
+                                "nome_atributo": "$GEOM_TYPE",
+                                "valor": "POLYGON"
+                            },
+                            {
+                                "nome_atributo": "$GEOM_TYPE",
+                                "valor": "LINESTRING"
+                            }
+                ]
+            
+                
+            },
+            "atributos_default_ida": [
+                {
+                    "nome_atributo": "matconstr",
+                    "valor": 0
+                }
+            ]
+        },
+        {            "__comment": "rel_alter_fisiog_antropica | tipoalterantrop Aterro <-> rel_aterro",
+            "classe_ida": "rel_alter_fisiog_antropica",
+            "classe_volta": "rel_aterro",
+            "filtro_ida":  {
+                "nome_atributo": "tipoalterantrop",
+                "valor": 27
+            },
+            "filtro_volta":  {
+                "$or":[
+                            {
+                                "nome_atributo": "$GEOM_TYPE",
+                                "valor": "POLYGON"
+                            },
+                            {
+                                "nome_atributo": "$GEOM_TYPE",
+                                "valor": "LINESTRING"
+                            }
+                ]
+            
+                
+            },
+            "atributos_default_ida": [
+                {
+                    "nome_atributo": "matconstr",
+                    "valor": 0
                 }
             ]
         },
@@ -3066,9 +3184,9 @@
                 }
             ]
         },
-        {            "__comment": "tra_trecho_rodoviario <-> tra_trecho_rodoviario",
+        {            "__comment": "tra_trecho_rodoviario <-> rod_trecho_rodoviario",
             "classe_ida": "tra_trecho_rodoviario",
-            "classe_volta": "tra_trecho_rodoviario",
+            "classe_volta": "rod_trecho_rodoviario",
             "filtro_ida": {
                 "$or":[
                     {
@@ -3091,7 +3209,7 @@
             },
             "atributos_default_ida": [
                 {   
-                    "nome_atributo": "tipo_pavimentacao",
+                    "nome_atributo": "tipopavimentacao",
                     "valor": 0
                 },
                 {   
@@ -3235,12 +3353,6 @@
             },
             "atributos_default_ida": [
                 {   
-                    "nome_atributo": "posicaopista",
-                    "valor": 2
-                }
-            ],
-            "atributos_default_volta": [
-                {   
                     "nome_atributo": "necessitamanutencao",
                     "valor": 0
                 },
@@ -3248,6 +3360,12 @@
                     "nome_atributo": "tipopavimentacao",
                     "valor": 0
                 },
+                {   
+                    "nome_atributo": "posicaopista",
+                    "valor": 2
+                }
+            ],
+            "atributos_default_volta": [
                 {   
                     "nome_atributo": "posicaopista",
                     "valor": 0
@@ -3625,9 +3743,9 @@
                 }
             ]
         },
-        {            "__comment": "pto_edif_constr_est_med_fen <-> edf_edif_constr_est_med_fen_p",
+        {            "__comment": "pto_edif_constr_est_med_fen <-> edf_edif_constr_est_med_fen",
             "classe_ida": "pto_edif_constr_est_med_fen",
-            "classe_volta": "edf_edif_constr_est_med_fen_p",
+            "classe_volta": "edf_edif_constr_est_med_fen",
             "atributos_default_ida": [
                 {
                     "nome_atributo": "turistica",
@@ -3706,7 +3824,7 @@
             "classe_volta": "rel_gruta_caverna",
             "mapeamento_atributos": [
                 {   
-                    "attr_ida": "tipoelemnat",
+                    "attr_ida": "tipogrutacaverna",
                     "attr_volta": "tipoelemnat",
                     "traducao": [
                         {
@@ -3853,7 +3971,7 @@
             },
             "atributos_default_ida": [
                 {
-                    "nome_atributo": "mat_constr",
+                    "nome_atributo": "matconstr",
                     "valor": 0
                 },
                 {
@@ -3865,12 +3983,12 @@
                     "valor": 0
                 },
                 {
-                    "nome_atributo": "tipo_uso_edif",
-                    "valor": 0
+                    "nome_atributo": "tipousoedif",
+                    "valor": 2
                 },
                 {
                     "nome_atributo": "jurisdicao",
-                    "valor": 0
+                    "valor": 1
                 },
                 {
                     "nome_atributo": "tipoedifpubcivil",
@@ -3913,7 +4031,7 @@
             },
             "atributos_default_ida": [
                 {
-                    "nome_atributo": "mat_constr",
+                    "nome_atributo": "matconstr",
                     "valor": 0
                 },
                 {
@@ -3925,7 +4043,7 @@
                     "valor": 0
                 },
                 {
-                    "nome_atributo": "tipo_uso_edif",
+                    "nome_atributo": "tipousoedif",
                     "valor": 6
                 },
                 {
@@ -4141,9 +4259,9 @@
                     "attr_volta": "tipoestgerad",
                     "traducao": [
                         {
-                          "valor_ida": 99,
-                          "valor_volta": 5,
-                          "sentido": "volta"
+                          "valor_ida": 5,
+                          "valor_volta": 99,
+                          "sentido": "ida"
                         }
                     ]
                 },
@@ -4207,9 +4325,9 @@
                 }
             ]
         },
-        {            "__comment": "tra_trecho_duto <-> tra_trecho_duto",
+        {            "__comment": "tra_trecho_duto <-> dut_trecho_duto",
             "classe_ida": "tra_trecho_duto",
-            "classe_volta": "tra_trecho_duto",
+            "classe_volta": "dut_trecho_duto",
             "mapeamento_atributos": [
                 {   
                     "attr_ida": "situacaoespacial",
@@ -4280,6 +4398,12 @@
                             "nome_atributo": "$GEOM_TYPE",
                             "valor": "POLYGON"
             },
+            "atributos_default_ida": [
+                {
+                    "nome_atributo": "finalidadepatio",
+                    "valor": 0
+                }
+            ],
             "mapeamento_atributos": [
                 {   
                     "attr_ida": "modaluso",
