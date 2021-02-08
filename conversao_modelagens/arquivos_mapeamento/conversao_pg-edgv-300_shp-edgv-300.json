@@ -155,7 +155,35 @@
     },
     {
       "classe_ida": "edf_edif_comerc_serv",
-      "classe_volta": "EDF_Edif_Comerc_Serv"
+      "classe_volta": "EDF_Edif_Comerc_Serv",
+      "mapeamento_atributos": [
+        {
+          "attr_ida": "finalidade",
+          "attr_volta": "FINALIDADE",
+          "traducao": [
+            {
+              "valor_ida": 0,
+              "valor_volta": "Desconhecida"
+            },
+            {
+              "valor_ida": 1,
+              "valor_volta": "Comercial"
+            },
+            {
+              "valor_ida": 2,
+              "valor_volta": "Serviço"
+            },
+            {
+              "valor_ida": 4,
+              "valor_volta": "Residencial"
+            },
+            {
+              "valor_ida": 99,
+              "valor_volta": "Outros"
+            }
+          ]
+        }
+      ]
     },
     {
       "classe_ida": "edf_edificacao",
@@ -906,144 +934,144 @@
           "valor_volta": "Desconhecida"
         },
         {
-          "valor_ida": 2,
+          "valor_ida": 1,
           "valor_volta": "Produção de energia elétrica"
         },
         {
-          "valor_ida": 3,
+          "valor_ida": 2,
           "valor_volta": "Transmissão de energia elétrica"
         },
         {
-          "valor_ida": 4,
+          "valor_ida": 3,
           "valor_volta": "Distribuição de energia elétrica"
         },
         {
-          "valor_ida": 5,
+          "valor_ida": 4,
           "valor_volta": "Captação, tratamento e distribuição de água"
         },
         {
-          "valor_ida": 6,
+          "valor_ida": 5,
           "valor_volta": "Telecomunicações"
         },
         {
-          "valor_ida": 7,
+          "valor_ida": 6,
           "valor_volta": "Administração pública em geral"
         },
         {
-          "valor_ida": 8,
+          "valor_ida": 7,
           "valor_volta": "Seguridade social"
         },
         {
-          "valor_ida": 9,
+          "valor_ida": 8,
           "valor_volta": "Regulação das atividades econômicas"
         },
         {
-          "valor_ida": 10,
+          "valor_ida": 9,
           "valor_volta": "Atividades de apoio à administração pública"
         },
         {
-          "valor_ida": 11,
+          "valor_ida": 10,
           "valor_volta": "Relações exteriores"
         },
         {
-          "valor_ida": 12,
+          "valor_ida": 11,
           "valor_volta": "Defesa"
         },
         {
-          "valor_ida": 13,
+          "valor_ida": 12,
           "valor_volta": "Justiça"
         },
         {
-          "valor_ida": 14,
+          "valor_ida": 13,
           "valor_volta": "Segurança e ordem pública"
         },
         {
-          "valor_ida": 15,
+          "valor_ida": 14,
           "valor_volta": "Defesa civil"
         },
         {
           "valor_ida": 16,
-          "valor_volta": "Regulação das atividades sociais e culturais"
-        },
-        {
-          "valor_ida": 17,
           "valor_volta": "Educação infantil - creche"
         },
         {
-          "valor_ida": 18,
+          "valor_ida": 17,
           "valor_volta": "Educação infantil - pré-escola"
         },
         {
-          "valor_ida": 19,
+          "valor_ida": 18,
           "valor_volta": "Ensino fundamental"
         },
         {
-          "valor_ida": 20,
+          "valor_ida": 19,
           "valor_volta": "Ensino médio"
         },
         {
-          "valor_ida": 21,
+          "valor_ida": 20,
           "valor_volta": "Educação superior - graduação"
         },
         {
-          "valor_ida": 22,
+          "valor_ida": 21,
           "valor_volta": "Educação superior - graduação e pós-graduação"
         },
         {
-          "valor_ida": 23,
+          "valor_ida": 22,
           "valor_volta": "Educação superior - pós-graduação e extensão"
         },
         {
-          "valor_ida": 24,
+          "valor_ida": 23,
           "valor_volta": "Educação profissional de nível técnico"
         },
         {
-          "valor_ida": 25,
+          "valor_ida": 24,
           "valor_volta": "Educação profissional de nível tecnológico"
         },
         {
-          "valor_ida": 26,
+          "valor_ida": 25,
           "valor_volta": "Outras atividades de ensino"
         },
         {
-          "valor_ida": 27,
+          "valor_ida": 26,
           "valor_volta": "Atendimento hospitalar (hospital)"
         },
         {
-          "valor_ida": 28,
+          "valor_ida": 27,
           "valor_volta": "Atendimento às urgências e emergências (pronto-socorro)"
         },
         {
-          "valor_ida": 29,
+          "valor_ida": 28,
           "valor_volta": "Atenção ambulatorial (posto e centro de saúde)"
         },
         {
-          "valor_ida": 30,
+          "valor_ida": 29,
           "valor_volta": "Serviços de complementação diagnóstica ou terapêutica"
         },
         {
-          "valor_ida": 31,
-          "valor_volta": "Atividades de organizações religiosas"
-        },
-        {
-          "valor_ida": 32,
+          "valor_ida": 30,
           "valor_volta": "Outras atividades relacionadas com atenção à saúde (instituto de pesquisa)"
         },
         {
-          "valor_ida": 33,
+          "valor_ida": 31,
+          "valor_volta": "Serviços veterinários"
+        },
+        {
+          "valor_ida": 32,
           "valor_volta": "Serviços sociais com alojamento"
         },
         {
-          "valor_ida": 34,
+          "valor_ida": 33,
           "valor_volta": "Serviços sociais sem alojamento"
         },
         {
-          "valor_ida": 35,
+          "valor_ida": 34,
           "valor_volta": "Limpeza urbana e atividades relacionadas"
         },
         {
+          "valor_ida": 35,
+          "valor_volta": "Atividades de organizações religiosas"
+        },
+        {
           "valor_ida": 36,
-          "valor_volta": "Serviços veterinários"
+          "valor_volta": "Regulação das atividades sociais e culturais"
         },
         {
           "valor_ida": 98,
@@ -1942,23 +1970,23 @@
           "valor_volta": "Desconhecida"
         },
         {
-          "valor_ida": 2,
+          "valor_ida": 1,
           "valor_volta": "Federal"
         },
         {
-          "valor_ida": 3,
+          "valor_ida": 2,
           "valor_volta": "Estadual/Distrital"
         },
         {
-          "valor_ida": 4,
+          "valor_ida": 3,
           "valor_volta": "Municipal"
         },
         {
-          "valor_ida": 5,
+          "valor_ida": 7,
           "valor_volta": "Concessionada"
         },
         {
-          "valor_ida": 6,
+          "valor_ida": 15,
           "valor_volta": "Privada"
         },
         {
@@ -4186,55 +4214,55 @@
           "valor_volta": "Desconhecido"
         },
         {
-          "valor_ida": 5,
+          "valor_ida": 12,
           "valor_volta": "Aquartelamento"
         },
         {
-          "valor_ida": 6,
+          "valor_ida": 13,
           "valor_volta": "Campo de instrução"
         },
         {
-          "valor_ida": 7,
+          "valor_ida": 14,
           "valor_volta": "Campo de tiro"
         },
         {
-          "valor_ida": 8,
+          "valor_ida": 15,
           "valor_volta": "Base aérea"
         },
         {
-          "valor_ida": 9,
+          "valor_ida": 16,
           "valor_volta": "Distrito naval"
         },
         {
-          "valor_ida": 10,
+          "valor_ida": 17,
           "valor_volta": "Hotel de trânsito"
         },
         {
-          "valor_ida": 11,
+          "valor_ida": 18,
           "valor_volta": "Delegacia de serviço militar"
         },
         {
-          "valor_ida": 12,
+          "valor_ida": 20,
           "valor_volta": "Quartel general"
         },
         {
-          "valor_ida": 13,
+          "valor_ida": 21,
           "valor_volta": "Posto de vigilância"
         },
         {
-          "valor_ida": 14,
+          "valor_ida": 22,
           "valor_volta": "Posto de policiamento urbano"
         },
         {
-          "valor_ida": 15,
+          "valor_ida": 23,
           "valor_volta": "Posto de policiamento rodoviário"
         },
         {
-          "valor_ida": 16,
+          "valor_ida": 24,
           "valor_volta": "Capitania dos portos"
         },
         {
-          "valor_ida": 17,
+          "valor_ida": 25,
           "valor_volta": "Base naval"
         },
         {
@@ -4745,11 +4773,11 @@
         },
         {
           "valor_ida": 2,
-          "valor_volta": "Distribuição"
+          "valor_volta": "Transmissão"
         },
         {
           "valor_ida": 3,
-          "valor_volta": "Transmissão"
+          "valor_volta": "Distribuição"
         }
       ]
     },
@@ -5004,27 +5032,27 @@
           "valor_volta": "Desconhecida"
         },
         {
-          "valor_ida": 2,
+          "valor_ida": 1,
           "valor_volta": "Métrica"
         },
         {
-          "valor_ida": 3,
+          "valor_ida": 2,
           "valor_volta": "Internacional"
         },
         {
-          "valor_ida": 4,
+          "valor_ida": 3,
           "valor_volta": "Larga"
         },
         {
-          "valor_ida": 5,
+          "valor_ida": 4,
           "valor_volta": "Mista métrica internacional"
         },
         {
-          "valor_ida": 6,
+          "valor_ida": 5,
           "valor_volta": "Mista métrica larga"
         },
         {
-          "valor_ida": 7,
+          "valor_ida": 6,
           "valor_volta": "Mista internacional larga"
         }
       ]
@@ -5268,16 +5296,16 @@
           "valor_volta": "Desconhecida"
         },
         {
-          "valor_ida": 2,
-          "valor_volta": "Absorção"
+          "valor_ida": 1,
+          "valor_volta": "Canalização"
         },
         {
-          "valor_ida": 4,
+          "valor_ida": 2,
           "valor_volta": "Gruta ou fenda"
         },
         {
-          "valor_ida": 5,
-          "valor_volta": "Canalização"
+          "valor_ida": 3,
+          "valor_volta": "Absorção"
         }
       ]
     },
@@ -5746,10 +5774,6 @@
           "valor_volta": "Lodo"
         },
         {
-          "valor_ida": 17,
-          "valor_volta": "Concha"
-        },
-        {
           "valor_ida": 18,
           "valor_volta": "Cascalho"
         },
@@ -5760,6 +5784,10 @@
         {
           "valor_ida": 20,
           "valor_volta": "Coral"
+        },
+        {
+          "valor_ida": 21,
+          "valor_volta": "Concha"
         },
         {
           "valor_ida": 22,
@@ -5884,6 +5912,10 @@
           "valor_volta": "Atletismo"
         },
         {
+          "valor_ida": 2,
+          "valor_volta": "Ciclismo"
+        },
+        {
           "valor_ida": 3,
           "valor_volta": "Motociclismo"
         },
@@ -5901,10 +5933,6 @@
         },
         {
           "valor_ida": 7,
-          "valor_volta": "Ciclismo"
-        },
-        {
-          "valor_ida": 8,
           "valor_volta": "Motocross"
         },
         {
@@ -6636,11 +6664,11 @@
           "valor_volta": "Desconhecida"
         },
         {
-          "valor_ida": 2,
+          "valor_ida": 4,
           "valor_volta": "Natural"
         },
         {
-          "valor_ida": 3,
+          "valor_ida": 5,
           "valor_volta": "Artificial"
         }
       ]
@@ -6998,8 +7026,12 @@
           "valor_volta": "Desconhecida"
         },
         {
+          "valor_ida": 1,
+          "valor_volta": "Arbórea"
+        },
+        {
           "valor_ida": 2,
-          "valor_volta": "Rasteira"
+          "valor_volta": "Arbustiva"
         },
         {
           "valor_ida": 3,
@@ -7007,11 +7039,7 @@
         },
         {
           "valor_ida": 4,
-          "valor_volta": "Arbórea"
-        },
-        {
-          "valor_ida": 5,
-          "valor_volta": "Arbustiva"
+          "valor_volta": "Rasteira"
         }
       ]
     },
@@ -7281,7 +7309,7 @@
         },
         {
           "valor_ida": 42,
-          "valor_volta": "Uva"
+          "valor_volta": "Videira"
         },
         {
           "valor_ida": 43,
@@ -7582,6 +7610,10 @@
         {
           "valor_ida": 125,
           "valor_volta": "Graviola"
+        },
+        {
+          "valor_ida": 126,
+          "valor_volta": "Uva"
         }
       ]
     },
