@@ -223,7 +223,35 @@
     },
     {
       "classe_ida": "edf_posto_combustivel",
-      "classe_volta": "EDF_Posto_Combustivel"
+      "classe_volta": "EDF_Posto_Combustivel",
+      "mapeamento_atributos": [
+        {
+          "attr_ida": "finalidade",
+          "attr_volta": "FINALIDADE",
+          "traducao": [
+            {
+              "valor_ida": 0,
+              "valor_volta": "Desconhecida"
+            },
+            {
+              "valor_ida": 1,
+              "valor_volta": "Comercial"
+            },
+            {
+              "valor_ida": 2,
+              "valor_volta": "Serviço"
+            },
+            {
+              "valor_ida": 4,
+              "valor_volta": "Residencial"
+            },
+            {
+              "valor_ida": 99,
+              "valor_volta": "Outros"
+            }
+          ]
+        }
+      ]
     },
     {
       "classe_ida": "edf_posto_policia_militar",
@@ -691,7 +719,39 @@
     },
     {
       "classe_ida": "veg_veg_cultivada",
-      "classe_volta": "VEG_Veg_Cultivada"
+      "classe_volta": "VEG_Veg_Cultivada",
+      "mapeamento_atributos": [
+        {
+          "attr_ida": "finalidade",
+          "attr_volta": "FINALIDADE",
+          "traducao": [
+            {
+              "valor_ida": 0,
+              "valor_volta": "Desconhecida"
+            },
+            {
+              "valor_ida": 1,
+              "valor_volta": "Exploração econômica"
+            },
+            {
+              "valor_ida": 2,
+              "valor_volta": "Subsistência"
+            },
+            {
+              "valor_ida": 3,
+              "valor_volta": "Conservação ambiental"
+            },
+            {
+              "valor_ida": 4,
+              "valor_volta": "Ornamental"
+            },
+            {
+              "valor_ida": 99,
+              "valor_volta": "Outros"
+            }
+          ]
+        }
+      ]
     },
     {
       "classe_ida": "veg_veg_restinga",
@@ -711,7 +771,39 @@
     },
     {
       "classe_ida": "veg_reflorestamento",
-      "classe_volta": "VEG_Reflorestamento"
+      "classe_volta": "VEG_Reflorestamento",
+      "mapeamento_atributos": [
+        {
+          "attr_ida": "finalidade",
+          "attr_volta": "FINALIDADE",
+          "traducao": [
+            {
+              "valor_ida": 0,
+              "valor_volta": "Desconhecida"
+            },
+            {
+              "valor_ida": 1,
+              "valor_volta": "Exploração econômica"
+            },
+            {
+              "valor_ida": 2,
+              "valor_volta": "Subsistência"
+            },
+            {
+              "valor_ida": 3,
+              "valor_volta": "Conservação ambiental"
+            },
+            {
+              "valor_ida": 4,
+              "valor_volta": "Ornamental"
+            },
+            {
+              "valor_ida": 99,
+              "valor_volta": "Outros"
+            }
+          ]
+        }
+      ]
     },
     {
       "classe_ida": "veg_campo",
@@ -731,7 +823,39 @@
     },
     {
       "classe_ida": "ver_jardim",
-      "classe_volta": "VER_Jardim"
+      "classe_volta": "VER_Jardim",
+      "mapeamento_atributos": [
+        {
+          "attr_ida": "finalidade",
+          "attr_volta": "FINALIDADE",
+          "traducao": [
+            {
+              "valor_ida": 0,
+              "valor_volta": "Desconhecida"
+            },
+            {
+              "valor_ida": 1,
+              "valor_volta": "Exploração econômica"
+            },
+            {
+              "valor_ida": 2,
+              "valor_volta": "Subsistência"
+            },
+            {
+              "valor_ida": 3,
+              "valor_volta": "Conservação ambiental"
+            },
+            {
+              "valor_ida": 4,
+              "valor_volta": "Ornamental"
+            },
+            {
+              "valor_ida": 99,
+              "valor_volta": "Outros"
+            }
+          ]
+        }
+      ]
     }
   ],
   "mapeamento_atributos": [
