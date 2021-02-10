@@ -6941,7 +6941,7 @@
           "nome": "geometriaaproximada",
           "tipo": "boolean",
           "descricao": "-",
-          "cardinalidade": "0..1"
+          "cardinalidade": "1..1"
         },
         {
           "nome": "tipopista",
@@ -7090,7 +7090,7 @@
           "nome": "geometriaaproximada",
           "tipo": "boolean",
           "descricao": "-",
-          "cardinalidade": "0..1"
+          "cardinalidade": "1..1"
         },
         {
           "nome": "operacional",
@@ -7234,7 +7234,7 @@
           "nome": "geometriaaproximada",
           "tipo": "boolean",
           "descricao": "-",
-          "cardinalidade": "0..1"
+          "cardinalidade": "1..1"
         },
         {
           "nome": "tipoarea",
@@ -7267,7 +7267,7 @@
           "nome": "geometriaaproximada",
           "tipo": "boolean",
           "descricao": "-",
-          "cardinalidade": "0..1"
+          "cardinalidade": "1..1"
         },
         {
           "nome": "situacaoespacial",
@@ -7294,7 +7294,7 @@
           "nome": "geometriaaproximada",
           "tipo": "boolean",
           "descricao": "-",
-          "cardinalidade": "0..1"
+          "cardinalidade": "1..1"
         },
         {
           "nome": "matconstr",
@@ -7334,7 +7334,7 @@
           "nome": "geometriaaproximada",
           "tipo": "boolean",
           "descricao": "-",
-          "cardinalidade": "0..1"
+          "cardinalidade": "1..1"
         }
       ]
     },
@@ -7354,7 +7354,7 @@
           "nome": "geometriaaproximada",
           "tipo": "boolean",
           "descricao": "-",
-          "cardinalidade": "0..1"
+          "cardinalidade": "1..1"
         },
         {
           "nome": "tipoentroncamento",
@@ -7375,7 +7375,7 @@
           "nome": "geometriaaproximada",
           "tipo": "boolean",
           "descricao": "-",
-          "cardinalidade": "0..1"
+          "cardinalidade": "1..1"
         }
       ]
     },
@@ -7395,7 +7395,7 @@
           "nome": "geometriaaproximada",
           "tipo": "boolean",
           "descricao": "-",
-          "cardinalidade": "0..1"
+          "cardinalidade": "1..1"
         },
         {
           "nome": "jurisdicao",
@@ -7510,7 +7510,7 @@
           "nome": "geometriaaproximada",
           "tipo": "boolean",
           "descricao": "-",
-          "cardinalidade": "0..1"
+          "cardinalidade": "1..1"
         },
         {
           "nome": "tipocemiterio",
@@ -7551,7 +7551,7 @@
           "nome": "geometriaaproximada",
           "tipo": "boolean",
           "descricao": "-",
-          "cardinalidade": "0..1"
+          "cardinalidade": "1..1"
         },
         {
           "nome": "tipodelimfis",
@@ -7592,7 +7592,7 @@
           "nome": "geometriaaproximada",
           "tipo": "boolean",
           "descricao": "-",
-          "cardinalidade": "0..1"
+          "cardinalidade": "1..1"
         }
       ]
     },
@@ -7612,7 +7612,7 @@
           "nome": "geometriaaproximada",
           "tipo": "boolean",
           "descricao": "-",
-          "cardinalidade": "0..1"
+          "cardinalidade": "1..1"
         },
         {
           "nome": "tipoarea",
@@ -7644,7 +7644,7 @@
           "nome": "geometriaaproximada",
           "tipo": "boolean",
           "descricao": "-",
-          "cardinalidade": "0..1"
+          "cardinalidade": "1..1"
         },
         {
           "nome": "modaluso",
@@ -7716,7 +7716,7 @@
           "nome": "geometriaaproximada",
           "tipo": "boolean",
           "descricao": "-",
-          "cardinalidade": "0..1"
+          "cardinalidade": "1..1"
         },
         {
           "nome": "turistica",
@@ -7743,7 +7743,7 @@
           "nome": "geometriaaproximada",
           "tipo": "boolean",
           "descricao": "-",
-          "cardinalidade": "0..1"
+          "cardinalidade": "1..1"
         },
         {
           "nome": "tipoarea",
@@ -7789,7 +7789,7 @@
           "nome": "geometriaaproximada",
           "tipo": "boolean",
           "descricao": "-",
-          "cardinalidade": "0..1"
+          "cardinalidade": "1..1"
         },
         {
           "nome": "tipoarea",
@@ -7821,7 +7821,7 @@
           "nome": "geometriaaproximada",
           "tipo": "boolean",
           "descricao": "-",
-          "cardinalidade": "0..1"
+          "cardinalidade": "1..1"
         }
       ]
     },
@@ -7841,7 +7841,7 @@
           "nome": "geometriaaproximada",
           "tipo": "boolean",
           "descricao": "-",
-          "cardinalidade": "0..1"
+          "cardinalidade": "1..1"
         },
         {
           "nome": "tipoarea",
@@ -7915,7 +7915,7 @@
           "nome": "geometriaaproximada",
           "tipo": "boolean",
           "descricao": "-",
-          "cardinalidade": "0..1"
+          "cardinalidade": "1..1"
         },
         {
           "nome": "largura",
@@ -7955,7 +7955,7 @@
           "nome": "geometriaaproximada",
           "tipo": "boolean",
           "descricao": "-",
-          "cardinalidade": "0..1"
+          "cardinalidade": "1..1"
         }
       ]
     },
@@ -7975,7 +7975,7 @@
           "nome": "geometriaaproximada",
           "tipo": "boolean",
           "descricao": "-",
-          "cardinalidade": "0..1"
+          "cardinalidade": "1..1"
         },
         {
           "nome": "tipotrechoduto",
@@ -8092,7 +8092,7 @@
           "nome": "geometriaaproximada",
           "tipo": "boolean",
           "descricao": "-",
-          "cardinalidade": "0..1"
+          "cardinalidade": "1..1"
         },
         {
           "nome": "tipotrechoduto",
@@ -8188,7 +8188,7 @@
           "nome": "geometriaaproximada",
           "tipo": "boolean",
           "descricao": "-",
-          "cardinalidade": "0..1"
+          "cardinalidade": "1..1"
         },
         {
           "nome": "operacional",
@@ -8236,7 +8236,7 @@
           "nome": "geometriaaproximada",
           "tipo": "boolean",
           "descricao": "-",
-          "cardinalidade": "0..1"
+          "cardinalidade": "1..1"
         },
         {
           "nome": "tipoalterantrop",
@@ -8336,7 +8336,7 @@
           "nome": "geometriaaproximada",
           "tipo": "boolean",
           "descricao": "-",
-          "cardinalidade": "0..1"
+          "cardinalidade": "1..1"
         },
         {
           "nome": "tipoplataforma",
@@ -8363,7 +8363,7 @@
           "nome": "geometriaaproximada",
           "tipo": "boolean",
           "descricao": "-",
-          "cardinalidade": "0..1"
+          "cardinalidade": "1..1"
         },
         {
           "nome": "operacional",
@@ -8479,7 +8479,7 @@
           "nome": "geometriaaproximada",
           "tipo": "boolean",
           "descricao": "-",
-          "cardinalidade": "0..1"
+          "cardinalidade": "1..1"
         },
         {
           "nome": "operacional",
@@ -8601,7 +8601,7 @@
           "nome": "geometriaaproximada",
           "tipo": "boolean",
           "descricao": "-",
-          "cardinalidade": "0..1"
+          "cardinalidade": "1..1"
         },
         {
           "nome": "operacional",
@@ -8704,7 +8704,7 @@
           "nome": "geometriaaproximada",
           "tipo": "boolean",
           "descricao": "-",
-          "cardinalidade": "0..1"
+          "cardinalidade": "1..1"
         },
         {
           "nome": "operacional",
@@ -8807,7 +8807,7 @@
           "nome": "geometriaaproximada",
           "tipo": "boolean",
           "descricao": "-",
-          "cardinalidade": "0..1"
+          "cardinalidade": "1..1"
         },
         {
           "nome": "operacional",
@@ -8949,7 +8949,7 @@
           "nome": "geometriaaproximada",
           "tipo": "boolean",
           "descricao": "-",
-          "cardinalidade": "0..1"
+          "cardinalidade": "1..1"
         },
         {
           "nome": "operacional",
@@ -9045,7 +9045,7 @@
           "nome": "geometriaaproximada",
           "tipo": "boolean",
           "descricao": "-",
-          "cardinalidade": "0..1"
+          "cardinalidade": "1..1"
         },
         {
           "nome": "operacional",
@@ -9161,7 +9161,7 @@
           "nome": "geometriaaproximada",
           "tipo": "boolean",
           "descricao": "-",
-          "cardinalidade": "0..1"
+          "cardinalidade": "1..1"
         },
         {
           "nome": "operacional",
@@ -9271,7 +9271,7 @@
           "nome": "geometriaaproximada",
           "tipo": "boolean",
           "descricao": "-",
-          "cardinalidade": "0..1"
+          "cardinalidade": "1..1"
         },
         {
           "nome": "operacional",
@@ -9367,7 +9367,7 @@
           "nome": "geometriaaproximada",
           "tipo": "boolean",
           "descricao": "-",
-          "cardinalidade": "0..1"
+          "cardinalidade": "1..1"
         },
         {
           "nome": "operacional",
@@ -9470,7 +9470,7 @@
           "nome": "geometriaaproximada",
           "tipo": "boolean",
           "descricao": "-",
-          "cardinalidade": "0..1"
+          "cardinalidade": "1..1"
         },
         {
           "nome": "operacional",
@@ -9602,7 +9602,7 @@
           "nome": "geometriaaproximada",
           "tipo": "boolean",
           "descricao": "-",
-          "cardinalidade": "0..1"
+          "cardinalidade": "1..1"
         },
         {
           "nome": "operacional",
@@ -9705,7 +9705,7 @@
           "nome": "geometriaaproximada",
           "tipo": "boolean",
           "descricao": "-",
-          "cardinalidade": "0..1"
+          "cardinalidade": "1..1"
         },
         {
           "nome": "operacional",
@@ -9840,7 +9840,7 @@
           "nome": "geometriaaproximada",
           "tipo": "boolean",
           "descricao": "-",
-          "cardinalidade": "0..1"
+          "cardinalidade": "1..1"
         },
         {
           "nome": "operacional",
@@ -9963,7 +9963,7 @@
           "nome": "geometriaaproximada",
           "tipo": "boolean",
           "descricao": "-",
-          "cardinalidade": "0..1"
+          "cardinalidade": "1..1"
         },
         {
           "nome": "operacional",
@@ -10059,7 +10059,7 @@
           "nome": "geometriaaproximada",
           "tipo": "boolean",
           "descricao": "-",
-          "cardinalidade": "0..1"
+          "cardinalidade": "1..1"
         },
         {
           "nome": "operacional",
@@ -10155,7 +10155,7 @@
           "nome": "geometriaaproximada",
           "tipo": "boolean",
           "descricao": "-",
-          "cardinalidade": "0..1"
+          "cardinalidade": "1..1"
         },
         {
           "nome": "operacional",
@@ -10251,7 +10251,7 @@
           "nome": "geometriaaproximada",
           "tipo": "boolean",
           "descricao": "-",
-          "cardinalidade": "0..1"
+          "cardinalidade": "1..1"
         },
         {
           "nome": "operacional",
@@ -10366,7 +10366,7 @@
           "nome": "geometriaaproximada",
           "tipo": "boolean",
           "descricao": "-",
-          "cardinalidade": "0..1"
+          "cardinalidade": "1..1"
         },
         {
           "nome": "operacional",
@@ -10501,7 +10501,7 @@
           "nome": "geometriaaproximada",
           "tipo": "boolean",
           "descricao": "-",
-          "cardinalidade": "0..1"
+          "cardinalidade": "1..1"
         },
         {
           "nome": "operacional",
@@ -10611,7 +10611,7 @@
           "nome": "geometriaaproximada",
           "tipo": "boolean",
           "descricao": "-",
-          "cardinalidade": "0..1"
+          "cardinalidade": "1..1"
         },
         {
           "nome": "operacional",
@@ -10733,7 +10733,7 @@
           "nome": "geometriaaproximada",
           "tipo": "boolean",
           "descricao": "-",
-          "cardinalidade": "0..1"
+          "cardinalidade": "1..1"
         },
         {
           "nome": "operacional",
@@ -10836,7 +10836,7 @@
           "nome": "geometriaaproximada",
           "tipo": "boolean",
           "descricao": "-",
-          "cardinalidade": "0..1"
+          "cardinalidade": "1..1"
         },
         {
           "nome": "operacional",
@@ -10939,7 +10939,7 @@
           "nome": "geometriaaproximada",
           "tipo": "boolean",
           "descricao": "-",
-          "cardinalidade": "0..1"
+          "cardinalidade": "1..1"
         },
         {
           "nome": "operacional",
@@ -11042,7 +11042,7 @@
           "nome": "geometriaaproximada",
           "tipo": "boolean",
           "descricao": "-",
-          "cardinalidade": "0..1"
+          "cardinalidade": "1..1"
         },
         {
           "nome": "operacional",
@@ -11158,7 +11158,7 @@
           "nome": "geometriaaproximada",
           "tipo": "boolean",
           "descricao": "-",
-          "cardinalidade": "0..1"
+          "cardinalidade": "1..1"
         },
         {
           "nome": "operacional",
@@ -11268,7 +11268,7 @@
           "nome": "geometriaaproximada",
           "tipo": "boolean",
           "descricao": "-",
-          "cardinalidade": "0..1"
+          "cardinalidade": "1..1"
         },
         {
           "nome": "operacional",
@@ -11400,7 +11400,7 @@
           "nome": "geometriaaproximada",
           "tipo": "boolean",
           "descricao": "-",
-          "cardinalidade": "0..1"
+          "cardinalidade": "1..1"
         },
         {
           "nome": "operacional",
@@ -11570,7 +11570,7 @@
           "nome": "geometriaaproximada",
           "tipo": "boolean",
           "descricao": "-",
-          "cardinalidade": "0..1"
+          "cardinalidade": "1..1"
         },
         {
           "nome": "operacional",
@@ -11673,7 +11673,7 @@
           "nome": "geometriaaproximada",
           "tipo": "boolean",
           "descricao": "-",
-          "cardinalidade": "0..1"
+          "cardinalidade": "1..1"
         },
         {
           "nome": "operacional",
@@ -11829,7 +11829,7 @@
           "nome": "geometriaaproximada",
           "tipo": "boolean",
           "descricao": "-",
-          "cardinalidade": "0..1"
+          "cardinalidade": "1..1"
         },
         {
           "nome": "operacional",
@@ -11971,7 +11971,7 @@
           "nome": "geometriaaproximada",
           "tipo": "boolean",
           "descricao": "-",
-          "cardinalidade": "0..1"
+          "cardinalidade": "1..1"
         },
         {
           "nome": "operacional",
@@ -12067,7 +12067,7 @@
           "nome": "geometriaaproximada",
           "tipo": "boolean",
           "descricao": "-",
-          "cardinalidade": "0..1"
+          "cardinalidade": "1..1"
         },
         {
           "nome": "operacional",
@@ -12115,7 +12115,7 @@
           "nome": "geometriaaproximada",
           "tipo": "boolean",
           "descricao": "-",
-          "cardinalidade": "0..1"
+          "cardinalidade": "1..1"
         },
         {
           "nome": "operacional",
@@ -12163,7 +12163,7 @@
           "nome": "geometriaaproximada",
           "tipo": "boolean",
           "descricao": "-",
-          "cardinalidade": "0..1"
+          "cardinalidade": "1..1"
         },
         {
           "nome": "operacional",
@@ -12204,7 +12204,7 @@
           "nome": "geometriaaproximada",
           "tipo": "boolean",
           "descricao": "-",
-          "cardinalidade": "0..1"
+          "cardinalidade": "1..1"
         },
         {
           "nome": "operacional",
@@ -12259,7 +12259,7 @@
           "nome": "geometriaaproximada",
           "tipo": "boolean",
           "descricao": "-",
-          "cardinalidade": "0..1"
+          "cardinalidade": "1..1"
         },
         {
           "nome": "operacional",
@@ -12307,7 +12307,7 @@
           "nome": "geometriaaproximada",
           "tipo": "boolean",
           "descricao": "-",
-          "cardinalidade": "0..1"
+          "cardinalidade": "1..1"
         },
         {
           "nome": "matconstr",
@@ -12340,7 +12340,7 @@
           "nome": "geometriaaproximada",
           "tipo": "boolean",
           "descricao": "-",
-          "cardinalidade": "0..1"
+          "cardinalidade": "1..1"
         }
       ]
     },
@@ -12360,7 +12360,7 @@
           "nome": "geometriaaproximada",
           "tipo": "boolean",
           "descricao": "-",
-          "cardinalidade": "0..1"
+          "cardinalidade": "1..1"
         },
         {
           "nome": "operacional",
@@ -12407,7 +12407,7 @@
           "nome": "geometriaaproximada",
           "tipo": "boolean",
           "descricao": "-",
-          "cardinalidade": "0..1"
+          "cardinalidade": "1..1"
         },
         {
           "nome": "especie",
@@ -12468,7 +12468,7 @@
           "nome": "geometriaaproximada",
           "tipo": "boolean",
           "descricao": "-",
-          "cardinalidade": "0..1"
+          "cardinalidade": "1..1"
         }
       ]
     },
@@ -12488,7 +12488,7 @@
           "nome": "geometriaaproximada",
           "tipo": "boolean",
           "descricao": "-",
-          "cardinalidade": "0..1"
+          "cardinalidade": "1..1"
         },
         {
           "nome": "ceg",
@@ -12555,7 +12555,7 @@
           "nome": "geometriaaproximada",
           "tipo": "boolean",
           "descricao": "-",
-          "cardinalidade": "0..1"
+          "cardinalidade": "1..1"
         },
         {
           "nome": "ceg",
@@ -12607,7 +12607,7 @@
           "nome": "geometriaaproximada",
           "tipo": "boolean",
           "descricao": "-",
-          "cardinalidade": "0..1"
+          "cardinalidade": "1..1"
         },
         {
           "nome": "alturatorreaer",
@@ -12633,7 +12633,7 @@
           "nome": "geometriaaproximada",
           "tipo": "boolean",
           "descricao": "-",
-          "cardinalidade": "0..1"
+          "cardinalidade": "1..1"
         },
         {
           "nome": "ceg",
@@ -12698,7 +12698,7 @@
           "nome": "geometriaaproximada",
           "tipo": "boolean",
           "descricao": "-",
-          "cardinalidade": "0..1"
+          "cardinalidade": "1..1"
         },
         {
           "nome": "posicaoreledific",
@@ -12725,7 +12725,7 @@
           "nome": "geometriaaproximada",
           "tipo": "boolean",
           "descricao": "-",
-          "cardinalidade": "0..1"
+          "cardinalidade": "1..1"
         },
         {
           "nome": "ceg",
@@ -12790,7 +12790,7 @@
           "nome": "geometriaaproximada",
           "tipo": "boolean",
           "descricao": "-",
-          "cardinalidade": "0..1"
+          "cardinalidade": "1..1"
         },
         {
           "nome": "tipotrechocomunic",
@@ -12852,7 +12852,7 @@
           "nome": "geometriaaproximada",
           "tipo": "boolean",
           "descricao": "-",
-          "cardinalidade": "0..1"
+          "cardinalidade": "1..1"
         },
         {
           "nome": "operacional",
@@ -12913,7 +12913,7 @@
           "nome": "geometriaaproximada",
           "tipo": "boolean",
           "descricao": "-",
-          "cardinalidade": "0..1"
+          "cardinalidade": "1..1"
         }
       ]
     },
@@ -12933,7 +12933,7 @@
           "nome": "geometriaaproximada",
           "tipo": "boolean",
           "descricao": "-",
-          "cardinalidade": "0..1"
+          "cardinalidade": "1..1"
         },
         {
           "nome": "administracao",
@@ -12974,7 +12974,7 @@
           "nome": "geometriaaproximada",
           "tipo": "boolean",
           "descricao": "-",
-          "cardinalidade": "0..1"
+          "cardinalidade": "1..1"
         },
         {
           "nome": "codtrechoferrov",
@@ -13061,7 +13061,7 @@
           "nome": "emarruamento",
           "tipo": "boolean",
           "descricao": "-",
-          "cardinalidade": "0..1"
+          "cardinalidade": "1..1"
         }
       ]
     },
@@ -13081,7 +13081,7 @@
           "nome": "geometriaaproximada",
           "tipo": "boolean",
           "descricao": "-",
-          "cardinalidade": "0..1"
+          "cardinalidade": "1..1"
         },
         {
           "nome": "operacional",
@@ -13115,7 +13115,7 @@
           "nome": "geometriaaproximada",
           "tipo": "boolean",
           "descricao": "-",
-          "cardinalidade": "0..1"
+          "cardinalidade": "1..1"
         },
         {
           "nome": "desnivel",
@@ -13180,7 +13180,7 @@
           "nome": "geometriaaproximada",
           "tipo": "boolean",
           "descricao": "-",
-          "cardinalidade": "0..1"
+          "cardinalidade": "1..1"
         },
         {
           "nome": "tipoobst",
@@ -13214,7 +13214,7 @@
           "nome": "geometriaaproximada",
           "tipo": "boolean",
           "descricao": "-",
-          "cardinalidade": "0..1"
+          "cardinalidade": "1..1"
         },
         {
           "nome": "tiposinal",
@@ -13255,7 +13255,7 @@
           "nome": "geometriaaproximada",
           "tipo": "boolean",
           "descricao": "-",
-          "cardinalidade": "0..1"
+          "cardinalidade": "1..1"
         },
         {
           "nome": "tipoatracad",
@@ -13317,7 +13317,7 @@
           "nome": "geometriaaproximada",
           "tipo": "boolean",
           "descricao": "-",
-          "cardinalidade": "0..1"
+          "cardinalidade": "1..1"
         },
         {
           "nome": "tipofundeadouro",
@@ -13371,7 +13371,7 @@
           "nome": "geometriaaproximada",
           "tipo": "boolean",
           "descricao": "-",
-          "cardinalidade": "0..1"
+          "cardinalidade": "1..1"
         },
         {
           "nome": "operacional",
@@ -13424,7 +13424,7 @@
           "nome": "geometriaaproximada",
           "tipo": "boolean",
           "descricao": "-",
-          "cardinalidade": "0..1"
+          "cardinalidade": "1..1"
         },
         {
           "nome": "tiposumvert",
@@ -13458,7 +13458,7 @@
           "nome": "geometriaaproximada",
           "tipo": "boolean",
           "descricao": "-",
-          "cardinalidade": "0..1"
+          "cardinalidade": "1..1"
         },
         {
           "nome": "tipoelemnat",
@@ -13497,7 +13497,7 @@
           "nome": "geometriaaproximada",
           "tipo": "boolean",
           "descricao": "-",
-          "cardinalidade": "0..1"
+          "cardinalidade": "1..1"
         },
         {
           "nome": "tipoalterantrop",
@@ -13581,7 +13581,7 @@
           "nome": "geometriaaproximada",
           "tipo": "boolean",
           "descricao": "-",
-          "cardinalidade": "0..1"
+          "cardinalidade": "1..1"
         },
         {
           "nome": "matconstr",
@@ -13608,7 +13608,7 @@
           "nome": "geometriaaproximada",
           "tipo": "boolean",
           "descricao": "-",
-          "cardinalidade": "0..1"
+          "cardinalidade": "1..1"
         },
         {
           "nome": "tipoalterantrop",
@@ -13692,7 +13692,7 @@
           "nome": "geometriaaproximada",
           "tipo": "boolean",
           "descricao": "-",
-          "cardinalidade": "0..1"
+          "cardinalidade": "1..1"
         },
         {
           "nome": "tipomassadagua",
@@ -13733,7 +13733,7 @@
           "nome": "possuitrechodrenagem",
           "tipo": "boolean",
           "descricao": "-",
-          "cardinalidade": "0..1"
+          "cardinalidade": "1..1"
         }
       ]
     },
@@ -13753,7 +13753,7 @@
           "nome": "geometriaaproximada",
           "tipo": "boolean",
           "descricao": "-",
-          "cardinalidade": "0..1"
+          "cardinalidade": "1..1"
         },
         {
           "nome": "tipotrechodrenagem",
@@ -13786,7 +13786,7 @@
           "nome": "encoberto",
           "tipo": "boolean",
           "descricao": "-",
-          "cardinalidade": "0..1"
+          "cardinalidade": "1..1"
         }
       ]
     },
@@ -13806,7 +13806,7 @@
           "nome": "geometriaaproximada",
           "tipo": "boolean",
           "descricao": "-",
-          "cardinalidade": "0..1"
+          "cardinalidade": "1..1"
         },
         {
           "nome": "operacional",
@@ -13840,7 +13840,7 @@
           "nome": "geometriaaproximada",
           "tipo": "boolean",
           "descricao": "-",
-          "cardinalidade": "0..1"
+          "cardinalidade": "1..1"
         }
       ]
     },
@@ -13860,7 +13860,7 @@
           "nome": "geometriaaproximada",
           "tipo": "boolean",
           "descricao": "-",
-          "cardinalidade": "0..1"
+          "cardinalidade": "1..1"
         },
         {
           "nome": "tipoqueda",
@@ -13893,7 +13893,7 @@
           "nome": "geometriaaproximada",
           "tipo": "boolean",
           "descricao": "-",
-          "cardinalidade": "0..1"
+          "cardinalidade": "1..1"
         },
         {
           "nome": "tiporecife",
@@ -13934,7 +13934,7 @@
           "nome": "geometriaaproximada",
           "tipo": "boolean",
           "descricao": "-",
-          "cardinalidade": "0..1"
+          "cardinalidade": "1..1"
         },
         {
           "nome": "periodicidadeinunda",
@@ -13960,7 +13960,7 @@
           "nome": "geometriaaproximada",
           "tipo": "boolean",
           "descricao": "-",
-          "cardinalidade": "0..1"
+          "cardinalidade": "1..1"
         },
         {
           "nome": "tipoelemnat",
@@ -14012,7 +14012,7 @@
           "nome": "geometriaaproximada",
           "tipo": "boolean",
           "descricao": "-",
-          "cardinalidade": "0..1"
+          "cardinalidade": "1..1"
         },
         {
           "nome": "tipobanco",
@@ -14053,7 +14053,7 @@
           "nome": "geometriaaproximada",
           "tipo": "boolean",
           "descricao": "-",
-          "cardinalidade": "0..1"
+          "cardinalidade": "1..1"
         },
         {
           "nome": "tipoquebramolhe",
@@ -14108,7 +14108,7 @@
           "nome": "geometriaaproximada",
           "tipo": "boolean",
           "descricao": "-",
-          "cardinalidade": "0..1"
+          "cardinalidade": "1..1"
         }
       ]
     },
@@ -14128,7 +14128,7 @@
           "nome": "geometriaaproximada",
           "tipo": "boolean",
           "descricao": "-",
-          "cardinalidade": "0..1"
+          "cardinalidade": "1..1"
         },
         {
           "nome": "tipofontedagua",
@@ -14169,7 +14169,7 @@
           "nome": "geometriaaproximada",
           "tipo": "boolean",
           "descricao": "-",
-          "cardinalidade": "0..1"
+          "cardinalidade": "1..1"
         },
         {
           "nome": "tipoareaumida",
@@ -14196,7 +14196,7 @@
           "nome": "geometriaaproximada",
           "tipo": "boolean",
           "descricao": "-",
-          "cardinalidade": "0..1"
+          "cardinalidade": "1..1"
         },
         {
           "nome": "matconstr",
@@ -14244,7 +14244,7 @@
           "nome": "geometriaaproximada",
           "tipo": "boolean",
           "descricao": "-",
-          "cardinalidade": "0..1"
+          "cardinalidade": "1..1"
         },
         {
           "nome": "turistica",
@@ -14283,7 +14283,7 @@
           "nome": "geometriaaproximada",
           "tipo": "boolean",
           "descricao": "-",
-          "cardinalidade": "0..1"
+          "cardinalidade": "1..1"
         },
         {
           "nome": "operacional",
@@ -14324,7 +14324,7 @@
           "nome": "geometriaaproximada",
           "tipo": "boolean",
           "descricao": "-",
-          "cardinalidade": "0..1"
+          "cardinalidade": "1..1"
         },
         {
           "nome": "operacional",
@@ -14358,7 +14358,7 @@
           "nome": "geometriaaproximada",
           "tipo": "boolean",
           "descricao": "-",
-          "cardinalidade": "0..1"
+          "cardinalidade": "1..1"
         },
         {
           "nome": "operacional",
@@ -14399,7 +14399,7 @@
           "nome": "geometriaaproximada",
           "tipo": "boolean",
           "descricao": "-",
-          "cardinalidade": "0..1"
+          "cardinalidade": "1..1"
         },
         {
           "nome": "operacional",
@@ -14433,7 +14433,7 @@
           "nome": "geometriaaproximada",
           "tipo": "boolean",
           "descricao": "-",
-          "cardinalidade": "0..1"
+          "cardinalidade": "1..1"
         },
         {
           "nome": "turistica",
@@ -14472,7 +14472,7 @@
           "nome": "geometriaaproximada",
           "tipo": "boolean",
           "descricao": "-",
-          "cardinalidade": "0..1"
+          "cardinalidade": "1..1"
         },
         {
           "nome": "sigla",
@@ -14498,7 +14498,7 @@
           "nome": "geometriaaproximada",
           "tipo": "boolean",
           "descricao": "-",
-          "cardinalidade": "0..1"
+          "cardinalidade": "1..1"
         },
         {
           "nome": "identificador",
@@ -14555,7 +14555,7 @@
           "nome": "geometriaaproximada",
           "tipo": "boolean",
           "descricao": "-",
-          "cardinalidade": "0..1"
+          "cardinalidade": "1..1"
         },
         {
           "nome": "geocodigo",
@@ -14587,7 +14587,7 @@
           "nome": "geometriaaproximada",
           "tipo": "boolean",
           "descricao": "-",
-          "cardinalidade": "0..1"
+          "cardinalidade": "1..1"
         }
       ]
     },
@@ -14607,7 +14607,7 @@
           "nome": "geometriaaproximada",
           "tipo": "boolean",
           "descricao": "-",
-          "cardinalidade": "0..1"
+          "cardinalidade": "1..1"
         },
         {
           "nome": "geocodigo",
@@ -14640,7 +14640,7 @@
           "nome": "geometriaaproximada",
           "tipo": "boolean",
           "descricao": "-",
-          "cardinalidade": "0..1"
+          "cardinalidade": "1..1"
         },
         {
           "nome": "codidentificadorunico",
@@ -14717,7 +14717,7 @@
           "nome": "geometriaaproximada",
           "tipo": "boolean",
           "descricao": "-",
-          "cardinalidade": "0..1"
+          "cardinalidade": "1..1"
         },
         {
           "nome": "codidentificadorunico",
@@ -14818,7 +14818,7 @@
           "nome": "geometriaaproximada",
           "tipo": "boolean",
           "descricao": "-",
-          "cardinalidade": "0..1"
+          "cardinalidade": "1..1"
         },
         {
           "nome": "codidentificadorunico",
@@ -14919,7 +14919,7 @@
           "nome": "geometriaaproximada",
           "tipo": "boolean",
           "descricao": "-",
-          "cardinalidade": "0..1"
+          "cardinalidade": "1..1"
         },
         {
           "nome": "geocodigo",
@@ -14951,7 +14951,7 @@
           "nome": "geometriaaproximada",
           "tipo": "boolean",
           "descricao": "-",
-          "cardinalidade": "0..1"
+          "cardinalidade": "1..1"
         },
         {
           "nome": "codidentificadorunico",
@@ -15003,7 +15003,7 @@
           "nome": "geometriaaproximada",
           "tipo": "boolean",
           "descricao": "-",
-          "cardinalidade": "0..1"
+          "cardinalidade": "1..1"
         },
         {
           "nome": "codidentificadorunico",
@@ -15083,7 +15083,7 @@
           "nome": "geometriaaproximada",
           "tipo": "boolean",
           "descricao": "-",
-          "cardinalidade": "0..1"
+          "cardinalidade": "1..1"
         },
         {
           "nome": "tipoassociado",
@@ -15110,7 +15110,7 @@
           "nome": "geometriaaproximada",
           "tipo": "boolean",
           "descricao": "-",
-          "cardinalidade": "0..1"
+          "cardinalidade": "1..1"
         }
       ]
     },
@@ -15130,7 +15130,7 @@
           "nome": "geometriaaproximada",
           "tipo": "boolean",
           "descricao": "-",
-          "cardinalidade": "0..1"
+          "cardinalidade": "1..1"
         },
         {
           "nome": "codidentificadorunico",
@@ -15224,7 +15224,7 @@
           "nome": "geometriaaproximada",
           "tipo": "boolean",
           "descricao": "-",
-          "cardinalidade": "0..1"
+          "cardinalidade": "1..1"
         },
         {
           "nome": "tipomarcolim",
@@ -15301,7 +15301,7 @@
           "nome": "geometriaaproximada",
           "tipo": "boolean",
           "descricao": "-",
-          "cardinalidade": "0..1"
+          "cardinalidade": "1..1"
         },
         {
           "nome": "tiporef",
@@ -15443,7 +15443,7 @@
           "nome": "geometriaaproximada",
           "tipo": "boolean",
           "descricao": "-",
-          "cardinalidade": "0..1"
+          "cardinalidade": "1..1"
         },
         {
           "nome": "tiporef",
@@ -15532,7 +15532,7 @@
           "nome": "geometriaaproximada",
           "tipo": "boolean",
           "descricao": "-",
-          "cardinalidade": "0..1"
+          "cardinalidade": "1..1"
         },
         {
           "nome": "tipoptoestmed",
@@ -15559,7 +15559,7 @@
           "nome": "geometriaaproximada",
           "tipo": "boolean",
           "descricao": "-",
-          "cardinalidade": "0..1"
+          "cardinalidade": "1..1"
         },
         {
           "nome": "cota",
@@ -15571,7 +15571,7 @@
           "nome": "depressao",
           "tipo": "boolean",
           "descricao": "-",
-          "cardinalidade": "0..1"
+          "cardinalidade": "1..1"
         },
         {
           "nome": "tipocurvanivel",
@@ -15598,7 +15598,7 @@
           "nome": "geometriaaproximada",
           "tipo": "boolean",
           "descricao": "-",
-          "cardinalidade": "0..1"
+          "cardinalidade": "1..1"
         },
         {
           "nome": "tipoelemnat",
@@ -15633,7 +15633,7 @@
           "nome": "geometriaaproximada",
           "tipo": "boolean",
           "descricao": "-",
-          "cardinalidade": "0..1"
+          "cardinalidade": "1..1"
         },
         {
           "nome": "tipoelemnat",
@@ -15672,7 +15672,7 @@
           "nome": "geometriaaproximada",
           "tipo": "boolean",
           "descricao": "-",
-          "cardinalidade": "0..1"
+          "cardinalidade": "1..1"
         },
         {
           "nome": "tipoalterantrop",
@@ -15725,7 +15725,7 @@
           "nome": "geometriaaproximada",
           "tipo": "boolean",
           "descricao": "-",
-          "cardinalidade": "0..1"
+          "cardinalidade": "1..1"
         },
         {
           "nome": "tipoterrexp",
@@ -15759,7 +15759,7 @@
           "nome": "geometriaaproximada",
           "tipo": "boolean",
           "descricao": "-",
-          "cardinalidade": "0..1"
+          "cardinalidade": "1..1"
         },
         {
           "nome": "tipoelemnat",
@@ -15791,7 +15791,7 @@
           "nome": "geometriaaproximada",
           "tipo": "boolean",
           "descricao": "-",
-          "cardinalidade": "0..1"
+          "cardinalidade": "1..1"
         },
         {
           "nome": "tipoalterantrop",
@@ -15844,13 +15844,13 @@
           "nome": "geometriaaproximada",
           "tipo": "boolean",
           "descricao": "-",
-          "cardinalidade": "0..1"
+          "cardinalidade": "1..1"
         },
         {
           "nome": "cotacomprovada",
           "tipo": "boolean",
           "descricao": "-",
-          "cardinalidade": "0..1"
+          "cardinalidade": "1..1"
         },
         {
           "nome": "cota",
@@ -15876,7 +15876,7 @@
           "nome": "geometriaaproximada",
           "tipo": "boolean",
           "descricao": "-",
-          "cardinalidade": "0..1"
+          "cardinalidade": "1..1"
         },
         {
           "nome": "tipoelemnat",
@@ -15956,7 +15956,7 @@
           "nome": "geometriaaproximada",
           "tipo": "boolean",
           "descricao": "-",
-          "cardinalidade": "0..1"
+          "cardinalidade": "1..1"
         },
         {
           "nome": "tipoelemnat",
@@ -15988,7 +15988,7 @@
           "nome": "geometriaaproximada",
           "tipo": "boolean",
           "descricao": "-",
-          "cardinalidade": "0..1"
+          "cardinalidade": "1..1"
         },
         {
           "nome": "tipoelemnat",
@@ -16006,7 +16006,7 @@
           "nome": "fixa",
           "tipo": "boolean",
           "descricao": "-",
-          "cardinalidade": "0..1"
+          "cardinalidade": "1..1"
         }
       ]
     },
@@ -16020,7 +16020,7 @@
           "nome": "geometriaaproximada",
           "tipo": "boolean",
           "descricao": "-",
-          "cardinalidade": "0..1"
+          "cardinalidade": "1..1"
         },
         {
           "nome": "profundidade",
@@ -16046,7 +16046,7 @@
           "nome": "geometriaaproximada",
           "tipo": "boolean",
           "descricao": "-",
-          "cardinalidade": "0..1"
+          "cardinalidade": "1..1"
         },
         {
           "nome": "tipoalterantrop",
@@ -16087,7 +16087,7 @@
           "nome": "geometriaaproximada",
           "tipo": "boolean",
           "descricao": "-",
-          "cardinalidade": "0..1"
+          "cardinalidade": "1..1"
         },
         {
           "nome": "profundidade",
@@ -16113,7 +16113,7 @@
           "nome": "geometriaaproximada",
           "tipo": "boolean",
           "descricao": "-",
-          "cardinalidade": "0..1"
+          "cardinalidade": "1..1"
         },
         {
           "nome": "jurisdicao",
@@ -16266,7 +16266,7 @@
           "nome": "geometriaaproximada",
           "tipo": "boolean",
           "descricao": "-",
-          "cardinalidade": "0..1"
+          "cardinalidade": "1..1"
         },
         {
           "nome": "operacional",
@@ -16403,7 +16403,7 @@
           "nome": "geometriaaproximada",
           "tipo": "boolean",
           "descricao": "-",
-          "cardinalidade": "0..1"
+          "cardinalidade": "1..1"
         },
         {
           "nome": "tipoequipdesenvsocial",
@@ -16454,7 +16454,7 @@
           "nome": "geometriaaproximada",
           "tipo": "boolean",
           "descricao": "-",
-          "cardinalidade": "0..1"
+          "cardinalidade": "1..1"
         },
         {
           "nome": "tipoentroncamento",
@@ -16481,7 +16481,7 @@
           "nome": "geometriaaproximada",
           "tipo": "boolean",
           "descricao": "-",
-          "cardinalidade": "0..1"
+          "cardinalidade": "1..1"
         },
         {
           "nome": "operacional",
@@ -16515,7 +16515,7 @@
           "nome": "geometriaaproximada",
           "tipo": "boolean",
           "descricao": "-",
-          "cardinalidade": "0..1"
+          "cardinalidade": "1..1"
         },
         {
           "nome": "modaluso",
@@ -16673,7 +16673,7 @@
           "nome": "geometriaaproximada",
           "tipo": "boolean",
           "descricao": "-",
-          "cardinalidade": "0..1"
+          "cardinalidade": "1..1"
         },
         {
           "nome": "tipocaminhoaereo",
@@ -16721,7 +16721,7 @@
           "nome": "geometriaaproximada",
           "tipo": "boolean",
           "descricao": "-",
-          "cardinalidade": "0..1"
+          "cardinalidade": "1..1"
         }
       ]
     },
@@ -16741,7 +16741,7 @@
           "nome": "geometriaaproximada",
           "tipo": "boolean",
           "descricao": "-",
-          "cardinalidade": "0..1"
+          "cardinalidade": "1..1"
         }
       ]
     },
@@ -16761,7 +16761,7 @@
           "nome": "geometriaaproximada",
           "tipo": "boolean",
           "descricao": "-",
-          "cardinalidade": "0..1"
+          "cardinalidade": "1..1"
         },
         {
           "nome": "operacional",
@@ -16828,7 +16828,7 @@
           "nome": "geometriaaproximada",
           "tipo": "boolean",
           "descricao": "-",
-          "cardinalidade": "0..1"
+          "cardinalidade": "1..1"
         },
         {
           "nome": "tipotravessia",
@@ -16869,7 +16869,7 @@
           "nome": "geometriaaproximada",
           "tipo": "boolean",
           "descricao": "-",
-          "cardinalidade": "0..1"
+          "cardinalidade": "1..1"
         }
       ]
     },
@@ -16889,7 +16889,7 @@
           "nome": "geometriaaproximada",
           "tipo": "boolean",
           "descricao": "-",
-          "cardinalidade": "0..1"
+          "cardinalidade": "1..1"
         },
         {
           "nome": "modaluso",
@@ -17017,7 +17017,7 @@
           "nome": "geometriaaproximada",
           "tipo": "boolean",
           "descricao": "-",
-          "cardinalidade": "0..1"
+          "cardinalidade": "1..1"
         },
         {
           "nome": "modaluso",
@@ -17178,7 +17178,7 @@
           "nome": "geometriaaproximada",
           "tipo": "boolean",
           "descricao": "-",
-          "cardinalidade": "0..1"
+          "cardinalidade": "1..1"
         },
         {
           "nome": "modaluso",
@@ -17259,7 +17259,7 @@
           "nome": "geometriaaproximada",
           "tipo": "boolean",
           "descricao": "-",
-          "cardinalidade": "0..1"
+          "cardinalidade": "1..1"
         },
         {
           "nome": "classificacaoporte",
@@ -17325,7 +17325,7 @@
           "nome": "geometriaaproximada",
           "tipo": "boolean",
           "descricao": "-",
-          "cardinalidade": "0..1"
+          "cardinalidade": "1..1"
         },
         {
           "nome": "classificacaoporte",
@@ -17373,7 +17373,7 @@
           "nome": "geometriaaproximada",
           "tipo": "boolean",
           "descricao": "-",
-          "cardinalidade": "0..1"
+          "cardinalidade": "1..1"
         },
         {
           "nome": "classificacaoporte",
@@ -17428,7 +17428,7 @@
           "nome": "geometriaaproximada",
           "tipo": "boolean",
           "descricao": "-",
-          "cardinalidade": "0..1"
+          "cardinalidade": "1..1"
         },
         {
           "nome": "classificacaoporte",
@@ -17476,7 +17476,7 @@
           "nome": "geometriaaproximada",
           "tipo": "boolean",
           "descricao": "-",
-          "cardinalidade": "0..1"
+          "cardinalidade": "1..1"
         },
         {
           "nome": "classificacaoporte",
@@ -17531,7 +17531,7 @@
           "nome": "geometriaaproximada",
           "tipo": "boolean",
           "descricao": "-",
-          "cardinalidade": "0..1"
+          "cardinalidade": "1..1"
         },
         {
           "nome": "classificacaoporte",
@@ -17579,7 +17579,7 @@
           "nome": "geometriaaproximada",
           "tipo": "boolean",
           "descricao": "-",
-          "cardinalidade": "0..1"
+          "cardinalidade": "1..1"
         },
         {
           "nome": "classificacaoporte",
@@ -17634,7 +17634,7 @@
           "nome": "geometriaaproximada",
           "tipo": "boolean",
           "descricao": "-",
-          "cardinalidade": "0..1"
+          "cardinalidade": "1..1"
         },
         {
           "nome": "classificacaoporte",
@@ -17720,7 +17720,7 @@
           "nome": "geometriaaproximada",
           "tipo": "boolean",
           "descricao": "-",
-          "cardinalidade": "0..1"
+          "cardinalidade": "1..1"
         },
         {
           "nome": "classificacaoporte",
@@ -17794,7 +17794,7 @@
           "nome": "geometriaaproximada",
           "tipo": "boolean",
           "descricao": "-",
-          "cardinalidade": "0..1"
+          "cardinalidade": "1..1"
         },
         {
           "nome": "classificacaoporte",
@@ -17842,7 +17842,7 @@
           "nome": "geometriaaproximada",
           "tipo": "boolean",
           "descricao": "-",
-          "cardinalidade": "0..1"
+          "cardinalidade": "1..1"
         },
         {
           "nome": "classificacaoporte",
@@ -17891,7 +17891,7 @@
           "nome": "geometriaaproximada",
           "tipo": "boolean",
           "descricao": "-",
-          "cardinalidade": "0..1"
+          "cardinalidade": "1..1"
         }
       ]
     },
@@ -17911,7 +17911,7 @@
           "nome": "geometriaaproximada",
           "tipo": "boolean",
           "descricao": "-",
-          "cardinalidade": "0..1"
+          "cardinalidade": "1..1"
         },
         {
           "nome": "classificacaoporte",

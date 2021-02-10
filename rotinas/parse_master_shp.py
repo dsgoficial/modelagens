@@ -1,12 +1,11 @@
 import json
 from qgis.PyQt.QtCore import QVariant
 # Coloque o caminho do arquivo JSON Para leitura
-json_path = 'E:\\DINIZ\\3_Desenvolvimento\\edgv_2.1.3_pro\\master_file_213_shp.json' 
+json_path = 'D:\\Desenvolvimento\\modelagens\\edgv_300\\master_file_300_shp.json' 
 # Coloque a pasta onde deseja que os arquivos shp sejam salvos.
-folder_to_save = 'E:\\DINIZ\\3_Desenvolvimento\\edgv_2.1.3_pro\\shp213\\'
+folder_to_save = 'D:\\Desenvolvimento\\modelagens\\edgv_300\\shp300\\'
 
 
-#exec(open('E:/DINIZ/3_Desenvolvimento/edgv_2.1.3_pro/parse_master_shp.py'.encode('utf-8')).read())
 class ParserSHP():
 	def __init__(self, coord_sys, nome_id):
 		self.coord_sys = coord_sys
