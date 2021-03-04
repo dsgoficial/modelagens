@@ -407,6 +407,116 @@
       ]
     },
     {
+      "__comment": "rel_curva_nivel <-> elemnat_curva_nivel",
+      "classe_ida": "rel_curva_nivel",
+      "classe_volta": "elemnat_curva_nivel",
+      "atributos_default_volta": [
+        {
+          "nome_atributo": "geometriaaproximada",
+          "valor": false
+        }
+      ],
+      "atributos_default_ida": [
+        {
+          "nome_atributo": "visivel",
+          "valor": true
+        }
+      ],
+      "mapeamento_atributos": [
+        {
+          "attr_ida": "tipocurvanivel",
+          "attr_volta": "indice"
+        },
+        {
+          "attr_ida": "cota",
+          "attr_volta": "cota"
+        },
+        {
+          "attr_ida": "depressao",
+          "attr_volta": "depressao",
+          "traducao": [
+            {
+              "valor_ida": true,
+              "valor_volta": 1,
+              "sentido":"volta"
+            },
+            {
+              "valor_ida": true,
+              "valor_volta": 2,
+              "sentido":"volta"
+            },
+            {
+              "valor_ida": true,
+              "valor_volta": 3,
+              "sentido":"volta"
+            },
+            {
+              "valor_ida": true,
+              "valor_volta": 4,
+              "sentido":"volta"
+            },
+            {
+              "valor_ida": false,
+              "valor_volta": 5,
+              "sentido":"volta"
+            },
+            {
+              "valor_ida": false,
+              "valor_volta": 9999,
+              "sentido":"volta"
+            },
+            {
+              "valor_ida": false,
+              "valor_volta": 5,
+              "sentido":"ida"
+            },
+            {
+              "valor_ida": true,
+              "valor_volta": 1,
+              "sentido":"ida"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "__comment": "rel_ponto_cotado_altimetrico <-> elemnat_ponto_cotado",
+      "classe_ida": "rel_ponto_cotado_altimetrico",
+      "classe_volta": "elemnat_ponto_cotado",
+      "atributos_default_volta": [
+        {
+          "nome_atributo": "geometriaaproximada",
+          "valor": false
+        }
+      ],
+      "atributos_default_ida": [
+        {
+          "nome_atributo": "visivel",
+          "valor": true
+        }
+      ],
+      "mapeamento_atributos": [
+        {
+          "attr_ida": "cotacomprovada",
+          "attr_volta": "cota_comprovada",
+          "traducao":[
+            {
+              "valor_ida": true,
+              "valor_volta": 1
+            },
+            {
+              "valor_ida": false,
+              "valor_volta": 2
+            }
+          ]
+        },
+        {
+          "attr_ida": "cota",
+          "attr_volta": "cota"
+        }
+      ]
+    },
+    {
       "__comment": "rel_terreno_exposto <-> cobter_vegetacao | Terreno Exposto",
       "classe_ida": "rel_terreno_exposto",
       "classe_volta": "cobter_vegetacao",
