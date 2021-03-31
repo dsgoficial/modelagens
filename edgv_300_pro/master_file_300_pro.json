@@ -4019,6 +4019,22 @@
               "restricao_atributo_incomum": []
             }
           ]
+        },
+        {
+          "nome": "assentamento_precario",
+          "tipo": "smallint",
+          "descricao": "Indica se a área construída é um assentamento precário",
+          "cardinalidade": "1..1",
+          "mapa_valor": "booleano",
+          "valores": [
+            {
+              "code": 1,
+              "restricao_atributo_incomum": []
+            },
+            {
+              "code": 2
+            }
+          ]
         }
       ]
     },
@@ -7686,6 +7702,22 @@
             {
               "code": 2,
               "restricao_atributo_incomum": []
+            }
+          ]
+        },
+        {
+          "nome": "assentamento_precario",
+          "tipo": "smallint",
+          "descricao": "Indica se a área construída é um assentamento precário",
+          "cardinalidade": "1..1",
+          "mapa_valor": "booleano",
+          "valores": [
+            {
+              "code": 1,
+              "restricao_atributo_incomum": []
+            },
+            {
+              "code": 2
             }
           ]
         }
