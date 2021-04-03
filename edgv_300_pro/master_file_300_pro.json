@@ -7373,6 +7373,14 @@
       "atributos": []
     },
     {
+      "nome": "centroide_area_nao_mapeada",
+      "categoria": "aquisicao",
+      "descricao": "-",
+      "primitivas": ["MultiPoint"],
+      "atributos": [
+      ]
+    },
+    {
       "nome": "objeto_desconhecido",
       "categoria": "aux",
       "descricao": "-",
