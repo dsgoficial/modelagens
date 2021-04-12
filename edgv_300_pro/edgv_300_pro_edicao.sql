@@ -89,10 +89,10 @@ ALTER TABLE edgv.llp_localidade_p ADD COLUMN populacao REAL;
 
 DO $$DECLARE r record;
 BEGIN
-	FOR r in select f_table_schema, f_table_name from public.geometry_columns
+	FOR r in select f_table_schema, f_table_name, type from public.geometry_columns
     LOOP 
 	IF r.f_table_schema = 'edgv' AND r.f_table_name not like 'edicao_%' THEN
-		EXECUTE 'ALTER TABLE edgv.' || quote_ident(r.f_table_name) || ' ADD COLUMN visivel BOOLEAN NOT NULL DEFAULT TRUE, ADD COLUMN texto_edicao VARCHAR(255), carta_mini boolean not null DEFAULT FALSE,';
+		EXECUTE 'ALTER TABLE edgv.' || quote_ident(r.f_table_name) || ' ADD COLUMN visivel BOOLEAN NOT NULL DEFAULT TRUE, ADD COLUMN texto_edicao VARCHAR(255), ADD COLUMN carta_mini boolean not null DEFAULT FALSE';
 	END IF;
 
 	IF r.f_table_schema = 'edgv' AND r.f_table_name not like 'edicao_%' AND r.type = 'MULTIPOINT' THEN
