@@ -307,36 +307,6 @@
       ]
     },
     {
-      "nome": "tipo_depressao",
-      "valores": [
-        {
-          "code": 1,
-          "value": "Depressão nível 1",
-          "descricao": "-"
-        },
-        {
-          "code": 2,
-          "value": "Depressão nível 2",
-          "descricao": "-"
-        },
-        {
-          "code": 3,
-          "value": "Depressão nível 3",
-          "descricao": "-"
-        },
-        {
-          "code": 4,
-          "value": "Depressão nível 4",
-          "descricao": "-"
-        },
-        {
-          "code": 5,
-          "value": "Curva não é de depressão",
-          "descricao": "-"
-        }
-      ]
-    },
-    {
       "nome": "material_construcao",
       "valores": [
         {
@@ -4602,7 +4572,7 @@
           "tipo": "smallint",
           "descricao": "-",
           "cardinalidade": "1..1",
-          "mapa_valor": "tipo_depressao"
+          "mapa_valor": "booleano"
         }
       ]
     },
