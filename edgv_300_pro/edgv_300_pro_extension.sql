@@ -1,3 +1,50 @@
+CREATE OR REPLACE FUNCTION public.atualiza_metadado_feicao()
+  RETURNS trigger AS
+$BODY$
+    BEGIN
+
+	IF TG_OP = 'INSERT' THEN
+		NEW.usuario_criacao = current_user;
+		NEW.usuario_atualizacao = '';
+		NEW.data_modificacao = current_timestamp;
+		RETURN NEW;
+	END IF;
+
+	IF TG_OP = 'UPDATE' THEN
+		IF NEW.data_modificacao = OLD.data_modificacao THEN
+			NEW.usuario_atualizacao = current_user;
+			NEW.data_modificacao = current_timestamp;
+			RETURN NEW;
+		END IF;
+		IF NEW.data_modificacao != OLD.data_modificacao THEN
+			RAISE EXCEPTION 'Feição desatualizada';
+		END IF;
+	END IF;
+
+	IF TG_OP = 'DELETE' THEN
+		RETURN OLD;
+	END IF;
+
+    END;
+$BODY$
+  LANGUAGE plpgsql VOLATILE
+  COST 100;
+ALTER FUNCTION public.atualiza_metadado_feicao()
+  OWNER TO postgres;
+
+GRANT EXECUTE ON FUNCTION public.atualiza_metadado_feicao() TO PUBLIC;
+
+
+DO $$DECLARE r record;
+BEGIN
+	FOR r in select f_table_schema, f_table_name from public.geometry_columns
+    LOOP
+	IF r.f_table_schema = 'edgv' THEN
+		EXECUTE 'CREATE TRIGGER b_metadado_feicao BEFORE INSERT OR UPDATE OR DELETE ON edgv.' || quote_ident(r.f_table_name) || ' FOR EACH ROW EXECUTE PROCEDURE public.atualiza_metadado_feicao()';
+	END IF;
+    END LOOP;
+END$$;
+
 --########################################################
 -- Função explodir multi geometrias
 CREATE EXTENSION IF NOT EXISTS hstore;
