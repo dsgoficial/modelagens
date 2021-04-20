@@ -3801,25 +3801,13 @@
         },
         {
           "code": 201,
-          "value": "Mangue arbóreo",
-          "descricao": "-",
-          "valor_filtro": "Mangue"
-        },
-        {
-          "code": 202,
-          "value": "Mangue arbustivo",
+          "value": "Mangue",
           "descricao": "-",
           "valor_filtro": "Mangue"
         },
         {
           "code": 301,
-          "value": "Brejo/pântano arbóreo",
-          "descricao": "-",
-          "valor_filtro": "Brejo ou pântano"
-        },
-        {
-          "code": 302,
-          "value": "Brejo/pântano arbustivo",
+          "value": "Brejo/pântano",
           "descricao": "-",
           "valor_filtro": "Brejo ou pântano"
         },
@@ -3837,19 +3825,19 @@
         },
         {
           "code": 601,
-          "value": "Floresta",
+          "value": "Floresta densa",
+          "descricao": "-",
+          "valor_filtro": "Floresta"
+        },
+        {
+          "code": 602,
+          "value": "Floresta esparsa",
           "descricao": "-",
           "valor_filtro": "Floresta"
         },
         {
           "code": 701,
-          "value": "Cerrado/Cerradão arbóreo",
-          "descricao": "-",
-          "valor_filtro": "Cerrado/Cerradão"
-        },
-        {
-          "code": 702,
-          "value": "Cerrado/Cerradão arbustivo",
+          "value": "Cerrado/Cerradão",
           "descricao": "-",
           "valor_filtro": "Cerrado/Cerradão"
         },
@@ -3861,13 +3849,7 @@
         },
         {
           "code": 901,
-          "value": "Campo sujo",
-          "descricao": "-",
-          "valor_filtro": "Campo"
-        },
-        {
-          "code": 902,
-          "value": "Campo limpo",
+          "value": "Campo",
           "descricao": "-",
           "valor_filtro": "Campo"
         },
