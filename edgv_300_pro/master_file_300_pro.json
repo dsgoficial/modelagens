@@ -6325,6 +6325,12 @@
           "cardinalidade": "0..1"
         },
         {
+          "nome": "populacao",
+          "tipo": "integer",
+          "descricao": "-",
+          "cardinalidade": "0..1"
+        },
+        {
           "nome": "tipo",
           "tipo": "smallint",
           "descricao": "-",

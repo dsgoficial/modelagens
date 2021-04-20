@@ -1,10 +1,8 @@
 CREATE TABLE edgv.edicao_simb_hidrografia_l(
 	 id serial NOT NULL,
 	 texto varchar(255) not null,
-     tamanho_txt real not null default 1.5,
+     massa_dagua boolean not null DEFAULT FALSE,
      parte integer,
-	 espacamento_letra real not null default 0,
-	 espacamento_palavra real not null default 0,
 	 carta_mini boolean not null DEFAULT FALSE,
 	 geom geometry(MultiLineString, 31982),
 	 CONSTRAINT edicao_simb_hidrografia_l_pk PRIMARY KEY (id)
@@ -17,10 +15,11 @@ ALTER TABLE edgv.edicao_simb_hidrografia_l OWNER TO postgres;
 CREATE TABLE edgv.edicao_texto_generico_p(
 	 id serial NOT NULL,
 	 texto varchar(255) not null,
-     tamanho_txt real not null default 1.5,
-     parte integer,
-	 espacamento_letra real not null default 0,
-	 espacamento_palavra real not null default 0,
+     tamanho_txt real not null default 6,
+	 cor varchar(255) not null DEFAULT '0,0,0',
+	 caixa_alta boolean not null DEFAULT FALSE,
+	 italico boolean not null DEFAULT FALSE,
+	 negrito boolean not null DEFAULT FALSE,
 	 carta_mini boolean not null DEFAULT FALSE,
 	 geom geometry(MultiPoint, 31982),
 	 CONSTRAINT edicao_texto_generico_p_pk PRIMARY KEY (id)
@@ -61,6 +60,8 @@ CREATE TABLE edgv.edicao_direcao_corrente_p(
 );
 CREATE INDEX edicao_direcao_corrente_p_geom ON edgv.edicao_direcao_corrente_p USING gist (geom);
 
+ALTER TABLE edgv.edicao_direcao_corrente_p OWNER TO postgres;
+
 CREATE TABLE edgv.edicao_cota_mestra_p(
 	 id serial NOT NULL,
 	 cota integer,
@@ -73,19 +74,70 @@ CREATE INDEX edicao_cota_mestra_p_geom ON edgv.edicao_cota_mestra_p USING gist (
 ALTER TABLE edgv.edicao_cota_mestra_p OWNER TO postgres;
 
 
-CREATE TABLE edgv.edicao_simb_edificacao_p(
+CREATE TABLE dominios.simbolo_area (
+	 code smallint NOT NULL,
+	 code_name text NOT NULL,
+	 CONSTRAINT simbolo_area_pk PRIMARY KEY (code)
+);
+
+INSERT INTO dominios.simbolo_area (code,code_name) VALUES (1,'Subestação de energia (1)');
+INSERT INTO dominios.simbolo_area (code,code_name) VALUES (2,'Extração mineral (2)');
+INSERT INTO dominios.simbolo_area (code,code_name) VALUES (3,'Extração mineral não operacional (3)');
+INSERT INTO dominios.simbolo_area (code,code_name) VALUES (4,'Extração mineral - salina (4)');
+INSERT INTO dominios.simbolo_area (code,code_name) VALUES (5,'Plataforma (5)');
+INSERT INTO dominios.simbolo_area (code,code_name) VALUES (6,'Cemitério - Cristã (6)');
+INSERT INTO dominios.simbolo_area (code,code_name) VALUES (7,'Cemitério - Israelita (7)');
+INSERT INTO dominios.simbolo_area (code,code_name) VALUES (8,'Cemitério - Muçulmana (8)');
+INSERT INTO dominios.simbolo_area (code,code_name) VALUES (9,'Cemitério - Outros (9)');
+INSERT INTO dominios.simbolo_area (code,code_name) VALUES (10,'Estacionamento (10)');
+INSERT INTO dominios.simbolo_area (code,code_name) VALUES (11,'Edificação de ensino (11)');
+INSERT INTO dominios.simbolo_area (code,code_name) VALUES (12,'Edificação religiosa (12)');
+INSERT INTO dominios.simbolo_area (code,code_name) VALUES (13,'Edificação religiosa - mesquita (13)');
+INSERT INTO dominios.simbolo_area (code,code_name) VALUES (14,'Edificação religiosa - sinagoga (14)');
+INSERT INTO dominios.simbolo_area (code,code_name) VALUES (15,'Edificação saúde (15)');
+INSERT INTO dominios.simbolo_area (code,code_name) VALUES (16,'Posto de combustível (16)');
+INSERT INTO dominios.simbolo_area (code,code_name) VALUES (17,'Representação diplomática (17)');
+INSERT INTO dominios.simbolo_area (code,code_name) VALUES (18,'Campo/quadra (18)');
+
+INSERT INTO dominios.simbolo_area (code,code_name) VALUES (9999,'A SER PREENCHIDO (9999)');
+
+ALTER TABLE dominios.administracao OWNER TO postgres;
+
+CREATE TABLE edgv.edicao_simbolo_area_p(
 	 id serial NOT NULL,
-	 tipo varchar(255) not null, --No futuro mudar para mapa de valor
+	 tipo smallint NOT NULL,
 	 geom geometry(MultiPoint, 31982),
-	 CONSTRAINT edicao_simb_edificacao_p_pk PRIMARY KEY (id)
+	 CONSTRAINT edicao_simbolo_area_p_pk PRIMARY KEY (id)
 	 WITH (FILLFACTOR = 80)
 );
-CREATE INDEX edicao_simb_edificacao_p_geom ON edgv.edicao_simb_edificacao_p USING gist (geom);
+CREATE INDEX edicao_simbolo_area_p_geom ON edgv.edicao_simbolo_area_p USING gist (geom);
 
-ALTER TABLE edgv.edicao_simb_edificacao_p OWNER TO postgres;
+ALTER TABLE edgv.edicao_simbolo_area_p OWNER TO postgres;
+
+ALTER TABLE edgv.edicao_simbolo_area_p
+	 ADD CONSTRAINT edicao_simbolo_area_p_tipo_fk FOREIGN KEY (tipo)
+	 REFERENCES dominios.simbolo_area (code) MATCH FULL
+	 ON UPDATE NO ACTION ON DELETE NO ACTION;
+
+ALTER TABLE edgv.edicao_simbolo_area_p ALTER COLUMN tipo SET DEFAULT 9999;
 
 
-ALTER TABLE edgv.llp_localidade_p ADD COLUMN populacao REAL;
+CREATE TABLE edgv.edicao_simb_torre_energia_p(
+	 id serial NOT NULL,
+	 simb_rot REAL,
+	 geom geometry(MultiPoint, 31982),
+	 CONSTRAINT edicao_simb_torre_energia_p_pk PRIMARY KEY (id)
+	 WITH (FILLFACTOR = 80)
+);
+CREATE INDEX edicao_simb_torre_energia_p_geom ON edgv.edicao_simb_torre_energia_p USING gist (geom);
+
+ALTER TABLE edgv.edicao_simb_torre_energia_p OWNER TO postgres;
+
+
+
+ALTER TABLE edgv.elemento_viario_p ADD COLUMN largura_simbologia REAL NOT NULL DEFAULT 1;
+ALTER TABLE edgv.elemnat_ponto_cotado_p ADD COLUMN cota_mais_alta BOOLEAN NOT NULL DEFAULT FALSE;
+
 
 DO $$DECLARE r record;
 BEGIN
