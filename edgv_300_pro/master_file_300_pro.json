@@ -4098,60 +4098,7 @@
           "tipo": "smallint",
           "descricao": "Indica o tipo de vegetação",
           "cardinalidade": "1..1",
-          "mapa_valor": "tipo_veg",
-          "valores": [
-            {
-              "code": 301
-            },
-            {
-              "code": 302
-            },
-            {
-              "code": 201
-            },
-            {
-              "code": 202
-            },
-            {
-              "code": 801
-            },
-            {
-              "code": 501
-            },
-            {
-              "code": 701
-            },
-            {
-              "code": 702
-            },
-            {
-              "code": 401
-            },
-            {
-              "code": 901
-            },
-            {
-              "code": 902
-            },
-            {
-              "code": 601
-            },
-            {
-              "code": 194
-            },
-            {
-              "code": 196
-            },
-            {
-              "code": 150
-            },
-            {
-              "code": 1296
-            },
-            {
-              "code": 1000
-            }
-          ]
+          "mapa_valor": "tipo_veg"
         }
       ]
     },
@@ -7498,60 +7445,7 @@
           "tipo": "smallint",
           "descricao": "Indica o tipo de vegetação",
           "cardinalidade": "1..1",
-          "mapa_valor": "tipo_veg",
-          "valores": [
-            {
-              "code": 301
-            },
-            {
-              "code": 302
-            },
-            {
-              "code": 201
-            },
-            {
-              "code": 202
-            },
-            {
-              "code": 801
-            },
-            {
-              "code": 501
-            },
-            {
-              "code": 701
-            },
-            {
-              "code": 702
-            },
-            {
-              "code": 401
-            },
-            {
-              "code": 901
-            },
-            {
-              "code": 902
-            },
-            {
-              "code": 601
-            },
-            {
-              "code": 194
-            },
-            {
-              "code": 196
-            },
-            {
-              "code": 150
-            },
-            {
-              "code": 1296
-            },
-            {
-              "code": 1000
-            }
-          ]
+          "mapa_valor": "tipo_veg"
         },
         {
           "nome": "sujeito_inundacao",
