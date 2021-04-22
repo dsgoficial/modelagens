@@ -3129,66 +3129,6 @@
       ]
     },
     {
-      "nome": "tipo_linha_limites",
-      "valores": [
-        {
-          "code": 2,
-          "value": "Contorno massa dágua",
-          "descricao": "-"
-        },
-        {
-          "code": 3,
-          "value": "Cumeada",
-          "descricao": "-"
-        },
-        {
-          "code": 4,
-          "value": "Linha seca",
-          "descricao": "-"
-        },
-        {
-          "code": 5,
-          "value": "Costa visível da carta",
-          "descricao": "-"
-        },
-        {
-          "code": 6,
-          "value": "Rodovia",
-          "descricao": "-"
-        },
-        {
-          "code": 7,
-          "value": "Ferrovia",
-          "descricao": "-"
-        },
-        {
-          "code": 8,
-          "value": "Trecho de drenagem",
-          "descricao": "-"
-        },
-        {
-          "code": 9,
-          "value": "Massa dágua largura menor/igual 2mm",
-          "descricao": "-"
-        },
-        {
-          "code": 10,
-          "value": "Massa dágua largura maior 2mm",
-          "descricao": "-"
-        },
-        {
-          "code": 96,
-          "value": "Não identificado",
-          "descricao": "-"
-        },
-        {
-          "code": 97,
-          "value": "Não aplicável",
-          "descricao": "-"
-        }
-      ]
-    },
-    {
       "nome": "tipo_localidade",
       "valores": [
         {
@@ -4770,9 +4710,10 @@
         },
         {
           "nome": "em_via_deslocamento",
-          "tipo": "boolean",
+          "tipo": "smallint",
           "descricao": "-",
-          "cardinalidade": "1..1"
+          "cardinalidade": "1..1",
+          "mapa_valor": "booleano"
         }
       ]
     },
@@ -6158,13 +6099,6 @@
           ]
         },
         {
-          "nome": "tipo_delimitacao",
-          "tipo": "smallint",
-          "descricao": "-",
-          "cardinalidade": "1..1",
-          "mapa_valor": "tipo_linha_limites"
-        },
-        {
           "nome": "geometria_aproximada",
           "tipo": "smallint",
           "descricao": "-",
@@ -6234,13 +6168,6 @@
               "primitivas": ["MultiPolygon"]
             }
           ]
-        },
-        {
-          "nome": "tipo_delimitacao",
-          "tipo": "smallint",
-          "descricao": "-",
-          "cardinalidade": "1..1",
-          "mapa_valor": "tipo_linha_limites"
         },
         {
           "nome": "geometria_aproximada",
@@ -7339,9 +7266,10 @@
         },
         {
           "nome": "corrigido",
-          "tipo": "boolean",
+          "tipo": "smallint",
           "descricao": "-",
-          "cardinalidade": "1..1"
+          "cardinalidade": "1..1",
+          "mapa_valor": "booleano"
         },
         {
           "nome": "justificativa",
