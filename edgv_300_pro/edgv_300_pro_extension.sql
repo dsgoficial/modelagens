@@ -11,14 +11,9 @@ $BODY$
 	END IF;
 
 	IF TG_OP = 'UPDATE' THEN
-		IF NEW.data_modificacao = OLD.data_modificacao THEN
 			NEW.usuario_atualizacao = current_user;
 			NEW.data_modificacao = current_timestamp;
 			RETURN NEW;
-		END IF;
-		IF NEW.data_modificacao != OLD.data_modificacao THEN
-			RAISE EXCEPTION 'Feição desatualizada';
-		END IF;
 	END IF;
 
 	IF TG_OP = 'DELETE' THEN
