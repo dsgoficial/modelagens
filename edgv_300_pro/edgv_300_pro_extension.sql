@@ -14,7 +14,7 @@ $BODY$
 		NEW.usuario_atualizacao = current_user;
 		RETURN NEW;
 	ELSE
-		RAISE WARNING 'Feição desatualizada';
+		RAISE WARNING 'Feição desatualizada:%', TG_TABLE_SCHEMA::text || '.' || TG_TABLE_NAME::text || '-' || NEW.id;
 		RETURN OLD;
 	END IF;
 	END IF;
