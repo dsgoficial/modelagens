@@ -10,7 +10,7 @@ $BODY$
 	END IF;
 
 	IF TG_OP = 'UPDATE' THEN
-	IF NEW.data_modificacao::timestamp  > OLD.data_modificacao::timestamp OR OLD.data_modificacao IS NULL THEN
+	IF NEW.data_modificacao::timestamp  >= OLD.data_modificacao::timestamp OR OLD.data_modificacao IS NULL THEN
 		NEW.usuario_atualizacao = current_user;
 		RETURN NEW;
 	ELSE
