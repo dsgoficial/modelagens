@@ -6,17 +6,23 @@ $BODY$
 	IF TG_OP = 'INSERT' THEN
 		NEW.usuario_criacao = current_user;
 		NEW.usuario_atualizacao = '';
+		IF NEW.data_modificacao IS NULL THEN
+			NEW.data_modificacao = current_timestamp;
+		END IF;
 		RETURN NEW;
 	END IF;
 
 	IF TG_OP = 'UPDATE' THEN
-	IF NEW.data_modificacao::timestamp  >= OLD.data_modificacao::timestamp OR OLD.data_modificacao IS NULL THEN
-		NEW.usuario_atualizacao = current_user;
-		RETURN NEW;
-	ELSE
-		RAISE WARNING 'Feição desatualizada:%', TG_TABLE_SCHEMA::text || '.' || TG_TABLE_NAME::text || '-' || NEW.id;
-		RETURN OLD;
-	END IF;
+		IF NEW.data_modificacao IS NULL THEN
+				NEW.data_modificacao = current_timestamp;
+		END IF;
+		IF OLD.data_modificacao IS NULL OR NEW.data_modificacao::timestamp  >= OLD.data_modificacao::timestamp THEN
+			NEW.usuario_atualizacao = current_user;
+			RETURN NEW;
+		ELSE
+			RAISE WARNING 'Feição desatualizada:%', TG_TABLE_SCHEMA::text || '.' || TG_TABLE_NAME::text || '-' || NEW.id;
+			RETURN OLD;
+		END IF;
 	END IF;
 
 	IF TG_OP = 'DELETE' THEN
