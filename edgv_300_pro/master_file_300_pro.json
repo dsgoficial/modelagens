@@ -206,17 +206,17 @@
         },
         {
           "code": 2,
-          "value": "Trecho principal",
+          "value": "Dentro de polígono - Trecho principal",
           "descricao": "-"
         },
         {
           "code": 3,
-          "value": "Trecho secundário",
+          "value": "Dentro de polígono - Trecho secundário",
           "descricao": "-"
         },
         {
           "code": 4,
-          "value": "Trecho compartilhado",
+          "value": "Dentro de polígono - Trecho compartilhado",
           "descricao": "-"
         }
       ]
