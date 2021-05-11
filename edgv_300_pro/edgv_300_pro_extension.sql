@@ -117,6 +117,7 @@ CREATE TABLE public.layer_styles
   owner character varying(30),
   ui text,
   update_time timestamp without time zone DEFAULT now(),
+  type character varying,
   CONSTRAINT unique_styles UNIQUE (f_table_schema,f_table_name,stylename)
 )
 WITH (
