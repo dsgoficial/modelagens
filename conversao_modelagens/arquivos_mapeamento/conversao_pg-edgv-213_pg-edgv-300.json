@@ -3652,6 +3652,32 @@
                 }
             ]
         },
+        {            "__comment": "enc_hidreletrica <-> enc_hidreletrica",
+            "classe_ida": "enc_hidreletrica",
+            "classe_volta": "enc_hidreletrica",
+            "atributos_default_ida": [
+                {
+                    "nome_atributo": "tipoestgerad",
+                    "valor": 8
+                },
+                {
+                    "nome_atributo": "tipoahe",
+                    "valor": 9999
+                }
+            ],
+            "atributos_default_volta": [
+                {
+                    "nome_atributo": "destenergelet",
+                    "valor": 0
+                }
+            ],
+            "mapeamento_atributos": [
+                {   
+                    "attr_ida": "potenciaoutorgada",
+                    "attr_volta": "potenciaout"
+                }
+            ]
+        },
         {            "__comment": "hid_ilha <-> hid_ilha",
             "classe_ida": "hid_ilha",
             "classe_volta": "hid_ilha",
