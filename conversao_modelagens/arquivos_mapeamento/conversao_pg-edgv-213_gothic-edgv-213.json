@@ -956,7 +956,14 @@
     },
     {"__comment":"enc_termeletrica <-> Termeletrica",
       "classe_ida": "enc_termeletrica",
-      "classe_volta": "Termeletrica"
+      "classe_volta": "Termeletrica",
+      "atributos_default_volta": [
+        {
+          "nome_atributo": "destenergelet",
+          "valor": 0
+        }    
+      ]
+      
     },
     {"__comment":"enc_torre_comunic <-> Torre_Comunic",
       "classe_ida": "enc_torre_comunic",
