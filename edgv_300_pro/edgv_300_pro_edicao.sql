@@ -1,3 +1,20 @@
+CREATE TABLE edgv.edicao_borda_elemento_hidrografico_l(
+	 id serial NOT NULL,
+	 tipo smallint NOT NULL,
+	 carta_mini boolean not null DEFAULT FALSE,
+	 geom geometry(MultiLineString, 31982),
+	 CONSTRAINT edicao_borda_elemento_hidrografico_l_pk PRIMARY KEY (id)
+	 WITH (FILLFACTOR = 80)
+);
+CREATE INDEX edicao_borda_elemento_hidrografico_l_geom ON edgv.edicao_borda_elemento_hidrografico_l USING gist (geom);
+
+ALTER TABLE edgv.edicao_borda_elemento_hidrografico_l OWNER TO postgres;
+
+ALTER TABLE edgv.edicao_borda_elemento_hidrografico_l
+	 ADD CONSTRAINT edicao_borda_elemento_hidrografico_l_tipo_fk FOREIGN KEY (tipo)
+	 REFERENCES dominios.tipo_elemento_hidrografico (code) MATCH FULL
+	 ON UPDATE NO ACTION ON DELETE NO ACTION;
+
 CREATE TABLE edgv.edicao_simb_hidrografia_l(
 	 id serial NOT NULL,
 	 texto varchar(255) not null,
@@ -17,6 +34,7 @@ CREATE TABLE edgv.edicao_texto_generico_p(
 	 texto varchar(255) not null,
      tamanho_txt real not null default 6,
 	 cor varchar(255) not null DEFAULT '0,0,0',
+	 justificativa_txt VARCHAR(255),
 	 caixa_alta boolean not null DEFAULT FALSE,
 	 italico boolean not null DEFAULT FALSE,
 	 negrito boolean not null DEFAULT FALSE,
@@ -54,6 +72,7 @@ ALTER TABLE edgv.edicao_simb_vegetacao_p OWNER TO postgres;
 
 CREATE TABLE edgv.edicao_direcao_corrente_p(
 	 id serial NOT NULL,
+	 simb_rot REAL,
 	 geom geometry(MultiPoint, 31982),
 	 CONSTRAINT edicao_direcao_corrente_p_pk PRIMARY KEY (id)
 	 WITH (FILLFACTOR = 80)
@@ -151,7 +170,7 @@ BEGIN
 	END IF;
 
 	IF r.f_table_schema = 'edgv' AND r.f_table_name not like 'edicao_%' AND r.type = 'MULTIPOINT' THEN
-		EXECUTE 'ALTER TABLE edgv.' || quote_ident(r.f_table_name) || ' ADD COLUMN label_x REAL, ADD COLUMN label_y REAL, ADD COLUMN justificativa_txt VARCHAR(255), ADD COLUMN simb_x REAL, ADD COLUMN simb_y REAL, ADD COLUMN simb_rot REAL';
+		EXECUTE 'ALTER TABLE edgv.' || quote_ident(r.f_table_name) || ' ADD COLUMN label_x REAL, ADD COLUMN label_y REAL, ADD COLUMN justificativa_txt VARCHAR(255), ADD COLUMN simb_rot REAL';
 	END IF;
     END LOOP;
 END$$;
