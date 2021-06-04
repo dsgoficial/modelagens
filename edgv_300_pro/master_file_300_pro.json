@@ -1480,6 +1480,12 @@
           "valor_filtro": "Edificação industrial"
         },
         {
+          "code": 1046,
+          "value": "Ind - Chaminé",
+          "descricao": "-",
+          "valor_filtro": "Edificação industrial"
+        },
+        {
           "code": 1098,
           "value": "Ind - Outros",
           "descricao": "-",

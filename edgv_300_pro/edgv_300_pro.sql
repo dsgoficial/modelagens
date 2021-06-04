@@ -513,6 +513,7 @@ INSERT INTO dominios.tipo_edificacao (code,code_name, filter) VALUES (1035,'Ind 
 INSERT INTO dominios.tipo_edificacao (code,code_name, filter) VALUES (1036,'Ind - Fabricação de móveis e indústrias diversas (1036)','Edificação industrial');
 INSERT INTO dominios.tipo_edificacao (code,code_name, filter) VALUES (1037,'Ind - Indústria reciclagem (1037)','Edificação industrial');
 INSERT INTO dominios.tipo_edificacao (code,code_name, filter) VALUES (1045,'Ind - Indústria de construção (1045)','Edificação industrial');
+INSERT INTO dominios.tipo_edificacao (code,code_name, filter) VALUES (1046,'Ind - Chaminé (1046)','Edificação industrial');
 INSERT INTO dominios.tipo_edificacao (code,code_name, filter) VALUES (1098,'Ind - Outros (1098)','Edificação industrial');
 INSERT INTO dominios.tipo_edificacao (code,code_name, filter) VALUES (1110,'Ext Min - Extração de carvão mineral (1110)','Edificação de extração mineral');
 INSERT INTO dominios.tipo_edificacao (code,code_name, filter) VALUES (1111,'Ext Min - Extração de petróleo e serviços relacionados (1111)','Edificação de extração mineral');
