@@ -136,6 +136,8 @@ ALTER TABLE edgv.edicao_simb_torre_energia_p OWNER TO postgres;
 
 
 ALTER TABLE edgv.infra_elemento_viario_p ADD COLUMN largura_simbologia REAL NOT NULL DEFAULT 1;
+ALTER TABLE edgv.infra_elemento_viario_l ADD COLUMN largura_simbologia REAL NOT NULL DEFAULT 1;
+
 ALTER TABLE edgv.elemnat_ponto_cotado_p ADD COLUMN cota_mais_alta BOOLEAN NOT NULL DEFAULT FALSE;
 
 
