@@ -21,13 +21,16 @@ class MasterGen():
             # TODO Validate JSON file against JsonSchema
             pass
 
-    def buildSQL(self, dest, atributos_padrao=False, extension_classes=False, owner='postgres'):
+    def buildSQL(self, dest, atributos_padrao=False, extension_classes=False, uuid = False, owner='postgres'):
         master = self.master
         sql = []
         sql.append(u"CREATE SCHEMA {0};".format(master["schema_dados"]))
         sql.append(u"CREATE SCHEMA {0};".format(master["schema_dominios"]))
         sql.append(u"")
         sql.append(u"CREATE EXTENSION postgis;")
+        if uuid:
+            sql.append(u"CREATE EXTENSION IF NOT EXISTS \"uuid-ossp\";")
+
         sql.append(u"SET search_path TO pg_catalog,public,{0},{1};".format(
             master["schema_dados"], master["schema_dominios"]))
         sql.append(u"")
@@ -102,8 +105,13 @@ class MasterGen():
 
                 sql.append(u"CREATE TABLE {0}.{1}(".format(
                     master["schema_dados"], class_name))
-                sql.append(u"\t {0} serial NOT NULL,".format(
-                    master["nome_id"]))
+
+                if not uuid:
+                    sql.append(u"\t {0} serial NOT NULL,".format(
+                        master["nome_id"]))
+                else:
+                    sql.append(u"\t {0} uuid NOT NULL DEFAULT uuid_generate_v4(),".format(
+                        master["nome_id"]))
 
                 for atributo in classe["atributos"]:
                     if atributo["cardinalidade"] == "0..1":
