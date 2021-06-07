@@ -33,6 +33,7 @@ CREATE TABLE edgv.edicao_texto_generico_p(
 	 id serial NOT NULL,
 	 texto varchar(255) not null,
      tamanho_txt real not null default 6,
+	 espacamento real not null default 0,
 	 cor varchar(255) not null DEFAULT '0,0,0',
 	 justificativa_txt VARCHAR(255),
 	 caixa_alta boolean not null DEFAULT FALSE,
@@ -46,6 +47,25 @@ CREATE TABLE edgv.edicao_texto_generico_p(
 CREATE INDEX edicao_texto_generico_p_geom ON edgv.edicao_texto_generico_p USING gist (geom);
 
 ALTER TABLE edgv.edicao_texto_generico_p OWNER TO postgres;
+
+CREATE TABLE edgv.edicao_texto_generico_l(
+	 id serial NOT NULL,
+	 texto varchar(255) not null,
+     tamanho_txt real not null default 6,
+	 espacamento real not null default 0,
+	 cor varchar(255) not null DEFAULT '0,0,0',
+	 caixa_alta boolean not null DEFAULT FALSE,
+	 italico boolean not null DEFAULT FALSE,
+	 negrito boolean not null DEFAULT FALSE,
+	 carta_mini boolean not null DEFAULT FALSE,
+	 geom geometry(MultiLineString, 31982),
+	 CONSTRAINT edicao_texto_generico_l_pk PRIMARY KEY (id)
+	 WITH (FILLFACTOR = 80)
+);
+CREATE INDEX edicao_texto_generico_l_geom ON edgv.edicao_texto_generico_l USING gist (geom);
+
+ALTER TABLE edgv.edicao_texto_generico_l OWNER TO postgres;
+
 
 CREATE TABLE edgv.edicao_identificador_trecho_rod_p(
 	 id serial NOT NULL,
@@ -157,6 +177,12 @@ ALTER TABLE edgv.edicao_simb_torre_energia_p OWNER TO postgres;
 ALTER TABLE edgv.infra_elemento_viario_p ADD COLUMN largura_simbologia REAL NOT NULL DEFAULT 1;
 ALTER TABLE edgv.infra_elemento_viario_l ADD COLUMN largura_simbologia REAL NOT NULL DEFAULT 1;
 ALTER TABLE edgv.infra_barragem_l ADD COLUMN largura_simbologia REAL NOT NULL DEFAULT 1;
+
+
+ALTER TABLE edgv.elemnat_toponimo_fisiografico_natural_l ADD COLUMN tamanho_txt REAL NOT NULL DEFAULT 6;
+ALTER TABLE edgv.elemnat_toponimo_fisiografico_natural_l ADD COLUMN espacamento REAL NOT NULL DEFAULT 0;
+
+
 
 ALTER TABLE edgv.elemnat_ponto_cotado_p ADD COLUMN cota_mais_alta BOOLEAN NOT NULL DEFAULT FALSE;
 
