@@ -6802,7 +6802,19 @@
           "nome": "nome",
           "tipo": "varchar(255)",
           "descricao": "-",
-          "cardinalidade": "1..1"
+          "cardinalidade": "0..1"
+        },
+        {
+          "nome": "mi",
+          "tipo": "varchar(255)",
+          "descricao": "-",
+          "cardinalidade": "0..1"
+        },
+        {
+          "nome": "inom",
+          "tipo": "varchar(255)",
+          "descricao": "-",
+          "cardinalidade": "0..1"
         }
       ]
     },

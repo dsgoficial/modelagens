@@ -3674,7 +3674,9 @@ ALTER TABLE edgv.aux_insumo_externo_p OWNER TO postgres;
 
 CREATE TABLE edgv.aux_moldura_a(
 	 id serial NOT NULL,
-	 nome varchar(255) NOT NULL,
+	 nome varchar(255),
+	 mi varchar(255),
+	 inom varchar(255),
 	 observacao VARCHAR(255),
 	 data_modificacao timestamp with time zone,
 	 controle_uuid VARCHAR(255),
