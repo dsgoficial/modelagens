@@ -70,12 +70,23 @@ ALTER TABLE edgv.edicao_texto_generico_l OWNER TO postgres;
 CREATE TABLE edgv.edicao_identificador_trecho_rod_p(
 	 id serial NOT NULL,
 	 sigla varchar(255) not null,
+	 jurisdicao smallint NOT NULL,
 	 geom geometry(MultiPoint, 31982),
 	 carta_mini boolean not null DEFAULT FALSE,
 	 CONSTRAINT edicao_identificador_trecho_rod_p_pk PRIMARY KEY (id)
 	 WITH (FILLFACTOR = 80)
 );
 CREATE INDEX edicao_identificador_trecho_rod_p_geom ON edgv.edicao_identificador_trecho_rod_p USING gist (geom);
+
+ALTER TABLE edgv.edicao_identificador_trecho_rod_p
+	 ADD CONSTRAINT edicao_identificador_trecho_rod_p_jurisdicao_fk FOREIGN KEY (jurisdicao)
+	 REFERENCES dominios.jurisdicao (code) MATCH FULL
+	 ON UPDATE NO ACTION ON DELETE NO ACTION;
+
+ALTER TABLE edgv.edicao_identificador_trecho_rod_p
+	 ADD CONSTRAINT edicao_identificador_trecho_rod_p_jurisdicao_check 
+	 CHECK (jurisdicao = ANY(ARRAY[1 :: SMALLINT, 2 :: SMALLINT, 9999 :: SMALLINT])); 
+ALTER TABLE edgv.edicao_identificador_trecho_rod_p ALTER COLUMN jurisdicao SET DEFAULT 9999;
 
 ALTER TABLE edgv.edicao_identificador_trecho_rod_p OWNER TO postgres;
 
@@ -182,6 +193,7 @@ ALTER TABLE edgv.infra_barragem_l ADD COLUMN largura_simbologia REAL NOT NULL DE
 ALTER TABLE edgv.elemnat_toponimo_fisiografico_natural_l ADD COLUMN tamanho_txt REAL NOT NULL DEFAULT 6;
 ALTER TABLE edgv.elemnat_toponimo_fisiografico_natural_l ADD COLUMN espacamento REAL NOT NULL DEFAULT 0;
 
+ALTER TABLE edgv.elemnat_ilha_a ADD COLUMN tamanho_txt REAL NOT NULL DEFAULT 6;
 
 
 ALTER TABLE edgv.elemnat_ponto_cotado_p ADD COLUMN cota_mais_alta BOOLEAN NOT NULL DEFAULT FALSE;
@@ -192,11 +204,11 @@ BEGIN
 	FOR r in select f_table_schema, f_table_name, type from public.geometry_columns
     LOOP 
 	IF r.f_table_schema = 'edgv' AND r.f_table_name not like 'edicao_%' THEN
-		EXECUTE 'ALTER TABLE edgv.' || quote_ident(r.f_table_name) || ' ADD COLUMN visivel BOOLEAN NOT NULL DEFAULT TRUE, ADD COLUMN texto_edicao VARCHAR(255), ADD COLUMN carta_mini boolean not null DEFAULT FALSE';
+		EXECUTE 'ALTER TABLE edgv.' || quote_ident(r.f_table_name) || ' ADD COLUMN visivel BOOLEAN NOT NULL DEFAULT TRUE, ADD COLUMN texto_edicao VARCHAR(255), ADD COLUMN carta_mini boolean not null DEFAULT FALSE, ADD COLUMN label_x REAL, ADD COLUMN label_y REAL, ADD COLUMN justificativa_txt VARCHAR(255)';
 	END IF;
 
 	IF r.f_table_schema = 'edgv' AND r.f_table_name not like 'edicao_%' AND r.type = 'MULTIPOINT' THEN
-		EXECUTE 'ALTER TABLE edgv.' || quote_ident(r.f_table_name) || ' ADD COLUMN label_x REAL, ADD COLUMN label_y REAL, ADD COLUMN justificativa_txt VARCHAR(255), ADD COLUMN simb_rot REAL';
+		EXECUTE 'ALTER TABLE edgv.' || quote_ident(r.f_table_name) || ' ADD COLUMN simb_rot REAL';
 	END IF;
     END LOOP;
 END$$;
