@@ -18,16 +18,35 @@ ALTER TABLE edgv.edicao_borda_elemento_hidrografico_l
 CREATE TABLE edgv.edicao_simb_hidrografia_l(
 	 id serial NOT NULL,
 	 texto varchar(255) not null,
-     massa_dagua boolean not null DEFAULT FALSE,
-     parte integer,
+	 classe varchar(255) not null,
+	 tamanho real not null,
+	 escala integer not null,
 	 carta_mini boolean not null DEFAULT FALSE,
-	 geom geometry(MultiLineString, 31982),
+	 geom geometry(MultiLineString, 31974),
 	 CONSTRAINT edicao_simb_hidrografia_l_pk PRIMARY KEY (id)
 	 WITH (FILLFACTOR = 80)
 );
 CREATE INDEX edicao_simb_hidrografia_l_geom ON edgv.edicao_simb_hidrografia_l USING gist (geom);
 
 ALTER TABLE edgv.edicao_simb_hidrografia_l OWNER TO postgres;
+
+CREATE TABLE edgv.edicao_simb_hidrografia_p(
+	 id serial NOT NULL,
+	 texto varchar(255) not null,
+	 espacamento real not null default 0,
+	 classe varchar(255) not null,
+	 tamanho real not null,
+	 escala integer not null,
+	 carta_mini boolean not null DEFAULT FALSE,
+	 geom geometry(MultiPoint, 31974),
+	 CONSTRAINT edicao_simb_hidrografia_p_pk PRIMARY KEY (id)
+	 WITH (FILLFACTOR = 80)
+);
+CREATE INDEX edicao_simb_hidrografia_p_geom ON edgv.edicao_simb_hidrografia_p USING gist (geom);
+
+ALTER TABLE edgv.edicao_simb_hidrografia_p OWNER TO postgres;
+
+
 
 CREATE TABLE edgv.edicao_texto_generico_p(
 	 id serial NOT NULL,
@@ -194,6 +213,7 @@ ALTER TABLE edgv.elemnat_toponimo_fisiografico_natural_l ADD COLUMN tamanho_txt 
 ALTER TABLE edgv.elemnat_toponimo_fisiografico_natural_l ADD COLUMN espacamento REAL NOT NULL DEFAULT 0;
 
 ALTER TABLE edgv.elemnat_ilha_a ADD COLUMN tamanho_txt REAL NOT NULL DEFAULT 6;
+ALTER TABLE edgv.llp_localidade_p ADD COLUMN tamanho_txt REAL NOT NULL DEFAULT 6;
 
 
 ALTER TABLE edgv.elemnat_ponto_cotado_p ADD COLUMN cota_mais_alta BOOLEAN NOT NULL DEFAULT FALSE;
