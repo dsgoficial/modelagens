@@ -1,6 +1,7 @@
 edicao_identificador_trecho_rod_p
 edicao_texto_generico_p
 edicao_simb_hidrografia_l
+edicao_simb_hidrografia_p
 llp_localidade_p
 elemnat_toponimo_fisiografico_natural_p
 elemnat_toponimo_fisiografico_natural_l
