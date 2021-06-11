@@ -208,9 +208,10 @@ ALTER TABLE edgv.infra_elemento_viario_p ADD COLUMN largura_simbologia REAL NOT 
 ALTER TABLE edgv.infra_elemento_viario_l ADD COLUMN largura_simbologia REAL NOT NULL DEFAULT 1;
 ALTER TABLE edgv.infra_barragem_l ADD COLUMN largura_simbologia REAL NOT NULL DEFAULT 1;
 
-
+ALTER TABLE edgv.elemnat_toponimo_fisiografico_natural_p ADD COLUMN tamanho_txt REAL NOT NULL DEFAULT 6;
 ALTER TABLE edgv.elemnat_toponimo_fisiografico_natural_l ADD COLUMN tamanho_txt REAL NOT NULL DEFAULT 6;
 ALTER TABLE edgv.elemnat_toponimo_fisiografico_natural_l ADD COLUMN espacamento REAL NOT NULL DEFAULT 0;
+
 
 ALTER TABLE edgv.elemnat_ilha_a ADD COLUMN tamanho_txt REAL NOT NULL DEFAULT 6;
 ALTER TABLE edgv.llp_localidade_p ADD COLUMN tamanho_txt REAL NOT NULL DEFAULT 6;
