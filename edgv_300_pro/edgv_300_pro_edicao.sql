@@ -1,7 +1,6 @@
 CREATE TABLE edgv.edicao_borda_elemento_hidrografico_l(
 	 id serial NOT NULL,
 	 tipo smallint NOT NULL,
-	 carta_mini boolean not null DEFAULT FALSE,
 	 geom geometry(MultiLineString, 31982),
 	 CONSTRAINT edicao_borda_elemento_hidrografico_l_pk PRIMARY KEY (id)
 	 WITH (FILLFACTOR = 80)
@@ -47,17 +46,14 @@ CREATE INDEX edicao_simb_hidrografia_p_geom ON edgv.edicao_simb_hidrografia_p US
 ALTER TABLE edgv.edicao_simb_hidrografia_p OWNER TO postgres;
 
 
-
 CREATE TABLE edgv.edicao_texto_generico_p(
 	 id serial NOT NULL,
 	 texto varchar(255) not null,
+	 estilo_fonte varchar(255),
      tamanho_txt real not null default 6,
 	 espacamento real not null default 0,
 	 cor varchar(255) not null DEFAULT '0,0,0',
 	 justificativa_txt VARCHAR(255),
-	 caixa_alta boolean not null DEFAULT FALSE,
-	 italico boolean not null DEFAULT FALSE,
-	 negrito boolean not null DEFAULT FALSE,
 	 carta_mini boolean not null DEFAULT FALSE,
 	 geom geometry(MultiPoint, 31982),
 	 CONSTRAINT edicao_texto_generico_p_pk PRIMARY KEY (id)
@@ -70,12 +66,10 @@ ALTER TABLE edgv.edicao_texto_generico_p OWNER TO postgres;
 CREATE TABLE edgv.edicao_texto_generico_l(
 	 id serial NOT NULL,
 	 texto varchar(255) not null,
+	 estilo_fonte varchar(255),
      tamanho_txt real not null default 6,
 	 espacamento real not null default 0,
 	 cor varchar(255) not null DEFAULT '0,0,0',
-	 caixa_alta boolean not null DEFAULT FALSE,
-	 italico boolean not null DEFAULT FALSE,
-	 negrito boolean not null DEFAULT FALSE,
 	 carta_mini boolean not null DEFAULT FALSE,
 	 geom geometry(MultiLineString, 31982),
 	 CONSTRAINT edicao_texto_generico_l_pk PRIMARY KEY (id)
@@ -227,7 +221,7 @@ BEGIN
 	FOR r in select f_table_schema, f_table_name, type from public.geometry_columns
     LOOP 
 	IF r.f_table_schema = 'edgv' AND r.f_table_name not like 'edicao_%' THEN
-		EXECUTE 'ALTER TABLE edgv.' || quote_ident(r.f_table_name) || ' ADD COLUMN visivel BOOLEAN NOT NULL DEFAULT TRUE, ADD COLUMN texto_edicao VARCHAR(255), ADD COLUMN carta_mini boolean not null DEFAULT FALSE, ADD COLUMN label_x REAL, ADD COLUMN label_y REAL, ADD COLUMN justificativa_txt VARCHAR(255)';
+		EXECUTE 'ALTER TABLE edgv.' || quote_ident(r.f_table_name) || ' ADD COLUMN visivel BOOLEAN NOT NULL DEFAULT TRUE, ADD COLUMN texto_edicao VARCHAR(255), ADD COLUMN label_x REAL, ADD COLUMN label_y REAL, ADD COLUMN justificativa_txt VARCHAR(255)';
 	END IF;
 
 	IF r.f_table_schema = 'edgv' AND r.f_table_name not like 'edicao_%' AND r.type = 'MULTIPOINT' THEN
