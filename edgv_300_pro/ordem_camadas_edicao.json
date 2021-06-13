@@ -7,6 +7,7 @@
         "edicao_simb_vegetacao_p",
         "edicao_simbolo_area_p",
         "edicao_texto_generico_p",
+        "edicao_texto_generico_l",
         "edicao_simb_hidrografia_l",
         "edicao_simb_hidrografia_p",
         "llp_localidade_p",
@@ -68,17 +69,12 @@
     "carta_mini": [
         "edicao_identificador_trecho_rod_p",
         "edicao_texto_generico_p",
+        "edicao_texto_generico_l",
         "edicao_simb_hidrografia_l",
         "edicao_simb_hidrografia_p",
-        "llp_localidade_p",
-        "elemnat_toponimo_fisiografico_natural_p",
-        "elemnat_toponimo_fisiografico_natural_l",
-        "elemnat_ilha_p",
-        "elemnat_ilha_a",
         "llp_limite_especial_l",
         "llp_limite_legal_l",
-        "llp_limite_especial_a",
-        "llp_limite_legal_a",
+        "infra_trecho_hidroviario_l",
         "infra_ferrovia_l",
         "infra_via_deslocamento_l",
         "infra_vala_l",
@@ -88,4 +84,5 @@
         "cobter_massa_dagua_a",
         "cobter_vegetacao_a"
     ]
-}
+    
+
