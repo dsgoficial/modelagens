@@ -209,6 +209,10 @@ ALTER TABLE edgv.elemnat_toponimo_fisiografico_natural_l ADD COLUMN espacamento 
 ALTER TABLE edgv.llp_limite_especial_a ADD COLUMN tamanho_txt REAL NOT NULL DEFAULT 6;
 
 
+ALTER TABLE edgv.infra_via_deslocamento_l ADD COLUMN carta_mini boolean not null DEFAULT FALSE;
+	 
+
+
 ALTER TABLE edgv.elemnat_ilha_a ADD COLUMN tamanho_txt REAL NOT NULL DEFAULT 6;
 ALTER TABLE edgv.llp_localidade_p ADD COLUMN tamanho_txt REAL NOT NULL DEFAULT 6;
 
