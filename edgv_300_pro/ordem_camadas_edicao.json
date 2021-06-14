@@ -245,6 +245,10 @@
             "schema": "edgv"
         },
         {
+            "tabela": "edicao_borda_elemento_hidrografico_l",
+            "schema": "edgv"
+        },
+        {
             "tabela": "elemnat_terreno_sujeito_inundacao_a",
             "schema": "edgv"
         },
