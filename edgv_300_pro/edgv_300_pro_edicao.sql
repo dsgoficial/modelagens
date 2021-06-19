@@ -169,6 +169,7 @@ ALTER TABLE dominios.administracao OWNER TO postgres;
 CREATE TABLE edgv.edicao_simbolo_area_p(
 	 id serial NOT NULL,
 	 tipo smallint NOT NULL,
+	 simb_rot REAL,
 	 geom geometry(MultiPoint, 31982),
 	 CONSTRAINT edicao_simbolo_area_p_pk PRIMARY KEY (id)
 	 WITH (FILLFACTOR = 80)
