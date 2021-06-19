@@ -212,6 +212,7 @@ ALTER TABLE edgv.llp_limite_especial_a ADD COLUMN tamanho_txt REAL NOT NULL DEFA
 
 ALTER TABLE edgv.infra_via_deslocamento_l ADD COLUMN carta_mini boolean not null DEFAULT FALSE;
 	 
+ALTER TABLE edgv.constr_edificacao_p ADD COLUMN leader_line boolean not null DEFAULT FALSE;
 
 
 ALTER TABLE edgv.elemnat_ilha_a ADD COLUMN escala integer;
