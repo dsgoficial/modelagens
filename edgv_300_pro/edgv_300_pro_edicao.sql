@@ -16,7 +16,7 @@ ALTER TABLE edgv.edicao_borda_elemento_hidrografico_l
 
 CREATE TABLE edgv.edicao_simb_hidrografia_l(
 	 id serial NOT NULL,
-	 texto varchar(255) not null,
+	 texto_edicao varchar(255) not null,
 	 classe varchar(255) not null,
 	 tamanho real not null,
 	 escala integer not null,
@@ -31,7 +31,7 @@ ALTER TABLE edgv.edicao_simb_hidrografia_l OWNER TO postgres;
 
 CREATE TABLE edgv.edicao_simb_hidrografia_p(
 	 id serial NOT NULL,
-	 texto varchar(255) not null,
+	 texto_edicao varchar(255) not null,
 	 espacamento real not null default 0,
 	 classe varchar(255) not null,
 	 tamanho real not null,
@@ -48,11 +48,11 @@ ALTER TABLE edgv.edicao_simb_hidrografia_p OWNER TO postgres;
 
 CREATE TABLE edgv.edicao_texto_generico_p(
 	 id serial NOT NULL,
-	 texto varchar(255) not null,
+	 texto_edicao varchar(255) not null,
 	 estilo_fonte varchar(255),
      tamanho_txt real not null default 6,
 	 espacamento real not null default 0,
-	 cor varchar(255) not null DEFAULT '0,0,0',
+	 cor varchar(255) not null DEFAULT '#000000',
 	 justificativa_txt VARCHAR(255),
 	 carta_mini boolean not null DEFAULT FALSE,
 	 geom geometry(MultiPoint, 31982),
@@ -65,11 +65,11 @@ ALTER TABLE edgv.edicao_texto_generico_p OWNER TO postgres;
 
 CREATE TABLE edgv.edicao_texto_generico_l(
 	 id serial NOT NULL,
-	 texto varchar(255) not null,
+	 texto_edicao varchar(255) not null,
 	 estilo_fonte varchar(255),
      tamanho_txt real not null default 6,
 	 espacamento real not null default 0,
-	 cor varchar(255) not null DEFAULT '0,0,0',
+	 cor varchar(255) not null DEFAULT '#000000',
 	 carta_mini boolean not null DEFAULT FALSE,
 	 geom geometry(MultiLineString, 31982),
 	 CONSTRAINT edicao_texto_generico_l_pk PRIMARY KEY (id)
@@ -209,15 +209,17 @@ ALTER TABLE edgv.elemnat_toponimo_fisiografico_natural_l ADD COLUMN espacamento 
 
 ALTER TABLE edgv.llp_limite_especial_a ADD COLUMN tamanho_txt REAL NOT NULL DEFAULT 6;
 
+ALTER TABLE edgv.infra_ferrovia_l ADD COLUMN carta_mini boolean not null DEFAULT TRUE;
+ALTER TABLE edgv.infra_via_deslocamento_l ADD COLUMN carta_mini boolean not null DEFAULT TRUE;
+ALTER TABLE edgv.elemnat_toponimo_fisiografico_natural_p ADD COLUMN carta_mini boolean not null DEFAULT TRUE;
+ALTER TABLE edgv.elemnat_toponimo_fisiografico_natural_l ADD COLUMN carta_mini boolean not null DEFAULT TRUE;
+ALTER TABLE edgv.llp_localidade_p ADD COLUMN carta_mini boolean not null DEFAULT TRUE;
 
-ALTER TABLE edgv.infra_via_deslocamento_l ADD COLUMN carta_mini boolean not null DEFAULT FALSE;
-	 
+
 ALTER TABLE edgv.constr_edificacao_p ADD COLUMN leader_line boolean not null DEFAULT FALSE;
 
 
 ALTER TABLE edgv.elemnat_ilha_a ADD COLUMN escala integer;
-ALTER TABLE edgv.llp_localidade_p ADD COLUMN tamanho_txt REAL NOT NULL DEFAULT 6;
-
 
 ALTER TABLE edgv.elemnat_ponto_cotado_p ADD COLUMN cota_mais_alta BOOLEAN NOT NULL DEFAULT FALSE;
 
