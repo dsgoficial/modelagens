@@ -223,6 +223,9 @@ ALTER TABLE edgv.elemnat_ilha_a ADD COLUMN escala integer;
 
 ALTER TABLE edgv.elemnat_ponto_cotado_p ADD COLUMN cota_mais_alta BOOLEAN NOT NULL DEFAULT FALSE;
 
+ALTER TABLE edgv.llp_limite_especial_l ADD COLUMN sobreposto BOOLEAN NOT NULL DEFAULT FALSE;
+ALTER TABLE edgv.llp_limite_legal_l ADD COLUMN sobreposto BOOLEAN NOT NULL DEFAULT FALSE;
+
 
 DO $$DECLARE r record;
 BEGIN
