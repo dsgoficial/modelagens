@@ -70,11 +70,11 @@
             "schema": "edgv"
         },
         {
-            "tabela": "llp_limite_especial_l",
+            "tabela": "llp_limite_legal_l",
             "schema": "edgv"
         },
         {
-            "tabela": "llp_limite_legal_l",
+            "tabela": "llp_limite_especial_l",
             "schema": "edgv"
         },
         {
@@ -312,11 +312,11 @@
             "filtro": "carta_mini is true"
         },
         {
-            "tabela": "llp_limite_especial_l",
+            "tabela": "llp_limite_legal_l",
             "schema": "edgv"
         },
         {
-            "tabela": "llp_limite_legal_l",
+            "tabela": "llp_limite_especial_l",
             "schema": "edgv"
         },
         {
