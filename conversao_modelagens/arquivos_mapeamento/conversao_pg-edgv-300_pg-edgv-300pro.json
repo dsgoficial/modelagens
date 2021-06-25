@@ -218,13 +218,342 @@
         }
       },
       "filtro_volta": {
-        "nome_atributo": "situacaofisica",
-        "valor": 1
+        "nome_atributo": "tipo",
+            "valor": 201
       },
-      "atributos_default_ida": [
+      "atributos_default_volta": [
         {
-          "nome_atributo": "tipo",
+          "nome_atributo": "geometriaaproximada",
+          "valor": false
+        },
+        {
+          "nome_atributo": "situacaofisica",
+          "valor": 5
+        },
+        {
+          "nome_atributo": "turistica",
           "valor": 0
+        },
+        {
+          "nome_atributo": "operacional",
+          "valor": 1
+        },
+        {
+          "nome_atributo": "cultura",
+          "valor": 0
+        },
+        {
+          "nome_atributo": "proprioadm",
+          "valor": 0
+        },
+        {
+          "nome_atributo": "administracao",
+          "valor": 0
+        },
+        {
+          "nome_atributo": "classeativecon",
+          "valor": 0
+        },
+        {
+          "nome_atributo": "divisaoativecon",
+          "valor": 0
+        },
+        {
+          "nome_atributo": "grupoativecon",
+          "valor": 0
+        }
+      ],
+      "mapeamento_atributos": [
+        {
+          "attr_ida": "tipoedifenergia",
+          "attr_volta": "tipo",
+          "traducao": [
+            {
+              "valor_ida": 0,
+              "valor_volta": 201,
+              "sentido": "ida"
+            },
+            {
+              "valor_ida": 2,
+              "valor_volta": 201,
+              "sentido": "ida"
+            },
+            {
+              "valor_ida": 3,
+              "valor_volta": 201,
+              "sentido": "ida"
+            },
+            {
+              "valor_ida": 4,
+              "valor_volta": 201,
+              "sentido": "ida"
+            },
+            {
+              "valor_ida": 5,
+              "valor_volta": 201,
+              "sentido": "ida"
+            },
+            {
+              "valor_ida": 99,
+              "valor_volta": 201
+            }
+          ]
+        }
+      ]
+    },
+    { "__comment": "edf_edif_ensino -> constr_edificacao | ensino",
+      "classe_ida": "edf_edif_energia",
+      "classe_volta": "constr_edificacao",
+      "filtro_ida": {
+        "$not": {
+          "$or": [
+            {
+              "nome_atributo": "situacaofisica",
+              "valor": 1
+            },
+            {
+              "nome_atributo": "situacaofisica",
+              "valor": 2
+            }
+          ]
+        }
+      },
+      "filtro_volta": {
+        "$or": [
+          {
+            "nome_atributo": "tipo",
+            "valor": 516
+          },
+          {
+            "nome_atributo": "tipo",
+            "valor": 517
+          },
+          {
+            "nome_atributo": "tipo",
+            "valor": 518
+          },
+          {
+            "nome_atributo": "tipo",
+            "valor": 519
+          },
+          {
+            "nome_atributo": "tipo",
+            "valor": 520
+          },
+          {
+            "nome_atributo": "tipo",
+            "valor": 521
+          },
+          {
+            "nome_atributo": "tipo",
+            "valor": 522
+          },
+          {
+            "nome_atributo": "tipo",
+            "valor": 523
+          },
+          {
+            "nome_atributo": "tipo",
+            "valor": 524
+          },
+          {
+            "nome_atributo": "tipo",
+            "valor": 525
+          }
+        ]
+      },
+      "atributos_default_volta": [
+        {
+          "nome_atributo": "geometriaaproximada",
+          "valor": false
+        },
+        {
+          "nome_atributo": "situacaofisica",
+          "valor": 5
+        },
+        {
+          "nome_atributo": "turistica",
+          "valor": 0
+        },
+        {
+          "nome_atributo": "operacional",
+          "valor": 1
+        },
+        {
+          "nome_atributo": "cultura",
+          "valor": 0
+        },
+        {
+          "nome_atributo": "proprioadm",
+          "valor": 0
+        },
+        {
+          "nome_atributo": "administracao",
+          "valor": 0
+        },
+        {
+          "nome_atributo": "divisaoativecon",
+          "valor": 0
+        },
+        {
+          "nome_atributo": "grupoativecon",
+          "valor": 0
+        }
+      ],
+      "mapeamento_atributos": [
+        {
+          "attr_ida": "classeativecon",
+          "attr_volta": "tipo",
+          "traducao": [
+            {
+              "valor_ida": 16,
+              "valor_volta": 516
+            },
+            {
+              "valor_ida": 17,
+              "valor_volta": 517
+            },
+            {
+              "valor_ida": 18,
+              "valor_volta": 518
+            },
+            {
+              "valor_ida": 19,
+              "valor_volta": 519
+            },
+            {
+              "valor_ida": 20,
+              "valor_volta": 520
+            },
+            {
+              "valor_ida": 21,
+              "valor_volta": 521
+            },
+            {
+              "valor_ida": 22,
+              "valor_volta": 522
+            },
+            {
+              "valor_ida": 23,
+              "valor_volta": 523
+            },
+            {
+              "valor_ida": 24,
+              "valor_volta": 524
+            },
+            {
+              "valor_ida": 25,
+              "valor_volta": 525
+            }
+          ]
+        }
+      ]
+    },
+    { "__comment": "edf_edif_ext_mineral -> constr_edificacao | ext_mineral",
+      "classe_ida": "edf_edif_ext_mineral",
+      "classe_volta": "constr_edificacao",
+      "filtro_ida": {
+        "$not": {
+          "$or": [
+            {
+              "nome_atributo": "situacaofisica",
+              "valor": 1
+            },
+            {
+              "nome_atributo": "situacaofisica",
+              "valor": 2
+            }
+          ]
+        }
+      },
+      "filtro_volta": {
+        "$or": [
+          {
+            "nome_atributo": "tipo",
+            "valor": 1110
+          },
+          {
+            "nome_atributo": "tipo",
+            "valor": 1111
+          },
+          {
+            "nome_atributo": "tipo",
+            "valor": 1113
+          },
+          {
+            "nome_atributo": "tipo",
+            "valor": 1114
+          },
+          {
+            "nome_atributo": "tipo",
+            "valor": 1198
+          }
+        ]
+      },
+      "atributos_default_volta": [
+        {
+          "nome_atributo": "geometriaaproximada",
+          "valor": false
+        },
+        {
+          "nome_atributo": "situacaofisica",
+          "valor": 5
+        },
+        {
+          "nome_atributo": "turistica",
+          "valor": 0
+        },
+        {
+          "nome_atributo": "operacional",
+          "valor": 1
+        },
+        {
+          "nome_atributo": "cultura",
+          "valor": 0
+        },
+        {
+          "nome_atributo": "proprioadm",
+          "valor": 0
+        },
+        {
+          "nome_atributo": "administracao",
+          "valor": 0
+        },
+        {
+          "nome_atributo": "classeativecon",
+          "valor": 0
+        },
+        {
+          "nome_atributo": "grupoativecon",
+          "valor": 0
+        }
+      ],
+      "mapeamento_atributos": [
+        {
+          "attr_ida": "divisaoativecon",
+          "attr_volta": "tipo",
+          "traducao": [
+            {
+              "valor_ida": 10,
+              "valor_volta": 1110
+            },
+            {
+              "valor_ida": 11,
+              "valor_volta": 1111
+            },
+            {
+              "valor_ida": 13,
+              "valor_volta": 1113
+            },
+            {
+              "valor_ida": 14,
+              "valor_volta": 1114
+            },
+            {
+              "valor_ida": 99,
+              "valor_volta": 1198
+            }
+          ]
         }
       ]
     },
@@ -244,6 +573,10 @@
             }
           ]
         }
+      },
+      "filtro_volta": {
+        "nome_atributo": "tipo",
+        "valor": 0
       },
       "atributos_default_ida": [
         {
@@ -291,6 +624,308 @@
         {
           "nome_atributo": "grupoativecon",
           "valor": 0
+        }
+      ]
+    },
+    { "__comment": "hab_indigena <-> constr_edificacao | Habitacão indigena",
+      "classe_ida": "hab_indigena",
+      "classe_volta": "constr_edificacao",
+      "filtro_ida": {
+        "$not": {
+          "$or": [
+            {
+              "nome_atributo": "situacaofisica",
+              "valor": 1
+            },
+            {
+              "nome_atributo": "situacaofisica",
+              "valor": 2
+            }
+          ]
+        }
+      },
+      "filtro_volta": {
+        "nome_atributo": "tipo",
+        "valor": 1401
+      },
+      "atributos_default_ida": [
+        {
+          "nome_atributo": "tipo",
+          "valor": 1401
+        }
+      ],
+      "atributos_default_volta": [
+        {
+          "nome_atributo": "geometriaaproximada",
+          "valor": false
+        },
+        {
+          "nome_atributo": "situacaofisica",
+          "valor": 5
+        },
+        {
+          "nome_atributo": "turistica",
+          "valor": 0
+        },
+        {
+          "nome_atributo": "operacional",
+          "valor": 1
+        },
+        {
+          "nome_atributo": "cultura",
+          "valor": 0
+        },
+        {
+          "nome_atributo": "proprioadm",
+          "valor": 0
+        },
+        {
+          "nome_atributo": "coletiva",
+          "valor": 0
+        },
+        {
+          "nome_atributo": "isolada",
+          "valor": 0
+        },
+        {
+          "nome_atributo": "administracao",
+          "valor": 0
+        },
+        {
+          "nome_atributo": "classeativecon",
+          "valor": 0
+        },
+        {
+          "nome_atributo": "divisaoativecon",
+          "valor": 0
+        },
+        {
+          "nome_atributo": "grupoativecon",
+          "valor": 0
+        }
+      ]
+    },
+    { "__comment": "edf_edif_constr_lazer -> constr_edificacao | lazer",
+      "classe_ida": "edf_edif_constr_lazer",
+      "classe_volta": "constr_edificacao",
+      "filtro_ida": {
+        "$not": {
+          "$or": [
+            {
+              "nome_atributo": "situacaofisica",
+              "valor": 1
+            },
+            {
+              "nome_atributo": "situacaofisica",
+              "valor": 2
+            }
+          ]
+        }
+      },
+      "filtro_volta": {
+        "$or": [
+          { "nome_atributo": "tipo",
+            "valor": 801
+          },
+          { "nome_atributo": "tipo",
+            "valor": 802
+          },
+          { "nome_atributo": "tipo",
+            "valor": 803
+          },
+          { "nome_atributo": "tipo",
+            "valor": 804
+          },
+          { "nome_atributo": "tipo",
+            "valor": 805
+          },
+          { "nome_atributo": "tipo",
+            "valor": 806
+          },
+          { "nome_atributo": "tipo",
+            "valor": 807
+          },
+          { "nome_atributo": "tipo",
+            "valor": 808
+          },
+          { "nome_atributo": "tipo",
+            "valor": 809
+          },
+          { "nome_atributo": "tipo",
+            "valor": 810
+          },
+          { "nome_atributo": "tipo",
+            "valor": 811
+          },
+          { "nome_atributo": "tipo",
+            "valor": 812
+          },
+          { "nome_atributo": "tipo",
+            "valor": 813
+          },
+          { "nome_atributo": "tipo",
+            "valor": 814
+          },
+          { "nome_atributo": "tipo",
+            "valor": 815
+          },
+          { "nome_atributo": "tipo",
+            "valor": 817
+          },
+          { "nome_atributo": "tipo",
+            "valor": 818
+          },
+          { "nome_atributo": "tipo",
+            "valor": 819
+          },
+          { "nome_atributo": "tipo",
+            "valor": 898
+          }
+        ]
+      },
+      "atributos_default_volta": [
+        {
+          "nome_atributo": "geometriaaproximada",
+          "valor": false
+        },
+        {
+          "nome_atributo": "situacaofisica",
+          "valor": 5
+        },
+        {
+          "nome_atributo": "turistica",
+          "valor": 0
+        },
+        {
+          "nome_atributo": "operacional",
+          "valor": 1
+        },
+        {
+          "nome_atributo": "cultura",
+          "valor": 0
+        },
+        {
+          "nome_atributo": "proprioadm",
+          "valor": 0
+        },
+        {
+          "nome_atributo": "administracao",
+          "valor": 0
+        },
+        {
+          "nome_atributo": "classeativecon",
+          "valor": 0
+        },
+        {
+          "nome_atributo": "divisaoativecon",
+          "valor": 0
+        },
+        {
+          "nome_atributo": "grupoativecon",
+          "valor": 0
+        }
+      ],
+      "mapeamento_atributos": [
+        {
+          "attr_ida": "tipoediflazer",
+          "attr_volta": "tipo",
+          "traducao": [
+            {
+              "valor_ida": 0,
+              "valor_volta": 898,
+              "sentido": "ida"
+            },
+            {
+              "valor_ida": 1,
+              "valor_volta": 801
+            },
+            {
+              "valor_ida": 2,
+              "valor_volta": 802
+            },
+            {
+              "valor_ida": 3,
+              "valor_volta": 803
+            },
+            {
+              "valor_ida": 4,
+              "valor_volta": 801
+            },
+            {
+              "valor_ida": 5,
+              "valor_volta": 801
+            },
+            {
+              "valor_ida": 6,
+              "valor_volta": 806
+            },
+            {
+              "valor_ida": 6,
+              "valor_volta": 806
+            },
+            {
+              "valor_ida": 7,
+              "valor_volta": 807
+            },
+            {
+              "valor_ida": 8,
+              "valor_volta": 808
+            },
+            {
+              "valor_ida": 9,
+              "valor_volta": 809
+            },
+            {
+              "valor_ida": 10,
+              "valor_volta": 810
+            },
+            {
+              "valor_ida": 11,
+              "valor_volta": 811
+            },
+            {
+              "valor_ida": 12,
+              "valor_volta": 812
+            },
+            {
+              "valor_ida": 13,
+              "valor_volta": 813
+            },
+            {
+              "valor_ida": 14,
+              "valor_volta": 814
+            },
+            {
+              "valor_ida": 15,
+              "valor_volta": 815
+            },
+            {
+              "valor_ida": 17,
+              "valor_volta": 817
+            },
+            {
+              "valor_ida": 18,
+              "valor_volta": 818
+            },
+            {
+              "valor_ida": 19,
+              "valor_volta": 814
+            },
+            {
+              "valor_ida": 21,
+              "valor_volta": 898,
+              "sentido":"ida"
+            },
+            {
+              "valor_ida": 22,
+              "valor_volta": 898,
+              "sentido":"ida"
+            },
+            {
+              "valor_ida": 99,
+              "valor_volta": 898
+            }
+          ]
         }
       ]
     },
@@ -466,7 +1101,7 @@
       "atributos_default_volta": [
         {
           "nome_atributo": "geometriaaproximada",
-          "valor": true
+          "valor": 1
         }
       ]
     },
@@ -480,6 +1115,10 @@
         }
       ],
       "atributos_default_ida": [
+        {
+          "nome_atributo": "visivel",
+          "valor": true
+        }
       ],
       "mapeamento_atributos": [
         {
@@ -548,6 +1187,10 @@
         }
       ],
       "atributos_default_ida": [
+        {
+          "nome_atributo": "visivel",
+          "valor": true
+        }
       ],
       "mapeamento_atributos": [
         {
@@ -584,6 +1227,10 @@
         "valor": 1000
       },
       "atributos_default_volta": [
+        {
+          "nome_atributo": "geometriaaproximada",
+          "valor": false
+        },
         {
           "nome_atributo": "causaexposicao",
           "valor": 0
@@ -694,6 +1341,10 @@
         }
       },
       "atributos_default_volta": [
+        {
+          "nome_atributo": "geometriaaproximada",
+          "valor": false
+        },
         {
           "nome_atributo": "dominialidade",
           "valor": 0
@@ -1547,6 +2198,10 @@
       },
       "atributos_default_volta": [
         {
+          "nome_atributo": "geometriaaproximada",
+          "valor": false
+        },
+        {
           "nome_atributo": "tipotrechoduto",
           "valor": 4
         },
@@ -1887,6 +2542,304 @@
             {
               "nome_atributo": "tipo",
               "valor": 910
+            }
+          ]
+        }
+      ]
+    },
+    { "__comment": "edf_edif_industrial <-> constr_edificacao | edif industrial",
+      "classe_ida": "edf_edif_industrial",
+      "classe_volta": "constr_edificacao",
+      "filtro_ida": {
+        "$not": {
+          "$or": [
+            {
+              "nome_atributo": "situacaofisica",
+              "valor": 1
+            },
+            {
+              "nome_atributo": "situacaofisica",
+              "valor": 2
+            }
+          ]
+        }
+      },
+      "filtro_volta": {
+        "$or": [
+          {
+            "nome_atributo": "tipo",
+            "valor": 1015
+          },
+          {
+            "nome_atributo": "tipo",
+            "valor": 1016
+          },
+          {
+            "nome_atributo": "tipo",
+            "valor": 1017
+          },
+          {
+            "nome_atributo": "tipo",
+            "valor": 1018
+          },
+          {
+            "nome_atributo": "tipo",
+            "valor": 1019
+          },
+          {
+            "nome_atributo": "tipo",
+            "valor": 1020
+          },
+          {
+            "nome_atributo": "tipo",
+            "valor": 1021
+          },
+          {
+            "nome_atributo": "tipo",
+            "valor": 1022
+          },
+          {
+            "nome_atributo": "tipo",
+            "valor": 1023
+          },
+          {
+            "nome_atributo": "tipo",
+            "valor": 1024
+          },
+          {
+            "nome_atributo": "tipo",
+            "valor": 1025
+          },
+          {
+            "nome_atributo": "tipo",
+            "valor": 1026
+          },
+          {
+            "nome_atributo": "tipo",
+            "valor": 1027
+          },
+          {
+            "nome_atributo": "tipo",
+            "valor": 1028
+          },
+          {
+            "nome_atributo": "tipo",
+            "valor": 1029
+          },
+          {
+            "nome_atributo": "tipo",
+            "valor": 1030
+          },
+          {
+            "nome_atributo": "tipo",
+            "valor": 1031
+          },
+          {
+            "nome_atributo": "tipo",
+            "valor": 1032
+          },
+          {
+            "nome_atributo": "tipo",
+            "valor": 1033
+          },
+          {
+            "nome_atributo": "tipo",
+            "valor": 1034
+          },
+          {
+            "nome_atributo": "tipo",
+            "valor": 1035
+          },
+          {
+            "nome_atributo": "tipo",
+            "valor": 1036
+          },
+          {
+            "nome_atributo": "tipo",
+            "valor": 1037
+          },
+          {
+            "nome_atributo": "tipo",
+            "valor": 1045
+          },
+          {
+            "nome_atributo": "tipo",
+            "valor": 1046
+          },
+          {
+            "nome_atributo": "tipo",
+            "valor": 1098
+          }
+        ]
+      },
+      "atributos_default_volta": [
+        {
+          "nome_atributo": "geometriaaproximada",
+          "valor": 0
+        },
+        {
+          "nome_atributo": "operacional",
+          "valor": 0
+        },
+        {
+          "nome_atributo": "turistica",
+          "valor": 0
+        },
+        {
+          "nome_atributo": "cultura",
+          "valor": 0
+        },
+        {
+          "nome_atributo": "administracao",
+          "valor": 0
+        },
+        {
+          "nome_atributo": "proprioadm",
+          "valor": 0
+        },
+        {
+          "nome_atributo": "classeativecon",
+          "valor": 0
+        },
+        {
+          "nome_atributo": "grupoativecon",
+          "valor": 0
+        },
+        {
+          "nome_atributo": "chamine",
+          "valor": 0
+        }
+      ],
+      "mapeamento_atributos": [
+        {
+          "attr_ida": "divisaoativecon",
+          "attr_volta": "tipo",
+          "traducao": [
+            {
+              "valor_ida": 15,
+              "valor_volta": 1015
+            },
+            {
+              "valor_ida": 16,
+              "valor_volta": 1016
+            },
+            {
+              "valor_ida": 17,
+              "valor_volta": 1017
+            },
+            {
+              "valor_ida": 18,
+              "valor_volta": 1018
+            },
+            {
+              "valor_ida": 19,
+              "valor_volta": 1019
+            },
+            {
+              "valor_ida": 20,
+              "valor_volta": 1020
+            },
+            {
+              "valor_ida": 21,
+              "valor_volta": 1021
+            },
+            {
+              "valor_ida": 22,
+              "valor_volta": 1022
+            },
+            {
+              "valor_ida": 23,
+              "valor_volta": 1023
+            },
+            {
+              "valor_ida": 24,
+              "valor_volta": 1024
+            },
+            {
+              "valor_ida": 25,
+              "valor_volta": 1025
+            },
+            {
+              "valor_ida": 26,
+              "valor_volta": 1026
+            },
+            {
+              "valor_ida": 27,
+              "valor_volta": 1027
+            },
+            {
+              "valor_ida": 28,
+              "valor_volta": 1027
+            },
+            {
+              "valor_ida": 29,
+              "valor_volta": 1029
+            },
+            {
+              "valor_ida": 30,
+              "valor_volta": 1030
+            },
+            {
+              "valor_ida": 31,
+              "valor_volta": 1031
+            },
+            {
+              "valor_ida": 32,
+              "valor_volta": 1032
+            },
+            {
+              "valor_ida": 33,
+              "valor_volta": 1033
+            },
+            {
+              "valor_ida": 34,
+              "valor_volta": 1034
+            },
+            {
+              "valor_ida": 35,
+              "valor_volta": 1035
+            },
+            {
+              "valor_ida": 36,
+              "valor_volta": 1036
+            },
+            {
+              "valor_ida": 37,
+              "valor_volta": 1037998
+            },
+            {
+              "valor_ida": 45,
+              "valor_volta": 1045
+            },
+            {
+              "valor_ida": 99,
+              "valor_volta": 1046,
+              "sentido":"volta"
+            },
+            {
+              "valor_ida": 99,
+              "valor_volta": 1098
+            }
+          ]
+        }
+      ],
+      "mapeamento_multiplo": [
+        {
+          "sentido": "volta",
+          "tupla_ida": [
+            {
+              "nome_atributo": "divisaoativecon",
+              "valor": 99
+            },
+            {
+              "nome_atributo": "chamine",
+              "valor": 1
+            }
+          ],
+          "tupla_volta": [
+            {
+              "nome_atributo": "tipo",
+              "valor": 1046
             }
           ]
         }
@@ -2440,6 +3393,514 @@
             {
               "valor_ida": 1,
               "valor_volta": 3004
+            }
+          ]
+        }
+      ]
+    },
+    { "__comment": "edf_posto_fiscal <-> constr_edificacao | posto fiscal",
+      "classe_ida": "edf_posto_fiscal",
+      "classe_volta": "constr_edificacao",
+      "filtro_ida": {
+        "$not": {
+          "$or": [
+            {
+              "nome_atributo": "situacaofisica",
+              "valor": 1
+            },
+            {
+              "nome_atributo": "situacaofisica",
+              "valor": 2
+            }
+          ]
+        }
+      },
+      "filtro_volta": {
+        "$or": [
+          {
+            "nome_atributo": "tipo",
+            "valor": 1910
+          },
+          {
+            "nome_atributo": "tipo",
+            "valor": 1912
+          },
+          {
+            "nome_atributo": "tipo",
+            "valor": 1913
+          },
+          {
+            "nome_atributo": "tipo",
+            "valor": 1995
+          },
+          {
+            "nome_atributo": "tipo",
+            "valor": 1998
+          }
+        ]
+      },
+      "atributos_default_volta": [
+        {
+          "nome_atributo": "geometriaaproximada",
+          "valor": false
+        },
+        {
+          "nome_atributo": "operacional",
+          "valor": 1
+        },
+        {
+          "nome_atributo": "turistica",
+          "valor": 0
+        },
+        {
+          "nome_atributo": "cultura",
+          "valor": 0
+        },
+        {
+          "nome_atributo": "jurisdicao",
+          "valor": 0
+        },
+        {
+          "nome_atributo": "proprioadm",
+          "valor": 0
+        },
+        {
+          "nome_atributo": "classeativecon",
+          "valor": 0
+        },
+        {
+          "nome_atributo": "grupoativecon",
+          "valor": 0
+        },
+        {
+          "nome_atributo": "administracao",
+          "valor": 0
+        },
+        {
+          "nome_atributo": "divisaoativecon",
+          "valor": 0
+        },
+        {
+          "nome_atributo": "tipousoedif",
+          "valor": 0
+        },
+        {
+          "nome_atributo": "tipoedifpubcivil",
+          "valor": 99
+        }
+        
+      ],
+      "mapeamento_atributos": [
+        {
+          "attr_ida": "tipopostofisc",
+          "attr_volta": "tipo",
+          "traducao": [
+            {
+              "valor_ida": 0,
+              "valor_volta": 1998,
+              "sentido":"ida"
+            },
+            {
+              "valor_ida": 10,
+              "valor_volta": 1910
+            },
+            {
+              "valor_ida": 12,
+              "valor_volta": 1912
+            },
+            {
+              "valor_ida": 13,
+              "valor_volta": 1913
+            },
+            {
+              "valor_ida": 98,
+              "valor_volta": 1995
+            },
+            {
+              "valor_ida": 99,
+              "valor_volta": 1998
+            }
+          ]
+        }
+      ]
+    },
+    { "__comment": "edf_edif_pub_civil <-> constr_edificacao | pub civil + prisional",
+      "classe_ida": "edf_edif_pub_civil",
+      "classe_volta": "constr_edificacao",
+      "filtro_ida": {
+        "$not": {
+          "$or": [
+            {
+              "nome_atributo": "situacaofisica",
+              "valor": 1
+            },
+            {
+              "nome_atributo": "situacaofisica",
+              "valor": 2
+            }
+          ]
+        }
+      },
+      "filtro_volta": {
+        "$or": [
+          {
+            "nome_atributo": "tipo",
+            "valor": 3006
+          },
+          {
+            "nome_atributo": "tipo",
+            "valor": 1303
+          },
+          {
+            "nome_atributo": "tipo",
+            "valor": 1304
+          },
+          {
+            "nome_atributo": "tipo",
+            "valor": 1305
+          },
+          {
+            "nome_atributo": "tipo",
+            "valor": 1306
+          },
+          {
+            "nome_atributo": "tipo",
+            "valor": 1307
+          },
+          {
+            "nome_atributo": "tipo",
+            "valor": 1308
+          },
+          {
+            "nome_atributo": "tipo",
+            "valor": 1309
+          },
+          {
+            "nome_atributo": "tipo",
+            "valor": 1310
+          },
+          {
+            "nome_atributo": "tipo",
+            "valor": 1311
+          },
+          {
+            "nome_atributo": "tipo",
+            "valor": 1312
+          },
+          {
+            "nome_atributo": "tipo",
+            "valor": 1313
+          },
+          {
+            "nome_atributo": "tipo",
+            "valor": 1314
+          },
+          {
+            "nome_atributo": "tipo",
+            "valor": 1322
+          },
+          {
+            "nome_atributo": "tipo",
+            "valor": 1323
+          },
+          {
+            "nome_atributo": "tipo",
+            "valor": 1398
+          }
+        ]
+      },
+      "atributos_default_volta": [
+        {
+          "nome_atributo": "geometriaaproximada",
+          "valor": false
+        },
+        {
+          "nome_atributo": "operacional",
+          "valor": 1
+        },
+        {
+          "nome_atributo": "turistica",
+          "valor": 0
+        },
+        {
+          "nome_atributo": "cultura",
+          "valor": 0
+        },
+        {
+          "nome_atributo": "jurisdicao",
+          "valor": 0
+        },
+        {
+          "nome_atributo": "proprioadm",
+          "valor": 0
+        },
+        {
+          "nome_atributo": "classeativecon",
+          "valor": 0
+        },
+        {
+          "nome_atributo": "grupoativecon",
+          "valor": 0
+        },
+        {
+          "nome_atributo": "administracao",
+          "valor": 0
+        },
+        {
+          "nome_atributo": "divisaoativecon",
+          "valor": 0
+        },
+        {
+          "nome_atributo": "tipousoedif",
+          "valor": 0
+        },
+        {
+          "nome_atributo": "tipoedifpubcivil",
+          "valor": 0
+        }
+        
+      ],
+      "mapeamento_atributos": [
+        {
+          "attr_ida": "tipopostofisc",
+          "attr_volta": "tipo",
+          "traducao": [
+            {
+              "valor_ida": 0,
+              "valor_volta": 1398,
+              "sentido":"ida"
+            },
+            {
+              "valor_ida": 2,
+              "valor_volta": 3006
+            },
+            {
+              "valor_ida": 3,
+              "valor_volta": 1303
+            },
+            {
+              "valor_ida": 4,
+              "valor_volta": 1304
+            },
+            {
+              "valor_ida": 5,
+              "valor_volta": 1305
+            },
+            {
+              "valor_ida": 6,
+              "valor_volta": 1306
+            },
+            {
+              "valor_ida": 7,
+              "valor_volta": 1307
+            },
+            {
+              "valor_ida": 8,
+              "valor_volta": 1308
+            },
+            {
+              "valor_ida": 9,
+              "valor_volta": 1309
+            },
+            {
+              "valor_ida": 10,
+              "valor_volta": 1310
+            },
+            {
+              "valor_ida": 12,
+              "valor_volta": 1398,
+              "sentido":"ida"
+            },
+            {
+              "valor_ida": 13,
+              "valor_volta": 1313
+            },
+            {
+              "valor_ida": 14,
+              "valor_volta": 1314
+            },
+            {
+              "valor_ida": 15,
+              "valor_volta": 1315
+            },
+            {
+              "valor_ida": 16,
+              "valor_volta": 1316
+            },
+            {
+              "valor_ida": 22,
+              "valor_volta": 1322
+            },
+            {
+              "valor_ida": 99,
+              "valor_volta": 1398
+            }
+          ]
+        }
+      ]
+    },
+    { "__comment": "edf_edif_pub_militar <-> constr_edificacao | pub militar",
+      "classe_ida": "edf_edif_pub_militar",
+      "classe_volta": "constr_edificacao",
+      "filtro_ida": {
+        "$not": {
+          "$or": [
+            {
+              "nome_atributo": "situacaofisica",
+              "valor": 1
+            },
+            {
+              "nome_atributo": "situacaofisica",
+              "valor": 2
+            }
+          ]
+        }
+      },
+      "filtro_volta": {
+        "$or": [
+          {
+            "nome_atributo": "tipo",
+            "valor": 1712
+          },
+          {
+            "nome_atributo": "tipo",
+            "valor": 1717
+          },
+          {
+            "nome_atributo": "tipo",
+            "valor": 1718
+          },
+          {
+            "nome_atributo": "tipo",
+            "valor": 1724
+          },
+          {
+            "nome_atributo": "tipo",
+            "valor": 1798
+          }
+        ]
+      },
+      "atributos_default_volta": [
+        {
+          "nome_atributo": "geometriaaproximada",
+          "valor": false
+        },
+        {
+          "nome_atributo": "operacional",
+          "valor": 1
+        },
+        {
+          "nome_atributo": "turistica",
+          "valor": 0
+        },
+        {
+          "nome_atributo": "cultura",
+          "valor": 0
+        },
+        {
+          "nome_atributo": "jurisdicao",
+          "valor": 0
+        },
+        {
+          "nome_atributo": "proprioadm",
+          "valor": 0
+        },
+        {
+          "nome_atributo": "classeativecon",
+          "valor": 0
+        },
+        {
+          "nome_atributo": "grupoativecon",
+          "valor": 0
+        },
+        {
+          "nome_atributo": "administracao",
+          "valor": 0
+        },
+        {
+          "nome_atributo": "divisaoativecon",
+          "valor": 0
+        },
+        {
+          "nome_atributo": "tipousoedif",
+          "valor": 0
+        }
+        
+      ],
+      "mapeamento_atributos": [
+        {
+          "attr_ida": "tipoinstalmilitar",
+          "attr_volta": "tipo",
+          "traducao": [
+            {
+              "valor_ida": 0,
+              "valor_volta": 1798,
+              "sentido":"ida"
+            },
+            {
+              "valor_ida": 12,
+              "valor_volta": 1712
+            },
+            {
+              "valor_ida": 13,
+              "valor_volta": 1712,
+              "sentido":"ida"
+            },
+            {
+              "valor_ida": 14,
+              "valor_volta": 1712,
+              "sentido":"ida"
+            },
+            {
+              "valor_ida": 15,
+              "valor_volta": 1712,
+              "sentido":"ida"
+            },
+            {
+              "valor_ida": 16,
+              "valor_volta": 1712,
+              "sentido":"ida"
+            },
+            {
+              "valor_ida": 17,
+              "valor_volta": 1717
+            },
+            {
+              "valor_ida": 18,
+              "valor_volta": 1718
+            },
+            {
+              "valor_ida": 20,
+              "valor_volta": 1712,
+              "sentido":"ida"
+            },
+            {
+              "valor_ida": 21,
+              "valor_volta": 1798,
+              "sentido":"ida"
+            },
+            {
+              "valor_ida": 22,
+              "valor_volta": 1798,
+              "sentido":"ida"
+            },
+            {
+              "valor_ida": 23,
+              "valor_volta": 1798,
+              "sentido":"ida"
+            },
+            {
+              "valor_ida": 24,
+              "valor_volta": 1724
+            },
+            {
+              "valor_ida": 25,
+              "valor_volta": 1798,
+              "sentido":"ida"
+            },
+            {
+              "valor_ida": 99,
+              "valor_volta": 1798
             }
           ]
         }

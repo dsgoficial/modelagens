@@ -1223,7 +1223,7 @@
         },
         {
           "code": 806,
-          "value": "Laz - Cinema",
+          "value": "Laz - Espaço de exibição de filmes",
           "descricao": "-",
           "valor_filtro": "Edificação de lazer"
         },
@@ -1253,31 +1253,49 @@
         },
         {
           "code": 811,
-          "value": "Laz - Concha acústica",
+          "value": "Laz - Centro de documentação",
           "descricao": "-",
           "valor_filtro": "Edificação de lazer"
         },
         {
           "code": 812,
-          "value": "Laz - Conservatório",
+          "value": "Laz - Circo",
           "descricao": "-",
           "valor_filtro": "Edificação de lazer"
         },
         {
           "code": 813,
-          "value": "Laz - Coreto ou tribuna",
+          "value": "Laz - Concha acústica",
           "descricao": "-",
           "valor_filtro": "Edificação de lazer"
         },
         {
           "code": 814,
-          "value": "Laz - Equipamentos culturais diversos",
+          "value": "Laz - Conservatório",
           "descricao": "-",
           "valor_filtro": "Edificação de lazer"
         },
         {
           "code": 815,
-          "value": "Laz - Espaço de eventos e ou cultural",
+          "value": "Laz - Coreto ou tribuna",
+          "descricao": "-",
+          "valor_filtro": "Edificação de lazer"
+        },
+        {
+          "code": 817,
+          "value": "Laz - Equipamentos culturais diversos",
+          "descricao": "-",
+          "valor_filtro": "Edificação de lazer"
+        },
+        {
+          "code": 818,
+          "value": "Laz - Espaço de eventos e/ou cultural",
+          "descricao": "-",
+          "valor_filtro": "Edificação de lazer"
+        },
+        {
+          "code": 818,
+          "value": "Laz - Galeria",
           "descricao": "-",
           "valor_filtro": "Edificação de lazer"
         },
@@ -1613,43 +1631,37 @@
         },
         {
           "code": 1310,
-          "value": "Pub Civ - Fórum",
-          "descricao": "-",
-          "valor_filtro": "Edificação pública civil"
-        },
-        {
-          "code": 1311,
-          "value": "Pub Civ - Secretaria",
-          "descricao": "-",
-          "valor_filtro": "Edificação pública civil"
-        },
-        {
-          "code": 1312,
-          "value": "Pub Civ - Fundação",
+          "value": "Pub Civ - Autarquia",
           "descricao": "-",
           "valor_filtro": "Edificação pública civil"
         },
         {
           "code": 1313,
-          "value": "Pub Civ - Procuradoria",
+          "value": "Pub Civ - Fórum",
           "descricao": "-",
           "valor_filtro": "Edificação pública civil"
         },
         {
           "code": 1314,
-          "value": "Pub Civ - Autarquia",
+          "value": "Pub Civ - Fundação",
+          "descricao": "-",
+          "valor_filtro": "Edificação pública civil"
+        },
+        {
+          "code": 1315,
+          "value": "Pub Civ - Procuradoria",
+          "descricao": "-",
+          "valor_filtro": "Edificação pública civil"
+        },
+        {
+          "code": 1316,
+          "value": "Pub Civ - Secretaria",
           "descricao": "-",
           "valor_filtro": "Edificação pública civil"
         },
         {
           "code": 1322,
           "value": "Pub Civ - Prefeitura",
-          "descricao": "-",
-          "valor_filtro": "Edificação pública civil"
-        },
-        {
-          "code": 1323,
-          "value": "Pub Civ - Bombeiros",
           "descricao": "-",
           "valor_filtro": "Edificação pública civil"
         },
@@ -1762,6 +1774,12 @@
           "valor_filtro": "Edificação militar"
         },
         {
+          "code": 1724,
+          "value": "Pub Mil - Capitania dos portos",
+          "descricao": "-",
+          "valor_filtro": "Edificação militar"
+        },
+        {
           "code": 1798,
           "value": "Pub Mil - Outros",
           "descricao": "-",
@@ -1774,13 +1792,13 @@
           "valor_filtro": "Posto fiscal"
         },
         {
-          "code": 1911,
-          "value": "Posto Fisc - Fiscalização",
+          "code": 1912,
+          "value": "Posto Fisc - Fiscalização sanitária",
           "descricao": "-",
           "valor_filtro": "Posto fiscal"
         },
         {
-          "code": 1912,
+          "code": 1913,
           "value": "Posto Fisc - Posto de pesagem",
           "descricao": "-",
           "valor_filtro": "Posto fiscal"
@@ -1788,6 +1806,12 @@
         {
           "code": 1995,
           "value": "Posto Fisc - Misto",
+          "descricao": "-",
+          "valor_filtro": "Posto fiscal"
+        },
+        {
+          "code": 1998,
+          "value": "Posto Fisc - Outros",
           "descricao": "-",
           "valor_filtro": "Posto fiscal"
         },
@@ -2022,6 +2046,18 @@
         {
           "code": 3006,
           "value": "Seg - Prisional",
+          "descricao": "-",
+          "valor_filtro": "Edificação de segurança pública"
+        },
+        {
+          "code": 3007,
+          "value": "Seg - Bombeiros Militar",
+          "descricao": "-",
+          "valor_filtro": "Edificação de segurança pública"
+        },
+        {
+          "code": 3007,
+          "value": "Seg - Bombeiros Civil",
           "descricao": "-",
           "valor_filtro": "Edificação de segurança pública"
         },
