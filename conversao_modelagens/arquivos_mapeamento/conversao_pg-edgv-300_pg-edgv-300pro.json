@@ -3482,6 +3482,132 @@
         }
       ]
     },
+    { "__comment": "edf_posto_fiscal <-> constr_edificacao | posto fiscal",
+      "classe_ida": "edf_posto_fiscal",
+      "classe_volta": "constr_edificacao",
+      "filtro_ida": {
+        "$not": {
+          "$or": [
+            {
+              "nome_atributo": "situacaofisica",
+              "valor": 1
+            },
+            {
+              "nome_atributo": "situacaofisica",
+              "valor": 2
+            }
+          ]
+        }
+      },
+      "filtro_volta": {
+        "$or": [
+          {
+            "nome_atributo": "tipo",
+            "valor": 1910
+          },
+          {
+            "nome_atributo": "tipo",
+            "valor": 1912
+          },
+          {
+            "nome_atributo": "tipo",
+            "valor": 1913
+          },
+          {
+            "nome_atributo": "tipo",
+            "valor": 1995
+          },
+          {
+            "nome_atributo": "tipo",
+            "valor": 1998
+          }
+        ]
+      },
+      "atributos_default_volta": [
+        {
+          "nome_atributo": "geometriaaproximada",
+          "valor": false
+        },
+        {
+          "nome_atributo": "operacional",
+          "valor": 1
+        },
+        {
+          "nome_atributo": "turistica",
+          "valor": 0
+        },
+        {
+          "nome_atributo": "cultura",
+          "valor": 0
+        },
+        {
+          "nome_atributo": "jurisdicao",
+          "valor": 0
+        },
+        {
+          "nome_atributo": "proprioadm",
+          "valor": 0
+        },
+        {
+          "nome_atributo": "classeativecon",
+          "valor": 0
+        },
+        {
+          "nome_atributo": "grupoativecon",
+          "valor": 0
+        },
+        {
+          "nome_atributo": "administracao",
+          "valor": 0
+        },
+        {
+          "nome_atributo": "divisaoativecon",
+          "valor": 0
+        },
+        {
+          "nome_atributo": "tipousoedif",
+          "valor": 0
+        },
+        {
+          "nome_atributo": "tipoedifpubcivil",
+          "valor": 99
+        }
+        
+      ],
+      "mapeamento_atributos": [
+        {
+          "attr_ida": "tipopostofisc",
+          "attr_volta": "tipo",
+          "traducao": [
+            {
+              "valor_ida": 0,
+              "valor_volta": 1998,
+              "sentido":"ida"
+            },
+            {
+              "valor_ida": 10,
+              "valor_volta": 1910
+            },
+            {
+              "valor_ida": 12,
+              "valor_volta": 1912
+            },
+            {
+              "valor_ida": 13,
+              "valor_volta": 1913
+            },
+            {
+              "valor_ida": 98,
+              "valor_volta": 1995
+            },
+            {
+              "valor_ida": 99,
+              "valor_volta": 1998
+            }
+          ]
+        }
+      ]
+    },
     { "__comment": "enc_torre_comunic <-> infra_elemento_infraestrutura | torre comunic",
       "classe_ida": "enc_torre_comunic",
       "classe_volta": "infra_elemento_infraestrutura",
