@@ -3823,6 +3823,173 @@
         }
       ]
     },
+    { "__comment": "edf_edif_pub_militar <-> constr_edificacao | pub militar",
+      "classe_ida": "edf_edif_pub_militar",
+      "classe_volta": "constr_edificacao",
+      "filtro_ida": {
+        "$not": {
+          "$or": [
+            {
+              "nome_atributo": "situacaofisica",
+              "valor": 1
+            },
+            {
+              "nome_atributo": "situacaofisica",
+              "valor": 2
+            }
+          ]
+        }
+      },
+      "filtro_volta": {
+        "$or": [
+          {
+            "nome_atributo": "tipo",
+            "valor": 1712
+          },
+          {
+            "nome_atributo": "tipo",
+            "valor": 1717
+          },
+          {
+            "nome_atributo": "tipo",
+            "valor": 1718
+          },
+          {
+            "nome_atributo": "tipo",
+            "valor": 1724
+          },
+          {
+            "nome_atributo": "tipo",
+            "valor": 1798
+          }
+        ]
+      },
+      "atributos_default_volta": [
+        {
+          "nome_atributo": "geometriaaproximada",
+          "valor": false
+        },
+        {
+          "nome_atributo": "operacional",
+          "valor": 1
+        },
+        {
+          "nome_atributo": "turistica",
+          "valor": 0
+        },
+        {
+          "nome_atributo": "cultura",
+          "valor": 0
+        },
+        {
+          "nome_atributo": "jurisdicao",
+          "valor": 0
+        },
+        {
+          "nome_atributo": "proprioadm",
+          "valor": 0
+        },
+        {
+          "nome_atributo": "classeativecon",
+          "valor": 0
+        },
+        {
+          "nome_atributo": "grupoativecon",
+          "valor": 0
+        },
+        {
+          "nome_atributo": "administracao",
+          "valor": 0
+        },
+        {
+          "nome_atributo": "divisaoativecon",
+          "valor": 0
+        },
+        {
+          "nome_atributo": "tipousoedif",
+          "valor": 0
+        }
+        
+      ],
+      "mapeamento_atributos": [
+        {
+          "attr_ida": "tipoinstalmilitar",
+          "attr_volta": "tipo",
+          "traducao": [
+            {
+              "valor_ida": 0,
+              "valor_volta": 1798,
+              "sentido":"ida"
+            },
+            {
+              "valor_ida": 12,
+              "valor_volta": 1712
+            },
+            {
+              "valor_ida": 13,
+              "valor_volta": 1712,
+              "sentido":"ida"
+            },
+            {
+              "valor_ida": 14,
+              "valor_volta": 1712,
+              "sentido":"ida"
+            },
+            {
+              "valor_ida": 15,
+              "valor_volta": 1712,
+              "sentido":"ida"
+            },
+            {
+              "valor_ida": 16,
+              "valor_volta": 1712,
+              "sentido":"ida"
+            },
+            {
+              "valor_ida": 17,
+              "valor_volta": 1717
+            },
+            {
+              "valor_ida": 18,
+              "valor_volta": 1718
+            },
+            {
+              "valor_ida": 20,
+              "valor_volta": 1712,
+              "sentido":"ida"
+            },
+            {
+              "valor_ida": 21,
+              "valor_volta": 1798,
+              "sentido":"ida"
+            },
+            {
+              "valor_ida": 22,
+              "valor_volta": 1798,
+              "sentido":"ida"
+            },
+            {
+              "valor_ida": 23,
+              "valor_volta": 1798,
+              "sentido":"ida"
+            },
+            {
+              "valor_ida": 24,
+              "valor_volta": 1724
+            },
+            {
+              "valor_ida": 25,
+              "valor_volta": 1798,
+              "sentido":"ida"
+            },
+            {
+              "valor_ida": 99,
+              "valor_volta": 1798
+            }
+          ]
+        }
+      ]
+    },
     { "__comment": "enc_torre_comunic <-> infra_elemento_infraestrutura | torre comunic",
       "classe_ida": "enc_torre_comunic",
       "classe_volta": "infra_elemento_infraestrutura",

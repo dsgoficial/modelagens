@@ -1774,6 +1774,12 @@
           "valor_filtro": "Edificação militar"
         },
         {
+          "code": 1724,
+          "value": "Pub Mil - Capitania dos portos",
+          "descricao": "-",
+          "valor_filtro": "Edificação militar"
+        },
+        {
           "code": 1798,
           "value": "Pub Mil - Outros",
           "descricao": "-",
