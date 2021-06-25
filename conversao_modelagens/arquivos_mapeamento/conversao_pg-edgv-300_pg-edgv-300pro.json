@@ -2407,6 +2407,304 @@
         }
       ]
     },
+    { "__comment": "edf_edif_industrial <-> constr_edificacao | edif industrial",
+      "classe_ida": "edf_edif_industrial",
+      "classe_volta": "constr_edificacao",
+      "filtro_ida": {
+        "$not": {
+          "$or": [
+            {
+              "nome_atributo": "situacaofisica",
+              "valor": 1
+            },
+            {
+              "nome_atributo": "situacaofisica",
+              "valor": 2
+            }
+          ]
+        }
+      },
+      "filtro_volta": {
+        "$or": [
+          {
+            "nome_atributo": "tipo",
+            "valor": 1015
+          },
+          {
+            "nome_atributo": "tipo",
+            "valor": 1016
+          },
+          {
+            "nome_atributo": "tipo",
+            "valor": 1017
+          },
+          {
+            "nome_atributo": "tipo",
+            "valor": 1018
+          },
+          {
+            "nome_atributo": "tipo",
+            "valor": 1019
+          },
+          {
+            "nome_atributo": "tipo",
+            "valor": 1020
+          },
+          {
+            "nome_atributo": "tipo",
+            "valor": 1021
+          },
+          {
+            "nome_atributo": "tipo",
+            "valor": 1022
+          },
+          {
+            "nome_atributo": "tipo",
+            "valor": 1023
+          },
+          {
+            "nome_atributo": "tipo",
+            "valor": 1024
+          },
+          {
+            "nome_atributo": "tipo",
+            "valor": 1025
+          },
+          {
+            "nome_atributo": "tipo",
+            "valor": 1026
+          },
+          {
+            "nome_atributo": "tipo",
+            "valor": 1027
+          },
+          {
+            "nome_atributo": "tipo",
+            "valor": 1028
+          },
+          {
+            "nome_atributo": "tipo",
+            "valor": 1029
+          },
+          {
+            "nome_atributo": "tipo",
+            "valor": 1030
+          },
+          {
+            "nome_atributo": "tipo",
+            "valor": 1031
+          },
+          {
+            "nome_atributo": "tipo",
+            "valor": 1032
+          },
+          {
+            "nome_atributo": "tipo",
+            "valor": 1033
+          },
+          {
+            "nome_atributo": "tipo",
+            "valor": 1034
+          },
+          {
+            "nome_atributo": "tipo",
+            "valor": 1035
+          },
+          {
+            "nome_atributo": "tipo",
+            "valor": 1036
+          },
+          {
+            "nome_atributo": "tipo",
+            "valor": 1037
+          },
+          {
+            "nome_atributo": "tipo",
+            "valor": 1045
+          },
+          {
+            "nome_atributo": "tipo",
+            "valor": 1046
+          },
+          {
+            "nome_atributo": "tipo",
+            "valor": 1098
+          }
+        ]
+      },
+      "atributos_default_volta": [
+        {
+          "nome_atributo": "geometriaaproximada",
+          "valor": 0
+        },
+        {
+          "nome_atributo": "operacional",
+          "valor": 0
+        },
+        {
+          "nome_atributo": "turistica",
+          "valor": 0
+        },
+        {
+          "nome_atributo": "cultura",
+          "valor": 0
+        },
+        {
+          "nome_atributo": "administracao",
+          "valor": 0
+        },
+        {
+          "nome_atributo": "proprioadm",
+          "valor": 0
+        },
+        {
+          "nome_atributo": "classeativecon",
+          "valor": 0
+        },
+        {
+          "nome_atributo": "grupoativecon",
+          "valor": 0
+        },
+        {
+          "nome_atributo": "chamine",
+          "valor": 0
+        }
+      ],
+      "mapeamento_atributos": [
+        {
+          "attr_ida": "divisaoativecon",
+          "attr_volta": "tipo",
+          "traducao": [
+            {
+              "valor_ida": 15,
+              "valor_volta": 1015
+            },
+            {
+              "valor_ida": 16,
+              "valor_volta": 1016
+            },
+            {
+              "valor_ida": 17,
+              "valor_volta": 1017
+            },
+            {
+              "valor_ida": 18,
+              "valor_volta": 1018
+            },
+            {
+              "valor_ida": 19,
+              "valor_volta": 1019
+            },
+            {
+              "valor_ida": 20,
+              "valor_volta": 1020
+            },
+            {
+              "valor_ida": 21,
+              "valor_volta": 1021
+            },
+            {
+              "valor_ida": 22,
+              "valor_volta": 1022
+            },
+            {
+              "valor_ida": 23,
+              "valor_volta": 1023
+            },
+            {
+              "valor_ida": 24,
+              "valor_volta": 1024
+            },
+            {
+              "valor_ida": 25,
+              "valor_volta": 1025
+            },
+            {
+              "valor_ida": 26,
+              "valor_volta": 1026
+            },
+            {
+              "valor_ida": 27,
+              "valor_volta": 1027
+            },
+            {
+              "valor_ida": 28,
+              "valor_volta": 1027
+            },
+            {
+              "valor_ida": 29,
+              "valor_volta": 1029
+            },
+            {
+              "valor_ida": 30,
+              "valor_volta": 1030
+            },
+            {
+              "valor_ida": 31,
+              "valor_volta": 1031
+            },
+            {
+              "valor_ida": 32,
+              "valor_volta": 1032
+            },
+            {
+              "valor_ida": 33,
+              "valor_volta": 1033
+            },
+            {
+              "valor_ida": 34,
+              "valor_volta": 1034
+            },
+            {
+              "valor_ida": 35,
+              "valor_volta": 1035
+            },
+            {
+              "valor_ida": 36,
+              "valor_volta": 1036
+            },
+            {
+              "valor_ida": 37,
+              "valor_volta": 1037998
+            },
+            {
+              "valor_ida": 45,
+              "valor_volta": 1045
+            },
+            {
+              "valor_ida": 99,
+              "valor_volta": 1046,
+              "sentido":"volta"
+            },
+            {
+              "valor_ida": 99,
+              "valor_volta": 1098
+            }
+          ]
+        }
+      ],
+      "mapeamento_multiplo": [
+        {
+          "sentido": "volta",
+          "tupla_ida": [
+            {
+              "nome_atributo": "divisaoativecon",
+              "valor": 99
+            },
+            {
+              "nome_atributo": "chamine",
+              "valor": 1
+            }
+          ],
+          "tupla_volta": [
+            {
+              "nome_atributo": "tipo",
+              "valor": 1046
+            }
+          ]
+        }
+      ]
+    },
     { "__comment": "edf_posto_combustivel <-> constr_edificacao | posto_combustivel",
       "classe_ida": "edf_posto_combustivel",
       "classe_volta": "constr_edificacao",
