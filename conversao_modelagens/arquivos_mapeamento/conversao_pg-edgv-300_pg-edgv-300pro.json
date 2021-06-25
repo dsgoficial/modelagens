@@ -1267,7 +1267,7 @@
       ]
     },
     {
-      "__comment": "cbge_deposito_geral <-> constr_deposito",
+      "__comment": "cbge_deposito_geral <-> constr_deposito - Geral e Saneamento",
       "classe_ida": "cbge_deposito_geral",
       "classe_volta": "constr_deposito",
       "atributos_default_volta": [
@@ -1309,23 +1309,55 @@
           "$or":[
             {
               "nome_atributo":"tipo",
-              "valor":201
+              "valor":108
             },
             {
               "nome_atributo":"tipo",
-              "valor":202
+              "valor":109
             },
             {
               "nome_atributo":"tipo",
-              "valor":203
+              "valor":110
             },
             {
               "nome_atributo":"tipo",
-              "valor":204
+              "valor":111
             },
             {
               "nome_atributo":"tipo",
-              "valor":298
+              "valor":112
+            },
+            {
+              "nome_atributo":"tipo",
+              "valor":113
+            },
+            {
+              "nome_atributo":"tipo",
+              "valor":132
+            },
+            {
+              "nome_atributo":"tipo",
+              "valor":198
+            },
+            {
+              "nome_atributo":"tipo",
+              "valor":301
+            },
+            {
+              "nome_atributo":"tipo",
+              "valor":304
+            },
+            {
+              "nome_atributo":"tipo",
+              "valor":305
+            },
+            {
+              "nome_atributo":"tipo",
+              "valor":306
+            },
+            {
+              "nome_atributo":"tipo",
+              "valor":398
             }
           ]
         }
@@ -1352,16 +1384,21 @@
               "valor_volta":111
             },
             {
-              "valor_ida":19,
-              "valor_volta":113
-            },
-            {
               "valor_ida":26,
               "valor_volta":112
             },
             {
+              "valor_ida":19,
+              "valor_volta":113
+            },
+            {
               "valor_ida":32,
               "valor_volta":132
+            },
+            {
+              "valor_ida":0,
+              "valor_volta":198,
+              "sentido":"ida"
             },
             {
               "valor_ida":99,
@@ -1387,11 +1424,6 @@
               "valor_ida":99,
               "valor_volta":398,
               "sentido":"volta"
-            },
-            {
-              "valor_ida":0,
-              "valor_volta":198,
-              "sentido":"ida"
             }
           ]
         },
@@ -1503,13 +1535,7 @@
             },
             {
               "valor_ida":99,
-              "valor_volta":298,
-              "sentido":"volta"
-            },
-            {
-              "valor_ida":0,
-              "valor_volta":198,
-              "sentido":"ida"
+              "valor_volta":298
             }
           ]
         },
