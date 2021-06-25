@@ -627,6 +627,84 @@
         }
       ]
     },
+    { "__comment": "hab_indigena <-> constr_edificacao | Habitacão indigena",
+      "classe_ida": "hab_indigena",
+      "classe_volta": "constr_edificacao",
+      "filtro_ida": {
+        "$not": {
+          "$or": [
+            {
+              "nome_atributo": "situacaofisica",
+              "valor": 1
+            },
+            {
+              "nome_atributo": "situacaofisica",
+              "valor": 2
+            }
+          ]
+        }
+      },
+      "filtro_volta": {
+        "nome_atributo": "tipo",
+        "valor": 1401
+      },
+      "atributos_default_ida": [
+        {
+          "nome_atributo": "tipo",
+          "valor": 1401
+        }
+      ],
+      "atributos_default_volta": [
+        {
+          "nome_atributo": "geometriaaproximada",
+          "valor": false
+        },
+        {
+          "nome_atributo": "situacaofisica",
+          "valor": 5
+        },
+        {
+          "nome_atributo": "turistica",
+          "valor": 0
+        },
+        {
+          "nome_atributo": "operacional",
+          "valor": 1
+        },
+        {
+          "nome_atributo": "cultura",
+          "valor": 0
+        },
+        {
+          "nome_atributo": "proprioadm",
+          "valor": 0
+        },
+        {
+          "nome_atributo": "coletiva",
+          "valor": 0
+        },
+        {
+          "nome_atributo": "isolada",
+          "valor": 0
+        },
+        {
+          "nome_atributo": "administracao",
+          "valor": 0
+        },
+        {
+          "nome_atributo": "classeativecon",
+          "valor": 0
+        },
+        {
+          "nome_atributo": "divisaoativecon",
+          "valor": 0
+        },
+        {
+          "nome_atributo": "grupoativecon",
+          "valor": 0
+        }
+      ]
+    },
     { "__comment": "hid_ilha <-> elemnat_ilha",
       "classe_ida": "hid_ilha",
       "classe_volta": "elemnat_ilha",
