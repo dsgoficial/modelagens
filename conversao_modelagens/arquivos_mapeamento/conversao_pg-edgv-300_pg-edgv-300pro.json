@@ -1522,6 +1522,11 @@
           "attr_volta":"tipo",
           "traducao":[
             {
+              "valor_ida":0,
+              "valor_volta":298,
+              "sentido":"ida"
+            },
+            {
               "valor_ida":1,
               "valor_volta":201
             },
@@ -1532,6 +1537,10 @@
             {
               "valor_ida":3,
               "valor_volta":203
+            },
+            {
+              "valor_ida":19,
+              "valor_volta":204
             },
             {
               "valor_ida":99,
