@@ -6922,6 +6922,26 @@
           "descricao": "-"
         }
       ]
+    },
+    {
+      "nome": "tipo_lim_politico",
+      "valores": [
+        {
+          "code": 1,
+          "value": "Internacional",
+          "descricao": "-"
+        },
+        {
+          "code": 2,
+          "value": "Estadual",
+          "descricao": "-"
+        },
+        {
+          "code": 3,
+          "value": "Municipal",
+          "descricao": "-"
+        }
+      ]
     }
   ],
   "classes": [
@@ -17966,6 +17986,33 @@
           "descricao": "-",
           "cardinalidade": "1..1",
           "mapa_valor": "cultivo_predominante"
+        }
+      ]
+    },
+    {
+      "nome": "limite_politico_administrativo",
+      "categoria": "lml",
+      "descricao": "-",
+      "primitivas": ["MultiLinestring"],
+      "atributos": [
+        {
+          "nome": "nome",
+          "tipo": "varchar(255)",
+          "descricao": "-",
+          "cardinalidade": "0..1"
+        },
+        {
+          "nome": "geometriaaproximada",
+          "tipo": "boolean",
+          "descricao": "-",
+          "cardinalidade": "1..1"
+        },
+        {
+          "nome": "tipolimpol",
+          "tipo": "smallint",
+          "descricao": "-",
+          "cardinalidade": "1..1",
+          "mapa_valor": "tipo_lim_politico"
         }
       ]
     }

@@ -526,6 +526,10 @@
       "classe_volta": "LML_Pais"
     },
     {
+      "classe_ida": "lml_limite_politico_administrativo",
+      "classe_volta": "LML_Limite_Politico_Administrativo"
+    },
+    {
       "classe_ida": "lml_posic_geo_localidade",
       "classe_volta": "LML_Posic_Geo_Localidade"
     },
@@ -7850,6 +7854,24 @@
         {
           "valor_ida": 11,
           "valor_volta": "Caatinga"
+        }
+      ]
+    },
+    {
+      "attr_ida": "tipolimpol",
+      "attr_volta": "TIPOLIMPOL",
+      "traducao": [
+        {
+          "valor_ida": 1,
+          "valor_volta": "Internacional"
+        },
+        {
+          "valor_ida": 2,
+          "valor_volta": "Estadual"
+        },
+        {
+          "valor_ida": 3,
+          "valor_volta": "Municipal"
         }
       ]
     }
