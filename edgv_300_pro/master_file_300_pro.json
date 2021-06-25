@@ -1223,7 +1223,7 @@
         },
         {
           "code": 806,
-          "value": "Laz - Cinema",
+          "value": "Laz - Espaço de exibição de filmes",
           "descricao": "-",
           "valor_filtro": "Edificação de lazer"
         },
@@ -1253,31 +1253,49 @@
         },
         {
           "code": 811,
-          "value": "Laz - Concha acústica",
+          "value": "Laz - Centro de documentação",
           "descricao": "-",
           "valor_filtro": "Edificação de lazer"
         },
         {
           "code": 812,
-          "value": "Laz - Conservatório",
+          "value": "Laz - Circo",
           "descricao": "-",
           "valor_filtro": "Edificação de lazer"
         },
         {
           "code": 813,
-          "value": "Laz - Coreto ou tribuna",
+          "value": "Laz - Concha acústica",
           "descricao": "-",
           "valor_filtro": "Edificação de lazer"
         },
         {
           "code": 814,
-          "value": "Laz - Equipamentos culturais diversos",
+          "value": "Laz - Conservatório",
           "descricao": "-",
           "valor_filtro": "Edificação de lazer"
         },
         {
           "code": 815,
-          "value": "Laz - Espaço de eventos e ou cultural",
+          "value": "Laz - Coreto ou tribuna",
+          "descricao": "-",
+          "valor_filtro": "Edificação de lazer"
+        },
+        {
+          "code": 817,
+          "value": "Laz - Equipamentos culturais diversos",
+          "descricao": "-",
+          "valor_filtro": "Edificação de lazer"
+        },
+        {
+          "code": 818,
+          "value": "Laz - Espaço de eventos e/ou cultural",
+          "descricao": "-",
+          "valor_filtro": "Edificação de lazer"
+        },
+        {
+          "code": 818,
+          "value": "Laz - Galeria",
           "descricao": "-",
           "valor_filtro": "Edificação de lazer"
         },

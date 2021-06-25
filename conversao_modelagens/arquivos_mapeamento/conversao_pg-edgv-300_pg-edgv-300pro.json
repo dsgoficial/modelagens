@@ -705,6 +705,230 @@
         }
       ]
     },
+    { "__comment": "edf_edif_constr_lazer -> constr_edificacao | lazer",
+      "classe_ida": "edf_edif_constr_lazer",
+      "classe_volta": "constr_edificacao",
+      "filtro_ida": {
+        "$not": {
+          "$or": [
+            {
+              "nome_atributo": "situacaofisica",
+              "valor": 1
+            },
+            {
+              "nome_atributo": "situacaofisica",
+              "valor": 2
+            }
+          ]
+        }
+      },
+      "filtro_volta": {
+        "$or": [
+          { "nome_atributo": "tipo",
+            "valor": 801
+          },
+          { "nome_atributo": "tipo",
+            "valor": 802
+          },
+          { "nome_atributo": "tipo",
+            "valor": 803
+          },
+          { "nome_atributo": "tipo",
+            "valor": 804
+          },
+          { "nome_atributo": "tipo",
+            "valor": 805
+          },
+          { "nome_atributo": "tipo",
+            "valor": 806
+          },
+          { "nome_atributo": "tipo",
+            "valor": 807
+          },
+          { "nome_atributo": "tipo",
+            "valor": 808
+          },
+          { "nome_atributo": "tipo",
+            "valor": 809
+          },
+          { "nome_atributo": "tipo",
+            "valor": 810
+          },
+          { "nome_atributo": "tipo",
+            "valor": 811
+          },
+          { "nome_atributo": "tipo",
+            "valor": 812
+          },
+          { "nome_atributo": "tipo",
+            "valor": 813
+          },
+          { "nome_atributo": "tipo",
+            "valor": 814
+          },
+          { "nome_atributo": "tipo",
+            "valor": 815
+          },
+          { "nome_atributo": "tipo",
+            "valor": 817
+          },
+          { "nome_atributo": "tipo",
+            "valor": 818
+          },
+          { "nome_atributo": "tipo",
+            "valor": 819
+          },
+          { "nome_atributo": "tipo",
+            "valor": 898
+          }
+        ]
+      },
+      "atributos_default_volta": [
+        {
+          "nome_atributo": "geometriaaproximada",
+          "valor": false
+        },
+        {
+          "nome_atributo": "situacaofisica",
+          "valor": 5
+        },
+        {
+          "nome_atributo": "turistica",
+          "valor": 0
+        },
+        {
+          "nome_atributo": "operacional",
+          "valor": 1
+        },
+        {
+          "nome_atributo": "cultura",
+          "valor": 0
+        },
+        {
+          "nome_atributo": "proprioadm",
+          "valor": 0
+        },
+        {
+          "nome_atributo": "administracao",
+          "valor": 0
+        },
+        {
+          "nome_atributo": "classeativecon",
+          "valor": 0
+        },
+        {
+          "nome_atributo": "divisaoativecon",
+          "valor": 0
+        },
+        {
+          "nome_atributo": "grupoativecon",
+          "valor": 0
+        }
+      ],
+      "mapeamento_atributos": [
+        {
+          "attr_ida": "tipoediflazer",
+          "attr_volta": "tipo",
+          "traducao": [
+            {
+              "valor_ida": 0,
+              "valor_volta": 898,
+              "sentido": "ida"
+            },
+            {
+              "valor_ida": 1,
+              "valor_volta": 801
+            },
+            {
+              "valor_ida": 2,
+              "valor_volta": 802
+            },
+            {
+              "valor_ida": 3,
+              "valor_volta": 803
+            },
+            {
+              "valor_ida": 4,
+              "valor_volta": 801
+            },
+            {
+              "valor_ida": 5,
+              "valor_volta": 801
+            },
+            {
+              "valor_ida": 6,
+              "valor_volta": 806
+            },
+            {
+              "valor_ida": 6,
+              "valor_volta": 806
+            },
+            {
+              "valor_ida": 7,
+              "valor_volta": 807
+            },
+            {
+              "valor_ida": 8,
+              "valor_volta": 808
+            },
+            {
+              "valor_ida": 9,
+              "valor_volta": 809
+            },
+            {
+              "valor_ida": 10,
+              "valor_volta": 810
+            },
+            {
+              "valor_ida": 11,
+              "valor_volta": 811
+            },
+            {
+              "valor_ida": 12,
+              "valor_volta": 812
+            },
+            {
+              "valor_ida": 13,
+              "valor_volta": 813
+            },
+            {
+              "valor_ida": 14,
+              "valor_volta": 814
+            },
+            {
+              "valor_ida": 15,
+              "valor_volta": 815
+            },
+            {
+              "valor_ida": 17,
+              "valor_volta": 817
+            },
+            {
+              "valor_ida": 18,
+              "valor_volta": 818
+            },
+            {
+              "valor_ida": 19,
+              "valor_volta": 814
+            },
+            {
+              "valor_ida": 21,
+              "valor_volta": 898,
+              "sentido":"ida"
+            },
+            {
+              "valor_ida": 22,
+              "valor_volta": 898,
+              "sentido":"ida"
+            },
+            {
+              "valor_ida": 99,
+              "valor_volta": 898
+            }
+          ]
+        }
+      ]
+    },
     { "__comment": "hid_ilha <-> elemnat_ilha",
       "classe_ida": "hid_ilha",
       "classe_volta": "elemnat_ilha",
