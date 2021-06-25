@@ -1680,10 +1680,6 @@
           {
             "nome_atributo":"tipo",
             "valor":998
-          },
-          {
-            "nome_atributo":"tipo",
-            "valor":2601
           }
         ]
       },
@@ -1727,6 +1723,11 @@
           "attr_volta":"tipo",
           "traducao":[
             {
+              "valor_ida":0,
+              "valor_volta":998,
+              "sentido":"ida"
+            },
+            {
               "valor_ida":3,
               "valor_volta":903
             },
@@ -1753,32 +1754,6 @@
               "sentido":"ida"
             },
             {
-              "valor_ida":11,
-              "valor_volta":908
-            },
-            {
-              "valor_ida":19,
-              "valor_volta":2601
-            },
-            {
-              "valor_ida":23,
-              "valor_volta":904
-            },
-            {
-              "valor_ida":99,
-              "valor_volta":998
-            },
-            {
-              "valor_ida":0,
-              "valor_volta":998,
-              "sentido":"ida"
-            },
-            {
-              "valor_ida":8,
-              "valor_volta":998,
-              "sentido":"ida"
-            },
-            {
               "valor_ida":9,
               "valor_volta":998,
               "sentido":"ida"
@@ -1787,6 +1762,10 @@
               "valor_ida":10,
               "valor_volta":998,
               "sentido":"ida"
+            },
+            {
+              "valor_ida":11,
+              "valor_volta":908
             },
             {
               "valor_ida":12,
@@ -1839,6 +1818,10 @@
               "sentido":"ida"
             },
             {
+              "valor_ida":23,
+              "valor_volta":904
+            },
+            {
               "valor_ida":24,
               "valor_volta":998,
               "sentido":"ida"
@@ -1847,6 +1830,14 @@
               "valor_ida":25,
               "valor_volta":998,
               "sentido":"ida"
+            },
+            {
+              "valor_ida":26,
+              "valor_volta":909
+            },
+            {
+              "valor_ida":99,
+              "valor_volta":998
             }
           ]
         }
@@ -1954,6 +1945,83 @@
             {
               "nome_atributo": "tipo",
               "valor": 910
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "__comment":"edf_posto_combustivel <-> constr_edificacao | posto_combustivel",
+      "classe_ida":"edf_posto_combustivel",
+      "classe_volta":"constr_edificacao",
+      "filtro_ida":{
+        "$not":{
+          "$or":[
+            {
+              "nome_atributo":"situacaofisica",
+              "valor":1
+            },
+            {
+              "nome_atributo":"situacaofisica",
+              "valor":2
+            }
+          ]
+        }
+      },
+      "filtro_volta":{
+        "$or":[
+          {
+            "nome_atributo":"tipo",
+            "valor":2601
+          }
+        ]
+      },
+      "atributos_default_volta":[
+        {
+          "nome_atributo":"geometriaaproximada",
+          "valor":0
+        },
+        {
+          "nome_atributo":"operacional",
+          "valor":0
+        },
+        {
+          "nome_atributo":"turistica",
+          "valor":0
+        },
+        {
+          "nome_atributo":"cultura",
+          "valor":0
+        },
+        {
+          "nome_atributo":"administracao",
+          "valor":0
+        },
+        {
+          "nome_atributo":"proprioadm",
+          "valor":0
+        },
+        {
+          "nome_atributo":"divisaoativecon",
+          "valor":50
+        },
+        {
+          "nome_atributo":"classeativecon",
+          "valor":0
+        },
+        {
+          "nome_atributo":"grupoativecon",
+          "valor":0
+        }
+      ],
+      "mapeamento_atributos":[
+        {
+          "attr_ida":"tipoedifcomercserv",
+          "attr_volta":"tipo",
+          "traducao":[
+            {
+              "valor_ida":19,
+              "valor_volta":2601
             }
           ]
         }
