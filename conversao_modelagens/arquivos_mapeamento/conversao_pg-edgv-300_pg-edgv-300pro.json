@@ -218,13 +218,74 @@
         }
       },
       "filtro_volta": {
-        "nome_atributo": "situacaofisica",
-        "valor": 1
+        "nome_atributo": "tipo",
+            "valor": 201
       },
-      "atributos_default_ida": [
+      "atributos_default_volta": [
         {
-          "nome_atributo": "tipo",
+          "nome_atributo": "geometriaaproximada",
+          "valor": false
+        },
+        {
+          "nome_atributo": "situacaofisica",
+          "valor": 5
+        },
+        {
+          "nome_atributo": "turistica",
           "valor": 0
+        },
+        {
+          "nome_atributo": "operacional",
+          "valor": 1
+        },
+        {
+          "nome_atributo": "cultura",
+          "valor": 0
+        },
+        {
+          "nome_atributo": "proprioadm",
+          "valor": 0
+        },
+        {
+          "nome_atributo": "administracao",
+          "valor": 0
+        }
+      ],
+      "mapeamento_atributos": [
+        {
+          "attr_ida": "tipoedifenergia",
+          "attr_volta": "tipo",
+          "traducao": [
+            {
+              "valor_ida": 0,
+              "valor_volta": 201,
+              "sentido": "ida"
+            },
+            {
+              "valor_ida": 2,
+              "valor_volta": 201,
+              "sentido": "ida"
+            },
+            {
+              "valor_ida": 3,
+              "valor_volta": 201,
+              "sentido": "ida"
+            },
+            {
+              "valor_ida": 4,
+              "valor_volta": 201,
+              "sentido": "ida"
+            },
+            {
+              "valor_ida": 5,
+              "valor_volta": 201,
+              "sentido": "ida"
+            },
+            {
+              "valor_ida": 99,
+              "valor_volta": 201
+            }
+          ]
         }
       ]
     },
