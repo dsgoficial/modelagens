@@ -301,6 +301,154 @@
         }
       ]
     },
+    { "__comment": "edf_edif_ensino -> constr_edificacao | ensino",
+      "classe_ida": "edf_edif_energia",
+      "classe_volta": "constr_edificacao",
+      "filtro_ida": {
+        "$not": {
+          "$or": [
+            {
+              "nome_atributo": "situacaofisica",
+              "valor": 1
+            },
+            {
+              "nome_atributo": "situacaofisica",
+              "valor": 2
+            }
+          ]
+        }
+      },
+      "filtro_volta": {
+        "$or": [
+          {
+            "nome_atributo": "tipo",
+            "valor": 516
+          },
+          {
+            "nome_atributo": "tipo",
+            "valor": 517
+          },
+          {
+            "nome_atributo": "tipo",
+            "valor": 518
+          },
+          {
+            "nome_atributo": "tipo",
+            "valor": 519
+          },
+          {
+            "nome_atributo": "tipo",
+            "valor": 520
+          },
+          {
+            "nome_atributo": "tipo",
+            "valor": 521
+          },
+          {
+            "nome_atributo": "tipo",
+            "valor": 522
+          },
+          {
+            "nome_atributo": "tipo",
+            "valor": 523
+          },
+          {
+            "nome_atributo": "tipo",
+            "valor": 524
+          },
+          {
+            "nome_atributo": "tipo",
+            "valor": 525
+          }
+        ]
+      },
+      "atributos_default_volta": [
+        {
+          "nome_atributo": "geometriaaproximada",
+          "valor": false
+        },
+        {
+          "nome_atributo": "situacaofisica",
+          "valor": 5
+        },
+        {
+          "nome_atributo": "turistica",
+          "valor": 0
+        },
+        {
+          "nome_atributo": "operacional",
+          "valor": 1
+        },
+        {
+          "nome_atributo": "cultura",
+          "valor": 0
+        },
+        {
+          "nome_atributo": "proprioadm",
+          "valor": 0
+        },
+        {
+          "nome_atributo": "administracao",
+          "valor": 0
+        },
+        {
+          "nome_atributo": "divisaoativecon",
+          "valor": 0
+        },
+        {
+          "nome_atributo": "grupoativecon",
+          "valor": 0
+        }
+      ],
+      "mapeamento_atributos": [
+        {
+          "attr_ida": "classeativecon",
+          "attr_volta": "tipo",
+          "traducao": [
+            {
+              "valor_ida": 16,
+              "valor_volta": 516
+            },
+            {
+              "valor_ida": 17,
+              "valor_volta": 517
+            },
+            {
+              "valor_ida": 18,
+              "valor_volta": 518
+            },
+            {
+              "valor_ida": 19,
+              "valor_volta": 519
+            },
+            {
+              "valor_ida": 20,
+              "valor_volta": 520
+            },
+            {
+              "valor_ida": 21,
+              "valor_volta": 521
+            },
+            {
+              "valor_ida": 22,
+              "valor_volta": 522
+            },
+            {
+              "valor_ida": 23,
+              "valor_volta": 523
+            },
+            {
+              "valor_ida": 24,
+              "valor_volta": 524
+            },
+            {
+              "valor_ida": 25,
+              "valor_volta": 525
+            }
+          ]
+        }
+      ]
+    },
     { "__comment": "edf_edificacao <-> constr_edificacao | edif genérica",
       "classe_ida": "edf_edificacao",
       "classe_volta": "constr_edificacao",
