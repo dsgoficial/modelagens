@@ -449,6 +449,114 @@
         }
       ]
     },
+    { "__comment": "edf_edif_ext_mineral -> constr_edificacao | ext_mineral",
+      "classe_ida": "edf_edif_ext_mineral",
+      "classe_volta": "constr_edificacao",
+      "filtro_ida": {
+        "$not": {
+          "$or": [
+            {
+              "nome_atributo": "situacaofisica",
+              "valor": 1
+            },
+            {
+              "nome_atributo": "situacaofisica",
+              "valor": 2
+            }
+          ]
+        }
+      },
+      "filtro_volta": {
+        "$or": [
+          {
+            "nome_atributo": "tipo",
+            "valor": 1110
+          },
+          {
+            "nome_atributo": "tipo",
+            "valor": 1111
+          },
+          {
+            "nome_atributo": "tipo",
+            "valor": 1113
+          },
+          {
+            "nome_atributo": "tipo",
+            "valor": 1114
+          },
+          {
+            "nome_atributo": "tipo",
+            "valor": 1198
+          }
+        ]
+      },
+      "atributos_default_volta": [
+        {
+          "nome_atributo": "geometriaaproximada",
+          "valor": false
+        },
+        {
+          "nome_atributo": "situacaofisica",
+          "valor": 5
+        },
+        {
+          "nome_atributo": "turistica",
+          "valor": 0
+        },
+        {
+          "nome_atributo": "operacional",
+          "valor": 1
+        },
+        {
+          "nome_atributo": "cultura",
+          "valor": 0
+        },
+        {
+          "nome_atributo": "proprioadm",
+          "valor": 0
+        },
+        {
+          "nome_atributo": "administracao",
+          "valor": 0
+        },
+        {
+          "nome_atributo": "classeativecon",
+          "valor": 0
+        },
+        {
+          "nome_atributo": "grupoativecon",
+          "valor": 0
+        }
+      ],
+      "mapeamento_atributos": [
+        {
+          "attr_ida": "divisaoativecon",
+          "attr_volta": "tipo",
+          "traducao": [
+            {
+              "valor_ida": 10,
+              "valor_volta": 1110
+            },
+            {
+              "valor_ida": 11,
+              "valor_volta": 1111
+            },
+            {
+              "valor_ida": 13,
+              "valor_volta": 1113
+            },
+            {
+              "valor_ida": 14,
+              "valor_volta": 1114
+            },
+            {
+              "valor_ida": 99,
+              "valor_volta": 1198
+            }
+          ]
+        }
+      ]
+    },
     { "__comment": "edf_edificacao <-> constr_edificacao | edif genérica",
       "classe_ida": "edf_edificacao",
       "classe_volta": "constr_edificacao",
