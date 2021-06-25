@@ -249,6 +249,18 @@
         {
           "nome_atributo": "administracao",
           "valor": 0
+        },
+        {
+          "nome_atributo": "classeativecon",
+          "valor": 0
+        },
+        {
+          "nome_atributo": "divisaoativecon",
+          "valor": 0
+        },
+        {
+          "nome_atributo": "grupoativecon",
+          "valor": 0
         }
       ],
       "mapeamento_atributos": [
@@ -305,6 +317,10 @@
             }
           ]
         }
+      },
+      "filtro_volta": {
+        "nome_atributo": "tipo",
+        "valor": 0
       },
       "atributos_default_ida": [
         {
