@@ -2874,6 +2874,10 @@
           "valor": 0
         },
         {
+          "nome_atributo": "situacaofisica",
+          "valor": 5
+        },
+        {
           "nome_atributo": "operacional",
           "valor": 0
         },
