@@ -2863,12 +2863,8 @@
         }
       },
       "filtro_volta": {
-        "$or": [
-          {
-            "nome_atributo": "tipo",
-            "valor": 2601
-          }
-        ]
+        "nome_atributo": "tipo",
+        "valor": 2601
       },
       "atributos_default_volta": [
         {
@@ -4457,12 +4453,8 @@
       "classe_ida": "cbge_trecho_arruamento",
       "classe_volta": "infra_via_deslocamento",
       "filtro_volta": {
-        "$or": [
-          {
-            "nome_atributo": "tipo",
-            "valor": 5
-          }
-        ]
+        "nome_atributo": "tipo",
+        "valor": 5
       },
       "atributos_default_volta": [
         {
@@ -4523,12 +4515,8 @@
       "classe_ida": "tra_caminho_carrocavel",
       "classe_volta": "infra_via_deslocamento",
       "filtro_volta": {
-        "$or": [
-          {
-            "nome_atributo": "tipo",
-            "valor": 3
-          }
-        ]
+        "nome_atributo": "tipo",
+        "valor": 3
       },
       "atributos_default_ida": [
         {
@@ -6219,7 +6207,7 @@
           ]
         }
       ]
-    },
+    }
   ],
   "mapeamento_atributos": [
     {
