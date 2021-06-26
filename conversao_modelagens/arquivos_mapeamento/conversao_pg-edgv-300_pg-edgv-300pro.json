@@ -3310,18 +3310,6 @@
           "nome_atributo": "tipousoedif",
           "valor": 6
         }
-      ],
-      "mapeamento_atributos": [
-        {
-          "attr_ida": "tipoinstalmilitar",
-          "attr_volta": "tipo",
-          "traducao": [
-            {
-              "valor_ida": 14,
-              "valor_volta": 3002
-            }
-          ]
-        }
       ]
     },
     { "__comment": "edf_posto_policia_rod_federal <-> constr_edificacao | posto pol rod federal",
