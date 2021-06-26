@@ -1,6 +1,6 @@
 {
   "modelo": "EDGV 3.0 Orto",
-  "versao": "1.0",
+  "versao": "2.0",
   "schema_dados": "edgv",
   "schema_dominios": "dominios",
   "a_ser_preenchido": {
@@ -11,42 +11,6 @@
     {
       "nome": "observacao",
       "tipo": "VARCHAR(255)",
-      "descricao": "-",
-      "cardinalidade": "0..1"
-    },
-    {
-      "nome": "data_modificacao",
-      "tipo": "timestamp with time zone",
-      "descricao": "-",
-      "cardinalidade": "0..1"
-    },
-    {
-      "nome": "controle_uuid",
-      "tipo": "VARCHAR(255)",
-      "descricao": "-",
-      "cardinalidade": "0..1"
-    },
-    {
-      "nome": "usuario_criacao",
-      "tipo": "VARCHAR(255)",
-      "descricao": "-",
-      "cardinalidade": "0..1"
-    },
-    {
-      "nome": "usuario_atualizacao",
-      "tipo": "VARCHAR(255)",
-      "descricao": "-",
-      "cardinalidade": "0..1"
-    },
-    {
-      "nome": "insumo",
-      "tipo": "VARCHAR(255)",
-      "descricao": "-",
-      "cardinalidade": "0..1"
-    },
-    {
-      "nome": "data_insumo",
-      "tipo": "timestamp with time zone",
       "descricao": "-",
       "cardinalidade": "0..1"
     }
@@ -62,161 +26,186 @@
   },
   "dominios": [
     {
-      "nome": "booleano",
+      "nome": "tipo_extracao_mineral",
       "valores": [
         {
           "code": 1,
-          "value": "Sim",
-          "descricao": "-"
-        },
-        {
-          "code": 2,
-          "value": "Não",
-          "descricao": "-"
-        }
-      ]
-    },
-    {
-      "nome": "tipo_ocupacao_solo",
-      "valores": [
-        {
-          "code": 101,
-          "value": "Cemitério - Crematório",
-          "descricao": "-",
-          "valor_filtro": "Cemitério"
-        },
-        {
-          "code": 102,
-          "value": "Cemitério Parque",
-          "descricao": "-",
-          "valor_filtro": "Cemitério"
-        },
-        {
-          "code": 103,
-          "value": "Cemitério Vertical",
-          "descricao": "-",
-          "valor_filtro": "Cemitério"
-        },
-        {
-          "code": 104,
-          "value": "Cemitério Comum",
-          "descricao": "-",
-          "valor_filtro": "Cemitério"
-        },
-        {
-          "code": 105,
-          "value": "Cemitério - Túmulo isolado",
-          "descricao": "-",
-          "valor_filtro": "Cemitério"
-        }
-      ]
-    },
-    {
-      "nome": "indice",
-      "valores": [
-        {
-          "code": 1,
-          "value": "Mestra",
-          "descricao": "Curva múltipla do quíntuplo da equidistância empregada, sendo a primeira, a relativa ao nível de referência, de altitude igual a zero."
-        },
-        {
-          "code": 2,
-          "value": "Normal",
-          "descricao": "Curva traçada no intervalo das curvas de nível mestras, sendo múltipla da equidistância empregada."
-        },
-        {
-          "code": 3,
-          "value": "Auxiliar",
-          "descricao": "Curva traçada com o valor adicional de meia equidistância, com o intuito de melhor representar o relevo."
-        }
-      ]
-    },
-    {
-      "nome": "tipo_toponimo_fisiografico",
-      "valores": [
-        {
-          "code": 1,
-          "value": "Serra",
-          "descricao": "-"
-        },
-        {
-          "code": 2,
-          "value": "Morro",
-          "descricao": "-"
-        },
-        {
-          "code": 3,
-          "value": "Montanha",
+          "value": "Poço",
           "descricao": "-"
         },
         {
           "code": 4,
-          "value": "Chapada",
+          "value": "Mina",
           "descricao": "-"
         },
         {
           "code": 5,
-          "value": "Maciço",
+          "value": "Garimpo",
           "descricao": "-"
         },
         {
           "code": 6,
-          "value": "Planalto",
-          "descricao": "-"
-        },
-        {
-          "code": 7,
-          "value": "Planície",
-          "descricao": "-"
-        },
-        {
-          "code": 9,
-          "value": "Península",
-          "descricao": "-"
-        },
-        {
-          "code": 10,
-          "value": "Ponta",
-          "descricao": "-"
-        },
-        {
-          "code": 11,
-          "value": "Cabo",
-          "descricao": "-"
-        },
-        {
-          "code": 12,
-          "value": "Praia",
-          "descricao": "-"
-        },
-        {
-          "code": 17,
-          "value": "Pico",
+          "value": "Salina",
           "descricao": "-"
         }
       ]
     },
     {
-      "nome": "tipo_elemento_hidrografico",
+      "nome": "forma_extracao",
       "valores": [
         {
+          "code": 5,
+          "value": "A céu aberto",
+          "descricao": "-"
+        },
+        {
+          "code": 6,
+          "value": "Subterrânea",
+          "descricao": "-"
+        }
+      ]
+    },
+    {
+      "nome": "situacao_fisica",
+      "valores": [
+        {
+          "code": 0,
+          "value": "Desconhecida",
+          "descricao": "-"
+        },
+        {
+          "code": 1,
+          "value": "Abandonada",
+          "descricao": "-"
+        },
+        {
+          "code": 2,
+          "value": "Destruída",
+          "descricao": "-"
+        },
+        {
+          "code": 3,
+          "value": "Construída",
+          "descricao": "-"
+        },
+        {
+          "code": 4,
+          "value": "Em construção",
+          "descricao": "-"
+        }
+      ]
+    },
+    {
+      "nome": "tipo_elemento_energia",
+      "valores": [
+        {
+          "code": 303,
+          "value": "Linha de transmissão de energia",
+          "descricao": "-"
+        },
+        {
+          "code": 1801,
+          "value": "Subestação de transmissão/distribuição de energia elétrica",
+          "descricao": "-"
+        }
+      ]
+    },
+    {
+      "nome": "tipo_massa_dagua",
+      "valores": [
+        {
+          "code": 1,
+          "value": "Rio (com fluxo)",
+          "descricao": "-"
+        },
+        {
+          "code": 2,
+          "value": "Canal (com fluxo)",
+          "descricao": "-"
+        },
+        {
+          "code": 3,
+          "value": "Oceano (sem fluxo)",
+          "descricao": "-"
+        },
+        {
+          "code": 4,
+          "value": "Baía (sem fluxo)",
+          "descricao": "-"
+        },
+        {
+          "code": 5,
+          "value": "Enseada (sem fluxo)",
+          "descricao": "-"
+        },
+        {
+          "code": 6,
+          "value": "Meando Abandonado (sem fluxo)",
+          "descricao": "-"
+        },
+        {
+          "code": 7,
+          "value": "Lago ou Lagoa (sem fluxo)",
+          "descricao": "-"
+        },
+        {
           "code": 9,
-          "value": "Cachoeira",
+          "value": "Laguna (com fluxo)",
           "descricao": "-"
         },
         {
           "code": 10,
-          "value": "Salto",
+          "value": "Represa/açude com fluxo",
           "descricao": "-"
         },
         {
           "code": 11,
-          "value": "Catarata",
+          "value": "Represa/açude sem fluxo",
+          "descricao": "-"
+        }
+      ]
+    },
+    {
+      "nome": "regime",
+      "valores": [
+        {
+          "code": 1,
+          "value": "Permanente",
           "descricao": "-"
         },
         {
-          "code": 12,
-          "value": "Corredeira",
+          "code": 3,
+          "value": "Temporário",
+          "descricao": "-"
+        },
+        {
+          "code": 5,
+          "value": "Seco",
+          "descricao": "-"
+        }
+      ]
+    },
+    {
+      "nome": "tipo_trecho_drenagem",
+      "valores": [
+        {
+          "code": 1,
+          "value": "Rio",
+          "descricao": "-"
+        },
+        {
+          "code": 2,
+          "value": "Canal",
+          "descricao": "-"
+        },
+        {
+          "code": 3,
+          "value": "Trecho pluvial",
+          "descricao": "-"
+        },
+        {
+          "code": 4,
+          "value": "Canal encoberto",
           "descricao": "-"
         }
       ]
@@ -231,255 +220,17 @@
         },
         {
           "code": 2,
-          "value": "Trecho principal",
+          "value": "Dentro de polígono - Trecho principal",
           "descricao": "-"
         },
         {
           "code": 3,
-          "value": "Trecho secundário",
+          "value": "Dentro de polígono - Trecho secundário",
           "descricao": "-"
         },
         {
           "code": 4,
-          "value": "Trecho compartilhado",
-          "descricao": "-"
-        }
-      ]
-    },
-    {
-      "nome": "tipo_trecho_duto",
-      "valores": [
-        {
-          "code": 101,
-          "value": "Calha - Água pluvial",
-          "descricao": "-",
-          "valor_filtro": "Calha"
-        },
-        {
-          "code": 201,
-          "value": "Correia transp - Minério",
-          "descricao": "-",
-          "valor_filtro": "Correia transportadora"
-        },
-        {
-          "code": 202,
-          "value": "Correia transp - Grãos",
-          "descricao": "-",
-          "valor_filtro": "Correia transportadora"
-        },
-        {
-          "code": 298,
-          "value": "Correia transp - Outros",
-          "descricao": "-",
-          "valor_filtro": "Correia transportadora"
-        },
-        {
-          "code": 300,
-          "value": "Duto – Desconhecido",
-          "descricao": "-",
-          "valor_filtro": "Duto"
-        },
-        {
-          "code": 301,
-          "value": "Duto – Água",
-          "descricao": "-",
-          "valor_filtro": "Duto"
-        },
-        {
-          "code": 302,
-          "value": "Duto – Óleo",
-          "descricao": "-",
-          "valor_filtro": "Duto"
-        },
-        {
-          "code": 303,
-          "value": "Duto – Gasolina",
-          "descricao": "-",
-          "valor_filtro": "Duto"
-        },
-        {
-          "code": 304,
-          "value": "Duto – Álcool",
-          "descricao": "-",
-          "valor_filtro": "Duto"
-        },
-        {
-          "code": 305,
-          "value": "Duto – Querosene",
-          "descricao": "-",
-          "valor_filtro": "Duto"
-        },
-        {
-          "code": 306,
-          "value": "Duto – Petróleo",
-          "descricao": "-",
-          "valor_filtro": "Duto"
-        },
-        {
-          "code": 307,
-          "value": "Duto – Nafta",
-          "descricao": "-",
-          "valor_filtro": "Duto"
-        },
-        {
-          "code": 308,
-          "value": "Duto – Gás",
-          "descricao": "-",
-          "valor_filtro": "Duto"
-        },
-        {
-          "code": 309,
-          "value": "Duto – Efluentes",
-          "descricao": "-",
-          "valor_filtro": "Duto"
-        },
-        {
-          "code": 310,
-          "value": "Duto – Esgoto",
-          "descricao": "-",
-          "valor_filtro": "Duto"
-        },
-        {
-          "code": 398,
-          "value": "Duto – Outros",
-          "descricao": "-",
-          "valor_filtro": "Duto"
-        }
-      ]
-    },
-    {
-      "nome": "posicao_relativa",
-      "valores": [
-        {
-          "code": 2,
-          "value": "Superfície",
-          "descricao": "-"
-        },
-        {
-          "code": 3,
-          "value": "Elevado",
-          "descricao": "-"
-        },
-        {
-          "code": 4,
-          "value": "Emerso",
-          "descricao": "-"
-        },
-        {
-          "code": 5,
-          "value": "Submerso",
-          "descricao": "-"
-        },
-        {
-          "code": 6,
-          "value": "Subterrâneo",
-          "descricao": "-"
-        },
-        {
-          "code": 14,
-          "value": "Isolada",
-          "descricao": "-"
-        },
-        {
-          "code": 17,
-          "value": "Adjacente a edificação",
-          "descricao": "-"
-        },
-        {
-          "code": 18,
-          "value": "Sobre edificação",
-          "descricao": "-"
-        },
-        {
-          "code": 97,
-          "value": "Não aplicável",
-          "descricao": "-"
-        }
-      ]
-    },
-    {
-      "nome": "tipo_elemento_energia",
-      "valores": [
-        {
-          "code": 601,
-          "value": "Grupo de transformadores",
-          "descricao": "-",
-          "valor_filtro": "Grupo de transformadores"
-        },
-        {
-          "code": 302,
-          "value": "Linha de distribuição de energia",
-          "descricao": "-",
-          "valor_filtro": "Linha de energia"
-        },
-        {
-          "code": 303,
-          "value": "Linha de transmissão de energia",
-          "descricao": "-",
-          "valor_filtro": "Linha de energia"
-        },
-        {
-          "code": 1401,
-          "value": "Torre de energia",
-          "descricao": "-",
-          "valor_filtro": "Torre de energia"
-        },
-        {
-          "code": 1701,
-          "value": "Aerogerador",
-          "descricao": "-",
-          "valor_filtro": "Aerogerador"
-        },
-        {
-          "code": 405,
-          "value": "Estação geradora – Eólica",
-          "descricao": "-",
-          "valor_filtro": "Estação geradora de energia"
-        },
-        {
-          "code": 408,
-          "value": "Estação geradora – Hidrelétrica",
-          "descricao": "-",
-          "valor_filtro": "Estação geradora de energia"
-        },
-        {
-          "code": 407,
-          "value": "Estação geradora – Maré-motriz",
-          "descricao": "-",
-          "valor_filtro": "Estação geradora de energia"
-        },
-        {
-          "code": 498,
-          "value": "Estação geradora – Outras",
-          "descricao": "-",
-          "valor_filtro": "Estação geradora de energia"
-        },
-        {
-          "code": 406,
-          "value": "Estação geradora – Solar",
-          "descricao": "-",
-          "valor_filtro": "Estação geradora de energia"
-        },
-        {
-          "code": 409,
-          "value": "Estação geradora – Termelétrica",
-          "descricao": "-",
-          "valor_filtro": "Estação geradora de energia"
-        }
-      ],
-      "filtro": true
-    },
-    {
-      "nome": "tipo_pista_pouso",
-      "valores": [
-        {
-          "code": 9,
-          "value": "Pista de pouso",
-          "descricao": "-"
-        },
-        {
-          "code": 11,
-          "value": "Heliponto",
+          "value": "Dentro de polígono - Trecho compartilhado",
           "descricao": "-"
         }
       ]
@@ -488,23 +239,8 @@
       "nome": "tipo_limite_especial",
       "valores": [
         {
-          "code": 1,
-          "value": "Terra pública",
-          "descricao": "-"
-        },
-        {
           "code": 2,
           "value": "Terra indígena",
-          "descricao": "-"
-        },
-        {
-          "code": 3,
-          "value": "Quilombo",
-          "descricao": "-"
-        },
-        {
-          "code": 4,
-          "value": "Assentamento rural",
           "descricao": "-"
         },
         {
@@ -580,6 +316,166 @@
       ]
     },
     {
+      "nome": "booleano",
+      "valores": [
+        {
+          "code": 1,
+          "value": "Sim",
+          "descricao": "-"
+        },
+        {
+          "code": 2,
+          "value": "Não",
+          "descricao": "-"
+        }
+      ]
+    },
+    {
+      "nome": "tipo_localidade",
+      "valores": [
+        {
+          "code": 1,
+          "value": "Cidade",
+          "descricao": "-"
+        },
+        {
+          "code": 2,
+          "value": "Capital estadual",
+          "descricao": "-"
+        },
+        {
+          "code": 3,
+          "value": "Capital federal",
+          "descricao": "-"
+        },
+        {
+          "code": 4,
+          "value": "Vila",
+          "descricao": "-"
+        },
+        {
+          "code": 5,
+          "value": "Aglomerado rural isolado – Núcleo",
+          "descricao": "-"
+        },
+        {
+          "code": 6,
+          "value": "Aglomerado rural isolado – Povoado",
+          "descricao": "-"
+        },
+        {
+          "code": 7,
+          "value": "Outros aglomerados rurais – Lugarejo",
+          "descricao": "-"
+        },
+        {
+          "code": 8,
+          "value": "Nome local",
+          "descricao": "-"
+        }
+      ]
+    },
+    {
+      "nome": "uso_pista",
+      "valores": [
+        {
+          "code": 0,
+          "value": "Desconhecido",
+          "descricao": "-"
+        },
+        {
+          "code": 6,
+          "value": "Particular",
+          "descricao": "-"
+        },
+        {
+          "code": 11,
+          "value": "Público",
+          "descricao": "-"
+        },
+        {
+          "code": 12,
+          "value": "Militar",
+          "descricao": "-"
+        },
+        {
+          "code": 13,
+          "value": "Público/Militar",
+          "descricao": "-"
+        }
+      ]
+    },
+    {
+      "nome": "indice",
+      "valores": [
+        {
+          "code": 1,
+          "value": "Mestra",
+          "descricao": "Curva múltipla do quíntuplo da equidistância empregada, sendo a primeira, a relativa ao nível de referência, de altitude igual a zero."
+        },
+        {
+          "code": 2,
+          "value": "Normal",
+          "descricao": "Curva traçada no intervalo das curvas de nível mestras, sendo múltipla da equidistância empregada."
+        },
+        {
+          "code": 3,
+          "value": "Auxiliar",
+          "descricao": "Curva traçada com o valor adicional de meia equidistância, com o intuito de melhor representar o relevo."
+        }
+      ]
+    },
+    {
+      "nome": "tipo_pista_pouso",
+      "valores": [
+        {
+          "code": 9,
+          "value": "Pista de pouso",
+          "descricao": "-"
+        },
+        {
+          "code": 10,
+          "value": "Pista de táxi",
+          "descricao": "-"
+        },
+        {
+          "code": 11,
+          "value": "Heliponto",
+          "descricao": "-"
+        }
+      ]
+    },
+    {
+      "nome": "revestimento",
+      "valores": [
+        {
+          "code": 0,
+          "value": "Desconhecido",
+          "descricao": "-"
+        },
+        {
+          "code": 1,
+          "value": "Leito natural",
+          "descricao": "-"
+        },
+        {
+          "code": 2,
+          "value": "Revestimento primário (solto)",
+          "descricao": "-"
+        },
+        {
+          "code": 3,
+          "value": "Pavimentado",
+          "descricao": "-"
+        },
+        {
+          "code": 4,
+          "value": "Calçado",
+          "descricao": "-"
+        }
+      ]
+    },
+    {
       "nome": "tipo_limite_legal",
       "valores": [
         {
@@ -630,509 +526,232 @@
       ]
     },
     {
-      "nome": "tipo_linha_limites",
+      "nome": "posicao_relativa",
       "valores": [
         {
           "code": 2,
-          "value": "Contorno massa dágua",
+          "value": "Superfície",
           "descricao": "-"
         },
         {
           "code": 3,
-          "value": "Cumeada",
-          "descricao": "-"
-        },
-        {
-          "code": 4,
-          "value": "Linha seca",
-          "descricao": "-"
-        },
-        {
-          "code": 5,
-          "value": "Costa visível da carta",
+          "value": "Elevado",
           "descricao": "-"
         },
         {
           "code": 6,
-          "value": "Rodovia",
-          "descricao": "-"
-        },
-        {
-          "code": 7,
-          "value": "Ferrovia",
-          "descricao": "-"
-        },
-        {
-          "code": 8,
-          "value": "Trecho de drenagem",
-          "descricao": "-"
-        },
-        {
-          "code": 9,
-          "value": "Massa dágua",
-          "descricao": "-"
-        },
-        {
-          "code": 96,
-          "value": "Não identificado",
-          "descricao": "-"
-        },
-        {
-          "code": 97,
-          "value": "Não aplicável",
+          "value": "Subterrâneo",
           "descricao": "-"
         }
       ]
     },
     {
-      "nome": "tipo_localidade",
+      "nome": "jurisdicao",
       "valores": [
+        {
+          "code": 0,
+          "value": "Desconhecida",
+          "descricao": "-"
+        },
         {
           "code": 1,
-          "value": "Cidade",
+          "value": "Federal",
           "descricao": "-"
         },
         {
           "code": 2,
-          "value": "Capital estadual",
+          "value": "Estadual",
           "descricao": "-"
         },
         {
           "code": 3,
-          "value": "Capital federal",
-          "descricao": "-"
-        },
-        {
-          "code": 4,
-          "value": "Vila",
-          "descricao": "-"
-        },
-        {
-          "code": 5,
-          "value": "Aglomerado rural isolado – Núcleo",
+          "value": "Municipal",
           "descricao": "-"
         },
         {
           "code": 6,
-          "value": "Aglomerado rural isolado – Povoado",
-          "descricao": "-"
-        },
-        {
-          "code": 7,
-          "value": "Outros aglomerados rurais – Lugarejo",
-          "descricao": "-"
-        },
-        {
-          "code": 8,
-          "value": "Nome local",
-          "descricao": "-"
-        },
-        {
-          "code": 9,
-          "value": "Bairro",
+          "value": "Particular",
           "descricao": "-"
         }
       ]
     },
     {
-      "nome": "tipo_edificacao",
+      "nome": "administracao",
       "valores": [
         {
-          "code": 1212,
-          "value": "Agro - Sede operacional de fazenda",
-          "descricao": "-",
-          "valor_filtro": "Edificação agropecuária"
+          "code": 0,
+          "value": "Desconhecida",
+          "descricao": "-"
         },
         {
-          "code": 1712,
-          "value": "Pub Mil - Aquartelamento",
-          "descricao": "-",
-          "valor_filtro": "Edificação militar"
+          "code": 1,
+          "value": "Federal",
+          "descricao": "-"
         },
         {
-          "code": 2501,
-          "value": "Port - Edificação portuária",
-          "descricao": "-",
-          "valor_filtro": "Edificação portuária"
+          "code": 2,
+          "value": "Estadual",
+          "descricao": "-"
+        },
+        {
+          "code": 3,
+          "value": "Municipal",
+          "descricao": "-"
+        },
+        {
+          "code": 6,
+          "value": "Particular",
+          "descricao": "-"
+        },
+        {
+          "code": 7,
+          "value": "Concessionada",
+          "descricao": "-"
+        }
+      ]
+    },
+    {
+      "nome": "tipo_elemento_infraestrutura",
+      "valores": [
+        {
+          "code": 1938,
+          "value": "Atrac - Cais",
+          "descricao": "-"
+        },
+        {
+          "code": 1939,
+          "value": "Atrac - Cais flutuante",
+          "descricao": "-"
+        },
+        {
+          "code": 1940,
+          "value": "Atrac - Trapiche",
+          "descricao": "-"
+        },
+        {
+          "code": 1941,
+          "value": "Atrac - Molhe de atracação",
+          "descricao": "-"
+        },
+        {
+          "code": 1942,
+          "value": "Atrac - Pier",
+          "descricao": "-"
+        },
+        {
+          "code": 1943,
+          "value": "Atrac - Dolfim",
+          "descricao": "-"
+        },
+        {
+          "code": 1944,
+          "value": "Atrac - Desembarcadouro",
+          "descricao": "-"
+        }
+      ]
+    },
+    {
+      "nome": "tipo_via_deslocamento",
+      "valores": [
+        {
+          "code": 2,
+          "value": "Estrada/Rodovia",
+          "descricao": "-"
+        },
+        {
+          "code": 3,
+          "value": "Caminho carroçável",
+          "descricao": "-"
+        },
+        {
+          "code": 4,
+          "value": "Auto-estrada",
+          "descricao": "-"
+        },
+        {
+          "code": 5,
+          "value": "Arruamento",
+          "descricao": "-"
+        },
+        {
+          "code": 6,
+          "value": "Trilha ou Picada",
+          "descricao": "-"
+        }
+      ]
+    },
+    {
+      "nome": "tipo_ferrovia",
+      "valores": [
+        {
+          "code": 5,
+          "value": "Bonde",
+          "descricao": "-"
+        },
+        {
+          "code": 6,
+          "value": "Aeromóvel",
+          "descricao": "-"
+        },
+        {
+          "code": 7,
+          "value": "Trem",
+          "descricao": "-"
+        },
+        {
+          "code": 8,
+          "value": "Metrô",
+          "descricao": "-"
+        }
+      ]
+    },
+    {
+      "nome": "nr_linhas",
+      "valores": [
+        {
+          "code": 0,
+          "value": "Desconhecido",
+          "descricao": "-"
+        },
+        {
+          "code": 1,
+          "value": "Simples",
+          "descricao": "-"
+        },
+        {
+          "code": 2,
+          "value": "Dupla",
+          "descricao": "-"
+        },
+        {
+          "code": 3,
+          "value": "Múltipla",
+          "descricao": "-"
+        }
+      ]
+    },
+    {
+      "nome": "trafego",
+      "valores": [
+        {
+          "code": 0,
+          "value": "Desconhecido",
+          "descricao": "-"
+        },
+        {
+          "code": 1,
+          "value": "Permanente",
+          "descricao": "-"
+        },
+        {
+          "code": 2,
+          "value": "Periódico",
+          "descricao": "-"
         }
       ]
     }
   ],
   "classes": [
-    {
-      "nome": "massa_dagua",
-      "categoria": "cobter",
-      "descricao": "Massa d’água representada por polígono, que possuem ou não fluxo d'água",
-      "primitivas": [
-        "MultiPolygon"
-      ],
-      "atributos": [
-        {
-          "nome": "nome",
-          "tipo": "varchar(255)",
-          "descricao": "Nome completo da instância",
-          "cardinalidade": "0..1"
-        },
-        {
-          "nome": "apresentar_simbologia",
-          "tipo": "smallint",
-          "descricao": "-",
-          "cardinalidade": "1..1",
-          "mapa_valor": "booleano"
-        }
-      ]
-    },
-    {
-      "nome": "ocupacao_solo",
-      "categoria": "constr",
-      "descricao": "-",
-      "primitivas": [
-        "MultiPoint"
-      ],
-      "atributos": [
-        {
-          "nome": "nome",
-          "tipo": "varchar(255)",
-          "descricao": "-",
-          "cardinalidade": "0..1"
-        },
-        {
-          "nome": "tipo",
-          "tipo": "smallint",
-          "descricao": "-",
-          "cardinalidade": "1..1",
-          "mapa_valor": "tipo_ocupacao_solo"
-        }
-      ]
-    },
-    {
-      "nome": "curva_nivel",
-      "categoria": "elemnat",
-      "descricao": "-",
-      "primitivas": [
-        "MultiLinestring"
-      ],
-      "atributos": [
-        {
-          "nome": "cota",
-          "tipo": "integer",
-          "descricao": "-",
-          "cardinalidade": "1..1"
-        },
-        {
-          "nome": "indice",
-          "tipo": "smallint",
-          "descricao": "-",
-          "cardinalidade": "1..1",
-          "mapa_valor": "indice"
-        },
-        {
-          "nome": "depressao",
-          "tipo": "smallint",
-          "descricao": "-",
-          "cardinalidade": "1..1",
-          "mapa_valor": "booleano"
-        }
-      ]
-    },
-    {
-      "nome": "toponimo_fisiografico_natural",
-      "categoria": "elemnat",
-      "descricao": "-",
-      "primitivas": [
-        "MultiLinestring",
-        "MultiPoint"
-      ],
-      "atributos": [
-        {
-          "nome": "nome",
-          "tipo": "varchar(255)",
-          "descricao": "-",
-          "cardinalidade": "0..1"
-        },
-        {
-          "nome": "tipo",
-          "tipo": "smallint",
-          "descricao": "-",
-          "cardinalidade": "1..1",
-          "mapa_valor": "tipo_toponimo_fisiografico",
-          "valores": [
-            {
-              "code": 1,
-              "primitivas": [
-                "MultiLinestring"
-              ]
-            },
-            {
-              "code": 2,
-              "primitivas": [
-                "MultiPoint"
-              ]
-            },
-            {
-              "code": 3,
-              "primitivas": [
-                "MultiPoint"
-              ]
-            },
-            {
-              "code": 4,
-              "primitivas": [
-                "MultiPoint"
-              ],
-              "restricao_atributo_incomum": []
-            },
-            {
-              "code": 5,
-              "primitivas": [
-                "MultiPoint"
-              ],
-              "restricao_atributo_incomum": []
-            },
-            {
-              "code": 6,
-              "primitivas": [
-                "MultiPoint"
-              ],
-              "restricao_atributo_incomum": []
-            },
-            {
-              "code": 7,
-              "primitivas": [
-                "MultiPoint"
-              ],
-              "restricao_atributo_incomum": []
-            },
-            {
-              "code": 9,
-              "primitivas": [
-                "MultiPoint"
-              ],
-              "restricao_atributo_incomum": []
-            },
-            {
-              "code": 10,
-              "primitivas": [
-                "MultiPoint"
-              ],
-              "restricao_atributo_incomum": []
-            },
-            {
-              "code": 11,
-              "primitivas": [
-                "MultiPoint"
-              ],
-              "restricao_atributo_incomum": []
-            },
-            {
-              "code": 12,
-              "primitivas": [
-                "MultiPoint",
-                "MultiLinestring"
-              ]
-            },
-            {
-              "code": 17,
-              "primitivas": [
-                "MultiPoint"
-              ]
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "nome": "ilha",
-      "categoria": "elemnat",
-      "descricao": "-",
-      "primitivas": [
-        "MultiPoint",
-        "MultiPolygon"
-      ],
-      "atributos": [
-        {
-          "nome": "nome",
-          "tipo": "varchar(255)",
-          "descricao": "Nome completo da instância",
-          "cardinalidade": "0..1"
-        }
-      ]
-    },
-    {
-      "nome": "elemento_hidrografico",
-      "categoria": "elemnat",
-      "descricao": "-",
-      "primitivas": [
-        "MultiPoint"
-      ],
-      "atributos": [
-        {
-          "nome": "nome",
-          "tipo": "varchar(255)",
-          "descricao": "-",
-          "cardinalidade": "0..1"
-        },
-        {
-          "nome": "tipo",
-          "tipo": "smallint",
-          "descricao": "-",
-          "cardinalidade": "1..1",
-          "mapa_valor": "tipo_elemento_hidrografico"
-        }
-      ]
-    },
-    {
-      "nome": "ponto_cotado",
-      "categoria": "elemnat",
-      "descricao": "-",
-      "primitivas": [
-        "MultiPoint"
-      ],
-      "atributos": [
-        {
-          "nome": "cota",
-          "tipo": "real",
-          "descricao": "-",
-          "cardinalidade": "1..1"
-        }
-      ]
-    },
-    {
-      "nome": "trecho_drenagem",
-      "categoria": "elemnat",
-      "descricao": "-",
-      "primitivas": [
-        "MultiLinestring"
-      ],
-      "atributos": [
-        {
-          "nome": "nome",
-          "tipo": "varchar(255)",
-          "descricao": "-",
-          "cardinalidade": "0..1"
-        },
-        {
-          "nome": "situacao_em_poligono",
-          "tipo": "smallint",
-          "descricao": "-",
-          "cardinalidade": "1..1",
-          "mapa_valor": "situacao_em_poligono"
-        }
-      ]
-    },
-    {
-      "nome": "trecho_hidroviario",
-      "categoria": "infra",
-      "descricao": "-",
-      "primitivas": [
-        "MultiLinestring"
-      ],
-      "atributos": [
-        {
-          "nome": "nome",
-          "tipo": "varchar(255)",
-          "descricao": "-",
-          "cardinalidade": "0..1"
-        }
-      ]
-    },
-    {
-      "nome": "trecho_duto",
-      "categoria": "infra",
-      "descricao": "-",
-      "primitivas": [
-        "MultiLinestring"
-      ],
-      "atributos": [
-        {
-          "nome": "nome",
-          "tipo": "varchar(255)",
-          "descricao": "-",
-          "cardinalidade": "0..1"
-        },
-        {
-          "nome": "tipo",
-          "tipo": "smallint",
-          "descricao": "-",
-          "cardinalidade": "1..1",
-          "mapa_valor": "tipo_trecho_duto",
-          "valores": [
-            {
-              "code": 101
-            },
-            {
-              "code": 201
-            },
-            {
-              "code": 202
-            },
-            {
-              "code": 298
-            },
-            {
-              "code": 300
-            },
-            {
-              "code": 301
-            },
-            {
-              "code": 302
-            },
-            {
-              "code": 303
-            },
-            {
-              "code": 304
-            },
-            {
-              "code": 305
-            },
-            {
-              "code": 306
-            },
-            {
-              "code": 307
-            },
-            {
-              "code": 308
-            },
-            {
-              "code": 309
-            },
-            {
-              "code": 310
-            },
-            {
-              "code": 398
-            }
-          ]
-        },
-        {
-          "nome": "posicao_relativa",
-          "tipo": "smallint",
-          "descricao": "-",
-          "cardinalidade": "1..1",
-          "mapa_valor": "posicao_relativa",
-          "valores": [
-            {
-              "code": 2
-            },
-            {
-              "code": 3
-            },
-            {
-              "code": 4
-            },
-            {
-              "code": 5
-            },
-            {
-              "code": 6
-            }
-          ]
-        }
-      ]
-    },
     {
       "nome": "elemento_energia",
       "categoria": "infra",
@@ -1154,24 +773,69 @@
           "tipo": "smallint",
           "descricao": "-",
           "cardinalidade": "1..1",
-          "mapa_valor": "tipo_elemento_energia"
+          "mapa_valor": "tipo_elemento_energia",
+          "valores": [
+            {
+              "code": 303,
+              "primitivas": [
+                "MultiLinestring"
+              ]
+            },
+            {
+              "code": 1801,
+              "primitivas": [
+                "MultiPoint",
+                "MultiPolygon"
+              ]
+            }
+          ]
+        },
+        {
+          "nome": "situacao_fisica",
+          "tipo": "smallint",
+          "descricao": "-",
+          "cardinalidade": "1..1",
+          "mapa_valor": "situacao_fisica"
+        },
+        {
+          "nome": "visivel",
+          "tipo": "smallint",
+          "descricao": "",
+          "cardinalidade": "1..1",
+          "mapa_valor": "booleano"
+        },
+        {
+          "nome": "texto_edicao",
+          "tipo": "varchar(255)",
+          "descricao": "-",
+          "cardinalidade": "0..1"
+        },
+        {
+          "nome": "label_x",
+          "tipo": "real",
+          "descricao": "-",
+          "cardinalidade": "0..1"
+        },
+        {
+          "nome": "label_y",
+          "tipo": "real",
+          "descricao": "-",
+          "cardinalidade": "0..1"
+        },
+        {
+          "nome": "justificativa_txt",
+          "tipo": "varchar(255)",
+          "descricao": "-",
+          "cardinalidade": "0..1"
         }
       ]
     },
     {
-      "nome": "ferrovia",
-      "categoria": "infra",
+      "nome": "extracao_mineral",
+      "categoria": "constr",
       "descricao": "-",
       "primitivas": [
-        "MultiLinestring"
-      ],
-      "atributos": []
-    },
-    {
-      "nome": "pista_pouso",
-      "categoria": "infra",
-      "descricao": "-",
-      "primitivas": [
+        "MultiPolygon",
         "MultiPoint"
       ],
       "atributos": [
@@ -1186,23 +850,144 @@
           "tipo": "smallint",
           "descricao": "-",
           "cardinalidade": "1..1",
-          "mapa_valor": "tipo_pista_pouso"
+          "mapa_valor": "tipo_extracao_mineral"
+        },
+        {
+          "nome": "forma_extracao",
+          "tipo": "smallint",
+          "descricao": "-",
+          "cardinalidade": "1..1",
+          "mapa_valor": "forma_extracao"
+        },
+        {
+          "nome": "situacao_fisica",
+          "tipo": "smallint",
+          "descricao": "-",
+          "cardinalidade": "1..1",
+          "mapa_valor": "situacao_fisica"
+        },
+        {
+          "nome": "visivel",
+          "tipo": "smallint",
+          "descricao": "",
+          "cardinalidade": "1..1",
+          "mapa_valor": "booleano"
+        },
+        {
+          "nome": "texto_edicao",
+          "tipo": "varchar(255)",
+          "descricao": "-",
+          "cardinalidade": "0..1"
+        },
+        {
+          "nome": "label_x",
+          "tipo": "real",
+          "descricao": "-",
+          "cardinalidade": "0..1"
+        },
+        {
+          "nome": "label_y",
+          "tipo": "real",
+          "descricao": "-",
+          "cardinalidade": "0..1"
+        },
+        {
+          "nome": "justificativa_txt",
+          "tipo": "varchar(255)",
+          "descricao": "-",
+          "cardinalidade": "0..1"
         }
       ]
     },
     {
-      "nome": "via_deslocamento",
-      "categoria": "infra",
+      "nome": "area_sem_dados",
+      "categoria": "aux",
+      "descricao": "-",
+      "primitivas": [
+        "MultiPolygon"
+      ],
+      "atributos": []
+    },
+    {
+      "nome": "massa_dagua",
+      "categoria": "cobter",
+      "descricao": "Massa d’água representada por polígono, que possuem ou não fluxo d'água",
+      "primitivas": [
+        "MultiPolygon"
+      ],
+      "atributos": [
+        {
+          "nome": "nome",
+          "tipo": "varchar(255)",
+          "descricao": "Nome completo da instância",
+          "cardinalidade": "0..1"
+        },
+        {
+          "nome": "tipo",
+          "tipo": "smallint",
+          "descricao": "Indica o tipo de massa dágua",
+          "cardinalidade": "1..1",
+          "mapa_valor": "tipo_massa_dagua"
+        },
+        {
+          "nome": "regime",
+          "tipo": "smallint",
+          "descricao": "Indica o regime da ocorrência da água, para a massa dágua",
+          "cardinalidade": "1..1",
+          "mapa_valor": "regime"
+        }
+      ]
+    },
+    {
+      "nome": "terreno_sujeito_inundacao",
+      "categoria": "elemnat",
+      "descricao": "-",
+      "primitivas": [
+        "MultiPolygon"
+      ],
+      "atributos": []
+    },
+    {
+      "nome": "trecho_drenagem",
+      "categoria": "elemnat",
       "descricao": "-",
       "primitivas": [
         "MultiLinestring"
       ],
       "atributos": [
         {
-          "nome": "sigla",
+          "nome": "nome",
           "tipo": "varchar(255)",
           "descricao": "-",
           "cardinalidade": "0..1"
+        },
+        {
+          "nome": "tipo",
+          "tipo": "smallint",
+          "descricao": "-",
+          "cardinalidade": "1..1",
+          "mapa_valor": "tipo_trecho_drenagem"
+        },
+        {
+          "nome": "situacao_em_poligono",
+          "tipo": "smallint",
+          "descricao": "-",
+          "cardinalidade": "1..1",
+          "mapa_valor": "situacao_em_poligono"
+        },
+        {
+          "nome": "regime",
+          "tipo": "smallint",
+          "descricao": "-",
+          "cardinalidade": "1..1",
+          "mapa_valor": "regime"
+        },
+        {
+          "nome": "carta_mini",
+          "tipo": "smallint",
+          "descricao": "",
+          "cardinalidade": "1..1",
+          "mapa_valor": "booleano"
         }
       ]
     },
@@ -1226,117 +1011,44 @@
           "tipo": "smallint",
           "descricao": "-",
           "cardinalidade": "1..1",
-          "mapa_valor": "tipo_limite_especial",
-          "valores": [
-            {
-              "code": 1
-            },
-            {
-              "code": 2
-            },
-            {
-              "code": 3
-            },
-            {
-              "code": 4
-            },
-            {
-              "code": 5
-            },
-            {
-              "code": 24
-            },
-            {
-              "code": 25
-            },
-            {
-              "code": 26
-            },
-            {
-              "code": 27
-            },
-            {
-              "code": 28
-            },
-            {
-              "code": 29
-            },
-            {
-              "code": 30
-            },
-            {
-              "code": 31
-            },
-            {
-              "code": 32
-            },
-            {
-              "code": 33
-            },
-            {
-              "code": 34
-            },
-            {
-              "code": 35
-            },
-            {
-              "code": 36
-            }
-          ]
-        },
-        {
-          "nome": "tipo_delimitacao",
-          "tipo": "smallint",
-          "descricao": "-",
-          "cardinalidade": "1..1",
-          "mapa_valor": "tipo_linha_limites",
-          "valores": [
-            {
-              "code": 2
-            },
-            {
-              "code": 3
-            },
-            {
-              "code": 4
-            },
-            {
-              "code": 5
-            },
-            {
-              "code": 6
-            },
-            {
-              "code": 7
-            },
-            {
-              "code": 8
-            },
-            {
-              "code": 9
-            },
-            {
-              "code": 96
-            },
-            {
-              "code": 97
-            }
-          ]
+          "mapa_valor": "tipo_limite_especial"
         },
         {
           "nome": "geometria_aproximada",
           "tipo": "smallint",
           "descricao": "-",
           "cardinalidade": "1..1",
-          "mapa_valor": "booleano",
-          "valores": [
-            {
-              "code": 1
-            },
-            {
-              "code": 2
-            }
-          ]
+          "mapa_valor": "booleano"
+        },
+        {
+          "nome": "sobreposto",
+          "tipo": "smallint",
+          "descricao": "-",
+          "cardinalidade": "1..1",
+          "mapa_valor": "booleano"
+        }
+      ]
+    },
+    {
+      "nome": "localidade",
+      "categoria": "llp",
+      "descricao": "-",
+      "primitivas": [
+        "MultiPoint"
+      ],
+      "atributos": [
+        {
+          "nome": "nome",
+          "tipo": "varchar(255)",
+          "descricao": "-",
+          "cardinalidade": "0..1"
+        },
+        {
+          "nome": "tipo",
+          "tipo": "smallint",
+          "descricao": "-",
+          "cardinalidade": "1..1",
+          "mapa_valor": "tipo_localidade"
         }
       ]
     },
@@ -1363,13 +1075,22 @@
           "mapa_valor": "tipo_limite_legal",
           "valores": [
             {
-              "code": 1
+              "code": 1,
+              "primitivas": [
+                "MultiLinestring"
+              ]
             },
             {
-              "code": 2
+              "code": 2,
+              "primitivas": [
+                "MultiLinestring"
+              ]
             },
             {
-              "code": 3
+              "code": 3,
+              "primitivas": [
+                "MultiLinestring"
+              ]
             },
             {
               "code": 4,
@@ -1410,11 +1131,378 @@
           ]
         },
         {
-          "nome": "tipo_delimitacao",
+          "nome": "geometria_aproximada",
           "tipo": "smallint",
           "descricao": "-",
           "cardinalidade": "1..1",
-          "mapa_valor": "tipo_linha_limites",
+          "mapa_valor": "booleano"
+        },
+        {
+          "nome": "sobreposto",
+          "tipo": "smallint",
+          "descricao": "-",
+          "cardinalidade": "1..1",
+          "mapa_valor": "booleano"
+        },
+        {
+          "nome": "texto_edicao",
+          "tipo": "varchar(255)",
+          "descricao": "-",
+          "cardinalidade": "0..1"
+        },
+        {
+          "nome": "label_x",
+          "tipo": "real",
+          "descricao": "-",
+          "cardinalidade": "0..1"
+        },
+        {
+          "nome": "label_y",
+          "tipo": "real",
+          "descricao": "-",
+          "cardinalidade": "0..1"
+        },
+        {
+          "nome": "justificativa_txt",
+          "tipo": "varchar(255)",
+          "descricao": "-",
+          "cardinalidade": "0..1"
+        }
+      ]
+    },
+    {
+      "nome": "curva_nivel",
+      "categoria": "elemnat",
+      "descricao": "-",
+      "primitivas": [
+        "MultiLinestring"
+      ],
+      "atributos": [
+        {
+          "nome": "cota",
+          "tipo": "integer",
+          "descricao": "-",
+          "cardinalidade": "1..1"
+        },
+        {
+          "nome": "indice",
+          "tipo": "smallint",
+          "descricao": "-",
+          "cardinalidade": "1..1",
+          "mapa_valor": "indice"
+        },
+        {
+          "nome": "depressao",
+          "tipo": "smallint",
+          "descricao": "-",
+          "cardinalidade": "1..1",
+          "mapa_valor": "booleano"
+        }
+      ]
+    },
+    {
+      "nome": "ponto_cotado",
+      "categoria": "elemnat",
+      "descricao": "-",
+      "primitivas": [
+        "MultiPoint"
+      ],
+      "atributos": [
+        {
+          "nome": "cota",
+          "tipo": "real",
+          "descricao": "-",
+          "cardinalidade": "1..1"
+        },
+        {
+          "nome": "cota_comprovada",
+          "tipo": "smallint",
+          "descricao": "-",
+          "cardinalidade": "1..1",
+          "mapa_valor": "booleano"
+        },
+        {
+          "nome": "cota_mais_alta",
+          "tipo": "smallint",
+          "descricao": "-",
+          "cardinalidade": "1..1",
+          "mapa_valor": "booleano"
+        },
+        {
+          "nome": "label_x",
+          "tipo": "real",
+          "descricao": "-",
+          "cardinalidade": "0..1"
+        },
+        {
+          "nome": "label_y",
+          "tipo": "real",
+          "descricao": "-",
+          "cardinalidade": "0..1"
+        }
+      ]
+    },
+    {
+      "nome": "pista_pouso",
+      "categoria": "infra",
+      "descricao": "-",
+      "primitivas": [
+        "MultiPolygon",
+        "MultiLinestring",
+        "MultiPoint"
+      ],
+      "atributos": [
+        {
+          "nome": "nome",
+          "tipo": "varchar(255)",
+          "descricao": "-",
+          "cardinalidade": "0..1"
+        },
+        {
+          "nome": "tipo",
+          "tipo": "smallint",
+          "descricao": "-",
+          "cardinalidade": "1..1",
+          "mapa_valor": "tipo_pista_pouso"
+        },
+        {
+          "nome": "revestimento",
+          "tipo": "smallint",
+          "descricao": "-",
+          "cardinalidade": "1..1",
+          "mapa_valor": "revestimento",
+          "valores": [
+            {
+              "code": 0
+            },
+            {
+              "code": 1
+            },
+            {
+              "code": 2
+            },
+            {
+              "code": 3
+            }
+          ]
+        },
+        {
+          "nome": "uso_pista",
+          "tipo": "smallint",
+          "descricao": "-",
+          "cardinalidade": "1..1",
+          "mapa_valor": "uso_pista"
+        },
+        {
+          "nome": "situacao_fisica",
+          "tipo": "smallint",
+          "descricao": "-",
+          "cardinalidade": "1..1",
+          "mapa_valor": "situacao_fisica"
+        },
+        {
+          "nome": "texto_edicao",
+          "tipo": "varchar(255)",
+          "descricao": "-",
+          "cardinalidade": "0..1"
+        },
+        {
+          "nome": "label_x",
+          "tipo": "real",
+          "descricao": "-",
+          "cardinalidade": "0..1"
+        },
+        {
+          "nome": "label_y",
+          "tipo": "real",
+          "descricao": "-",
+          "cardinalidade": "0..1"
+        },
+        {
+          "nome": "justificativa_txt",
+          "tipo": "varchar(255)",
+          "descricao": "-",
+          "cardinalidade": "0..1"
+        }
+      ]
+    },
+    {
+      "nome": "ferrovia",
+      "categoria": "infra",
+      "descricao": "-",
+      "primitivas": [
+        "MultiLinestring"
+      ],
+      "atributos": [
+        {
+          "nome": "nome",
+          "tipo": "varchar(255)",
+          "descricao": "-",
+          "cardinalidade": "0..1"
+        },
+        {
+          "nome": "tipo",
+          "tipo": "smallint",
+          "descricao": "-",
+          "cardinalidade": "1..1",
+          "mapa_valor": "tipo_ferrovia"
+        },
+        {
+          "nome": "situacao_fisica",
+          "tipo": "smallint",
+          "descricao": "-",
+          "cardinalidade": "1..1",
+          "mapa_valor": "situacao_fisica"
+        },
+        {
+          "nome": "posicao_relativa",
+          "tipo": "smallint",
+          "descricao": "-",
+          "cardinalidade": "1..1",
+          "mapa_valor": "posicao_relativa"
+        },
+        {
+          "nome": "nr_linhas",
+          "tipo": "smallint",
+          "descricao": "-",
+          "cardinalidade": "1..1",
+          "mapa_valor": "nr_linhas"
+        },
+        {
+          "nome": "em_arruamento",
+          "tipo": "smallint",
+          "descricao": "-",
+          "cardinalidade": "1..1",
+          "mapa_valor": "booleano"
+        },
+        {
+          "nome": "jurisdicao",
+          "tipo": "smallint",
+          "descricao": "-",
+          "cardinalidade": "1..1",
+          "mapa_valor": "jurisdicao"
+        },
+        {
+          "nome": "administracao",
+          "tipo": "smallint",
+          "descricao": "-",
+          "cardinalidade": "1..1",
+          "mapa_valor": "administracao"
+        },
+        {
+          "nome": "concessionaria",
+          "tipo": "varchar(255)",
+          "descricao": "-",
+          "cardinalidade": "0..1"
+        },
+        {
+          "nome": "carta_mini",
+          "tipo": "smallint",
+          "descricao": "",
+          "cardinalidade": "1..1",
+          "mapa_valor": "booleano"
+        }
+      ]
+    },
+    {
+      "nome": "elemento_infraestrutura",
+      "categoria": "infra",
+      "descricao": "-",
+      "primitivas": [
+        "MultiPolygon",
+        "MultiLinestring",
+        "MultiPoint"
+      ],
+      "atributos": [
+        {
+          "nome": "nome",
+          "tipo": "varchar(255)",
+          "descricao": "-",
+          "cardinalidade": "0..1"
+        },
+        {
+          "nome": "tipo",
+          "tipo": "smallint",
+          "descricao": "-",
+          "cardinalidade": "1..1",
+          "mapa_valor": "tipo_elemento_infraestrutura",
+          "valores": [
+            {
+              "code": 1938
+            },
+            {
+              "code": 1939
+            },
+            {
+              "code": 1940
+            },
+            {
+              "code": 1941
+            },
+            {
+              "code": 1942
+            },
+            {
+              "code": 1943
+            },
+            {
+              "code": 1944
+            }
+          ]
+        },
+        {
+          "nome": "situacao_fisica",
+          "tipo": "smallint",
+          "descricao": "-",
+          "cardinalidade": "1..1",
+          "mapa_valor": "situacao_fisica"
+        },
+        {
+          "nome": "texto_edicao",
+          "tipo": "varchar(255)",
+          "descricao": "-",
+          "cardinalidade": "0..1"
+        },
+        {
+          "nome": "label_x",
+          "tipo": "real",
+          "descricao": "-",
+          "cardinalidade": "0..1"
+        },
+        {
+          "nome": "label_y",
+          "tipo": "real",
+          "descricao": "-",
+          "cardinalidade": "0..1"
+        },
+        {
+          "nome": "justificativa_txt",
+          "tipo": "varchar(255)",
+          "descricao": "-",
+          "cardinalidade": "0..1"
+        }
+      ]
+    },
+    {
+      "nome": "via_deslocamento",
+      "categoria": "infra",
+      "descricao": "-",
+      "primitivas": [
+        "MultiLinestring"
+      ],
+      "atributos": [
+        {
+          "nome": "nome",
+          "tipo": "varchar(255)",
+          "descricao": "-",
+          "cardinalidade": "0..1"
+        },
+        {
+          "nome": "tipo",
+          "tipo": "smallint",
+          "descricao": "-",
+          "cardinalidade": "1..1",
+          "mapa_valor": "tipo_via_deslocamento",
           "valores": [
             {
               "code": 2
@@ -1430,63 +1518,136 @@
             },
             {
               "code": 6
-            },
-            {
-              "code": 7
-            },
-            {
-              "code": 8
-            },
-            {
-              "code": 9
-            },
-            {
-              "code": 96
-            },
-            {
-              "code": 97
             }
           ]
         },
         {
-          "nome": "geometria_aproximada",
+          "nome": "revestimento",
           "tipo": "smallint",
           "descricao": "-",
+          "cardinalidade": "1..1",
+          "mapa_valor": "revestimento",
+          "valores": [
+            {
+              "code": 1
+            },
+            {
+              "code": 2
+            },
+            {
+              "code": 3
+            },
+            {
+              "code": 4
+            }
+          ]
+        },
+        {
+          "nome": "trafego",
+          "tipo": "smallint",
+          "descricao": "-",
+          "cardinalidade": "1..1",
+          "mapa_valor": "trafego",
+          "valores": [
+            {
+              "code": 1
+            },
+            {
+              "code": 2
+            }
+          ]
+        },
+        {
+          "nome": "nr_faixas",
+          "tipo": "varchar(255)",
+          "descricao": "-",
+          "cardinalidade": "0..1"
+        },
+        {
+          "nome": "nr_pistas",
+          "tipo": "varchar(255)",
+          "descricao": "-",
+          "cardinalidade": "0..1"
+        },
+        {
+          "nome": "canteiro_divisorio",
+          "tipo": "smallint",
+          "descricao": "-",
+          "cardinalidade": "1..1",
+          "mapa_valor": "booleano"
+        },
+        {
+          "nome": "situacao_fisica",
+          "tipo": "smallint",
+          "descricao": "-",
+          "cardinalidade": "1..1",
+          "mapa_valor": "situacao_fisica"
+        },
+        {
+          "nome": "jurisdicao",
+          "tipo": "smallint",
+          "descricao": "-",
+          "cardinalidade": "1..1",
+          "mapa_valor": "jurisdicao",
+          "valores": [
+            {
+              "code": 0
+            },
+            {
+              "code": 1
+            },
+            {
+              "code": 2
+            }
+          ]
+        },
+        {
+          "nome": "sigla",
+          "tipo": "varchar(255)",
+          "descricao": "-",
+          "cardinalidade": "0..1"
+        },
+        {
+          "nome": "administracao",
+          "tipo": "smallint",
+          "descricao": "-",
+          "cardinalidade": "1..1",
+          "mapa_valor": "administracao",
+          "valores": [
+            {
+              "code": 0
+            },
+            {
+              "code": 1
+            },
+            {
+              "code": 2
+            },
+            {
+              "code": 7
+            }
+          ]
+        },
+        {
+          "nome": "concessionaria",
+          "tipo": "varchar(255)",
+          "descricao": "-",
+          "cardinalidade": "0..1"
+        },
+        {
+          "nome": "carta_mini",
+          "tipo": "smallint",
+          "descricao": "",
           "cardinalidade": "1..1",
           "mapa_valor": "booleano"
         }
       ]
     },
     {
-      "nome": "localidade",
-      "categoria": "llp",
+      "nome": "obstaculo_vertical",
+      "categoria": "infra",
       "descricao": "-",
       "primitivas": [
-        "MultiPoint",
-        "MultiPolygon"
-      ],
-      "atributos": [
-        {
-          "nome": "nome",
-          "tipo": "varchar(255)",
-          "descricao": "-",
-          "cardinalidade": "0..1"
-        },
-        {
-          "nome": "tipo",
-          "tipo": "smallint",
-          "descricao": "-",
-          "cardinalidade": "1..1",
-          "mapa_valor": "tipo_localidade"
-        }
-      ]
-    },
-    {
-      "nome": "edificacao",
-      "categoria": "constr",
-      "descricao": "-",
-      "primitivas": [
-        "MultiPolygon",
         "MultiPoint"
       ],
       "atributos": [
@@ -1497,22 +1658,49 @@
           "cardinalidade": "0..1"
         },
         {
-          "nome": "tipo",
-          "tipo": "smallint",
+          "nome": "altitude",
+          "tipo": "real",
           "descricao": "-",
+          "cardinalidade": "1..1"
+        },
+        {
+          "nome": "altura",
+          "tipo": "real",
+          "descricao": "-",
+          "cardinalidade": "1..1"
+        },
+        {
+          "nome": "visivel",
+          "tipo": "smallint",
+          "descricao": "",
           "cardinalidade": "1..1",
-          "mapa_valor": "tipo_edificacao"
+          "mapa_valor": "booleano"
+        },
+        {
+          "nome": "texto_edicao",
+          "tipo": "varchar(255)",
+          "descricao": "-",
+          "cardinalidade": "0..1"
+        },
+        {
+          "nome": "label_x",
+          "tipo": "real",
+          "descricao": "-",
+          "cardinalidade": "0..1"
+        },
+        {
+          "nome": "label_y",
+          "tipo": "real",
+          "descricao": "-",
+          "cardinalidade": "0..1"
+        },
+        {
+          "nome": "justificativa_txt",
+          "tipo": "varchar(255)",
+          "descricao": "-",
+          "cardinalidade": "0..1"
         }
       ]
-    },
-    {
-      "nome": "area_nao_mapeada",
-      "categoria": "aux",
-      "descricao": "-",
-      "primitivas": [
-        "MultiPolygon"
-      ],
-      "atributos": []
     }
   ],
   "extension_classes": [
@@ -1564,9 +1752,10 @@
         },
         {
           "nome": "corrigido",
-          "tipo": "boolean",
+          "tipo": "smallint",
           "descricao": "-",
-          "cardinalidade": "1..1"
+          "cardinalidade": "1..1",
+          "mapa_valor": "booleano"
         },
         {
           "nome": "justificativa",
@@ -1588,7 +1777,19 @@
           "nome": "nome",
           "tipo": "varchar(255)",
           "descricao": "-",
-          "cardinalidade": "1..1"
+          "cardinalidade": "0..1"
+        },
+        {
+          "nome": "mi",
+          "tipo": "varchar(255)",
+          "descricao": "-",
+          "cardinalidade": "0..1"
+        },
+        {
+          "nome": "inom",
+          "tipo": "varchar(255)",
+          "descricao": "-",
+          "cardinalidade": "0..1"
         }
       ]
     },
@@ -1604,7 +1805,183 @@
           "nome": "nome",
           "tipo": "varchar(255)",
           "descricao": "-",
-          "cardinalidade": "1..1"
+          "cardinalidade": "0.1"
+        }
+      ]
+    },
+    {
+      "nome": "limite_massa_dagua",
+      "categoria": "aquisicao",
+      "descricao": "-",
+      "primitivas": [
+        "MultiLinestring"
+      ],
+      "atributos": []
+    },
+    {
+      "nome": "centroide_massa_dagua",
+      "categoria": "aquisicao",
+      "descricao": "-",
+      "primitivas": [
+        "MultiPoint"
+      ],
+      "atributos": [
+        {
+          "nome": "nome",
+          "tipo": "varchar(255)",
+          "descricao": "Nome completo da instância",
+          "cardinalidade": "0..1"
+        },
+        {
+          "nome": "tipo",
+          "tipo": "smallint",
+          "descricao": "Indica o tipo de massa dágua",
+          "cardinalidade": "1..1",
+          "mapa_valor": "tipo_massa_dagua"
+        },
+        {
+          "nome": "regime",
+          "tipo": "smallint",
+          "descricao": "Indica o regime da ocorrência da água, para a massa dágua",
+          "cardinalidade": "1..1",
+          "mapa_valor": "regime"
+        }
+      ]
+    },
+    {
+      "nome": "identificador_trecho_rod",
+      "categoria": "edicao",
+      "descricao": "-",
+      "primitivas": [
+        "MultiPoint"
+      ],
+      "atributos": [
+        {
+          "nome": "sigla",
+          "tipo": "varchar(255)",
+          "descricao": "-",
+          "cardinalidade": "0..1"
+        },
+        {
+          "nome": "jurisdicao",
+          "tipo": "smallint",
+          "descricao": "-",
+          "cardinalidade": "1..1",
+          "mapa_valor": "jurisdicao",
+          "valores": [
+            {
+              "code": 0
+            },
+            {
+              "code": 1
+            },
+            {
+              "code": 2
+            }
+          ]
+        },
+        {
+          "nome": "carta_mini",
+          "tipo": "smallint",
+          "descricao": "",
+          "cardinalidade": "1..1",
+          "mapa_valor": "booleano"
+        }
+      ]
+    },
+    {
+      "nome": "simb_torre_energia",
+      "categoria": "edicao",
+      "descricao": "-",
+      "primitivas": [
+        "MultiPoint"
+      ],
+      "atributos": [
+        {
+          "nome": "simb_rot",
+          "tipo": "real",
+          "descricao": "-",
+          "cardinalidade": "0..1"
+        }
+      ]
+    },
+    {
+      "nome": "simb_cota_mestra",
+      "categoria": "edicao",
+      "descricao": "-",
+      "primitivas": [
+        "MultiPoint",
+        "MultiLinestring"
+      ],
+      "atributos": []
+    },
+    {
+      "nome": "direcao_corrente",
+      "categoria": "edicao",
+      "descricao": "-",
+      "primitivas": [
+        "MultiPoint"
+      ],
+      "atributos": [
+        {
+          "nome": "simb_rot",
+          "tipo": "real",
+          "descricao": "-",
+          "cardinalidade": "0..1"
+        }
+      ]
+    },
+    {
+      "nome": "texto_generico",
+      "categoria": "edicao",
+      "descricao": "-",
+      "primitivas": [
+        "MultiPoint",
+        "MultiLinestring"
+      ],
+      "atributos": [
+        {
+          "nome": "texto_edicao",
+          "tipo": "varchar(255)",
+          "descricao": "-",
+          "cardinalidade": "0..1"
+        },
+        {
+          "nome": "estilo_fonte",
+          "tipo": "varchar(255)",
+          "descricao": "-",
+          "cardinalidade": "0..1"
+        },
+        {
+          "nome": "tamanho_txt",
+          "tipo": "real",
+          "descricao": "-",
+          "cardinalidade": "0..1"
+        },
+        {
+          "nome": "espacamento",
+          "tipo": "real",
+          "descricao": "-",
+          "cardinalidade": "0..1"
+        },
+        {
+          "nome": "cor",
+          "tipo": "varchar(255)",
+          "descricao": "-",
+          "cardinalidade": "0..1"
+        },
+        {
+          "nome": "justificativa_txt",
+          "tipo": "varchar(255)",
+          "descricao": "-",
+          "cardinalidade": "0..1"
+        },
+        {
+          "nome": "carta_mini",
+          "tipo": "smallint",
+          "descricao": "",
+          "cardinalidade": "1..1",
+          "mapa_valor": "booleano"
         }
       ]
     }
