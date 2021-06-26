@@ -2908,6 +2908,10 @@
         {
           "nome_atributo": "grupoativecon",
           "valor": 0
+        },
+        {
+          "nome_atributo": "finalidade",
+          "valor": 1
         }
       ],
       "mapeamento_atributos": [
