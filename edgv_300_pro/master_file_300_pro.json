@@ -1888,12 +1888,6 @@
           "valor_filtro": "Edificação rodoviária"
         },
         {
-          "code": 2214,
-          "value": "Rod - Posto de fiscalização rodoviária",
-          "descricao": "-",
-          "valor_filtro": "Edificação rodoviária"
-        },
-        {
           "code": 2298,
           "value": "Rod - Outros",
           "descricao": "-",
@@ -2056,7 +2050,7 @@
           "valor_filtro": "Edificação de segurança pública"
         },
         {
-          "code": 3007,
+          "code": 3008,
           "value": "Seg - Bombeiros Civil",
           "descricao": "-",
           "valor_filtro": "Edificação de segurança pública"
@@ -2393,6 +2387,12 @@
           "value": "Estação geradora – Termelétrica",
           "descricao": "-",
           "valor_filtro": "Estação geradora de energia"
+        },
+        {
+          "code": 1801,
+          "value": "Subestação de transmissão/distribuição de energia elétrica",
+          "descricao": "-",
+          "valor_filtro": "Subestação de energia"
         }
       ],
       "filtro": true
@@ -3550,12 +3550,6 @@
           "value": "Estação Metero-maregráfica",
           "descricao": "-",
           "valor_filtro": "Ponto de estacão de medição de fenômenos"
-        },
-        {
-          "code": 1701,
-          "value": "Subestação de transmissão/distribuição de energia elétrica",
-          "descricao": "-",
-          "valor_filtro": "Subestação de energia"
         }
       ],
       "filtro": true
@@ -4412,10 +4406,6 @@
               "code": 1614,
               "primitivas": ["MultiPoint"],
               "restricao_atributo_incomum": []
-            },
-            {
-              "code": 1701,
-              "primitivas": ["MultiPolygon"]
             }
           ]
         },
@@ -5252,6 +5242,9 @@
             },
             {
               "code": 498
+            },
+            {
+              "code": 1801
             }
           ]
         },
@@ -6237,12 +6230,6 @@
         {
           "nome": "nome",
           "tipo": "varchar(255)",
-          "descricao": "-",
-          "cardinalidade": "0..1"
-        },
-        {
-          "nome": "populacao",
-          "tipo": "integer",
           "descricao": "-",
           "cardinalidade": "0..1"
         },
