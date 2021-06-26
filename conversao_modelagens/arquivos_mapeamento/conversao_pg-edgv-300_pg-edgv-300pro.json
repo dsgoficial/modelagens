@@ -1740,6 +1740,10 @@
       ],
       "atributos_default_volta": [
         {
+          "nome_atributo": "classificacaoporte",
+          "valor": 1
+        },
+        {
           "nome_atributo": "antropizada",
           "valor": 0
         },
