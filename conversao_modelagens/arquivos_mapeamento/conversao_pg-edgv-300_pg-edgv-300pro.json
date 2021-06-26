@@ -231,6 +231,10 @@
           "valor": 5
         },
         {
+          "nome_atributo": "tipoedifenergia",
+          "valor": 0
+        },
+        {
           "nome_atributo": "turistica",
           "valor": 0
         },
