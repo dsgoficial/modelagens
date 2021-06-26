@@ -1905,7 +1905,6 @@
         }
       ],
       "filtro_volta": {
-        "$not": {
           "$or": [
             {
               "nome_atributo": "tipo",
@@ -1960,7 +1959,6 @@
               "valor": 398
             }
           ]
-        }
       },
       "mapeamento_atributos": [
         {
@@ -4150,7 +4148,7 @@
         "valor": 4
       },
       "filtro_volta": {
-        "nome_atributo": "tipos",
+        "nome_atributo": "tipo",
         "valor": 1
       },
       "atributos_default_volta": [
@@ -4990,6 +4988,29 @@
               "valor_volta": 409
             }
           ]
+        }
+      ]
+    },
+    {
+      "__comment": "enc_trecho_energia <-> infra_elemento_energia | linha energia", 
+      "classe_ida": "enc_trecho_energia",
+      "classe_volta": "infra_elemento_energia",
+      "filtro_volta": {
+        "nome_atributo":"tipo",
+        "valor": 303
+      },
+      "atributos_default_volta":[
+        {
+          "nome_atributo":"operacional",
+          "valor":1
+        },
+        {
+          "nome_atributo":"especie",
+          "valor":2
+        },
+        {
+          "nome_atributo":"posicao_relativa",
+          "valor":3
         }
       ]
     },
