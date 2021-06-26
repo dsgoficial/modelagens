@@ -5015,6 +5015,15 @@
       ]
     },
     {
+      "__comment": "enc_grupo_transformadores <-> infra_elemento_energia | grupo transf", 
+      "classe_ida": "enc_grupo_transformadores",
+      "classe_volta": "infra_elemento_energia",
+      "filtro_volta": {
+        "nome_atributo":"tipo",
+        "valor": 601
+      }
+    },
+    {
       "__comment": "eco_ext_mineral <-> constr_extracao_mineral", 
       "classe_ida": "eco_ext_mineral",
       "classe_volta": "constr_extracao_mineral",
