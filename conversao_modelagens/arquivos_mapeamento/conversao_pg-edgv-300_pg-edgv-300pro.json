@@ -306,7 +306,7 @@
       ]
     },
     { "__comment": "edf_edif_ensino -> constr_edificacao | ensino",
-      "classe_ida": "edf_edif_energia",
+      "classe_ida": "edf_edif_ensino",
       "classe_volta": "constr_edificacao",
       "filtro_ida": {
         "$not": {
