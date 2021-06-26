@@ -3263,6 +3263,10 @@
           "valor": false
         },
         {
+          "nome_atributo": "tipoinstalmilitar",
+          "valor": 22
+        },
+        {
           "nome_atributo": "situacaofisica",
           "valor": 5
         },
