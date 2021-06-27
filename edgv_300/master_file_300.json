@@ -7306,7 +7306,7 @@
       "atributos": [
         {
           "nome": "codident",
-          "tipo": "varchar(80)",
+          "tipo": "varchar(255)",
           "descricao": "-",
           "cardinalidade": "0..1"
         },
@@ -7346,7 +7346,7 @@
         },
         {
           "nome": "codident",
-          "tipo": "varchar(80)",
+          "tipo": "varchar(255)",
           "descricao": "-",
           "cardinalidade": "0..1"
         },
@@ -7433,7 +7433,7 @@
         },
         {
           "nome": "concessionaria",
-          "tipo": "varchar(100)",
+          "tipo": "varchar(255)",
           "descricao": "-",
           "cardinalidade": "0..1"
         },
@@ -8442,7 +8442,7 @@
         },
         {
           "nome": "concessionaria",
-          "tipo": "varchar(100)",
+          "tipo": "varchar(255)",
           "descricao": "-",
           "cardinalidade": "0..1"
         },
@@ -8912,7 +8912,7 @@
         },
         {
           "nome": "concessionaria",
-          "tipo": "varchar(100)",
+          "tipo": "varchar(255)",
           "descricao": "-",
           "cardinalidade": "0..1"
         },
@@ -9124,7 +9124,7 @@
         },
         {
           "nome": "concessionaria",
-          "tipo": "varchar(100)",
+          "tipo": "varchar(255)",
           "descricao": "-",
           "cardinalidade": "0..1"
         },
@@ -9803,7 +9803,7 @@
         },
         {
           "nome": "concessionaria",
-          "tipo": "varchar(100)",
+          "tipo": "varchar(255)",
           "descricao": "-",
           "cardinalidade": "0..1"
         },
@@ -9919,7 +9919,7 @@
         },
         {
           "nome": "religiao",
-          "tipo": "varchar(100)",
+          "tipo": "varchar(255)",
           "descricao": "-",
           "cardinalidade": "0..1"
         },
@@ -10676,13 +10676,13 @@
         },
         {
           "nome": "sigla",
-          "tipo": "varchar(80)",
+          "tipo": "varchar(255)",
           "descricao": "-",
           "cardinalidade": "0..1"
         },
         {
           "nome": "codequipdesenvsocial",
-          "tipo": "varchar(80)",
+          "tipo": "varchar(255)",
           "descricao": "-",
           "cardinalidade": "0..1"
         },
@@ -11121,7 +11121,7 @@
         },
         {
           "nome": "concessionaria",
-          "tipo": "varchar(100)",
+          "tipo": "varchar(255)",
           "descricao": "-",
           "cardinalidade": "0..1"
         },
@@ -12319,7 +12319,7 @@
       "atributos": [
         {
           "nome": "codident",
-          "tipo": "varchar(80)",
+          "tipo": "varchar(255)",
           "descricao": "-",
           "cardinalidade": "0..1"
         },
@@ -14522,7 +14522,7 @@
         },
         {
           "nome": "identificador",
-          "tipo": "varchar(80)",
+          "tipo": "varchar(255)",
           "descricao": "-",
           "cardinalidade": "0..1"
         },
@@ -14540,7 +14540,7 @@
         },
         {
           "nome": "nomelocal",
-          "tipo": "varchar(80)",
+          "tipo": "varchar(255)",
           "descricao": "-",
           "cardinalidade": "0..1"
         },
@@ -14676,7 +14676,7 @@
         },
         {
           "nome": "classificacao",
-          "tipo": "varchar(100)",
+          "tipo": "varchar(255)",
           "descricao": "-",
           "cardinalidade": "0..1"
         },
@@ -14709,7 +14709,7 @@
         },
         {
           "nome": "grupoetnico",
-          "tipo": "varchar(100)",
+          "tipo": "varchar(255)",
           "descricao": "-",
           "cardinalidade": "0..1"
         },
@@ -14771,7 +14771,7 @@
         },
         {
           "nome": "atolegal",
-          "tipo": "varchar(100)",
+          "tipo": "varchar(255)",
           "descricao": "-",
           "cardinalidade": "0..1"
         },
@@ -14790,7 +14790,7 @@
         },
         {
           "nome": "classificacao",
-          "tipo": "varchar(100)",
+          "tipo": "varchar(255)",
           "descricao": "-",
           "cardinalidade": "0..1"
         },
@@ -14872,7 +14872,7 @@
         },
         {
           "nome": "atolegal",
-          "tipo": "varchar(100)",
+          "tipo": "varchar(255)",
           "descricao": "-",
           "cardinalidade": "0..1"
         },
@@ -14891,7 +14891,7 @@
         },
         {
           "nome": "classificacao",
-          "tipo": "varchar(100)",
+          "tipo": "varchar(255)",
           "descricao": "-",
           "cardinalidade": "0..1"
         },
@@ -14987,7 +14987,7 @@
         },
         {
           "nome": "classificacao",
-          "tipo": "varchar(100)",
+          "tipo": "varchar(255)",
           "descricao": "-",
           "cardinalidade": "0..1"
         },
@@ -15039,7 +15039,7 @@
         },
         {
           "nome": "classificacao",
-          "tipo": "varchar(100)",
+          "tipo": "varchar(255)",
           "descricao": "-",
           "cardinalidade": "0..1"
         },
@@ -15184,7 +15184,7 @@
         },
         {
           "nome": "atolegal",
-          "tipo": "varchar(100)",
+          "tipo": "varchar(255)",
           "descricao": "-",
           "cardinalidade": "0..1"
         },
@@ -15203,7 +15203,7 @@
         },
         {
           "nome": "classificacao",
-          "tipo": "varchar(100)",
+          "tipo": "varchar(255)",
           "descricao": "-",
           "cardinalidade": "0..1"
         },
@@ -15280,7 +15280,7 @@
         },
         {
           "nome": "outrarefplan",
-          "tipo": "varchar(20)",
+          "tipo": "varchar(255)",
           "descricao": "-",
           "cardinalidade": "0..1"
         },
@@ -15293,7 +15293,7 @@
         },
         {
           "nome": "outrarefalt",
-          "tipo": "varchar(20)",
+          "tipo": "varchar(255)",
           "descricao": "-",
           "cardinalidade": "0..1"
         },
@@ -15305,7 +15305,7 @@
         },
         {
           "nome": "orgaoenteresp",
-          "tipo": "varchar(15)",
+          "tipo": "varchar(255)",
           "descricao": "-",
           "cardinalidade": "0..1"
         }
@@ -15363,7 +15363,7 @@
         },
         {
           "nome": "outrarefplan",
-          "tipo": "varchar(20)",
+          "tipo": "varchar(255)",
           "descricao": "-",
           "cardinalidade": "0..1"
         },
@@ -15376,13 +15376,13 @@
         },
         {
           "nome": "outrarefalt",
-          "tipo": "varchar(20)",
+          "tipo": "varchar(255)",
           "descricao": "-",
           "cardinalidade": "0..1"
         },
         {
           "nome": "codponto",
-          "tipo": "varchar(12)",
+          "tipo": "varchar(255)",
           "descricao": "-",
           "cardinalidade": "0..1"
         },
@@ -15505,7 +15505,7 @@
         },
         {
           "nome": "outrarefplan",
-          "tipo": "varchar(20)",
+          "tipo": "varchar(255)",
           "descricao": "-",
           "cardinalidade": "0..1"
         },
@@ -15518,7 +15518,7 @@
         },
         {
           "nome": "outrarefalt",
-          "tipo": "varchar(20)",
+          "tipo": "varchar(255)",
           "descricao": "-",
           "cardinalidade": "0..1"
         },
@@ -16151,7 +16151,7 @@
         },
         {
           "nome": "concessionaria",
-          "tipo": "varchar(100)",
+          "tipo": "varchar(255)",
           "descricao": "-",
           "cardinalidade": "0..1"
         },
@@ -16442,13 +16442,13 @@
         },
         {
           "nome": "sigla",
-          "tipo": "varchar(80)",
+          "tipo": "varchar(255)",
           "descricao": "-",
           "cardinalidade": "0..1"
         },
         {
           "nome": "codequipdesenvsocial",
-          "tipo": "varchar(80)",
+          "tipo": "varchar(255)",
           "descricao": "-",
           "cardinalidade": "0..1"
         },
