@@ -122,6 +122,18 @@
         {
           "nome_atributo": "administracao",
           "valor": 0
+        },
+        {
+          "nome_atributo": "classeativecon",
+          "valor": 0
+        },
+        {
+          "nome_atributo": "divisaoativecon",
+          "valor": 0
+        },
+        {
+          "nome_atributo": "grupoativecon",
+          "valor": 0
         }
       ],
       "mapeamento_atributos": [
@@ -631,8 +643,8 @@
         }
       ]
     },
-    { "__comment": "hab_indigena <-> constr_edificacao | Habitacão indigena",
-      "classe_ida": "hab_indigena",
+    { "__comment": "edf_hab_indigena <-> constr_edificacao | Habitacão indigena",
+      "classe_ida": "edf_hab_indigena",
       "classe_volta": "constr_edificacao",
       "filtro_ida": {
         "$not": {
@@ -2216,6 +2228,10 @@
           "valor": 0
         },
         {
+          "nome_atributo": "operacional",
+          "valor": 1
+        },
+        {
           "nome_atributo": "setor",
           "valor": 0
         },
@@ -2293,7 +2309,15 @@
         },
         {
           "nome_atributo": "operacional",
-          "valor": 0
+          "valor": 1
+        },
+        {
+          "nome_atributo": "finalidade",
+          "valor": 1
+        },
+        {
+          "nome_atributo": "situacaofisica",
+          "valor": 5
         },
         {
           "nome_atributo": "turistica",
@@ -2317,6 +2341,10 @@
         },
         {
           "nome_atributo": "grupoativecon",
+          "valor": 0
+        },
+        {
+          "nome_atributo": "divisaoativecon",
           "valor": 0
         }
       ],
@@ -2684,6 +2712,10 @@
           "valor": 0
         },
         {
+          "nome_atributo": "situacaofisica",
+          "valor": 5
+        },
+        {
           "nome_atributo": "operacional",
           "valor": 0
         },
@@ -2986,6 +3018,10 @@
           "valor": false
         },
         {
+          "nome_atributo": "situacaofisica",
+          "valor": 5
+        },
+        {
           "nome_atributo": "operacional",
           "valor": 1
         },
@@ -3203,6 +3239,10 @@
           "valor": 1
         },
         {
+          "nome_atributo": "situacaofisica",
+          "valor": 5
+        },
+        {
           "nome_atributo": "turistica",
           "valor": 0
         },
@@ -3355,6 +3395,10 @@
           "valor": false
         },
         {
+          "nome_atributo": "situacaofisica",
+          "valor": 5
+        },
+        {
           "nome_atributo": "operacional",
           "valor": 1
         },
@@ -3453,6 +3497,10 @@
         {
           "nome_atributo": "geometriaaproximada",
           "valor": false
+        },
+        {
+          "nome_atributo": "situacaofisica",
+          "valor": 5
         },
         {
           "nome_atributo": "operacional",
@@ -3623,6 +3671,10 @@
         {
           "nome_atributo": "geometriaaproximada",
           "valor": false
+        },
+        {
+          "nome_atributo": "situacaofisica",
+          "valor": 5
         },
         {
           "nome_atributo": "operacional",
@@ -3798,6 +3850,10 @@
         {
           "nome_atributo": "operacional",
           "valor": 1
+        },
+        {
+          "nome_atributo": "situacaofisica",
+          "valor": 5
         },
         {
           "nome_atributo": "turistica",
@@ -4074,6 +4130,10 @@
             {
               "valor_ida": 2,
               "valor_volta": 6
+            },
+            {
+              "valor_ida": 3,
+              "valor_volta": 7
             },
             {
               "valor_ida": 0,
@@ -4736,7 +4796,7 @@
       "atributos_default_volta":[
         {
           "nome_atributo":"situacaojuridica",
-          "valor":0
+          "valor":3
         },
         {
           "nome_atributo":"administracao",
@@ -4764,7 +4824,7 @@
       ],
       "atributos_default_volta":[
         {
-          "nome_atributo":"tipo_unid_protegida",
+          "nome_atributo":"tipounidprotegida",
           "valor":4
         },
         {
@@ -4905,36 +4965,15 @@
       ]
     },
     {
-      "__comment": "enc_trecho_energia <-> infra_elemento_infraestrutura | linha energia", 
-      "classe_ida": "enc_trecho_energia",
-      "classe_volta": "infra_elemento_infraestrutura",
-      "filtro_volta": {
-        "nome_atributo":"tipo",
-        "valor": 303
-      },
-      "atributos_default_volta":[
-        {
-          "nome_atributo":"especie",
-          "valor":3
-        },
-        {
-          "nome_atributo":"posicaorelativa",
-          "valor":3
-        },
-        {
-          "nome_atributo":"operacional",
-          "valor":1
-        },
-        {
-          "nome_atributo":"situacaofisica",
-          "valor":3
-        }
-      ]
-    },
-    {
       "__comment": "rel_elemento_fisiografico_natural <-> elemnat_toponimo_fisiografico_natural", 
       "classe_ida": "rel_elemento_fisiografico_natural",
-      "classe_volta": "elemnat_toponimo_fisiografico_natural"
+      "classe_volta": "elemnat_toponimo_fisiografico_natural",
+      "mapeamento_atributos": [
+        {
+          "attr_ida": "tipoelemnat",
+          "attr_volta": "tipo"
+        }
+      ]
     },
     {
       "__comment": "enc_est_gerad_energia_eletrica <-> infra_elemento_energia | estação geradora", 
@@ -4942,14 +4981,6 @@
       "classe_volta": "infra_elemento_energia",
       "filtro_volta": {
         "$or": [
-          {
-            "nome_atributo":"tipo",
-            "valor": 405
-          },
-          {
-            "nome_atributo":"tipo",
-            "valor": 408
-          },
           {
             "nome_atributo":"tipo",
             "valor": 407
@@ -4961,10 +4992,6 @@
           {
             "nome_atributo":"tipo",
             "valor": 406
-          },
-          {
-            "nome_atributo":"tipo",
-            "valor": 409
           }
         ]
       },
@@ -4980,14 +5007,6 @@
           "attr_volta": "tipo",
           "traducao": [
             {
-              "valor_ida": 5,
-              "valor_volta": 405
-            },
-            {
-              "valor_ida": 8,
-              "valor_volta": 408
-            },
-            {
               "valor_ida": 7,
               "valor_volta": 407
             },
@@ -4998,12 +5017,54 @@
             {
               "valor_ida": 6,
               "valor_volta": 406
-            },
-            {
-              "valor_ida": 9,
-              "valor_volta": 409
             }
           ]
+        }
+      ]
+    },
+    {
+      "__comment": "enc_termeletrica <-> infra_elemento_energia | estação geradora", 
+      "classe_ida": "enc_termeletrica",
+      "classe_volta": "infra_elemento_energia",
+      "filtro_volta": {
+        "nome_atributo":"tipo",
+        "valor": 409
+      },
+      "atributos_default_volta":[
+        {
+          "nome_atributo":"operacional",
+          "valor":1
+        },
+        {
+          "nome_atributo":"tipoestgerad",
+          "valor":9
+        },
+        {
+          "nome_atributo":"tipocombustivel",
+          "valor":0
+        }
+      ]
+    },
+    {
+      "__comment": "enc_hidreletrica <-> infra_elemento_energia | estação geradora", 
+      "classe_ida": "enc_hidreletrica",
+      "classe_volta": "infra_elemento_energia",
+      "filtro_volta": {
+        "nome_atributo":"tipo",
+        "valor": 408
+      },
+      "atributos_default_volta":[
+        {
+          "nome_atributo":"operacional",
+          "valor":1
+        },
+        {
+          "nome_atributo":"tipoestgerad",
+          "valor":8
+        },
+        {
+          "nome_atributo":"tipoahe",
+          "valor":1
         }
       ]
     },
@@ -5025,8 +5086,12 @@
           "valor":2
         },
         {
-          "nome_atributo":"posicao_relativa",
+          "nome_atributo":"posicaorelativa",
           "valor":3
+        },
+        {
+          "nome_atributo":"sin",
+          "valor":0
         }
       ]
     },
@@ -5140,7 +5205,21 @@
       "mapeamento_atributos": [
         {
           "attr_ida": "tipoqueda",
-          "attr_volta": "tipo"
+          "attr_volta": "tipo",
+          "traducao": [
+            {
+              "valor_ida": 1,
+              "valor_volta": 9
+            },
+            {
+              "valor_ida": 2,
+              "valor_volta": 10
+            },
+            {
+              "valor_ida": 3,
+              "valor_volta": 11
+            }
+          ]
         }
       ]
     },
@@ -5645,7 +5724,7 @@
               "valor_volta": 610
             },
             {
-              "valor_ida": 98,
+              "valor_ida": 99,
               "valor_volta": 698
             }
           ]
@@ -5728,6 +5807,10 @@
         },
         {
           "nome_atributo": "administracao",
+          "valor": 0
+        },
+        {
+          "nome_atributo": "jurisdicao",
           "valor": 0
         },
         {
@@ -6077,6 +6160,10 @@
           "valor": 1
         },
         {
+          "nome_atributo": "tipousoedif",
+          "valor": 0
+        },
+        {
           "nome_atributo": "situacaofisica",
           "valor": 5
         },
@@ -6090,6 +6177,10 @@
         },
         {
           "nome_atributo": "cultura",
+          "valor": 0
+        },
+        {
+          "nome_atributo": "jurisdicao",
           "valor": 0
         },
         {
