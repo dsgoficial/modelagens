@@ -4501,6 +4501,14 @@
       ],
       "mapeamento_atributos": [
         {
+          "attr_ida": "nrpistas",
+          "attr_volta": "nr_pistas"
+        },
+        {
+          "attr_ida": "nrfaixas",
+          "attr_volta": "nr_faixas"
+        },
+        {
           "attr_ida": "tipovia",
           "attr_volta": "tipo",
           "traducao": [
@@ -4557,6 +4565,14 @@
         }
       ],
       "mapeamento_atributos": [
+        {
+          "attr_ida": "nrpistas",
+          "attr_volta": "nr_pistas"
+        },
+        {
+          "attr_ida": "nrfaixas",
+          "attr_volta": "nr_faixas"
+        },
         {
           "attr_ida": "tipovia",
           "attr_volta": "tipo",
