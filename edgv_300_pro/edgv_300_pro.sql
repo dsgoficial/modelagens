@@ -3888,7 +3888,7 @@ CREATE INDEX aquisicao_identificacao_antropizacao_a_geom ON edgv.aquisicao_ident
 
 ALTER TABLE edgv.aquisicao_identificacao_antropizacao_a OWNER TO postgres;
 
-CREATE TABLE edgv.aquisicao_ilha_p(
+CREATE TABLE edgv.aquisicao_centroide_ilha_p(
 	 id serial NOT NULL,
 	 nome varchar(255),
 	 tipo smallint NOT NULL,
@@ -3900,16 +3900,16 @@ CREATE TABLE edgv.aquisicao_ilha_p(
 	 insumo VARCHAR(255),
 	 data_insumo timestamp with time zone,
 	 geom geometry(MultiPoint, 31981),
-	 CONSTRAINT aquisicao_ilha_p_pk PRIMARY KEY (id)
+	 CONSTRAINT aquisicao_centroide_ilha_p_pk PRIMARY KEY (id)
 	 WITH (FILLFACTOR = 80)
 );
-CREATE INDEX aquisicao_ilha_p_geom ON edgv.aquisicao_ilha_p USING gist (geom);
+CREATE INDEX aquisicao_centroide_ilha_p_geom ON edgv.aquisicao_centroide_ilha_p USING gist (geom);
 
-ALTER TABLE edgv.aquisicao_ilha_p OWNER TO postgres;
+ALTER TABLE edgv.aquisicao_centroide_ilha_p OWNER TO postgres;
 
-ALTER TABLE edgv.aquisicao_ilha_p
-	 ADD CONSTRAINT aquisicao_ilha_p_tipo_fk FOREIGN KEY (tipo)
+ALTER TABLE edgv.aquisicao_centroide_ilha_p
+	 ADD CONSTRAINT aquisicao_centroide_ilha_p_tipo_fk FOREIGN KEY (tipo)
 	 REFERENCES dominios.tipo_ilha (code) MATCH FULL
 	 ON UPDATE NO ACTION ON DELETE NO ACTION;
 
-ALTER TABLE edgv.aquisicao_ilha_p ALTER COLUMN tipo SET DEFAULT 9999;
+ALTER TABLE edgv.aquisicao_centroide_ilha_p ALTER COLUMN tipo SET DEFAULT 9999;

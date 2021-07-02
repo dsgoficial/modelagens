@@ -7040,7 +7040,7 @@
       ]
     },
     {
-      "nome": "ilha",
+      "nome": "centroide_ilha",
       "categoria": "aquisicao",
       "descricao": "-",
       "primitivas": ["MultiPoint"],
