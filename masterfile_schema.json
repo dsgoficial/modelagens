@@ -167,7 +167,7 @@
       },
       "required": ["code", "value"]
     },
-    "schema_edgv":{
+    "schema_dados":{
       "description": "Nome do schema que contém as classes espaciais no banco de dados",
       "type": "string",      
       "default": "edgv"
@@ -242,6 +242,11 @@
       "items": { "$ref": "#/definitions/dominio" }
     },
     "classes": {
+      "type": "array",
+      "items": { "$ref": "#/definitions/classe" },
+      "minItems": 1
+    },
+    "extension_classes": {
       "type": "array",
       "items": { "$ref": "#/definitions/classe" },
       "minItems": 1
