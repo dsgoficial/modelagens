@@ -9,6 +9,7 @@
       "description": "Classes dominio armazenam pares code, value de forma a descrever valores utilizados nas classes. Não especificar 'a ser preenchido'",
       "properties": {
         "nome": { "type": "string" },
+        "filtro": { "type": "boolean" },
         "valores": { 
           "type": "array",
           "items": {
@@ -66,14 +67,10 @@
         "mapa_valor": {
           "type": "string",
           "description": "Caso seja um mapa de valor referenciar o nome do domínio"
-        }
-      },
-      "required": ["nome", "tipo", "cardinalidade"],
-      "additionalProperties": false,
-      "dependencies": {
-        "mapa_valor": {
-          "properties": {
-            "valores": {
+        },
+        "valores": {
+          "oneOf": [
+            {
               "type": "array",
               "items": {
                 "type": "object",
@@ -81,55 +78,6 @@
                   "code": { 
                     "type": "integer",
                     "description": "Código numérico do domínio"
-                  },
-                  "restricao_atributo_incomum": {
-                    "type": "array",
-                    "description": "Lista de restrição para atributos incomuns. Em caso de vazio sempre incomum.",
-                    "items": {
-                      "type": "object",
-                      "properties": {
-                        "atributo": {
-                          "description": "Nome do atributo.",
-                          "type": "string"
-                        },
-                        "valores": {
-                          "type": "array",
-                          "description": "Código de valores do atributo",
-                          "items": {
-                            "type": "integer"
-                          },
-                          "minItems": 1,
-                          "uniqueItems": true
-                        }
-                      },
-                      "required": ["atributo", "valores"],
-                      "additionalProperties": false
-                    }
-                  },
-                  "restricao": { 
-                    "type": "array",
-                    "description": "Lista de restrição para atributos inválidos.",
-                    "items": {
-                      "type": "object",
-                      "properties": {
-                        "atributo": {
-                          "description": "Nome do atributo.",
-                          "type": "string"
-                        },
-                        "valores": {
-                          "type": "array",
-                          "description": "Código de valores do atributo",
-                          "items": {
-                            "type": "integer"
-                          },
-                          "minItems": 1,
-                          "uniqueItems": true
-                        }
-                      },
-                      "required": ["atributo", "valores"],
-                      "additionalProperties": false                      
-                    },
-                    "minItems": 1
                   },
                   "primitivas": {
                     "type": "array",
@@ -140,26 +88,25 @@
                     },
                     "minItems": 1,
                     "uniqueItems": true              
-                  },
-                  "implica_not_null": {
-                    "type": "array",
-                    "description": "Lista de atributos que devem ser não nulos caso o valor ocorra.",
-                    "items": {
-                      "type": "string"
-                    },
-                    "minItems": 1,
-                    "uniqueItems": true
                   }
                 },
                 "required": ["code"],
                 "additionalProperties": false
               },
               "minItems": 1
+            },
+            {
+              "type": "array",
+              "items": {
+                "type": "integer"
+              },
+              "minItems": 1
             }
-          },
-          "required": ["valores"]
-        } 
-      }
+          ]
+        }
+      },
+      "required": ["nome", "tipo", "cardinalidade"],
+      "additionalProperties": false
     },
     "classe": {
       "type": "object",
@@ -247,8 +194,32 @@
       "type": "string",      
       "default": "id"
     },
+    "atributos_padrao": {
+      "type": "array",
+      "items": { "$ref": "#/definitions/atributo" },
+      "minItems": 1
+    },
     "geom_suffix":{
       "description": "Sufixo aplicado as classes espaciais para indicar o tipo de geometria",
+      "type": "object",
+      "properties": {
+        "MultiPoint": {
+          "type": "string",      
+          "default": "_p"          
+        },
+        "MultiLinestring": {
+          "type": "string",      
+          "default": "_l"              
+        },
+        "MultiPolygon": {
+          "type": "string",      
+          "default": "_a"              
+        }     
+      },
+      "additionalProperties": false
+    },
+    "geom_prefix":{
+      "description": "Prefixo aplicado as classes espaciais para indicar o tipo de geometria",
       "type": "object",
       "properties": {
         "MultiPoint": {
@@ -277,5 +248,5 @@
     }
   },
   "additionalProperties": false,
-  "required": ["modelo", "versao", "coord_sys", "dominios", "classes"]
+  "required": ["modelo", "versao", "coord_sys", "classes"]
 }

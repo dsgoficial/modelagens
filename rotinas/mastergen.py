@@ -146,9 +146,12 @@ class MasterGen():
 
                     if "mapa_valor" in atributo:
                         valores_att = None
-                        if "valores" in atributo:
-                            valores_att = [valor["code"] for valor in atributo["valores"]
-                                        if ("primitivas" in valor and primitiva in valor["primitivas"]) or "primitivas" not in valor]
+                        if "valores" in atributo and len(atributo["valores"])>0:
+                            if isinstance(atributo["valores"][0],dict): 
+                                valores_att = [valor["code"] for valor in atributo["valores"]
+                                            if ("primitivas" in valor and primitiva in valor["primitivas"]) or "primitivas" not in valor]
+                            else:
+                                valores_att = atributo["valores"]
 
                         if atributo["cardinalidade"] == "0..1" or atributo["cardinalidade"] == "1..1":
                             sql.append(u"ALTER TABLE {1}.{0}".format(class_name, master["schema_dados"]))
@@ -168,13 +171,11 @@ class MasterGen():
                                 if 'a_ser_preenchido' in master:
                                     valores_att.append(
                                         master["a_ser_preenchido"]["code"])
-                                    sql.append(u"\t CHECK ({0} = ANY(ARRAY[{1}])); ".format(atributo["nome"],
-                                                                                            ", ".join(["{0} :: SMALLINT".format(valor) for valor in valores_att])))
-                                else:
-                                    sql.append(u"\t CHECK ({0} = ANY(ARRAY[{1}])); ".format(atributo["nome"],
-                                                                                            ", ".join(["{0} :: SMALLINT".format(valor) for valor in valores_att])))
 
-                                    sql.append(u"")
+                                sql.append(u"\t CHECK ({0} = ANY(ARRAY[{1}])); ".format(atributo["nome"],
+                                                                                        ", ".join(["{0} :: SMALLINT".format(valor) for valor in valores_att])))
+
+                                sql.append(u"")
 
                             if master['a_ser_preenchido']:
                                 sql.append(u"ALTER TABLE {1}.{0} ALTER COLUMN {2} SET DEFAULT {3};".format(class_name,
@@ -209,64 +210,6 @@ class MasterGen():
                 sql_text = "\r".join(sql).encode('utf-8')
                 sql_file.write(sql_text)
                 return "Arquivo de modelagem SQL gerado com sucesso em {0}".format(dest)
-        except Exception as e:
-            return "Erro: {0}".format(e)
-
-    def buildRCO(self, dest, template):
-        master = self.master
-
-        tipo_map = {}
-        tipo_map["smallint"] = u"Mapa de valores (Inteiro)"
-        tipo_map["varchar"] = u"Alfanumérico"
-        tipo_map["integer"] = u"Inteiro"
-
-        dominio_by_code = {}
-        for dominio in master["dominios"]:
-            dominio_by_code[dominio["nome"]] = {}
-            for valor in dominio["valores"]:
-                dominio_by_code[dominio["nome"]][valor["code"]] = {}
-                dominio_by_code[dominio["nome"]][valor["code"]]["value"] = valor["value"]
-                dominio_by_code[dominio["nome"]][valor["code"]]["descricao"] = valor["descricao"]
-
-        dominio_by_class_attribute = {}
-        for classe in master["classes"]:
-            dominio_by_class_attribute[classe["nome"]] = {}
-            for atributo in classe["atributos"]:
-                if "valores" in atributo:
-                    dominio_by_class_attribute[classe["nome"]][atributo["nome"]] = dominio_by_code[atributo["mapa_valor"]]
-
-        for classe in master["classes"]:
-            classe["print_nome"] = "_".join(
-                [parte.title() for parte in classe["nome"].split("_")])
-            geoms = [master["geom_suffix"][geom].upper() for geom in classe["primitivas"]]
-            geoms = sorted(geoms, reverse=True)
-            classe["print_geometrias"] = " ".join(geoms)
-
-            for atributo in classe["atributos"]:
-                atributo["print_tipo"] = tipo_map[atributo["tipo"].split("(")[0]]
-                if "valores" in atributo:
-                    atributo["rowspan"] = len(atributo["valores"])
-
-                    for valor in atributo["valores"]:
-                        valor["print_nome"] = u"{0} ({1})".format(
-                            dominio_by_class_attribute[classe["nome"]][atributo["nome"]][valor["code"]]["value"], valor["code"])
-                        valor["descricao"] = dominio_by_class_attribute[classe["nome"]
-                                                                        ][atributo["nome"]][valor["code"]]["descricao"]
-
-                    atributo["valores"].sort(key=lambda k: k['print_nome'])
-
-                else:
-                    atributo["valor_nome"] = u"A ser preenchido"
-                    atributo["valor_descricao"] = u"-"
-
-        try:
-            with open(dest, 'w') as f:
-                j2_env = Environment(loader=FileSystemLoader(THIS_DIR), trim_blocks=True)
-                html = j2_env.get_template(template).render(
-                    master=master
-                )
-                f.write(html.encode('utf-8'))
-                return "Arquivo da RCO gerado com sucesso em {0}".format(dest)
         except Exception as e:
             return "Erro: {0}".format(e)
 
