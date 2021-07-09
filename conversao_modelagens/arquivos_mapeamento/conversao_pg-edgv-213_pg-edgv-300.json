@@ -1911,6 +1911,10 @@
             "classe_ida": "edu_piscina",
             "classe_volta": "laz_piscina"
         },
+        {            "__comment": "tra_sinalizacao <-> hdv_sinalizacao",
+            "classe_ida": "tra_sinalizacao",
+            "classe_volta": "hdv_sinalizacao"
+        },
         {            "__comment": "enc_area_energia_eletrica <-> cbge_area_uso_especifico | area energia",
             "classe_ida": "enc_area_energia_eletrica",
             "classe_volta": "cbge_area_uso_especifico",
