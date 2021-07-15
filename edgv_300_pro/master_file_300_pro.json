@@ -727,16 +727,6 @@
           "valor_filtro": "Edificação genérica"
         },
         {
-          "code": 1,
-          "value": "Edificação destruída",
-          "valor_filtro": "Edificação genérica"
-        },
-        {
-          "code": 2,
-          "value": "Edificação abandonada",
-          "valor_filtro": "Edificação genérica"
-        },
-        {
           "code": 101,
           "value": "Com - Centro de operações de comunicação",
           "valor_filtro": "Edificação de comunicação"
@@ -5130,6 +5120,12 @@
           "tipo": "smallint",
           "cardinalidade": "1..1",
           "mapa_valor": "tipo_edificacao"
+        },
+        {
+          "nome": "situacao_fisica",
+          "tipo": "smallint",
+          "cardinalidade": "1..1",
+          "mapa_valor": "situacao_fisica"
         },
         {
           "nome": "material_construcao",
