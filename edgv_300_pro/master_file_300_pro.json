@@ -2634,10 +2634,6 @@
         {
           "code": 8,
           "value": "Nome local"
-        },
-        {
-          "code": 97,
-          "value": "Não aplicável"
         }
       ]
     },
@@ -4640,6 +4636,20 @@
           "tipo": "smallint",
           "cardinalidade": "1..1",
           "mapa_valor": "nr_linhas"
+        },
+        {
+          "nome": "eletrificada",
+          "tipo": "smallint",
+          "descricao": "-",
+          "cardinalidade": "1..1",
+          "mapa_valor": "auxiliar"
+        },
+        {
+          "nome": "bitola",
+          "tipo": "smallint",
+          "descricao": "-",
+          "cardinalidade": "1..1",
+          "mapa_valor": "bitola"
         },
         {
           "nome": "em_arruamento",
