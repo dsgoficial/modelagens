@@ -21,7 +21,11 @@
             "schema": "edgv"
         },
         {
-            "tabela": "llp_localidade_complementar_p",
+            "tabela": "llp_nome_local_p",
+            "schema": "edgv"
+        },
+        {
+            "tabela": "llp_aglomerado_rural_p",
             "schema": "edgv"
         },
         {
@@ -53,15 +57,47 @@
             "schema": "edgv"
         },
         {
+            "tabela": "llp_area_pub_militar_l",
+            "schema": "edgv"
+        },
+        {
+            "tabela": "llp_area_pub_militar_a",
+            "schema": "edgv"
+        },
+        {
+            "tabela": "llp_terra_indigena_l",
+            "schema": "edgv"
+        },
+        {
+            "tabela": "llp_terra_indigena_a",
+            "schema": "edgv"
+        },
+        {
+            "tabela": "llp_unidade_conservacao_l",
+            "schema": "edgv"
+        },
+        {
+            "tabela": "llp_unidade_conservacao_a",
+            "schema": "edgv"
+        },
+        {
+            "tabela": "llp_unidade_protecao_integral_l",
+            "schema": "edgv"
+        },
+        {
+            "tabela": "llp_unidade_protecao_integral_a",
+            "schema": "edgv"
+        },
+        {
+            "tabela": "llp_unidade_uso_sustentavel_l",
+            "schema": "edgv"
+        },
+        {
+            "tabela": "llp_unidade_uso_sustentavel_a",
+            "schema": "edgv"
+        },
+        {
             "tabela": "llp_limite_legal_l",
-            "schema": "edgv"
-        },
-        {
-            "tabela": "llp_limite_especial_l",
-            "schema": "edgv"
-        },
-        {
-            "tabela": "llp_limite_especial_a",
             "schema": "edgv"
         },
         {
@@ -159,7 +195,11 @@
             "schema": "edgv"
         },
         {
-            "tabela": "llp_localidade_complementar_p",
+            "tabela": "llp_nome_local_p",
+            "schema": "edgv"
+        },
+        {
+            "tabela": "llp_aglomerado_rural_p",
             "schema": "edgv"
         },
         {
@@ -175,15 +215,47 @@
             "schema": "edgv"
         },
         {
+            "tabela": "llp_area_pub_militar_l",
+            "schema": "edgv"
+        },
+        {
+            "tabela": "llp_area_pub_militar_a",
+            "schema": "edgv"
+        },
+        {
+            "tabela": "llp_terra_indigena_l",
+            "schema": "edgv"
+        },
+        {
+            "tabela": "llp_terra_indigena_a",
+            "schema": "edgv"
+        },
+        {
+            "tabela": "llp_unidade_conservacao_l",
+            "schema": "edgv"
+        },
+        {
+            "tabela": "llp_unidade_conservacao_a",
+            "schema": "edgv"
+        },
+        {
+            "tabela": "llp_unidade_protecao_integral_l",
+            "schema": "edgv"
+        },
+        {
+            "tabela": "llp_unidade_protecao_integral_a",
+            "schema": "edgv"
+        },
+        {
+            "tabela": "llp_unidade_uso_sustentavel_l",
+            "schema": "edgv"
+        },
+        {
+            "tabela": "llp_unidade_uso_sustentavel_a",
+            "schema": "edgv"
+        },
+        {
             "tabela": "llp_limite_legal_l",
-            "schema": "edgv"
-        },
-        {
-            "tabela": "llp_limite_especial_l",
-            "schema": "edgv"
-        },
-        {
-            "tabela": "llp_limite_especial_a",
             "schema": "edgv"
         },
         {
