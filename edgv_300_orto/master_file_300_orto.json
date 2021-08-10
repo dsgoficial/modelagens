@@ -328,6 +328,10 @@
       "nome": "tipo_limite_especial",
       "valores": [
         {
+          "code": 5,
+          "value": "Unidade de Conservação"
+        },
+        {
           "code": 24,
           "value": "Área de Proteção Ambiental – APA"
         },
@@ -970,7 +974,7 @@
       ]
     },
     {
-      "nome": "unidade_uso_sustentavel",
+      "nome": "unidade_conservacao",
       "categoria": "llp",
       "primitivas": [
         "MultiLinestring"
@@ -985,10 +989,7 @@
           "nome": "tipo",
           "tipo": "smallint",
           "cardinalidade": "1..1",
-          "mapa_valor": "tipo_limite_especial",
-          "valores": [
-            24,25,26,27,28,29,30
-          ]
+          "mapa_valor": "tipo_limite_especial"
         },
         {
           "nome": "geometria_aproximada",
@@ -1005,7 +1006,7 @@
       ]
     },
     {
-      "nome": "unidade_uso_sustentavel",
+      "nome": "unidade_conservacao",
       "categoria": "llp",
       "primitivas": [
         "MultiPolygon"
@@ -1020,94 +1021,7 @@
           "nome": "tipo",
           "tipo": "smallint",
           "cardinalidade": "1..1",
-          "mapa_valor": "tipo_limite_especial",
-          "valores": [
-            24,25,26,27,28,29,30
-          ]
-        },
-        {
-          "nome": "geometria_aproximada",
-          "tipo": "smallint",
-          "cardinalidade": "1..1",
-          "mapa_valor": "booleano"
-        },
-        {
-          "nome": "texto_edicao",
-          "tipo": "varchar(255)",
-          "cardinalidade": "0..1"
-        },
-        {
-          "nome": "label_x",
-          "tipo": "real",
-          "cardinalidade": "0..1"
-        },
-        {
-          "nome": "label_y",
-          "tipo": "real",
-          "cardinalidade": "0..1"
-        },
-        {
-          "nome": "justificativa_txt",
-          "tipo": "varchar(255)",
-          "cardinalidade": "0..1"
-        }
-      ]
-    },
-    {
-      "nome": "unidade_protecao_integral",
-      "categoria": "llp",
-      "primitivas": [
-        "MultiLinestring"
-      ],
-      "atributos": [
-        {
-          "nome": "nome",
-          "tipo": "varchar(255)",
-          "cardinalidade": "0..1"
-        },
-        {
-          "nome": "tipo",
-          "tipo": "smallint",
-          "cardinalidade": "1..1",
-          "mapa_valor": "tipo_limite_especial",
-          "valores": [
-            31,32,33,34,35
-          ]
-        },
-        {
-          "nome": "geometria_aproximada",
-          "tipo": "smallint",
-          "cardinalidade": "1..1",
-          "mapa_valor": "booleano"
-        },
-        {
-          "nome": "sobreposto",
-          "tipo": "smallint",
-          "cardinalidade": "1..1",
-          "mapa_valor": "booleano"
-        }
-      ]
-    },
-    {
-      "nome": "unidade_protecao_integral",
-      "categoria": "llp",
-      "primitivas": [
-        "MultiPolygon"
-      ],
-      "atributos": [
-        {
-          "nome": "nome",
-          "tipo": "varchar(255)",
-          "cardinalidade": "0..1"
-        },
-        {
-          "nome": "tipo",
-          "tipo": "smallint",
-          "cardinalidade": "1..1",
-          "mapa_valor": "tipo_limite_especial",
-          "valores": [
-            31,32,33,34,35
-          ]
+          "mapa_valor": "tipo_limite_especial"
         },
         {
           "nome": "geometria_aproximada",
@@ -1165,72 +1079,6 @@
     },
     {
       "nome": "terra_indigena",
-      "categoria": "llp",
-      "primitivas": [
-        "MultiPolygon"
-      ],
-      "atributos": [
-        {
-          "nome": "nome",
-          "tipo": "varchar(255)",
-          "cardinalidade": "0..1"
-        },
-        {
-          "nome": "geometria_aproximada",
-          "tipo": "smallint",
-          "cardinalidade": "1..1",
-          "mapa_valor": "booleano"
-        },
-        {
-          "nome": "texto_edicao",
-          "tipo": "varchar(255)",
-          "cardinalidade": "0..1"
-        },
-        {
-          "nome": "label_x",
-          "tipo": "real",
-          "cardinalidade": "0..1"
-        },
-        {
-          "nome": "label_y",
-          "tipo": "real",
-          "cardinalidade": "0..1"
-        },
-        {
-          "nome": "justificativa_txt",
-          "tipo": "varchar(255)",
-          "cardinalidade": "0..1"
-        }
-      ]
-    },
-    {
-      "nome": "unidade_conservacao",
-      "categoria": "llp",
-      "primitivas": [
-        "MultiLinestring"
-      ],
-      "atributos": [
-        {
-          "nome": "nome",
-          "tipo": "varchar(255)",
-          "cardinalidade": "0..1"
-        },
-        {
-          "nome": "geometria_aproximada",
-          "tipo": "smallint",
-          "cardinalidade": "1..1",
-          "mapa_valor": "booleano"
-        },
-        {
-          "nome": "sobreposto",
-          "tipo": "smallint",
-          "cardinalidade": "1..1",
-          "mapa_valor": "booleano"
-        }
-      ]
-    },
-    {
-      "nome": "unidade_conservacao",
       "categoria": "llp",
       "primitivas": [
         "MultiPolygon"

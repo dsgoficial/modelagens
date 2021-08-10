@@ -81,22 +81,6 @@
             "schema": "edgv"
         },
         {
-            "tabela": "llp_unidade_protecao_integral_l",
-            "schema": "edgv"
-        },
-        {
-            "tabela": "llp_unidade_protecao_integral_a",
-            "schema": "edgv"
-        },
-        {
-            "tabela": "llp_unidade_uso_sustentavel_l",
-            "schema": "edgv"
-        },
-        {
-            "tabela": "llp_unidade_uso_sustentavel_a",
-            "schema": "edgv"
-        },
-        {
             "tabela": "llp_limite_legal_l",
             "schema": "edgv"
         },
@@ -236,22 +220,6 @@
         },
         {
             "tabela": "llp_unidade_conservacao_a",
-            "schema": "edgv"
-        },
-        {
-            "tabela": "llp_unidade_protecao_integral_l",
-            "schema": "edgv"
-        },
-        {
-            "tabela": "llp_unidade_protecao_integral_a",
-            "schema": "edgv"
-        },
-        {
-            "tabela": "llp_unidade_uso_sustentavel_l",
-            "schema": "edgv"
-        },
-        {
-            "tabela": "llp_unidade_uso_sustentavel_a",
             "schema": "edgv"
         },
         {
