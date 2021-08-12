@@ -106,11 +106,3 @@ ALTER FUNCTION public.estilo()
 GRANT EXECUTE ON FUNCTION public.estilo() TO PUBLIC;
 
 --########################################################
-
-GRANT USAGE ON SCHEMA edgv TO public;
-GRANT SELECT, INSERT, UPDATE, DELETE ON ALL TABLES IN SCHEMA edgv TO public;
-GRANT ALL ON ALL SEQUENCES IN SCHEMA edgv TO public;
-
-GRANT USAGE ON SCHEMA dominios TO public;
-GRANT SELECT, INSERT, UPDATE, DELETE ON ALL TABLES IN SCHEMA dominios TO public;
-GRANT ALL ON ALL SEQUENCES IN SCHEMA dominios TO public;

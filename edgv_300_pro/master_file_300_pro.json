@@ -55,6 +55,26 @@
   },
   "dominios": [
     {
+      "nome": "auxiliar",
+      "valores": [
+        {
+          "code": 0,
+          "value": "Desconhecido",
+          "descricao": "-"
+        },
+        {
+          "code": 1,
+          "value": "Sim",
+          "descricao": "-"
+        },
+        {
+          "code": 2,
+          "value": "Não",
+          "descricao": "-"
+        }
+      ]
+    },
+    {
       "nome": "administracao",
       "valores": [
         {
@@ -3861,7 +3881,7 @@
             {
               "code": 2,
               "primitivas": [
-                "MultiPoint"
+                "MultiPoint", "MultiLinestring"
               ]
             },
             {
