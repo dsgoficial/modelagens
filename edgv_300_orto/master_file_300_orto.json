@@ -1996,6 +1996,26 @@
       ]
     },
     {
+      "nome": "centroide_ilha",
+      "categoria": "aquisicao",
+      "primitivas": [
+        "MultiPoint"
+      ],
+      "atributos": [
+        {
+          "nome": "nome",
+          "tipo": "varchar(255)",
+          "cardinalidade": "0..1"
+        },
+        {
+          "nome": "tipo",
+          "tipo": "smallint",
+          "cardinalidade": "1..1",
+          "mapa_valor": "tipo_ilha"
+        }
+      ]
+    },
+    {
       "nome": "identificador_trecho_rod",
       "categoria": "edicao",
       "primitivas": [
