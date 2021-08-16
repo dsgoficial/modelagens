@@ -1592,7 +1592,7 @@ ALTER TABLE edgv.elemnat_toponimo_fisiografico_natural_l
 
 ALTER TABLE edgv.elemnat_toponimo_fisiografico_natural_l
 	 ADD CONSTRAINT elemnat_toponimo_fisiografico_natural_l_tipo_check 
-	 CHECK (tipo = ANY(ARRAY[1 :: SMALLINT, 12 :: SMALLINT, 9999 :: SMALLINT])); 
+	 CHECK (tipo = ANY(ARRAY[1 :: SMALLINT, 2 :: SMALLINT, 12 :: SMALLINT, 9999 :: SMALLINT])); 
 
 ALTER TABLE edgv.elemnat_toponimo_fisiografico_natural_l ALTER COLUMN tipo SET DEFAULT 9999;
 
@@ -1814,6 +1814,26 @@ ALTER TABLE edgv.aquisicao_centroide_massa_dagua_p
 	 ON UPDATE NO ACTION ON DELETE NO ACTION;
 
 ALTER TABLE edgv.aquisicao_centroide_massa_dagua_p ALTER COLUMN regime SET DEFAULT 9999;
+
+CREATE TABLE edgv.aquisicao_centroide_ilha_p(
+	 id uuid NOT NULL DEFAULT uuid_generate_v4(),
+	 nome varchar(255),
+	 tipo smallint NOT NULL,
+	 observacao VARCHAR(255),
+	 geom geometry(MultiPoint, 4674),
+	 CONSTRAINT aquisicao_centroide_ilha_p_pk PRIMARY KEY (id)
+	 WITH (FILLFACTOR = 80)
+);
+CREATE INDEX aquisicao_centroide_ilha_p_geom ON edgv.aquisicao_centroide_ilha_p USING gist (geom);
+
+ALTER TABLE edgv.aquisicao_centroide_ilha_p OWNER TO postgres;
+
+ALTER TABLE edgv.aquisicao_centroide_ilha_p
+	 ADD CONSTRAINT aquisicao_centroide_ilha_p_tipo_fk FOREIGN KEY (tipo)
+	 REFERENCES dominios.tipo_ilha (code) MATCH FULL
+	 ON UPDATE NO ACTION ON DELETE NO ACTION;
+
+ALTER TABLE edgv.aquisicao_centroide_ilha_p ALTER COLUMN tipo SET DEFAULT 9999;
 
 CREATE TABLE edgv.edicao_identificador_trecho_rod_p(
 	 id uuid NOT NULL DEFAULT uuid_generate_v4(),
