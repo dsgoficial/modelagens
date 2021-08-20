@@ -14,7 +14,7 @@
       "cardinalidade": "0..1"
     }
   ],
-  "coord_sys": 31982,
+  "coord_sys": 4674,
   "fill_factor": 80,
   "nome_geom": "geom",
   "nome_id": "id",
@@ -41,6 +41,64 @@
           "code": 2,
           "value": "Não",
           "descricao": "-"
+        }
+      ]
+    },
+    {
+      "nome": "material_construcao",
+      "valores": [
+        {
+          "code": 0,
+          "value": "Desconhecido"
+        },
+        {
+          "code": 1,
+          "value": "Alvenaria"
+        },
+        {
+          "code": 2,
+          "value": "Concreto"
+        },
+        {
+          "code": 3,
+          "value": "Metal"
+        },
+        {
+          "code": 4,
+          "value": "Rocha"
+        },
+        {
+          "code": 5,
+          "value": "Madeira"
+        },
+        {
+          "code": 9,
+          "value": "Fibra"
+        },
+        {
+          "code": 23,
+          "value": "Terra"
+        },
+        {
+          "code": 97,
+          "value": "Não aplicável"
+        },
+        {
+          "code": 98,
+          "value": "Outros"
+        }
+      ]
+    },
+    {
+      "nome": "tipo_barragem",
+      "valores": [
+        {
+          "code": 1,
+          "value": "Barragem"
+        },
+        {
+          "code": 2,
+          "value": "Dique"
         }
       ]
     },
@@ -726,7 +784,6 @@
       "nome": "elemento_energia",
       "categoria": "infra",
       "primitivas": [
-        "MultiLinestring",
         "MultiPoint",
         "MultiPolygon"
       ],
@@ -742,19 +799,7 @@
           "cardinalidade": "1..1",
           "mapa_valor": "tipo_elemento_energia",
           "valores": [
-            {
-              "code": 303,
-              "primitivas": [
-                "MultiLinestring"
-              ]
-            },
-            {
-              "code": 1801,
-              "primitivas": [
-                "MultiPoint",
-                "MultiPolygon"
-              ]
-            }
+            1801
           ]
         },
         {
@@ -788,6 +833,36 @@
           "nome": "justificativa_txt",
           "tipo": "varchar(255)",
           "cardinalidade": "0..1"
+        }
+      ]
+    },
+    {
+      "nome": "elemento_energia",
+      "categoria": "infra",
+      "primitivas": [
+        "MultiLinestring"
+      ],
+      "atributos": [
+        {
+          "nome": "tipo",
+          "tipo": "smallint",
+          "cardinalidade": "1..1",
+          "mapa_valor": "tipo_elemento_energia",
+          "valores": [
+            303
+          ]
+        },
+        {
+          "nome": "situacao_fisica",
+          "tipo": "smallint",
+          "cardinalidade": "1..1",
+          "mapa_valor": "situacao_fisica"
+        },
+        {
+          "nome": "visivel",
+          "tipo": "smallint",
+          "cardinalidade": "1..1",
+          "mapa_valor": "booleano"
         }
       ]
     },
@@ -873,6 +948,11 @@
           "cardinalidade": "0..1"
         },
         {
+          "nome": "tamanho_txt",
+          "tipo": "real",
+          "cardinalidade": "0..1"
+        },
+        {
           "nome": "justificativa_txt",
           "tipo": "varchar(255)",
           "cardinalidade": "0..1"
@@ -902,6 +982,31 @@
           "tipo": "smallint",
           "cardinalidade": "1..1",
           "mapa_valor": "regime"
+        },
+        {
+          "nome": "texto_edicao",
+          "tipo": "varchar(255)",
+          "cardinalidade": "0..1"
+        },
+        {
+          "nome": "label_x",
+          "tipo": "real",
+          "cardinalidade": "0..1"
+        },
+        {
+          "nome": "label_y",
+          "tipo": "real",
+          "cardinalidade": "0..1"
+        },
+        {
+          "nome": "tamanho_txt",
+          "tipo": "real",
+          "cardinalidade": "0..1"
+        },
+        {
+          "nome": "justificativa_txt",
+          "tipo": "varchar(255)",
+          "cardinalidade": "0..1"
         }
       ]
     },
@@ -912,6 +1017,46 @@
         "MultiPolygon"
       ],
       "atributos": []
+    },
+    {
+      "nome": "barragem",
+      "categoria": "infra",
+      "primitivas": [
+        "MultiPolygon",
+        "MultiLinestring"
+      ],
+      "atributos": [
+        {
+          "nome": "nome",
+          "tipo": "varchar(255)",
+          "cardinalidade": "0..1"
+        },
+        {
+          "nome": "tipo",
+          "tipo": "smallint",
+          "cardinalidade": "1..1",
+          "mapa_valor": "tipo_barragem"
+        },
+        {
+          "nome": "material_construcao",
+          "tipo": "smallint",
+          "cardinalidade": "1..1",
+          "mapa_valor": "material_construcao",
+          "valores": [
+            0,
+            1,
+            2,
+            4,
+            23
+          ]
+        },
+        {
+          "nome": "em_via_deslocamento",
+          "tipo": "smallint",
+          "cardinalidade": "1..1",
+          "mapa_valor": "booleano"
+        }
+      ]
     },
     {
       "nome": "elemento_hidrografico",
@@ -958,6 +1103,26 @@
               "code": 12
             }
           ]
+        },
+        {
+          "nome": "texto_edicao",
+          "tipo": "varchar(255)",
+          "cardinalidade": "0..1"
+        },
+        {
+          "nome": "label_x",
+          "tipo": "real",
+          "cardinalidade": "0..1"
+        },
+        {
+          "nome": "label_y",
+          "tipo": "real",
+          "cardinalidade": "0..1"
+        },
+        {
+          "nome": "justificativa_txt",
+          "tipo": "varchar(255)",
+          "cardinalidade": "0..1"
         }
       ]
     },
@@ -990,6 +1155,22 @@
           "tipo": "smallint",
           "cardinalidade": "1..1",
           "mapa_valor": "regime"
+        },
+        {
+          "nome": "texto_edicao",
+          "tipo": "varchar(255)",
+          "cardinalidade": "0..1"
+        },
+        {
+          "nome": "tamanho_txt",
+          "tipo": "real",
+          "cardinalidade": "0..1"
+        },
+        {
+          "nome": "simbolizar_carta_mini",
+          "tipo": "smallint",
+          "cardinalidade": "1..1",
+          "mapa_valor": "booleano"
         }
       ]
     },
@@ -1065,6 +1246,11 @@
           "cardinalidade": "0..1"
         },
         {
+          "nome": "tamanho_txt",
+          "tipo": "real",
+          "cardinalidade": "0..1"
+        },
+        {
           "nome": "justificativa_txt",
           "tipo": "varchar(255)",
           "cardinalidade": "0..1"
@@ -1131,6 +1317,11 @@
           "cardinalidade": "0..1"
         },
         {
+          "nome": "tamanho_txt",
+          "tipo": "real",
+          "cardinalidade": "0..1"
+        },
+        {
           "nome": "justificativa_txt",
           "tipo": "varchar(255)",
           "cardinalidade": "0..1"
@@ -1193,6 +1384,11 @@
         },
         {
           "nome": "label_y",
+          "tipo": "real",
+          "cardinalidade": "0..1"
+        },
+        {
+          "nome": "tamanho_txt",
           "tipo": "real",
           "cardinalidade": "0..1"
         },
@@ -1383,6 +1579,17 @@
           "tipo": "smallint",
           "cardinalidade": "1..1",
           "mapa_valor": "booleano"
+        },
+        {
+          "nome": "texto_edicao",
+          "tipo": "varchar(255)",
+          "cardinalidade": "0..1"
+        },
+        {
+          "nome": "visivel",
+          "tipo": "smallint",
+          "cardinalidade": "1..1",
+          "mapa_valor": "booleano"
         }
       ]
     },
@@ -1409,6 +1616,11 @@
           "tipo": "smallint",
           "cardinalidade": "1..1",
           "mapa_valor": "booleano"
+        },
+        {
+          "nome": "texto_edicao",
+          "tipo": "varchar(255)",
+          "cardinalidade": "0..1"
         },
         {
           "nome": "label_x",
@@ -1557,7 +1769,7 @@
           "cardinalidade": "0..1"
         },
         {
-          "nome": "carta_mini",
+          "nome": "simbolizar_carta_mini",
           "tipo": "smallint",
           "cardinalidade": "1..1",
           "mapa_valor": "booleano"
@@ -1694,7 +1906,7 @@
           "cardinalidade": "0..1"
         },
         {
-          "nome": "carta_mini",
+          "nome": "simbolizar_carta_mini",
           "tipo": "smallint",
           "cardinalidade": "1..1",
           "mapa_valor": "booleano"
@@ -1719,6 +1931,31 @@
           "tipo": "smallint",
           "cardinalidade": "1..1",
           "mapa_valor": "tipo_ilha"
+        },
+        {
+          "nome": "texto_edicao",
+          "tipo": "varchar(255)",
+          "cardinalidade": "0..1"
+        },
+        {
+          "nome": "label_x",
+          "tipo": "real",
+          "cardinalidade": "0..1"
+        },
+        {
+          "nome": "label_y",
+          "tipo": "real",
+          "cardinalidade": "0..1"
+        },
+        {
+          "nome": "tamanho_txt",
+          "tipo": "real",
+          "cardinalidade": "0..1"
+        },
+        {
+          "nome": "justificativa_txt",
+          "tipo": "varchar(255)",
+          "cardinalidade": "0..1"
         }
       ]
     },
@@ -1726,7 +1963,6 @@
       "nome": "toponimo_fisiografico_natural",
       "categoria": "elemnat",
       "primitivas": [
-        "MultiLinestring",
         "MultiPoint"
       ],
       "atributos": [
@@ -1741,80 +1977,76 @@
           "cardinalidade": "1..1",
           "mapa_valor": "tipo_toponimo_fisiografico",
           "valores": [
-            {
-              "code": 1,
-              "primitivas": [
-                "MultiLinestring"
-              ]
-            },
-            {
-              "code": 2,
-              "primitivas": [
-                "MultiPoint", "MultiLinestring"
-              ]
-            },
-            {
-              "code": 3,
-              "primitivas": [
-                "MultiPoint"
-              ]
-            },
-            {
-              "code": 4,
-              "primitivas": [
-                "MultiPoint"
-              ]
-            },
-            {
-              "code": 5,
-              "primitivas": [
-                "MultiPoint"
-              ]
-            },
-            {
-              "code": 6,
-              "primitivas": [
-                "MultiPoint"
-              ]
-            },
-            {
-              "code": 7,
-              "primitivas": [
-                "MultiPoint"
-              ]
-            },
-            {
-              "code": 9,
-              "primitivas": [
-                "MultiPoint"
-              ]
-            },
-            {
-              "code": 10,
-              "primitivas": [
-                "MultiPoint"
-              ]
-            },
-            {
-              "code": 11,
-              "primitivas": [
-                "MultiPoint"
-              ]
-            },
-            {
-              "code": 12,
-              "primitivas": [
-                "MultiPoint",
-                "MultiLinestring"
-              ]
-            },
-            {
-              "code": 17,
-              "primitivas": [
-                "MultiPoint"
-              ]
-            }
+            2,3,4,5,6,7,9,10,11,12,17
           ]
+        },
+        {
+          "nome": "texto_edicao",
+          "tipo": "varchar(255)",
+          "cardinalidade": "0..1"
+        },
+        {
+          "nome": "label_x",
+          "tipo": "real",
+          "cardinalidade": "0..1"
+        },
+        {
+          "nome": "label_y",
+          "tipo": "real",
+          "cardinalidade": "0..1"
+        },
+        {
+          "nome": "tamanho_txt",
+          "tipo": "real",
+          "cardinalidade": "0..1"
+        },
+        {
+          "nome": "justificativa_txt",
+          "tipo": "varchar(255)",
+          "cardinalidade": "0..1"
+        },
+        {
+          "nome": "espacamento",
+          "tipo": "real",
+          "cardinalidade": "0..1"
+        }
+      ]
+    },
+    {
+      "nome": "toponimo_fisiografico_natural",
+      "categoria": "elemnat",
+      "primitivas": [
+        "MultiLinestring"
+      ],
+      "atributos": [
+        {
+          "nome": "nome",
+          "tipo": "varchar(255)",
+          "cardinalidade": "0..1"
+        },
+        {
+          "nome": "tipo",
+          "tipo": "smallint",
+          "cardinalidade": "1..1",
+          "mapa_valor": "tipo_toponimo_fisiografico",
+          "valores": [
+            1,2,12
+          ]
+        },
+        {
+          "nome": "texto_edicao",
+          "tipo": "varchar(255)",
+          "cardinalidade": "0..1"
+        },
+        {
+          "nome": "tamanho_txt",
+          "tipo": "real",
+          "cardinalidade": "0..1"
+        },
+        {
+          "nome": "espacamento",
+          "tipo": "real",
+          "cardinalidade": "0..1"
         }
       ]
     },
@@ -1970,6 +2202,14 @@
       "atributos": []
     },
     {
+      "nome": "limite_elemento_hidrografico",
+      "categoria": "aquisicao",
+      "primitivas": [
+        "MultiLinestring"
+      ],
+      "atributos": []
+    },
+    {
       "nome": "centroide_massa_dagua",
       "categoria": "aquisicao",
       "primitivas": [
@@ -2012,6 +2252,29 @@
           "tipo": "smallint",
           "cardinalidade": "1..1",
           "mapa_valor": "tipo_ilha"
+        }
+      ]
+    },
+    {
+      "nome": "centroide_elemento_hidrografico",
+      "categoria": "aquisicao",
+      "primitivas": [
+        "MultiPoint"
+      ],
+      "atributos": [
+        {
+          "nome": "nome",
+          "tipo": "varchar(255)",
+          "cardinalidade": "0..1"
+        },
+        {
+          "nome": "tipo",
+          "tipo": "smallint",
+          "cardinalidade": "1..1",
+          "mapa_valor": "tipo_elemento_hidrografico",
+          "valores": [
+            12
+          ]
         }
       ]
     },
@@ -2061,10 +2324,23 @@
       ]
     },
     {
+      "nome": "simb_direcao_corrente",
+      "categoria": "edicao",
+      "primitivas": [
+        "MultiPoint"
+      ],
+      "atributos": [
+        {
+          "nome": "simb_rot",
+          "tipo": "real",
+          "cardinalidade": "0..1"
+        }
+      ]
+    },
+    {
       "nome": "simb_cota_mestra",
       "categoria": "edicao",
       "primitivas": [
-        "MultiPoint",
         "MultiLinestring"
       ],
       "atributos": []
@@ -2073,7 +2349,71 @@
       "nome": "texto_generico",
       "categoria": "edicao",
       "primitivas": [
-        "MultiPoint",
+        "MultiPoint"
+      ],
+      "atributos": [
+        {
+          "nome": "texto_edicao",
+          "tipo": "varchar(255)",
+          "cardinalidade": "0..1"
+        },
+        {
+          "nome": "label_x",
+          "tipo": "real",
+          "cardinalidade": "0..1"
+        },
+        {
+          "nome": "label_y",
+          "tipo": "real",
+          "cardinalidade": "0..1"
+        },
+        {
+          "nome": "estilo_fonte",
+          "tipo": "varchar(255)",
+          "cardinalidade": "0..1"
+        },
+        {
+          "nome": "tamanho_txt",
+          "tipo": "real",
+          "cardinalidade": "0..1"
+        },
+        {
+          "nome": "justificativa_txt",
+          "tipo": "varchar(255)",
+          "cardinalidade": "0..1"
+        },
+        {
+          "nome": "espacamento",
+          "tipo": "real",
+          "cardinalidade": "0..1"
+        },
+        {
+          "nome": "cor",
+          "tipo": "varchar(255)",
+          "cardinalidade": "0..1"
+        },
+        {
+          "nome": "cor_buffer",
+          "tipo": "varchar(255)",
+          "cardinalidade": "0..1"
+        },
+        {
+          "nome": "tamanho_buffer",
+          "tipo": "real",
+          "cardinalidade": "0..1"
+        },
+        {
+          "nome": "carta_mini",
+          "tipo": "smallint",
+          "cardinalidade": "1..1",
+          "mapa_valor": "booleano"
+        }
+      ]
+    },
+    {
+      "nome": "texto_generico",
+      "categoria": "edicao",
+      "primitivas": [
         "MultiLinestring"
       ],
       "atributos": [
@@ -2093,6 +2433,11 @@
           "cardinalidade": "0..1"
         },
         {
+          "nome": "justificativa_txt",
+          "tipo": "varchar(255)",
+          "cardinalidade": "0..1"
+        },
+        {
           "nome": "espacamento",
           "tipo": "real",
           "cardinalidade": "0..1"
@@ -2103,8 +2448,13 @@
           "cardinalidade": "0..1"
         },
         {
-          "nome": "justificativa_txt",
+          "nome": "cor_buffer",
           "tipo": "varchar(255)",
+          "cardinalidade": "0..1"
+        },
+        {
+          "nome": "tamanho_buffer",
+          "tipo": "real",
           "cardinalidade": "0..1"
         },
         {
