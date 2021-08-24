@@ -45,6 +45,21 @@
       ]
     },
     {
+      "nome": "tipo_carta",
+      "valores": [
+        {
+          "code": 1,
+          "value": "Carta principal",
+          "descricao": "-"
+        },
+        {
+          "code": 2,
+          "value": "Carta mini",
+          "descricao": "-"
+        }
+      ]
+    },
+    {
       "nome": "material_construcao",
       "valores": [
         {
@@ -1007,6 +1022,12 @@
           "nome": "justificativa_txt",
           "tipo": "varchar(255)",
           "cardinalidade": "0..1"
+        },
+        {
+          "nome": "simbolizar_carta_mini",
+          "tipo": "smallint",
+          "cardinalidade": "1..1",
+          "mapa_valor": "booleano"
         }
       ]
     },
@@ -1203,6 +1224,12 @@
           "tipo": "smallint",
           "cardinalidade": "1..1",
           "mapa_valor": "booleano"
+        },
+        {
+          "nome": "exibir_rotulo_aproximado",
+          "tipo": "smallint",
+          "cardinalidade": "1..1",
+          "mapa_valor": "booleano"
         }
       ]
     },
@@ -1254,6 +1281,12 @@
           "nome": "justificativa_txt",
           "tipo": "varchar(255)",
           "cardinalidade": "0..1"
+        },
+        {
+          "nome": "simbolizar_carta_mini",
+          "tipo": "smallint",
+          "cardinalidade": "1..1",
+          "mapa_valor": "booleano"
         }
       ]
     },
@@ -1277,6 +1310,12 @@
         },
         {
           "nome": "sobreposto",
+          "tipo": "smallint",
+          "cardinalidade": "1..1",
+          "mapa_valor": "booleano"
+        },
+        {
+          "nome": "exibir_rotulo_aproximado",
           "tipo": "smallint",
           "cardinalidade": "1..1",
           "mapa_valor": "booleano"
@@ -1325,6 +1364,12 @@
           "nome": "justificativa_txt",
           "tipo": "varchar(255)",
           "cardinalidade": "0..1"
+        },
+        {
+          "nome": "simbolizar_carta_mini",
+          "tipo": "smallint",
+          "cardinalidade": "1..1",
+          "mapa_valor": "booleano"
         }
       ]
     },
@@ -1348,6 +1393,12 @@
         },
         {
           "nome": "sobreposto",
+          "tipo": "smallint",
+          "cardinalidade": "1..1",
+          "mapa_valor": "booleano"
+        },
+        {
+          "nome": "exibir_rotulo_aproximado",
           "tipo": "smallint",
           "cardinalidade": "1..1",
           "mapa_valor": "booleano"
@@ -1396,6 +1447,12 @@
           "nome": "justificativa_txt",
           "tipo": "varchar(255)",
           "cardinalidade": "0..1"
+        },
+        {
+          "nome": "simbolizar_carta_mini",
+          "tipo": "smallint",
+          "cardinalidade": "1..1",
+          "mapa_valor": "booleano"
         }
       ]
     },
@@ -1442,6 +1499,12 @@
           "nome": "justificativa_txt",
           "tipo": "varchar(255)",
           "cardinalidade": "0..1"
+        },
+        {
+          "nome": "simbolizar_carta_mini",
+          "tipo": "smallint",
+          "cardinalidade": "1..1",
+          "mapa_valor": "booleano"
         }
       ]
     },
@@ -1521,6 +1584,12 @@
           "nome": "justificativa_txt",
           "tipo": "varchar(255)",
           "cardinalidade": "0..1"
+        },
+        {
+          "nome": "simbolizar_carta_mini",
+          "tipo": "smallint",
+          "cardinalidade": "1..1",
+          "mapa_valor": "booleano"
         }
       ]
     },
@@ -1550,6 +1619,12 @@
         },
         {
           "nome": "sobreposto",
+          "tipo": "smallint",
+          "cardinalidade": "1..1",
+          "mapa_valor": "booleano"
+        },
+        {
+          "nome": "exibir_rotulo_aproximado",
           "tipo": "smallint",
           "cardinalidade": "1..1",
           "mapa_valor": "booleano"
@@ -1956,6 +2031,12 @@
           "nome": "justificativa_txt",
           "tipo": "varchar(255)",
           "cardinalidade": "0..1"
+        },
+        {
+          "nome": "simbolizar_carta_mini",
+          "tipo": "smallint",
+          "cardinalidade": "1..1",
+          "mapa_valor": "booleano"
         }
       ]
     },
@@ -2009,6 +2090,12 @@
           "nome": "espacamento",
           "tipo": "real",
           "cardinalidade": "0..1"
+        },
+        {
+          "nome": "simbolizar_carta_mini",
+          "tipo": "smallint",
+          "cardinalidade": "1..1",
+          "mapa_valor": "booleano"
         }
       ]
     },
@@ -2047,6 +2134,12 @@
           "nome": "espacamento",
           "tipo": "real",
           "cardinalidade": "0..1"
+        },
+        {
+          "nome": "simbolizar_carta_mini",
+          "tipo": "smallint",
+          "cardinalidade": "1..1",
+          "mapa_valor": "booleano"
         }
       ]
     },
@@ -2296,16 +2389,15 @@
           "cardinalidade": "1..1",
           "mapa_valor": "jurisdicao",
           "valores": [
-            0,
             1,
             2
           ]
         },
         {
-          "nome": "carta_mini",
+          "nome": "carta_simbolizacao",
           "tipo": "smallint",
           "cardinalidade": "1..1",
-          "mapa_valor": "booleano"
+          "mapa_valor": "tipo_carta"
         }
       ]
     },
@@ -2403,10 +2495,10 @@
           "cardinalidade": "0..1"
         },
         {
-          "nome": "carta_mini",
+          "nome": "carta_simbolizacao",
           "tipo": "smallint",
           "cardinalidade": "1..1",
-          "mapa_valor": "booleano"
+          "mapa_valor": "tipo_carta"
         }
       ]
     },
@@ -2433,11 +2525,6 @@
           "cardinalidade": "0..1"
         },
         {
-          "nome": "justificativa_txt",
-          "tipo": "varchar(255)",
-          "cardinalidade": "0..1"
-        },
-        {
           "nome": "espacamento",
           "tipo": "real",
           "cardinalidade": "0..1"
@@ -2458,10 +2545,10 @@
           "cardinalidade": "0..1"
         },
         {
-          "nome": "carta_mini",
+          "nome": "carta_simbolizacao",
           "tipo": "smallint",
           "cardinalidade": "1..1",
-          "mapa_valor": "booleano"
+          "mapa_valor": "tipo_carta"
         }
       ]
     }
