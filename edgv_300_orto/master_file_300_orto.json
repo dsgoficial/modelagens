@@ -45,6 +45,26 @@
       ]
     },
     {
+      "nome": "justificativa",
+      "valores": [
+        {
+          "code": 1,
+          "value": "Esquerda",
+          "descricao": "-"
+        },
+        {
+          "code": 2,
+          "value": "Centro",
+          "descricao": "-"
+        },
+        {
+          "code": 3,
+          "value": "Direita",
+          "descricao": "-"
+        }
+      ]
+    },
+    {
       "nome": "tipo_carta",
       "valores": [
         {
@@ -846,8 +866,9 @@
         },
         {
           "nome": "justificativa_txt",
-          "tipo": "varchar(255)",
-          "cardinalidade": "0..1"
+          "tipo": "smallint",
+          "cardinalidade": "1..1",
+          "mapa_valor": "justificativa"
         }
       ]
     },
@@ -935,8 +956,9 @@
         },
         {
           "nome": "justificativa_txt",
-          "tipo": "varchar(255)",
-          "cardinalidade": "0..1"
+          "tipo": "smallint",
+          "cardinalidade": "1..1",
+          "mapa_valor": "justificativa"
         }
       ]
     },
@@ -969,8 +991,15 @@
         },
         {
           "nome": "justificativa_txt",
-          "tipo": "varchar(255)",
-          "cardinalidade": "0..1"
+          "tipo": "smallint",
+          "cardinalidade": "1..1",
+          "mapa_valor": "justificativa"
+        },
+        {
+          "nome": "rotular_carta_mini",
+          "tipo": "smallint",
+          "cardinalidade": "1..1",
+          "mapa_valor": "booleano"
         }
       ]
     },
@@ -1020,11 +1049,12 @@
         },
         {
           "nome": "justificativa_txt",
-          "tipo": "varchar(255)",
-          "cardinalidade": "0..1"
+          "tipo": "smallint",
+          "cardinalidade": "1..1",
+          "mapa_valor": "justificativa"
         },
         {
-          "nome": "simbolizar_carta_mini",
+          "nome": "rotular_carta_mini",
           "tipo": "smallint",
           "cardinalidade": "1..1",
           "mapa_valor": "booleano"
@@ -1142,8 +1172,9 @@
         },
         {
           "nome": "justificativa_txt",
-          "tipo": "varchar(255)",
-          "cardinalidade": "0..1"
+          "tipo": "smallint",
+          "cardinalidade": "1..1",
+          "mapa_valor": "justificativa"
         }
       ]
     },
@@ -1188,7 +1219,19 @@
           "cardinalidade": "0..1"
         },
         {
+          "nome": "visivel",
+          "tipo": "smallint",
+          "cardinalidade": "1..1",
+          "mapa_valor": "booleano"
+        },
+        {
           "nome": "simbolizar_carta_mini",
+          "tipo": "smallint",
+          "cardinalidade": "1..1",
+          "mapa_valor": "booleano"
+        },
+        {
+          "nome": "rotular_carta_mini",
           "tipo": "smallint",
           "cardinalidade": "1..1",
           "mapa_valor": "booleano"
@@ -1279,11 +1322,12 @@
         },
         {
           "nome": "justificativa_txt",
-          "tipo": "varchar(255)",
-          "cardinalidade": "0..1"
+          "tipo": "smallint",
+          "cardinalidade": "1..1",
+          "mapa_valor": "justificativa"
         },
         {
-          "nome": "simbolizar_carta_mini",
+          "nome": "rotular_carta_mini",
           "tipo": "smallint",
           "cardinalidade": "1..1",
           "mapa_valor": "booleano"
@@ -1362,11 +1406,12 @@
         },
         {
           "nome": "justificativa_txt",
-          "tipo": "varchar(255)",
-          "cardinalidade": "0..1"
+          "tipo": "smallint",
+          "cardinalidade": "1..1",
+          "mapa_valor": "justificativa"
         },
         {
-          "nome": "simbolizar_carta_mini",
+          "nome": "rotular_carta_mini",
           "tipo": "smallint",
           "cardinalidade": "1..1",
           "mapa_valor": "booleano"
@@ -1445,11 +1490,12 @@
         },
         {
           "nome": "justificativa_txt",
-          "tipo": "varchar(255)",
-          "cardinalidade": "0..1"
+          "tipo": "smallint",
+          "cardinalidade": "1..1",
+          "mapa_valor": "justificativa"
         },
         {
-          "nome": "simbolizar_carta_mini",
+          "nome": "rotular_carta_mini",
           "tipo": "smallint",
           "cardinalidade": "1..1",
           "mapa_valor": "booleano"
@@ -1497,11 +1543,12 @@
         },
         {
           "nome": "justificativa_txt",
-          "tipo": "varchar(255)",
-          "cardinalidade": "0..1"
+          "tipo": "smallint",
+          "cardinalidade": "1..1",
+          "mapa_valor": "justificativa"
         },
         {
-          "nome": "simbolizar_carta_mini",
+          "nome": "rotular_carta_mini",
           "tipo": "smallint",
           "cardinalidade": "1..1",
           "mapa_valor": "booleano"
@@ -1537,8 +1584,9 @@
         },
         {
           "nome": "justificativa_txt",
-          "tipo": "varchar(255)",
-          "cardinalidade": "0..1"
+          "tipo": "smallint",
+          "cardinalidade": "1..1",
+          "mapa_valor": "justificativa"
         }
       ]
     },
@@ -1582,11 +1630,12 @@
         },
         {
           "nome": "justificativa_txt",
-          "tipo": "varchar(255)",
-          "cardinalidade": "0..1"
+          "tipo": "smallint",
+          "cardinalidade": "1..1",
+          "mapa_valor": "justificativa"
         },
         {
-          "nome": "simbolizar_carta_mini",
+          "nome": "rotular_carta_mini",
           "tipo": "smallint",
           "cardinalidade": "1..1",
           "mapa_valor": "booleano"
@@ -1693,11 +1742,6 @@
           "mapa_valor": "booleano"
         },
         {
-          "nome": "texto_edicao",
-          "tipo": "varchar(255)",
-          "cardinalidade": "0..1"
-        },
-        {
           "nome": "label_x",
           "tipo": "real",
           "cardinalidade": "0..1"
@@ -1706,6 +1750,12 @@
           "nome": "label_y",
           "tipo": "real",
           "cardinalidade": "0..1"
+        },
+        {
+          "nome": "visivel",
+          "tipo": "smallint",
+          "cardinalidade": "1..1",
+          "mapa_valor": "booleano"
         }
       ]
     },
@@ -1767,8 +1817,9 @@
         },
         {
           "nome": "justificativa_txt",
-          "tipo": "varchar(255)",
-          "cardinalidade": "0..1"
+          "tipo": "smallint",
+          "cardinalidade": "1..1",
+          "mapa_valor": "justificativa"
         }
       ]
     },
@@ -1844,6 +1895,12 @@
           "cardinalidade": "0..1"
         },
         {
+          "nome": "visivel",
+          "tipo": "smallint",
+          "cardinalidade": "1..1",
+          "mapa_valor": "booleano"
+        },
+        {
           "nome": "simbolizar_carta_mini",
           "tipo": "smallint",
           "cardinalidade": "1..1",
@@ -1892,8 +1949,9 @@
         },
         {
           "nome": "justificativa_txt",
-          "tipo": "varchar(255)",
-          "cardinalidade": "0..1"
+          "tipo": "smallint",
+          "cardinalidade": "1..1",
+          "mapa_valor": "justificativa"
         }
       ]
     },
@@ -1981,6 +2039,12 @@
           "cardinalidade": "0..1"
         },
         {
+          "nome": "visivel",
+          "tipo": "smallint",
+          "cardinalidade": "1..1",
+          "mapa_valor": "booleano"
+        },
+        {
           "nome": "simbolizar_carta_mini",
           "tipo": "smallint",
           "cardinalidade": "1..1",
@@ -2029,11 +2093,12 @@
         },
         {
           "nome": "justificativa_txt",
-          "tipo": "varchar(255)",
-          "cardinalidade": "0..1"
+          "tipo": "smallint",
+          "cardinalidade": "1..1",
+          "mapa_valor": "justificativa"
         },
         {
-          "nome": "simbolizar_carta_mini",
+          "nome": "rotular_carta_mini",
           "tipo": "smallint",
           "cardinalidade": "1..1",
           "mapa_valor": "booleano"
@@ -2083,8 +2148,9 @@
         },
         {
           "nome": "justificativa_txt",
-          "tipo": "varchar(255)",
-          "cardinalidade": "0..1"
+          "tipo": "smallint",
+          "cardinalidade": "1..1",
+          "mapa_valor": "justificativa"
         },
         {
           "nome": "espacamento",
@@ -2092,7 +2158,7 @@
           "cardinalidade": "0..1"
         },
         {
-          "nome": "simbolizar_carta_mini",
+          "nome": "rotular_carta_mini",
           "tipo": "smallint",
           "cardinalidade": "1..1",
           "mapa_valor": "booleano"
@@ -2136,7 +2202,7 @@
           "cardinalidade": "0..1"
         },
         {
-          "nome": "simbolizar_carta_mini",
+          "nome": "rotular_carta_mini",
           "tipo": "smallint",
           "cardinalidade": "1..1",
           "mapa_valor": "booleano"
@@ -2188,8 +2254,9 @@
         },
         {
           "nome": "justificativa_txt",
-          "tipo": "varchar(255)",
-          "cardinalidade": "0..1"
+          "tipo": "smallint",
+          "cardinalidade": "1..1",
+          "mapa_valor": "justificativa"
         }
       ]
     }
@@ -2471,8 +2538,9 @@
         },
         {
           "nome": "justificativa_txt",
-          "tipo": "varchar(255)",
-          "cardinalidade": "0..1"
+          "tipo": "smallint",
+          "cardinalidade": "1..1",
+          "mapa_valor": "justificativa"
         },
         {
           "nome": "espacamento",
