@@ -4757,6 +4757,12 @@
           "tipo": "smallint",
           "cardinalidade": "1..1",
           "mapa_valor": "situacao_fisica"
+        },
+        {
+          "nome": "altitude",
+          "tipo": "real",
+          "descricao": "-",
+          "cardinalidade": "0..1"
         }
       ]
     },
