@@ -1,6 +1,6 @@
 {
   "modelo": "EDGV 3.0 Pro",
-  "versao": "0.91",
+  "versao": "1.0",
   "schema_dados": "edgv",
   "schema_dominios": "dominios",
   "a_ser_preenchido": {
@@ -12,39 +12,9 @@
       "nome": "observacao",
       "tipo": "varchar(255)",
       "cardinalidade": "0..1"
-    },
-    {
-      "nome": "data_modificacao",
-      "tipo": "timestamp with time zone",
-      "cardinalidade": "0..1"
-    },
-    {
-      "nome": "controle_uuid",
-      "tipo": "varchar(255)",
-      "cardinalidade": "0..1"
-    },
-    {
-      "nome": "usuario_criacao",
-      "tipo": "varchar(255)",
-      "cardinalidade": "0..1"
-    },
-    {
-      "nome": "usuario_atualizacao",
-      "tipo": "varchar(255)",
-      "cardinalidade": "0..1"
-    },
-    {
-      "nome": "insumo",
-      "tipo": "varchar(255)",
-      "cardinalidade": "0..1"
-    },
-    {
-      "nome": "data_insumo",
-      "tipo": "timestamp with time zone",
-      "cardinalidade": "0..1"
     }
   ],
-  "coord_sys": 31982,
+  "coord_sys": 4674,
   "fill_factor": 80,
   "nome_geom": "geom",
   "nome_id": "id",
