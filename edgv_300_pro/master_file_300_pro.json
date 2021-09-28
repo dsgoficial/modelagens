@@ -3682,7 +3682,6 @@
       "nome": "alteracao_fisiografica_antropica",
       "categoria": "infra",
       "primitivas": [
-        "MultiPolygon",
         "MultiLinestring"
       ],
       "atributos": [
@@ -3697,36 +3696,36 @@
           "cardinalidade": "1..1",
           "mapa_valor": "tipo_alteracao_fisiografica",
           "valores": [
-            {
-              "code": 26,
-              "primitivas": [
-                "MultiLinestring"
-              ]
-            },
-            {
-              "code": 27,
-              "primitivas": [
-                "MultiLinestring"
-              ]
-            },
-            {
-              "code": 24,
-              "primitivas": [
-                "MultiPolygon"
-              ]
-            },
-            {
-              "code": 28,
-              "primitivas": [
-                "MultiPolygon"
-              ]
-            },
-            {
-              "code": 29,
-              "primitivas": [
-                "MultiPolygon"
-              ]
-            }
+            26,27
+          ]
+        },
+        {
+          "nome": "sobreposto_transportes",
+          "tipo": "smallint",
+          "cardinalidade": "1..1",
+          "mapa_valor": "booleano"
+        }
+      ]
+    },
+    {
+      "nome": "alteracao_fisiografica_antropica",
+      "categoria": "infra",
+      "primitivas": [
+        "MultiPolygon"
+      ],
+      "atributos": [
+        {
+          "nome": "nome",
+          "tipo": "varchar(255)",
+          "cardinalidade": "0..1"
+        },
+        {
+          "nome": "tipo",
+          "tipo": "smallint",
+          "cardinalidade": "1..1",
+          "mapa_valor": "tipo_alteracao_fisiografica",
+          "valores": [
+            24,28,29
           ]
         }
       ]
@@ -3938,7 +3937,6 @@
       "nome": "barragem",
       "categoria": "infra",
       "primitivas": [
-        "MultiPolygon",
         "MultiLinestring"
       ],
       "atributos": [
@@ -3962,15 +3960,52 @@
             0,
             1,
             2,
+            3,
             4,
+            5,
             23
           ]
         },
         {
-          "nome": "em_via_deslocamento",
+          "nome": "sobreposto_transportes",
           "tipo": "smallint",
           "cardinalidade": "1..1",
           "mapa_valor": "booleano"
+        }
+      ]
+    },
+    {
+      "nome": "barragem",
+      "categoria": "infra",
+      "primitivas": [
+        "MultiPolygon"
+      ],
+      "atributos": [
+        {
+          "nome": "nome",
+          "tipo": "varchar(255)",
+          "cardinalidade": "0..1"
+        },
+        {
+          "nome": "tipo",
+          "tipo": "smallint",
+          "cardinalidade": "1..1",
+          "mapa_valor": "tipo_barragem"
+        },
+        {
+          "nome": "material_construcao",
+          "tipo": "smallint",
+          "cardinalidade": "1..1",
+          "mapa_valor": "material_construcao",
+          "valores": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            23
+          ]
         }
       ]
     },
