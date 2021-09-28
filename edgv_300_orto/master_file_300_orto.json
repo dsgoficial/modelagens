@@ -1102,7 +1102,7 @@
           ]
         },
         {
-          "nome": "em_via_deslocamento",
+          "nome": "sobreposto_transportes",
           "tipo": "smallint",
           "cardinalidade": "1..1",
           "mapa_valor": "booleano"

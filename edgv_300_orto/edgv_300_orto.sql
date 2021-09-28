@@ -842,7 +842,7 @@ CREATE TABLE edgv.infra_barragem_a(
 	 nome varchar(255),
 	 tipo smallint NOT NULL,
 	 material_construcao smallint NOT NULL,
-	 em_via_deslocamento smallint NOT NULL,
+	 sobreposto_transportes smallint NOT NULL,
 	 observacao VARCHAR(255),
 	 geom geometry(MultiPolygon, 4674),
 	 CONSTRAINT infra_barragem_a_pk PRIMARY KEY (id)
@@ -871,18 +871,18 @@ ALTER TABLE edgv.infra_barragem_a
 ALTER TABLE edgv.infra_barragem_a ALTER COLUMN material_construcao SET DEFAULT 9999;
 
 ALTER TABLE edgv.infra_barragem_a
-	 ADD CONSTRAINT infra_barragem_a_em_via_deslocamento_fk FOREIGN KEY (em_via_deslocamento)
+	 ADD CONSTRAINT infra_barragem_a_sobreposto_transportes_fk FOREIGN KEY (sobreposto_transportes)
 	 REFERENCES dominios.booleano (code) MATCH FULL
 	 ON UPDATE NO ACTION ON DELETE NO ACTION;
 
-ALTER TABLE edgv.infra_barragem_a ALTER COLUMN em_via_deslocamento SET DEFAULT 9999;
+ALTER TABLE edgv.infra_barragem_a ALTER COLUMN sobreposto_transportes SET DEFAULT 9999;
 
 CREATE TABLE edgv.infra_barragem_l(
 	 id uuid NOT NULL DEFAULT uuid_generate_v4(),
 	 nome varchar(255),
 	 tipo smallint NOT NULL,
 	 material_construcao smallint NOT NULL,
-	 em_via_deslocamento smallint NOT NULL,
+	 sobreposto_transportes smallint NOT NULL,
 	 observacao VARCHAR(255),
 	 geom geometry(MultiLinestring, 4674),
 	 CONSTRAINT infra_barragem_l_pk PRIMARY KEY (id)
@@ -911,11 +911,11 @@ ALTER TABLE edgv.infra_barragem_l
 ALTER TABLE edgv.infra_barragem_l ALTER COLUMN material_construcao SET DEFAULT 9999;
 
 ALTER TABLE edgv.infra_barragem_l
-	 ADD CONSTRAINT infra_barragem_l_em_via_deslocamento_fk FOREIGN KEY (em_via_deslocamento)
+	 ADD CONSTRAINT infra_barragem_l_sobreposto_transportes_fk FOREIGN KEY (sobreposto_transportes)
 	 REFERENCES dominios.booleano (code) MATCH FULL
 	 ON UPDATE NO ACTION ON DELETE NO ACTION;
 
-ALTER TABLE edgv.infra_barragem_l ALTER COLUMN em_via_deslocamento SET DEFAULT 9999;
+ALTER TABLE edgv.infra_barragem_l ALTER COLUMN sobreposto_transportes SET DEFAULT 9999;
 
 CREATE TABLE edgv.elemnat_elemento_hidrografico_a(
 	 id uuid NOT NULL DEFAULT uuid_generate_v4(),
