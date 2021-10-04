@@ -18049,6 +18049,30 @@
           "cardinalidade": "0..1"
         }
       ]
+    },
+    {
+      "nome": "obstaculo_vertical",
+      "categoria": "aux",
+      "primitivas": [
+        "MultiPoint"
+      ],
+      "atributos": [
+        {
+          "nome": "nome",
+          "tipo": "varchar(255)",
+          "cardinalidade": "0..1"
+        },
+        {
+          "nome": "altitude",
+          "tipo": "real",
+          "cardinalidade": "1..1"
+        },
+        {
+          "nome": "altura",
+          "tipo": "real",
+          "cardinalidade": "1..1"
+        }
+      ]
     }
   ]
 }
