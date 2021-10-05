@@ -7049,7 +7049,7 @@
       "nome": "subest_transm_distrib_energia_eletrica",
       "categoria": "enc",
       "descricao": "-",
-      "primitivas": ["MultiPolygon"],
+      "primitivas": ["Point", "MultiPolygon"],
       "atributos": [
         {
           "nome": "nome",

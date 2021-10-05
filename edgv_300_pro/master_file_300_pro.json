@@ -1938,7 +1938,12 @@
         },
         {
           "code": 1801,
-          "value": "Subestação de transmissão/distribuição de energia elétrica",
+          "value": "Subestação de transmissão de energia elétrica",
+          "valor_filtro": "Subestação de energia"
+        },
+        {
+          "code": 1802,
+          "value": "Subestação de distribuição de energia elétrica",
           "valor_filtro": "Subestação de energia"
         }
       ],
@@ -2162,142 +2167,6 @@
           "valor_filtro": "Duto"
         }
       ]
-    },
-    {
-      "nome": "tipo_elemento_transportes",
-      "valores": [
-        {
-          "code": 238,
-          "value": "Atrac - Cais",
-          "valor_filtro": "Atracadouro"
-        },
-        {
-          "code": 239,
-          "value": "Atrac - Cais flutuante",
-          "valor_filtro": "Atracadouro"
-        },
-        {
-          "code": 240,
-          "value": "Atrac - Trapiche",
-          "valor_filtro": "Atracadouro"
-        },
-        {
-          "code": 241,
-          "value": "Atrac - Molhe de atracação",
-          "valor_filtro": "Atracadouro"
-        },
-        {
-          "code": 242,
-          "value": "Atrac - Pier",
-          "valor_filtro": "Atracadouro"
-        },
-        {
-          "code": 243,
-          "value": "Atrac - Dolfim",
-          "valor_filtro": "Atracadouro"
-        },
-        {
-          "code": 244,
-          "value": "Atrac - Desembarcadouro",
-          "valor_filtro": "Atracadouro"
-        },
-        {
-          "code": 302,
-          "value": "Entroncamento - Círculo rodoviário",
-          "valor_filtro": "Entroncamento"
-        },
-        {
-          "code": 303,
-          "value": "Entroncamento - Trevo rodoviário",
-          "valor_filtro": "Entroncamento"
-        },
-        {
-          "code": 304,
-          "value": "Entroncamento - Rótula",
-          "valor_filtro": "Entroncamento"
-        },
-        {
-          "code": 404,
-          "value": "Sinalização - Farol ou farolete",
-          "valor_filtro": "Sinalização"
-        },
-        {
-          "code": 501,
-          "value": "Ciclovia",
-          "valor_filtro": "Ciclovia"
-        },
-        {
-          "code": 607,
-          "value": "Pedestre - Passagem subterrânea",
-          "valor_filtro": "Travessia de pedestre"
-        },
-        {
-          "code": 608,
-          "value": "Pedestre - Passarela",
-          "valor_filtro": "Travessia de pedestre"
-        },
-        {
-          "code": 609,
-          "value": "Pedestre - Pinguela",
-          "valor_filtro": "Travessia de pedestre"
-        },
-        {
-          "code": 701,
-          "value": "Girador ferroviário",
-          "valor_filtro": "Girador ferroviário"
-        },
-        {
-          "code": 801,
-          "value": "Caminho aéreo - Teleférico",
-          "valor_filtro": "Caminho aéreo"
-        },
-        {
-          "code": 898,
-          "value": "Caminho aéreo - Outros",
-          "valor_filtro": "Caminho aéreo"
-        },
-        {
-          "code": 901,
-          "value": "Funicular",
-          "valor_filtro": "Funicular"
-        },
-        {
-          "code": 1001,
-          "value": "Cremalheira",
-          "valor_filtro": "Cremalheira"
-        },
-        {
-          "code": 1101,
-          "value": "Fundeadouro",
-          "valor_filtro": "Fundeadouro"
-        },
-        {
-          "code": 1201,
-          "value": "Obstáculo de navegação",
-          "valor_filtro": "Obstáculo de navegação"
-        },
-        {
-          "code": 1300,
-          "value": "Plataforma desconhecida",
-          "valor_filtro": "Plataforma"
-        },
-        {
-          "code": 1301,
-          "value": "Plataforma Petróleo",
-          "valor_filtro": "Plataforma"
-        },
-        {
-          "code": 1302,
-          "value": "Plataforma gás",
-          "valor_filtro": "Plataforma"
-        },
-        {
-          "code": 1395,
-          "value": "Plataforma mista",
-          "valor_filtro": "Plataforma"
-        }
-      ],
-      "filtro": true
     },
     {
       "nome": "tipo_embarcacao",
@@ -4390,6 +4259,14 @@
             {
               "code": 1801,
               "primitivas": [
+                "MultiPoint",
+                "MultiPolygon"
+              ]
+            },
+            {
+              "code": 1802,
+              "primitivas": [
+                "MultiPoint",
                 "MultiPolygon"
               ]
             }
@@ -4674,7 +4551,7 @@
           "tipo": "smallint",
           "descricao": "-",
           "cardinalidade": "1..1",
-          "mapa_valor": "bitola"
+          "mapa_valor": "auxiliar"
         },
         {
           "nome": "em_arruamento",

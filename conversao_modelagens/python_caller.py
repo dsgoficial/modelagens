@@ -39,7 +39,12 @@ class FeatureProcessor(object):
         return featDict
 
     def evaluateExpression(self, featDict, expression):
-        return expression["nome_atributo"] in featDict and u"{0}".format(featDict[expression["nome_atributo"]]) == u"{0}".format(expression["valor"])
+        if not expression["nome_atributo"] in featDict:
+            return False
+        if expression["valor"] is None or expression["valor"] == "":
+            return featDict[expression["nome_atributo"]] is None or featDict[expression["nome_atributo"]] == ""
+        else:
+            return u"{0}".format(featDict[expression["nome_atributo"]]) == u"{0}".format(expression["valor"])
 
     def evaluateFilter(self, featDict, filter_condition):
         if "$and" in filter_condition:
@@ -137,12 +142,22 @@ class FeatureProcessor(object):
 
         if 'mapeamento_atributos' in self.mappingDict:
             for attmap in self.mappingDict['mapeamento_atributos']:
-                if attmap[key_attr_origin] in featDict:
+                if attmap[key_attr_origin] in mappedFeat:
                     mappedFeat[attmap[key_attr_destiny]] = featDict[attmap[key_attr_origin]]
                     if "traducao" in attmap:
                         for valuemap in attmap["traducao"]:
                             if u"{0}".format(valuemap[key_value_origin]) == u"{0}".format(featDict[attmap[key_attr_origin]]) and ("sentido" not in valuemap or ("sentido" in valuemap and valuemap["sentido"] == self.mappingType)):
                                 mappedFeat[attmap[key_attr_destiny]] = valuemap[key_value_destiny]
+
+        if "mapeamento_multiplo" in self.mappingDict:
+            for attmap in self.mappingDict['mapeamento_multiplo']:
+                if "sentido" not in attmap or ("sentido" in attmap and attmap["sentido"] == self.mappingType):
+                    if all([self.evaluateExpression(featDict, condition) for condition in attmap[key_group_origin]]):
+                        for valuemap in attmap[key_group_destiny]:
+                            if "concatenar" in valuemap and valuemap["concatenar"] and valuemap["nome_atributo"] in mappedFeat and mappedFeat[valuemap["nome_atributo"]]:
+                                mappedFeat[valuemap["nome_atributo"]] = mappedFeat[valuemap["nome_atributo"]] + ' | ' + valuemap["valor"]
+                            else:
+                                mappedFeat[valuemap["nome_atributo"]] = valuemap["valor"]
 
         if 'mapeamento_classes' in self.mappingDict:
             for classmap in self.mappingDict['mapeamento_classes']:

@@ -22,16 +22,8 @@
       "classe_volta": "infra_pista_pouso",
       "atributos_default_volta": [
         {
-          "nome_atributo": "geometriaaproximada",
-          "valor": false
-        },
-        {
           "nome_atributo": "homologacao",
           "valor": 0
-        },
-        {
-          "nome_atributo": "operacional",
-          "valor": 1
         }
       ],
       "mapeamento_atributos": [
@@ -47,14 +39,10 @@
       "filtro_ida": {
         "$not": {
           "nome_atributo": "nome",
-          "valor": ""
+          "valor": null
         }
       },
       "atributos_default_volta": [
-        {
-          "nome_atributo": "geometriaaproximada",
-          "valor": false
-        },
         {
           "nome_atributo": "tipoelemnat",
           "valor": 21
@@ -81,7 +69,7 @@
           {
             "$not": {
               "nome_atributo": "nome",
-              "valor": ""
+              "valor": null
             }
           },
           {
@@ -106,20 +94,18 @@
       },
       "atributos_default_volta": [
         {
-          "nome_atributo": "geometriaaproximada",
-          "valor": false
-        },
-        {
           "nome_atributo": "tipoalterantrop",
           "valor": 30
         },
         {
-          "nome_atributo": "operacional",
-          "valor": 1
-        },
-        {
+
           "nome_atributo": "situacaofisica",
           "valor": 5
+        },
+        {
+          
+          "nome_atributo": "operacional",
+          "valor": 1
         },
         {
           "nome_atributo": "matconstr",
@@ -143,7 +129,7 @@
           {
             "$not": {
               "nome_atributo": "nome",
-              "valor": ""
+              "valor": null
             }
           },
           {
@@ -162,8 +148,8 @@
           "valor": 2
         },
         {
-          "nome_atributo": "dentro_poligono",
-          "valor": 2
+          "nome_atributo": "situacao_em_poligono",
+          "valor": 9999
         }
       ],
       "filtro_volta": {
@@ -172,20 +158,17 @@
       },
       "atributos_default_volta": [
         {
-          "nome_atributo": "geometriaaproximada",
-          "valor": false
-        },
-        {
           "nome_atributo": "tipoalterantrop",
           "valor": 30
         },
         {
-          "nome_atributo": "operacional",
-          "valor": 1
-        },
-        {
           "nome_atributo": "situacaofisica",
           "valor": 5
+        },
+        {
+          
+          "nome_atributo": "operacional",
+          "valor": 1
         },
         {
           "nome_atributo": "matconstr",
@@ -203,23 +186,11 @@
     },
     { "__comment": "hid_terreno_sujeito_inundacao <-> elemnat_terreno_sujeito_inundacao",
       "classe_ida": "hid_terreno_sujeito_inundacao",
-      "classe_volta": "elemnat_terreno_sujeito_inundacao",
-      "atributos_default_volta": [
-        {
-          "nome_atributo": "geometriaaproximada",
-          "valor": 1
-        }
-      ]
+      "classe_volta": "elemnat_terreno_sujeito_inundacao"
     },
     { "__comment": "rel_curva_nivel <-> elemnat_curva_nivel",
       "classe_ida": "rel_curva_nivel",
       "classe_volta": "elemnat_curva_nivel",
-      "atributos_default_volta": [
-        {
-          "nome_atributo": "geometriaaproximada",
-          "valor": false
-        }
-      ],
       "mapeamento_atributos": [
         {
           "attr_ida": "tipocurvanivel",
@@ -235,43 +206,11 @@
           "traducao": [
             {
               "valor_ida": true,
-              "valor_volta": 1,
-              "sentido": "volta"
-            },
-            {
-              "valor_ida": true,
-              "valor_volta": 2,
-              "sentido": "volta"
-            },
-            {
-              "valor_ida": true,
-              "valor_volta": 3,
-              "sentido": "volta"
-            },
-            {
-              "valor_ida": true,
-              "valor_volta": 4,
-              "sentido": "volta"
+              "valor_volta": 1
             },
             {
               "valor_ida": false,
-              "valor_volta": 5,
-              "sentido": "volta"
-            },
-            {
-              "valor_ida": false,
-              "valor_volta": 9999,
-              "sentido": "volta"
-            },
-            {
-              "valor_ida": false,
-              "valor_volta": 5,
-              "sentido": "ida"
-            },
-            {
-              "valor_ida": true,
-              "valor_volta": 1,
-              "sentido": "ida"
+              "valor_volta": 2
             }
           ]
         }
@@ -280,10 +219,10 @@
     { "__comment": "rel_ponto_cotado_altimetrico <-> elemnat_ponto_cotado",
       "classe_ida": "rel_ponto_cotado_altimetrico",
       "classe_volta": "elemnat_ponto_cotado",
-      "atributos_default_volta": [
+      "atributos_default_ida": [
         {
-          "nome_atributo": "geometriaaproximada",
-          "valor": false
+          "nome_atributo": "cota_mais_alta",
+          "valor": 9999
         }
       ],
       "mapeamento_atributos": [
@@ -300,10 +239,6 @@
               "valor_volta": 2
             }
           ]
-        },
-        {
-          "attr_ida": "cota",
-          "attr_volta": "cota"
         }
       ]
     },
@@ -313,7 +248,7 @@
       "filtro_ida": {
         "$not": {
           "nome_atributo": "nome",
-          "valor": ""
+          "valor": null
         }
       },
       "filtro_volta": {
@@ -323,10 +258,6 @@
         }
       },
       "atributos_default_volta": [
-        {
-          "nome_atributo": "geometriaaproximada",
-          "valor": false
-        },
         {
           "nome_atributo": "dominialidade",
           "valor": 0
@@ -338,58 +269,146 @@
       ],
       "mapeamento_atributos": [
         {
-          "attr_ida": "salgada",
-          "attr_volta": "tipo",
-          "traducao": [
-            {
-              "valor_ida": 2,
-              "valor_volta": 1,
-              "sentido": "volta"
-            },
-            {
-              "valor_ida": 1,
-              "valor_volta": 3,
-              "sentido": "volta"
-            },
-            {
-              "valor_ida": 0,
-              "valor_volta": 4,
-              "sentido": "volta"
-            },
-            {
-              "valor_ida": 0,
-              "valor_volta": 5,
-              "sentido": "volta"
-            },
-            {
-              "valor_ida": 0,
-              "valor_volta": 6,
-              "sentido": "volta"
-            },
-            {
-              "valor_ida": 0,
-              "valor_volta": 7,
-              "sentido": "volta"
-            },
-            {
-              "valor_ida": 0,
-              "valor_volta": 9,
-              "sentido": "volta"
-            },
-            {
-              "valor_ida": 0,
-              "valor_volta": 10,
-              "sentido": "volta"
-            },
-            {
-              "valor_ida": 0,
-              "valor_volta": 11,
-              "sentido": "volta"
-            }
-          ]
+          "attr_ida": "tipomassadagua",
+          "attr_volta": "tipo"
         }
       ],
       "mapeamento_multiplo": [
+        {
+          "sentido": "volta",
+          "tupla_ida": [
+            {
+              "nome_atributo": "salgada",
+              "valor": 2
+            }
+          ],
+          "tupla_volta": [
+            {
+              "nome_atributo": "tipo",
+              "valor": 1
+            }
+          ]
+        },
+        {
+          "sentido": "volta",
+          "tupla_ida": [
+            {
+              "nome_atributo": "salgada",
+              "valor": 1
+            }
+          ],
+          "tupla_volta": [
+            {
+              "nome_atributo": "tipo",
+              "valor": 3
+            }
+          ]
+        },
+        {
+          "sentido": "volta",
+          "tupla_ida": [
+            {
+              "nome_atributo": "salgada",
+              "valor": 0
+            }
+          ],
+          "tupla_volta": [
+            {
+              "nome_atributo": "tipo",
+              "valor": 4
+            }
+          ]
+        },
+        {
+          "sentido": "volta",
+          "tupla_ida": [
+            {
+              "nome_atributo": "salgada",
+              "valor": 0
+            }
+          ],
+          "tupla_volta": [
+            {
+              "nome_atributo": "tipo",
+              "valor": 5
+            }
+          ]
+        },
+        {
+          "sentido": "volta",
+          "tupla_ida": [
+            {
+              "nome_atributo": "salgada",
+              "valor": 0
+            }
+          ],
+          "tupla_volta": [
+            {
+              "nome_atributo": "tipo",
+              "valor": 6
+            }
+          ]
+        },
+        {
+          "sentido": "volta",
+          "tupla_ida": [
+            {
+              "nome_atributo": "salgada",
+              "valor": 0
+            }
+          ],
+          "tupla_volta": [
+            {
+              "nome_atributo": "tipo",
+              "valor": 7
+            }
+          ]
+        },
+        {
+          "sentido": "volta",
+          "tupla_ida": [
+            {
+              "nome_atributo": "salgada",
+              "valor": 0
+            }
+          ],
+          "tupla_volta": [
+            {
+              "nome_atributo": "tipo",
+              "valor": 9
+            }
+          ]
+        },
+        {
+          "sentido": "volta",
+          "tupla_ida": [
+            {
+              "nome_atributo": "salgada",
+              "valor": 0
+            }
+          ],
+          "tupla_volta": [
+            {
+              "nome_atributo": "tipo",
+              "valor": 10
+            }
+          ]
+        },
+        {
+          "sentido": "volta",
+          "tupla_ida": [
+            {
+              "nome_atributo": "salgada",
+              "valor": 0
+            }
+          ],
+          "tupla_volta": [
+            {
+              "nome_atributo": "tipo",
+              "valor": 11
+            }
+          ]
+        },
         {
           "tupla_ida": [
             {
@@ -397,6 +416,7 @@
               "valor": 1
             },
             {
+
               "nome_atributo": "possuitrechodrenagem",
               "valor": true
             }
@@ -601,12 +621,6 @@
           "valor": 2
         }
       ],
-      "atributos_default_volta": [
-        {
-          "nome_atributo": "justificativa_txt",
-          "valor": 2
-        }
-      ],
       "mapeamento_atributos": [
         {
           "attr_ida": "nomelocal",
@@ -614,13 +628,43 @@
         },
         {
           "attr_ida": "tipolocalidade",
-          "attr_volta": "tipo"
+          "attr_volta": "tipo",
+          "traducao": [
+            {
+              "valor_ida": 1,
+              "valor_volta": 5
+            },
+            {
+              "valor_ida": 2,
+              "valor_volta": 6
+            },
+            {
+              "valor_ida": 3,
+              "valor_volta": 7
+            }
+          ]
         }
       ]
     },
     { "__comment": "lml_posic_geo_localidade <-> llp_localidade",
       "classe_ida": "lml_posic_geo_localidade",
       "classe_volta": "llp_localidade",
+      "filtro_ida": {
+        "$or": [
+          {
+            "nome_atributo": "tipolocalidade",
+            "valor": 4
+          },
+          {
+            "nome_atributo": "tipolocalidade",
+            "valor": 5
+          },
+          {
+            "nome_atributo": "tipolocalidade",
+            "valor": 6
+          }
+        ]
+      },
       "atributos_default_ida": [
         {
           "nome_atributo": "justificativa_txt",
@@ -654,18 +698,6 @@
               "valor_volta": 4
             },
             {
-              "valor_ida": 1,
-              "valor_volta": 5
-            },
-            {
-              "valor_ida": 2,
-              "valor_volta": 6
-            },
-            {
-              "valor_ida": 3,
-              "valor_volta": 7
-            },
-            {
               "valor_ida": 0,
               "valor_volta": 9999,
               "sentido": "ida"
@@ -681,20 +713,21 @@
         {
           "nome_atributo": "tipo",
           "valor": 1
+        },
+        {
+          "nome_atributo": "sobreposto_transportes",
+          "valor": 9999
         }
       ],
       "atributos_default_volta": [
         {
-          "nome_atributo": "geometriaaproximada",
-          "valor": false
-        },
-        {
-          "nome_atributo": "operacional",
-          "valor": 1
-        },
-        {
           "nome_atributo": "situacaofisica",
           "valor": 5
+        },
+        {
+          
+          "nome_atributo": "operacional",
+          "valor": 1
         },
         {
           "nome_atributo": "usoprincipal",
@@ -709,12 +742,10 @@
         {
           "nome_atributo": "tipo",
           "valor": 2
-        }
-      ],
-      "atributos_default_volta": [
+        },
         {
-          "nome_atributo": "geometriaaproximada",
-          "valor": false
+          "nome_atributo": "sobreposto_transportes",
+          "valor": 9999
         }
       ]
     },
@@ -724,7 +755,7 @@
       "filtro_ida": {
         "$not": {
           "nome_atributo": "nome",
-          "valor": ""
+          "valor": null
         }
       },
       "filtro_volta": {
@@ -750,10 +781,6 @@
         }
       ],
       "atributos_default_volta": [
-        {
-          "nome_atributo": "geometriaaproximada",
-          "valor": false
-        },
         {
           "nome_atributo": "navegavel",
           "valor": 0
@@ -821,28 +848,40 @@
       "classe_ida": "rod_trecho_rodoviario",
       "classe_volta": "infra_via_deslocamento",
       "filtro_ida": {
-        "$not": {
-          "nome_atributo": "sigla",
-          "valor": ""
-        }
-      },
-      "filtro_volta": {
-        "$or": [
+        "$and": [
           {
-            "nome_atributo": "tipo",
-            "valor": 2
+            "$not": {
+              "nome_atributo": "sigla",
+              "valor": null
+            }
           },
           {
-            "nome_atributo": "tipo",
-            "valor": 4
+            "$or": [
+              {
+                "nome_atributo": "tipovia",
+                "valor": 2
+              },
+              {
+                "nome_atributo": "tipovia",
+                "valor": 4
+              },
+              {
+                "nome_atributo": "tipovia",
+                "valor": 5
+              },
+              {
+                "nome_atributo": "tipovia",
+                "valor": 6
+              },
+              {
+                "nome_atributo": "tipovia",
+                "valor": 99
+              }
+            ]
           }
         ]
       },
       "atributos_default_volta": [
-        {
-          "nome_atributo": "geometriaaproximada",
-          "valor": false
-        },
         {
           "nome_atributo": "tipopavimentacao",
           "valor": 0
@@ -850,10 +889,6 @@
         {
           "nome_atributo": "acostamento",
           "valor": 0
-        },
-        {
-          "nome_atributo": "operacional",
-          "valor": 1
         },
         {
           "nome_atributo": "trechoemperimetrourbano",
@@ -923,10 +958,20 @@
     {"__comment": "lml_unidade_conservacao <-> llp_unidade_conservacao", 
       "classe_ida": "lml_unidade_conservacao",
       "classe_volta": "llp_unidade_conservacao",
+      "filtro_volta":{
+        "nome_atributo":"tipo",
+        "valor": 5
+      },
       "mapeamento_atributos": [
         {
           "attr_ida": "tipounidprotegida",
-          "attr_volta": "tipo"
+          "attr_volta": "tipo",
+          "traducao": [
+            {
+              "valor_ida": 4,
+              "valor_volta": 5
+            }
+          ]
         }
       ],
       "atributos_default_ida": [
@@ -943,6 +988,174 @@
         {
           "nome_atributo":"jurisdicao",
           "valor":0
+        }
+      ]
+    },
+    {"__comment": "lml_unidade_protecao_integral <-> llp_unidade_conservacao", 
+      "classe_ida": "lml_unidade_protecao_integral",
+      "classe_volta": "llp_unidade_conservacao",
+      "filtro_volta":{
+        "$or": [
+          {
+            "nome_atributo":"tipo",
+            "valor": 31
+          },
+          {
+            "nome_atributo":"tipo",
+            "valor": 32
+          },
+          {
+            "nome_atributo":"tipo",
+            "valor": 33
+          },
+          {
+            "nome_atributo":"tipo",
+            "valor": 34
+          },
+          {
+            "nome_atributo":"tipo",
+            "valor": 35
+          }
+        ]
+      },
+      "mapeamento_atributos": [
+        {
+          "attr_ida": "tipounidprotinteg",
+          "attr_volta": "tipo",
+          "traducao": [
+            {
+              "valor_ida": 1,
+              "valor_volta": 31
+            },
+            {
+              "valor_ida": 2,
+              "valor_volta": 32
+            },
+            {
+              "valor_ida": 3,
+              "valor_volta": 33
+            },
+            {
+              "valor_ida": 4,
+              "valor_volta": 34
+            },
+            {
+              "valor_ida": 5,
+              "valor_volta": 35
+            }
+          ]
+        }
+      ],
+      "atributos_default_ida": [
+        {
+          "nome_atributo": "justificativa_txt",
+          "valor": 2
+        }
+      ],
+      "atributos_default_volta":[
+        {
+          "nome_atributo":"administracao",
+          "valor":0
+        },
+        {
+          "nome_atributo":"jurisdicao",
+          "valor":0
+        },
+        {
+          "nome_atributo":"tipounidprotegida",
+          "valor":2
+        }
+      ]
+    },
+    {"__comment": "lml_unidade_uso_sustentavel <-> llp_unidade_conservacao", 
+      "classe_ida": "lml_unidade_uso_sustentavel",
+      "classe_volta": "llp_unidade_conservacao",
+      "filtro_volta":{
+        "$or": [
+          {
+            "nome_atributo":"tipo",
+            "valor": 24
+          },
+          {
+            "nome_atributo":"tipo",
+            "valor": 25
+          },
+          {
+            "nome_atributo":"tipo",
+            "valor": 26
+          },
+          {
+            "nome_atributo":"tipo",
+            "valor": 27
+          },
+          {
+            "nome_atributo":"tipo",
+            "valor": 28
+          },
+          {
+            "nome_atributo":"tipo",
+            "valor": 29
+          },
+          {
+            "nome_atributo":"tipo",
+            "valor": 30
+          }
+        ]
+      },
+      "mapeamento_atributos": [
+        {
+          "attr_ida": "tipounidprotinteg",
+          "attr_volta": "tipo",
+          "traducao": [
+            {
+              "valor_ida": 1,
+              "valor_volta": 24
+            },
+            {
+              "valor_ida": 2,
+              "valor_volta": 25
+            },
+            {
+              "valor_ida": 3,
+              "valor_volta": 26
+            },
+            {
+              "valor_ida": 4,
+              "valor_volta": 27
+            },
+            {
+              "valor_ida": 5,
+              "valor_volta": 28
+            },
+            {
+              "valor_ida": 5,
+              "valor_volta": 29
+            },
+            {
+              "valor_ida": 5,
+              "valor_volta": 30
+            }
+          ]
+        }
+      ],
+      "atributos_default_ida": [
+        {
+          "nome_atributo": "justificativa_txt",
+          "valor": 2
+        }
+      ],
+      "atributos_default_volta":[
+        {
+          "nome_atributo":"administracao",
+          "valor": 0
+        },
+        {
+          "nome_atributo":"jurisdicao",
+          "valor": 0
+        },
+        {
+          "nome_atributo":"tipounidprotegida",
+          "valor": 3
         }
       ]
     },
@@ -995,6 +1208,12 @@
         "nome_atributo":"tipo",
         "valor": 1939
       },
+      "atributos_default_ida": [
+        {
+          "nome_atributo":"tipo",
+          "valor": 1939
+        }
+      ],
       "atributos_default_volta":[
         {
           "nome_atributo":"tipoatracad",
@@ -1009,26 +1228,46 @@
           "valor":0
         },
         {
-          "nome_atributo":"operacional",
-          "valor":1
-        },
-        {
           "nome_atributo":"aptidaooperacional",
           "valor":2
         }
       ]
     },
-    {"__comment": "enc_grupo_transformadores <-> infra_elemento_energia | grupo_transformadores", 
-      "classe_ida": "enc_grupo_transformadores",
+    {"__comment": "enc_subest_transm_distrib_energia_eletrica <-> infra_elemento_energia | Subestação de energia", 
+      "classe_ida": "enc_subest_transm_distrib_energia_eletrica",
       "classe_volta": "infra_elemento_energia",
       "filtro_volta": {
-        "nome_atributo":"tipo",
-        "valor": 1801
+        "$or": [
+          {
+            "nome_atributo":"tipo",
+            "valor": 1801
+          },
+          {
+            "nome_atributo":"tipo",
+            "valor": 1802
+          }
+        ]
       },
-      "atributos_default_ida":[
+      "mapeamento_atributos": [
         {
-          "nome_atributo":"tipo",
-          "valor":1801
+          "attr_ida": "classeativecon",
+          "attr_volta": "tipo",
+          "traducao": [
+            {
+              "valor_ida": 2,
+              "valor_volta": 1801
+            },
+            {
+              "valor_ida": 3,
+              "valor_volta": 1802
+            }
+          ]
+        }
+      ],
+      "atributos_default_volta": [
+        {
+          "nome_atributo":"centrodecarga",
+          "valor": 0
         }
       ]
     },
@@ -1036,10 +1275,98 @@
       "classe_ida": "rel_elemento_fisiografico_natural",
       "classe_volta": "elemnat_toponimo_fisiografico_natural",
       "filtro_ida": {
-        "$not": {
-          "nome_atributo": "nome",
-          "valor": ""
-        }
+        "$and": [
+          {
+            "$not": {
+              "nome_atributo": "nome",
+              "valor": null
+            }
+          },
+          {
+            "$or": [
+              {
+                "$and": [
+                  {
+                    "nome_atributo": "$GEOM_TYPE",
+                    "valor": "LINESTRING"
+                  },
+                  {
+                    "$or": [
+                      {
+                        "nome_atributo": "tipoelemnat",
+                        "valor": 1
+                      },
+                      {
+                        "nome_atributo": "tipoelemnat",
+                        "valor": 2
+                      },
+                      {
+                        "nome_atributo": "tipoelemnat",
+                        "valor": 12
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "$and": [
+                  {
+                    "nome_atributo": "$GEOM_TYPE",
+                    "valor": "POINT"
+                  },
+                  {
+                    "$or": [
+                      {
+                        "nome_atributo": "tipoelemnat",
+                        "valor": 2
+                      },
+                      {
+                        "nome_atributo": "tipoelemnat",
+                        "valor": 3
+                      },
+                      {
+                        "nome_atributo": "tipoelemnat",
+                        "valor": 4
+                      },
+                      {
+                        "nome_atributo": "tipoelemnat",
+                        "valor": 5
+                      },
+                      {
+                        "nome_atributo": "tipoelemnat",
+                        "valor": 6
+                      },
+                      {
+                        "nome_atributo": "tipoelemnat",
+                        "valor": 7
+                      },
+                      {
+                        "nome_atributo": "tipoelemnat",
+                        "valor": 9
+                      },
+                      {
+                        "nome_atributo": "tipoelemnat",
+                        "valor": 10
+                      },
+                      {
+                        "nome_atributo": "tipoelemnat",
+                        "valor": 11
+                      },
+                      {
+                        "nome_atributo": "tipoelemnat",
+                        "valor": 12
+                      },
+                      {
+                        "nome_atributo": "tipoelemnat",
+                        "valor": 17
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
       },
       "atributos_default_ida": [
         {
@@ -1050,7 +1377,13 @@
       "mapeamento_atributos": [
         {
           "attr_ida": "tipoelemnat",
-          "attr_volta": "tipo"
+          "attr_volta": "tipo",
+          "traducao": [
+            {
+              "valor_ida": 22,
+              "valor_volta": 17
+            }
+          ]
         }
       ]
     },
@@ -1061,11 +1394,13 @@
         "nome_atributo":"tipo",
         "valor": 303
       },
-      "atributos_default_volta":[
+      "atributos_default_ida":[
         {
-          "nome_atributo":"operacional",
-          "valor":1
-        },
+          "nome_atributo":"tipo",
+          "valor": 303
+        }
+      ],
+      "atributos_default_volta":[
         {
           "nome_atributo":"especie",
           "valor":2
@@ -1093,10 +1428,6 @@
           "valor":1
         },
         {
-          "nome_atributo":"operacional",
-          "valor":1
-        },
-        {
           "nome_atributo":"tipoproduto",
           "valor":0
         },
@@ -1116,7 +1447,19 @@
       "mapeamento_atributos": [
         {
           "attr_ida": "tipoextmin",
-          "attr_volta": "tipo"
+          "attr_volta": "tipo",
+          "traducao": [
+            {
+              "valor_ida": 0,
+              "valor_volta": 9999,
+              "sentido": "ida"
+            },
+            {
+              "valor_ida": 99,
+              "valor_volta": 9999,
+              "sentido": "ida"
+            }
+          ]
         },
         {
           "attr_ida": "formaextracao",
@@ -1130,7 +1473,7 @@
       "filtro_ida": {
         "$not": {
           "nome_atributo": "nome",
-          "valor": ""
+          "valor": null
         }
       },
       "filtro_volta": {
@@ -1176,7 +1519,7 @@
       "filtro_ida": {
         "$not": {
           "nome_atributo": "nome",
-          "valor": ""
+          "valor": null
         }
       },
       "filtro_volta": {
@@ -1208,13 +1551,17 @@
         },
         {
           "attr_ida": "emarruamento",
-          "attr_volta": "em_arruamento"
-        }
-      ],
-      "atributos_default_volta":[
-        {
-          "nome_atributo":"operacional",
-          "valor": 1
+          "attr_volta": "em_arruamento",
+          "traducao":[
+            {
+              "valor_ida":true,
+              "valor_volta":1
+            },
+            {
+              "valor_ida":false,
+              "valor_volta":2
+            }
+          ]
         }
       ]
     }
@@ -1231,25 +1578,6 @@
         {
           "valor_ida":false,
           "valor_volta":2
-        }
-      ]
-    },
-    {
-      "attr_ida": "situacaofisica",
-      "attr_volta": "situacao_fisica",
-      "traducao": [
-        {
-          "valor_ida": 3,
-          "valor_volta": 4
-        },
-        {
-          "valor_ida": 5,
-          "valor_volta": 3
-        },
-        {
-          "valor_ida": 6,
-          "valor_volta": 3,
-          "sentido": "ida"
         }
       ]
     },
@@ -1379,6 +1707,35 @@
     {
       "attr_ida": "posicaorelativa",
       "attr_volta": "posicao_relativa"
+    },
+    {
+      "attr_ida": "situacaofisica",
+      "attr_volta": "situacao_fisica",
+      "traducao": [
+        {
+          "valor_ida": 3,
+          "valor_volta": 4
+        },
+        {
+          "valor_ida": 5,
+          "valor_volta": 3
+        },
+        {
+          "valor_ida": 6,
+          "valor_volta": 3,
+          "sentido": "ida"
+        },
+        {
+          "valor_ida": 4,
+          "valor_volta": 9999,
+          "sentido": "ida"
+        },
+        {
+          "valor_ida": 97,
+          "valor_volta": 9999,
+          "sentido": "ida"
+        }
+      ]
     }
   ],
   "atributos_default_ida": [
@@ -1415,6 +1772,83 @@
     {
       "nome_atributo": "geometriaaproximada",
       "valor": false
+    }
+  ],
+  "mapeamento_multiplo": [
+    {
+      "sentido": "volta",
+      "tupla_ida": [
+        {
+          "nome_atributo": "operacional",
+          "valor": 0
+        }
+      ],
+      "tupla_volta": [
+        {
+          "nome_atributo": "situacao_fisica",
+          "valor": 0
+        }
+      ]
+    },
+    {
+      "sentido": "volta",
+      "tupla_ida": [
+        {
+          "nome_atributo": "operacional",
+          "valor": 2
+        }
+      ],
+      "tupla_volta": [
+        {
+          "nome_atributo": "situacao_fisica",
+          "valor": 1
+        }
+      ]
+    },
+    {
+      "sentido": "volta",
+      "tupla_ida": [
+        {
+          "nome_atributo": "operacional",
+          "valor": 2
+        }
+      ],
+      "tupla_volta": [
+        {
+          "nome_atributo": "situacao_fisica",
+          "valor": 2
+        }
+      ]
+    },
+    {
+      "sentido": "volta",
+      "tupla_ida": [
+        {
+          "nome_atributo": "operacional",
+          "valor": 2
+        }
+      ],
+      "tupla_volta": [
+        {
+          "nome_atributo": "situacao_fisica",
+          "valor": 4
+        }
+      ]
+    },
+    {
+      "sentido": "volta",
+      "tupla_ida": [
+        {
+          "nome_atributo": "operacional",
+          "valor": 1
+        }
+      ],
+      "tupla_volta": [
+        {
+          "nome_atributo": "situacao_fisica",
+          "valor": 3
+        }
+      ]
     }
   ]
 }

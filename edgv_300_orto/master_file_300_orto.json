@@ -296,7 +296,11 @@
         },
         {
           "code": 1801,
-          "value": "Subestação de transmissão/distribuição de energia elétrica"
+          "value": "Subestação de transmissão de energia elétrica"
+        },
+        {
+          "code": 1802,
+          "value": "Subestação de distribuição de energia elétrica"
         }
       ]
     },
@@ -834,7 +838,7 @@
           "cardinalidade": "1..1",
           "mapa_valor": "tipo_elemento_energia",
           "valores": [
-            1801
+            1801, 1802
           ]
         },
         {
@@ -1918,6 +1922,8 @@
       "nome": "elemento_infraestrutura",
       "categoria": "infra",
       "primitivas": [
+        "MultiPolygon",
+        "MultiLinestring",
         "MultiPoint"
       ],
       "atributos": [
@@ -2355,7 +2361,7 @@
         {
           "nome": "nome",
           "tipo": "varchar(255)",
-          "cardinalidade": "0.1"
+          "cardinalidade": "0..1"
         }
       ]
     },

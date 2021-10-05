@@ -44,7 +44,7 @@
     },
     "atributo":{
       "type": "object",
-      "descrition": "Atributo de uma classe. Não especificar chave primária e coluna geométrica",
+      "description": "Atributo de uma classe. Não especificar chave primária e coluna geométrica",
       "properties": {
         "nome": {
           "type": "string",
