@@ -2495,20 +2495,6 @@
       ]
     },
     {
-      "nome": "simb_direcao_corrente",
-      "categoria": "edicao",
-      "primitivas": [
-        "MultiPoint"
-      ],
-      "atributos": [
-        {
-          "nome": "simb_rot",
-          "tipo": "real",
-          "cardinalidade": "0..1"
-        }
-      ]
-    },
-    {
       "nome": "simb_cota_mestra",
       "categoria": "edicao",
       "primitivas": [
