@@ -2449,11 +2449,11 @@
       "traducao": [
         {
           "valor_ida": 1,
-          "valor_volta": true
+          "valor_volta": 1
         },
         {
           "valor_ida": 2,
-          "valor_volta": false
+          "valor_volta": 0
         }
       ]
     },
@@ -2485,11 +2485,11 @@
       "traducao": [
         {
           "valor_ida": 1,
-          "valor_volta": true
+          "valor_volta": 1
         },
         {
           "valor_ida": 2,
-          "valor_volta": false
+          "valor_volta": 0
         }
       ]
     },
@@ -2499,11 +2499,11 @@
       "traducao": [
         {
           "valor_ida": 1,
-          "valor_volta": true
+          "valor_volta": 1
         },
         {
           "valor_ida": 2,
-          "valor_volta": false
+          "valor_volta": 0
         }
       ]
     },
@@ -2615,11 +2615,11 @@
       "traducao": [
         {
           "valor_ida": 1,
-          "valor_volta": true
+          "valor_volta": 1
         },
         {
           "valor_ida": 2,
-          "valor_volta": false
+          "valor_volta": 0
         }
       ]
     },
@@ -3633,11 +3633,11 @@
       "traducao": [
         {
           "valor_ida": 1,
-          "valor_volta": true
+          "valor_volta": 1
         },
         {
           "valor_ida": 2,
-          "valor_volta": false
+          "valor_volta": 0
         }
       ]
     },
@@ -3725,11 +3725,11 @@
       "traducao": [
         {
           "valor_ida": 1,
-          "valor_volta": true
+          "valor_volta": 1
         },
         {
           "valor_ida": 2,
-          "valor_volta": false
+          "valor_volta": 0
         }
       ]
     },
@@ -4861,11 +4861,11 @@
       "traducao": [
         {
           "valor_ida": 1,
-          "valor_volta": true
+          "valor_volta": 1
         },
         {
           "valor_ida": 2,
-          "valor_volta": false
+          "valor_volta": 0
         }
       ]
     },
@@ -7257,11 +7257,11 @@
       "traducao": [
         {
           "valor_ida": 1,
-          "valor_volta": true
+          "valor_volta": 1
         },
         {
           "valor_ida": 2,
-          "valor_volta": false
+          "valor_volta": 0
         }
       ]
     },
@@ -7351,11 +7351,11 @@
       "traducao": [
         {
           "valor_ida": 1,
-          "valor_volta": true
+          "valor_volta": 1
         },
         {
           "valor_ida": 2,
-          "valor_volta": false
+          "valor_volta": 0
         }
       ]
     },
@@ -7589,11 +7589,11 @@
       "traducao": [
         {
           "valor_ida": 1,
-          "valor_volta": true
+          "valor_volta": 1
         },
         {
           "valor_ida": 2,
-          "valor_volta": false
+          "valor_volta": 0
         }
       ]
     },
