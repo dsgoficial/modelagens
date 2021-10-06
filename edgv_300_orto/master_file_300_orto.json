@@ -2617,6 +2617,40 @@
           "mapa_valor": "tipo_carta"
         }
       ]
+    },
+    {
+      "nome": "limite_limite_especial",
+      "categoria": "aquisicao",
+      "primitivas": [
+        "MultiLinestring"
+      ],
+      "atributos": []
+    },
+    {
+      "nome": "centroide_limite_especial",
+      "categoria": "aquisicao",
+      "primitivas": [
+        "MultiPoint"
+      ],
+      "atributos": [
+        {
+          "nome": "nome",
+          "tipo": "varchar(255)",
+          "cardinalidade": "0..1"
+        },
+        {
+          "nome": "tipo",
+          "tipo": "smallint",
+          "cardinalidade": "1..1",
+          "mapa_valor": "tipo_limite_especial"
+        },
+        {
+          "nome": "geometria_aproximada",
+          "tipo": "smallint",
+          "cardinalidade": "1..1",
+          "mapa_valor": "booleano"
+        }
+      ]
     }
   ]
 }
