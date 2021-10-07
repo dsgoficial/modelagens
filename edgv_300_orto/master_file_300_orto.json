@@ -445,6 +445,10 @@
       "nome": "tipo_limite_especial",
       "valores": [
         {
+          "code": 2,
+          "value": "Terra indígena"
+        },
+        {
           "code": 5,
           "value": "Unidade de Conservação"
         },
@@ -495,6 +499,10 @@
         {
           "code": 35,
           "value": "Refúgio de Vida Silvestre – RVS"
+        },
+        {
+          "code": 36,
+          "value": "Área militar"
         }
       ]
     },
@@ -824,7 +832,8 @@
       "categoria": "infra",
       "primitivas": [
         "MultiPoint",
-        "MultiPolygon"
+        "MultiPolygon",
+        "MultiLinestring"
       ],
       "atributos": [
         {
@@ -860,7 +869,8 @@
           "tipo": "varchar(255)",
           "cardinalidade": "0..1",
           "primitivas": [
-            "MultiPoint"
+            "MultiPoint",
+            "MultiPolygon"
           ]
         },
         {
@@ -868,7 +878,8 @@
           "tipo": "real",
           "cardinalidade": "0..1",
           "primitivas": [
-            "MultiPoint"
+            "MultiPoint",
+            "MultiPolygon"
           ]
         },
         {
@@ -876,7 +887,8 @@
           "tipo": "real",
           "cardinalidade": "0..1",
           "primitivas": [
-            "MultiPoint"
+            "MultiPoint",
+            "MultiPolygon"
           ]
         },
         {
@@ -885,7 +897,8 @@
           "cardinalidade": "1..1",
           "mapa_valor": "justificativa",
           "primitivas": [
-            "MultiPoint"
+            "MultiPoint",
+            "MultiPolygon"
           ]
         }
       ]
@@ -1246,7 +1259,8 @@
           "nome": "tipo",
           "tipo": "smallint",
           "cardinalidade": "1..1",
-          "mapa_valor": "tipo_limite_especial"
+          "mapa_valor": "tipo_limite_especial",
+          "valores": [5,24,25,26,27,28,29,30,31,32,33,34,35]
         },
         {
           "nome": "geometria_aproximada",
