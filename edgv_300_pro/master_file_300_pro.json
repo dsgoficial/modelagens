@@ -1,6 +1,6 @@
 {
   "modelo": "EDGV 3.0 Pro",
-  "versao": "1.0",
+  "versao": "1.1",
   "schema_dados": "edgv",
   "schema_dominios": "dominios",
   "a_ser_preenchido": {
@@ -24,6 +24,83 @@
     "MultiPolygon": "_a"
   },
   "dominios": [
+    {
+      "nome": "tipo_simbolo_area",
+      "valores": [
+        {
+          "code": 1,
+          "value": "Subestação de energia"
+        },
+        {
+          "code": 2,
+          "value": "Extração mineral"
+        },
+        {
+          "code": 3,
+          "value": "Extração mineral não operacional"
+        },
+        {
+          "code": 4,
+          "value": "Extração mineral - salina"
+        },
+        {
+          "code": 5,
+          "value": "Plataforma"
+        },
+        {
+          "code": 6,
+          "value": "Cemitério - Cristã"
+        },
+        {
+          "code": 7,
+          "value": "Cemitério - Israelita"
+        },
+        {
+          "code": 8,
+          "value": "Cemitério - Muçulmana"
+        },
+        {
+          "code": 9,
+          "value": "Cemitério - Outros"
+        },
+        {
+          "code": 10,
+          "value": "Estacionamento"
+        },
+        {
+          "code": 11,
+          "value": "Edificação de ensino"
+        },
+        {
+          "code": 12,
+          "value": "Edificação religiosa"
+        },
+        {
+          "code": 13,
+          "value": "Edificação religiosa - mesquita"
+        },
+        {
+          "code": 14,
+          "value": "Edificação religiosa - sinagoga"
+        },
+        {
+          "code": 15,
+          "value": "Edificação saúde"
+        },
+        {
+          "code": 16,
+          "value": "Posto de combustível"
+        },
+        {
+          "code": 17,
+          "value": "Representação diplomática"
+        },
+        {
+          "code": 18,
+          "value": "Campo/quadra"
+        }
+      ]
+    },
     {
       "nome": "justificativa",
       "valores": [
@@ -3161,6 +3238,38 @@
           "tipo": "smallint",
           "cardinalidade": "1..1",
           "mapa_valor": "regime"
+        },
+        {
+          "nome": "texto_edicao",
+          "tipo": "varchar(255)",
+          "cardinalidade": "0..1"
+        },
+        {
+          "nome": "label_x",
+          "tipo": "real",
+          "cardinalidade": "0..1"
+        },
+        {
+          "nome": "label_y",
+          "tipo": "real",
+          "cardinalidade": "0..1"
+        },
+        {
+          "nome": "tamanho_txt",
+          "tipo": "real",
+          "cardinalidade": "0..1"
+        },
+        {
+          "nome": "justificativa_txt",
+          "tipo": "smallint",
+          "cardinalidade": "1..1",
+          "mapa_valor": "justificativa"
+        },
+        {
+          "nome": "rotular_carta_mini",
+          "tipo": "smallint",
+          "cardinalidade": "1..1",
+          "mapa_valor": "booleano"
         }
       ]
     },
@@ -3209,6 +3318,33 @@
           "tipo": "smallint",
           "cardinalidade": "1..1",
           "mapa_valor": "situacao_fisica"
+        },
+        {
+          "nome": "visivel",
+          "tipo": "smallint",
+          "cardinalidade": "1..1",
+          "mapa_valor": "booleano"
+        },
+        {
+          "nome": "texto_edicao",
+          "tipo": "varchar(255)",
+          "cardinalidade": "0..1"
+        },
+        {
+          "nome": "label_x",
+          "tipo": "real",
+          "cardinalidade": "0..1"
+        },
+        {
+          "nome": "label_y",
+          "tipo": "real",
+          "cardinalidade": "0..1"
+        },
+        {
+          "nome": "justificativa_txt",
+          "tipo": "smallint",
+          "cardinalidade": "1..1",
+          "mapa_valor": "justificativa"
         }
       ]
     },
@@ -3553,6 +3689,33 @@
           "tipo": "smallint",
           "cardinalidade": "1..1",
           "mapa_valor": "situacao_fisica"
+        },
+        {
+          "nome": "visivel",
+          "tipo": "smallint",
+          "cardinalidade": "1..1",
+          "mapa_valor": "booleano"
+        },
+        {
+          "nome": "texto_edicao",
+          "tipo": "varchar(255)",
+          "cardinalidade": "0..1"
+        },
+        {
+          "nome": "label_x",
+          "tipo": "real",
+          "cardinalidade": "0..1"
+        },
+        {
+          "nome": "label_y",
+          "tipo": "real",
+          "cardinalidade": "0..1"
+        },
+        {
+          "nome": "justificativa_txt",
+          "tipo": "smallint",
+          "cardinalidade": "1..1",
+          "mapa_valor": "justificativa"
         }
       ]
     },
@@ -3642,6 +3805,33 @@
           "valores": [
             24,28,29
           ]
+        },
+        {
+          "nome": "visivel",
+          "tipo": "smallint",
+          "cardinalidade": "1..1",
+          "mapa_valor": "booleano"
+        },
+        {
+          "nome": "texto_edicao",
+          "tipo": "varchar(255)",
+          "cardinalidade": "0..1"
+        },
+        {
+          "nome": "label_x",
+          "tipo": "real",
+          "cardinalidade": "0..1"
+        },
+        {
+          "nome": "label_y",
+          "tipo": "real",
+          "cardinalidade": "0..1"
+        },
+        {
+          "nome": "justificativa_txt",
+          "tipo": "smallint",
+          "cardinalidade": "1..1",
+          "mapa_valor": "justificativa"
         }
       ]
     },
@@ -3734,6 +3924,33 @@
               ]
             }
           ]
+        },
+        {
+          "nome": "visivel",
+          "tipo": "smallint",
+          "cardinalidade": "1..1",
+          "mapa_valor": "booleano"
+        },
+        {
+          "nome": "texto_edicao",
+          "tipo": "varchar(255)",
+          "cardinalidade": "0..1"
+        },
+        {
+          "nome": "label_x",
+          "tipo": "real",
+          "cardinalidade": "0..1"
+        },
+        {
+          "nome": "label_y",
+          "tipo": "real",
+          "cardinalidade": "0..1"
+        },
+        {
+          "nome": "justificativa_txt",
+          "tipo": "smallint",
+          "cardinalidade": "1..1",
+          "mapa_valor": "justificativa"
         }
       ]
     },
@@ -3853,6 +4070,17 @@
           "tipo": "smallint",
           "cardinalidade": "1..1",
           "mapa_valor": "tipo_sumidouro_vertedouro"
+        },
+        {
+          "nome": "visivel",
+          "tipo": "smallint",
+          "cardinalidade": "1..1",
+          "mapa_valor": "booleano"
+        },
+        {
+          "nome": "simb_rot",
+          "tipo": "real",
+          "cardinalidade": "0..1"
         }
       ]
     },
@@ -3894,6 +4122,11 @@
           "tipo": "smallint",
           "cardinalidade": "1..1",
           "mapa_valor": "booleano"
+        },
+        {
+          "nome": "largura_simbologia",
+          "tipo": "real",
+          "cardinalidade": "0..1"
         }
       ]
     },
@@ -4108,6 +4341,27 @@
               ]
             }
           ]
+        },
+        {
+          "nome": "texto_edicao",
+          "tipo": "varchar(255)",
+          "cardinalidade": "0..1"
+        },
+        {
+          "nome": "label_x",
+          "tipo": "real",
+          "cardinalidade": "0..1"
+        },
+        {
+          "nome": "label_y",
+          "tipo": "real",
+          "cardinalidade": "0..1"
+        },
+        {
+          "nome": "justificativa_txt",
+          "tipo": "smallint",
+          "cardinalidade": "1..1",
+          "mapa_valor": "justificativa"
         }
       ]
     },
@@ -4182,6 +4436,34 @@
           "tipo": "smallint",
           "cardinalidade": "1..1",
           "mapa_valor": "regime"
+        },
+        {
+          "nome": "texto_edicao",
+          "tipo": "varchar(255)",
+          "cardinalidade": "0..1"
+        },
+        {
+          "nome": "tamanho_txt",
+          "tipo": "real",
+          "cardinalidade": "0..1"
+        },
+        {
+          "nome": "visivel",
+          "tipo": "smallint",
+          "cardinalidade": "1..1",
+          "mapa_valor": "booleano"
+        },
+        {
+          "nome": "simbolizar_carta_mini",
+          "tipo": "smallint",
+          "cardinalidade": "1..1",
+          "mapa_valor": "booleano"
+        },
+        {
+          "nome": "rotular_carta_mini",
+          "tipo": "smallint",
+          "cardinalidade": "1..1",
+          "mapa_valor": "booleano"
         }
       ]
     },
@@ -4191,7 +4473,19 @@
       "primitivas": [
         "MultiLinestring"
       ],
-      "atributos": []
+      "atributos": [
+        {
+          "nome": "texto_edicao",
+          "tipo": "varchar(255)",
+          "cardinalidade": "0..1"
+        },
+        {
+          "nome": "visivel",
+          "tipo": "smallint",
+          "cardinalidade": "1..1",
+          "mapa_valor": "booleano"
+        }
+      ]
     },
     {
       "nome": "trecho_hidroviario",
@@ -4275,7 +4569,6 @@
       "nome": "elemento_energia",
       "categoria": "infra",
       "primitivas": [
-        "MultiLinestring",
         "MultiPoint",
         "MultiPolygon"
       ],
@@ -4292,23 +4585,7 @@
           "mapa_valor": "tipo_elemento_energia",
           "valores": [
             {
-              "code": 601,
-              "primitivas": [
-                "MultiPoint",
-                "MultiPolygon"
-              ]
-            },
-            {
-              "code": 302,
-              "primitivas": [
-                "MultiLinestring"
-              ]
-            },
-            {
-              "code": 303,
-              "primitivas": [
-                "MultiLinestring"
-              ]
+              "code": 601
             },
             {
               "code": 1401,
@@ -4323,60 +4600,28 @@
               ]
             },
             {
-              "code": 405,
-              "primitivas": [
-                "MultiPoint",
-                "MultiPolygon"
-              ]
+              "code": 405
             },
             {
-              "code": 406,
-              "primitivas": [
-                "MultiPoint",
-                "MultiPolygon"
-              ]
+              "code": 406
             },
             {
-              "code": 407,
-              "primitivas": [
-                "MultiPoint",
-                "MultiPolygon"
-              ]
+              "code": 407
             },
             {
-              "code": 408,
-              "primitivas": [
-                "MultiPoint",
-                "MultiPolygon"
-              ]
+              "code": 408
             },
             {
-              "code": 409,
-              "primitivas": [
-                "MultiPoint",
-                "MultiPolygon"
-              ]
+              "code": 409
             },
             {
-              "code": 498,
-              "primitivas": [
-                "MultiPoint",
-                "MultiPolygon"
-              ]
+              "code": 498
             },
             {
-              "code": 1801,
-              "primitivas": [
-                "MultiPoint",
-                "MultiPolygon"
-              ]
+              "code": 1801
             },
             {
-              "code": 1802,
-              "primitivas": [
-                "MultiPoint",
-                "MultiPolygon"
-              ]
+              "code": 1802
             }
           ]
         },
@@ -4385,6 +4630,68 @@
           "tipo": "smallint",
           "cardinalidade": "1..1",
           "mapa_valor": "situacao_fisica"
+        },
+        {
+          "nome": "visivel",
+          "tipo": "smallint",
+          "cardinalidade": "1..1",
+          "mapa_valor": "booleano"
+        },
+        {
+          "nome": "texto_edicao",
+          "tipo": "varchar(255)",
+          "cardinalidade": "0..1"
+        },
+        {
+          "nome": "label_x",
+          "tipo": "real",
+          "cardinalidade": "0..1"
+        },
+        {
+          "nome": "label_y",
+          "tipo": "real",
+          "cardinalidade": "0..1"
+        },
+        {
+          "nome": "justificativa_txt",
+          "tipo": "smallint",
+          "cardinalidade": "1..1",
+          "mapa_valor": "justificativa"
+        }
+      ]
+    },
+    {
+      "nome": "elemento_energia",
+      "categoria": "infra",
+      "primitivas": [
+        "MultiLinestring"
+      ],
+      "atributos": [
+        {
+          "nome": "nome",
+          "tipo": "varchar(255)",
+          "cardinalidade": "0..1"
+        },
+        {
+          "nome": "tipo",
+          "tipo": "smallint",
+          "cardinalidade": "1..1",
+          "mapa_valor": "tipo_elemento_energia",
+          "valores": [
+            302, 303
+          ]
+        },
+        {
+          "nome": "situacao_fisica",
+          "tipo": "smallint",
+          "cardinalidade": "1..1",
+          "mapa_valor": "situacao_fisica"
+        },
+        {
+          "nome": "visivel",
+          "tipo": "smallint",
+          "cardinalidade": "1..1",
+          "mapa_valor": "booleano"
         }
       ]
     },
@@ -4624,6 +4931,11 @@
           "tipo": "smallint",
           "cardinalidade": "1..1",
           "mapa_valor": "situacao_fisica"
+        },
+        {
+          "nome": "largura_simbologia",
+          "tipo": "real",
+          "cardinalidade": "0..1"
         }
       ]
     },
@@ -4948,7 +5260,6 @@
       "nome": "limite_especial",
       "categoria": "llp",
       "primitivas": [
-        "MultiPolygon",
         "MultiLinestring"
       ],
       "atributos": [
@@ -4968,6 +5279,24 @@
           "tipo": "smallint",
           "cardinalidade": "1..1",
           "mapa_valor": "booleano"
+        },
+        {
+          "nome": "geometria_aproximada",
+          "tipo": "smallint",
+          "cardinalidade": "1..1",
+          "mapa_valor": "booleano"
+        },
+        {
+          "nome": "sobreposto",
+          "tipo": "smallint",
+          "cardinalidade": "1..1",
+          "mapa_valor": "booleano"
+        },
+        {
+          "nome": "exibir_rotulo_aproximado",
+          "tipo": "smallint",
+          "cardinalidade": "1..1",
+          "mapa_valor": "booleano"
         }
       ]
     },
@@ -4975,8 +5304,7 @@
       "nome": "limite_especial",
       "categoria": "llp",
       "primitivas": [
-        "MultiPolygon",
-        "MultiLinestring"
+        "MultiPolygon"
       ],
       "atributos": [
         {
@@ -4992,6 +5320,38 @@
         },
         {
           "nome": "geometria_aproximada",
+          "tipo": "smallint",
+          "cardinalidade": "1..1",
+          "mapa_valor": "booleano"
+        },
+        {
+          "nome": "texto_edicao",
+          "tipo": "varchar(255)",
+          "cardinalidade": "0..1"
+        },
+        {
+          "nome": "label_x",
+          "tipo": "real",
+          "cardinalidade": "0..1"
+        },
+        {
+          "nome": "label_y",
+          "tipo": "real",
+          "cardinalidade": "0..1"
+        },
+        {
+          "nome": "tamanho_txt",
+          "tipo": "real",
+          "cardinalidade": "0..1"
+        },
+        {
+          "nome": "justificativa_txt",
+          "tipo": "smallint",
+          "cardinalidade": "1..1",
+          "mapa_valor": "justificativa"
+        },
+        {
+          "nome": "rotular_carta_mini",
           "tipo": "smallint",
           "cardinalidade": "1..1",
           "mapa_valor": "booleano"
@@ -5341,6 +5701,12 @@
             97,
             98
           ]
+        },
+        {
+          "nome": "exibir_linha_rotulo",
+          "tipo": "smallint",
+          "cardinalidade": "1..1",
+          "mapa_valor": "booleano"
         }
       ]
     },
@@ -5810,16 +6176,6 @@
           "cardinalidade": "0..1"
         },
         {
-          "nome": "cor_buffer",
-          "tipo": "varchar(255)",
-          "cardinalidade": "0..1"
-        },
-        {
-          "nome": "tamanho_buffer",
-          "tipo": "real",
-          "cardinalidade": "0..1"
-        },
-        {
           "nome": "carta_simbolizacao",
           "tipo": "smallint",
           "cardinalidade": "1..1",
@@ -5857,16 +6213,6 @@
         {
           "nome": "cor",
           "tipo": "varchar(255)",
-          "cardinalidade": "0..1"
-        },
-        {
-          "nome": "cor_buffer",
-          "tipo": "varchar(255)",
-          "cardinalidade": "0..1"
-        },
-        {
-          "nome": "tamanho_buffer",
-          "tipo": "real",
           "cardinalidade": "0..1"
         },
         {
@@ -5928,6 +6274,56 @@
           "mapa_valor": "tipo_carta"
         }
       ]
+    },
+    {
+      "nome": "simb_vegetacao",
+      "categoria": "edicao",
+      "primitivas": [
+        "MultiPoint"
+      ],
+      "atributos": [
+        {
+          "nome": "texto_edicao",
+          "tipo": "varchar(255)",
+          "cardinalidade": "0..1"
+        }
+      ]
+    },
+    {
+      "nome": "direcao_corrente",
+      "categoria": "edicao",
+      "primitivas": [
+        "MultiPoint"
+      ],
+      "atributos": [
+        {
+          "nome": "simb_rot",
+          "tipo": "real",
+          "cardinalidade": "0..1"
+        }
+      ]
+    },
+    {
+      "nome": "simbolo_area",
+      "categoria": "edicao",
+      "primitivas": [
+        "MultiPoint"
+      ],
+      "atributos": [
+        {
+          "nome": "tipo",
+          "tipo": "smallint",
+          "cardinalidade": "1..1",
+          "mapa_valor": "tipo_simbolo_area"
+        },
+        {
+          "nome": "simb_rot",
+          "tipo": "real",
+          "cardinalidade": "0..1"
+        }
+      ]
     }
+
+    
   ]
 }
