@@ -21,7 +21,7 @@ class MasterGen():
             # TODO Validate JSON file against JsonSchema
             pass
 
-    def buildSQL(self, dest, atributos_padrao=False, extension_classes=False, uuid = False, owner='postgres'):
+    def buildSQL(self, dest, atributos_padrao=True, extension_classes=True, uuid = True, owner='postgres'):
         master = self.master
         sql = []
         sql.append(u"CREATE SCHEMA {0};".format(master["schema_dados"]))
@@ -114,6 +114,8 @@ class MasterGen():
                         master["nome_id"]))
 
                 for atributo in classe["atributos"]:
+                    if "primitivas" in atributo and primitiva not in atributo["primitivas"]:
+                        continue
                     if atributo["cardinalidade"] == "0..1":
                         sql.append(u"\t {0} {1},".format(
                             atributo["nome"], atributo["tipo"]))
@@ -143,10 +145,13 @@ class MasterGen():
                 sql.append(u"")
 
                 for atributo in classe["atributos"]:
-
+                    if "primitivas" in atributo and primitiva not in atributo["primitivas"]:
+                        continue
                     if "mapa_valor" in atributo:
                         valores_att = None
-                        if "valores" in atributo and len(atributo["valores"])>0:
+                        if "valores" in atributo and isinstance(atributo["valores"],dict) and primitiva in atributo["valores"]:
+                            valores_att = atributo["valores"][primitiva]
+                        elif "valores" in atributo and len(atributo["valores"])>0:
                             if isinstance(atributo["valores"][0],dict): 
                                 valores_att = [valor["code"] for valor in atributo["valores"]
                                             if ("primitivas" in valor and primitiva in valor["primitivas"]) or "primitivas" not in valor]

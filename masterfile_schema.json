@@ -101,8 +101,45 @@
                 "type": "integer"
               },
               "minItems": 1
+            },
+            {
+              "type": "object",
+              "properties": {
+                "MultiPoint": {
+                  "type": "array",
+                  "items": {
+                    "type": "integer"
+                  },
+                  "minItems": 1
+                },
+                "MultiLinestring": {
+                  "type": "array",
+                  "items": {
+                    "type": "integer"
+                  },
+                  "minItems": 1
+                },
+                "MultiPolygon": {
+                  "type": "array",
+                  "items": {
+                    "type": "integer"
+                  },
+                  "minItems": 1
+                }
+              },
+              "additionalProperties": false
             }
           ]
+        },
+        "primitivas": {
+          "type": "array",
+          "description": "Lista de geometrias válidas para utilizar esse atributo.",
+          "items": {
+            "type": "string",
+            "enum": ["MultiPoint", "MultiLinestring", "MultiPolygon"]
+          },
+          "minItems": 1,
+          "uniqueItems": true
         }
       },
       "required": ["nome", "tipo", "cardinalidade"],
