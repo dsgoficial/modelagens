@@ -1586,17 +1586,8 @@
       "attr_volta": "jurisdicao",
       "traducao": [
         {
-          "valor_ida": 3,
-          "valor_volta": 4
-        },
-        {
-          "valor_ida": 5,
-          "valor_volta": 3
-        },
-        {
-          "valor_ida": 6,
-          "valor_volta": 3,
-          "sentido": "ida"
+          "valor_ida": 8,
+          "valor_volta": 6
         }
       ]
     },
@@ -1605,20 +1596,13 @@
       "attr_volta": "administracao",
       "traducao": [
         {
-          "valor_ida": 2,
-          "valor_volta": 1
+          "valor_ida": 15,
+          "valor_volta": 6
         },
         {
-          "valor_ida": 3,
-          "valor_volta": 2
-        },
-        {
-          "valor_ida": 4,
-          "valor_volta": 3
-        },
-        {
-          "valor_ida": 5,
-          "valor_volta": 7
+          "valor_ida": 97,
+          "valor_volta": 0,
+          "sentido": "ida"
         }
       ]
     },
