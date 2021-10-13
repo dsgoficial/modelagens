@@ -17,6 +17,10 @@
   "agregar_geom_ida": true,
   "agregar_geom_volta": true,
   "mapeamento_classes": [
+    {"__comment": "aux_moldura <-> aux_moldura", 
+      "classe_ida": "aux_moldura",
+      "classe_volta": "aux_moldura"
+    },
     { "__comment": "aer_pista_ponto_pouso <-> infra_pista_pouso",
       "classe_ida": "aer_pista_ponto_pouso",
       "classe_volta": "infra_pista_pouso",
