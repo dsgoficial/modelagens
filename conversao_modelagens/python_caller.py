@@ -228,7 +228,11 @@ class FeatureProcessor(object):
 
     def mapDictToFeature(self, feat, featDict):
         for attr, value in featDict.items():
-            if value or value == 0:
+            if value == 'True':
+                feat.setAttribute(attr, 1)
+            elif value == 'False':
+                feat.setAttribute(attr, 0)
+            elif value or value == 0:
                 feat.setAttribute(attr, u'{0}'.format(value))
             else:
                 feat.setAttributeNullWithType(attr,0)
