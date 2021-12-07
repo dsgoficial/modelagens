@@ -247,7 +247,7 @@ class FeatureProcessor(object):
             features = [feature]
         for simple_feature in features:
             feat = self.buildFeatureDict(simple_feature)
-            if "INVALID_GEOM" in feat and not feat["INVALID_GEOM"]:
+            if "INVALID_GEOM" in feat and feat["INVALID_GEOM"]:
                 simple_feature.setAttribute("INVALID_GEOM", u'True')
                 self.pyoutput(simple_feature)
                 continue
