@@ -65,6 +65,46 @@
       ]
     },
     {
+      "nome": "ancora_horizontal",
+      "valores": [
+        {
+          "code": 1,
+          "value": "Esquerda",
+          "descricao": "-"
+        },
+        {
+          "code": 2,
+          "value": "Centro",
+          "descricao": "-"
+        },
+        {
+          "code": 3,
+          "value": "Direita",
+          "descricao": "-"
+        }
+      ]
+    },
+    {
+      "nome": "ancora_vertical",
+      "valores": [
+        {
+          "code": 1,
+          "value": "Inferior",
+          "descricao": "-"
+        },
+        {
+          "code": 2,
+          "value": "Meio",
+          "descricao": "-"
+        },
+        {
+          "code": 3,
+          "value": "Superior",
+          "descricao": "-"
+        }
+      ]
+    },
+    {
       "nome": "tipo_carta",
       "valores": [
         {
@@ -1770,6 +1810,18 @@
           "tipo": "smallint",
           "cardinalidade": "1..1",
           "mapa_valor": "booleano"
+        },
+        {
+          "nome": "ancora_horizontal",
+          "tipo": "smallint",
+          "cardinalidade": "1..1",
+          "mapa_valor": "ancora_horizontal"
+        },
+        {
+          "nome": "ancora_vertical",
+          "tipo": "smallint",
+          "cardinalidade": "1..1",
+          "mapa_valor": "ancora_vertical"
         }
       ]
     },
