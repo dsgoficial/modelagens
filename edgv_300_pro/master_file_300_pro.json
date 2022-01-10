@@ -4050,6 +4050,21 @@
           ]
         },
         {
+          "nome": "texto_edicao",
+          "tipo": "varchar(255)",
+          "cardinalidade": "0..1"
+        },
+        {
+          "nome": "label_x",
+          "tipo": "real",
+          "cardinalidade": "0..1"
+        },
+        {
+          "nome": "label_y",
+          "tipo": "real",
+          "cardinalidade": "0..1"
+        },
+        {
           "nome": "sobreposto_transportes",
           "tipo": "smallint",
           "cardinalidade": "1..1",
@@ -4873,6 +4888,21 @@
           "tipo": "smallint",
           "cardinalidade": "1..1",
           "mapa_valor": "situacao_fisica"
+        },
+        {
+          "nome": "texto_edicao",
+          "tipo": "varchar(255)",
+          "cardinalidade": "0..1"
+        },
+        {
+          "nome": "label_x",
+          "tipo": "real",
+          "cardinalidade": "0..1"
+        },
+        {
+          "nome": "label_y",
+          "tipo": "real",
+          "cardinalidade": "0..1"
         },
         {
           "nome": "largura_simbologia",
