@@ -1581,6 +1581,11 @@
           ]
         },
         {
+          "nome": "populacao",
+          "tipo": "integer",
+          "cardinalidade": "0..1"
+        },
+        {
           "nome": "texto_edicao",
           "tipo": "varchar(255)",
           "cardinalidade": "0..1"
@@ -1608,7 +1613,13 @@
           "mapa_valor": "booleano"
         },
         {
-          "nome": "representar_simbolo",
+          "nome": "visivel",
+          "tipo": "smallint",
+          "cardinalidade": "1..1",
+          "mapa_valor": "booleano"
+        },
+        {
+          "nome": "simbolizar_carta_mini",
           "tipo": "smallint",
           "cardinalidade": "1..1",
           "mapa_valor": "booleano"
@@ -1701,7 +1712,13 @@
           "mapa_valor": "booleano"
         },
         {
-          "nome": "representar_simbolo",
+          "nome": "visivel",
+          "tipo": "smallint",
+          "cardinalidade": "1..1",
+          "mapa_valor": "booleano"
+        },
+        {
+          "nome": "simbolizar_carta_mini",
           "tipo": "smallint",
           "cardinalidade": "1..1",
           "mapa_valor": "booleano"
