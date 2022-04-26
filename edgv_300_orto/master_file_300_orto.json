@@ -2427,6 +2427,7 @@
         }
       ]
     },
+    
     {
       "nome": "limite_massa_dagua",
       "categoria": "aquisicao",
@@ -2643,6 +2644,14 @@
       "atributos": []
     },
     {
+      "nome": "centroide_area_nao_mapeada",
+      "categoria": "aquisicao",
+      "primitivas": [
+        "MultiPoint"
+      ],
+      "atributos": []
+    },
+    {
       "nome": "centroide_limite_especial",
       "categoria": "aquisicao",
       "primitivas": [
@@ -2665,6 +2674,27 @@
           "tipo": "smallint",
           "cardinalidade": "1..1",
           "mapa_valor": "booleano"
+        }
+      ]
+    },
+    {
+      "nome": "insumo_externo",
+      "categoria": "aux",
+      "primitivas": [
+        "MultiPolygon",
+        "MultiLinestring",
+        "MultiPoint"
+      ],
+      "atributos": [
+        {
+          "nome": "nome",
+          "tipo": "varchar(255)",
+          "cardinalidade": "0..1"
+        },
+        {
+          "nome": "fonte",
+          "tipo": "varchar(255)",
+          "cardinalidade": "0..1"
         }
       ]
     }
