@@ -5830,22 +5830,6 @@
       "atributos": []
     },
     {
-      "nome": "objeto_desconhecido",
-      "categoria": "aux",
-      "primitivas": [
-        "MultiPolygon",
-        "MultiLinestring",
-        "MultiPoint"
-      ],
-      "atributos": [
-        {
-          "nome": "descricao",
-          "tipo": "varchar(255)",
-          "cardinalidade": "0..1"
-        }
-      ]
-    },
-    {
       "nome": "validacao",
       "categoria": "aux",
       "primitivas": [
