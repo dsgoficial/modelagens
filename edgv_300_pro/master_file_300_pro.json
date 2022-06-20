@@ -5814,7 +5814,7 @@
   ],
   "extension_classes": [
     {
-      "nome": "area_sem_dados_a",
+      "nome": "area_sem_dados",
       "categoria": "aux",
       "primitivas": [
         "MultiPolygon"
