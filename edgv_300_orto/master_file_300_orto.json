@@ -1,6 +1,6 @@
 {
   "modelo": "EDGV 3.0 Orto",
-  "versao": "2.1",
+  "versao": "2.1.1",
   "schema_dados": "edgv",
   "schema_dominios": "dominios",
   "a_ser_preenchido": {
@@ -182,11 +182,11 @@
       "valores": [
         {
           "code": 1,
-          "value": "Poço"
+          "value": "Poço / Água subterrânea"
         },
         {
           "code": 4,
-          "value": "Mina"
+          "value": "Mina / Pedreira"
         },
         {
           "code": 5,
@@ -195,6 +195,10 @@
         {
           "code": 6,
           "value": "Salina"
+        },
+        {
+          "code": 8,
+          "value": "Poço / Petróleo"
         }
       ]
     },
@@ -425,6 +429,10 @@
     {
       "nome": "regime",
       "valores": [
+        {
+          "code": 0,
+          "value": "Desconhecido"
+        },
         {
           "code": 1,
           "value": "Permanente"
@@ -1872,7 +1880,11 @@
           "nome": "tipo",
           "tipo": "smallint",
           "cardinalidade": "1..1",
-          "mapa_valor": "tipo_pista_pouso"
+          "mapa_valor": "tipo_pista_pouso",
+          "valores": {
+            "MultiLinestring": [9,10],
+            "MultiPolygon": [9,10]
+          }
         },
         {
           "nome": "revestimento",
@@ -2426,8 +2438,7 @@
           "cardinalidade": "0..1"
         }
       ]
-    },
-    
+    },  
     {
       "nome": "limite_massa_dagua",
       "categoria": "aquisicao",

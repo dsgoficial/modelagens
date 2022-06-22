@@ -542,6 +542,10 @@
       "nome": "regime",
       "valores": [
         {
+          "code": 0,
+          "value": "Desconhecido"
+        },
+        {
           "code": 1,
           "value": "Permanente"
         },
@@ -2405,11 +2409,11 @@
       "valores": [
         {
           "code": 1,
-          "value": "Poço"
+          "value": "Poço - água subterrânea"
         },
         {
           "code": 4,
-          "value": "Mina"
+          "value": "Mina / Pedreira"
         },
         {
           "code": 5,
@@ -2418,6 +2422,10 @@
         {
           "code": 6,
           "value": "Salina"
+        },
+        {
+          "code": 8,
+          "value": "Poço - petróleo"
         }
       ]
     },
