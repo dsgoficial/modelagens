@@ -1,0 +1,743 @@
+{
+    "grupo_estilo": [
+        {
+            "tipo_estilo": "Atributo incorreto",
+            "cor_rgb": "255,127,127"
+        },
+        {
+            "tipo_estilo": "Atributo incomum",
+            "cor_rgb": "255,255,127"
+        },
+        {
+            "tipo_estilo": "Atributo incomum - atributo extra",
+            "cor_rgb": "255,255,127"
+        },
+        {
+            "tipo_estilo": "Preencher atributo",
+            "cor_rgb": "255,189,127"
+        },
+        {
+            "tipo_estilo": "Preencher atributo - atributo extra",
+            "cor_rgb": "255,189,127"
+        }
+    ],
+    "regras": [
+        {
+            "atributo": "administracao",
+            "descricao": "administracao - Preencher atributo",
+            "regra": "administracao in (999)",
+            "tipo_estilo": "Preencher atributo",
+            "camadas": [
+                "edgv.*"
+            ]
+        },
+        {
+            "atributo": "administracao",
+            "descricao": "administracao - Incomum, confirmar atributação",
+            "regra": "administracao in (6)",
+            "tipo_estilo": "Atributo incomum",
+            "camadas": [
+                "edgv.infra_ferrovia_l"
+            ]
+        },
+        {
+            "atributo": "administracao",
+            "descricao": "administracao - Atributo incorreto para este tipo",
+            "regra": "tipo in (2) and not (administracao in (0,1,2,7))",
+            "tipo_estilo": "Atributo incorreto",
+            "camadas": [
+                "edgv.infra_via_deslocamento_l"
+            ]
+        },
+        {
+            "atributo": "administracao",
+            "descricao": "administracao - Atributo incorreto para este tipo",
+            "regra": "tipo in (4) and not (administracao in (1,2,7))",
+            "tipo_estilo": "Atributo incorreto",
+            "camadas": [
+                "edgv.infra_via_deslocamento_l"
+            ]
+        },
+        {
+            "atributo": "altura",
+            "descricao": "altura - Atributo necessário",
+            "regra": "altura is null",
+            "tipo_estilo": "Atributo incorreto",
+            "camadas": [
+                "edgv.infra_obstaculo_vertical_p"
+            ]
+        },
+        {
+            "atributo": "altura",
+            "descricao": "altura - Atributo precisa ser >= 46m",
+            "regra": "altura < 46",
+            "tipo_estilo": "Atributo incorreto",
+            "camadas": [
+                "edgv.infra_obstaculo_vertical_p"
+            ]
+        },
+        {
+            "atributo": "altura",
+            "descricao": "altura - Incomum, confirmar atributação",
+            "regra": "altura > 200",
+            "tipo_estilo": "Atributo incomum",
+            "camadas": [
+                "edgv.infra_obstaculo_vertical_p"
+            ]
+        },
+        {
+            "atributo": "canteiro_divisorio",
+            "descricao": "canteiro_divisorio - Preencher atributo",
+            "regra": "canteiro_divisorio in (999)",
+            "tipo_estilo": "Preencher atributo",
+            "camadas": [
+                "edgv.*"
+            ]
+        },
+        {
+            "atributo": "canteiro_divisorio",
+            "descricao": "canteiro_divisorio - Atributo incorreto para este tipo",
+            "regra": "tipo in (4) and not (canteiro_divisorio in (1))",
+            "tipo_estilo": "Atributo incorreto",
+            "camadas": [
+                "edgv.infra_via_deslocamento_l"
+            ]
+        },
+        {
+            "atributo": "concessionaria",
+            "descricao": "concessionaria - Falta atributo",
+            "regra": "(administracao in (7) and (concessionaria is NULL or concessionaria ='')) or ( not(administracao in (7)) and ( not (concessionaria is NULL or concessionaria ='')))",
+            "tipo_estilo": "Atributo incorreto",
+            "camadas": [
+                "edgv.infra_ferrovia_l",
+                "edgv.infra_via_deslocamento_l"
+            ]
+        },
+        {
+            "atributo": "cota_comprovada",
+            "descricao": "cota_comprovada - Incomum, confirmar atributação",
+            "regra": "cota_comprovada in (1)",
+            "tipo_estilo": "Atributo incomum",
+            "camadas": [
+                "edgv.elemnat_ponto_cotado_p"
+            ]
+        },
+        {
+            "atributo": "cota_comprovada",
+            "descricao": "cota_comprovada - Preencher atributo",
+            "regra": "cota_comprovada in (999)",
+            "tipo_estilo": "Preencher atributo",
+            "camadas": [
+                "edgv.*"
+            ]
+        },
+        {
+            "atributo": "depressao",
+            "descricao": "depressao - Preencher atributo",
+            "regra": "depressao in (999)",
+            "tipo_estilo": "Preencher atributo",
+            "camadas": [
+                "edgv.*"
+            ]
+        },
+        {
+            "atributo": "eletrificada",
+            "descricao": "eletrificada - Atributo incorreto para este tipo",
+            "regra": "tipo in (8) and not (eletrificada in (1))",
+            "tipo_estilo": "Atributo incorreto",
+            "camadas": [
+                "edgv.infra_ferrovia_l"
+            ]
+        },
+        {
+            "atributo": "eletrificada",
+            "descricao": "eletrificada - Preencher atributo",
+            "regra": "eletrificada in (999)",
+            "tipo_estilo": "Preencher atributo",
+            "camadas": [
+                "edgv.*"
+            ]
+        },
+        {
+            "atributo": "em_arruamento",
+            "descricao": "em_arruamento - Atributo incorreto para este tipo",
+            "regra": "tipo in (6,7,8) and not (em_arruamento in (2))",
+            "tipo_estilo": "Atributo incorreto",
+            "camadas": [
+                "edgv.infra_ferrovia_l"
+            ]
+        },
+        {
+            "atributo": "em_arruamento",
+            "descricao": "em_arruamento - Incomum, confirmar atributação",
+            "regra": "em_arruamento in (1)",
+            "tipo_estilo": "Atributo incomum",
+            "camadas": [
+                "edgv.infra_ferrovia_l"
+            ]
+        },
+        {
+            "atributo": "em_arruamento",
+            "descricao": "em_arruamento - Preencher atributo",
+            "regra": "em_arruamento in (999)",
+            "tipo_estilo": "Preencher atributo",
+            "camadas": [
+                "edgv.*"
+            ]
+        },
+        {
+            "atributo": "exibir_rotulo_aproximado",
+            "descricao": "exibir_rotulo_aproximado - Incomum, confirmar atributação",
+            "regra": "exibir_rotulo_aproximado in (2)",
+            "tipo_estilo": "Atributo incomum",
+            "camadas": [
+                "edgv.*"
+            ]
+        },
+        {
+            "atributo": "exibir_rotulo_aproximado",
+            "descricao": "exibir_rotulo_aproximado - Preencher atributo",
+            "regra": "exibir_rotulo_aproximado in (999)",
+            "tipo_estilo": "Preencher atributo",
+            "camadas": [
+                "edgv.*"
+            ]
+        },
+        {
+            "atributo": "forma_extracao",
+            "descricao": "forma_extracao - Incomum, confirmar atributação",
+            "regra": "forma_extracao in (5) and not (tipo in (4))",
+            "tipo_estilo": "Atributo incomum",
+            "camadas": [
+                "edgv.constr_extracao_mineral_a",
+                "edgv.constr_extracao_mineral_p"
+            ]
+        },
+        {
+            "atributo": "forma_extracao",
+            "descricao": "forma_extracao - Preencher atributo",
+            "regra": "forma_extracao in (999)",
+            "tipo_estilo": "Preencher atributo",
+            "camadas": [
+                "edgv.*"
+            ]
+        },
+        {
+            "atributo": "geometria_aproximada",
+            "descricao": "geometria_aproximada - Preencher atributo",
+            "regra": "geometria_aproximada in (999)",
+            "tipo_estilo": "Preencher atributo",
+            "camadas": [
+                "edgv.*"
+            ]
+        },
+        {
+            "atributo": "indice",
+            "descricao": "indice - Preencher atributo",
+            "regra": " indice in (999)",
+            "tipo_estilo": "Preencher atributo",
+            "camadas": [
+                "edgv.*"
+            ]
+        },
+        {
+            "atributo": "jurisdicao",
+            "descricao": "jurisdicao - Atributo incorreto para este tipo",
+            "regra": "tipo in (2) and not (jurisdicao in (0,1,2))",
+            "tipo_estilo": "Atributo incorreto",
+            "camadas": [
+                "edgv.infra_via_deslocamento_l"
+            ]
+        },
+        {
+            "atributo": "jurisdicao",
+            "descricao": "jurisdicao - Atributo incorreto para este tipo",
+            "regra": "tipo in (4) and not (jurisdicao in (1,2))",
+            "tipo_estilo": "Atributo incorreto",
+            "camadas": [
+                "edgv.infra_via_deslocamento_l"
+            ]
+        },
+        {
+            "atributo": "jurisdicao",
+            "descricao": "jurisdicao - Preencher atributo",
+            "regra": "jurisdicao in (999)",
+            "tipo_estilo": "Preencher atributo",
+            "camadas": [
+                "edgv.*"
+            ]
+        },
+        {
+            "atributo": "material_construcao",
+            "descricao": "material_construcao - Preencher atributo",
+            "regra": "material_construcao in (999)",
+            "tipo_estilo": "Preencher atributo",
+            "camadas": [
+                "edgv.*"
+            ]
+        },
+        {
+            "atributo": "material_construcao",
+            "descricao": "material_construcao - Incomum, confirmar atributação",
+            "regra": "material_construcao in (1)",
+            "tipo_estilo": "Atributo incomum",
+            "camadas": [
+                "edgv.infra_barragem_a",
+                "edgv.infra_barragem_l"
+            ]
+        },
+        {
+            "atributo": "nome",
+            "descricao": "nome - Nome deve iniciar com letra maiuscula e não deve ter espaços desnecessários",
+            "regra": "(regexp_match ( nome , '^ ' ) or regexp_match ( nome , '  ' ) or regexp_match ( nome , ' $' ) or regexp_match ( nome , '^[a-z]' ))",
+            "tipo_estilo": "Atributo incorreto",
+            "camadas": [
+                "edgv.*"
+            ]
+        },
+        {
+            "atributo": "nome",
+            "descricao": "nome - string vazia, setar atributo para null",
+            "regra": "nome  is not null and  length(nome)<2",
+            "tipo_estilo": "Atributo incorreto",
+            "camadas": [
+                "edgv.*"
+            ]
+        },
+        {
+            "atributo": "nome",
+            "descricao": "nome - todas feições dessa classe necessitam de nome",
+            "regra": "nome  is null",
+            "tipo_estilo": "Atributo incorreto",
+            "camadas": [
+                "edgv.llp_aglomerado_rural_p",
+                "edgv.llp_area_pub_militar_a",
+                "edgv.llp_area_pub_militar_l",
+                "edgv.elemnat_ilha_a",
+                "edgv.elemnat_ilha_p",
+                "edgv.aquisicao_centroide_ilha_p",
+                "edgv.cobter_massa_dagua_a",
+                "edgv.aquisicao_centroide_massa_dagua_p",
+                "edgv.llp_nome_local_p",
+                "edgv.llp_terra_indigena_l",
+                "edgv.elemnat_trecho_drenagem_l",
+                "edgv.llp_unidade_conservacao_a",
+                "edgv.llp_unidade_conservacao_l"
+            ]
+        },
+        {
+            "atributo": "nr_faixas",
+            "descricao": "nr_faixas - Preencher atributo",
+            "regra": "nr_faixas is NULL or nr_faixas = ''",
+            "tipo_estilo": "Preencher atributo",
+            "camadas": [
+                "edgv.infra_via_deslocamento_l"
+            ]
+        },
+        {
+            "atributo": "nr_faixas",
+            "descricao": "nr_faixas - Atributo incorreto para este tipo",
+            "regra": "tipo in (2) and not (nr_faixas >=1)",
+            "tipo_estilo": "Atributo incorreto",
+            "camadas": [
+                "edgv.infra_via_deslocamento_l"
+            ]
+        },
+        {
+            "atributo": "nr_faixas",
+            "descricao": "nr_faixas - Incomum, confirmar atributação",
+            "regra": "tipo in (2) and nr_faixas > 2",
+            "tipo_estilo": "Atributo incomum",
+            "camadas": [
+                "edgv.infra_via_deslocamento_l"
+            ]
+        },
+        {
+            "atributo": "nr_faixas",
+            "descricao": "nr_faixas - Atributo incorreto para este tipo",
+            "regra": "tipo in (4) and not (nr_faixas >=4)",
+            "tipo_estilo": "Atributo incorreto",
+            "camadas": [
+                "edgv.infra_via_deslocamento_l"
+            ]
+        },
+        {
+            "atributo": "nr_faixas",
+            "descricao": "nr_faixas - Atributo incorreto para este tipo",
+            "regra": "not(regexp_match( nr_faixas ,'\\\\d') or nr_faixas is null)",
+            "tipo_estilo": "Atributo incorreto",
+            "camadas": [
+                "edgv.infra_via_deslocamento_l"
+            ]
+        },
+        {
+            "atributo": "nr_linhas",
+            "descricao": "nr_linhas - Preencher atributo",
+            "regra": "nr_linhas in (999)",
+            "tipo_estilo": "Preencher atributo",
+            "camadas": [
+                "edgv.*"
+            ]
+        },
+        {
+            "atributo": "nr_pistas",
+            "descricao": "nr_pistas - Preencher atributo",
+            "regra": "nr_pistas is NULL or nr_pistas = ''",
+            "tipo_estilo": "Preencher atributo",
+            "camadas": [
+                "edgv.infra_via_deslocamento_l"
+            ]
+        },
+        {
+            "atributo": "nr_pistas",
+            "descricao": "nr_pistas - Atributo incorreto para este tipo",
+            "regra": "tipo in (4) and not (nr_pistas >=2)",
+            "tipo_estilo": "Atributo incorreto",
+            "camadas": [
+                "edgv.infra_via_deslocamento_l"
+            ]
+        },
+        {
+            "atributo": "nr_pistas",
+            "descricao": "nr_pistas - relacionamento com canterio_divisorio incorreto",
+            "regra": "canteiro_divisorio in (1) and not (nr_pistas >1)",
+            "tipo_estilo": "Atributo incorreto",
+            "camadas": [
+                "edgv.infra_via_deslocamento_l"
+            ]
+        },
+        {
+            "atributo": "nr_pistas",
+            "descricao": "nr_pistas - Atributo incorreto para este tipo",
+            "regra": "tipo in (2) and not (nr_pistas >=1)",
+            "tipo_estilo": "Atributo incorreto",
+            "camadas": [
+                "edgv.infra_via_deslocamento_l"
+            ]
+        },
+        {
+            "atributo": "nr_pistas",
+            "descricao": "nr_faixas - Atributo incorreto para este tipo",
+            "regra": "not(regexp_match( nr_pistas ,'\\\\d')or nr_pistas is null)",
+            "tipo_estilo": "Atributo incorreto",
+            "camadas": [
+                "edgv.infra_via_deslocamento_l"
+            ]
+        },
+        {
+            "atributo": "populacao",
+            "descricao": "população - Atributo incorreto",
+            "regra": "(tipo in (1,2,3) and (populacao is NULL)) or (not(tipo in (1,2,3)) and (not(populacao is NULL)))",
+            "tipo_estilo": "Atributo incorreto",
+            "camadas": [
+                "edgv.llp_localidade_p"
+            ]
+        },
+        {
+            "atributo": "posicao_relativa",
+            "descricao": "posicao_relativa - Preencher atributo",
+            "regra": "posicao_relativa in (999)",
+            "tipo_estilo": "Preencher atributo",
+            "camadas": [
+                "edgv.*"
+            ]
+        },
+        {
+            "atributo": "posicao_relativa",
+            "descricao": "posicao_relativa - Atributo incorreto para este tipo",
+            "regra": "tipo in (5) and not (posicao_relativa in (2,3))",
+            "tipo_estilo": "Atributo incorreto",
+            "camadas": [
+                "edgv.infra_ferrovia_l"
+            ]
+        },
+        {
+            "atributo": "posicao_relativa",
+            "descricao": "posicao_relativa - Atributo incorreto para este tipo",
+            "regra": "tipo in (6) and not (posicao_relativa in (3))",
+            "tipo_estilo": "Atributo incorreto",
+            "camadas": [
+                "edgv.infra_ferrovia_l"
+            ]
+        },
+        {
+            "atributo": "regime",
+            "descricao": "regime - Atributo incorreto para este tipo",
+            "regra": "tipo in (3,4,5,9) and not(regime in (1))",
+            "tipo_estilo": "Atributo incorreto",
+            "camadas": [
+                "edgv.cobter_massa_dagua_a",
+                "edgv.aquisicao_centroide_massa_dagua_p"
+            ]
+        },
+        {
+            "atributo": "regime",
+            "descricao": "regime - Incomum, confirmar atributação",
+            "regra": "regime in (3,5)",
+            "tipo_estilo": "Atributo incomum",
+            "camadas": [
+                "edgv.cobter_massa_dagua_a",
+                "edgv.aquisicao_centroide_massa_dagua_p"
+            ]
+        },
+        {
+            "atributo": "regime",
+            "descricao": "regime - Preencher atributo",
+            "regra": "regime in (999)",
+            "tipo_estilo": "Preencher atributo",
+            "camadas": [
+                "edgv.*"
+            ]
+        },
+        {
+            "atributo": "regime",
+            "descricao": "regime - Atributo incorreto para este tipo",
+            "regra": "tipo in (3) and not (regime in (0,5))",
+            "tipo_estilo": "Atributo incorreto",
+            "camadas": [
+                "edgv.elemnat_trecho_drenagem_l"
+            ]
+        },
+        {
+            "atributo": "regime",
+            "descricao": "regime - Incomum, confirmar atributação",
+            "regra": "tipo in (1,2,4) and regime in (3,5)",
+            "tipo_estilo": "Atributo incomum",
+            "camadas": [
+                "edgv.elemnat_trecho_drenagem_l"
+            ]
+        },
+        {
+            "atributo": "revestimento",
+            "descricao": "revestimento - Incomum, confirmar atributação",
+            "regra": "revestimento in (1)",
+            "tipo_estilo": "Atributo incomum",
+            "camadas": [
+                "edgv.infra_pista_pouso_a",
+                "edgv.infra_pista_pouso_l",
+                "edgv.infra_pista_pouso_p"
+            ]
+        },
+        {
+            "atributo": "revestimento",
+            "descricao": "revestimento - Preencher atributo",
+            "regra": "revestimento in (999)",
+            "tipo_estilo": "Preencher atributo",
+            "camadas": [
+                "edgv.*"
+            ]
+        },
+        {
+            "atributo": "revestimento",
+            "descricao": "revestimento - Atributo incorreto para este tipo",
+            "regra": "tipo in (4) and not (revestimento in (3))",
+            "tipo_estilo": "Atributo incorreto",
+            "camadas": [
+                "edgv.infra_via_deslocamento_l"
+            ]
+        },
+        {
+            "atributo": "revestimento",
+            "descricao": "revestimento - Incomum, confirmar atributação",
+            "regra": "revestimento in (4)",
+            "tipo_estilo": "Atributo incomum",
+            "camadas": [
+                "edgv.infra_via_deslocamento_l"
+            ]
+        },
+        {
+            "atributo": "sigla",
+            "descricao": "sigla - Falta atributo",
+            "regra": "not (sigla is NULL or sigla ='') and not (jurisdicao in (1,2))  ",
+            "tipo_estilo": "Atributo incorreto",
+            "camadas": [
+                "edgv.infra_via_deslocamento_l"
+            ]
+        },
+        {
+            "atributo": "sigla",
+            "descricao": "sigla - Formato incorreto",
+            "regra": "not ( regexp_match( sigla, '^(AC|AL|AM|AP|BA|CE|DF|ES|GO|MA|MG|MS|MT|PA|PB|PE|PI|PR|RJ|RN|RO|RR|RS|SC|SE|SP|TO)-\\\\d\\\\d\\\\d$') or regexp_match( sigla, '^(BR)-\\\\d\\\\d\\\\d$') or regexp_match( sigla, '^(BR)-\\\\d\\\\d\\\\d;(BR|AC|AL|AM|AP|BA|CE|DF|ES|GO|MA|MG|MS|MT|PA|PB|PE|PI|PR|RJ|RN|RO|RR|RS|SC|SE|SP|TO)-\\\\d\\\\d\\\\d$') or regexp_match( sigla, '^(AC|AL|AM|AP|BA|CE|DF|ES|GO|MA|MG|MS|MT|PA|PB|PE|PI|PR|RJ|RN|RO|RR|RS|SC|SE|SP|TO)-\\\\d\\\\d\\\\d;(AC|AL|AM|AP|BA|CE|DF|ES|GO|MA|MG|MS|MT|PA|PB|PE|PI|PR|RJ|RN|RO|RR|RS|SC|SE|SP|TO)-\\\\d\\\\d\\\\d$') or sigla is NULL or sigla ='') ",
+            "tipo_estilo": "Atributo incorreto",
+            "camadas": [
+                "edgv.infra_via_deslocamento_l"
+            ]
+        },
+        {
+            "atributo": "sigla",
+            "descricao": "sigla - Falta atributo",
+            "regra": "jurisdicao in (1,2) and (sigla is NULL or sigla ='')",
+            "tipo_estilo": "Atributo incorreto",
+            "camadas": [
+                "edgv.infra_via_deslocamento_l"
+            ]
+        },
+        {
+            "atributo": "sigla",
+            "descricao": "sigla - Formato incorreto – BR",
+            "regra": "jurisdicao in (1) and (1 - (regexp_match( sigla, '^(BR)-\\\\d\\\\d\\\\d') ))",
+            "tipo_estilo": "Atributo incorreto",
+            "camadas": [
+                "edgv.infra_via_deslocamento_l"
+            ]
+        },
+        {
+            "atributo": "sigla",
+            "descricao": "sigla - Formato incorreto – Estados",
+            "regra": "jurisdicao in (2) and (1 - (regexp_match( sigla, '^(AC|AL|AM|AP|BA|CE|DF|ES|GO|MA|MG|MS|MT|PA|PB|PE|PI|PR|RJ|RN|RO|RR|RS|SC|SE|SP|TO)-\\\\d\\\\d\\\\d') ))",
+            "tipo_estilo": "Atributo incorreto",
+            "camadas": [
+                "edgv.infra_via_deslocamento_l"
+            ]
+        },
+        {
+            "atributo": "situacao_fisica",
+            "descricao": "situacao_fisica - Preencher atributo",
+            "regra": "situacao_fisica in (999)",
+            "tipo_estilo": "Preencher atributo",
+            "camadas": [
+                "edgv.*"
+            ]
+        },
+        {
+            "atributo": "situacao_fisica",
+            "descricao": "situacao_fisica - Incomum, confirmar atributação",
+            "regra": "situacao_fisica in (1, 2, 4)",
+            "tipo_estilo": "Atributo incomum",
+            "camadas": [
+                "edgv.*"
+            ]
+        },
+        {
+            "atributo": "tipo",
+            "descricao": "tipo - Preencher atributo",
+            "regra": "tipo in (999)",
+            "tipo_estilo": "Preencher atributo",
+            "camadas": [
+                "edgv.*"
+            ]
+        },
+        {
+            "atributo": "tipo",
+            "descricao": "tipo - Incomum, confirmar atributação",
+            "regra": "tipo in (2)",
+            "tipo_estilo": "Atributo incomum",
+            "camadas": [
+                "edgv.infra_barragem_a",
+                "edgv.infra_barragem_l"
+            ]
+        },
+        {
+            "atributo": "tipo",
+            "descricao": "tipo - Incomum, confirmar atributação",
+            "regra": "tipo in (5)",
+            "tipo_estilo": "Atributo incomum",
+            "camadas": [
+                "edgv.llp_aglomerado_rural_p"
+            ]
+        },
+        {
+            "atributo": "tipo",
+            "descricao": "tipo - Incomum, confirmar atributação",
+            "regra": "tipo in (2, 3, 4, 5, 6, 9)",
+            "tipo_estilo": "Atributo incomum",
+            "camadas": [
+                "edgv.cobter_massa_dagua_a",
+                "edgv.aquisicao_centroide_massa_dagua_p"
+            ]
+        },
+        {
+            "atributo": "tipo",
+            "descricao": "tipo - Incomum, confirmar atributação",
+            "regra": "tipo in (1, 5, 6, 8)",
+            "tipo_estilo": "Atributo incomum",
+            "camadas": [
+                "edgv.constr_extracao_mineral_a",
+                "edgv.constr_extracao_mineral_p"
+            ]
+        },
+        {
+            "atributo": "tipo",
+            "descricao": "tipo - Incomum, confirmar atributação",
+            "regra": "tipo in (5,6)",
+            "tipo_estilo": "Atributo incomum",
+            "camadas": [
+                "edgv.infra_ferrovia_l"
+            ]
+        },
+        {
+            "atributo": "tipo",
+            "descricao": "tipo - Incomum, confirmar atributação",
+            "regra": "tipo in (10, 11)",
+            "tipo_estilo": "Atributo incomum",
+            "camadas": [
+                "edgv.infra_pista_pouso_a",
+                "edgv.infra_pista_pouso_l",
+                "edgv.infra_pista_pouso_p"
+            ]
+        },
+        {
+            "atributo": "tipo",
+            "descricao": "tipo - Incomum, confirmar atributação",
+            "regra": "tipo in (4,5,6,7,9,10,11)",
+            "tipo_estilo": "Atributo incomum",
+            "camadas": [
+                "edgv.elemnat_toponimo_fisiografico_natural_p"
+            ]
+        },
+        {
+            "atributo": "tipo",
+            "descricao": "tipo - Incomum, confirmar atributação",
+            "regra": "tipo in (4)",
+            "tipo_estilo": "Atributo incomum",
+            "camadas": [
+                "edgv.elemnat_trecho_drenagem_l"
+            ]
+        },
+        {
+            "atributo": "tipo",
+            "descricao": "tipo - Incomum, confirmar atributação",
+            "regra": "tipo in (4)",
+            "tipo_estilo": "Atributo incomum",
+            "camadas": [
+                "edgv.infra_via_deslocamento_l"
+            ]
+        },
+        {
+            "atributo": "trafego",
+            "descricao": "trafego - Atributo incorreto para este tipo",
+            "regra": "tipo in (4) and not (trafego in (1))",
+            "tipo_estilo": "Atributo incorreto",
+            "camadas": [
+                "edgv.infra_via_deslocamento_l"
+            ]
+        },
+        {
+            "atributo": "trafego",
+            "descricao": "trafego - Incomum, confirmar atributação",
+            "regra": " tipo in (2) and trafego in (2)",
+            "tipo_estilo": "Atributo incomum",
+            "camadas": [
+                "edgv.infra_via_deslocamento_l"
+            ]
+        },
+        {
+            "atributo": "trafego",
+            "descricao": "trafego - Preencher atributo",
+            "regra": "trafego in (999)",
+            "tipo_estilo": "Preencher atributo",
+            "camadas": [
+                "edgv.*"
+            ]
+        },
+        {
+            "atributo": "uso_pista",
+            "descricao": "uso_pista - Preencher atributo",
+            "regra": "uso_pista in (999)",
+            "tipo_estilo": "Preencher atributo",
+            "camadas": [
+                "edgv.*"
+            ]
+        }
+    ]
+}
