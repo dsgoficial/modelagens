@@ -346,8 +346,17 @@
         {
             "atributo": "nr_faixas",
             "descricao": "nr_faixas - Incomum, confirmar atributação",
-            "regra": "tipo in (2) and nr_faixas > 2",
+            "regra": "tipo in (2) and nr_faixas > 4",
             "tipo_estilo": "Atributo incomum",
+            "camadas": [
+                "edgv.infra_via_deslocamento_l"
+            ]
+        },
+        {
+            "atributo": "nr_faixas",
+            "descricao": "nr_faixas - Atributo incorreto para este tipo",
+            "regra": "nr_faixas < nr_pistas",
+            "tipo_estilo": "Atributo incorreto",
             "camadas": [
                 "edgv.infra_via_deslocamento_l"
             ]
@@ -557,7 +566,7 @@
         {
             "atributo": "sigla",
             "descricao": "sigla - Formato incorreto",
-            "regra": "not ( regexp_match( sigla, '^(AC|AL|AM|AP|BA|CE|DF|ES|GO|MA|MG|MS|MT|PA|PB|PE|PI|PR|RJ|RN|RO|RR|RS|SC|SE|SP|TO)-\\\\d\\\\d\\\\d$') or regexp_match( sigla, '^(BR)-\\\\d\\\\d\\\\d$') or regexp_match( sigla, '^(BR)-\\\\d\\\\d\\\\d;(BR|AC|AL|AM|AP|BA|CE|DF|ES|GO|MA|MG|MS|MT|PA|PB|PE|PI|PR|RJ|RN|RO|RR|RS|SC|SE|SP|TO)-\\\\d\\\\d\\\\d$') or regexp_match( sigla, '^(AC|AL|AM|AP|BA|CE|DF|ES|GO|MA|MG|MS|MT|PA|PB|PE|PI|PR|RJ|RN|RO|RR|RS|SC|SE|SP|TO)-\\\\d\\\\d\\\\d;(AC|AL|AM|AP|BA|CE|DF|ES|GO|MA|MG|MS|MT|PA|PB|PE|PI|PR|RJ|RN|RO|RR|RS|SC|SE|SP|TO)-\\\\d\\\\d\\\\d$') or sigla is NULL or sigla ='') ",
+            "regra": "array_contains( array_foreach( string_to_array( sigla,';'),not ( regexp_match( @element, '^(AC|AL|AM|AP|BA|CE|DF|ES|GO|MA|MG|MS|MT|PA|PB|PE|PI|PR|RJ|RN|RO|RR|RS|SC|SE|SP|TO|BR)-\\\\d\\\\d\\\\d$'))), true) or sigla is NULL or sigla =''",
             "tipo_estilo": "Atributo incorreto",
             "camadas": [
                 "edgv.infra_via_deslocamento_l"
@@ -574,8 +583,8 @@
         },
         {
             "atributo": "sigla",
-            "descricao": "sigla - Formato incorreto – BR",
-            "regra": "jurisdicao in (1) and (1 - (regexp_match( sigla, '^(BR)-\\\\d\\\\d\\\\d') ))",
+            "descricao": "sigla - Rodovia Federal sem sigla BR",
+            "regra": "jurisdicao in (1) and not (array_contains( array_foreach( string_to_array( sigla,';'),(regexp_match( @element, '^BR-\\\\d\\\\d\\\\d$'))), true))",
             "tipo_estilo": "Atributo incorreto",
             "camadas": [
                 "edgv.infra_via_deslocamento_l"
@@ -583,8 +592,8 @@
         },
         {
             "atributo": "sigla",
-            "descricao": "sigla - Formato incorreto – Estados",
-            "regra": "jurisdicao in (2) and (1 - (regexp_match( sigla, '^(AC|AL|AM|AP|BA|CE|DF|ES|GO|MA|MG|MS|MT|PA|PB|PE|PI|PR|RJ|RN|RO|RR|RS|SC|SE|SP|TO)-\\\\d\\\\d\\\\d') ))",
+            "descricao": "sigla - Rodovia Estadual com sigla BR",
+            "regra": "jurisdicao in (2) and (array_contains( array_foreach( string_to_array( sigla,';'),(regexp_match( @element, '^BR-\\\\d\\\\d\\\\d$'))), true)) and (array_contains( array_foreach( string_to_array( sigla,';'),not ( regexp_match( @element, '^(AC|AL|AM|AP|BA|CE|DF|ES|GO|MA|MG|MS|MT|PA|PB|PE|PI|PR|RJ|RN|RO|RR|RS|SC|SE|SP|TO)-\\\\d\\\\d\\\\d$'))), true))",
             "tipo_estilo": "Atributo incorreto",
             "camadas": [
                 "edgv.infra_via_deslocamento_l"
