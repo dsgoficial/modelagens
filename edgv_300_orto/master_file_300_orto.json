@@ -1882,6 +1882,7 @@
           "cardinalidade": "1..1",
           "mapa_valor": "tipo_pista_pouso",
           "valores": {
+            "MultiPoint": [9,11],
             "MultiLinestring": [9,10],
             "MultiPolygon": [9,10]
           }
