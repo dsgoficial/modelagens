@@ -17,6 +17,13 @@
     "MultiLinestring": "_l",
     "MultiPolygon": "_a"
   },
+  "atributos_padrao": [
+    {
+      "nome": "observacao",
+      "tipo": "VARCHAR(255)",
+      "cardinalidade": "0..1"
+    }
+  ],
   "dominios": [
     {
       "nome": "aptidao_operacional_atracadouro",
@@ -7049,7 +7056,7 @@
       "nome": "subest_transm_distrib_energia_eletrica",
       "categoria": "enc",
       "descricao": "-",
-      "primitivas": ["Point", "MultiPolygon"],
+      "primitivas": ["MultiPoint", "MultiPolygon"],
       "atributos": [
         {
           "nome": "nome",
