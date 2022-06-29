@@ -337,7 +337,7 @@
                 "edgv.llp_area_pub_militar_*",
                 "edgv.llp_terra_indigena_*",
                 "edgv.llp_unidade_conservacao_*",
-                "edgv.llp_localida_p",
+                "edgv.llp_localidade_p",
                 "edgv.llp_nome_local_p"
             ]
         },
