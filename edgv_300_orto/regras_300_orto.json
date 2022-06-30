@@ -25,7 +25,7 @@
         {
             "atributo": "administracao",
             "descricao": "administracao - Preencher atributo",
-            "regra": "administracao in (999)",
+            "regra": "administracao in (9999)",
             "tipo_estilo": "Preencher atributo",
             "camadas": [
                 "edgv.*"
@@ -97,7 +97,7 @@
         {
             "atributo": "canteiro_divisorio",
             "descricao": "canteiro_divisorio - Preencher atributo",
-            "regra": "canteiro_divisorio in (999)",
+            "regra": "canteiro_divisorio in (9999)",
             "tipo_estilo": "Preencher atributo",
             "camadas": [
                 "edgv.*"
@@ -134,7 +134,7 @@
         {
             "atributo": "cota_comprovada",
             "descricao": "cota_comprovada - Preencher atributo",
-            "regra": "cota_comprovada in (999)",
+            "regra": "cota_comprovada in (9999)",
             "tipo_estilo": "Preencher atributo",
             "camadas": [
                 "edgv.*"
@@ -143,7 +143,7 @@
         {
             "atributo": "depressao",
             "descricao": "depressao - Preencher atributo",
-            "regra": "depressao in (999)",
+            "regra": "depressao in (9999)",
             "tipo_estilo": "Preencher atributo",
             "camadas": [
                 "edgv.*"
@@ -161,7 +161,7 @@
         {
             "atributo": "eletrificada",
             "descricao": "eletrificada - Preencher atributo",
-            "regra": "eletrificada in (999)",
+            "regra": "eletrificada in (9999)",
             "tipo_estilo": "Preencher atributo",
             "camadas": [
                 "edgv.*"
@@ -188,7 +188,7 @@
         {
             "atributo": "em_arruamento",
             "descricao": "em_arruamento - Preencher atributo",
-            "regra": "em_arruamento in (999)",
+            "regra": "em_arruamento in (9999)",
             "tipo_estilo": "Preencher atributo",
             "camadas": [
                 "edgv.*"
@@ -197,7 +197,7 @@
         {
             "atributo": "exibir_rotulo_aproximado",
             "descricao": "exibir_rotulo_aproximado - Preencher atributo",
-            "regra": "exibir_rotulo_aproximado in (999)",
+            "regra": "exibir_rotulo_aproximado in (9999)",
             "tipo_estilo": "Preencher atributo",
             "camadas": [
                 "edgv.*"
@@ -215,7 +215,7 @@
         {
             "atributo": "forma_extracao",
             "descricao": "forma_extracao - Preencher atributo",
-            "regra": "forma_extracao in (999)",
+            "regra": "forma_extracao in (9999)",
             "tipo_estilo": "Preencher atributo",
             "camadas": [
                 "edgv.*"
@@ -233,7 +233,7 @@
         {
             "atributo": "geometria_aproximada",
             "descricao": "geometria_aproximada - Preencher atributo",
-            "regra": "geometria_aproximada in (999)",
+            "regra": "geometria_aproximada in (9999)",
             "tipo_estilo": "Preencher atributo",
             "camadas": [
                 "edgv.*"
@@ -242,7 +242,7 @@
         {
             "atributo": "indice",
             "descricao": "indice - Preencher atributo",
-            "regra": " indice in (999)",
+            "regra": " indice in (9999)",
             "tipo_estilo": "Preencher atributo",
             "camadas": [
                 "edgv.*"
@@ -251,7 +251,7 @@
         {
             "atributo": "jurisdicao",
             "descricao": "jurisdicao - Preencher atributo",
-            "regra": "jurisdicao in (999)",
+            "regra": "jurisdicao in (9999)",
             "tipo_estilo": "Preencher atributo",
             "camadas": [
                 "edgv.*"
@@ -287,7 +287,7 @@
         {
             "atributo": "material_construcao",
             "descricao": "material_construcao - Preencher atributo",
-            "regra": "material_construcao in (999)",
+            "regra": "material_construcao in (9999)",
             "tipo_estilo": "Preencher atributo",
             "camadas": [
                 "edgv.*"
@@ -398,7 +398,7 @@
         {
             "atributo": "nr_linhas",
             "descricao": "nr_linhas - Preencher atributo",
-            "regra": "nr_linhas in (999)",
+            "regra": "nr_linhas in (9999)",
             "tipo_estilo": "Preencher atributo",
             "camadas": [
                 "edgv.*"
@@ -461,7 +461,7 @@
         {
             "atributo": "posicao_relativa",
             "descricao": "posicao_relativa - Preencher atributo",
-            "regra": "posicao_relativa in (999)",
+            "regra": "posicao_relativa in (9999)",
             "tipo_estilo": "Preencher atributo",
             "camadas": [
                 "edgv.*"
@@ -517,7 +517,7 @@
         {
             "atributo": "regime",
             "descricao": "regime - Preencher atributo",
-            "regra": "regime in (999)",
+            "regra": "regime in (9999)",
             "tipo_estilo": "Preencher atributo",
             "camadas": [
                 "edgv.*"
@@ -553,7 +553,7 @@
         {
             "atributo": "revestimento",
             "descricao": "revestimento - Preencher atributo",
-            "regra": "revestimento in (999)",
+            "regra": "revestimento in (9999)",
             "tipo_estilo": "Preencher atributo",
             "camadas": [
                 "edgv.*"
@@ -625,7 +625,7 @@
         {
             "atributo": "situacao_fisica",
             "descricao": "situacao_fisica - Preencher atributo",
-            "regra": "situacao_fisica in (999)",
+            "regra": "situacao_fisica in (9999)",
             "tipo_estilo": "Preencher atributo",
             "camadas": [
                 "edgv.*"
@@ -643,7 +643,7 @@
         {
             "atributo": "tipo",
             "descricao": "tipo - Preencher atributo",
-            "regra": "tipo in (999)",
+            "regra": "tipo in (9999)",
             "tipo_estilo": "Preencher atributo",
             "camadas": [
                 "edgv.*"
@@ -752,7 +752,7 @@
         {
             "atributo": "trafego",
             "descricao": "trafego - Preencher atributo",
-            "regra": "trafego in (999)",
+            "regra": "trafego in (9999)",
             "tipo_estilo": "Preencher atributo",
             "camadas": [
                 "edgv.*"
@@ -761,7 +761,7 @@
         {
             "atributo": "uso_pista",
             "descricao": "uso_pista - Preencher atributo",
-            "regra": "uso_pista in (999)",
+            "regra": "uso_pista in (9999)",
             "tipo_estilo": "Preencher atributo",
             "camadas": [
                 "edgv.*"
