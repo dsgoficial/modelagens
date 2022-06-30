@@ -95,6 +95,14 @@
             ]
         },
         {
+            "atributo": "bitola",
+            "descricao": "bitola - Preencher atributo",
+            "regra": "bitola in (9999)",
+            "tipo_estilo": "Preencher atributo",
+            "camadas": [
+                "edgv.*"
+            ]
+        },{
             "atributo": "canteiro_divisorio",
             "descricao": "canteiro_divisorio - Preencher atributo",
             "regra": "canteiro_divisorio in (9999)",
@@ -124,6 +132,15 @@
         },
         {
             "atributo": "cota_comprovada",
+            "descricao": "cota_comprovada - Preencher atributo",
+            "regra": "cota_comprovada in (9999)",
+            "tipo_estilo": "Preencher atributo",
+            "camadas": [
+                "edgv.*"
+            ]
+        },
+        {
+            "atributo": "cota_comprovada",
             "descricao": "cota_comprovada - Incomum, confirmar atributação",
             "regra": "cota_comprovada in (1)",
             "tipo_estilo": "Atributo incomum",
@@ -132,9 +149,9 @@
             ]
         },
         {
-            "atributo": "cota_comprovada",
-            "descricao": "cota_comprovada - Preencher atributo",
-            "regra": "cota_comprovada in (9999)",
+            "atributo": "cota_mais_alta",
+            "descricao": "cota_mais_alta - Preencher atributo",
+            "regra": "cota_mais_alta in (9999)",
             "tipo_estilo": "Preencher atributo",
             "camadas": [
                 "edgv.*"
@@ -543,20 +560,20 @@
         },
         {
             "atributo": "revestimento",
-            "descricao": "revestimento - Incomum, confirmar atributação",
-            "regra": "revestimento in (1)",
-            "tipo_estilo": "Atributo incomum",
-            "camadas": [
-                "edgv.infra_pista_pouso_*"
-            ]
-        },
-        {
-            "atributo": "revestimento",
             "descricao": "revestimento - Preencher atributo",
             "regra": "revestimento in (9999)",
             "tipo_estilo": "Preencher atributo",
             "camadas": [
                 "edgv.*"
+            ]
+        },
+        {
+            "atributo": "revestimento",
+            "descricao": "revestimento - Incomum, confirmar atributação",
+            "regra": "revestimento in (1)",
+            "tipo_estilo": "Atributo incomum",
+            "camadas": [
+                "edgv.infra_pista_pouso_*"
             ]
         },
         {
@@ -575,6 +592,15 @@
             "tipo_estilo": "Atributo incomum",
             "camadas": [
                 "edgv.infra_via_deslocamento_l"
+            ]
+        },
+        {
+            "atributo": "situacao_em_poligono",
+            "descricao": "situacao_em_poligono - Preencher atributo",
+            "regra": "situacao_em_poligono in (9999)",
+            "tipo_estilo": "Preencher atributo",
+            "camadas": [
+                "edgv.*"
             ]
         },
         {
