@@ -905,16 +905,7 @@
         {
             "atributo": "nr_faixas",
             "descricao": "nr_faixas - Atributo incorreto para este tipo",
-            "regra": "nr_faixas < nr_pistas",
-            "tipo_estilo": "Atributo incorreto",
-            "camadas": [
-                "edgv.*"
-            ]
-        },
-        {
-            "atributo": "nr_faixas",
-            "descricao": "nr_faixas - Atributo incorreto para este tipo",
-            "regra": "((modal_uso in (4,8) and not (nr_faixas >=1)) or ( ((tipo -tipo %100)/100) in (4)) and not (nr_faixas =0)) or not (nr_faixas =0)",
+            "regra": "((modal_uso in (4,8) and not (nr_faixas >=1)) or ( ((tipo -tipo %100)/100) in (4)) and (nr_faixas =0))",
             "tipo_estilo": "Atributo incorreto",
             "camadas": [
                 "edgv.infra_elemento_viario_*"
@@ -976,8 +967,17 @@
         },
         {
             "atributo": "nr_pistas",
+            "descricao": "nr_pistas - Relacionamento incorreto com nr_faixas",
+            "regra": "nr_pistas > nr_faixas",
+            "tipo_estilo": "Atributo incorreto",
+            "camadas": [
+                "edgv.*"
+            ]
+        },
+        {
+            "atributo": "nr_pistas",
             "descricao": "nr_pistas - Atributo incorreto para este tipo",
-            "regra": "((modal_uso in (4,8) and not (nr_pistas >=1)) or ( ((tipo -tipo %100)/100) in (4)) and not (nr_pistas =0)) or not (nr_pistas =0)",
+            "regra": "((modal_uso in (4,8) and not (nr_pistas >=1)) or ( ((tipo -tipo %100)/100) in (4)) and not (nr_pistas =0)) or (nr_pistas =0)",
             "tipo_estilo": "Atributo incorreto",
             "camadas": [
                 "edgv.infra_elemento_viario_*"
@@ -1058,7 +1058,7 @@
         {
             "atributo": "posicao_pista",
             "descricao": "posicao_pista - Atributo incorreto para este tipo",
-            "regra": "((((tipo -tipo %100)/100) in (1)) and posicao_pista not in (97) or ((((tipo -tipo %100)/100) not in (1)) and (nr_pistas = 0) and posicao_pista not in (97)) or (( ((tipo -tipo %100)/100) not in (1)) and (nr_pistas != 0) and posicao_pista not in (12,13))",
+            "regra": "(((tipo -tipo %100)/100) in (1)) and posicao_pista not in (97) or ((((tipo -tipo %100)/100) not in (1)) and (nr_pistas = 0) and posicao_pista not in (97)) or (( ((tipo -tipo %100)/100) not in (1)) and (nr_pistas != 0) and posicao_pista not in (12,13))",
             "tipo_estilo": "Atributo incorreto",
             "camadas": [
                 "edgv.infra_elemento_viario_*"
@@ -1237,26 +1237,8 @@
         },
         {
             "atributo": "sigla",
-            "descricao": "sigla - Falta atributo",
-            "regra": "not (sigla is NULL or sigla ='') and not (jurisdicao in (1,2))",
-            "tipo_estilo": "Atributo incorreto",
-            "camadas": [
-                "edgv.infra_via_deslocamento_l"
-            ]
-        },
-        {
-            "atributo": "sigla",
-            "descricao": "sigla - Formato incorreto",
-            "regra": "array_contains( array_foreach( string_to_array( sigla,';'),not ( regexp_match( @element, '^(AC|AL|AM|AP|BA|CE|DF|ES|GO|MA|MG|MS|MT|PA|PB|PE|PI|PR|RJ|RN|RO|RR|RS|SC|SE|SP|TO|BR)-\\\\d\\\\d\\\\d$'))), true) or sigla is NULL or sigla =''",
-            "tipo_estilo": "Atributo incorreto",
-            "camadas": [
-                "edgv.infra_via_deslocamento_l"
-            ]
-        },
-        {
-            "atributo": "sigla",
-            "descricao": "sigla - Falta atributo",
-            "regra": "jurisdicao in (1,2) and (sigla is NULL or sigla ='')",
+            "descricao": "sigla - Falta atributo ou atributo errado para a jurisdição",
+            "regra": "(sigla is not NULL and not (jurisdicao in (1,2))) or (jurisdicao in (1,2) and sigla is NULL)",
             "tipo_estilo": "Atributo incorreto",
             "camadas": [
                 "edgv.infra_via_deslocamento_l"
@@ -1390,8 +1372,8 @@
         },
         {
             "atributo": "tipo",
-            "descricao": "tipo - Atributo Misto e Outros devem ser indicados no atributo nome",
-            "regra": "(tipo %100) in (95, 98) and (nome is NULL or nome = '')",
+            "descricao": "tipo - Atributo Misto e Outros devem ser indicados no atributo observacao",
+            "regra": "(tipo %100) in (95, 98) and (observacao is NULL or observacao = '')",
             "tipo_estilo": "Atributo incorreto",
             "camadas": [
                 "edgv.constr_deposito_*",
@@ -1485,7 +1467,7 @@
         {
             "atributo": "tipo",
             "descricao": "tipo - Incomum, confirmar atributação",
-            "regra": "((tipo - tipo %100)/100) in (7, 8, 10, 13, 14, 15, 16, 17 18, 19, 20)",
+            "regra": "((tipo - tipo %100)/100) in (7, 8, 10, 13, 14, 15, 16, 17, 18, 19, 20)",
             "tipo_estilo": "Atributo incomum",
             "camadas": [
                 "edgv.infra_elemento_infraestrutura_*"

@@ -388,15 +388,6 @@
         {
             "atributo": "nr_faixas",
             "descricao": "nr_faixas - Atributo incorreto para este tipo",
-            "regra": "nr_faixas < nr_pistas",
-            "tipo_estilo": "Atributo incorreto",
-            "camadas": [
-                "edgv.infra_via_deslocamento_l"
-            ]
-        },
-        {
-            "atributo": "nr_faixas",
-            "descricao": "nr_faixas - Atributo incorreto para este tipo",
             "regra": "tipo in (4) and not (nr_faixas >=4)",
             "tipo_estilo": "Atributo incorreto",
             "camadas": [
@@ -428,6 +419,15 @@
             "tipo_estilo": "Preencher atributo",
             "camadas": [
                 "edgv.infra_via_deslocamento_l"
+            ]
+        },
+        {
+            "atributo": "nr_pistas",
+            "descricao": "nr_pistas - Relacionamento incorreto com nr_faixas",
+            "regra": "nr_pistas > nr_faixas",
+            "tipo_estilo": "Atributo incorreto",
+            "camadas": [
+                "edgv.*"
             ]
         },
         {
@@ -605,26 +605,17 @@
         },
         {
             "atributo": "sigla",
-            "descricao": "sigla - Falta atributo",
-            "regra": "not (sigla is NULL or sigla ='') and not (jurisdicao in (1,2))",
-            "tipo_estilo": "Atributo incorreto",
+            "descricao": "sigla - Preencher atributo",
+            "regra": "sigla is NULL",
+            "tipo_estilo": "Preencher atributo",
             "camadas": [
-                "edgv.infra_via_deslocamento_l"
+                "edgv.*"
             ]
         },
         {
             "atributo": "sigla",
-            "descricao": "sigla - Formato incorreto",
-            "regra": "array_contains( array_foreach( string_to_array( sigla,';'),not ( regexp_match( @element, '^(AC|AL|AM|AP|BA|CE|DF|ES|GO|MA|MG|MS|MT|PA|PB|PE|PI|PR|RJ|RN|RO|RR|RS|SC|SE|SP|TO|BR)-\\\\d\\\\d\\\\d$'))), true) or sigla is NULL or sigla =''",
-            "tipo_estilo": "Atributo incorreto",
-            "camadas": [
-                "edgv.infra_via_deslocamento_l"
-            ]
-        },
-        {
-            "atributo": "sigla",
-            "descricao": "sigla - Falta atributo",
-            "regra": "jurisdicao in (1,2) and (sigla is NULL or sigla ='')",
+            "descricao": "sigla - Falta atributo ou atributo errado para a jurisdição",
+            "regra": "(sigla is not NULL and not (jurisdicao in (1,2))) or (jurisdicao in (1,2) and sigla is NULL)",
             "tipo_estilo": "Atributo incorreto",
             "camadas": [
                 "edgv.infra_via_deslocamento_l"
