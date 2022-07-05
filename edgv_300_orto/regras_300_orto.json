@@ -1,4 +1,9 @@
 {
+    "metadados":{
+        "modelo": "EDGV 3.0 Orto",
+        "versao_modelo": "2.1.2",
+        "versao_regras":"0.1"
+    },
     "grupo_estilo": [
         {
             "tipo_estilo": "Atributo incorreto",
