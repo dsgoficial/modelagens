@@ -1,6 +1,6 @@
 {
   "modelo": "EDGV 3.0 Pro",
-  "versao": "1.1.1",
+  "versao": "1.1.2",
   "schema_dados": "edgv",
   "schema_dominios": "dominios",
   "a_ser_preenchido": {
@@ -2473,34 +2473,6 @@
         {
           "code": 2,
           "value": "Limite Estadual"
-        },
-        {
-          "code": 3,
-          "value": "Limite Municipal"
-        },
-        {
-          "code": 4,
-          "value": "País"
-        },
-        {
-          "code": 5,
-          "value": "Unidade federacao"
-        },
-        {
-          "code": 6,
-          "value": "Municipio"
-        },
-        {
-          "code": 7,
-          "value": "Distrito"
-        },
-        {
-          "code": 8,
-          "value": "Sub distrito"
-        },
-        {
-          "code": 9,
-          "value": "Região administrativa"
         }
       ]
     },
@@ -5513,7 +5485,6 @@
       "nome": "limite_legal",
       "categoria": "llp",
       "primitivas": [
-        "MultiPolygon",
         "MultiLinestring"
       ],
       "atributos": [
@@ -5526,22 +5497,7 @@
           "nome": "tipo",
           "tipo": "smallint",
           "cardinalidade": "1..1",
-          "mapa_valor": "tipo_limite_legal",
-          "valores": {
-            "MultiPolygon": [
-              4,
-              5,
-              6,
-              7,
-              8,
-              9
-            ],
-            "MultiLinestring": [
-              1,
-              2,
-              3
-            ]
-          }
+          "mapa_valor": "tipo_limite_legal"
         },
         {
           "nome": "geometria_aproximada",
