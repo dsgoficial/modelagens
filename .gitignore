@@ -124,3 +124,7 @@ venv.bak/
 
 .gpkg-shm
 .gpkg-wal
+
+#others
+*.pdf
+*.odt#
