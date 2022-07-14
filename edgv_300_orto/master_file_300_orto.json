@@ -1,6 +1,6 @@
 {
   "modelo": "EDGV 3.0 Orto",
-  "versao": "2.1.3",
+  "versao": "2.1.2",
   "schema_dados": "edgv",
   "schema_dominios": "dominios",
   "a_ser_preenchido": {
@@ -1678,7 +1678,7 @@
           "cardinalidade": "1..1",
           "mapa_valor": "revestimento",
           "valores": [
-            1,2,3
+            0,1,2,3
           ]
         },
         {
@@ -1691,10 +1691,7 @@
           "nome": "situacao_fisica",
           "tipo": "smallint",
           "cardinalidade": "1..1",
-          "mapa_valor": "situacao_fisica",
-          "valores": [
-            1,2,3,4
-          ]
+          "mapa_valor": "situacao_fisica"
         },
         {
           "nome": "altitude",
