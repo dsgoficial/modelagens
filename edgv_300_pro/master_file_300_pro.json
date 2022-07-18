@@ -1,6 +1,6 @@
 {
   "modelo": "EDGV 3.0 Pro",
-  "versao": "1.1.2",
+  "versao": "1.1.2.1",
   "schema_dados": "edgv",
   "schema_dominios": "dominios",
   "a_ser_preenchido": {
@@ -1930,11 +1930,6 @@
     {
       "nome": "tipo_elemento_energia",
       "valores": [
-        {
-          "code": 601,
-          "value": "Grupo de transformadores",
-          "valor_filtro": "Grupo de transformadores"
-        },
         {
           "code": 302,
           "value": "Linha de distribuição de energia",
