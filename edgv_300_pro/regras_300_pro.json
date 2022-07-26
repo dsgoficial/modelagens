@@ -1499,7 +1499,7 @@
         {
             "atributo": "tipo",
             "descricao": "tipo - Incomum, confirmar atributação",
-            "regra": "tipo in (10, 11)",
+            "regra": "tipo in (10, 11, 12)",
             "tipo_estilo": "Atributo incomum",
             "camadas": [
                 "edgv.infra_pista_pouso_*"

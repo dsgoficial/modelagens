@@ -64,42 +64,6 @@
             ]
         },
         {
-            "atributo": "altitude",
-            "descricao": "altitude - Atributo necessário",
-            "regra": "altitude is null",
-            "tipo_estilo": "Atributo incorreto",
-            "camadas": [
-                "edgv.infra_obstaculo_vertical_p"
-            ]
-        },
-        {
-            "atributo": "altura",
-            "descricao": "altura - Atributo necessário",
-            "regra": "altura is null",
-            "tipo_estilo": "Atributo incorreto",
-            "camadas": [
-                "edgv.infra_obstaculo_vertical_p"
-            ]
-        },
-        {
-            "atributo": "altura",
-            "descricao": "altura - Atributo precisa ser >= 46m",
-            "regra": "altura < 46",
-            "tipo_estilo": "Atributo incorreto",
-            "camadas": [
-                "edgv.infra_obstaculo_vertical_p"
-            ]
-        },
-        {
-            "atributo": "altura",
-            "descricao": "altura - Incomum, confirmar atributação",
-            "regra": "altura > 200",
-            "tipo_estilo": "Atributo incomum",
-            "camadas": [
-                "edgv.infra_obstaculo_vertical_p"
-            ]
-        },
-        {
             "atributo": "bitola",
             "descricao": "bitola - Preencher atributo",
             "regra": "bitola in (9999)",
@@ -729,7 +693,7 @@
         {
             "atributo": "tipo",
             "descricao": "tipo - Incomum, confirmar atributação",
-            "regra": "tipo in (10, 11)",
+            "regra": "tipo in (10, 11, 12)",
             "tipo_estilo": "Atributo incomum",
             "camadas": [
                 "edgv.infra_pista_pouso_*"
