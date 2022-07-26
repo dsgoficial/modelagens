@@ -45,6 +45,26 @@
       ]
     },
     {
+      "nome": "posicao_rotulo",
+      "valores": [
+        {
+          "code": 1,
+          "value": "Na linha",
+          "descricao": "-"
+        },
+        {
+          "code": 2,
+          "value": "Acima da linha",
+          "descricao": "-"
+        },
+        {
+          "code": 3,
+          "value": "Abaixo da linha",
+          "descricao": "-"
+        }
+      ]
+    },
+    {
       "nome": "justificativa",
       "valores": [
         {
@@ -660,6 +680,10 @@
         {
           "code": 11,
           "value": "Heliponto"
+        },
+        {
+          "code": 12,
+          "value": "Heliponto em Hospital"
         }
       ]
     },
@@ -1340,6 +1364,12 @@
           "tipo": "smallint",
           "cardinalidade": "1..1",
           "mapa_valor": "booleano"
+        },
+        {
+          "nome": "posicao_rotulo",
+          "tipo": "smallint",
+          "cardinalidade": "1..1",
+          "mapa_valor": "posicao_rotulo"
         }
       ]
     },
@@ -1593,57 +1623,6 @@
           "tipo": "smallint",
           "cardinalidade": "1..1",
           "mapa_valor": "booleano"
-        }
-      ]
-    },
-    {
-      "nome": "obstaculo_vertical",
-      "categoria": "infra",
-      "primitivas": [
-        "MultiPoint"
-      ],
-      "atributos": [
-        {
-          "nome": "nome",
-          "tipo": "varchar(255)",
-          "cardinalidade": "0..1"
-        },
-        {
-          "nome": "altitude",
-          "tipo": "real",
-          "cardinalidade": "1..1"
-        },
-        {
-          "nome": "altura",
-          "tipo": "real",
-          "cardinalidade": "1..1"
-        },
-        {
-          "nome": "visivel",
-          "tipo": "smallint",
-          "cardinalidade": "1..1",
-          "mapa_valor": "booleano"
-        },
-        {
-          "nome": "texto_edicao",
-          "tipo": "varchar(255)",
-          "cardinalidade": "0..1"
-        },
-        {
-          "nome": "label_x",
-          "tipo": "real",
-          "cardinalidade": "0..1"
-        },
-        {
-          "nome": "label_y",
-          "tipo": "real",
-          "cardinalidade": "0..1"
-        },
-        {
-          "nome": "justificativa_txt",
-          "tipo": "smallint",
-          "cardinalidade": "1..1",
-          "mapa_valor": "justificativa"
         }
       ]
     },
@@ -2311,7 +2290,7 @@
     
     {
       "nome": "area_sem_dados",
-      "categoria": "aux",
+      "categoria": "edicao",
       "primitivas": [
         "MultiPolygon"
       ],
@@ -2537,6 +2516,12 @@
           "nome": "sigla",
           "tipo": "varchar(255)",
           "cardinalidade": "0..1"
+        },
+        {
+          "nome": "tipo",
+          "tipo": "smallint",
+          "cardinalidade": "1..1",
+          "mapa_valor": "tipo_via_deslocamento"
         },
         {
           "nome": "jurisdicao",

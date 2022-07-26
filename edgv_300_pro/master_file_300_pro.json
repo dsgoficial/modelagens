@@ -38,6 +38,26 @@
       ]
     },
     {
+      "nome": "posicao_rotulo",
+      "valores": [
+        {
+          "code": 1,
+          "value": "Na linha",
+          "descricao": "-"
+        },
+        {
+          "code": 2,
+          "value": "Acima da linha",
+          "descricao": "-"
+        },
+        {
+          "code": 3,
+          "value": "Abaixo da linha",
+          "descricao": "-"
+        }
+      ]
+    },
+    {
       "nome": "tipo_simbolo_area",
       "valores": [
         {
@@ -2803,6 +2823,10 @@
         {
           "code": 11,
           "value": "Heliponto"
+        },
+        {
+          "code": 12,
+          "value": "Heliponto em Hospital"
         }
       ]
     },
@@ -4363,6 +4387,12 @@
           "tipo": "smallint",
           "cardinalidade": "1..1",
           "mapa_valor": "booleano"
+        },
+        {
+          "nome": "posicao_rotulo",
+          "tipo": "smallint",
+          "cardinalidade": "1..1",
+          "mapa_valor": "posicao_rotulo"
         }
       ]
     },
