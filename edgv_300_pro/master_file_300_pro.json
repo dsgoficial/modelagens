@@ -4987,6 +4987,11 @@
           "cardinalidade": "0..1"
         },
         {
+          "nome": "texto_edicao",
+          "tipo": "varchar(255)",
+          "cardinalidade": "0..1"
+        },
+        {
           "nome": "visivel",
           "tipo": "smallint",
           "cardinalidade": "1..1",
@@ -5365,6 +5370,11 @@
         },
         {
           "nome": "concessionaria",
+          "tipo": "varchar(255)",
+          "cardinalidade": "0..1"
+        },
+        {
+          "nome": "texto_edicao",
           "tipo": "varchar(255)",
           "cardinalidade": "0..1"
         },
