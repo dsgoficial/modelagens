@@ -2236,10 +2236,6 @@
       "nome": "tipo_travessia",
       "valores": [
         {
-          "code": 0,
-          "value": "Desconhecido"
-        },
-        {
           "code": 1,
           "value": "Balsa"
         },
