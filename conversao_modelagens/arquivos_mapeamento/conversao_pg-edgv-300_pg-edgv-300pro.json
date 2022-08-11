@@ -4227,22 +4227,50 @@
         }
       ]
     },
-    { "__comment": "tra_travessia <-> infra_trecho_hidroviario | balsa",
+    { "__comment": "tra_travessia <-> infra_travessia_hidroviaria | balsa e bote transportador",
       "classe_ida": "tra_travessia",
-      "classe_volta": "infra_trecho_hidroviario",
+      "classe_volta": "infra_travessia_hidroviaria",
       "filtro_ida": {
-        "nome_atributo": "tipotravessia",
-        "valor": 4
+        "$or": [
+          {
+            "nome_atributo": "tipotravessia",
+            "valor": 3
+          },
+          {
+            "nome_atributo": "tipotravessia",
+            "valor": 4
+          }
+        ]
       },
       "filtro_volta": {
-        "nome_atributo": "tipo",
-        "valor": 1
+        "$or": [
+          {
+            "nome_atributo": "tipo",
+            "valor": 1
+          },
+          {
+            "nome_atributo": "tipo",
+            "valor": 2
+          }
+        ]
       },
-      "atributos_default_volta": [
+      "mapeamento_atributos": [
         {
-          "nome_atributo": "tipotravessia",
-          "valor": 4
-        },
+          "attr_ida": "tipotravessia",
+          "attr_volta": "tipo",
+          "traducao": [
+            {
+              "valor_ida": 3,
+              "valor_volta": 2
+            },
+            {
+              "valor_ida": 4,
+              "valor_volta": 1
+            }
+          ]
+        }
+      ],
+      "atributos_default_volta": [
         {
           "nome_atributo": "tipoembarcacao",
           "valor": 0
