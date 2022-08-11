@@ -1,5 +1,12 @@
 {
-    "__comment": "UTF-8",
+  "metadados":{
+    "versao_arquivo": "0.0",
+    "modelo_ida": "TRD 4",
+    "versao_modelo_ida": "4.4",
+    "modelo_volta": "TRD 4",
+    "versao_modelo_volta": "1.0"
+  },
+  "__comment": "UTF-8",
     "schema_ida": "mgcp",
     "schema_volta": "",
     "afixo_geom_ida": {

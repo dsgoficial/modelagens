@@ -1,4 +1,11 @@
 {
+    "metadados":{
+        "versao_arquivo": "0.0",
+        "modelo_ida": "EDGV 2.1.3 DSGTools",
+        "versao_modelo_ida": "2.01",
+        "modelo_volta": "EDGV 3.0",
+        "versao_modelo_volta": "1.1"
+    },
     "__comment": "UTF-8",
     "schema_ida": "cb",
     "schema_volta": "edgv",

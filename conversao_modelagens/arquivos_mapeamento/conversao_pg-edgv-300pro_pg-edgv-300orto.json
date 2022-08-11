@@ -1,4 +1,11 @@
 {
+  "metadados":{
+    "versao_arquivo": "0.0",
+    "modelo_ida": "EDGV 3.0 Pro",
+    "versao_modelo_ida": "1.2",
+    "modelo_volta": "EDGV 3.0 Orto",
+    "versao_modelo_volta": "2.2"
+  },
   "__comment": "UTF-8",
   "schema_ida": "edgv",
   "schema_volta": "edgv",
@@ -327,25 +334,25 @@
       "classe_ida": "aux_moldura_area_continua",
       "classe_volta": "aux_moldura_area_continua"
     },
-    { "__comment": "aquisicao_limite_massa_dagua <-> aquisicao_limite_massa_dagua",
-      "classe_ida": "aquisicao_limite_massa_dagua",
-      "classe_volta": "aquisicao_limite_massa_dagua"
+    { "__comment": "delimitador_massa_dagua <-> delimitador_massa_dagua",
+      "classe_ida": "delimitador_massa_dagua",
+      "classe_volta": "delimitador_massa_dagua"
     },
-    { "__comment": "aquisicao_limite_elemento_hidrografico <-> aquisicao_limite_elemento_hidrografico",
-      "classe_ida": "aquisicao_limite_elemento_hidrografico",
-      "classe_volta": "aquisicao_limite_elemento_hidrografico"
+    { "__comment": "delimitador_elemento_hidrografico <-> delimitador_elemento_hidrografico",
+      "classe_ida": "delimitador_elemento_hidrografico",
+      "classe_volta": "delimitador_elemento_hidrografico"
     },
-    { "__comment": "aquisicao_centroide_massa_dagua <-> aquisicao_centroide_massa_dagua",
-      "classe_ida": "aquisicao_centroide_massa_dagua",
-      "classe_volta": "aquisicao_centroide_massa_dagua"
+    { "__comment": "centroide_massa_dagua <-> centroide_massa_dagua",
+      "classe_ida": "centroide_massa_dagua",
+      "classe_volta": "centroide_massa_dagua"
     },
-    { "__comment": "aquisicao_centroide_ilha <-> aquisicao_centroide_ilha",
-      "classe_ida": "aquisicao_centroide_ilha",
-      "classe_volta": "aquisicao_centroide_ilha"
+    { "__comment": "centroide_ilha <-> centroide_ilha",
+      "classe_ida": "centroide_ilha",
+      "classe_volta": "centroide_ilha"
     },
-    { "__comment": "aquisicao_centroide_elemento_hidrografico <-> aquisicao_centroide_elemento_hidrografico",
-      "classe_ida": "aquisicao_centroide_elemento_hidrografico",
-      "classe_volta": "aquisicao_centroide_elemento_hidrografico"
+    { "__comment": "centroide_elemento_hidrografico <-> centroide_elemento_hidrografico",
+      "classe_ida": "centroide_elemento_hidrografico",
+      "classe_volta": "centroide_elemento_hidrografico"
     },
     { "__comment": "edicao_identificador_trecho_rod <-> edicao_identificador_trecho_rod",
       "classe_ida": "edicao_identificador_trecho_rod",
@@ -363,13 +370,13 @@
       "classe_ida": "edicao_texto_generico",
       "classe_volta": "edicao_texto_generico"
     },
-    { "__comment": "aquisicao_limite_limite_especial <-> aquisicao_limite_limite_especial",
-      "classe_ida": "aquisicao_limite_limite_especial",
-      "classe_volta": "aquisicao_limite_limite_especial"
+    { "__comment": "delimitador_limite_especial <-> delimitador_limite_especial",
+      "classe_ida": "delimitador_limite_especial",
+      "classe_volta": "delimitador_limite_especial"
     },
-    { "__comment": "aquisicao_centroide_limite_especial <-> aquisicao_centroide_limite_especial",
-      "classe_ida": "aquisicao_centroide_limite_especial",
-      "classe_volta": "aquisicao_centroide_limite_especial"
+    { "__comment": "centroide_limite_especial <-> centroide_limite_especial",
+      "classe_ida": "centroide_limite_especial",
+      "classe_volta": "centroide_limite_especial"
     }
   ]
 }
