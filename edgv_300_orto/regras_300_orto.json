@@ -1,8 +1,8 @@
 {
     "metadados":{
         "modelo": "EDGV 3.0 Orto",
-        "versao_modelo": "2.1.2",
-        "versao_regras":"0.1"
+        "versao_modelo": "2.2",
+        "versao_regras":"0.0"
     },
     "grupo_estilo": [
         {
@@ -313,13 +313,13 @@
             "tipo_estilo": "Atributo incorreto",
             "camadas": [
                 "edgv.cobter_massa_dagua_a",
-                "edgv.aquisicao_centroide_massa_dagua_p",
+                "edgv.centroide_massa_dagua_p",
                 "edgv.elemnat_ilha_*",
-                "edgv.aquisicao_centroide_ilha_p",
+                "edgv.centroide_ilha_p",
                 "edgv.elemnat_toponimo_fisiografico_natural_*",
                 "edgv.elemnat_trecho_drenagem_l",
                 "edgv.llp_aglomerado_rural_p",
-                "edgv.aquisicao_centroide_limite_especial_p",
+                "edgv.centroide_limite_especial_p",
                 "edgv.llp_area_pub_militar_*",
                 "edgv.llp_terra_indigena_*",
                 "edgv.llp_unidade_conservacao_*",
@@ -487,7 +487,7 @@
             "tipo_estilo": "Atributo incorreto",
             "camadas": [
                 "edgv.cobter_massa_dagua_a",
-                "edgv.aquisicao_centroide_massa_dagua_p"
+                "edgv.centroide_massa_dagua_p"
             ]
         },
         {
@@ -497,7 +497,7 @@
             "tipo_estilo": "Atributo incomum",
             "camadas": [
                 "edgv.cobter_massa_dagua_a",
-                "edgv.aquisicao_centroide_massa_dagua_p"
+                "edgv.centroide_massa_dagua_p"
             ]
         },
         {
@@ -642,7 +642,7 @@
             "tipo_estilo": "Atributo incomum",
             "camadas": [
                 "edgv.cobter_massa_dagua_a",
-                "edgv.aquisicao_centroide_massa_dagua_p"
+                "edgv.centroide_massa_dagua_p"
             ]
         },
         {

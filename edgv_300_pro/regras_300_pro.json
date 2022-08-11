@@ -1,8 +1,8 @@
 {
     "metadados":{
         "modelo": "EDGV 3.0 Pro",
-        "versao_modelo": "1.1.2.1",
-        "versao_regras":"0.1"
+        "versao_modelo": "1.2",
+        "versao_regras":"0.0"
     },
     "grupo_estilo": [
         {
@@ -891,10 +891,10 @@
             "tipo_estilo": "Atributo incorreto",
             "camadas": [
                 "edgv.elemnat_ilha_*",
-                "edgv.aquisicao_centroide_ilha_p",
+                "edgv.centroide_ilha_p",
                 "edgv.elemnat_toponimo_fisiografico_natural_*",
                 "edgv.llp_limite_especial_*",
-                "edgv.aquisicao_centroide_limite_especial_p",
+                "edgv.centroide_limite_especial_p",
                 "edgv.llp_localidade_p"
             ]
         },
@@ -1430,7 +1430,7 @@
             "tipo_estilo": "Atributo incomum",
             "camadas": [
                 "edgv.elemnat_elemento_hidrografico_*",
-                "edgv.aquisicao_centroide_elemento_hidrografico_p"
+                "edgv.centroide_elemento_hidrografico_p"
             ]
         },
         {

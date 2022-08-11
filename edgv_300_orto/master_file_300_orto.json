@@ -1,6 +1,6 @@
 {
   "modelo": "EDGV 3.0 Orto",
-  "versao": "2.1.2",
+  "versao": "2.2",
   "schema_dados": "edgv",
   "schema_dominios": "dominios",
   "a_ser_preenchido": {
@@ -2330,6 +2330,14 @@
       ]
     },
     {
+      "nome": "area_sem_dados",
+      "categoria": "delimitador",
+      "primitivas": [
+        "MultiLinestring"
+      ],
+      "atributos": []
+    },
+    {
       "nome": "validacao",
       "categoria": "aux",
       "primitivas": [
@@ -2421,24 +2429,24 @@
       ]
     },  
     {
-      "nome": "limite_massa_dagua",
-      "categoria": "aquisicao",
+      "nome": "massa_dagua",
+      "categoria": "delimitador",
       "primitivas": [
         "MultiLinestring"
       ],
       "atributos": []
     },
     {
-      "nome": "limite_elemento_hidrografico",
-      "categoria": "aquisicao",
+      "nome": "elemento_hidrografico",
+      "categoria": "delimitador",
       "primitivas": [
         "MultiLinestring"
       ],
       "atributos": []
     },
     {
-      "nome": "centroide_massa_dagua",
-      "categoria": "aquisicao",
+      "nome": "massa_dagua",
+      "categoria": "centroide",
       "primitivas": [
         "MultiPoint"
       ],
@@ -2463,8 +2471,8 @@
       ]
     },
     {
-      "nome": "centroide_ilha",
-      "categoria": "aquisicao",
+      "nome": "ilha",
+      "categoria": "centroide",
       "primitivas": [
         "MultiPoint"
       ],
@@ -2483,8 +2491,8 @@
       ]
     },
     {
-      "nome": "centroide_elemento_hidrografico",
-      "categoria": "aquisicao",
+      "nome": "elemento_hidrografico",
+      "categoria": "centroide",
       "primitivas": [
         "MultiPoint"
       ],
@@ -2634,24 +2642,24 @@
       ]
     },
     {
-      "nome": "limite_limite_especial",
-      "categoria": "aquisicao",
+      "nome": "limite_especial",
+      "categoria": "delimitador",
       "primitivas": [
         "MultiLinestring"
       ],
       "atributos": []
     },
     {
-      "nome": "centroide_area_nao_mapeada",
-      "categoria": "aquisicao",
+      "nome": "area_sem_dados",
+      "categoria": "centroide",
       "primitivas": [
         "MultiPoint"
       ],
       "atributos": []
     },
     {
-      "nome": "centroide_limite_especial",
-      "categoria": "aquisicao",
+      "nome": "limite_especial",
+      "categoria": "centroide",
       "primitivas": [
         "MultiPoint"
       ],

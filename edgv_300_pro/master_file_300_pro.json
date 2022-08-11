@@ -1,6 +1,6 @@
 {
   "modelo": "EDGV 3.0 Pro",
-  "versao": "1.1.2.1",
+  "versao": "1.2",
   "schema_dados": "edgv",
   "schema_dominios": "dominios",
   "a_ser_preenchido": {
@@ -5752,17 +5752,25 @@
   "extension_classes": [
     {
       "nome": "area_sem_dados",
-      "categoria": "aux",
+      "categoria": "edicao",
       "primitivas": [
         "MultiPolygon"
       ],
       "atributos": []
     },
     {
-      "nome": "centroide_area_nao_mapeada",
-      "categoria": "aquisicao",
+      "nome": "area_sem_dados",
+      "categoria": "centroide",
       "primitivas": [
         "MultiPoint"
+      ],
+      "atributos": []
+    },
+    {
+      "nome": "area_sem_dados",
+      "categoria": "delimitador",
+      "primitivas": [
+        "MultiLinestring"
       ],
       "atributos": []
     },
@@ -5895,48 +5903,48 @@
       ]
     },
     {
-      "nome": "limite_vegetacao",
-      "categoria": "aquisicao",
+      "nome": "vegetacao",
+      "categoria": "delimitador",
       "primitivas": [
         "MultiLinestring"
       ],
       "atributos": []
     },
     {
-      "nome": "limite_massa_dagua",
-      "categoria": "aquisicao",
+      "nome": "massa_dagua",
+      "categoria": "delimitador",
       "primitivas": [
         "MultiLinestring"
       ],
       "atributos": []
     },
     {
-      "nome": "limite_area_construida",
-      "categoria": "aquisicao",
+      "nome": "area_construida",
+      "categoria": "delimitador",
       "primitivas": [
         "MultiLinestring"
       ],
       "atributos": []
     },
     {
-      "nome": "limite_elemento_hidrografico",
-      "categoria": "aquisicao",
+      "nome": "elemento_hidrografico",
+      "categoria": "delimitador",
       "primitivas": [
         "MultiLinestring"
       ],
       "atributos": []
     },
     {
-      "nome": "limite_limite_especial",
-      "categoria": "aquisicao",
+      "nome": "limite_especial",
+      "categoria": "delimitador",
       "primitivas": [
         "MultiLinestring"
       ],
       "atributos": []
     },
     {
-      "nome": "centroide_vegetacao",
-      "categoria": "aquisicao",
+      "nome": "vegetacao",
+      "categoria": "centroide",
       "primitivas": [
         "MultiPoint"
       ],
@@ -5956,8 +5964,8 @@
       ]
     },
     {
-      "nome": "centroide_massa_dagua",
-      "categoria": "aquisicao",
+      "nome": "massa_dagua",
+      "categoria": "centroide",
       "primitivas": [
         "MultiPoint"
       ],
@@ -5982,8 +5990,8 @@
       ]
     },
     {
-      "nome": "centroide_area_construida",
-      "categoria": "aquisicao",
+      "nome": "area_construida",
+      "categoria": "centroide",
       "primitivas": [
         "MultiPoint"
       ],
@@ -6008,8 +6016,8 @@
       ]
     },
     {
-      "nome": "centroide_ilha",
-      "categoria": "aquisicao",
+      "nome": "ilha",
+      "categoria": "centroide",
       "primitivas": [
         "MultiPoint"
       ],
@@ -6028,8 +6036,8 @@
       ]
     },
     {
-      "nome": "centroide_elemento_hidrografico",
-      "categoria": "aquisicao",
+      "nome": "elemento_hidrografico",
+      "categoria": "centroide",
       "primitivas": [
         "MultiPoint"
       ],
@@ -6059,8 +6067,8 @@
       ]
     },
     {
-      "nome": "centroide_limite_especial",
-      "categoria": "aquisicao",
+      "nome": "limite_especial",
+      "categoria": "centroide",
       "primitivas": [
         "MultiPoint"
       ],
@@ -6217,7 +6225,7 @@
       ]
     },
     {
-      "nome": "direcao_corrente",
+      "nome": "simb_direcao_corrente",
       "categoria": "edicao",
       "primitivas": [
         "MultiPoint"
@@ -6231,7 +6239,7 @@
       ]
     },
     {
-      "nome": "simbolo_area",
+      "nome": "simb_area",
       "categoria": "edicao",
       "primitivas": [
         "MultiPoint"
