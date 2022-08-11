@@ -4987,6 +4987,11 @@
           "cardinalidade": "0..1"
         },
         {
+          "nome": "texto_edicao",
+          "tipo": "varchar(255)",
+          "cardinalidade": "0..1"
+        },
+        {
           "nome": "visivel",
           "tipo": "smallint",
           "cardinalidade": "1..1",
@@ -5369,6 +5374,11 @@
           "cardinalidade": "0..1"
         },
         {
+          "nome": "texto_edicao",
+          "tipo": "varchar(255)",
+          "cardinalidade": "0..1"
+        },
+        {
           "nome": "visivel",
           "tipo": "smallint",
           "cardinalidade": "1..1",
@@ -5533,70 +5543,19 @@
         {
           "nome": "texto_edicao",
           "tipo": "varchar(255)",
-          "cardinalidade": "0..1",
-          "primitivas": [
-            "MultiPolygon"
-          ]
-        },
-        {
-          "nome": "label_x",
-          "tipo": "real",
-          "cardinalidade": "0..1",
-          "primitivas": [
-            "MultiPolygon"
-          ]
-        },
-        {
-          "nome": "label_y",
-          "tipo": "real",
-          "cardinalidade": "0..1",
-          "primitivas": [
-            "MultiPolygon"
-          ]
-        },
-        {
-          "nome": "tamanho_txt",
-          "tipo": "real",
-          "cardinalidade": "0..1",
-          "primitivas": [
-            "MultiPolygon"
-          ]
-        },
-        {
-          "nome": "justificativa_txt",
-          "tipo": "smallint",
-          "cardinalidade": "1..1",
-          "mapa_valor": "justificativa",
-          "primitivas": [
-            "MultiPolygon"
-          ]
-        },
-        {
-          "nome": "rotular_carta_mini",
-          "tipo": "smallint",
-          "cardinalidade": "1..1",
-          "mapa_valor": "booleano",
-          "primitivas": [
-            "MultiPolygon"
-          ]
+          "cardinalidade": "0..1"
         },
         {
           "nome": "sobreposto",
           "tipo": "smallint",
           "cardinalidade": "1..1",
-          "mapa_valor": "booleano",
-          "primitivas": [
-            "MultiLinestring"
-          ]
+          "mapa_valor": "booleano"
         },
         {
           "nome": "exibir_rotulo_aproximado",
           "tipo": "smallint",
           "cardinalidade": "1..1",
-          "mapa_valor": "booleano",
-          "primitivas": [
-            "MultiLinestring"
-          ]
+          "mapa_valor": "booleano"
         }
       ]
     },
