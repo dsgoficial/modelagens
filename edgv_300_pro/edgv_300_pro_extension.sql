@@ -70,6 +70,7 @@ CREATE TABLE public.layer_styles
   f_table_schema character varying,
   f_table_name character varying,
   f_geometry_column character varying,
+  grupo_estilo_id INTEGER,
   stylename character varying(255),
   styleqml text,
   stylesld text,
@@ -126,29 +127,16 @@ GRANT ALL ON TABLE public.qgis_menus TO PUBLIC;
 
 --########################################################
 --Cria tabela de regras
-CREATE TABLE public.group_rules(
-  	id SERIAL NOT NULL PRIMARY KEY,
-    grupo_regra varchar(255) NOT NULL,
-    cor_rgb varchar(255) NOT NULL,
-    ordem integer NOT NULL,
-    UNIQUE(grupo_regra)
-);
-
-ALTER TABLE public.group_rules
-    OWNER to postgres;
-
-GRANT ALL ON TABLE public.group_rules TO PUBLIC;
 
 CREATE TABLE public.layer_rules(
 	id SERIAL NOT NULL PRIMARY KEY,
-  grupo_regra_id INTEGER NOT NULL REFERENCES public.group_rules (id),
-  schema varchar(255) NOT NULL,
-  camada varchar(255) NOT NULL,
-  atributo varchar(255) NOT NULL,
+  nome varchar(255) NOT NULL,
+  cor_rgb varchar(255) NOT NULL,
+  ordem INTEGER NOT NULL,
   regra TEXT NOT NULL,
-  descricao TEXT NOT NULL,
   owner varchar(255) NOT NULL,
-	update_time timestamp without time zone NOT NULL DEFAULT now()
+	update_time timestamp without time zone NOT NULL DEFAULT now(),
+  UNIQUE(nome)
 );
 
 ALTER TABLE public.layer_rules
@@ -177,9 +165,10 @@ GRANT ALL ON TABLE public.qgis_models TO PUBLIC;
 --Cria tabela de atalhos
 
 CREATE TABLE public.qgis_shortcuts(
-	id SERIAL NOT NULL PRIMARY KEY,
+	code SMALLINT NOT NULL PRIMARY KEY,
   ferramenta VARCHAR(255) NOT NULL,
-  atalho VARCHAR(255) NOT NULL,
+  idioma VARCHAR(255) NOT NULL,
+  atalho VARCHAR(255),
   owner varchar(255) NOT NULL,
 	update_time timestamp without time zone NOT NULL DEFAULT now()
 );

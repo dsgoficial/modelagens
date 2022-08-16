@@ -88,21 +88,5 @@ ALTER TABLE public.layer_styles OWNER TO postgres;
 
 GRANT ALL ON TABLE public.layer_styles TO public;
 
---########################################################
---Cria função que atualiza o nome do banco na tabela de estilos
-
-CREATE OR REPLACE FUNCTION public.estilo()
-  RETURNS integer AS
-$BODY$
-    UPDATE public.layer_styles
-        SET f_table_catalog = (select current_catalog);
-    SELECT 1;
-$BODY$
-  LANGUAGE sql VOLATILE
-  COST 100;
-ALTER FUNCTION public.estilo()
-  OWNER TO postgres;
-
-GRANT EXECUTE ON FUNCTION public.estilo() TO PUBLIC;
 
 --########################################################
