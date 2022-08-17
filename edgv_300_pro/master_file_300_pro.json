@@ -6148,6 +6148,12 @@
           "cardinalidade": "0..1"
         },
         {
+          "nome": "tipo",
+          "tipo": "smallint",
+          "cardinalidade": "1..1",
+          "mapa_valor": "tipo_via_deslocamento"
+        },
+        {
           "nome": "jurisdicao",
           "tipo": "smallint",
           "cardinalidade": "1..1",
