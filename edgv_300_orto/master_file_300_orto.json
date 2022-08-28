@@ -977,6 +977,13 @@
           "mapa_valor": "tipo_extracao_mineral"
         },
         {
+          "nome": "tipoproduto",
+          "tipo": "smallint",
+          "descricao": "-",
+          "cardinalidade": "1..1",
+          "mapa_valor": "tipo_produto_residuo"
+        },
+        {
           "nome": "forma_extracao",
           "tipo": "smallint",
           "cardinalidade": "1..1",

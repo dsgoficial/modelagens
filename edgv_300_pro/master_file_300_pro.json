@@ -25,6 +25,426 @@
   },
   "dominios": [
     {
+      "nome": "tipo_produto_residuo",
+      "valores": [
+        {
+          "code": 0,
+          "value": "Desconhecido",
+          "descricao": "-"
+        },
+        {
+          "code": 3,
+          "value": "Petróleo",
+          "descricao": "-"
+        },
+        {
+          "code": 5,
+          "value": "Gás",
+          "descricao": "-"
+        },
+        {
+          "code": 6,
+          "value": "Grãos",
+          "descricao": "-"
+        },
+        {
+          "code": 16,
+          "value": "Vinhoto",
+          "descricao": "-"
+        },
+        {
+          "code": 17,
+          "value": "Estrume",
+          "descricao": "-"
+        },
+        {
+          "code": 18,
+          "value": "Cascalho",
+          "descricao": "-"
+        },
+        {
+          "code": 20,
+          "value": "Inseticida",
+          "descricao": "-"
+        },
+        {
+          "code": 21,
+          "value": "Folhagens",
+          "descricao": "-"
+        },
+        {
+          "code": 22,
+          "value": "Pedra (brita)",
+          "descricao": "-"
+        },
+        {
+          "code": 23,
+          "value": "Granito",
+          "descricao": "-"
+        },
+        {
+          "code": 24,
+          "value": "Mármore",
+          "descricao": "-"
+        },
+        {
+          "code": 25,
+          "value": "Bauxita",
+          "descricao": "-"
+        },
+        {
+          "code": 26,
+          "value": "Manganês",
+          "descricao": "-"
+        },
+        {
+          "code": 27,
+          "value": "Talco",
+          "descricao": "-"
+        },
+        {
+          "code": 28,
+          "value": "Óleo diesel",
+          "descricao": "-"
+        },
+        {
+          "code": 29,
+          "value": "Gasolina",
+          "descricao": "-"
+        },
+        {
+          "code": 30,
+          "value": "Álcool",
+          "descricao": "-"
+        },
+        {
+          "code": 31,
+          "value": "Querosene",
+          "descricao": "-"
+        },
+        {
+          "code": 32,
+          "value": "Cobre",
+          "descricao": "-"
+        },
+        {
+          "code": 33,
+          "value": "Carvão mineral",
+          "descricao": "-"
+        },
+        {
+          "code": 34,
+          "value": "Sal",
+          "descricao": "-"
+        },
+        {
+          "code": 35,
+          "value": "Ferro",
+          "descricao": "-"
+        },
+        {
+          "code": 36,
+          "value": "Escória",
+          "descricao": "-"
+        },
+        {
+          "code": 37,
+          "value": "Ouro",
+          "descricao": "-"
+        },
+        {
+          "code": 38,
+          "value": "Diamante",
+          "descricao": "-"
+        },
+        {
+          "code": 39,
+          "value": "Prata",
+          "descricao": "-"
+        },
+        {
+          "code": 40,
+          "value": "Pedra preciosa",
+          "descricao": "-"
+        },
+        {
+          "code": 41,
+          "value": "Forragem",
+          "descricao": "-"
+        },
+        {
+          "code": 42,
+          "value": "Areia",
+          "descricao": "-"
+        },
+        {
+          "code": 43,
+          "value": "Saibro/piçarra",
+          "descricao": "-"
+        },
+        {
+          "code": 45,
+          "value": "Ágata",
+          "descricao": "-"
+        },
+        {
+          "code": 46,
+          "value": "Água",
+          "descricao": "-"
+        },
+        {
+          "code": 47,
+          "value": "Água marinha",
+          "descricao": "-"
+        },
+        {
+          "code": 48,
+          "value": "Água mineral",
+          "descricao": "-"
+        },
+        {
+          "code": 49,
+          "value": "Alexandrita",
+          "descricao": "-"
+        },
+        {
+          "code": 50,
+          "value": "Ametista",
+          "descricao": "-"
+        },
+        {
+          "code": 51,
+          "value": "Amianto",
+          "descricao": "-"
+        },
+        {
+          "code": 52,
+          "value": "Argila",
+          "descricao": "-"
+        },
+        {
+          "code": 53,
+          "value": "Barita",
+          "descricao": "-"
+        },
+        {
+          "code": 54,
+          "value": "Bentonita",
+          "descricao": "-"
+        },
+        {
+          "code": 55,
+          "value": "Calcário",
+          "descricao": "-"
+        },
+        {
+          "code": 56,
+          "value": "Carvão vegetal",
+          "descricao": "-"
+        },
+        {
+          "code": 57,
+          "value": "Caulim",
+          "descricao": "-"
+        },
+        {
+          "code": 58,
+          "value": "Chorume",
+          "descricao": "-"
+        },
+        {
+          "code": 59,
+          "value": "Chumbo",
+          "descricao": "-"
+        },
+        {
+          "code": 60,
+          "value": "Citrino",
+          "descricao": "-"
+        },
+        {
+          "code": 61,
+          "value": "Crisoberilo",
+          "descricao": "-"
+        },
+        {
+          "code": 62,
+          "value": "Cristal de rocha",
+          "descricao": "-"
+        },
+        {
+          "code": 63,
+          "value": "Cromo",
+          "descricao": "-"
+        },
+        {
+          "code": 64,
+          "value": "Diatomita",
+          "descricao": "-"
+        },
+        {
+          "code": 65,
+          "value": "Dolomito",
+          "descricao": "-"
+        },
+        {
+          "code": 66,
+          "value": "Esgoto",
+          "descricao": "-"
+        },
+        {
+          "code": 67,
+          "value": "Esmeralda",
+          "descricao": "-"
+        },
+        {
+          "code": 68,
+          "value": "Estanho",
+          "descricao": "-"
+        },
+        {
+          "code": 69,
+          "value": "Feldspato",
+          "descricao": "-"
+        },
+        {
+          "code": 70,
+          "value": "Fosfato",
+          "descricao": "-"
+        },
+        {
+          "code": 71,
+          "value": "Gipsita",
+          "descricao": "-"
+        },
+        {
+          "code": 72,
+          "value": "Grafita",
+          "descricao": "-"
+        },
+        {
+          "code": 73,
+          "value": "Granada",
+          "descricao": "-"
+        },
+        {
+          "code": 74,
+          "value": "Lítio",
+          "descricao": "-"
+        },
+        {
+          "code": 75,
+          "value": "Lixo domiciliar e comercial",
+          "descricao": "-"
+        },
+        {
+          "code": 76,
+          "value": "Lixo séptico",
+          "descricao": "-"
+        },
+        {
+          "code": 77,
+          "value": "Lixo tóxico",
+          "descricao": "-"
+        },
+        {
+          "code": 78,
+          "value": "Magnesita",
+          "descricao": "-"
+        },
+        {
+          "code": 79,
+          "value": "Mica",
+          "descricao": "-"
+        },
+        {
+          "code": 80,
+          "value": "Nióbio",
+          "descricao": "-"
+        },
+        {
+          "code": 81,
+          "value": "Níquel",
+          "descricao": "-"
+        },
+        {
+          "code": 82,
+          "value": "Opala",
+          "descricao": "-"
+        },
+        {
+          "code": 83,
+          "value": "Rocha ornamental",
+          "descricao": "-"
+        },
+        {
+          "code": 84,
+          "value": "Sal-gema",
+          "descricao": "-"
+        },
+        {
+          "code": 85,
+          "value": "Terras raras",
+          "descricao": "-"
+        },
+        {
+          "code": 86,
+          "value": "Titânio",
+          "descricao": "-"
+        },
+        {
+          "code": 87,
+          "value": "Topázio",
+          "descricao": "-"
+        },
+        {
+          "code": 88,
+          "value": "Tório",
+          "descricao": "-"
+        },
+        {
+          "code": 89,
+          "value": "Tungstênio",
+          "descricao": "-"
+        },
+        {
+          "code": 90,
+          "value": "Turfa",
+          "descricao": "-"
+        },
+        {
+          "code": 91,
+          "value": "Turmalina",
+          "descricao": "-"
+        },
+        {
+          "code": 92,
+          "value": "Urânio",
+          "descricao": "-"
+        },
+        {
+          "code": 93,
+          "value": "Vermiculita",
+          "descricao": "-"
+        },
+        {
+          "code": 94,
+          "value": "Zinco",
+          "descricao": "-"
+        },
+        {
+          "code": 99,
+          "value": "Outros",
+          "descricao": "-"
+        },
+        {
+          "code": 100,
+          "value": "Zircônio",
+          "descricao": "-"
+        }
+      ]
+    },
+    {
       "nome": "tipo_borda_elemento_hidrografico",
       "valores": [
         {
@@ -3410,6 +3830,13 @@
           "tipo": "smallint",
           "cardinalidade": "1..1",
           "mapa_valor": "tipo_extracao_mineral"
+        },
+        {
+          "nome": "tipoproduto",
+          "tipo": "smallint",
+          "descricao": "-",
+          "cardinalidade": "1..1",
+          "mapa_valor": "tipo_produto_residuo"
         },
         {
           "nome": "forma_extracao",
