@@ -43,33 +43,8 @@
           "descricao": "-"
         },
         {
-          "code": 6,
-          "value": "Grãos",
-          "descricao": "-"
-        },
-        {
-          "code": 16,
-          "value": "Vinhoto",
-          "descricao": "-"
-        },
-        {
-          "code": 17,
-          "value": "Estrume",
-          "descricao": "-"
-        },
-        {
           "code": 18,
           "value": "Cascalho",
-          "descricao": "-"
-        },
-        {
-          "code": 20,
-          "value": "Inseticida",
-          "descricao": "-"
-        },
-        {
-          "code": 21,
-          "value": "Folhagens",
           "descricao": "-"
         },
         {
@@ -103,26 +78,6 @@
           "descricao": "-"
         },
         {
-          "code": 28,
-          "value": "Óleo diesel",
-          "descricao": "-"
-        },
-        {
-          "code": 29,
-          "value": "Gasolina",
-          "descricao": "-"
-        },
-        {
-          "code": 30,
-          "value": "Álcool",
-          "descricao": "-"
-        },
-        {
-          "code": 31,
-          "value": "Querosene",
-          "descricao": "-"
-        },
-        {
           "code": 32,
           "value": "Cobre",
           "descricao": "-"
@@ -140,11 +95,6 @@
         {
           "code": 35,
           "value": "Ferro",
-          "descricao": "-"
-        },
-        {
-          "code": 36,
-          "value": "Escória",
           "descricao": "-"
         },
         {
@@ -168,11 +118,6 @@
           "descricao": "-"
         },
         {
-          "code": 41,
-          "value": "Forragem",
-          "descricao": "-"
-        },
-        {
           "code": 42,
           "value": "Areia",
           "descricao": "-"
@@ -185,11 +130,6 @@
         {
           "code": 45,
           "value": "Ágata",
-          "descricao": "-"
-        },
-        {
-          "code": 46,
-          "value": "Água",
           "descricao": "-"
         },
         {
@@ -248,11 +188,6 @@
           "descricao": "-"
         },
         {
-          "code": 58,
-          "value": "Chorume",
-          "descricao": "-"
-        },
-        {
           "code": 59,
           "value": "Chumbo",
           "descricao": "-"
@@ -285,11 +220,6 @@
         {
           "code": 65,
           "value": "Dolomito",
-          "descricao": "-"
-        },
-        {
-          "code": 66,
-          "value": "Esgoto",
           "descricao": "-"
         },
         {
@@ -330,21 +260,6 @@
         {
           "code": 74,
           "value": "Lítio",
-          "descricao": "-"
-        },
-        {
-          "code": 75,
-          "value": "Lixo domiciliar e comercial",
-          "descricao": "-"
-        },
-        {
-          "code": 76,
-          "value": "Lixo séptico",
-          "descricao": "-"
-        },
-        {
-          "code": 77,
-          "value": "Lixo tóxico",
           "descricao": "-"
         },
         {
