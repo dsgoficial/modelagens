@@ -2,7 +2,7 @@
     "metadados":{
         "modelo": "EDGV 3.0 Pro",
         "versao_modelo": "1.2",
-        "versao_regras":"0.0"
+        "versao_regras":"0.1"
     },
     "grupo_estilo": [
         {
@@ -38,7 +38,7 @@
         },
         {
             "atributo": "administracao",
-            "descricao": "administracao - Incomum, confirmar atributação",
+            "descricao": "administracao - Incomum, confirmar atributação (R107_A)",
             "regra": "administracao in (6)",
             "tipo_estilo": "Atributo incomum",
             "camadas": [
@@ -47,7 +47,7 @@
         },
         {
             "atributo": "administracao",
-            "descricao": "administracao - Atributo incorreto para este tipo",
+            "descricao": "administracao - Atributo incorreto para este tipo (R126_V)",
             "regra": "tipo in (3,5,6) and not (administracao in (0))",
             "tipo_estilo": "Atributo incorreto",
             "camadas": [
@@ -56,7 +56,7 @@
         },
         {
             "atributo": "administracao",
-            "descricao": "administracao - Atributo incorreto para este tipo",
+            "descricao": "administracao - Atributo incorreto para este tipo (R118_V)",
             "regra": "tipo in (2) and not (administracao in (0,1,2,7))",
             "tipo_estilo": "Atributo incorreto",
             "camadas": [
@@ -65,7 +65,7 @@
         },
         {
             "atributo": "administracao",
-            "descricao": "administracao - Atributo incorreto para este tipo",
+            "descricao": "administracao - Atributo incorreto para este tipo (R134_V)",
             "regra": "tipo in (4) and not (administracao in (1,2,7))",
             "tipo_estilo": "Atributo incorreto",
             "camadas": [
@@ -74,7 +74,7 @@
         },
         {
             "atributo": "altitude",
-            "descricao": "altitude - Atributo necessário",
+            "descricao": "altitude - Atributo necessário (R150_A)",
             "regra": "altitude is null",
             "tipo_estilo": "Atributo incorreto",
             "camadas": [
@@ -83,7 +83,7 @@
         },
         {
             "atributo": "altura",
-            "descricao": "altura - Atributo necessário",
+            "descricao": "altura - Atributo necessário (R151_A)",
             "regra": "altura is null",
             "tipo_estilo": "Atributo incorreto",
             "camadas": [
@@ -92,7 +92,7 @@
         },
         {
             "atributo": "altura",
-            "descricao": "altura - Atributo precisa ser >= 46m",
+            "descricao": "altura - Atributo precisa ser >= 46m (R108_V)",
             "regra": "altura < 46",
             "tipo_estilo": "Atributo incorreto",
             "camadas": [
@@ -101,7 +101,7 @@
         },
         {
             "atributo": "altura",
-            "descricao": "altura - Incomum, confirmar atributação",
+            "descricao": "altura - Incomum, confirmar atributação (R109_A)",
             "regra": "altura > 200",
             "tipo_estilo": "Atributo incomum",
             "camadas": [
@@ -137,7 +137,7 @@
         },
         {
             "atributo": "canteiro_divisorio",
-            "descricao": "canteiro_divisorio - Atributo incorreto para este tipo",
+            "descricao": "canteiro_divisorio - Atributo incorreto para este tipo (R123_V)",
             "regra": "tipo in (3,6) and not (canteiro_divisorio in (2))",
             "tipo_estilo": "Atributo incorreto",
             "camadas": [
@@ -146,7 +146,7 @@
         },
         {
             "atributo": "concessionaria",
-            "descricao": "concessionaria - Falta atributo",
+            "descricao": "concessionaria - Falta atributo (R107_V)",
             "regra": "(administracao in (7) and (concessionaria is NULL or concessionaria ='')) or ( not(administracao in (7)) and ( not (concessionaria is NULL or concessionaria ='')))",
             "tipo_estilo": "Atributo incorreto",
             "camadas": [
@@ -165,7 +165,7 @@
         },
         {
             "atributo": "cota_comprovada",
-            "descricao": "cota_comprovada - Incomum, confirmar atributação",
+            "descricao": "cota_comprovada - Incomum, confirmar atributação (R68_A)",
             "regra": "cota_comprovada in (1)",
             "tipo_estilo": "Atributo incomum",
             "camadas": [
@@ -201,6 +201,15 @@
         },
         {
             "atributo": "eletrificada",
+            "descricao": "eletrificada - Atributo incorreto para este tipo (R102_V)",
+            "regra": "tipo in (8) and not (eletrificada in (1))",
+            "tipo_estilo": "Atributo incorreto",
+            "camadas": [
+                "edgv.*"
+            ]
+        },
+        {
+            "atributo": "eletrificada",
             "descricao": "eletrificada - Preencher atributo",
             "regra": "eletrificada in (9999)",
             "tipo_estilo": "Preencher atributo",
@@ -219,7 +228,7 @@
         },
         {
             "atributo": "em_arruamento",
-            "descricao": "em_arruamento - Atributo incorreto para este tipo",
+            "descricao": "em_arruamento - Atributo incorreto para este tipo (R104_V)",
             "regra": "tipo in (6,7,8) and not (em_arruamento in (2))",
             "tipo_estilo": "Atributo incorreto",
             "camadas": [
@@ -228,7 +237,7 @@
         },
         {
             "atributo": "em_arruamento",
-            "descricao": "em_arruamento - Incomum, confirmar atributação",
+            "descricao": "em_arruamento - Incomum, confirmar atributação (R103_A)",
             "regra": "em_arruamento in (1)",
             "tipo_estilo": "Atributo incomum",
             "camadas": [
@@ -246,7 +255,7 @@
         },
         {
             "atributo": "exibir_rotulo_aproximado",
-            "descricao": "exibir_rotulo_aproximado - Incomum, confirmar atributação",
+            "descricao": "exibir_rotulo_aproximado - Incomum, confirmar atributação (R5_A)",
             "regra": "exibir_rotulo_aproximado in (2)",
             "tipo_estilo": "Atributo incomum",
             "camadas": [
@@ -264,7 +273,7 @@
         },
         {
             "atributo": "finalidade",
-            "descricao": "finalidade - Atributo incorreto para este tipo",
+            "descricao": "finalidade - Atributo incorreto para este tipo (R23_V)",
             "regra": "((tipo - tipo %100)/100) in (1) and not (finalidade in (8))",
             "tipo_estilo": "Atributo incorreto",
             "camadas": [
@@ -273,7 +282,7 @@
         },
         {
             "atributo": "finalidade",
-            "descricao": "finalidade - Atributo incorreto para este tipo",
+            "descricao": "finalidade - Atributo incorreto para este tipo (R27_V)",
             "regra": "((tipo - tipo %100)/100) in (2) and not (finalidade in (2,3,4))",
             "tipo_estilo": "Atributo incorreto",
             "camadas": [
@@ -282,8 +291,8 @@
         },
         {
             "atributo": "finalidade",
-            "descricao": "finalidade - Atributo incorreto para este tipo",
-            "regra": "((tipo - tipo %100)/100) in (3) and not (finalidade in (2,8))",
+            "descricao": "finalidade - Atributo incorreto para este tipo (R30_V)",
+            "regra": "((tipo - tipo %100)/100) in (3) and not (finalidade in (0,2,8))",
             "tipo_estilo": "Atributo incorreto",
             "camadas": [
                 "edgv.constr_deposito_*"
@@ -300,7 +309,7 @@
         },
         {
             "atributo": "forma_extracao",
-            "descricao": "forma_extracao - Incomum, confirmar atributação",
+            "descricao": "forma_extracao - Incomum, confirmar atributação (R65_A)",
             "regra": "forma_extracao in (6)",
             "tipo_estilo": "Atributo incomum",
             "camadas": [
@@ -336,7 +345,7 @@
         },
         {
             "atributo": "jurisdicao",
-            "descricao": "jurisdicao - Incomum, confirmar atributação",
+            "descricao": "jurisdicao - Incomum, confirmar atributação (R105_A)",
             "regra": "jurisdicao in (6)",
             "tipo_estilo": "Atributo incomum",
             "camadas": [
@@ -345,7 +354,7 @@
         },
         {
             "atributo": "jurisdicao",
-            "descricao": "jurisdicao - Atributo incorreto para este tipo",
+            "descricao": "jurisdicao - Atributo incorreto para este tipo (R117_V)",
             "regra": "tipo in (2) and not (jurisdicao in (0,1,2))",
             "tipo_estilo": "Atributo incorreto",
             "camadas": [
@@ -354,7 +363,7 @@
         },
         {
             "atributo": "jurisdicao",
-            "descricao": "jurisdicao - Atributo incorreto para este tipo",
+            "descricao": "jurisdicao - Atributo incorreto para este tipo (R125_V)",
             "regra": "tipo in (3,5,6) and not (jurisdicao in (0))",
             "tipo_estilo": "Atributo incorreto",
             "camadas": [
@@ -363,7 +372,7 @@
         },
         {
             "atributo": "jurisdicao",
-            "descricao": "jurisdicao - Atributo incorreto para este tipo",
+            "descricao": "jurisdicao - Atributo incorreto para este tipo (R133_V)",
             "regra": "tipo in (4) and not (jurisdicao in (1,2))",
             "tipo_estilo": "Atributo incorreto",
             "camadas": [
@@ -381,7 +390,7 @@
         },
         {
             "atributo": "material_construcao",
-            "descricao": "material_construcao - Atributo Misto e Outros devem ser indicados no atributo observacao",
+            "descricao": "material_construcao - Atributo Misto e Outros devem ser indicados no atributo observacao (R152_V)",
             "regra": "material_construcao in (95, 98) and (observacao is NULL or observacao = '')",
             "tipo_estilo": "Atributo incorreto",
             "camadas": [
@@ -391,7 +400,7 @@
         },
         {
             "atributo": "material_construcao",
-            "descricao": "material_construcao - Atributo incorreto para este tipo",
+            "descricao": "material_construcao - Atributo incorreto para este tipo (R15_V)",
             "regra": "tipo in (108,109,132) and not (material_construcao in (0,1,2,3,5,98))",
             "tipo_estilo": "Atributo incorreto",
             "camadas": [
@@ -400,7 +409,7 @@
         },
         {
             "atributo": "material_construcao",
-            "descricao": "material_construcao - Atributo incorreto para este tipo",
+            "descricao": "material_construcao - Atributo incorreto para este tipo (R17_V)",
             "regra": "tipo in (110,112,113,198) and tipo_exposicao in (3,4) and not (material_construcao in (0,1,2,3,5,98))",
             "tipo_estilo": "Atributo incorreto",
             "camadas": [
@@ -409,7 +418,7 @@
         },
         {
             "atributo": "material_construcao",
-            "descricao": "material_construcao - Atributo incorreto para este tipo",
+            "descricao": "material_construcao - Atributo incorreto para este tipo (R20_V)",
             "regra": "(tipo in (110,112,113,198) and tipo_exposicao in (5)) and material_construcao in (0,1,2,3,5,97,98)",
             "tipo_estilo": "Atributo incorreto",
             "camadas": [
@@ -418,7 +427,7 @@
         },
         {
             "atributo": "material_construcao",
-            "descricao": "material_construcao - Atributo incorreto para este tipo",
+            "descricao": "material_construcao - Atributo incorreto para este tipo (R22_V)",
             "regra": "tipo in (111) and not (material_construcao in (0,1,2,3,98))",
             "tipo_estilo": "Atributo incorreto",
             "camadas": [
@@ -427,7 +436,7 @@
         },
         {
             "atributo": "material_construcao",
-            "descricao": "material_construcao - Atributo incorreto para este tipo",
+            "descricao": "material_construcao - Atributo incorreto para este tipo (R25_V)",
             "regra": "((tipo - tipo %100)/100) in (2,3) and not (material_construcao in (0,1,2,3,5,98))",
             "tipo_estilo": "Atributo incorreto",
             "camadas": [
@@ -436,7 +445,7 @@
         },
         {
             "atributo": "material_construcao",
-            "descricao": "material_construcao - Incomum, confirmar atributação",
+            "descricao": "material_construcao - Incomum, confirmar atributação (R21_A)",
             "regra": "(tipo in (110,112,113,198) and tipo_exposicao in (5)) and material_construcao in (1,2,3,5,98)",
             "tipo_estilo": "Atributo incomum",
             "camadas": [
@@ -445,7 +454,7 @@
         },
         {
             "atributo": "material_construcao",
-            "descricao": "material_construcao - Atributo incorreto para este tipo",
+            "descricao": "material_construcao - Atributo incorreto para este tipo (R32_V)",
             "regra": "(tipo in (0)) and not (material_construcao in (0))",
             "tipo_estilo": "Atributo incorreto",
             "camadas": [
@@ -454,7 +463,7 @@
         },
         {
             "atributo": "material_construcao",
-            "descricao": "material_construcao - Atributo incorreto para este tipo",
+            "descricao": "material_construcao - Atributo incorreto para este tipo (R33_V)",
             "regra": "(tipo in (3)) and not (material_construcao in (0,1,2,3,5))",
             "tipo_estilo": "Atributo incorreto",
             "camadas": [
@@ -463,7 +472,7 @@
         },
         {
             "atributo": "material_construcao",
-            "descricao": "material_construcao - Incomum, confirmar atributação",
+            "descricao": "material_construcao - Incomum, confirmar atributação (R34_A)",
             "regra": "(tipo in (3)) and not (material_construcao in (2))",
             "tipo_estilo": "Atributo incomum",
             "camadas": [
@@ -472,7 +481,7 @@
         },
         {
             "atributo": "material_construcao",
-            "descricao": "material_construcao - Atributo incorreto para este tipo",
+            "descricao": "material_construcao - Atributo incorreto para este tipo (R35_V)",
             "regra": "((tipo - tipo %100)/100) in (1) and not (material_construcao in (01,2,3,5))",
             "tipo_estilo": "Atributo incorreto",
             "camadas": [
@@ -481,7 +490,7 @@
         },
         {
             "atributo": "material_construcao",
-            "descricao": "material_construcao - Atributo incorreto para este tipo",
+            "descricao": "material_construcao - Atributo incorreto para este tipo (R36_V)",
             "regra": "((tipo - tipo %100)/100) in (2) and not (material_construcao in (0,1,2,3,5))",
             "tipo_estilo": "Atributo incorreto",
             "camadas": [
@@ -490,7 +499,7 @@
         },
         {
             "atributo": "material_construcao",
-            "descricao": "material_construcao - Atributo incorreto para este tipo",
+            "descricao": "material_construcao - Atributo incorreto para este tipo (R37_V)",
             "regra": "((tipo - tipo %100)/100) in (3) and not (material_construcao in (0,1,2,3,4,5,98))",
             "tipo_estilo": "Atributo incorreto",
             "camadas": [
@@ -499,7 +508,7 @@
         },
         {
             "atributo": "material_construcao",
-            "descricao": "material_construcao - Atributo incorreto para este tipo",
+            "descricao": "material_construcao - Atributo incorreto para este tipo (R38_V)",
             "regra": "((tipo - tipo %100)/100) in (4) and not (material_construcao in (0,1,2,3,5))",
             "tipo_estilo": "Atributo incorreto",
             "camadas": [
@@ -508,7 +517,7 @@
         },
         {
             "atributo": "material_construcao",
-            "descricao": "material_construcao - Atributo incorreto para este tipo",
+            "descricao": "material_construcao - Atributo incorreto para este tipo (R39_V)",
             "regra": "((tipo - tipo %100)/100) in (5) and not (material_construcao in (0,1,2,3,5))",
             "tipo_estilo": "Atributo incorreto",
             "camadas": [
@@ -517,7 +526,7 @@
         },
         {
             "atributo": "material_construcao",
-            "descricao": "material_construcao - Atributo incorreto para este tipo",
+            "descricao": "material_construcao - Atributo incorreto para este tipo (R40_V)",
             "regra": "((tipo - tipo %100)/100) in (6) and not (material_construcao in (0,1,2,3,4,5,98))",
             "tipo_estilo": "Atributo incorreto",
             "camadas": [
@@ -526,7 +535,7 @@
         },
         {
             "atributo": "material_construcao",
-            "descricao": "material_construcao - Atributo incorreto para este tipo",
+            "descricao": "material_construcao - Atributo incorreto para este tipo (R41_V)",
             "regra": "tipo in (709,710,711,712) and not (material_construcao in (0))",
             "tipo_estilo": "Atributo incorreto",
             "camadas": [
@@ -535,7 +544,7 @@
         },
         {
             "atributo": "material_construcao",
-            "descricao": "material_construcao - Atributo incorreto para este tipo",
+            "descricao": "material_construcao - Atributo incorreto para este tipo (R42_V)",
             "regra": "tipo in (713,798) and not (material_construcao in (0,1,2,3,4,5,98))",
             "tipo_estilo": "Atributo incorreto",
             "camadas": [
@@ -544,7 +553,7 @@
         },
         {
             "atributo": "material_construcao",
-            "descricao": "material_construcao - Atributo incorreto para este tipo",
+            "descricao": "material_construcao - Atributo incorreto para este tipo (R43_V)",
             "regra": "((tipo - tipo %100)/100) in (8) and not (material_construcao in (0,1,2,3,4,5,98))",
             "tipo_estilo": "Atributo incorreto",
             "camadas": [
@@ -553,7 +562,7 @@
         },
         {
             "atributo": "material_construcao",
-            "descricao": "material_construcao - Atributo incorreto para este tipo",
+            "descricao": "material_construcao - Atributo incorreto para este tipo (R44_V)",
             "regra": "((tipo - tipo %100)/100) in (9) and not (material_construcao in (0,1,2,3,4,5,98))",
             "tipo_estilo": "Atributo incorreto",
             "camadas": [
@@ -562,7 +571,7 @@
         },
         {
             "atributo": "material_construcao",
-            "descricao": "material_construcao - Atributo incorreto para este tipo",
+            "descricao": "material_construcao - Atributo incorreto para este tipo (R45_V)",
             "regra": "((tipo - tipo %100)/100) in (10) and not (material_construcao in (0,1,2,3,4,5))",
             "tipo_estilo": "Atributo incorreto",
             "camadas": [
@@ -571,7 +580,7 @@
         },
         {
             "atributo": "material_construcao",
-            "descricao": "material_construcao - Atributo incorreto para este tipo",
+            "descricao": "material_construcao - Atributo incorreto para este tipo (R46_V)",
             "regra": "((tipo - tipo %100)/100) in (11) and not (material_construcao in (0,1,2,3,4,5,98))",
             "tipo_estilo": "Atributo incorreto",
             "camadas": [
@@ -580,7 +589,7 @@
         },
         {
             "atributo": "material_construcao",
-            "descricao": "material_construcao - Atributo incorreto para este tipo",
+            "descricao": "material_construcao - Atributo incorreto para este tipo (R47_V)",
             "regra": "((tipo - tipo %100)/100) in (12) and not (material_construcao in (0,1,2,3,4,5,98))",
             "tipo_estilo": "Atributo incorreto",
             "camadas": [
@@ -589,7 +598,7 @@
         },
         {
             "atributo": "material_construcao",
-            "descricao": "material_construcao - Atributo incorreto para este tipo",
+            "descricao": "material_construcao - Atributo incorreto para este tipo (R48_V)",
             "regra": "((tipo - tipo %100)/100) in (13) and not (material_construcao in (0,1,2,3,4,5,98))",
             "tipo_estilo": "Atributo incorreto",
             "camadas": [
@@ -598,7 +607,7 @@
         },
         {
             "atributo": "material_construcao",
-            "descricao": "material_construcao - Atributo incorreto para este tipo",
+            "descricao": "material_construcao - Atributo incorreto para este tipo (R49_V)",
             "regra": "((tipo - tipo %100)/100) in (14) and not (material_construcao in (97))",
             "tipo_estilo": "Atributo incorreto",
             "camadas": [
@@ -607,7 +616,7 @@
         },
         {
             "atributo": "material_construcao",
-            "descricao": "material_construcao - Atributo incorreto para este tipo",
+            "descricao": "material_construcao - Atributo incorreto para este tipo (R50_V)",
             "regra": "((tipo - tipo %100)/100) in (15) and not (material_construcao in (0,1,2,3,5))",
             "tipo_estilo": "Atributo incorreto",
             "camadas": [
@@ -616,7 +625,7 @@
         },
         {
             "atributo": "material_construcao",
-            "descricao": "material_construcao - Atributo incorreto para este tipo",
+            "descricao": "material_construcao - Atributo incorreto para este tipo (R51_V)",
             "regra": "((tipo - tipo %100)/100) in (17) and not (material_construcao in (0,1,2,3,4,5,98))",
             "tipo_estilo": "Atributo incorreto",
             "camadas": [
@@ -625,7 +634,7 @@
         },
         {
             "atributo": "material_construcao",
-            "descricao": "material_construcao - Atributo incorreto para este tipo",
+            "descricao": "material_construcao - Atributo incorreto para este tipo (R52_V)",
             "regra": "((tipo - tipo %100)/100) in (19) and not (material_construcao in (0,1,2,3,5,98))",
             "tipo_estilo": "Atributo incorreto",
             "camadas": [
@@ -634,7 +643,7 @@
         },
         {
             "atributo": "material_construcao",
-            "descricao": "material_construcao - Atributo incorreto para este tipo",
+            "descricao": "material_construcao - Atributo incorreto para este tipo (R53_V)",
             "regra": "((tipo - tipo %100)/100) in (20) and not (material_construcao in (0,1,2,3,5,98))",
             "tipo_estilo": "Atributo incorreto",
             "camadas": [
@@ -643,7 +652,7 @@
         },
         {
             "atributo": "material_construcao",
-            "descricao": "material_construcao - Atributo incorreto para este tipo",
+            "descricao": "material_construcao - Atributo incorreto para este tipo (R54_V)",
             "regra": "((tipo - tipo %100)/100) in (21) and not (material_construcao in (0,1,2,3,5,98))",
             "tipo_estilo": "Atributo incorreto",
             "camadas": [
@@ -652,7 +661,7 @@
         },
         {
             "atributo": "material_construcao",
-            "descricao": "material_construcao - Atributo incorreto para este tipo",
+            "descricao": "material_construcao - Atributo incorreto para este tipo (R55_V)",
             "regra": "((tipo - tipo %100)/100) in (22) and not (material_construcao in (0,1,2,3,5))",
             "tipo_estilo": "Atributo incorreto",
             "camadas": [
@@ -661,7 +670,7 @@
         },
         {
             "atributo": "material_construcao",
-            "descricao": "material_construcao - Atributo incorreto para este tipo",
+            "descricao": "material_construcao - Atributo incorreto para este tipo (R56_V)",
             "regra": "((tipo - tipo %100)/100) in (23) and not (material_construcao in (0,1,2,3,5))",
             "tipo_estilo": "Atributo incorreto",
             "camadas": [
@@ -670,7 +679,7 @@
         },
         {
             "atributo": "material_construcao",
-            "descricao": "material_construcao - Atributo incorreto para este tipo",
+            "descricao": "material_construcao - Atributo incorreto para este tipo (R57_V)",
             "regra": "((tipo - tipo %100)/100) in (24) and not (material_construcao in (0,1,2,3,5,98))",
             "tipo_estilo": "Atributo incorreto",
             "camadas": [
@@ -679,7 +688,7 @@
         },
         {
             "atributo": "material_construcao",
-            "descricao": "material_construcao - Atributo incorreto para este tipo",
+            "descricao": "material_construcao - Atributo incorreto para este tipo (R58_V)",
             "regra": "((tipo - tipo %100)/100) in (25) and not (material_construcao in (0,1,2,3,5))",
             "tipo_estilo": "Atributo incorreto",
             "camadas": [
@@ -688,7 +697,7 @@
         },
         {
             "atributo": "material_construcao",
-            "descricao": "material_construcao - Atributo incorreto para este tipo",
+            "descricao": "material_construcao - Atributo incorreto para este tipo (R59_V)",
             "regra": "((tipo - tipo %100)/100) in (26) and not (material_construcao in (0,1,2,3,5))",
             "tipo_estilo": "Atributo incorreto",
             "camadas": [
@@ -697,7 +706,7 @@
         },
         {
             "atributo": "material_construcao",
-            "descricao": "material_construcao - Atributo incorreto para este tipo",
+            "descricao": "material_construcao - Atributo incorreto para este tipo (R60_V)",
             "regra": "((tipo - tipo %100)/100) in (29) and not (material_construcao in (0,1,2,3,4,5,98))",
             "tipo_estilo": "Atributo incorreto",
             "camadas": [
@@ -706,7 +715,7 @@
         },
         {
             "atributo": "material_construcao",
-            "descricao": "material_construcao - Atributo incorreto para este tipo",
+            "descricao": "material_construcao - Atributo incorreto para este tipo (R61_V)",
             "regra": "((tipo - tipo %100)/100) in (30) and not (material_construcao in (0,1,2,3,4,5,98))",
             "tipo_estilo": "Atributo incorreto",
             "camadas": [
@@ -715,7 +724,7 @@
         },
         {
             "atributo": "material_construcao",
-            "descricao": "material_construcao - Incomum, confirmar atributação",
+            "descricao": "material_construcao - Incomum, confirmar atributação (R75_A)",
             "regra": "material_construcao in (1)",
             "tipo_estilo": "Atributo incomum",
             "camadas": [
@@ -724,7 +733,7 @@
         },
         {
             "atributo": "material_construcao",
-            "descricao": "material_construcao - Incomum, confirmar atributação",
+            "descricao": "material_construcao - Incomum, confirmar atributação (R80_A)",
             "regra": "material_construcao in (1,4)",
             "tipo_estilo": "Atributo incomum",
             "camadas": [
@@ -733,8 +742,8 @@
         },
         {
             "atributo": "material_construcao",
-            "descricao": "material_construcao - Incomum, confirmar atributação",
-            "regra": "tipo in (302) and  material_construcao in (5)",
+            "descricao": "material_construcao - Incomum, confirmar atributação (R93_A)",
+            "regra": "tipo in (302) and material_construcao in (5)",
             "tipo_estilo": "Atributo incomum",
             "camadas": [
                 "edgv.infra_elemento_viario_*"
@@ -742,7 +751,7 @@
         },
         {
             "atributo": "material_construcao",
-            "descricao": "material_construcao - Atributo incorreto para este tipo",
+            "descricao": "material_construcao - Atributo incorreto para este tipo (R79_V)",
             "regra": "((tipo - tipo %100)/100) in (1,2,5,6,7) and not (material_construcao in (0,1,2,3,4,5))",
             "tipo_estilo": "Atributo incorreto",
             "camadas": [
@@ -751,7 +760,7 @@
         },
         {
             "atributo": "material_construcao",
-            "descricao": "material_construcao - Atributo incorreto para este tipo",
+            "descricao": "material_construcao - Atributo incorreto para este tipo (R89_V)",
             "regra": "tipo in (301) and not (material_construcao in (2,3))",
             "tipo_estilo": "Atributo incorreto",
             "camadas": [
@@ -760,7 +769,7 @@
         },
         {
             "atributo": "material_construcao",
-            "descricao": "material_construcao - Atributo incorreto para este tipo",
+            "descricao": "material_construcao - Atributo incorreto para este tipo (R92_V)",
             "regra": "tipo in (302) and not (material_construcao in (2,3,5))",
             "tipo_estilo": "Atributo incorreto",
             "camadas": [
@@ -769,7 +778,7 @@
         },
         {
             "atributo": "material_construcao",
-            "descricao": "material_construcao - Atributo incorreto para este tipo",
+            "descricao": "material_construcao - Atributo incorreto para este tipo (R95_V)",
             "regra": "((tipo - tipo %100)/100) in (4,7) and not (material_construcao in (97))",
             "tipo_estilo": "Atributo incorreto",
             "camadas": [
@@ -778,7 +787,7 @@
         },
         {
             "atributo": "material_construcao",
-            "descricao": "material_construcao - Atributo incorreto para este tipo",
+            "descricao": "material_construcao - Atributo incorreto para este tipo (R140_V)",
             "regra": "tipo in (1) and not (material_construcao in (0,5,98))",
             "tipo_estilo": "Atributo incorreto",
             "camadas": [
@@ -787,7 +796,7 @@
         },
         {
             "atributo": "material_construcao",
-            "descricao": "material_construcao - Atributo incorreto para este tipo",
+            "descricao": "material_construcao - Atributo incorreto para este tipo (R141_V)",
             "regra": "tipo in (2) and not (material_construcao in (0,1,4,98))",
             "tipo_estilo": "Atributo incorreto",
             "camadas": [
@@ -805,7 +814,7 @@
         },
         {
             "atributo": "modal_uso",
-            "descricao": "modal_uso - Atributo incorreto para este tipo",
+            "descricao": "modal_uso - Atributo incorreto para este tipo (R81_V)",
             "regra": "((tipo - tipo %100)/100) in (1) and not (modal_uso in (4,5,6,8))",
             "tipo_estilo": "Atributo incorreto",
             "camadas": [
@@ -814,7 +823,7 @@
         },
         {
             "atributo": "modal_uso",
-            "descricao": "modal_uso - Incomum, confirmar atributação",
+            "descricao": "modal_uso - Incomum, confirmar atributação (R82_A)",
             "regra": "modal_uso in (3,8,9)",
             "tipo_estilo": "Atributo incomum",
             "camadas": [
@@ -823,7 +832,7 @@
         },
         {
             "atributo": "modal_uso",
-            "descricao": "modal_uso - Atributo incorreto para este tipo",
+            "descricao": "modal_uso - Atributo incorreto para este tipo (R87_V)",
             "regra": "((tipo - tipo %100)/100) in (2) and not (modal_uso in (4,5,8,9))",
             "tipo_estilo": "Atributo incorreto",
             "camadas": [
@@ -832,7 +841,7 @@
         },
         {
             "atributo": "modal_uso",
-            "descricao": "modal_uso - Atributo incorreto para este tipo",
+            "descricao": "modal_uso - Atributo incorreto para este tipo (R90_V)",
             "regra": "((tipo - tipo %100)/100) in (3) and not (modal_uso in (3,4,5,8,9))",
             "tipo_estilo": "Atributo incorreto",
             "camadas": [
@@ -841,7 +850,7 @@
         },
         {
             "atributo": "modal_uso",
-            "descricao": "modal_uso - Atributo incorreto para este tipo",
+            "descricao": "modal_uso - Atributo incorreto para este tipo (R96_V)",
             "regra": "((tipo - tipo %100)/100) in (4) and not (modal_uso in (4))",
             "tipo_estilo": "Atributo incorreto",
             "camadas": [
@@ -850,7 +859,7 @@
         },
         {
             "atributo": "modal_uso",
-            "descricao": "modal_uso - Atributo incorreto para este tipo",
+            "descricao": "modal_uso - Atributo incorreto para este tipo (R97_V)",
             "regra": "((tipo - tipo %100)/100) in (5,6,7) and not (modal_uso in (97))",
             "tipo_estilo": "Atributo incorreto",
             "camadas": [
@@ -859,7 +868,7 @@
         },
         {
             "atributo": "nome",
-            "descricao": "nome - Nome deve iniciar com letra maiuscula e não deve ter espaços desnecessários",
+            "descricao": "nome - Nome deve iniciar com letra maiuscula e não deve ter espaços desnecessários (R1_V)",
             "regra": "(regexp_match ( nome , '^ ' ) or regexp_match ( nome , '  ' ) or regexp_match ( nome , ' $' ) or regexp_match ( nome , '^[a-z]' ))",
             "tipo_estilo": "Atributo incorreto",
             "camadas": [
@@ -868,8 +877,8 @@
         },
         {
             "atributo": "nome",
-            "descricao": "nome - string vazia, setar atributo para null",
-            "regra": "nome  is not null and  length( nome)<2",
+            "descricao": "nome - string vazia, setar atributo para null (R2_V)",
+            "regra": "nome is not null and length( nome)<2",
             "tipo_estilo": "Atributo incorreto",
             "camadas": [
                 "edgv.*"
@@ -877,8 +886,8 @@
         },
         {
             "atributo": "nome",
-            "descricao": "nome - Nome não nulo em edificação genérica",
-            "regra": " tipo = 0 and nome is not null",
+            "descricao": "nome - Nome não nulo em edificação genérica (R153_V)",
+            "regra": "tipo = 0 and nome is not null",
             "tipo_estilo": "Atributo incorreto",
             "camadas": [
                 "edgv.constr_edificacao_*"
@@ -886,8 +895,8 @@
         },
         {
             "atributo": "nome",
-            "descricao": "nome - todas feições dessa classe necessitam de nome",
-            "regra": "nome  is null",
+            "descricao": "nome - todas feições dessa classe necessitam de nome (R4_V)",
+            "regra": "nome is null",
             "tipo_estilo": "Atributo incorreto",
             "camadas": [
                 "edgv.elemnat_ilha_*",
@@ -900,7 +909,7 @@
         },
         {
             "atributo": "nr_faixas",
-            "descricao": "nr_faixas - Preencher atributo",
+            "descricao": "nr_faixas - Preencher atributo (R154_V)",
             "regra": "nr_faixas is NULL or nr_faixas = ''",
             "tipo_estilo": "Preencher atributo",
             "camadas": [
@@ -909,8 +918,8 @@
         },
         {
             "atributo": "nr_faixas",
-            "descricao": "nr_faixas - Atributo incorreto para este tipo",
-            "regra": "((modal_uso in (4,8) and not (nr_faixas >=1)) or ( ((tipo -tipo %100)/100) in (4)) and (nr_faixas =0))",
+            "descricao": "nr_faixas - Atributo incorreto para este tipo (R83_V)",
+            "regra": "(modal_uso in (4,8) and not (nr_faixas >=1)) or (modal_uso not in (4,8) and not(nr_faixas =0))",
             "tipo_estilo": "Atributo incorreto",
             "camadas": [
                 "edgv.infra_elemento_viario_*"
@@ -918,7 +927,7 @@
         },
         {
             "atributo": "nr_faixas",
-            "descricao": "nr_faixas - Atributo incorreto para este tipo",
+            "descricao": "nr_faixas - Atributo incorreto para este tipo (R113_V)",
             "regra": "tipo in (2,5) and not (nr_faixas >=1)",
             "tipo_estilo": "Atributo incorreto",
             "camadas": [
@@ -927,7 +936,7 @@
         },
         {
             "atributo": "nr_faixas",
-            "descricao": "nr_faixas - Incomum, confirmar atributação",
+            "descricao": "nr_faixas - Incomum, confirmar atributação (R114_A)",
             "regra": "tipo in (2) and nr_faixas > 4",
             "tipo_estilo": "Atributo incomum",
             "camadas": [
@@ -936,7 +945,7 @@
         },
         {
             "atributo": "nr_faixas",
-            "descricao": "nr_faixas - Atributo incorreto para este tipo",
+            "descricao": "nr_faixas - Atributo incorreto para este tipo (R121_V)",
             "regra": "tipo in (3,6) and not (nr_faixas =1)",
             "tipo_estilo": "Atributo incorreto",
             "camadas": [
@@ -945,7 +954,7 @@
         },
         {
             "atributo": "nr_faixas",
-            "descricao": "nr_faixas - Atributo incorreto para este tipo",
+            "descricao": "nr_faixas - Atributo incorreto para este tipo (R130_V)",
             "regra": "tipo in (4) and not (nr_faixas >=4)",
             "tipo_estilo": "Atributo incorreto",
             "camadas": [
@@ -972,7 +981,16 @@
         },
         {
             "atributo": "nr_pistas",
-            "descricao": "nr_pistas - Relacionamento incorreto com nr_faixas",
+            "descricao": "nr_pistas - Atributo incorreto para este tipo (R84_V)",
+            "regra": "(modal_uso in (4,8) and not (nr_pistas >=1)) or (modal_uso not in (4,8) and not(nr_pistas =0))",
+            "tipo_estilo": "Atributo incorreto",
+            "camadas": [
+                "edgv.infra_elemento_viario_*"
+            ]
+        },
+        {
+            "atributo": "nr_pistas",
+            "descricao": "nr_pistas - Relacionamento incorreto com nr_faixas (R85_V)",
             "regra": "nr_pistas > nr_faixas",
             "tipo_estilo": "Atributo incorreto",
             "camadas": [
@@ -981,16 +999,7 @@
         },
         {
             "atributo": "nr_pistas",
-            "descricao": "nr_pistas - Atributo incorreto para este tipo",
-            "regra": "((modal_uso in (4,8) and not (nr_pistas >=1)) or ( ((tipo -tipo %100)/100) in (4)) and not (nr_pistas =0)) or (nr_pistas =0)",
-            "tipo_estilo": "Atributo incorreto",
-            "camadas": [
-                "edgv.infra_elemento_viario_*"
-            ]
-        },
-        {
-            "atributo": "nr_pistas",
-            "descricao": "nr_pistas - Atributo incorreto para este tipo",
+            "descricao": "nr_pistas - Atributo incorreto para este tipo (R115_V)",
             "regra": "tipo in (2,5) and not (nr_pistas >=1)",
             "tipo_estilo": "Atributo incorreto",
             "camadas": [
@@ -999,7 +1008,7 @@
         },
         {
             "atributo": "nr_pistas",
-            "descricao": "nr_pistas - relacionamento com canterio_divisorio incorreto",
+            "descricao": "nr_pistas - relacionamento com canterio_divisorio incorreto (R116_V)",
             "regra": "canteiro_divisorio in (1) and not (nr_pistas >1)",
             "tipo_estilo": "Atributo incorreto",
             "camadas": [
@@ -1008,7 +1017,7 @@
         },
         {
             "atributo": "nr_pistas",
-            "descricao": "nr_pistas - Atributo incorreto para este tipo",
+            "descricao": "nr_pistas - Atributo incorreto para este tipo (R122_V)",
             "regra": "tipo in (3,6) and not (nr_pistas =1)",
             "tipo_estilo": "Atributo incorreto",
             "camadas": [
@@ -1017,7 +1026,7 @@
         },
         {
             "atributo": "nr_pistas",
-            "descricao": "nr_pistas - Atributo incorreto para este tipo",
+            "descricao": "nr_pistas - Atributo incorreto para este tipo (R131_V)",
             "regra": "tipo in (4) and not (nr_pistas >=2)",
             "tipo_estilo": "Atributo incorreto",
             "camadas": [
@@ -1026,7 +1035,7 @@
         },
         {
             "atributo": "nr_pistas",
-            "descricao": "nr_pistas - Incomum, confirmar atributação",
+            "descricao": "nr_pistas - Incomum, confirmar atributação (R132_V)",
             "regra": "nr_pistas > 2",
             "tipo_estilo": "Atributo incomum",
             "camadas": [
@@ -1035,7 +1044,7 @@
         },
         {
             "atributo": "populacao",
-            "descricao": "população - Atributo incorreto",
+            "descricao": "população - Atributo incorreto (R142_V)",
             "regra": "(tipo in (1,2,3) and (populacao is NULL)) or (not(tipo in (1,2,3)) and (not(populacao is NULL)))",
             "tipo_estilo": "Atributo incorreto",
             "camadas": [
@@ -1053,7 +1062,7 @@
         },
         {
             "atributo": "posicao_pista",
-            "descricao": "posicao_pista - Incomum, confirmar atributação",
+            "descricao": "posicao_pista - Incomum, confirmar atributação (R155_A)",
             "regra": "posicao_pista in (13)",
             "tipo_estilo": "Atributo incomum",
             "camadas": [
@@ -1062,8 +1071,8 @@
         },
         {
             "atributo": "posicao_pista",
-            "descricao": "posicao_pista - Atributo incorreto para este tipo",
-            "regra": "(((tipo -tipo %100)/100) in (1)) and posicao_pista not in (97) or ((((tipo -tipo %100)/100) not in (1)) and (nr_pistas = 0) and posicao_pista not in (97)) or (( ((tipo -tipo %100)/100) not in (1)) and (nr_pistas != 0) and posicao_pista not in (12,13))",
+            "descricao": "posicao_pista - Atributo incorreto para este tipo (R88_V)",
+            "regra": "((nr_pistas <= 1) and posicao_pista not in (97)) or ((nr_pistas > 1) and posicao_pista not in (12,13)) or (modal_uso in (3,5,6,97) and posicao_pista not in (97))",
             "tipo_estilo": "Atributo incorreto",
             "camadas": [
                 "edgv.infra_elemento_viario_*"
@@ -1080,7 +1089,7 @@
         },
         {
             "atributo": "posicao_relativa",
-            "descricao": "posicao_relativa - Atributo incorreto para este tipo",
+            "descricao": "posicao_relativa - Atributo incorreto para este tipo (R99_V)",
             "regra": "tipo in (5) and not (posicao_relativa in (2,3))",
             "tipo_estilo": "Atributo incorreto",
             "camadas": [
@@ -1089,7 +1098,7 @@
         },
         {
             "atributo": "posicao_relativa",
-            "descricao": "posicao_relativa - Atributo incorreto para este tipo",
+            "descricao": "posicao_relativa - Atributo incorreto para este tipo (R100_V)",
             "regra": "tipo in (6) and not (posicao_relativa in (3))",
             "tipo_estilo": "Atributo incorreto",
             "camadas": [
@@ -1098,7 +1107,7 @@
         },
         {
             "atributo": "posicao_relativa",
-            "descricao": "posicao_relativa - Atributo incorreto para este tipo",
+            "descricao": "posicao_relativa - Atributo incorreto para este tipo (R101_V)",
             "regra": "tipo in (7,8) and not (posicao_relativa in (2,3,6))",
             "tipo_estilo": "Atributo incorreto",
             "camadas": [
@@ -1125,7 +1134,7 @@
         },
         {
             "atributo": "referencial_grav",
-            "descricao": "referencial_grav - Atributo incorreto para este tipo",
+            "descricao": "referencial_grav - Atributo incorreto para este tipo (R146_V)",
             "regra": "tipo in (1, 2, 4, 5, 6, 7, 8, 9, 12, 13, 14, 15, 16) and not (referencial_grav in (97))",
             "tipo_estilo": "Atributo incorreto",
             "camadas": [
@@ -1134,7 +1143,7 @@
         },
         {
             "atributo": "referencial_grav",
-            "descricao": "referencial_grav - Atributo incorreto para este tipo",
+            "descricao": "referencial_grav - Atributo incorreto para este tipo (R147_V)",
             "regra": "tipo in (3) and not (referencial_grav in (1, 2, 3, 4))",
             "tipo_estilo": "Atributo incorreto",
             "camadas": [
@@ -1152,25 +1161,17 @@
         },
         {
             "atributo": "regime",
-            "descricao": "regime - Atributo incorreto para este tipo",
+            "descricao": "regime - Atributo incorreto para este tipo (R10_V)",
             "regra": "tipo in (3,4,5,9) and not(regime in (1))",
             "tipo_estilo": "Atributo incorreto",
             "camadas": [
-                "edgv.cobter_massa_dagua_a"
+                "edgv.cobter_massa_dagua_a",
+                "edgv.centroide_massa_dagua_p"
             ]
         },
         {
             "atributo": "regime",
-            "descricao": "regime - Incomum, confirmar atributação",
-            "regra": "regime in (3,5)",
-            "tipo_estilo": "Atributo incomum",
-            "camadas": [
-                "edgv.cobter_massa_dagua_a"
-            ]
-        },
-        {
-            "atributo": "regime",
-            "descricao": "regime - Atributo incorreto para este tipo",
+            "descricao": "regime - Atributo incorreto para este tipo (R71_V)",
             "regra": "tipo in (1,2,4) and not (regime in (0,1,3,5))",
             "tipo_estilo": "Atributo incorreto",
             "camadas": [
@@ -1179,7 +1180,7 @@
         },
         {
             "atributo": "regime",
-            "descricao": "regime - Atributo incorreto para este tipo",
+            "descricao": "regime - Atributo incorreto para este tipo (R73_V)",
             "regra": "tipo in (3) and not (regime in (0,5))",
             "tipo_estilo": "Atributo incorreto",
             "camadas": [
@@ -1188,7 +1189,7 @@
         },
         {
             "atributo": "regime",
-            "descricao": "regime - Incomum, confirmar atributação",
+            "descricao": "regime - Incomum, confirmar atributação (R72_A)",
             "regra": "tipo in (1,2,4) and regime in (3,5)",
             "tipo_estilo": "Atributo incomum",
             "camadas": [
@@ -1206,7 +1207,7 @@
         },
         {
             "atributo": "revestimento",
-            "descricao": "revestimento - Incomum, confirmar atributação",
+            "descricao": "revestimento - Incomum, confirmar atributação (R111_A)",
             "regra": "revestimento in (1)",
             "tipo_estilo": "Atributo incomum",
             "camadas": [
@@ -1215,8 +1216,8 @@
         },
         {
             "atributo": "revestimento",
-            "descricao": "revestimento - Incomum, confirmar atributação",
-            "regra": "revestimento in (4)",
+            "descricao": "revestimento - Incomum, confirmar atributação (R112_A)",
+            "regra": "tipo not in (5) and revestimento in (4)",
             "tipo_estilo": "Atributo incomum",
             "camadas": [
                 "edgv.infra_via_deslocamento_l"
@@ -1224,7 +1225,7 @@
         },
         {
             "atributo": "revestimento",
-            "descricao": "revestimento - Atributo incorreto para este tipo",
+            "descricao": "revestimento - Atributo incorreto para este tipo (R119_V)",
             "regra": "tipo in (3,6) and not (revestimento in (1))",
             "tipo_estilo": "Atributo incorreto",
             "camadas": [
@@ -1233,7 +1234,7 @@
         },
         {
             "atributo": "revestimento",
-            "descricao": "revestimento - Atributo incorreto para este tipo",
+            "descricao": "revestimento - Atributo incorreto para este tipo (R128_V)",
             "regra": "tipo in (4) and not (revestimento in (3))",
             "tipo_estilo": "Atributo incorreto",
             "camadas": [
@@ -1242,7 +1243,7 @@
         },
         {
             "atributo": "sigla",
-            "descricao": "sigla - Falta atributo ou atributo errado para a jurisdição",
+            "descricao": "sigla - Falta atributo ou atributo errado para a jurisdição (R135_V)",
             "regra": "(sigla is not NULL and not (jurisdicao in (1,2))) or (jurisdicao in (1,2) and sigla is NULL)",
             "tipo_estilo": "Atributo incorreto",
             "camadas": [
@@ -1251,7 +1252,7 @@
         },
         {
             "atributo": "sigla",
-            "descricao": "sigla - Rodovia Federal sem sigla BR",
+            "descricao": "sigla - Rodovia Federal sem sigla BR (R136_V)",
             "regra": "jurisdicao in (1) and not (array_contains( array_foreach( string_to_array( sigla,';'),(regexp_match( @element, '^BR-\\\\d\\\\d\\\\d$'))), true))",
             "tipo_estilo": "Atributo incorreto",
             "camadas": [
@@ -1260,7 +1261,7 @@
         },
         {
             "atributo": "sigla",
-            "descricao": "sigla - Rodovia Estadual com sigla BR",
+            "descricao": "sigla - Rodovia Estadual com sigla BR (R137_V)",
             "regra": "jurisdicao in (2) and (array_contains( array_foreach( string_to_array( sigla,';'),(regexp_match( @element, '^BR-\\\\d\\\\d\\\\d$'))), true)) and (array_contains( array_foreach( string_to_array( sigla,';'),not ( regexp_match( @element, '^(AC|AL|AM|AP|BA|CE|DF|ES|GO|MA|MG|MS|MT|PA|PB|PE|PI|PR|RJ|RN|RO|RR|RS|SC|SE|SP|TO)-\\\\d\\\\d\\\\d$'))), true))",
             "tipo_estilo": "Atributo incorreto",
             "camadas": [
@@ -1296,7 +1297,7 @@
         },
         {
             "atributo": "situacao_fisica",
-            "descricao": "situacao_fisica - Incomum, confirmar atributação",
+            "descricao": "situacao_fisica - Incomum, confirmar atributação (R3_A)",
             "regra": "situacao_fisica in (1, 2, 4)",
             "tipo_estilo": "Atributo incomum",
             "camadas": [
@@ -1305,7 +1306,7 @@
         },
         {
             "atributo": "situacao_fisica",
-            "descricao": "situacao_fisica - Atributo incorreto para este tipo",
+            "descricao": "situacao_fisica - Atributo incorreto para este tipo (R19_V)",
             "regra": "tipo in (110,112,113,198) and tipo_exposicao in (5) and not situacao_fisica in (1,3)",
             "tipo_estilo": "Atributo incorreto",
             "camadas": [
@@ -1314,7 +1315,7 @@
         },
         {
             "atributo": "situacao_fisica",
-            "descricao": "situacao_fisica - Atributo incorreto para este tipo",
+            "descricao": "situacao_fisica - Atributo incorreto para este tipo (R124_V)",
             "regra": "tipo in (3,6) and not (situacao_fisica in (3))",
             "tipo_estilo": "Atributo incorreto",
             "camadas": [
@@ -1332,7 +1333,7 @@
         },
         {
             "atributo": "situacao_marco",
-            "descricao": "situacao_marco - Atributo incorreto para este tipo",
+            "descricao": "situacao_marco - Atributo incorreto para este tipo (R148_V)",
             "regra": "tipo in (1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 13) and not (situacao_marco in (1, 2, 3, 4, 5, 6))",
             "tipo_estilo": "Atributo incorreto",
             "camadas": [
@@ -1341,7 +1342,7 @@
         },
         {
             "atributo": "situacao_marco",
-            "descricao": "situacao_marco - Atributo incorreto para este tipo",
+            "descricao": "situacao_marco - Atributo incorreto para este tipo (R149_V)",
             "regra": "tipo in (14, 15, 16) and not (situacao_marco in (97))",
             "tipo_estilo": "Atributo incorreto",
             "camadas": [
@@ -1368,16 +1369,7 @@
         },
         {
             "atributo": "tipo",
-            "descricao": "tipo - Incomum, confirmar atributação",
-            "regra": "tipo in (2, 3, 4, 5, 6, 9)",
-            "tipo_estilo": "Atributo incomum",
-            "camadas": [
-                "edgv.cobter_massa_dagua_a"
-            ]
-        },
-        {
-            "atributo": "tipo",
-            "descricao": "tipo - Atributo Misto e Outros devem ser indicados no atributo observacao",
+            "descricao": "tipo - Atributo Misto e Outros devem ser indicados no atributo observacao (R63_V)",
             "regra": "(tipo %100) in (95, 98) and (observacao is NULL or observacao = '')",
             "tipo_estilo": "Atributo incorreto",
             "camadas": [
@@ -1388,9 +1380,9 @@
             ]
         },
         {
-            "atributo": "tipo",
-            "descricao": "tipo - Incomum, confirmar atributação",
-            "regra": "tipo in (111, 112, 202, 306)",
+            "atributo": "material_construcao",
+            "descricao": "material_construcao - Incomum, confirmar atributação (R26_A)",
+            "regra": "((tipo - tipo %100)/100) in (2) and (material_construcao in (5))",
             "tipo_estilo": "Atributo incomum",
             "camadas": [
                 "edgv.constr_deposito_*"
@@ -1398,7 +1390,16 @@
         },
         {
             "atributo": "tipo",
-            "descricao": "tipo - Incomum, confirmar atributação",
+            "descricao": "tipo - Incomum, confirmar atributação (R28_A)",
+            "regra": "tipo in (111,112,306)",
+            "tipo_estilo": "Atributo incomum",
+            "camadas": [
+                "edgv.constr_deposito_*"
+            ]
+        },
+        {
+            "atributo": "tipo",
+            "descricao": "tipo - Incomum, confirmar atributação (R62_A)",
             "regra": "((tipo - tipo %100)/100) in (1, 7, 14, 15, 16) or tipo in (3, 602, 603, 604, 605, 606, 607, 1306, 2030, 2031, 2320)",
             "tipo_estilo": "Atributo incomum",
             "camadas": [
@@ -1407,7 +1408,7 @@
         },
         {
             "atributo": "tipo",
-            "descricao": "tipo - Incomum, confirmar atributação",
+            "descricao": "tipo - Incomum, confirmar atributação (R64_A)",
             "regra": "tipo in (1, 5, 6, 8)",
             "tipo_estilo": "Atributo incomum",
             "camadas": [
@@ -1416,8 +1417,8 @@
         },
         {
             "atributo": "tipo",
-            "descricao": "tipo - Incomum, confirmar atributação",
-            "regra": "((tipo - tipo %100)/100) in (3, 4, 5, 6, 7,10,16) or tipo in (101, 102, 103, 204, 205)",
+            "descricao": "tipo - Incomum, confirmar atributação (R66_A)",
+            "regra": "((tipo - tipo %100)/100) in (3, 4, 5, 6, 7, 10, 16) or tipo in (101, 102, 103, 204, 205)",
             "tipo_estilo": "Atributo incomum",
             "camadas": [
                 "edgv.constr_ocupacao_solo_*"
@@ -1425,8 +1426,8 @@
         },
         {
             "atributo": "tipo",
-            "descricao": "tipo - Incomum, confirmar atributação",
-            "regra": "tipo in (3, 6, 8, 11, 14, 15, 16, 17, 18, 19)",
+            "descricao": "tipo - Incomum, confirmar atributação (R67_A)",
+            "regra": "tipo in (6, 11)",
             "tipo_estilo": "Atributo incomum",
             "camadas": [
                 "edgv.elemnat_elemento_hidrografico_*",
@@ -1435,8 +1436,8 @@
         },
         {
             "atributo": "tipo",
-            "descricao": "tipo - Incomum, confirmar atributação",
-            "regra": "tipo in (4, 5, 6, 7,9, 10, 11)",
+            "descricao": "tipo - Incomum, confirmar atributação (R69_A)",
+            "regra": "tipo in (4, 5, 6, 7, 9, 10, 11)",
             "tipo_estilo": "Atributo incomum",
             "camadas": [
                 "edgv.elemnat_toponimo_fisiografico_natural_*"
@@ -1444,7 +1445,7 @@
         },
         {
             "atributo": "tipo",
-            "descricao": "tipo - Incomum, confirmar atributação",
+            "descricao": "tipo - Incomum, confirmar atributação (R70_A)",
             "regra": "tipo in (4)",
             "tipo_estilo": "Atributo incomum",
             "camadas": [
@@ -1453,7 +1454,7 @@
         },
         {
             "atributo": "tipo",
-            "descricao": "tipo - Incomum, confirmar atributação",
+            "descricao": "tipo - Incomum, confirmar atributação (R74_A)",
             "regra": "tipo in (2)",
             "tipo_estilo": "Atributo incomum",
             "camadas": [
@@ -1462,7 +1463,7 @@
         },
         {
             "atributo": "tipo",
-            "descricao": "tipo - Incomum, confirmar atributação",
+            "descricao": "tipo - Incomum, confirmar atributação (R76_A)",
             "regra": "tipo in (302)",
             "tipo_estilo": "Atributo incomum",
             "camadas": [
@@ -1471,8 +1472,8 @@
         },
         {
             "atributo": "tipo",
-            "descricao": "tipo - Incomum, confirmar atributação",
-            "regra": "((tipo - tipo %100)/100) in (7, 8, 10, 13, 14, 15, 16, 17, 18, 19, 20)",
+            "descricao": "tipo - Incomum, confirmar atributação (R77_A)",
+            "regra": "((tipo - tipo %100)/100) in (7, 8, 10, 13, 14, 15, 16, 17, 18, 20) or tipo in (1938, 1939, 1940, 1941, 1943, 1944)",
             "tipo_estilo": "Atributo incomum",
             "camadas": [
                 "edgv.infra_elemento_infraestrutura_*"
@@ -1480,7 +1481,7 @@
         },
         {
             "atributo": "tipo",
-            "descricao": "tipo - Incomum, confirmar atributação",
+            "descricao": "tipo - Incomum, confirmar atributação (R78_A)",
             "regra": "tipo in (102, 201, 202, 204)",
             "tipo_estilo": "Atributo incomum",
             "camadas": [
@@ -1489,7 +1490,7 @@
         },
         {
             "atributo": "tipo",
-            "descricao": "tipo - Incomum, confirmar atributação",
+            "descricao": "tipo - Incomum, confirmar atributação (R98_A)",
             "regra": "tipo in (5,6)",
             "tipo_estilo": "Atributo incomum",
             "camadas": [
@@ -1498,8 +1499,8 @@
         },
         {
             "atributo": "tipo",
-            "descricao": "tipo - Incomum, confirmar atributação",
-            "regra": "tipo in (10, 11, 12)",
+            "descricao": "tipo - Incomum, confirmar atributação (R110_A)",
+            "regra": "tipo in (10, 12)",
             "tipo_estilo": "Atributo incomum",
             "camadas": [
                 "edgv.infra_pista_pouso_*"
@@ -1507,7 +1508,7 @@
         },
         {
             "atributo": "tipo",
-            "descricao": "tipo - Incomum, confirmar atributação",
+            "descricao": "tipo - Incomum, confirmar atributação (R127_V)",
             "regra": "tipo in (4)",
             "tipo_estilo": "Atributo incomum",
             "camadas": [
@@ -1516,7 +1517,7 @@
         },
         {
             "atributo": "tipo",
-            "descricao": "tipo - Incomum, confirmar atributação",
+            "descricao": "tipo - Incomum, confirmar atributação (R139_A)",
             "regra": "tipo in (2)",
             "tipo_estilo": "Atributo incomum",
             "camadas": [
@@ -1534,7 +1535,7 @@
         },
         {
             "atributo": "tipo_exposicao",
-            "descricao": "tipo_exposicao - Atributo incorreto para este tipo",
+            "descricao": "tipo_exposicao - Atributo incorreto para este tipo (R14_V)",
             "regra": "tipo in (108) and not (tipo_exposicao in (3,4))",
             "tipo_estilo": "Atributo incorreto",
             "camadas": [
@@ -1543,7 +1544,7 @@
         },
         {
             "atributo": "tipo_exposicao",
-            "descricao": "tipo_exposicao - Atributo incorreto para este tipo",
+            "descricao": "tipo_exposicao - Atributo incorreto para este tipo (R16_V)",
             "regra": "tipo in (109,111,132) and not (tipo_exposicao in (3))",
             "tipo_estilo": "Atributo incorreto",
             "camadas": [
@@ -1552,7 +1553,7 @@
         },
         {
             "atributo": "tipo_exposicao",
-            "descricao": "tipo_exposicao - Atributo incorreto para este tipo",
+            "descricao": "tipo_exposicao - Atributo incorreto para este tipo (R18_V)",
             "regra": "tipo in (110,112,113,198) and not (tipo_exposicao in (3,4,5))",
             "tipo_estilo": "Atributo incorreto",
             "camadas": [
@@ -1561,7 +1562,7 @@
         },
         {
             "atributo": "tipo_exposicao",
-            "descricao": "tipo_exposicao - Atributo incorreto para este tipo",
+            "descricao": "tipo_exposicao - Atributo incorreto para este tipo (R24_V)",
             "regra": "((tipo - tipo %100)/100) in (2) and not (tipo_exposicao in (3,5))",
             "tipo_estilo": "Atributo incorreto",
             "camadas": [
@@ -1570,7 +1571,7 @@
         },
         {
             "atributo": "tipo_exposicao",
-            "descricao": "tipo_exposicao - Atributo incorreto para este tipo",
+            "descricao": "tipo_exposicao - Atributo incorreto para este tipo (R29_V)",
             "regra": "((tipo - tipo %100)/100) in (3) and not (tipo_exposicao in (3,5,97))",
             "tipo_estilo": "Atributo incorreto",
             "camadas": [
@@ -1588,7 +1589,7 @@
         },
         {
             "atributo": "tipo_ref",
-            "descricao": "tipo_ref - Atributo incorreto para este tipo",
+            "descricao": "tipo_ref - Atributo incorreto para este tipo (R143_V)",
             "regra": "tipo in (1, 4, 5, 7, 8, 9, 12, 13, 14, 15, 16) and not (tipo_ref in (2, 3))",
             "tipo_estilo": "Atributo incorreto",
             "camadas": [
@@ -1597,7 +1598,7 @@
         },
         {
             "atributo": "tipo_ref",
-            "descricao": "tipo_ref - Atributo incorreto para este tipo",
+            "descricao": "tipo_ref - Atributo incorreto para este tipo (R144_V)",
             "regra": "tipo in (3) and not (tipo_ref in (4))",
             "tipo_estilo": "Atributo incorreto",
             "camadas": [
@@ -1606,7 +1607,7 @@
         },
         {
             "atributo": "tipo_ref",
-            "descricao": "tipo_ref - Atributo incorreto para este tipo",
+            "descricao": "tipo_ref - Atributo incorreto para este tipo (R145_V)",
             "regra": "tipo in (2,6) and not (tipo_ref in (1))",
             "tipo_estilo": "Atributo incorreto",
             "camadas": [
@@ -1624,7 +1625,7 @@
         },
         {
             "atributo": "trafego",
-            "descricao": "trafego - Atributo incorreto para este tipo",
+            "descricao": "trafego - Atributo incorreto para este tipo (R120_V)",
             "regra": "tipo in (3,6) and not (trafego in (2))",
             "tipo_estilo": "Atributo incorreto",
             "camadas": [
@@ -1633,7 +1634,7 @@
         },
         {
             "atributo": "trafego",
-            "descricao": "trafego - Atributo incorreto para este tipo",
+            "descricao": "trafego - Atributo incorreto para este tipo (R129_V)",
             "regra": "tipo in (4,5) and not (trafego in (1))",
             "tipo_estilo": "Atributo incorreto",
             "camadas": [
