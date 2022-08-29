@@ -1,6 +1,6 @@
 {
   "modelo": "EDGV 3.0 Orto",
-  "versao": "2.2",
+  "versao": "2.2.1",
   "schema_dados": "edgv",
   "schema_dominios": "dominios",
   "a_ser_preenchido": {
@@ -680,10 +680,6 @@
         {
           "code": 11,
           "value": "Heliponto"
-        },
-        {
-          "code": 12,
-          "value": "Heliponto em Hospital"
         }
       ]
     },
