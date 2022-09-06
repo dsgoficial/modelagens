@@ -25,6 +25,39 @@
   },
   "dominios": [
     {
+      "nome": "bitola",
+      "valores": [
+        {
+          "code": 0,
+          "value": "Desconhecida"
+        },
+        {
+          "code": 1,
+          "value": "Métrica"
+        },
+        {
+          "code": 2,
+          "value": "Internacional"
+        },
+        {
+          "code": 3,
+          "value": "Larga"
+        },
+        {
+          "code": 4,
+          "value": "Mista métrica internacional"
+        },
+        {
+          "code": 5,
+          "value": "Mista métrica larga"
+        },
+        {
+          "code": 6,
+          "value": "Mista internacional larga"
+        }
+      ]
+    },
+    {
       "nome": "tipo_produto_residuo",
       "valores": [
         {
@@ -5295,7 +5328,7 @@
           "nome": "bitola",
           "tipo": "smallint",
           "cardinalidade": "1..1",
-          "mapa_valor": "auxiliar"
+          "mapa_valor": "bitola"
         },
         {
           "nome": "em_arruamento",
