@@ -2640,7 +2640,30 @@
     }
   ],
   "extension_classes": [
-    
+    {
+      "nome": "articulacao_imagem",
+      "categoria": "edicao",
+      "primitivas": [
+        "MultiPolygon"
+      ],
+      "atributos": [
+        {
+          "nome": "nome_sensor",
+          "tipo": "varchar(255)",
+          "cardinalidade": "0..1"
+        },
+        {
+          "nome": "nome_abrev_sensor",
+          "tipo": "varchar(255)",
+          "cardinalidade": "0..1"
+        },
+        {
+          "nome": "data",
+          "tipo": "varchar(255)",
+          "cardinalidade": "0..1"
+        }
+      ]
+    },
     {
       "nome": "area_sem_dados",
       "categoria": "edicao",
@@ -2689,6 +2712,30 @@
         "MultiLinestring"
       ],
       "atributos": []
+    },
+    {
+      "nome": "grid_revisao",
+      "categoria": "aux",
+      "primitivas": [
+        "MultiPolygon"
+      ],
+      "atributos": [
+        {
+          "nome": "rank",
+          "tipo": "integer",
+          "cardinalidade": "0..1"
+        },
+        {
+          "nome": "visited",
+          "tipo": "boolean",
+          "cardinalidade": "0..1"
+        },
+        {
+          "nome": "atividade_id",
+          "tipo": "integer",
+          "cardinalidade": "0..1"
+        }
+      ]
     },
     {
       "nome": "validacao",
