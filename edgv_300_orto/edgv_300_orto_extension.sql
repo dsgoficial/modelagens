@@ -84,6 +84,8 @@ $BODY$
 		IF TG_OP = 'UPDATE' THEN
 			NEW.operador_atualizacao = CURRENT_USER;
 			NEW.data_atualizacao = CURRENT_TIMESTAMP;
+      NEW.operador_criacao = OLD.operador_criacao;
+			NEW.data_criacao = OLD.data_criacao;
     elsif  TG_OP = 'INSERT' THEN
 			NEW.operador_criacao = CURRENT_USER;
 			NEW.data_criacao = CURRENT_TIMESTAMP;
