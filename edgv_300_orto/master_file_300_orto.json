@@ -1,6 +1,6 @@
 {
   "modelo": "EDGV 3.0 Orto",
-  "versao": "2.2.1",
+  "versao": "2.2.2",
   "schema_dados": "edgv",
   "schema_dominios": "dominios",
   "a_ser_preenchido": {
@@ -2220,7 +2220,6 @@
       "nome": "area_pub_militar",
       "categoria": "llp",
       "primitivas": [
-        "MultiLinestring",
         "MultiPolygon"
       ],
       "atributos": [
@@ -2236,112 +2235,33 @@
           "mapa_valor": "booleano"
         },
         {
-          "nome": "sobreposto",
-          "tipo": "smallint",
-          "cardinalidade": "1..1",
-          "mapa_valor": "booleano",
-          "primitivas": [
-            "MultiLinestring"
-          ]
-        },
-        {
-          "nome": "exibir_rotulo_aproximado",
-          "tipo": "smallint",
-          "cardinalidade": "1..1",
-          "mapa_valor": "booleano",
-          "primitivas": [
-            "MultiLinestring"
-          ]
-        },
-        {
           "nome": "texto_edicao",
           "tipo": "varchar(255)",
-          "cardinalidade": "0..1",
-          "primitivas": [
-            "MultiPolygon"
-          ]
+          "cardinalidade": "0..1"
         },
         {
           "nome": "label_x",
           "tipo": "real",
-          "cardinalidade": "0..1",
-          "primitivas": [
-            "MultiPolygon"
-          ]
+          "cardinalidade": "0..1"
         },
         {
           "nome": "label_y",
           "tipo": "real",
-          "cardinalidade": "0..1",
-          "primitivas": [
-            "MultiPolygon"
-          ]
+          "cardinalidade": "0..1"
         },
         {
           "nome": "tamanho_txt",
           "tipo": "real",
-          "cardinalidade": "0..1",
-          "primitivas": [
-            "MultiPolygon"
-          ]
+          "cardinalidade": "0..1"
         },
         {
           "nome": "justificativa_txt",
           "tipo": "smallint",
           "cardinalidade": "1..1",
-          "mapa_valor": "justificativa",
-          "primitivas": [
-            "MultiPolygon"
-          ]
+          "mapa_valor": "justificativa"
         },
         {
           "nome": "rotular_carta_mini",
-          "tipo": "smallint",
-          "cardinalidade": "1..1",
-          "mapa_valor": "booleano",
-          "primitivas": [
-            "MultiPolygon"
-          ]
-        }
-      ]
-    },
-    {
-      "nome": "limite_legal",
-      "categoria": "llp",
-      "primitivas": [
-        "MultiLinestring"
-      ],
-      "atributos": [
-        {
-          "nome": "nome",
-          "tipo": "varchar(255)",
-          "cardinalidade": "0..1"
-        },
-        {
-          "nome": "tipo",
-          "tipo": "smallint",
-          "cardinalidade": "1..1",
-          "mapa_valor": "tipo_limite_legal"
-        },
-        {
-          "nome": "geometria_aproximada",
-          "tipo": "smallint",
-          "cardinalidade": "1..1",
-          "mapa_valor": "booleano"
-        },
-        {
-          "nome": "texto_edicao",
-          "tipo": "varchar(255)",
-          "cardinalidade": "0..1"
-        },
-        {
-          "nome": "sobreposto",
-          "tipo": "smallint",
-          "cardinalidade": "1..1",
-          "mapa_valor": "booleano"
-        },
-        {
-          "nome": "exibir_rotulo_aproximado",
           "tipo": "smallint",
           "cardinalidade": "1..1",
           "mapa_valor": "booleano"
@@ -2457,8 +2377,145 @@
       "nome": "terra_indigena",
       "categoria": "llp",
       "primitivas": [
-        "MultiLinestring",
         "MultiPolygon"
+      ],
+      "atributos": [
+        {
+          "nome": "nome",
+          "tipo": "varchar(255)",
+          "cardinalidade": "0..1"
+        },
+        {
+          "nome": "geometria_aproximada",
+          "tipo": "smallint",
+          "cardinalidade": "1..1",
+          "mapa_valor": "booleano"
+        },
+        {
+          "nome": "texto_edicao",
+          "tipo": "varchar(255)",
+          "cardinalidade": "0..1"
+        },
+        {
+          "nome": "label_x",
+          "tipo": "real",
+          "cardinalidade": "0..1"
+        },
+        {
+          "nome": "label_y",
+          "tipo": "real",
+          "cardinalidade": "0..1"
+        },
+        {
+          "nome": "tamanho_txt",
+          "tipo": "real",
+          "cardinalidade": "0..1"
+        },
+        {
+          "nome": "justificativa_txt",
+          "tipo": "smallint",
+          "cardinalidade": "1..1",
+          "mapa_valor": "justificativa"
+        },
+        {
+          "nome": "rotular_carta_mini",
+          "tipo": "smallint",
+          "cardinalidade": "1..1",
+          "mapa_valor": "booleano"
+        }
+      ]
+    },
+    {
+      "nome": "unidade_conservacao",
+      "categoria": "llp",
+      "primitivas": [
+        "MultiPolygon"
+      ],
+      "atributos": [
+        {
+          "nome": "nome",
+          "tipo": "varchar(255)",
+          "cardinalidade": "0..1"
+        },
+        {
+          "nome": "tipo",
+          "tipo": "smallint",
+          "cardinalidade": "1..1",
+          "mapa_valor": "tipo_limite_especial",
+          "valores": [5,24,25,26,27,28,29,30,31,32,33,34,35]
+        },
+        {
+          "nome": "geometria_aproximada",
+          "tipo": "smallint",
+          "cardinalidade": "1..1",
+          "mapa_valor": "booleano"
+        },
+        {
+          "nome": "texto_edicao",
+          "tipo": "varchar(255)",
+          "cardinalidade": "0..1"
+        },
+        {
+          "nome": "label_x",
+          "tipo": "real",
+          "cardinalidade": "0..1"
+        },
+        {
+          "nome": "label_y",
+          "tipo": "real",
+          "cardinalidade": "0..1"
+        },
+        {
+          "nome": "tamanho_txt",
+          "tipo": "real",
+          "cardinalidade": "0..1"
+        },
+        {
+          "nome": "justificativa_txt",
+          "tipo": "smallint",
+          "cardinalidade": "1..1",
+          "mapa_valor": "justificativa"
+        },
+        {
+          "nome": "rotular_carta_mini",
+          "tipo": "smallint",
+          "cardinalidade": "1..1",
+          "mapa_valor": "booleano"
+        }
+      ]
+    },
+    {
+      "nome": "unidade_federacao",
+      "categoria": "llp",
+      "primitivas": [
+        "MultiPolygon"
+      ],
+      "atributos": [
+        {
+          "nome": "nome",
+          "tipo": "varchar(255)",
+          "cardinalidade": "0..1"
+        },
+        {
+          "nome": "sigla",
+          "tipo": "varchar(255)",
+          "cardinalidade": "0..1"
+        },
+        {
+          "nome": "geometria_aproximada",
+          "tipo": "smallint",
+          "cardinalidade": "1..1",
+          "mapa_valor": "booleano"
+        }
+      ]
+    }
+  ],
+  "extension_classes": [
+    {
+      "nome": "area_pub_militar",
+      "categoria": "edicao",
+      "primitivas": [
+        "MultiLinestring"
       ],
       "atributos": [
         {
@@ -2476,78 +2533,53 @@
           "nome": "sobreposto",
           "tipo": "smallint",
           "cardinalidade": "1..1",
-          "mapa_valor": "booleano",
-          "primitivas": [
-            "MultiLinestring"
-          ]
+          "mapa_valor": "booleano"
         },
         {
           "nome": "exibir_rotulo_aproximado",
           "tipo": "smallint",
           "cardinalidade": "1..1",
-          "mapa_valor": "booleano",
-          "primitivas": [
-            "MultiLinestring"
-          ]
-        },
+          "mapa_valor": "booleano"
+        }
+      ]
+    },
+    {
+      "nome": "terra_indigena",
+      "categoria": "edicao",
+      "primitivas": [
+        "MultiLinestring"
+      ],
+      "atributos": [
         {
-          "nome": "texto_edicao",
+          "nome": "nome",
           "tipo": "varchar(255)",
-          "cardinalidade": "0..1",
-          "primitivas": [
-            "MultiPolygon"
-          ]
+          "cardinalidade": "0..1"
         },
         {
-          "nome": "label_x",
-          "tipo": "real",
-          "cardinalidade": "0..1",
-          "primitivas": [
-            "MultiPolygon"
-          ]
-        },
-        {
-          "nome": "label_y",
-          "tipo": "real",
-          "cardinalidade": "0..1",
-          "primitivas": [
-            "MultiPolygon"
-          ]
-        },
-        {
-          "nome": "tamanho_txt",
-          "tipo": "real",
-          "cardinalidade": "0..1",
-          "primitivas": [
-            "MultiPolygon"
-          ]
-        },
-        {
-          "nome": "justificativa_txt",
+          "nome": "geometria_aproximada",
           "tipo": "smallint",
           "cardinalidade": "1..1",
-          "mapa_valor": "justificativa",
-          "primitivas": [
-            "MultiPolygon"
-          ]
+          "mapa_valor": "booleano"
         },
         {
-          "nome": "rotular_carta_mini",
+          "nome": "sobreposto",
           "tipo": "smallint",
           "cardinalidade": "1..1",
-          "mapa_valor": "booleano",
-          "primitivas": [
-            "MultiPolygon"
-          ]
+          "mapa_valor": "booleano"
+        },
+        {
+          "nome": "exibir_rotulo_aproximado",
+          "tipo": "smallint",
+          "cardinalidade": "1..1",
+          "mapa_valor": "booleano"
         }
       ]
     },
     {
       "nome": "unidade_conservacao",
-      "categoria": "llp",
+      "categoria": "edicao",
       "primitivas": [
-        "MultiLinestring",
-        "MultiPolygon"
+        "MultiLinestring"
       ],
       "atributos": [
         {
@@ -2572,74 +2604,59 @@
           "nome": "sobreposto",
           "tipo": "smallint",
           "cardinalidade": "1..1",
-          "mapa_valor": "booleano",
-          "primitivas": [
-            "MultiLinestring"
-          ]
+          "mapa_valor": "booleano"
         },
         {
           "nome": "exibir_rotulo_aproximado",
           "tipo": "smallint",
           "cardinalidade": "1..1",
-          "mapa_valor": "booleano",
-          "primitivas": [
-            "MultiLinestring"
-          ]
+          "mapa_valor": "booleano"
+        }
+      ]
+    },
+    {
+      "nome": "limite_legal",
+      "categoria": "edicao",
+      "primitivas": [
+        "MultiLinestring"
+      ],
+      "atributos": [
+        {
+          "nome": "nome",
+          "tipo": "varchar(255)",
+          "cardinalidade": "0..1"
+        },
+        {
+          "nome": "tipo",
+          "tipo": "smallint",
+          "cardinalidade": "1..1",
+          "mapa_valor": "tipo_limite_legal"
+        },
+        {
+          "nome": "geometria_aproximada",
+          "tipo": "smallint",
+          "cardinalidade": "1..1",
+          "mapa_valor": "booleano"
         },
         {
           "nome": "texto_edicao",
           "tipo": "varchar(255)",
-          "cardinalidade": "0..1",
-          "primitivas": [
-            "MultiPolygon"
-          ]
+          "cardinalidade": "0..1"
         },
         {
-          "nome": "label_x",
-          "tipo": "real",
-          "cardinalidade": "0..1",
-          "primitivas": [
-            "MultiPolygon"
-          ]
-        },
-        {
-          "nome": "label_y",
-          "tipo": "real",
-          "cardinalidade": "0..1",
-          "primitivas": [
-            "MultiPolygon"
-          ]
-        },
-        {
-          "nome": "tamanho_txt",
-          "tipo": "real",
-          "cardinalidade": "0..1",
-          "primitivas": [
-            "MultiPolygon"
-          ]
-        },
-        {
-          "nome": "justificativa_txt",
+          "nome": "sobreposto",
           "tipo": "smallint",
           "cardinalidade": "1..1",
-          "mapa_valor": "justificativa",
-          "primitivas": [
-            "MultiPolygon"
-          ]
+          "mapa_valor": "booleano"
         },
         {
-          "nome": "rotular_carta_mini",
+          "nome": "exibir_rotulo_aproximado",
           "tipo": "smallint",
           "cardinalidade": "1..1",
-          "mapa_valor": "booleano",
-          "primitivas": [
-            "MultiPolygon"
-          ]
+          "mapa_valor": "booleano"
         }
       ]
-    }
-  ],
-  "extension_classes": [
+    },
     {
       "nome": "articulacao_imagem",
       "categoria": "edicao",

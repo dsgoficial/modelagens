@@ -1,6 +1,6 @@
 {
   "modelo": "EDGV 3.0 Pro",
-  "versao": "1.2.1",
+  "versao": "1.2.2",
   "schema_dados": "edgv",
   "schema_dominios": "dominios",
   "a_ser_preenchido": {
@@ -5792,7 +5792,6 @@
       "nome": "limite_especial",
       "categoria": "llp",
       "primitivas": [
-        "MultiLinestring",
         "MultiPolygon"
       ],
       "atributos": [
@@ -5814,80 +5813,44 @@
           "mapa_valor": "booleano"
         },
         {
-          "nome": "sobreposto",
-          "tipo": "smallint",
-          "cardinalidade": "1..1",
-          "mapa_valor": "booleano",
-          "primitivas": [
-            "MultiLinestring"
-          ]
-        },
-        {
-          "nome": "exibir_rotulo_aproximado",
-          "tipo": "smallint",
-          "cardinalidade": "1..1",
-          "mapa_valor": "booleano",
-          "primitivas": [
-            "MultiLinestring"
-          ]
-        },
-        {
           "nome": "texto_edicao",
           "tipo": "varchar(255)",
-          "cardinalidade": "0..1",
-          "primitivas": [
-            "MultiPolygon"
-          ]
+          "cardinalidade": "0..1"
         },
         {
           "nome": "label_x",
           "tipo": "real",
-          "cardinalidade": "0..1",
-          "primitivas": [
-            "MultiPolygon"
-          ]
+          "cardinalidade": "0..1"
         },
         {
           "nome": "label_y",
           "tipo": "real",
-          "cardinalidade": "0..1",
-          "primitivas": [
-            "MultiPolygon"
-          ]
+          "cardinalidade": "0..1"
         },
         {
           "nome": "tamanho_txt",
           "tipo": "real",
-          "cardinalidade": "0..1",
-          "primitivas": [
-            "MultiPolygon"
-          ]
+          "cardinalidade": "0..1"
         },
         {
           "nome": "justificativa_txt",
           "tipo": "smallint",
           "cardinalidade": "1..1",
-          "mapa_valor": "justificativa",
-          "primitivas": [
-            "MultiPolygon"
-          ]
+          "mapa_valor": "justificativa"
         },
         {
           "nome": "rotular_carta_mini",
           "tipo": "smallint",
           "cardinalidade": "1..1",
-          "mapa_valor": "booleano",
-          "primitivas": [
-            "MultiPolygon"
-          ]
+          "mapa_valor": "booleano"
         }
       ]
     },
     {
-      "nome": "limite_legal",
+      "nome": "unidade_federacao",
       "categoria": "llp",
       "primitivas": [
-        "MultiLinestring"
+        "MultiPolygon"
       ],
       "atributos": [
         {
@@ -5896,30 +5859,12 @@
           "cardinalidade": "0..1"
         },
         {
-          "nome": "tipo",
-          "tipo": "smallint",
-          "cardinalidade": "1..1",
-          "mapa_valor": "tipo_limite_legal"
-        },
-        {
-          "nome": "geometria_aproximada",
-          "tipo": "smallint",
-          "cardinalidade": "1..1",
-          "mapa_valor": "booleano"
-        },
-        {
-          "nome": "texto_edicao",
+          "nome": "sigla",
           "tipo": "varchar(255)",
           "cardinalidade": "0..1"
         },
         {
-          "nome": "sobreposto",
-          "tipo": "smallint",
-          "cardinalidade": "1..1",
-          "mapa_valor": "booleano"
-        },
-        {
-          "nome": "exibir_rotulo_aproximado",
+          "nome": "geometria_aproximada",
           "tipo": "smallint",
           "cardinalidade": "1..1",
           "mapa_valor": "booleano"
@@ -6076,6 +6021,87 @@
     }
   ],
   "extension_classes": [
+    {
+      "nome": "limite_especial",
+      "categoria": "edicao",
+      "primitivas": [
+        "MultiLinestring"
+      ],
+      "atributos": [
+        {
+          "nome": "nome",
+          "tipo": "varchar(255)",
+          "cardinalidade": "0..1"
+        },
+        {
+          "nome": "tipo",
+          "tipo": "smallint",
+          "cardinalidade": "1..1",
+          "mapa_valor": "tipo_limite_especial"
+        },
+        {
+          "nome": "geometria_aproximada",
+          "tipo": "smallint",
+          "cardinalidade": "1..1",
+          "mapa_valor": "booleano"
+        },
+        {
+          "nome": "sobreposto",
+          "tipo": "smallint",
+          "cardinalidade": "1..1",
+          "mapa_valor": "booleano"
+        },
+        {
+          "nome": "exibir_rotulo_aproximado",
+          "tipo": "smallint",
+          "cardinalidade": "1..1",
+          "mapa_valor": "booleano"
+        }
+      ]
+    },
+    {
+      "nome": "limite_legal",
+      "categoria": "edicao",
+      "primitivas": [
+        "MultiLinestring"
+      ],
+      "atributos": [
+        {
+          "nome": "nome",
+          "tipo": "varchar(255)",
+          "cardinalidade": "0..1"
+        },
+        {
+          "nome": "tipo",
+          "tipo": "smallint",
+          "cardinalidade": "1..1",
+          "mapa_valor": "tipo_limite_legal"
+        },
+        {
+          "nome": "geometria_aproximada",
+          "tipo": "smallint",
+          "cardinalidade": "1..1",
+          "mapa_valor": "booleano"
+        },
+        {
+          "nome": "texto_edicao",
+          "tipo": "varchar(255)",
+          "cardinalidade": "0..1"
+        },
+        {
+          "nome": "sobreposto",
+          "tipo": "smallint",
+          "cardinalidade": "1..1",
+          "mapa_valor": "booleano"
+        },
+        {
+          "nome": "exibir_rotulo_aproximado",
+          "tipo": "smallint",
+          "cardinalidade": "1..1",
+          "mapa_valor": "booleano"
+        }
+      ]
+    },
     {
       "nome": "area_sem_dados",
       "categoria": "edicao",
