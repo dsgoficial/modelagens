@@ -2,9 +2,9 @@
   "metadados":{
     "versao_arquivo": "0.0",
     "modelo_ida": "EDGV 3.0 Pro",
-    "versao_modelo_ida": "1.2",
+    "versao_modelo_ida": "1.2.3",
     "modelo_volta": "EDGV 3.0 Orto",
-    "versao_modelo_volta": "2.2"
+    "versao_modelo_volta": "2.2.3"
   },
   "__comment": "UTF-8",
   "schema_ida": "edgv",
