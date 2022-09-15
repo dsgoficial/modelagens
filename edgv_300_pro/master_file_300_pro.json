@@ -1153,6 +1153,10 @@
         {
           "code": 11,
           "value": "Represa/açude sem fluxo"
+        },
+        {
+          "code": 12,
+          "value": "Canal não operacional (sem fluxo)"
         }
       ]
     },
@@ -2813,20 +2817,8 @@
       "nome": "tipo_limite_especial",
       "valores": [
         {
-          "code": 1,
-          "value": "Terra pública"
-        },
-        {
           "code": 2,
           "value": "Terra indígena"
-        },
-        {
-          "code": 3,
-          "value": "Quilombo"
-        },
-        {
-          "code": 4,
-          "value": "Assentamento rural"
         },
         {
           "code": 5,
@@ -3329,6 +3321,10 @@
         {
           "code": 4,
           "value": "Canal encoberto"
+        },
+        {
+          "code": 5,
+          "value": "Canal não operacional"
         }
       ]
     },
@@ -5530,24 +5526,11 @@
           "tipo": "smallint",
           "cardinalidade": "1..1",
           "mapa_valor": "tipo_pista_pouso",
-          "valores": [
-            {
-              "code": 9
-            },
-            {
-              "code": 10,
-              "primitivas": [
-                "MultiLinestring",
-                "MultiPolygon"
-              ]
-            },
-            {
-              "code": 11,
-              "primitivas": [
-                "MultiPoint"
-              ]
-            }
-          ]
+          "valores": {
+            "MultiPoint": [9,11],
+            "MultiLinestring": [9,10],
+            "MultiPolygon": [9,10]
+          }
         },
         {
           "nome": "revestimento",
