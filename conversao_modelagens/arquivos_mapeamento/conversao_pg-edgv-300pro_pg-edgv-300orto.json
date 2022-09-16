@@ -498,6 +498,10 @@
           }
         ]
       }
+    },
+    {"__comment": "aux_moldura <-> aux_moldura", 
+    "classe_ida": "aux_moldura",
+    "classe_volta": "aux_moldura"
     }
   ],
   "atributos_default_ida": [],
