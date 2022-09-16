@@ -56,11 +56,21 @@
       "classe_ida": "cobter_massa_dagua",
       "classe_volta": "cobter_massa_dagua",
       "filtro_ida": {
-        "$not": 
+        "$and": [
           {
-            "nome_atributo": "tipo",
-            "valor": 12
+            "$not": {
+              "nome_atributo": "nome",
+              "valor": null
+            }
+          },
+          {
+            "$not": 
+              {
+                "nome_atributo": "tipo",
+                "valor": 12
+              }
           }
+        ]
       }
     },
     { "__comment": "elemnat_terreno_sujeito_inundacao <-> elemnat_terreno_sujeito_inundacao",
@@ -75,22 +85,32 @@
       "classe_ida": "elemnat_elemento_hidrografico",
       "classe_volta": "elemnat_elemento_hidrografico",
       "filtro_ida": {
-        "$or": [
+        "$and": [
           {
-            "nome_atributo": "tipo",
-            "valor": 9
+            "$not": {
+              "nome_atributo": "nome",
+              "valor": null
+            }
           },
           {
-            "nome_atributo": "tipo",
-            "valor": 10
-          },
-          {
-            "nome_atributo": "tipo",
-            "valor": 11
-          },
-          {
-            "nome_atributo": "tipo",
-            "valor": 12
+            "$or": [
+              {
+                "nome_atributo": "tipo",
+                "valor": 9
+              },
+              {
+                "nome_atributo": "tipo",
+                "valor": 10
+              },
+              {
+                "nome_atributo": "tipo",
+                "valor": 11
+              },
+              {
+                "nome_atributo": "tipo",
+                "valor": 12
+              }
+            ]
           }
         ]
       }
@@ -99,11 +119,21 @@
       "classe_ida": "elemnat_trecho_drenagem",
       "classe_volta": "elemnat_trecho_drenagem",
       "filtro_ida": {
-        "$not": 
+        "$and": [
           {
-            "nome_atributo": "tipo",
-            "valor": 5
+            "$not": {
+              "nome_atributo": "nome",
+              "valor": null
+            }
+          },
+          {
+            "$not": 
+              {
+                "nome_atributo": "tipo",
+                "valor": 5
+              }
           }
+        ]
       }
     },
     { "__comment": "llp_limite_especial <-> llp_unidade_conservacao",
@@ -440,11 +470,21 @@
       "classe_ida": "centroide_massa_dagua",
       "classe_volta": "centroide_massa_dagua",
       "filtro_ida": {
-        "$not": 
+        "$and": [
           {
-            "nome_atributo": "tipo",
-            "valor": 12
+            "$not": 
+              {
+                "nome_atributo": "tipo",
+                "valor": 12
+              }
+          },
+          {
+            "$not": {
+              "nome_atributo": "nome",
+              "valor": null
+            }
           }
+        ]
       }
     },
     { "__comment": "centroide_ilha <-> centroide_ilha",
@@ -453,7 +493,13 @@
     },
     { "__comment": "centroide_elemento_hidrografico <-> centroide_elemento_hidrografico",
       "classe_ida": "centroide_elemento_hidrografico",
-      "classe_volta": "centroide_elemento_hidrografico"
+      "classe_volta": "centroide_elemento_hidrografico",
+      "filtro_ida": {
+        "$not": {
+          "nome_atributo": "nome",
+          "valor": null
+        }
+      }
     },
     { "__comment": "edicao_identificador_trecho_rod <-> edicao_identificador_trecho_rod",
       "classe_ida": "edicao_identificador_trecho_rod",
