@@ -555,6 +555,10 @@
     {
       "nome_atributo": "visivel",
       "valor": 1
+    },
+    {
+      "nome_atributo": "apresentar_simbologia",
+      "valor": 2
     }
   ]
 }
