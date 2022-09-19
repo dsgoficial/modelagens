@@ -1285,6 +1285,12 @@
           "tipo": "smallint",
           "cardinalidade": "1..1",
           "mapa_valor": "booleano"
+        },
+        {
+          "nome": "apresentar_simbologia",
+          "tipo": "smallint",
+          "cardinalidade": "1..1",
+          "mapa_valor": "booleano"
         }
       ]
     },
