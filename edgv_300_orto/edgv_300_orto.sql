@@ -7,10 +7,10 @@ SET search_path TO pg_catalog,public,edgv,dominios;
 
 CREATE TABLE public.db_metadata(
 	 edgvversion varchar(50) NOT NULL DEFAULT 'EDGV 3.0 Orto',
-	 dbimplversion varchar(50) NOT NULL DEFAULT '2.2.2',
+	 dbimplversion varchar(50) NOT NULL DEFAULT '2.2.3',
 	 CONSTRAINT edgvversioncheck CHECK (edgvversion = 'EDGV 3.0 Orto')
 );
-INSERT INTO public.db_metadata (edgvversion, dbimplversion) VALUES ('EDGV 3.0 Orto','2.2.1');
+INSERT INTO public.db_metadata (edgvversion, dbimplversion) VALUES ('EDGV 3.0 Orto','2.2.3');
 
 CREATE TABLE dominios.tipo_produto_residuo (
 	 code smallint NOT NULL,
@@ -2132,6 +2132,7 @@ CREATE TABLE edgv.llp_nome_local_p(
 	 id uuid NOT NULL DEFAULT uuid_generate_v4(),
 	 nome varchar(255),
 	 texto_edicao varchar(255),
+	 visivel smallint NOT NULL,
 	 label_x real,
 	 label_y real,
 	 justificativa_txt smallint NOT NULL,
@@ -2143,6 +2144,13 @@ CREATE TABLE edgv.llp_nome_local_p(
 CREATE INDEX llp_nome_local_p_geom ON edgv.llp_nome_local_p USING gist (geom);
 
 ALTER TABLE edgv.llp_nome_local_p OWNER TO postgres;
+
+ALTER TABLE edgv.llp_nome_local_p
+	 ADD CONSTRAINT llp_nome_local_p_visivel_fk FOREIGN KEY (visivel)
+	 REFERENCES dominios.booleano (code) MATCH FULL
+	 ON UPDATE NO ACTION ON DELETE NO ACTION;
+
+ALTER TABLE edgv.llp_nome_local_p ALTER COLUMN visivel SET DEFAULT 9999;
 
 ALTER TABLE edgv.llp_nome_local_p
 	 ADD CONSTRAINT llp_nome_local_p_justificativa_txt_fk FOREIGN KEY (justificativa_txt)
