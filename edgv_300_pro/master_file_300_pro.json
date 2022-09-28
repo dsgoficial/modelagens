@@ -6271,30 +6271,6 @@
       ]
     },
     {
-      "nome": "grid_revisao",
-      "categoria": "aux",
-      "primitivas": [
-        "MultiPolygon"
-      ],
-      "atributos": [
-        {
-          "nome": "rank",
-          "tipo": "integer",
-          "cardinalidade": "0..1"
-        },
-        {
-          "nome": "visited",
-          "tipo": "boolean",
-          "cardinalidade": "0..1"
-        },
-        {
-          "nome": "atividade_id",
-          "tipo": "integer",
-          "cardinalidade": "0..1"
-        }
-      ]
-    },
-    {
       "nome": "revisao",
       "categoria": "aux",
       "primitivas": [

@@ -245,3 +245,18 @@ ALTER TABLE public.work_areas
 GRANT ALL ON TABLE public.work_areas TO PUBLIC;
 
 --########################################################
+
+CREATE TABLE public.aux_grid_revisao_a(
+	 id uuid NOT NULL DEFAULT uuid_generate_v4(),
+	 rank integer,
+	 visited boolean,
+	 atividade_id integer,
+	 geom geometry(MultiPolygon, 4674),
+	 CONSTRAINT aux_grid_revisao_a_pk PRIMARY KEY (id)
+	 WITH (FILLFACTOR = 80)
+);
+CREATE INDEX aux_grid_revisao_a_geom ON public.aux_grid_revisao_a USING gist (geom);
+
+ALTER TABLE public.aux_grid_revisao_a OWNER TO postgres;
+
+GRANT ALL ON TABLE public.aux_grid_revisao_a TO public;
