@@ -1,6 +1,6 @@
 {
   "modelo": "EDGV 3.0 Pro",
-  "versao": "1.2.3",
+  "versao": "1.2.4",
   "schema_dados": "edgv",
   "schema_dominios": "dominios",
   "a_ser_preenchido": {
@@ -24,6 +24,106 @@
     "MultiPolygon": "_a"
   },
   "dominios": [
+    {
+      "nome": "tipo_area_uso_especifico",
+      "valores": [
+        {
+          "code": 1,
+          "value": "Área de propriedade particular",
+          "descricao": "-"
+        },
+        {
+          "code": 2,
+          "value": "Área habitacional",
+          "descricao": "-"
+        },
+        {
+          "code": 3,
+          "value": "Área relacionada a dutos",
+          "descricao": "-"
+        },
+        {
+          "code": 4,
+          "value": "Área relacionada a edificação agropecuária ou extrativismo vegetal ou pesca",
+          "descricao": "-"
+        },
+        {
+          "code": 5,
+          "value": "Área relacionada a edificação de comércio ou serviços",
+          "descricao": "-"
+        },
+        {
+          "code": 6,
+          "value": "Área relacinada a edificação de ensino",
+          "descricao": "-"
+        },
+        {
+          "code": 7,
+          "value": "Área relacionada a edificação de saúde",
+          "descricao": "-"
+        },
+        {
+          "code": 8,
+          "value": "Área relacionada a edificação industrial",
+          "descricao": "-"
+        },
+        {
+          "code": 9,
+          "value": "Área relacionada a edificação religiosa",
+          "descricao": "-"
+        },
+        {
+          "code": 10,
+          "value": "Área relacionada a energia elétrica",
+          "descricao": "-"
+        },
+        {
+          "code": 11,
+          "value": "Área relacionada a equipamentos de desenvolvimento social",
+          "descricao": "-"
+        },
+        {
+          "code": 12,
+          "value": "Área relacionada a estação de medição de fenômenos",
+          "descricao": "-"
+        },
+        {
+          "code": 13,
+          "value": "Área relacionada ao extrativismo mineral",
+          "descricao": "-"
+        },
+        {
+          "code": 14,
+          "value": "Área relacionada a instalação de abastecimento de água",
+          "descricao": "-"
+        },
+        {
+          "code": 15,
+          "value": "Área relacionada a instalação de comunicações",
+          "descricao": "-"
+        },
+        {
+          "code": 16,
+          "value": "Área relacionada a instalação de estrutura de transporte",
+          "descricao": "-"
+        },
+        {
+          "code": 17,
+          "value": "Área relacionada a instalação de saneamento",
+          "descricao": "-"
+        },
+        {
+          "code": 18,
+          "value": "Área relacionada ao lazer",
+          "descricao": "-"
+        },
+        {
+          "code": 19,
+          "value": "Área relacionada a ruinas de valor histórico",
+          "descricao": "-"
+        }
+      ]
+    },
     {
       "nome": "ancora_horizontal",
       "valores": [
@@ -527,6 +627,14 @@
         {
           "code": 14,
           "value": "Edificação religiosa - sinagoga"
+        },
+        {
+          "code": 19,
+          "value": "Edificação religiosa - cristã"
+        },
+        {
+          "code": 20,
+          "value": "Edificação religiosa - templo"
         },
         {
           "code": 15,
@@ -1177,6 +1285,11 @@
       "nome": "tipo_deposito",
       "valores": [
         {
+          "code": 101,
+          "value": "Geral - Cisterna",
+          "valor_filtro": "Depósito geral"
+        },
+        {
           "code": 108,
           "value": "Geral - Galpão",
           "valor_filtro": "Depósito geral"
@@ -1424,7 +1537,7 @@
         },
         {
           "code": 601,
-          "value": "Rel - Igreja",
+          "value": "Rel - Igreja cristã",
           "valor_filtro": "Edificação religiosa"
         },
         {
@@ -1470,6 +1583,11 @@
         {
           "code": 610,
           "value": "Rel - Administração",
+          "valor_filtro": "Edificação religiosa"
+        },
+        {
+          "code": 611,
+          "value": "Rel - Igreja não cristã",
           "valor_filtro": "Edificação religiosa"
         },
         {
@@ -1909,7 +2027,12 @@
         },
         {
           "code": 1401,
-          "value": "Habitacão indigena",
+          "value": "Habitacão indigena isolada",
+          "valor_filtro": "Habitacão indigena"
+        },
+        {
+          "code": 1402,
+          "value": "Habitacão indigena coletiva",
           "valor_filtro": "Habitacão indigena"
         },
         {
@@ -2948,12 +3071,27 @@
         },
         {
           "code": 104,
-          "value": "Cemitério Comum",
+          "value": "Cemitério - Cristã",
           "valor_filtro": "Cemitério"
         },
         {
           "code": 105,
           "value": "Cemitério - Túmulo isolado",
+          "valor_filtro": "Cemitério"
+        },
+        {
+          "code": 106,
+          "value": "Cemitério - Muçulmana",
+          "valor_filtro": "Cemitério"
+        },
+        {
+          "code": 107,
+          "value": "Cemitério - Israelita",
+          "valor_filtro": "Cemitério"
+        },
+        {
+          "code": 108,
+          "value": "Cemitério - Outras religiões",
           "valor_filtro": "Cemitério"
         },
         {
@@ -3388,7 +3526,12 @@
         },
         {
           "code": 196,
-          "value": "Cult - Anual",
+          "value": "Cult - Anual irrigado",
+          "valor_filtro": "Vegetação Cultivada"
+        },
+        {
+          "code": 197,
+          "value": "Cult - Anual não irrigado",
           "valor_filtro": "Vegetação Cultivada"
         },
         {
@@ -3614,6 +3757,53 @@
           "tipo": "smallint",
           "cardinalidade": "1..1",
           "mapa_valor": "tipo_veg"
+        }
+      ]
+    },
+    {
+      "nome": "area_uso_especifico",
+      "categoria": "constr",
+      "primitivas": [
+        "MultiPolygon"
+      ],
+      "atributos": [
+        {
+          "nome": "nome",
+          "tipo": "varchar(255)",
+          "cardinalidade": "0..1"
+        },
+        {
+          "nome": "tipo",
+          "tipo": "smallint",
+          "cardinalidade": "1..1",
+          "mapa_valor": "tipo_area_uso_especifico"
+        },
+        {
+          "nome": "visivel",
+          "tipo": "smallint",
+          "cardinalidade": "1..1",
+          "mapa_valor": "booleano"
+        },
+        {
+          "nome": "texto_edicao",
+          "tipo": "varchar(255)",
+          "cardinalidade": "0..1"
+        },
+        {
+          "nome": "label_x",
+          "tipo": "real",
+          "cardinalidade": "0..1"
+        },
+        {
+          "nome": "label_y",
+          "tipo": "real",
+          "cardinalidade": "0..1"
+        },
+        {
+          "nome": "justificativa_txt",
+          "tipo": "smallint",
+          "cardinalidade": "1..1",
+          "mapa_valor": "justificativa"
         }
       ]
     },
@@ -5058,6 +5248,14 @@
           "primitivas": [
             "MultiPoint",
             "MultiPolygon"
+          ]
+        },
+        {
+          "nome": "simb_rot",
+          "tipo": "real",
+          "cardinalidade": "0..1",
+          "primitivas": [
+            "MultiPoint"
           ]
         }
       ]
