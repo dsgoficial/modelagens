@@ -1,6 +1,6 @@
 {
   "modelo": "EDGV 3.0 Pro",
-  "versao": "1.2.4",
+  "versao": "1.2.5",
   "schema_dados": "edgv",
   "schema_dominios": "dominios",
   "a_ser_preenchido": {
@@ -4894,18 +4894,12 @@
         {
           "nome": "label_x",
           "tipo": "real",
-          "cardinalidade": "0..1",
-          "primitivas": [
-            "MultiPoint"
-          ]
+          "cardinalidade": "0..1"
         },
         {
           "nome": "label_y",
           "tipo": "real",
-          "cardinalidade": "0..1",
-          "primitivas": [
-            "MultiPoint"
-          ]
+          "cardinalidade": "0..1"
         },
         {
           "nome": "tamanho_txt",
