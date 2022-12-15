@@ -1,6 +1,6 @@
 {
   "modelo": "EDGV 3.0 Pro",
-  "versao": "1.2.5",
+  "versao": "1.2.6",
   "schema_dados": "edgv",
   "schema_dominios": "dominios",
   "a_ser_preenchido": {
@@ -668,19 +668,6 @@
         {
           "code": 3,
           "value": "Direita"
-        }
-      ]
-    },
-    {
-      "nome": "tipo_carta",
-      "valores": [
-        {
-          "code": 1,
-          "value": "Carta principal"
-        },
-        {
-          "code": 2,
-          "value": "Carta mini"
         }
       ]
     },
@@ -3736,12 +3723,6 @@
           "tipo": "smallint",
           "cardinalidade": "1..1",
           "mapa_valor": "justificativa"
-        },
-        {
-          "nome": "rotular_carta_mini",
-          "tipo": "smallint",
-          "cardinalidade": "1..1",
-          "mapa_valor": "booleano"
         }
       ]
     },
@@ -4580,6 +4561,12 @@
           "primitivas": [
             "MultiPoint"
           ]
+        },
+        {
+          "nome": "visivel",
+          "tipo": "smallint",
+          "cardinalidade": "1..1",
+          "mapa_valor": "booleano"
         }
       ]
     },
@@ -4776,12 +4763,6 @@
           "tipo": "smallint",
           "cardinalidade": "1..1",
           "mapa_valor": "justificativa"
-        },
-        {
-          "nome": "rotular_carta_mini",
-          "tipo": "smallint",
-          "cardinalidade": "1..1",
-          "mapa_valor": "booleano"
         }
       ]
     },
@@ -4919,12 +4900,6 @@
           "nome": "espacamento",
           "tipo": "real",
           "cardinalidade": "0..1"
-        },
-        {
-          "nome": "rotular_carta_mini",
-          "tipo": "smallint",
-          "cardinalidade": "1..1",
-          "mapa_valor": "booleano"
         }
       ]
     },
@@ -4970,18 +4945,6 @@
         },
         {
           "nome": "visivel",
-          "tipo": "smallint",
-          "cardinalidade": "1..1",
-          "mapa_valor": "booleano"
-        },
-        {
-          "nome": "simbolizar_carta_mini",
-          "tipo": "smallint",
-          "cardinalidade": "1..1",
-          "mapa_valor": "booleano"
-        },
-        {
-          "nome": "rotular_carta_mini",
           "tipo": "smallint",
           "cardinalidade": "1..1",
           "mapa_valor": "booleano"
@@ -5625,12 +5588,6 @@
           "tipo": "smallint",
           "cardinalidade": "1..1",
           "mapa_valor": "booleano"
-        },
-        {
-          "nome": "simbolizar_carta_mini",
-          "tipo": "smallint",
-          "cardinalidade": "1..1",
-          "mapa_valor": "booleano"
         }
       ]
     },
@@ -6011,12 +5968,6 @@
           "tipo": "smallint",
           "cardinalidade": "1..1",
           "mapa_valor": "booleano"
-        },
-        {
-          "nome": "simbolizar_carta_mini",
-          "tipo": "smallint",
-          "cardinalidade": "1..1",
-          "mapa_valor": "booleano"
         }
       ]
     },
@@ -6104,12 +6055,6 @@
           "tipo": "smallint",
           "cardinalidade": "1..1",
           "mapa_valor": "justificativa"
-        },
-        {
-          "nome": "rotular_carta_mini",
-          "tipo": "smallint",
-          "cardinalidade": "1..1",
-          "mapa_valor": "booleano"
         }
       ]
     },
@@ -6183,19 +6128,7 @@
           "mapa_valor": "justificativa"
         },
         {
-          "nome": "rotular_carta_mini",
-          "tipo": "smallint",
-          "cardinalidade": "1..1",
-          "mapa_valor": "booleano"
-        },
-        {
           "nome": "visivel",
-          "tipo": "smallint",
-          "cardinalidade": "1..1",
-          "mapa_valor": "booleano"
-        },
-        {
-          "nome": "simbolizar_carta_mini",
           "tipo": "smallint",
           "cardinalidade": "1..1",
           "mapa_valor": "booleano"
@@ -6413,12 +6346,6 @@
           "tipo": "smallint",
           "cardinalidade": "1..1",
           "mapa_valor": "justificativa"
-        },
-        {
-          "nome": "rotular_carta_mini",
-          "tipo": "smallint",
-          "cardinalidade": "1..1",
-          "mapa_valor": "booleano"
         }
       ]
     },
@@ -6454,12 +6381,6 @@
           "tipo": "smallint",
           "cardinalidade": "1..1",
           "mapa_valor": "justificativa"
-        },
-        {
-          "nome": "rotular_carta_mini",
-          "tipo": "smallint",
-          "cardinalidade": "1..1",
-          "mapa_valor": "booleano"
         }
       ]
     },
@@ -6846,12 +6767,6 @@
           "nome": "cor",
           "tipo": "varchar(255)",
           "cardinalidade": "0..1"
-        },
-        {
-          "nome": "carta_simbolizacao",
-          "tipo": "smallint",
-          "cardinalidade": "1..1",
-          "mapa_valor": "tipo_carta"
         }
       ]
     },
@@ -6904,12 +6819,6 @@
             1,
             2
           ]
-        },
-        {
-          "nome": "carta_simbolizacao",
-          "tipo": "smallint",
-          "cardinalidade": "1..1",
-          "mapa_valor": "tipo_carta"
         }
       ]
     },
