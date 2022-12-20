@@ -1,6 +1,6 @@
 {
   "modelo": "EDGV 3.0 Pro",
-  "versao": "1.2.6",
+  "versao": "1.2.7",
   "schema_dados": "edgv",
   "schema_dominios": "dominios",
   "a_ser_preenchido": {
@@ -2487,16 +2487,6 @@
           "valor_filtro": "Linha de energia"
         },
         {
-          "code": 1401,
-          "value": "Torre de energia",
-          "valor_filtro": "Torre de energia"
-        },
-        {
-          "code": 1701,
-          "value": "Aerogerador",
-          "valor_filtro": "Aerogerador"
-        },
-        {
           "code": 405,
           "value": "Estação geradora – Eólica",
           "valor_filtro": "Estação geradora de energia"
@@ -2525,6 +2515,16 @@
           "code": 409,
           "value": "Estação geradora – Termelétrica",
           "valor_filtro": "Estação geradora de energia"
+        },
+        {
+          "code": 1401,
+          "value": "Torre de energia",
+          "valor_filtro": "Torre de energia"
+        },
+        {
+          "code": 1701,
+          "value": "Aerogerador",
+          "valor_filtro": "Aerogerador"
         },
         {
           "code": 1801,
@@ -3318,12 +3318,12 @@
         },
         {
           "code": 1613,
-          "value": "Estação Hidrológica",
+          "value": "Estação Metero-maregráfica",
           "valor_filtro": "Ponto de estacão de medição de fenômenos"
         },
         {
           "code": 1614,
-          "value": "Estação Metero-maregráfica",
+          "value": "Estação Hidrológica",
           "valor_filtro": "Ponto de estacão de medição de fenômenos"
         }
       ],
