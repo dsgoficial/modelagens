@@ -25,6 +25,46 @@
   },
   "dominios": [
     {
+      "nome": "exibir_lado_simbologia",
+      "valores": [
+        {
+          "code": 1,
+          "value": "Exibir ambos os lados",
+          "descricao": "-"
+        },
+        {
+          "code": 2,
+          "value": "Exibir lado esquerdo",
+          "descricao": "-"
+        },
+        {
+          "code": 3,
+          "value": "Exibir lado direito",
+          "descricao": "-"
+        }
+      ]
+    },
+    {
+      "nome": "exibir_ponta_simbologia",
+      "valores": [
+        {
+          "code": 1,
+          "value": "Exibir ambos as pontas",
+          "descricao": "-"
+        },
+        {
+          "code": 2,
+          "value": "Exibir ponta inicial",
+          "descricao": "-"
+        },
+        {
+          "code": 3,
+          "value": "Exibir ponta final",
+          "descricao": "-"
+        }
+      ]
+    },
+    {
       "nome": "tipo_area_uso_especifico",
       "valores": [
         {
@@ -5499,6 +5539,18 @@
           "tipo": "smallint",
           "cardinalidade": "1..1",
           "mapa_valor": "booleano"
+        },
+        {
+          "nome": "exibir_lado_simbologia",
+          "tipo": "smallint",
+          "cardinalidade": "1..1",
+          "mapa_valor": "exibir_lado_simbologia"
+        },
+        {
+          "nome": "exibir_ponta_simbologia",
+          "tipo": "smallint",
+          "cardinalidade": "1..1",
+          "mapa_valor": "exibir_ponta_simbologia"
         }
       ]
     },
