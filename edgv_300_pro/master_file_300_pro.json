@@ -4027,7 +4027,7 @@
           "mapa_valor": "tipo_extracao_mineral"
         },
         {
-          "nome": "tipoproduto",
+          "nome": "tipo_produto",
           "tipo": "smallint",
           "descricao": "-",
           "cardinalidade": "1..1",
