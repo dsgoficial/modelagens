@@ -1148,7 +1148,7 @@
             "valor": "POLYGON"
           },
           {
-            "or":[
+            "$or":[
               {
                 "$not": {
                   "nome_atributo": "situacao_fisica",
@@ -1233,12 +1233,10 @@
           "valor": 2
         }
       ],
-      "filtro_volta": [
-        {
-          "nome_atributo": "tipo",
-          "valor": 2
-        }
-      ],
+      "filtro_volta": {
+        "nome_atributo": "tipo",
+        "valor": 2
+      },
       "atributos_default_volta": [
         {
           "nome_atributo": "tipoalterantrop",
@@ -1276,7 +1274,7 @@
           "valor": "LINESTRING"
         },
         {
-          "or":[
+          "$or":[
             {
               "$not": {
                 "nome_atributo": "situacao_fisica",
@@ -2086,12 +2084,10 @@
       "filtro_ida": {
         "$and": [
           {
-            "$not":[
-              {
-                "nome_atributo": "cultivopredominante",
-                "valor": 13
-              }
-            ]
+            "$not": {
+              "nome_atributo": "cultivopredominante",
+              "valor": 13
+            }
           },
           {
             "nome_atributo": "terreno",
@@ -2106,12 +2102,8 @@
         }
       ],
       "filtro_volta": {
-        "$or": [
-          {
-            "nome_atributo": "tipo",
-            "valor": 196
-          }
-        ]
+        "nome_atributo": "tipo",
+        "valor": 196
       },
       "atributos_default_volta": [
         {
@@ -4950,9 +4942,7 @@
       "filtro_volta": {
         "nome_atributo": "tipo",
         "valor": 8
-      },
-      "atributos_default_volta": [
-      ]
+      }
     },
     { "__comment": "lml_posic_geo_localidade <-> llp_localidade",
       "classe_ida": "lml_posic_geo_localidade",
@@ -4963,8 +4953,6 @@
           "valor": 8
         }
       },
-      "atributos_default_volta": [
-      ],
       "mapeamento_atributos": [
         {
           "attr_ida": "nomelocal",
@@ -5579,8 +5567,6 @@
           "nome_atributo": "jurisdicao",
           "valor": 0
         }
-      ],
-      "atributos_default_volta": [
       ]
     },
     { "__comment": "tra_trilha_picada <-> infra_via_deslocamento",
@@ -5619,8 +5605,6 @@
           "nome_atributo": "jurisdicao",
           "valor": 0
         }
-      ],
-      "atributos_default_volta": [
       ]
     },
     { "__comment": "tra_ponte <-> infra_elemento_viario | ponte",
@@ -6017,16 +6001,14 @@
     "classe_volta": "llp_limite_especial",
     "atributos_default_ida": [
       {
-        "nome_atributo": "tipo",
-        "valor": 36
-      }
-    ],
-    "filtro_volta":[
-      {
         "nome_atributo":"tipo",
         "valor":36
       }
     ],
+    "filtro_volta":{
+      "nome_atributo":"tipo",
+      "valor":36
+    },
     "atributos_default_volta":[
       {
         "nome_atributo":"administracao",
@@ -6279,27 +6261,27 @@
       },
       "atributos_default_volta":[
         {
-          "nome_atributo":"tipotrechoduto",
+          "nome_atributo": "tipotrechoduto",
           "valor":1
         },
         {
-          "nome_atributo":"mattransp",
+          "nome_atributo": "mattransp",
           "valor":1
         },
         {
-          "nome_atributo":"setor",
+          "nome_atributo": "setor",
           "valor":1
         },
         {
-          "nome_atributo":"matconstr",
+          "nome_atributo": "matconstr",
           "valor":0
         },
         {
-          "nome_atributo":"situacaoespacial",
+          "nome_atributo": "situacaoespacial",
           "valor":0
         },
         {
-          "nome_atributo":"operacional",
+          "nome_atributo": "operacional",
           "valor":1
         }
       ]
@@ -6308,36 +6290,38 @@
       "__comment": "hdv_atracadouro_terminal <-> infra_elemento_infraestrutura | atracadouro", 
       "classe_ida": "hdv_atracadouro_terminal",
       "classe_volta": "infra_elemento_infraestrutura",
-      "filtro_volta": [
-        {
-          "nome_atributo":"tipo",
-          "valor": 1938
-        },
-        {
-          "nome_atributo":"tipo",
-          "valor": 1939
-        },
-        {
-          "nome_atributo":"tipo",
-          "valor": 1940
-        },
-        {
-          "nome_atributo":"tipo",
-          "valor": 1941
-        },
-        {
-          "nome_atributo":"tipo",
-          "valor": 1942
-        },
-        {
-          "nome_atributo":"tipo",
-          "valor": 1943
-        },
-        {
-          "nome_atributo":"tipo",
-          "valor": 1944
-        }
-      ],
+      "filtro_volta": {
+        "$or": [
+          {
+            "nome_atributo":"tipo",
+            "valor": 1938
+          },
+          {
+            "nome_atributo":"tipo",
+            "valor": 1939
+          },
+          {
+            "nome_atributo":"tipo",
+            "valor": 1940
+          },
+          {
+            "nome_atributo":"tipo",
+            "valor": 1941
+          },
+          {
+            "nome_atributo":"tipo",
+            "valor": 1942
+          },
+          {
+            "nome_atributo":"tipo",
+            "valor": 1943
+          },
+          {
+            "nome_atributo":"tipo",
+            "valor": 1944
+          }
+        ]
+      },
       "atributos_default_volta":[
         {
           "nome_atributo":"administracao",
@@ -7761,10 +7745,12 @@
           }
         ]
       },
-      "atributos_default_ida": {
-        "nome_atributo": "tipo",
-        "valor": 611
-      },
+      "atributos_default_ida": [
+        {
+          "nome_atributo": "tipo",
+          "valor": 611
+        }
+      ],
       "filtro_volta": {
         "nome_atributo": "tipo",
         "valor": 611
