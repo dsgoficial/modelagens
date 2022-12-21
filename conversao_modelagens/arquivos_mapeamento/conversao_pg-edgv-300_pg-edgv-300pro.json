@@ -1528,7 +1528,7 @@
             },
             {
               "valor_ida": 7,
-              "valor_volta": 407
+              "valor_volta": 416
             },
             {
               "valor_ida": 9,
@@ -3876,7 +3876,7 @@
           "attr_volta": "tipo",
           "traducao": [
             {
-              "valor_ida": 1,
+              "valor_ida": 3,
               "valor_volta": 2901
             },
             {
@@ -4186,6 +4186,14 @@
           "valor": 1
         },
         {
+          "nome_atributo": "tipousoedif",
+          "valor": 2
+        },
+        {
+          "nome_atributo": "tipoedifpubcivil",
+          "valor": 1
+        },
+        {
           "nome_atributo": "proprioadm",
           "valor": 0
         },
@@ -4204,10 +4212,6 @@
         {
           "nome_atributo": "divisaoativecon",
           "valor": 0
-        },
-        {
-          "nome_atributo": "tipousoedif",
-          "valor": 2
         }
       ],
       "mapeamento_atributos": [
@@ -8448,8 +8452,8 @@
       }
     ]
     },
-    { "__comment": "edif_metro_ferroviaria -> constr_edificacao | Edificação ferroviária ou metroviária",
-      "classe_ida": "edif_metro_ferroviaria",
+    { "__comment": "edf_edif_metro_ferroviaria -> constr_edificacao | Edificação ferroviária ou metroviária",
+      "classe_ida": "edf_edif_metro_ferroviaria",
       "classe_volta": "constr_edificacao",
       "filtro_ida": {
         "$not": {
@@ -8515,6 +8519,10 @@
           "valor": 0
         },
         {
+          "nome_atributo": "jurisdicao",
+          "valor": 0
+        },
+        {
           "nome_atributo": "proprioadm",
           "valor": 0
         },
@@ -8547,8 +8555,7 @@
             },
             {
               "valor_ida": 15,
-              "valor_volta": 2398,
-              "sentido": "ida"
+              "valor_volta": 2321
             },
             {
               "valor_ida": 16,
