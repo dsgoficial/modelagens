@@ -1,8 +1,8 @@
 {
   "metadados":{
-    "versao_arquivo": "0.0",
+    "versao_arquivo": "0.1",
     "modelo_ida": "EDGV 3.0",
-    "versao_modelo_ida": "1.1",
+    "versao_modelo_ida": "1.1.3",
     "modelo_volta": "EDGV 3.0 Pro",
     "versao_modelo_volta": "1.2.3"
   },
@@ -1046,7 +1046,7 @@
             },
             {
               "valor_ida": 19,
-              "valor_volta": 814
+              "valor_volta": 819
             },
             {
               "valor_ida": 21,
@@ -2582,8 +2582,8 @@
         }
       ]
     },
-    { "__comment": "edf_constr_turistica -> constr_edificacao | turismo",
-      "classe_ida": "edf_constr_turistica",
+    { "__comment": "edf_edif_constr_turistica -> constr_edificacao | turismo",
+      "classe_ida": "edf_edif_constr_turistica",
       "classe_volta": "constr_edificacao",
       "filtro_ida": {
         "$not": {
@@ -3784,6 +3784,10 @@
         {
           "nome_atributo": "operacional",
           "valor": 1
+        },
+        {
+          "nome_atributo": "matconstr",
+          "valor": 0
         }
       ],
       "mapeamento_atributos": [
@@ -4795,8 +4799,8 @@
         }
       ]
     },
-    { "__comment": "edif_comunic -> constr_edificacao | Edificação de comunicação",
-      "classe_ida": "edif_comunic",
+    { "__comment": "edf_edif_comunic -> constr_edificacao | Edificação de comunicação",
+      "classe_ida": "edf_edif_comunic",
       "classe_volta": "constr_edificacao",
       "filtro_ida": {
         "$not": {
@@ -4851,6 +4855,10 @@
         },
         {
           "nome_atributo": "cultura",
+          "valor": 0
+        },
+        {
+          "nome_atributo": "modalidade",
           "valor": 0
         },
         {
@@ -5943,6 +5951,10 @@
         },
         {
           "nome_atributo": "situacaoespacial",
+          "valor": 0
+        },
+        {
+          "nome_atributo": "matconstr",
           "valor": 0
         }
       ]
@@ -7314,7 +7326,7 @@
               "valor_volta":207
             },
             {
-              "valor_ida":98,
+              "valor_ida":99,
               "valor_volta":298
             }
           ]
