@@ -2,7 +2,7 @@
     "metadados":{
         "modelo": "EDGV 3.0 Pro",
         "versao_modelo": "1.2",
-        "versao_regras":"0.1"
+        "versao_regras":"0.2"
     },
     "grupo_estilo": [
         {
@@ -919,7 +919,7 @@
         {
             "atributo": "nr_faixas",
             "descricao": "nr_faixas - Atributo incorreto para este tipo (R83_V)",
-            "regra": "(modal_uso in (4,8) and not (nr_faixas >=1)) or (modal_uso not in (4,8) and not(nr_faixas =0))",
+            "regra": "((tipo - tipo %100)/100) in (4) and not (nr_faixas =0) and ((modal_uso in (4,8) and not (nr_faixas >=1)) or (modal_uso not in (4,8) and not(nr_faixas =0)))",
             "tipo_estilo": "Atributo incorreto",
             "camadas": [
                 "edgv.infra_elemento_viario_*"
@@ -982,7 +982,7 @@
         {
             "atributo": "nr_pistas",
             "descricao": "nr_pistas - Atributo incorreto para este tipo (R84_V)",
-            "regra": "(modal_uso in (4,8) and not (nr_pistas >=1)) or (modal_uso not in (4,8) and not(nr_pistas =0))",
+            "regra": "((tipo - tipo %100)/100) in (4) and not (nr_pistas =0) and((modal_uso in (4,8) and not (nr_pistas >=1)) or (modal_uso not in (4,8) and not(nr_pistas =0)))",
             "tipo_estilo": "Atributo incorreto",
             "camadas": [
                 "edgv.infra_elemento_viario_*"
