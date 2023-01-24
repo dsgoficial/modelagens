@@ -1,6 +1,6 @@
 {
   "modelo": "EDGV 3.0 Pro",
-  "versao": "1.2.10",
+  "versao": "1.2.11",
   "schema_dados": "edgv",
   "schema_dominios": "dominios",
   "a_ser_preenchido": {
@@ -3609,7 +3609,22 @@
         {
           "code": 1000,
           "value": "Terreno exposto",
-          "valor_filtro": "Terreno Exposto"
+          "valor_filtro": "Terreno Exposto - desconhecido"
+        },
+        {
+          "code": 1001,
+          "value": "Terreno exposto",
+          "valor_filtro": "Terreno Exposto - cascalho"
+        },
+        {
+          "code": 1002,
+          "value": "Terreno exposto",
+          "valor_filtro": "Terreno Exposto - areia"
+        },
+        {
+          "code": 1003,
+          "value": "Terreno exposto",
+          "valor_filtro": "Terreno Exposto - rochoso"
         },
         {
           "code": 1296,
