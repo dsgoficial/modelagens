@@ -5098,6 +5098,14 @@
           "tipo": "smallint",
           "cardinalidade": "1..1",
           "mapa_valor": "exibir_lado_simbologia"
+        },
+        {
+          "nome": "largura_simbologia",
+          "tipo": "real",
+          "cardinalidade": "0..1",
+          "primitivas": [
+            "MultiLinestring"
+          ]
         }
       ]
     },
