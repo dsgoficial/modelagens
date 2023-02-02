@@ -1,6 +1,6 @@
 {
   "modelo": "EDGV 3.0 Pro",
-  "versao": "1.2.11",
+  "versao": "1.2.12",
   "schema_dados": "edgv",
   "schema_dominios": "dominios",
   "a_ser_preenchido": {
@@ -5092,6 +5092,12 @@
           "tipo": "smallint",
           "cardinalidade": "1..1",
           "mapa_valor": "booleano"
+        },
+        {
+          "nome": "exibir_lado_simbologia",
+          "tipo": "smallint",
+          "cardinalidade": "1..1",
+          "mapa_valor": "exibir_lado_simbologia"
         }
       ]
     },
