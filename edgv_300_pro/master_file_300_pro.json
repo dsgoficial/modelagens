@@ -1,6 +1,6 @@
 {
   "modelo": "EDGV 3.0 Pro",
-  "versao": "1.2.9",
+  "versao": "1.2.12",
   "schema_dados": "edgv",
   "schema_dominios": "dominios",
   "a_ser_preenchido": {
@@ -3609,7 +3609,22 @@
         {
           "code": 1000,
           "value": "Terreno exposto",
-          "valor_filtro": "Terreno Exposto"
+          "valor_filtro": "Terreno Exposto - desconhecido"
+        },
+        {
+          "code": 1001,
+          "value": "Terreno exposto",
+          "valor_filtro": "Terreno Exposto - cascalho"
+        },
+        {
+          "code": 1002,
+          "value": "Terreno exposto",
+          "valor_filtro": "Terreno Exposto - areia"
+        },
+        {
+          "code": 1003,
+          "value": "Terreno exposto",
+          "valor_filtro": "Terreno Exposto - rochoso"
         },
         {
           "code": 1296,
@@ -5077,6 +5092,20 @@
           "tipo": "smallint",
           "cardinalidade": "1..1",
           "mapa_valor": "booleano"
+        },
+        {
+          "nome": "exibir_lado_simbologia",
+          "tipo": "smallint",
+          "cardinalidade": "1..1",
+          "mapa_valor": "exibir_lado_simbologia"
+        },
+        {
+          "nome": "largura_simbologia",
+          "tipo": "real",
+          "cardinalidade": "0..1",
+          "primitivas": [
+            "MultiLinestring"
+          ]
         }
       ]
     },
@@ -5562,6 +5591,12 @@
           "mapa_valor": "booleano"
         },
         {
+          "nome": "justificativa_txt",
+          "tipo": "smallint",
+          "cardinalidade": "1..1",
+          "mapa_valor": "justificativa"
+        },
+        {
           "nome": "exibir_lado_simbologia",
           "tipo": "smallint",
           "cardinalidade": "1..1",
@@ -5693,57 +5728,6 @@
           "tipo": "smallint",
           "cardinalidade": "1..1",
           "mapa_valor": "booleano"
-        }
-      ]
-    },
-    {
-      "nome": "obstaculo_vertical",
-      "categoria": "infra",
-      "primitivas": [
-        "MultiPoint"
-      ],
-      "atributos": [
-        {
-          "nome": "nome",
-          "tipo": "varchar(255)",
-          "cardinalidade": "0..1"
-        },
-        {
-          "nome": "altitude",
-          "tipo": "real",
-          "cardinalidade": "1..1"
-        },
-        {
-          "nome": "altura",
-          "tipo": "real",
-          "cardinalidade": "1..1"
-        },
-        {
-          "nome": "visivel",
-          "tipo": "smallint",
-          "cardinalidade": "1..1",
-          "mapa_valor": "booleano"
-        },
-        {
-          "nome": "texto_edicao",
-          "tipo": "varchar(255)",
-          "cardinalidade": "0..1"
-        },
-        {
-          "nome": "label_x",
-          "tipo": "real",
-          "cardinalidade": "0..1"
-        },
-        {
-          "nome": "label_y",
-          "tipo": "real",
-          "cardinalidade": "0..1"
-        },
-        {
-          "nome": "justificativa_txt",
-          "tipo": "smallint",
-          "cardinalidade": "1..1",
-          "mapa_valor": "justificativa"
         }
       ]
     },
