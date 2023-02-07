@@ -1,10 +1,10 @@
 {
   "metadados":{
-    "versao_arquivo": "0.1",
+    "versao_arquivo": "0.1.1",
     "modelo_ida": "EDGV 3.0",
     "versao_modelo_ida": "1.1.3",
     "modelo_volta": "EDGV 3.0 Pro",
-    "versao_modelo_volta": "1.2.3"
+    "versao_modelo_volta": "1.2.9"
   },
   "__comment": "UTF-8",
   "schema_ida": "edgv",
@@ -1972,15 +1972,17 @@
       "classe_ida": "veg_floresta",
       "classe_volta": "cobter_vegetacao",
       "filtro_volta": {
-        "nome_atributo": "tipo",
-        "valor": 601
+        "$or":[
+          {
+            "nome_atributo": "tipo",
+            "valor": 601
+          },
+          {
+            "nome_atributo": "tipo",
+            "valor": 602
+          }
+        ]
       },
-      "atributos_default_ida": [
-        {
-          "nome_atributo": "tipo",
-          "valor": 601
-        }
-      ],
       "atributos_default_volta": [
         {
           "nome_atributo": "classificacaoporte",
@@ -2001,6 +2003,27 @@
         {
           "nome_atributo": "especiepredominante",
           "valor": 96
+        }
+      ],
+      "mapeamento_atributos": [
+        {
+          "attr_ida": "densidade",
+          "attr_volta": "tipo",
+          "traducao": [
+            {
+              "valor_ida": 1,
+              "valor_volta": 601
+            },
+            {
+              "valor_ida": 2,
+              "valor_volta": 602
+            },
+            {
+              "valor_ida": 0,
+              "valor_volta": 601,
+              "sentido": "ida"
+            }
+          ]
         }
       ]
     },
