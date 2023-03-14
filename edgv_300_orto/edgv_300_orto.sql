@@ -676,7 +676,7 @@ CREATE TABLE edgv.constr_extracao_mineral_a(
 	 id uuid NOT NULL DEFAULT uuid_generate_v4(),
 	 nome varchar(255),
 	 tipo smallint NOT NULL,
-	 tipoproduto smallint NOT NULL,
+	 tipo_produto smallint NOT NULL,
 	 forma_extracao smallint NOT NULL,
 	 situacao_fisica smallint NOT NULL,
 	 visivel smallint NOT NULL,
