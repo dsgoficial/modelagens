@@ -701,11 +701,11 @@ ALTER TABLE edgv.constr_extracao_mineral_a
 ALTER TABLE edgv.constr_extracao_mineral_a ALTER COLUMN tipo SET DEFAULT 9999;
 
 ALTER TABLE edgv.constr_extracao_mineral_a
-	 ADD CONSTRAINT constr_extracao_mineral_a_tipoproduto_fk FOREIGN KEY (tipoproduto)
+	 ADD CONSTRAINT constr_extracao_mineral_a_tipoproduto_fk FOREIGN KEY (tipo_produto)
 	 REFERENCES dominios.tipo_produto_residuo (code) MATCH FULL
 	 ON UPDATE NO ACTION ON DELETE NO ACTION;
 
-ALTER TABLE edgv.constr_extracao_mineral_a ALTER COLUMN tipoproduto SET DEFAULT 9999;
+ALTER TABLE edgv.constr_extracao_mineral_a ALTER COLUMN tipo_produto SET DEFAULT 9999;
 
 ALTER TABLE edgv.constr_extracao_mineral_a
 	 ADD CONSTRAINT constr_extracao_mineral_a_forma_extracao_fk FOREIGN KEY (forma_extracao)
@@ -739,7 +739,7 @@ CREATE TABLE edgv.constr_extracao_mineral_p(
 	 id uuid NOT NULL DEFAULT uuid_generate_v4(),
 	 nome varchar(255),
 	 tipo smallint NOT NULL,
-	 tipoproduto smallint NOT NULL,
+	 tipo_produto smallint NOT NULL,
 	 forma_extracao smallint NOT NULL,
 	 situacao_fisica smallint NOT NULL,
 	 visivel smallint NOT NULL,
@@ -764,11 +764,11 @@ ALTER TABLE edgv.constr_extracao_mineral_p
 ALTER TABLE edgv.constr_extracao_mineral_p ALTER COLUMN tipo SET DEFAULT 9999;
 
 ALTER TABLE edgv.constr_extracao_mineral_p
-	 ADD CONSTRAINT constr_extracao_mineral_p_tipoproduto_fk FOREIGN KEY (tipoproduto)
+	 ADD CONSTRAINT constr_extracao_mineral_p_tipoproduto_fk FOREIGN KEY (tipo_produto)
 	 REFERENCES dominios.tipo_produto_residuo (code) MATCH FULL
 	 ON UPDATE NO ACTION ON DELETE NO ACTION;
 
-ALTER TABLE edgv.constr_extracao_mineral_p ALTER COLUMN tipoproduto SET DEFAULT 9999;
+ALTER TABLE edgv.constr_extracao_mineral_p ALTER COLUMN tipo_produto SET DEFAULT 9999;
 
 ALTER TABLE edgv.constr_extracao_mineral_p
 	 ADD CONSTRAINT constr_extracao_mineral_p_forma_extracao_fk FOREIGN KEY (forma_extracao)
