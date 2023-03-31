@@ -8520,6 +8520,14 @@
     {
       "attr_ida": "posicaorelativa",
       "attr_volta": "posicao_relativa"
+    },
+    {
+      "attr_ida": "nrpistas",
+      "attr_volta": "nr_pistas"
+    },
+    {
+      "attr_ida": "nrfaixas",
+      "attr_volta": "nr_faixas"
     }
   ],
   "atributos_default_ida": [
