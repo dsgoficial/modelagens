@@ -1,6 +1,6 @@
 {
   "modelo": "EDGV 3.0 Pro",
-  "versao": "1.2.12",
+  "versao": "1.2.13",
   "schema_dados": "edgv",
   "schema_dominios": "dominios",
   "a_ser_preenchido": {
@@ -5811,6 +5811,14 @@
           "tipo": "smallint",
           "cardinalidade": "1..1",
           "mapa_valor": "justificativa"
+        },
+        {
+          "nome": "simb_rot",
+          "tipo": "real",
+          "cardinalidade": "0..1",
+          "primitivas": [
+            "MultiPoint"
+          ]
         }
       ]
     },
