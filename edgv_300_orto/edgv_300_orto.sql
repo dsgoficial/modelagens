@@ -7,10 +7,10 @@ SET search_path TO pg_catalog,public,edgv,dominios;
 
 CREATE TABLE public.db_metadata(
 	 edgvversion varchar(50) NOT NULL DEFAULT 'EDGV 3.0 Orto',
-	 dbimplversion varchar(50) NOT NULL DEFAULT '2.2.3',
+	 dbimplversion varchar(50) NOT NULL DEFAULT '2.2.4',
 	 CONSTRAINT edgvversioncheck CHECK (edgvversion = 'EDGV 3.0 Orto')
 );
-INSERT INTO public.db_metadata (edgvversion, dbimplversion) VALUES ('EDGV 3.0 Orto','2.2.3');
+INSERT INTO public.db_metadata (edgvversion, dbimplversion) VALUES ('EDGV 3.0 Orto','2.2.4');
 
 CREATE TABLE dominios.tipo_produto_residuo (
 	 code smallint NOT NULL,
@@ -1817,6 +1817,7 @@ CREATE TABLE edgv.infra_pista_pouso_p(
 	 label_x real,
 	 label_y real,
 	 justificativa_txt smallint NOT NULL,
+	 simb_rot real,
 	 observacao VARCHAR(255),
 	 geom geometry(MultiPoint, 4674),
 	 CONSTRAINT infra_pista_pouso_p_pk PRIMARY KEY (id)
