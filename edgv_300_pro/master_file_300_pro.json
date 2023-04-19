@@ -1,6 +1,6 @@
 {
   "modelo": "EDGV 3.0 Pro",
-  "versao": "1.2.13",
+  "versao": "1.2.14",
   "schema_dados": "edgv",
   "schema_dominios": "dominios",
   "a_ser_preenchido": {
@@ -3098,7 +3098,7 @@
         },
         {
           "code": 104,
-          "value": "Cemitério - Cristã",
+          "value": "Cemitério Comum - Cristã",
           "valor_filtro": "Cemitério"
         },
         {
@@ -3108,17 +3108,17 @@
         },
         {
           "code": 106,
-          "value": "Cemitério - Muçulmana",
+          "value": "Cemitério Comum - Muçulmana",
           "valor_filtro": "Cemitério"
         },
         {
           "code": 107,
-          "value": "Cemitério - Israelita",
+          "value": "Cemitério Comum - Israelita",
           "valor_filtro": "Cemitério"
         },
         {
           "code": 108,
-          "value": "Cemitério - Outras religiões",
+          "value": "Cemitério Comum - Outras religiões",
           "valor_filtro": "Cemitério"
         },
         {
@@ -3624,7 +3624,7 @@
         {
           "code": 1003,
           "value": "Terreno exposto",
-          "valor_filtro": "Terreno Exposto - rochoso"
+          "valor_filtro": "Terreno Exposto - pedregoso"
         },
         {
           "code": 1296,
@@ -4148,6 +4148,27 @@
             },
             {
               "code": 105,
+              "primitivas": [
+                "MultiPolygon",
+                "MultiPoint"
+              ]
+            },
+            {
+              "code": 106,
+              "primitivas": [
+                "MultiPolygon",
+                "MultiPoint"
+              ]
+            },
+            {
+              "code": 107,
+              "primitivas": [
+                "MultiPolygon",
+                "MultiPoint"
+              ]
+            },
+            {
+              "code": 108,
               "primitivas": [
                 "MultiPolygon",
                 "MultiPoint"
