@@ -1,7 +1,7 @@
 {
     "metadados":{
         "modelo": "EDGV 3.0 Orto",
-        "versao_modelo": "2.2",
+        "versao_modelo": "2.2.6",
         "versao_regras":"0.0"
     },
     "grupo_estilo": [
@@ -666,7 +666,7 @@
         {
             "atributo": "tipo",
             "descricao": "tipo - Incomum, confirmar atributação",
-            "regra": "tipo in (4)",
+            "regra": "tipo in (4,5)",
             "tipo_estilo": "Atributo incomum",
             "camadas": [
                 "edgv.elemnat_trecho_drenagem_l"
