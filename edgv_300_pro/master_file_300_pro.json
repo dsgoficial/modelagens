@@ -3604,23 +3604,23 @@
         },
         {
           "code": 1000,
-          "value": "Terreno exposto",
-          "valor_filtro": "Terreno Exposto - desconhecido"
+          "value": "Terreno exposto - desconhecido",
+          "valor_filtro": "Terreno Exposto"
         },
         {
           "code": 1001,
-          "value": "Terreno exposto",
-          "valor_filtro": "Terreno Exposto - cascalho"
+          "value": "Terreno exposto - cascalho",
+          "valor_filtro": "Terreno Exposto"
         },
         {
           "code": 1002,
-          "value": "Terreno exposto",
-          "valor_filtro": "Terreno Exposto - areia"
+          "value": "Terreno exposto - areia",
+          "valor_filtro": "Terreno Exposto"
         },
         {
           "code": 1003,
-          "value": "Terreno exposto",
-          "valor_filtro": "Terreno Exposto - pedregoso"
+          "value": "Terreno exposto - pedregoso",
+          "valor_filtro": "Terreno Exposto"
         },
         {
           "code": 1296,
