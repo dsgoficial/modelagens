@@ -6499,6 +6499,20 @@
         }
       ]
     },
+    {"__comment": "enc_aerogerador <-> infra_elemento_energia | aerogerador",
+      "classe_ida": "enc_aerogerador",
+      "classe_volta": "infra_elemento_energia",
+      "atributos_default_ida": [
+        {
+          "nome_atributo": "tipo",
+          "valor": 1701
+        }
+      ],
+      "filtro_volta": {
+        "nome_atributo": "tipo",
+        "valor": 1701
+      }
+    },
     {"__comment": "enc_subest_transm_distrib_energia_eletrica <-> infra_elemento_energia | grupo transf",
       "classe_ida": "enc_subest_transm_distrib_energia_eletrica",
       "classe_volta": "infra_elemento_energia",
