@@ -1269,6 +1269,10 @@
           "valor": 5
         },
         {
+          "nome_atributo": "operacional",
+          "valor": 1
+        },
+        {
           "nome_atributo": "matconstr",
           "valor": 0
         },
@@ -1503,59 +1507,10 @@
         {
           "nome_atributo": "artificial",
           "valor": 0
-        }
-      ],
-      "mapeamento_atributos": [
+        },
         {
-          "attr_ida": "salgada",
-          "attr_volta": "tipo",
-          "traducao": [
-            {
-              "valor_ida": 2,
-              "valor_volta": 1,
-              "sentido": "volta"
-            },
-            {
-              "valor_ida": 1,
-              "valor_volta": 3,
-              "sentido": "volta"
-            },
-            {
-              "valor_ida": 0,
-              "valor_volta": 4,
-              "sentido": "volta"
-            },
-            {
-              "valor_ida": 0,
-              "valor_volta": 5,
-              "sentido": "volta"
-            },
-            {
-              "valor_ida": 0,
-              "valor_volta": 6,
-              "sentido": "volta"
-            },
-            {
-              "valor_ida": 0,
-              "valor_volta": 7,
-              "sentido": "volta"
-            },
-            {
-              "valor_ida": 0,
-              "valor_volta": 9,
-              "sentido": "volta"
-            },
-            {
-              "valor_ida": 0,
-              "valor_volta": 10,
-              "sentido": "volta"
-            },
-            {
-              "valor_ida": 0,
-              "valor_volta": 11,
-              "sentido": "volta"
-            }
-          ]
+          "nome_atributo": "salgada",
+          "valor": 0
         }
       ],
       "mapeamento_multiplo": [
@@ -1762,37 +1717,16 @@
         {
           "nome_atributo": "secundaria",
           "valor": 0
+        },
+        {
+          "nome_atributo": "classificacaoporte",
+          "valor": 0
         }
       ],
-      "mapeamento_atributos": [
+      "atributos_default_ida": [
         {
-          "attr_ida": "classificacaoporte",
-          "attr_volta": "tipo",
-          "traducao": [
-            {
-              "valor_ida": 4,
-              "valor_volta": 301
-            },
-            {
-              "valor_ida": 5,
-              "valor_volta": 302
-            },
-            {
-              "valor_ida": 2,
-              "valor_volta": 302,
-              "sentido": "ida"
-            },
-            {
-              "valor_ida": 3,
-              "valor_volta": 302,
-              "sentido": "ida"
-            },
-            {
-              "valor_ida": 0,
-              "valor_volta": 9999,
-              "sentido": "ida"
-            }
-          ]
+          "nome_atributo": "tipo",
+          "valor": 301
         }
       ]
     },
@@ -5430,6 +5364,11 @@
               "valor_ida": 99,
               "valor_volta": 9999,
               "sentido": "ida"
+            },
+            {
+              "valor_ida": 1,
+              "valor_volta": 5,
+              "sentido": "volta"
             }
           ]
         }
@@ -5578,7 +5517,8 @@
           "traducao": [
             {
               "valor_ida": 2,
-              "valor_volta": 97
+              "valor_volta": 9999,
+              "sentido": "ida"
             },
             {
               "valor_ida": 4,
@@ -6429,7 +6369,7 @@
       "atributos_default_volta": [
         {
           "nome_atributo": "tipoestgerad",
-          "valor": 3
+          "valor": 5
         }
       ]
     },
@@ -6498,6 +6438,20 @@
           "valor": 0
         }
       ]
+    },
+    {"__comment": "enc_aerogerador <-> infra_elemento_energia | aerogerador",
+      "classe_ida": "enc_aerogerador",
+      "classe_volta": "infra_elemento_energia",
+      "atributos_default_ida": [
+        {
+          "nome_atributo": "tipo",
+          "valor": 1701
+        }
+      ],
+      "filtro_volta": {
+        "nome_atributo": "tipo",
+        "valor": 1701
+      }
     },
     {"__comment": "enc_subest_transm_distrib_energia_eletrica <-> infra_elemento_energia | grupo transf",
       "classe_ida": "enc_subest_transm_distrib_energia_eletrica",
