@@ -260,3 +260,47 @@ CREATE INDEX aux_grid_revisao_a_geom ON public.aux_grid_revisao_a USING gist (ge
 ALTER TABLE public.aux_grid_revisao_a OWNER TO postgres;
 
 GRANT ALL ON TABLE public.aux_grid_revisao_a TO public;
+
+--########################################################
+
+CREATE TABLE public.aux_track_p(
+    id uuid NOT NULL DEFAULT uuid_generate_v4(),
+    operador text,
+    data_track date,
+    x_ll real,
+    y_ll real,
+    track_id text,
+    track_segment integer,
+    track_segment_point_index integer,
+    elevation real,
+    creation_time timestamp with time zone,
+    geom geometry(Point,4674),
+    data_importacao timestamp(6) without time zone,
+    vtr text,
+    CONSTRAINT aux_track_p_pk PRIMARY KEY (id)
+    WITH (FILLFACTOR = 80)
+);
+
+CREATE INDEX aux_track_p_geom ON public.aux_track_p USING gist (geom);
+
+ALTER TABLE public.aux_track_p OWNER to postgres;
+
+GRANT SELECT ON TABLE public.aux_track_p TO public;
+
+CREATE MATERIALIZED VIEW public.aux_track_l
+AS
+ SELECT row_number() OVER () AS id,
+    a.data_track,
+    a.track_id,
+    a.operador,
+    a.vtr,
+    min(a.creation_time) AS min_t,
+    max(a.creation_time) AS max_t,
+    st_makeline(st_setsrid(st_makepointm(st_x(a.geom), st_y(a.geom), date_part('epoch'::text, a.creation_time)), 4674) ORDER BY a.creation_time)::geometry(LineStringM,4674) AS geom
+   FROM public.aux_track_p AS a
+  GROUP BY a.data_track, a.track_id, a.operador, a.vtr
+WITH DATA;
+
+ALTER TABLE public.aux_track_l OWNER TO postgres;
+
+GRANT SELECT ON TABLE public.aux_track_l TO public;
