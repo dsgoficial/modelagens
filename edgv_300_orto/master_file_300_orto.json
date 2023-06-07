@@ -2511,6 +2511,13 @@
       ]
     },
     {
+      "nome": "grid_edicao",
+      "categoria": "edicao",
+      "primitivas": ["MultiLinestring"],
+      "atributos": [
+      ]
+    },
+    {
       "nome": "articulacao_imagem",
       "categoria": "edicao",
       "primitivas": ["MultiPolygon"],

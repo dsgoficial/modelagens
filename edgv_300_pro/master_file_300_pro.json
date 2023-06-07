@@ -6142,8 +6142,15 @@
         {
           "nome": "nome",
           "tipo": "varchar(255)",
-          "cardinalidade": "1..1"
+          "cardinalidade": "0..1"
         }
+      ]
+    },
+    {
+      "nome": "grid_edicao",
+      "categoria": "edicao",
+      "primitivas": ["MultiLinestring"],
+      "atributos": [
       ]
     },
     {
