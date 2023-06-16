@@ -1,6 +1,6 @@
 {
   "modelo": "EDGV 3.0 Pro",
-  "versao": "1.2.16",
+  "versao": "1.2.17",
   "schema_dados": "edgv",
   "schema_dominios": "dominios",
   "a_ser_preenchido": {
@@ -6463,6 +6463,24 @@
           "tipo": "smallint",
           "cardinalidade": "1..1",
           "mapa_valor": "tipo_borda_elemento_hidrografico"
+        }
+      ]
+    },
+    {
+      "nome": "ponto_mudanca",
+      "categoria": "edicao",
+      "primitivas": ["MultiPoint"],
+      "atributos": [
+        {
+          "nome": "simb_rot",
+          "tipo": "real",
+          "cardinalidade": "0..1"
+        },
+        {
+          "nome": "visivel",
+          "tipo": "smallint",
+          "cardinalidade": "1..1",
+          "mapa_valor": "booleano"
         }
       ]
     }
