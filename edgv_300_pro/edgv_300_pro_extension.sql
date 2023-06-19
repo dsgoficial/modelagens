@@ -251,6 +251,7 @@ CREATE TABLE public.aux_grid_revisao_a(
 	 rank integer,
 	 visited boolean,
 	 atividade_id integer,
+   data_atualizacao timestamp without time zone,
 	 geom geometry(MultiPolygon, 4674),
 	 CONSTRAINT aux_grid_revisao_a_pk PRIMARY KEY (id)
 	 WITH (FILLFACTOR = 80)
