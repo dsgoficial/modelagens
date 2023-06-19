@@ -1,6 +1,6 @@
 {
   "modelo": "EDGV 3.0 Pro",
-  "versao": "1.2.17",
+  "versao": "1.2.18",
   "schema_dados": "edgv",
   "schema_dominios": "dominios",
   "a_ser_preenchido": {
@@ -6473,6 +6473,11 @@
       "atributos": [
         {
           "nome": "simb_rot",
+          "tipo": "real",
+          "cardinalidade": "0..1"
+        },
+        {
+          "nome": "desloc",
           "tipo": "real",
           "cardinalidade": "0..1"
         },
