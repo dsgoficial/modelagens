@@ -231,18 +231,47 @@ ALTER TABLE public.qgis_shortcuts
 GRANT ALL ON TABLE public.qgis_shortcuts TO PUBLIC;
 
 --########################################################
---Cria tabela de unidades de trabalho
+--Cria tabela sap local
 
 CREATE TABLE public.work_areas(
-	id SERIAL NOT NULL PRIMARY KEY,
+	id INTEGER NOT NULL PRIMARY KEY DEFAULT 1,
   nome VARCHAR(255) NOT NULL,
-  geom geometry(POLYGON, 4326)
+	epsg VARCHAR(5) NOT NULL,
+ 	subfase VARCHAR(255) NOT NULL,
+	lote VARCHAR(255) NOT NULL,
+	bloco VARCHAR(255) NOT NULL,
+	etapa VARCHAR(255) NOT NULL,
+	data_inicio timestamp with time zone,
+	data_fim timestamp with time zone,
+  nome_usuario VARCHAR(255),
+  usuario_uuid UUID,
+	observacao_ut text,
+  observacao_ativ text,
+  geom geometry(POLYGON, 4326) NOT NULL,
+  CONSTRAINT chk_single_row CHECK (id = 1)
 );
 
 ALTER TABLE public.work_areas
     OWNER to postgres;
 
 GRANT ALL ON TABLE public.work_areas TO PUBLIC;
+
+--########################################################
+--Cria tabela de temas
+CREATE TABLE public.qgis_themes(
+	  id SERIAL NOT NULL PRIMARY KEY,
+    nome text NOT NULL,
+    definicao_tema text NOT NULL,
+    owner varchar(255) NOT NULL,
+	  update_time timestamp without time zone NOT NULL DEFAULT now(),
+    CONSTRAINT unique_themes UNIQUE (nome)
+);
+
+ALTER TABLE public.qgis_themes
+    OWNER to postgres;
+
+GRANT ALL ON TABLE public.qgis_themes TO PUBLIC;
+
 
 --########################################################
 
