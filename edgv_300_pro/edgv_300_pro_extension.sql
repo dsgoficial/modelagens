@@ -235,6 +235,8 @@ GRANT ALL ON TABLE public.qgis_shortcuts TO PUBLIC;
 
 CREATE TABLE public.work_areas(
 	id INTEGER NOT NULL PRIMARY KEY DEFAULT 1,
+  unidade_trabalho_id INTEGER NOT NULL,
+  atividade_id INTEGER NOT NULL,
   nome VARCHAR(255) NOT NULL,
 	epsg VARCHAR(5) NOT NULL,
  	subfase VARCHAR(255) NOT NULL,
