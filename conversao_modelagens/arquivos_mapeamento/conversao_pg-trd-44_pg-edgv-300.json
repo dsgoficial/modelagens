@@ -2079,6 +2079,10 @@
               {
                 "nome_atributo":"tipodepgeral",
                 "valor":2
+              },
+              {
+                "nome_atributo":"tipodepgeral",
+                "valor":19
               }
             ]
           }
@@ -2095,6 +2099,10 @@
         },
         {
           "nome_atributo": "ssc",
+          "valor": 0
+        },
+        {
+          "nome_atributo": "ppo",
           "valor": 0
         }
       ]
@@ -2333,10 +2341,8 @@
       "filtro_volta":{
         "$and":[
           {
-            "$not":{
-              "nome_atributo":"$GEOM_TYPE",
-              "valor":"POINT"
-            }
+            "nome_atributo":"$GEOM_TYPE",
+            "valor":"POLYGON"
           },
           {
             "nome_atributo":"tipopista",
@@ -2391,18 +2397,8 @@
       "filtro_volta":{
         "$and":[
           {
-            "$not":{
-              "$or":[
-                {
-                  "nome_atributo":"$GEOM_TYPE",
-                  "valor":"LINESTRING"
-                },
-                {
-                  "nome_atributo":"$GEOM_TYPE",
-                  "valor":"POLYGON"
-                }
-              ]
-            }
+            "nome_atributo":"$GEOM_TYPE",
+            "valor":"POINT"
           },
           {
             "nome_atributo":"tipopista",
@@ -2445,18 +2441,8 @@
       "filtro_volta":{
         "$and":[
           {
-            "$not":{
-              "$or":[
-                {
-                  "nome_atributo":"$GEOM_TYPE",
-                  "valor":"LINESTRING"
-                },
-                {
-                  "nome_atributo":"$GEOM_TYPE",
-                  "valor":"POINT"
-                }
-              ]
-            }
+            "nome_atributo":"$GEOM_TYPE",
+            "valor":"POLYGON"
           },
           {
             "nome_atributo":"tipopista",
@@ -4083,6 +4069,92 @@
         }
       ]
     },
+    { "__comment": "AP030 ROAD <-  cbge_trecho_arruamento",
+      "classe_ida": "ap030",
+      "classe_volta": "cbge_trecho_arruamento",
+      "sentido": "volta",
+      "atributos_default_volta": [
+        {
+          "nome_atributo": "con",
+          "valor": 998
+        },
+        {
+          "nome_atributo": "hct",
+          "valor": 0
+        },
+        {
+          "nome_atributo": "loc",
+          "valor": 0
+        },
+        {
+          "nome_atributo": "wtc",
+          "valor": 1
+        }
+      ],
+      "mapeamento_atributos": [
+        {
+          "attr_ida": "rst",
+          "attr_volta": "revestimento",
+          "traducao": [
+            {
+              "valor_ida": 8,
+              "valor_volta": 1
+            },
+            {
+              "valor_ida": 1,
+              "valor_volta": 3
+            },
+            {
+              "valor_ida": 2,
+              "valor_volta": 2
+            },
+            {
+              "valor_ida": 0,
+              "valor_volta": 99,
+              "sentido": "volta"
+            },
+            {
+              "valor_ida": 4,
+              "valor_volta": 0,
+              "sentido": "volta"
+            }
+          ]
+        },
+        {
+          "attr_ida": "mes",
+          "attr_volta": "canteirodivisorio",
+          "traducao": [
+            {
+              "valor_ida": 1000,
+              "valor_volta": 2
+            },
+            {
+              "valor_ida": 1001,
+              "valor_volta": 1
+            }
+          ]
+        },
+        {
+          "attr_ida": "sep",
+          "attr_volta": "nrpistas",
+          "traducao": [
+            {
+              "valor_ida": 0,
+              "valor_volta": 1,
+              "sentido":"ida"
+            },
+            {
+              "valor_ida": 1000,
+              "valor_volta": 2
+            },
+            {
+              "valor_ida": 1001,
+              "valor_volta": 1
+            }
+          ]
+        }
+      ]
+    },
     { "__comment": "AL241 TOWER | torre_industrial / cooling  <-> edf_edif_industrial | chamine",
       "classe_ida": "al241",
       "classe_volta": "edf_edif_industrial",
@@ -4143,7 +4215,7 @@
         }
       ]
     },
-    { "__comment": "AQ040 BRIDGE <-> tra_ponte",
+    { "__comment": "AQ040 BRIDGE <-> tra_ponte | L",
       "classe_ida": "aq040",
       "classe_volta": "tra_ponte",
       "filtro_ida": {
@@ -4174,6 +4246,12 @@
           "valor": 0
         }
       ],
+      "filtro_volta": {
+        "$not":{
+          "nome_atributo":"$GEOM_TYPE",
+          "valor":"POINT"
+        }
+      },
       "atributos_default_volta": [
         {
           "nome_atributo": "bot",
@@ -4367,7 +4445,7 @@
         }
       ]
     },
-    { "__comment": "AQ040 BRIDGE <-> tra_travessia_pedestre",
+    { "__comment": "AQ040 BRIDGE <-> tra_travessia_pedestre | L",
       "classe_ida": "aq040",
       "classe_volta": "tra_travessia_pedestre",
       "filtro_ida": {
@@ -4388,6 +4466,12 @@
           "valor": 0
         }
       ],
+      "filtro_volta": {
+        "$not":{
+          "nome_atributo":"$GEOM_TYPE",
+          "valor":"POINT"
+        }
+      },
       "atributos_default_volta": [
         {
           "nome_atributo": "bot",
@@ -5340,6 +5424,10 @@
         {
           "nome_atributo": "hwt",
           "valor": 0
+        },
+        {
+          "nome_atributo": "fun",
+          "valor": 6
         }
       ]
     },
@@ -5955,9 +6043,9 @@
         }
       ]
     },
-    { "__comment": "AL015 GENERAL BUILDING <-> edf_edif_pub_mil | capitania",
+    { "__comment": "AL015 GENERAL BUILDING | Harbour Control <-> edf_edif_pub_militar | capitania - acho que está errado, era bom revisar (obs Diogo)",
       "classe_ida": "al015",
-      "classe_volta": "edf_edif_pub_mil",
+      "classe_volta": "edf_edif_pub_militar",
       "filtro_ida": {
         "nome_atributo": "ffn",
         "valor": 513
@@ -6024,6 +6112,100 @@
         {
           "nome_atributo": "hwt",
           "valor": 0
+        }
+      ]
+    },
+    { "__comment": "AL015 GENERAL BUILDING | Defence Activities <-> edf_edif_pub_militar | todos menos capitania, Posto de policiamento urbano e Posto de policiamento rodoviário",
+      "classe_ida": "al015",
+      "classe_volta": "edf_edif_pub_militar",
+      "filtro_ida": {
+        "nome_atributo": "ffn",
+        "valor": 835
+      },
+      "atributos_default_ida": [
+        {
+          "nome_atributo": "operacional",
+          "valor": 0
+        },
+        {
+          "nome_atributo": "matconstr",
+          "valor": 0
+        },
+        {
+          "nome_atributo": "turistica",
+          "valor": 0
+        },
+        {
+          "nome_atributo": "cultura",
+          "valor": 0
+        },
+        {
+          "nome_atributo": "tipousoedif",
+          "valor": 0
+        },
+        {
+          "nome_atributo": "jurisdicao",
+          "valor": 0
+        },
+        {
+          "nome_atributo": "tipoinstalmilitar",
+          "valor": 0
+        },
+        {
+          "nome_atributo": "administracao",
+          "valor": 0
+        },
+        {
+          "nome_atributo": "classeativecon",
+          "valor": 11
+        },
+        {
+          "nome_atributo": "divisaoativecon",
+          "valor": 0
+        },
+        {
+          "nome_atributo": "grupoativecon",
+          "valor": 6
+        },
+        {
+          "nome_atributo": "proprioadm",
+          "valor": 0
+        }
+      ],
+      "filtro_volta":{
+        "$not":{
+          "$or":[
+            {
+              "nome_atributo": "tipoinstalmilitar",
+              "valor": 22
+            },
+            {
+              "nome_atributo":"tipoinstalmilitar",
+              "valor": 23
+            },
+            {
+              "nome_atributo":"tipoinstalmilitar",
+              "valor": 24
+            }
+          ]
+        }
+      },
+      "atributos_default_volta": [
+        {
+          "nome_atributo": "ffn",
+          "valor": 835
+        },
+        {
+          "nome_atributo": "hgt",
+          "valor": -32767.0
+        },
+        {
+          "nome_atributo": "hwt",
+          "valor": 998
+        },
+        {
+          "nome_atributo": "voi",
+          "valor": "UNK"
         }
       ]
     },
@@ -8007,6 +8189,10 @@
         "$or":[
           {
             "nome_atributo":"classeativecon",
+            "valor":26
+          },
+          {
+            "nome_atributo":"classeativecon",
             "valor":27
           },
           {
@@ -8804,6 +8990,218 @@
         }
       ]
     },
+    { "__comment": "AL015 GENERAL BUILDING | Transport <- edf_edif_constr_aeroportuaria | todos menos Hangar e Serviço de combate a incendios",
+      "classe_ida": "al015",
+      "classe_volta": "edf_edif_constr_aeroportuaria",
+      "sentido":"volta",
+      "filtro_volta": {
+        "$not":{
+          "$or":[
+            {
+              "nome_atributo": "tipoedifaero",
+              "valor": 29
+            },
+            {
+              "nome_atributo":"tipoedifaero",
+              "valor":30
+            }
+          ]
+        }
+      },
+      "atributos_default_volta": [
+        {
+          "nome_atributo": "ffn",
+          "valor": 480
+        },
+        {
+          "nome_atributo": "hgt",
+          "valor": -32767.0
+        },
+        {
+          "nome_atributo": "hwt",
+          "valor": 998
+        },
+        {
+          "nome_atributo": "voi",
+          "valor": "UNK"
+        }
+      ]
+    },
+    { "__comment": "AL015 GENERAL BUILDING | Transport <- edf_edif_rodoviaria",
+      "classe_ida": "al015",
+      "classe_volta": "edf_edif_rodoviaria",
+      "sentido":"volta",
+      "atributos_default_volta": [
+        {
+          "nome_atributo": "ffn",
+          "valor": 480
+        },
+        {
+          "nome_atributo": "hgt",
+          "valor": -32767.0
+        },
+        {
+          "nome_atributo": "hwt",
+          "valor": 998
+        },
+        {
+          "nome_atributo": "voi",
+          "valor": "UNK"
+        }
+      ]
+    },
+    { "__comment": "AL015 GENERAL BUILDING | Power Generation <-> edf_edif_energia",
+      "classe_ida": "al015",
+      "classe_volta": "edf_edif_energia",
+      "filtro_ida": {
+        "nome_atributo": "ffn",
+        "valor": 350
+      },
+      "atributos_default_ida": [
+        {
+          "nome_atributo": "tipoedifenergia",
+          "valor": 0
+        },
+        {
+          "nome_atributo": "operacional",
+          "valor": 0
+        },
+        {
+          "nome_atributo": "matconstr",
+          "valor": 0
+        },
+        {
+          "nome_atributo": "turistica",
+          "valor": 0
+        },
+        {
+          "nome_atributo": "cultura",
+          "valor": 0
+        },
+        {
+          "nome_atributo": "administracao",
+          "valor": 0
+        },
+        {
+          "nome_atributo": "classeativecon",
+          "valor": 15
+        },
+        {
+          "nome_atributo": "divisaoativecon",
+          "valor": 0
+        },
+        {
+          "nome_atributo": "grupoativecon",
+          "valor": 0
+        },
+        {
+          "nome_atributo": "proprioadm",
+          "valor": 0
+        }
+      ],
+      "atributos_default_volta": [
+        {
+          "nome_atributo": "ffn",
+          "valor": 350
+        },
+        {
+          "nome_atributo": "hgt",
+          "valor": -32767.0
+        },
+        {
+          "nome_atributo": "hwt",
+          "valor": 998
+        },
+        {
+          "nome_atributo": "voi",
+          "valor": "UNK"
+        }
+      ]
+    },
+    { "__comment": "AL015 GENERAL BUILDING | Other <- edf_edif_ext_mineral",
+      "classe_ida": "al015",
+      "classe_volta": "edf_edif_ext_mineral",
+      "sentido": "volta",
+      "atributos_default_volta": [
+        {
+          "nome_atributo": "ffn",
+          "valor": 999
+        },
+        {
+          "nome_atributo": "hgt",
+          "valor": -32767.0
+        },
+        {
+          "nome_atributo": "hwt",
+          "valor": 998
+        },
+        {
+          "nome_atributo": "voi",
+          "valor": "UNK"
+        },
+        {
+          "nome_atributo": "txt",
+          "valor": "Extraction Mine Building",
+          "concatenar": true
+        }
+      ]
+    },
+    { "__comment": "AL015 GENERAL BUILDING | Other <- edf_hab_indigena",
+      "classe_ida": "al015",
+      "classe_volta": "edf_hab_indigena",
+      "sentido": "volta",
+      "atributos_default_volta": [
+        {
+          "nome_atributo": "ffn",
+          "valor": 999
+        },
+        {
+          "nome_atributo": "hgt",
+          "valor": -32767.0
+        },
+        {
+          "nome_atributo": "hwt",
+          "valor": 998
+        },
+        {
+          "nome_atributo": "voi",
+          "valor": "UNK"
+        },
+        {
+          "nome_atributo": "txt",
+          "valor": "Indigenous hut",
+          "concatenar": true
+        }
+      ]
+    },
+    { "__comment": "AL015 GENERAL BUILDING | Other <- edf_posto_fiscal",
+      "classe_ida": "al015",
+      "classe_volta": "edf_posto_fiscal",
+      "sentido": "volta",
+      "atributos_default_volta": [
+        {
+          "nome_atributo": "ffn",
+          "valor": 999
+        },
+        {
+          "nome_atributo": "hgt",
+          "valor": -32767.0
+        },
+        {
+          "nome_atributo": "hwt",
+          "valor": 998
+        },
+        {
+          "nome_atributo": "voi",
+          "valor": "UNK"
+        },
+        {
+          "nome_atributo": "txt",
+          "valor": "Tax office",
+          "concatenar": true
+        }
+      ]
+    },
     { "__comment": "AL015 GENERAL BUILDING -> edf_edificacao | outros",
       "classe_ida": "al015",
       "classe_volta": "edf_edificacao",
@@ -9156,20 +9554,23 @@
           "attr_volta":"tipoterrexp",
           "traducao":[
             {
+              "valor_ida":0,
+              "valor_volta":0
+            },
+            {
+              "valor_ida":5,
+              "valor_volta":0,
+              "sentido":"ida"
+            },
+            {
               "valor_ida":8,
-              "valor_volta":4
+              "valor_volta":0,
+              "sentido":"ida"
             },
             {
-              "valor_ida":999,
-              "valor_volta":9999
-            },
-            {
-              "valor_ida":88,
-              "valor_volta":12
-            },
-            {
-              "valor_ida":104,
-              "valor_volta":23
+              "valor_ida":21,
+              "valor_volta":0,
+              "sentido": "ida"
             },
             {
               "valor_ida":46,
@@ -9181,79 +9582,84 @@
               "sentido": "volta"
             },
             {
-              "valor_ida":21,
-              "valor_volta":0,
-              "sentido": "volta"
-            },
-            {
               "valor_ida":52,
               "valor_volta":0,
-              "sentido": "volta"
+              "sentido": "ida"
             },
             {
               "valor_ida":55,
               "valor_volta":0,
-              "sentido": "volta"
+              "sentido": "ida"
             },
             {
               "valor_ida":65,
               "valor_volta":0,
-              "sentido": "volta"
+              "sentido": "ida"
             },
             {
               "valor_ida":67,
               "valor_volta":0,
-              "sentido": "volta"
+              "sentido": "ida"
             },
             {
               "valor_ida":84,
-              "valor_volta":0,
-              "sentido": "volta"
+              "valor_volta":4
             },
             {
               "valor_ida":87,
-              "valor_volta":0,
-              "sentido": "volta"
+              "valor_volta":12
+            },
+            {
+              "valor_ida":88,
+              "valor_volta":12
             },
             {
               "valor_ida":103,
               "valor_volta":0,
-              "sentido": "volta"
+              "sentido": "ida"
+            },
+            {
+              "valor_ida":104,
+              "valor_volta":23
             },
             {
               "valor_ida":120,
-              "valor_volta":0,
-              "sentido": "volta"
+              "valor_volta":18
             },
             {
               "valor_ida":122,
               "valor_volta":0,
-              "sentido": "volta"
+              "sentido": "ida"
             },
             {
               "valor_ida":124,
-              "valor_volta":0,
-              "sentido": "volta"
+              "valor_volta":12,
+              "sentido": "ida"
             },
             {
               "valor_ida":126,
-              "valor_volta":0,
-              "sentido": "volta"
+              "valor_volta":12,
+              "sentido": "ida"
             },
             {
               "valor_ida":257,
               "valor_volta":0,
-              "sentido": "volta"
+              "sentido": "ida"
             },
             {
               "valor_ida":258,
               "valor_volta":0,
-              "sentido": "volta"
+              "sentido": "ida"
             },
             {
-              "valor_ida":259,
+              "valor_ida":269,
               "valor_volta":0,
-              "sentido": "volta"
+              "sentido": "ida"
+            },
+            {
+              "valor_ida":999,
+              "valor_volta":0,
+              "sentido":"ida"
             }
           ]
         }
@@ -9353,6 +9759,174 @@
           "valor":0
         }
       ]
+    },
+    { "__comment": "AD010 ELETRIC POWER STATION | Thermal <-> enc_termeletrica",
+      "classe_ida":"ad010",
+      "classe_volta":"enc_termeletrica",
+      "filtro_ida":{
+        "nome_atributo":"ppc",
+        "valor":7
+      },
+      "atributos_default_ida":[
+        {
+          "nome_atributo":"tipoestgerad",
+          "valor":9
+        },
+        {
+          "nome_atributo":"operacional",
+          "valor":0
+        },
+        {
+          "nome_atributo":"tipocombustivel",
+          "valor":0
+        }
+      ],
+      "atributos_default_volta":[
+        {
+          "nome_atributo":"ppc",
+          "valor":7
+        },
+        {
+          "nome_atributo":"hgt",
+          "valor": -32767.07
+        },
+        {
+          "nome_atributo":"voi",
+          "valor":"UNK"
+        }
+      ]
+    },
+    { "__comment": "AT030 POWER LINE | Thermal <-> enc_trecho_energia",
+      "classe_ida":"at030",
+      "classe_volta":"enc_trecho_energia",
+      "filtro_ida":{
+        "nome_atributo":"ppc",
+        "valor":7
+      },
+      "atributos_default_ida":[
+        {
+          "nome_atributo":"especie",
+          "valor":2
+        },
+        {
+          "nome_atributo":"posicaorelativa",
+          "valor":3
+        },
+        {
+          "nome_atributo":"sin",
+          "valor":0
+        }
+      ],
+      "atributos_default_volta":[
+        {
+          "nome_atributo":"hgt",
+          "valor": -32767.07
+        },
+        {
+          "nome_atributo":"voi",
+          "valor":"UNK"
+        }
+      ]
+    },
+    { "__comment": "ZD040 Named Location <- rel_elemento_fisiografico_natural | P",
+      "sentido": "volta",
+      "classe_ida": "zd040",
+      "classe_volta": "rel_elemento_fisiografico_natural",
+      "filtro_volta": {
+        "nome_atributo": "$GEOM_TYPE",
+        "valor": "POINT"
+      }
+    },
+    { "__comment": "ZD040 Named Location <- rel_pico | P",
+      "sentido": "volta",
+      "classe_ida": "zd040",
+      "classe_volta": "rel_pico",
+      "filtro_volta": {
+        "nome_atributo": "$GEOM_TYPE",
+        "valor": "POINT"
+      }
+    },
+    { "__comment": "BD130 HARZARDOUS ROCK <-> hid_rocha_em_agua",
+      "classe_ida": "bd130",
+      "classe_volta": "hid_rocha_em_agua",
+      "atributos_default_ida":[
+        {
+          "nome_atributo":"tipoelemnat",
+          "valor":23
+        },
+        {
+          "nome_atributo":"formarocha",
+          "valor":0
+        }
+      ],
+      "filtro_volta":{
+        "nome_atributo": "$GEOM_TYPE",
+        "valor": "POINT"
+      },
+      "mapeamento_atributos":[
+        {
+          "attr_ida":"wle",
+          "attr_volta":"situacaoemagua",
+          "traducao":[
+            {
+              "valor_ida":0,
+              "valor_volta":0
+            },
+            {
+              "valor_ida":1,
+              "valor_volta":7,
+              "sentido":"ida"
+            },
+            {
+              "valor_ida":2,
+              "valor_volta":4
+            },
+            {
+              "valor_ida":3,
+              "valor_volta":5
+            },
+            {
+              "valor_ida":4,
+              "valor_volta":7
+            },
+            {
+              "valor_ida":8,
+              "valor_volta":0,
+              "sentido":"ida"
+            },
+            {
+              "valor_ida":998,
+              "valor_volta":0,
+              "sentido":"ida"
+            },
+            {
+              "valor_ida":999,
+              "valor_volta":0,
+              "sentido": "ida"
+            }
+          ]
+        }
+      ]
+    },
+    { "__comment": "DB160 ROCK FORMATION <-> rel_rocha",
+      "classe_ida": "db160",
+      "classe_volta": "rel_rocha",
+      "atributos_default_ida":[
+        {
+          "nome_atributo":"tipoelemnat",
+          "valor":23
+        },
+        {
+          "nome_atributo":"formarocha",
+          "valor":0
+        }
+      ],
+      "atributos_default_volta":[
+        {
+          "nome_atributo":"rkf",
+          "valor":0
+        }
+      ]
     }
   ],
   "mapeamento_atributos": [
@@ -9384,7 +9958,7 @@
         }
       ]
     },
-    {
+    { "__comment": "CSP Crop Species <-> cultivopredominante",
       "attr_ida":"csp",
       "attr_volta":"cultivopredominante",
       "traducao":[
@@ -9856,11 +10430,11 @@
         }
       ]
     },
-    { "__comment":"WID Width <-> largura",
+    { "__comment": "WID Width <-> largura",
       "attr_ida":"wid",
       "attr_volta":"largura"
     },
-    { "__comment":"LEN Length <-> Extensão",
+    { "__comment": "LEN Length <-> Extensão",
       "attr_ida":"len",
       "attr_volta":"extensão"
     },
@@ -9897,7 +10471,7 @@
   "atributos_default_volta": [
     {
       "nome_atributo": "srt",
-      "valor": 9999
+      "valor": 94
     }
   ]
 }
