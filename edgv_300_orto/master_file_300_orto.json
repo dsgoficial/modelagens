@@ -1682,6 +1682,12 @@
           "tipo": "smallint",
           "cardinalidade": "1..1",
           "mapa_valor": "posicao_rotulo"
+        },
+        {
+          "nome": "direcao_fixada",
+          "tipo": "smallint",
+          "cardinalidade": "1..1",
+          "mapa_valor": "booleano"
         }
       ]
     },
