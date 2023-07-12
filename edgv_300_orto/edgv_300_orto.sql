@@ -791,6 +791,7 @@ CREATE TABLE edgv.elemnat_curva_nivel_l(
 	 cota integer NOT NULL,
 	 indice smallint NOT NULL,
 	 depressao smallint NOT NULL,
+	 dentro_de_massa_dagua smallint NOT NULL,
 	 texto_edicao varchar(255),
 	 visivel smallint NOT NULL,
 	 observacao VARCHAR(255),
@@ -815,6 +816,13 @@ ALTER TABLE edgv.elemnat_curva_nivel_l
 	 ON UPDATE NO ACTION ON DELETE NO ACTION;
 
 ALTER TABLE edgv.elemnat_curva_nivel_l ALTER COLUMN depressao SET DEFAULT 9999;
+
+ALTER TABLE edgv.elemnat_curva_nivel_l
+	 ADD CONSTRAINT elemnat_curva_nivel_l_dentro_de_massa_dagua_fk FOREIGN KEY (dentro_de_massa_dagua)
+	 REFERENCES dominios.booleano (code) MATCH FULL
+	 ON UPDATE NO ACTION ON DELETE NO ACTION;
+
+ALTER TABLE edgv.elemnat_curva_nivel_l ALTER COLUMN dentro_de_massa_dagua SET DEFAULT 9999;
 
 ALTER TABLE edgv.elemnat_curva_nivel_l
 	 ADD CONSTRAINT elemnat_curva_nivel_l_visivel_fk FOREIGN KEY (visivel)

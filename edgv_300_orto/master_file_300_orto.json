@@ -1392,6 +1392,12 @@
           "mapa_valor": "booleano"
         },
         {
+          "nome": "dentro_de_massa_dagua",
+          "tipo": "smallint",
+          "cardinalidade": "1..1",
+          "mapa_valor": "booleano"
+        },
+        {
           "nome": "texto_edicao",
           "tipo": "varchar(255)",
           "cardinalidade": "0..1"
