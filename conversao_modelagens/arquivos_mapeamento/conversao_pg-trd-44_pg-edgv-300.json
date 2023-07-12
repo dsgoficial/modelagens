@@ -1,6 +1,6 @@
 {
   "metadados":{
-    "versao_arquivo": "0.0",
+    "versao_arquivo": "0.1",
     "modelo_ida": "TRD 4",
     "versao_modelo_ida": "4.4",
     "modelo_volta": "EDGV 3.0",
@@ -24,8 +24,7 @@
   "agregar_geom_ida": true,
   "agregar_geom_volta": true,
   "mapeamento_classes": [
-    {
-      "__comment": "AL020 Built-UP Area | Residencial area <-> lml_area_densamente_edificada",
+    { "__comment": "AL020 Built-UP Area | Residencial area <-> lml_area_densamente_edificada",
       "classe_ida": "al020",
       "classe_volta": "lml_area_densamente_edificada",
       "filtro_ida": {
@@ -71,8 +70,7 @@
         }
       ]
     },
-    {
-      "__comment": "AL020 Built-UP Area | Nao residencial area <-> cbge_area_construida",
+    { "__comment": "AL020 Built-UP Area | Nao residencial area <-> cbge_area_construida",
       "classe_ida": "al020",
       "classe_volta": "cbge_area_construida",
       "filtro_ida": {
@@ -118,8 +116,7 @@
         }
       ]
     },
-    {
-      "__comment": "AL020 Built-UP Area | Residencial Ponto <-> lml_posic_geo_localidade",
+    { "__comment": "AL020 Built-UP Area | Residencial Ponto <-> lml_posic_geo_localidade",
       "classe_ida": "al020",
       "classe_volta": "lml_posic_geo_localidade",
       "filtro_ida": {
@@ -177,8 +174,7 @@
         }
       ]
     },
-    {
-      "__comment": "BA030 ISLAND <-> hid_ilha",
+    { "__comment": "BA030 ISLAND <-> hid_ilha",
       "classe_ida": "ba030",
       "classe_volta": "hid_ilha",
       "filtro_volta": {
@@ -196,8 +192,7 @@
         }
       ]
     },
-    {
-      "__comment": "ZD040 Named Location <- hid_ilha",
+    { "__comment": "ZD040 Named Location <- hid_ilha",
       "sentido": "volta",
       "classe_ida": "zd040",
       "classe_volta": "hid_ilha",
@@ -216,8 +211,7 @@
         ]
       }
     },
-    {
-      "__comment": "BA040 TIDAL WATER <-> hid_massa_dagua | Oceano",
+    { "__comment": "BA040 TIDAL WATER <-> hid_massa_dagua | Oceano",
       "classe_ida": "ba040",
       "classe_volta": "hid_massa_dagua",
       "atributos_default_ida": [
@@ -251,8 +245,7 @@
         "valor": 3
       }
     },
-    {
-      "__comment": "BA050 BEACH <-> rel_elemento_fisiografico_natural",
+    { "__comment": "BA050 BEACH <-> rel_elemento_fisiografico_natural",
       "classe_ida": "ba050",
       "classe_volta": "rel_elemento_fisiografico_natural",
       "filtro_volta": {
@@ -283,8 +276,7 @@
         }
       ]
     },
-    {
-      "__comment": "BD120 REEF <-> hid_recife",
+    { "__comment": "BD120 REEF <-> hid_recife",
       "classe_ida": "bd120",
       "classe_volta": "hid_recife",
       "mapeamento_atributos": [
@@ -355,8 +347,7 @@
         }
       ]
     },
-    {
-      "__comment": "BH020 CANAL -> hid_canal | canal navegacao",
+    { "__comment": "BH020 CANAL -> hid_canal | canal navegacao",
       "sentido": "ida",
       "classe_ida": "bh020",
       "classe_volta": "hid_canal",
@@ -401,8 +392,7 @@
         }
       ]
     },
-    {
-      "__comment": "BH070 FORD <-> tra_travessia",
+    { "__comment": "BH070 FORD <-> tra_travessia",
       "classe_ida": "bh070",
       "classe_volta": "tra_travessia",
       "atributos_default_ida": [
@@ -438,8 +428,7 @@
         }
       ]
     },
-    {
-      "__comment": "BH140 RIVER -> hid_canal",
+    { "__comment": "BH140 RIVER -> hid_canal | area",
       "classe_ida": "bh140",
       "classe_volta": "hid_canal",
       "sentido":"ida",
@@ -482,8 +471,7 @@
         }
       ]
     },
-    {
-      "__comment": "BH140 RIVER <-> hid_massa_dagua | Rio",
+    { "__comment": "BH140 RIVER <-> hid_massa_dagua | Rio",
       "classe_ida": "bh140",
       "classe_volta": "hid_massa_dagua",
       "filtro_ida": {
@@ -553,8 +541,7 @@
         }
       ]
     },
-    {
-      "__comment": "BH140 RIVER <-> hid_trecho_drenagem | Rio",
+    { "__comment": "BH140 RIVER <-> hid_trecho_drenagem | Rio e Pluvial",
       "classe_ida": "bh140",
       "classe_volta": "hid_trecho_drenagem",
       "filtro_ida": {
@@ -586,8 +573,16 @@
         }
       ],
       "filtro_volta": {
-        "nome_atributo": "tipotrechodrenagem",
-        "valor": 4
+        "$or":[
+          {
+            "nome_atributo": "tipotrechodrenagem",
+            "valor": 4
+          },
+          {
+            "nome_atributo": "tipotrechodrenagem",
+            "valor": 5
+          }
+        ]
       },
       "atributos_default_volta": [
         {
@@ -629,8 +624,7 @@
         }
       ]
     },
-    {
-      "__comment": "BH140 RIVER -> hid_canal",
+    { "__comment": "BH140 RIVER -> hid_canal | linha",
       "classe_ida": "bh140",
       "classe_volta": "hid_canal",
       "sentido":"ida",
@@ -673,8 +667,7 @@
         }
       ]
     },
-    {
-      "__comment": "BH080 LAKE <-> hid_massa_dagua | Lago",
+    { "__comment": "BH080 LAKE <-> hid_massa_dagua | Lago",
       "classe_ida": "bh080",
       "classe_volta": "hid_massa_dagua",
       "atributos_default_ida": [
@@ -732,8 +725,7 @@
         }
       ]
     },
-    {
-      "__comment": "BB190 BERTHING_STRUCTURE <-> hdv_atracadouro_terminal",
+    { "__comment": "BB190 BERTHING_STRUCTURE <-> hdv_atracadouro_terminal",
       "classe_ida": "bb190",
       "classe_volta": "hdv_atracadouro_terminal",
       "atributos_default_ida": [
@@ -809,8 +801,7 @@
         }
       ]
     },
-    {
-      "__comment": "AN010 RAILWAY <-> fer_trecho_ferroviario",
+    { "__comment": "AN010 RAILWAY <-> fer_trecho_ferroviario",
       "classe_ida": "an010",
       "classe_volta": "fer_trecho_ferroviario",
       "filtro_ida": {
@@ -969,8 +960,7 @@
         }
       ]
     },
-    {
-      "__comment": "BH130 RESERVOIR <-> hid_massa_dagua | Acude",
+    { "__comment": "BH130 RESERVOIR <-> hid_massa_dagua | Acude",
       "classe_ida": "bh130",
       "classe_volta": "hid_massa_dagua",
       "atributos_default_ida": [
@@ -1006,8 +996,7 @@
         "valor": 10
       }
     },
-    {
-      "__comment": "BH030 DITCH <-> hid_vala | vala",
+    { "__comment": "BH030 DITCH <-> hid_vala | vala",
       "classe_ida": "bh030",
       "classe_volta": "hid_vala",
       "atributos_default_ida": [
@@ -1047,8 +1036,7 @@
         }
       ]
     },
-    {
-      "__comment": "BH090 LAND SUBJECT TO INUNDATION <-> hid_terreno_sujeito_inundacao",
+    { "__comment": "BH090 LAND SUBJECT TO INUNDATION <-> hid_terreno_sujeito_inundacao",
       "classe_ida": "bh090",
       "classe_volta": "hid_terreno_sujeito_inundacao",
       "atributos_default_ida": [
@@ -1068,13 +1056,11 @@
         }
       ]
     },
-    {
-      "__comment": "BH120 RAPIDS <-> hid_corredeira | outros",
+    { "__comment": "BH120 RAPIDS <-> hid_corredeira | outros",
       "classe_ida": "bh120",
       "classe_volta": "hid_corredeira"
     },
-    {
-      "__comment": "BH180 WATERFALL <-> hid_queda_dagua",
+    { "__comment": "BH180 WATERFALL <-> hid_queda_dagua",
       "classe_ida": "bh180",
       "classe_volta": "hid_queda_dagua",
       "atributos_default_ida": [
@@ -1084,8 +1070,7 @@
         }
       ]
     },
-    {
-      "__comment": "BH145 VANISHING POINT <-> hid_sumidouro_vertedouro",
+    { "__comment": "BH145 VANISHING POINT <-> hid_sumidouro_vertedouro",
       "classe_ida": "bh145",
       "classe_volta": "hid_sumidouro_vertedouro",
       "atributos_default_ida": [
@@ -1111,8 +1096,7 @@
         }
       ]
     },
-    {
-      "__comment": "BH060 FLUME <-> dut_trecho_duto",
+    { "__comment": "BH060 FLUME <-> dut_trecho_duto",
       "classe_ida": "bh060",
       "classe_volta": "dut_trecho_duto",
       "atributos_default_ida": [
@@ -1177,8 +1161,7 @@
         }
       ]
     },
-    {
-      "__comment": "AP010 CART TRACK <-> tra_caminho_carrocavel",
+    { "__comment": "AP010 CART TRACK <-> tra_caminho_carrocavel",
       "classe_ida": "ap010",
       "classe_volta": "tra_caminho_carrocavel",
       "atributos_default_volta": [
@@ -1188,8 +1171,7 @@
         }
       ]
     },
-    {
-      "__comment": "BI020 DAM <-> hid_barragem",
+    { "__comment": "BI020 DAM <-> hid_barragem",
       "classe_ida": "bi020",
       "classe_volta": "hid_barragem",
       "atributos_default_ida": [
@@ -1478,8 +1460,7 @@
         }
       ]
     },
-    {
-      "__comment": "AA010 EXTRACTION MINE <-> eco_ext_mineral",
+    { "__comment": "AA010 EXTRACTION MINE <-> eco_ext_mineral",
       "classe_ida": "aa010",
       "classe_volta": "eco_ext_mineral",
       "atributos_default_ida": [
@@ -1675,8 +1656,7 @@
         }
       ]
     },
-    {
-      "__comment": "AA052 HYDROCARBONS FIELD <-> eco_ext_mineral | Petroleo",
+    { "__comment": "AA052 HYDROCARBONS FIELD <-> eco_ext_mineral | Petroleo",
       "classe_ida": "aa052",
       "classe_volta": "eco_ext_mineral",
       "atributos_default_ida": [
@@ -1746,8 +1726,7 @@
       ]
       }
     },
-    {
-      "__comment": "AL019 SHED <-> cbge_deposito_geral | GALPaO",
+    { "__comment": "AL019 SHED <-> cbge_deposito_geral | GALPAO",
       "classe_ida": "al019",
       "classe_volta": "cbge_deposito_geral",
       "filtro_volta": {
@@ -1805,8 +1784,7 @@
         }
       ]
     },
-    {
-      "__comment": "AL241 TOWER | comunicacao ou celular <-> enc_torre_comunic",
+    { "__comment": "AL241 TOWER | comunicacao ou celular <-> enc_torre_comunic",
       "classe_ida": "al241",
       "classe_volta": "enc_torre_comunic",
       "filtro_ida": {
@@ -1850,8 +1828,7 @@
         }
       ]
     },
-    {
-      "__comment": "AT042 PYLON <-> enc_torre_energia",
+    { "__comment": "AT042 PYLON <-> enc_torre_energia",
       "classe_ida": "at042",
       "classe_volta": "enc_torre_energia",
       "atributos_default_ida": [
@@ -1879,8 +1856,7 @@
         }
       ]
     },
-    {
-      "__comment": "AL241 TOWER | turistica <- edf_edif_constr_turistica",
+    { "__comment": "AL241 TOWER | turistica <- edf_edif_constr_turistica",
       "sentido": "volta",
       "classe_ida": "al241",
       "classe_volta": "edf_edif_constr_turistica",
@@ -1903,8 +1879,7 @@
         }
       ]
     }, 
-    {
-      "__comment": "AL241 TOWER | chaminé turistica <- edf_edif_constr_turistica",
+    { "__comment": "AL241 TOWER | chaminé turistica <- edf_edif_constr_turistica",
       "sentido": "volta",
       "classe_ida": "al241",
       "classe_volta": "edf_edif_constr_turistica",
@@ -1927,8 +1902,7 @@
         }
       ]
     },
-    {
-      "__comment": "AL241 TOWER | LIGHTHOUSE <-> hdv_sinalizacao | farol",
+    { "__comment": "AL241 TOWER | LIGHTHOUSE <-> hdv_sinalizacao | farol",
       "classe_ida": "al241",
       "classe_volta": "hdv_sinalizacao",
       "filtro_ida": {
@@ -1960,8 +1934,7 @@
         }
       ]
     },
-    {
-      "__comment": "AM070 STORAGE TANK | WATER <-> snb_dep_abast_agua",
+    { "__comment": "AM070 STORAGE TANK | WATER <-> snb_dep_abast_agua",
       "classe_ida": "am070",
       "classe_volta": "snb_dep_abast_agua",
       "filtro_ida": {
@@ -2041,8 +2014,7 @@
         }
       ]
     },
-    {
-      "__comment": "AM070 STORAGE TANK <-> cbge_deposito_geral | Tanque & Reservatório", 
+    { "__comment": "AM070 STORAGE TANK <-> cbge_deposito_geral | Tanque & Reservatório", 
       "classe_ida": "am070",
       "classe_volta": "cbge_deposito_geral",
       "filtro_ida":{
@@ -2107,6 +2079,10 @@
               {
                 "nome_atributo":"tipodepgeral",
                 "valor":2
+              },
+              {
+                "nome_atributo":"tipodepgeral",
+                "valor":19
               }
             ]
           }
@@ -2124,11 +2100,14 @@
         {
           "nome_atributo": "ssc",
           "valor": 0
+        },
+        {
+          "nome_atributo": "ppo",
+          "valor": 0
         }
       ]
     },
-    {
-      "__comment": "AL241 TOWER | WATER <-> snb_dep_abast_agua",
+    { "__comment": "AL241 TOWER | WATER <-> snb_dep_abast_agua",
       "classe_ida": "al241",
       "classe_volta": "snb_dep_abast_agua",
       "filtro_ida": {
@@ -2208,8 +2187,7 @@
         }
       ]
     },
-    {
-      "__comment": "AQ065 CULVERT <-> dut_galeria_bueiro",
+    { "__comment": "AQ065 CULVERT <-> dut_galeria_bueiro",
       "classe_ida": "aq065",
       "classe_volta": "dut_galeria_bueiro",
       "atributos_default_ida": [
@@ -2261,8 +2239,7 @@
         }
       ]
     },
-    {
-      "__comment": "BH170 NATURAL POOL | VERTEDOURO <->  hid_sumidouro_vertedouro",
+    { "__comment": "BH170 NATURAL POOL | VERTEDOURO <->  hid_sumidouro_vertedouro",
       "classe_ida": "bh170",
       "classe_volta": "hid_sumidouro_vertedouro",
       "filtro_ida": {
@@ -2294,8 +2271,7 @@
         }
       ]
     },
-    {
-      "__comment": "AP050 TRAIL <-> tra_trilha_picada",
+    { "__comment": "AP050 TRAIL <-> tra_trilha_picada",
       "classe_ida": "ap050",
       "classe_volta": "tra_trilha_picada",
       "atributos_default_volta": [
@@ -2305,8 +2281,7 @@
         }
       ]
     },
-    {
-      "__comment": "AQ070 FERRY CROSSING <-> tra_travessia",
+    { "__comment": "AQ070 FERRY CROSSING <-> tra_travessia",
       "classe_ida": "aq070",
       "classe_volta": "tra_travessia",
       "atributos_default_ida": [
@@ -2342,8 +2317,7 @@
         }
       ]
     },
-    {
-      "__comment": "GB055 RUNWAY <-> aer_pista_ponto_pouso",
+    { "__comment": "GB055 RUNWAY <-> aer_pista_ponto_pouso",
       "classe_ida": "gb055",
       "classe_volta": "aer_pista_ponto_pouso",
       "atributos_default_ida": [
@@ -2367,10 +2341,8 @@
       "filtro_volta":{
         "$and":[
           {
-            "$not":{
-              "nome_atributo":"$GEOM_TYPE",
-              "valor":"POINT"
-            }
+            "nome_atributo":"$GEOM_TYPE",
+            "valor":"POLYGON"
           },
           {
             "nome_atributo":"tipopista",
@@ -2401,8 +2373,7 @@
         }
       ]
     },
-    {
-      "__comment": "GB030 HELIPAD <-> aer_pista_ponto_pouso",
+    { "__comment": "GB030 HELIPAD <-> aer_pista_ponto_pouso",
       "classe_ida": "gb030",
       "classe_volta": "aer_pista_ponto_pouso",
       "atributos_default_ida": [
@@ -2426,18 +2397,8 @@
       "filtro_volta":{
         "$and":[
           {
-            "$not":{
-              "$or":[
-                {
-                  "nome_atributo":"$GEOM_TYPE",
-                  "valor":"LINESTRING"
-                },
-                {
-                  "nome_atributo":"$GEOM_TYPE",
-                  "valor":"POLYGON"
-                }
-              ]
-            }
+            "nome_atributo":"$GEOM_TYPE",
+            "valor":"POINT"
           },
           {
             "nome_atributo":"tipopista",
@@ -2456,8 +2417,7 @@
         }
       ]
     },
-    {
-      "__comment": "GB075 TAXIWAY <-> aer_pista_ponto_pouso",
+    { "__comment": "GB075 TAXIWAY <-> aer_pista_ponto_pouso",
       "classe_ida": "gb075",
       "classe_volta": "aer_pista_ponto_pouso",
       "atributos_default_ida": [
@@ -2481,18 +2441,8 @@
       "filtro_volta":{
         "$and":[
           {
-            "$not":{
-              "$or":[
-                {
-                  "nome_atributo":"$GEOM_TYPE",
-                  "valor":"LINESTRING"
-                },
-                {
-                  "nome_atributo":"$GEOM_TYPE",
-                  "valor":"POINT"
-                }
-              ]
-            }
+            "nome_atributo":"$GEOM_TYPE",
+            "valor":"POLYGON"
           },
           {
             "nome_atributo":"tipopista",
@@ -2507,8 +2457,7 @@
         }
       ]
     },
-    {
-      "__comment": "EB010 GRASSLAND <-> veg_campo | campo limpo",
+    { "__comment": "EB010 GRASSLAND <-> veg_campo | campo limpo",
       "classe_ida": "eb010",
       "classe_volta": "veg_campo",
       "atributos_default_ida": [
@@ -2534,8 +2483,16 @@
         }
       ],
       "filtro_volta":{
-        "nome_atributo":"tipocampo",
-        "valor":2
+        "$or":[
+          {
+            "nome_atributo":"tipocampo",
+            "valor":0
+          },
+          {
+            "nome_atributo":"tipocampo",
+            "valor":2
+          }
+        ]
       },
       "atributos_default_volta":[
         {
@@ -2544,8 +2501,7 @@
         }
       ]
     },
-    {
-      "__comment": "EB020 THICKET <-> veg_campo | campo sujo",
+    { "__comment": "EB020 THICKET <-> veg_campo | campo sujo",
       "classe_ida": "eb020",
       "classe_volta": "veg_campo",
       "atributos_default_ida": [
@@ -2589,8 +2545,7 @@
         }
       ]
     },
-    {
-      "__comment": "ED010 MARSH <-> veg_brejo_pantano",
+    { "__comment": "ED010 MARSH <-> veg_brejo_pantano",
       "classe_ida": "ed010",
       "classe_volta": "veg_brejo_pantano",
       "atributos_default_ida": [
@@ -2622,8 +2577,7 @@
         }
       ]
     },
-    {
-      "__comment": "ED020 SWAMP <-> veg_brejo_pantano",
+    { "__comment": "ED020 SWAMP <-> veg_brejo_pantano",
       "classe_ida": "ed020",
       "classe_volta": "veg_brejo_pantano",
       "atributos_default_ida": [
@@ -2667,8 +2621,7 @@
         }
       ]
     },
-    {
-      "__comment": "EA040 ORCHARD <-> veg_veg_cultivada | Perene", 
+    { "__comment": "EA040 ORCHARD <-> veg_veg_cultivada | Perene", 
       "classe_ida": "ea040",
       "classe_volta": "veg_veg_cultivada",
       "atributos_default_ida": [
@@ -2884,8 +2837,7 @@
         ]
       }
     },
-    {
-      "__comment": "EA050 VINEYARD <-> veg_veg_cultivada | uva", 
+    { "__comment": "EA050 VINEYARD <-> veg_veg_cultivada | uva", 
       "classe_ida": "ea050",
       "classe_volta": "veg_veg_cultivada",
       "atributos_default_ida": [
@@ -2923,8 +2875,7 @@
         ]
       }
     },
-    {
-      "__comment": "EA055 HOP FIELD -> veg_veg_cultivada | não identificavel", 
+    { "__comment": "EA055 HOP FIELD -> veg_veg_cultivada | não identificavel", 
       "classe_ida": "ea055",
       "classe_volta": "veg_veg_cultivada",
       "sentido":"ida",
@@ -2951,8 +2902,7 @@
         }
       ]
     },
-    {
-      "__comment": "EC010 CANE <-> veg_veg_cultivada | cana", 
+    { "__comment": "EC010 CANE <-> veg_veg_cultivada | cana", 
       "classe_ida": "ec010",
       "classe_volta": "veg_veg_cultivada",
       "atributos_default_ida": [
@@ -2982,8 +2932,7 @@
         "valor":7
       }
     },
-    {
-      "__comment": "BH135 RICE FIELD <-> veg_veg_cultivada | arroz", 
+    { "__comment": "BH135 RICE FIELD <-> veg_veg_cultivada | arroz", 
       "classe_ida": "bh135",
       "classe_volta": "veg_veg_cultivada",
       "atributos_default_ida":[
@@ -3015,8 +2964,7 @@
           }
         ]
     },
-    {
-      "__comment": "EA010 CROP LAND <-> veg_veg_cultivada", 
+    { "__comment": "EA010 CROP LAND <-> veg_veg_cultivada", 
       "classe_ida": "ea010",
       "classe_volta": "veg_veg_cultivada",
       "filtro_volta":{
@@ -3571,8 +3519,7 @@
         }
       ]
     },
-    {
-      "__comment": "EC010 CANE <- veg_floresta | bambu", 
+    { "__comment": "EC010 CANE <- veg_floresta | bambu", 
       "classe_ida": "ec010",
       "classe_volta": "veg_floresta",
       "sentido":"volta",
@@ -3582,8 +3529,7 @@
           "valor": 11
         }
     },
-    {
-      "__comment": "EC030 WOOD <- veg_veg_cultivada | árvores", 
+    { "__comment": "EC030 WOOD <- veg_veg_cultivada | árvores", 
       "classe_ida": "ec030",
       "classe_volta": "veg_veg_cultivada",
       "sentido":"volta",
@@ -3626,8 +3572,7 @@
         }
       ]
     },
-    {
-      "__comment": "EC030 WOOD | area <-> veg_floresta | sem bambu",
+    { "__comment": "EC030 WOOD | area <-> veg_floresta | sem bambu",
       "classe_ida": "ec030",
       "classe_volta": "veg_floresta",
       "filtro_ida": {
@@ -3751,8 +3696,7 @@
         }
       ]
     },
-    {
-      "__comment": "EC030 WOOD | area <-> veg_reflorestamento",
+    { "__comment": "EC030 WOOD | area <-> veg_reflorestamento",
       "classe_ida": "ec030",
       "classe_volta": "veg_reflorestamento",
       "filtro_ida":{
@@ -3886,8 +3830,7 @@
         }
       ]
     },
-    {
-      "__comment": "AL099 HUT <-> edf_edificacao | desconhecido",
+    { "__comment": "AL099 HUT <-> edf_edificacao | desconhecido",
       "sentido": "ida",
       "classe_ida": "al099",
       "classe_volta": "edf_edificacao",
@@ -3930,8 +3873,7 @@
         }
       ]
     },
-    {
-      "__comment": "AL241 TOWER | torre_controle  <-> edf_edif_constr_aeroportuaria | torre_controle",
+    { "__comment": "AL241 TOWER | torre_controle  <-> edf_edif_constr_aeroportuaria | torre_controle",
       "classe_ida": "al241",
       "classe_volta": "edf_edif_constr_aeroportuaria",
       "filtro_ida": {
@@ -3991,8 +3933,7 @@
         }
       ]
     },
-    {
-      "__comment": "AP030 ROAD <->  rod_trecho_rodoviario",
+    { "__comment": "AP030 ROAD <->  rod_trecho_rodoviario",
       "classe_ida": "ap030",
       "classe_volta": "rod_trecho_rodoviario",
       "atributos_default_ida": [
@@ -4128,8 +4069,93 @@
         }
       ]
     },
-    {
-      "__comment": "AL241 TOWER | torre_industrial / cooling  <-> edf_edif_industrial | chamine",
+    { "__comment": "AP030 ROAD <-  cbge_trecho_arruamento",
+      "classe_ida": "ap030",
+      "classe_volta": "cbge_trecho_arruamento",
+      "sentido": "volta",
+      "atributos_default_volta": [
+        {
+          "nome_atributo": "con",
+          "valor": 998
+        },
+        {
+          "nome_atributo": "hct",
+          "valor": 0
+        },
+        {
+          "nome_atributo": "loc",
+          "valor": 0
+        },
+        {
+          "nome_atributo": "wtc",
+          "valor": 1
+        }
+      ],
+      "mapeamento_atributos": [
+        {
+          "attr_ida": "rst",
+          "attr_volta": "revestimento",
+          "traducao": [
+            {
+              "valor_ida": 8,
+              "valor_volta": 1
+            },
+            {
+              "valor_ida": 1,
+              "valor_volta": 3
+            },
+            {
+              "valor_ida": 2,
+              "valor_volta": 2
+            },
+            {
+              "valor_ida": 0,
+              "valor_volta": 99,
+              "sentido": "volta"
+            },
+            {
+              "valor_ida": 4,
+              "valor_volta": 0,
+              "sentido": "volta"
+            }
+          ]
+        },
+        {
+          "attr_ida": "mes",
+          "attr_volta": "canteirodivisorio",
+          "traducao": [
+            {
+              "valor_ida": 1000,
+              "valor_volta": 2
+            },
+            {
+              "valor_ida": 1001,
+              "valor_volta": 1
+            }
+          ]
+        },
+        {
+          "attr_ida": "sep",
+          "attr_volta": "nrpistas",
+          "traducao": [
+            {
+              "valor_ida": 0,
+              "valor_volta": 1,
+              "sentido":"ida"
+            },
+            {
+              "valor_ida": 1000,
+              "valor_volta": 2
+            },
+            {
+              "valor_ida": 1001,
+              "valor_volta": 1
+            }
+          ]
+        }
+      ]
+    },
+    { "__comment": "AL241 TOWER | torre_industrial / cooling  <-> edf_edif_industrial | chamine",
       "classe_ida": "al241",
       "classe_volta": "edf_edif_industrial",
       "filtro_ida": {
@@ -4189,8 +4215,7 @@
         }
       ]
     },
-    {
-      "__comment": "AQ040 BRIDGE <-> tra_ponte",
+    { "__comment": "AQ040 BRIDGE <-> tra_ponte | L",
       "classe_ida": "aq040",
       "classe_volta": "tra_ponte",
       "filtro_ida": {
@@ -4221,6 +4246,12 @@
           "valor": 0
         }
       ],
+      "filtro_volta": {
+        "$not":{
+          "nome_atributo":"$GEOM_TYPE",
+          "valor":"POINT"
+        }
+      },
       "atributos_default_volta": [
         {
           "nome_atributo": "bot",
@@ -4414,8 +4445,7 @@
         }
       ]
     },
-    {
-      "__comment": "AQ040 BRIDGE <-> tra_travessia_pedestre",
+    { "__comment": "AQ040 BRIDGE <-> tra_travessia_pedestre | L",
       "classe_ida": "aq040",
       "classe_volta": "tra_travessia_pedestre",
       "filtro_ida": {
@@ -4436,6 +4466,12 @@
           "valor": 0
         }
       ],
+      "filtro_volta": {
+        "$not":{
+          "nome_atributo":"$GEOM_TYPE",
+          "valor":"POINT"
+        }
+      },
       "atributos_default_volta": [
         {
           "nome_atributo": "bot",
@@ -4471,8 +4507,7 @@
         }
       ]
     },
-    {
-      "__comment": "AL015 GENERAL BUILDING <-> edf_edificacao | desconhecido",
+    { "__comment": "AL015 GENERAL BUILDING <-> edf_edificacao | desconhecido",
       "classe_ida": "al015",
       "classe_volta": "edf_edificacao",
       "filtro_ida": {
@@ -4528,8 +4563,7 @@
         }
       ]
     },
-    {
-      "__comment": "AL015 GENERAL BUILDING <-> edf_edif_agropec_ext_vegetal_pesca | sede_op_fazenda",
+    { "__comment": "AL015 GENERAL BUILDING <-> edf_edif_agropec_ext_vegetal_pesca | sede_op_fazenda",
       "classe_ida": "al015",
       "classe_volta": "edf_edif_agropec_ext_vegetal_pesca",
       "filtro_ida": {
@@ -4647,8 +4681,7 @@
         }
       ]
     },
-    {
-      "__comment": "AL015 GENERAL BUILDING <-> edf_edif_industrial | silvicultura",
+    { "__comment": "AL015 GENERAL BUILDING <-> edf_edif_industrial | silvicultura",
       "classe_ida": "al015",
       "classe_volta": "edf_edif_industrial",
       "filtro_ida": {
@@ -4708,8 +4741,7 @@
         }
       ]
     },
-    {
-      "__comment": "AL015 GENERAL BUILDING <-> edf_edif_industrial | fabricacao_prod_alimenticios",
+    { "__comment": "AL015 GENERAL BUILDING <-> edf_edif_industrial | fabricacao_prod_alimenticios",
       "classe_ida": "al015",
       "classe_volta": "edf_edif_industrial",
       "filtro_ida": {
@@ -4777,8 +4809,7 @@
         }
       ]
     },
-    {
-      "__comment": "AL015 GENERAL BUILDING <-> edf_edif_industrial | fabricacao_madeira_e_celulose",
+    { "__comment": "AL015 GENERAL BUILDING <-> edf_edif_industrial | fabricacao_madeira_e_celulose",
       "classe_ida": "al015",
       "classe_volta": "edf_edif_industrial",
       "filtro_ida": {
@@ -4838,8 +4869,7 @@
         }
       ]
     },
-    {
-      "__comment": "AL015 GENERAL BUILDING <-> edf_edif_industrial | fabricacao_papel_e_celulose",
+    { "__comment": "AL015 GENERAL BUILDING <-> edf_edif_industrial | fabricacao_papel_e_celulose",
       "classe_ida": "al015",
       "classe_volta": "edf_edif_industrial",
       "filtro_ida": {
@@ -4899,8 +4929,7 @@
         }
       ]
     },
-    {
-      "__comment": "AL015 GENERAL BUILDING <-> edf_edif_industrial | petroleo",
+    { "__comment": "AL015 GENERAL BUILDING <-> edf_edif_industrial | petroleo",
       "classe_ida": "al015",
       "classe_volta": "edf_edif_industrial",
       "filtro_ida": {
@@ -4960,8 +4989,7 @@
         }
       ]
     },
-    {
-      "__comment": "AL015 GENERAL BUILDING <-> edf_edif_industrial | metal",
+    { "__comment": "AL015 GENERAL BUILDING <-> edf_edif_industrial | metal",
       "classe_ida": "al015",
       "classe_volta": "edf_edif_industrial",
       "filtro_ida": {
@@ -5021,8 +5049,7 @@
         }
       ]
     },
-    {
-      "__comment": "AL015 GENERAL BUILDING <-> edf_edif_industrial | motor",
+    { "__comment": "AL015 GENERAL BUILDING <-> edf_edif_industrial | motor",
       "classe_ida": "al015",
       "classe_volta": "edf_edif_industrial",
       "filtro_ida": {
@@ -5078,8 +5105,7 @@
         }
       ]
     },
-    {
-      "__comment": "AL015 GENERAL BUILDING <-> edf_edif_comerc_serv | reparos",
+    { "__comment": "AL015 GENERAL BUILDING <-> edf_edif_comerc_serv | reparos",
       "classe_ida": "al015",
       "classe_volta": "edf_edif_comerc_serv",
       "filtro_ida": {
@@ -5155,8 +5181,7 @@
         }
       ]
     },
-    {
-      "__comment": "AL015 GENERAL BUILDING -> edf_edif_comerc_serv | outros_reparos_aeronaves",
+    { "__comment": "AL015 GENERAL BUILDING -> edf_edif_comerc_serv | outros_reparos_aeronaves",
       "classe_ida": "al015",
       "classe_volta": "edf_edif_comerc_serv",
       "sentido":"ida",
@@ -5225,8 +5250,7 @@
         }
       ]
     },
-    {
-      "__comment": "AL015 GENERAL BUILDING <-> edf_edif_comerc_serv | reparos_veiculos_motores",
+    { "__comment": "AL015 GENERAL BUILDING <-> edf_edif_comerc_serv | reparos_veiculos_motores",
       "classe_ida": "al015",
       "classe_volta": "edf_edif_comerc_serv",
       "filtro_ida": {
@@ -5302,8 +5326,7 @@
         }
       ]
     },
-    {
-      "__comment": "AL015 GENERAL BUILDING <-> edf_edificacao | utilidade_pub",
+    { "__comment": "AL015 GENERAL BUILDING <-> edf_edificacao | utilidade_pub",
       "classe_ida": "al015",
       "classe_volta": "edf_edificacao",
       "filtro_ida": {
@@ -5382,8 +5405,7 @@
         }
       ]
     },
-    {
-      "__comment": "AL015 GENERAL BUILDING <-> enc_grupo_transformadores",
+    { "__comment": "AL015 GENERAL BUILDING <-> enc_grupo_transformadores",
       "classe_ida": "al015",
       "classe_volta": "enc_grupo_transformadores",
       "filtro_ida": {
@@ -5402,11 +5424,14 @@
         {
           "nome_atributo": "hwt",
           "valor": 0
+        },
+        {
+          "nome_atributo": "fun",
+          "valor": 6
         }
       ]
     },
-    {
-      "__comment": "AL015 GENERAL BUILDING -> edf_edif_industrial | outros_resfriamento",
+    { "__comment": "AL015 GENERAL BUILDING -> edf_edif_industrial | outros_resfriamento",
       "classe_ida": "al015",
       "classe_volta": "edf_edif_industrial",
       "sentido":"ida",
@@ -5467,8 +5492,7 @@
         }
       ]
     },
-    {
-      "__comment": "AL015 GENERAL BUILDING <-> edf_edif_abast_agua | tratamento",
+    { "__comment": "AL015 GENERAL BUILDING <-> edf_edif_abast_agua | tratamento",
       "classe_ida": "al015",
       "classe_volta": "edf_edif_abast_agua",
       "filtro_ida": {
@@ -5529,8 +5553,7 @@
         }
       ]
     },
-    {
-      "__comment": "AL015 GENERAL BUILDING <-> edf_edif_comerc_serv",
+    { "__comment": "AL015 GENERAL BUILDING <-> edf_edif_comerc_serv",
       "classe_ida": "al015",
       "classe_volta": "edf_edif_comerc_serv",
       "filtro_ida": {
@@ -5616,8 +5639,7 @@
         }
       ]
     },
-    {
-      "__comment": "AL015 GENERAL BUILDING <-> edf_posto_combustivel",
+    { "__comment": "AL015 GENERAL BUILDING <-> edf_posto_combustivel",
       "classe_ida": "al015",
       "classe_volta": "edf_posto_combustivel",
       "filtro_ida": {
@@ -5677,8 +5699,7 @@
         }
       ]
     },
-    {
-      "__comment": "AL015 GENERAL BUILDING <-> edf_edif_comerc_serv | mercado",
+    { "__comment": "AL015 GENERAL BUILDING <-> edf_edif_comerc_serv | mercado",
       "classe_ida": "al015",
       "classe_volta": "edf_edif_comerc_serv",
       "filtro_ida": {
@@ -5750,8 +5771,7 @@
         ]
       }
     },
-    {
-      "__comment": "AL015 GENERAL BUILDING -> edf_edificacao",
+    { "__comment": "AL015 GENERAL BUILDING -> edf_edificacao",
       "classe_ida": "al015",
       "classe_volta": "edf_edificacao",
       "sentido":"ida",
@@ -5808,8 +5828,7 @@
         }
       ]
     },
-    {
-      "__comment": "AL015 GENERAL BUILDING -> edf_edificacao",
+    { "__comment": "AL015 GENERAL BUILDING -> edf_edificacao",
       "classe_ida": "al015",
       "classe_volta": "edf_edificacao",
       "sentido":"ida",
@@ -5866,8 +5885,7 @@
         }
       ]
     },
-    {
-      "__comment": "AL015 GENERAL BUILDING <-> hdv_sinalizacao | desconhecido",
+    { "__comment": "AL015 GENERAL BUILDING <-> hdv_sinalizacao | desconhecido",
       "classe_ida": "al015",
       "classe_volta": "hdv_sinalizacao",
       "filtro_ida": {
@@ -5899,8 +5917,7 @@
         }
       ]
     },
-    {
-      "__comment": "AL015 GENERAL BUILDING -> edf_edificacao | bombeamento", 
+    { "__comment": "AL015 GENERAL BUILDING -> edf_edificacao | bombeamento", 
       "classe_ida": "al015",
       "classe_volta": "edf_edificacao",
       "sentido":"ida",
@@ -5957,8 +5974,7 @@
         }
       ]
     },
-    {
-      "__comment": "AL015 GENERAL BUILDING -> edf_edif_comerc_serv | contratacao_piloto_maritimo", 
+    { "__comment": "AL015 GENERAL BUILDING -> edf_edif_comerc_serv | contratacao_piloto_maritimo", 
       "classe_ida": "al015",
       "classe_volta": "edf_edif_comerc_serv",
       "sentido":"ida",
@@ -6027,10 +6043,9 @@
         }
       ]
     },
-    {
-      "__comment": "AL015 GENERAL BUILDING <-> edf_edif_pub_mil | capitania",
+    { "__comment": "AL015 GENERAL BUILDING | Harbour Control <-> edf_edif_pub_militar | capitania - acho que está errado, era bom revisar (obs Diogo)",
       "classe_ida": "al015",
-      "classe_volta": "edf_edif_pub_mil",
+      "classe_volta": "edf_edif_pub_militar",
       "filtro_ida": {
         "nome_atributo": "ffn",
         "valor": 513
@@ -6100,8 +6115,101 @@
         }
       ]
     },
-    {
-      "__comment": "AL015 GENERAL BUILDING <-> cbge_deposito_geral", 
+    { "__comment": "AL015 GENERAL BUILDING | Defence Activities <-> edf_edif_pub_militar | todos menos capitania, Posto de policiamento urbano e Posto de policiamento rodoviário",
+      "classe_ida": "al015",
+      "classe_volta": "edf_edif_pub_militar",
+      "filtro_ida": {
+        "nome_atributo": "ffn",
+        "valor": 835
+      },
+      "atributos_default_ida": [
+        {
+          "nome_atributo": "operacional",
+          "valor": 0
+        },
+        {
+          "nome_atributo": "matconstr",
+          "valor": 0
+        },
+        {
+          "nome_atributo": "turistica",
+          "valor": 0
+        },
+        {
+          "nome_atributo": "cultura",
+          "valor": 0
+        },
+        {
+          "nome_atributo": "tipousoedif",
+          "valor": 0
+        },
+        {
+          "nome_atributo": "jurisdicao",
+          "valor": 0
+        },
+        {
+          "nome_atributo": "tipoinstalmilitar",
+          "valor": 0
+        },
+        {
+          "nome_atributo": "administracao",
+          "valor": 0
+        },
+        {
+          "nome_atributo": "classeativecon",
+          "valor": 11
+        },
+        {
+          "nome_atributo": "divisaoativecon",
+          "valor": 0
+        },
+        {
+          "nome_atributo": "grupoativecon",
+          "valor": 6
+        },
+        {
+          "nome_atributo": "proprioadm",
+          "valor": 0
+        }
+      ],
+      "filtro_volta":{
+        "$not":{
+          "$or":[
+            {
+              "nome_atributo": "tipoinstalmilitar",
+              "valor": 22
+            },
+            {
+              "nome_atributo":"tipoinstalmilitar",
+              "valor": 23
+            },
+            {
+              "nome_atributo":"tipoinstalmilitar",
+              "valor": 24
+            }
+          ]
+        }
+      },
+      "atributos_default_volta": [
+        {
+          "nome_atributo": "ffn",
+          "valor": 835
+        },
+        {
+          "nome_atributo": "hgt",
+          "valor": -32767.0
+        },
+        {
+          "nome_atributo": "hwt",
+          "valor": 998
+        },
+        {
+          "nome_atributo": "voi",
+          "valor": "UNK"
+        }
+      ]
+    },
+    { "__comment": "AL015 GENERAL BUILDING <-> cbge_deposito_geral", 
       "classe_ida": "al015",
       "classe_volta": "cbge_deposito_geral",
       "sentido":"ida",
@@ -6140,8 +6248,7 @@
         }
       ]
     },
-    {
-      "__comment": "AL015 GENERAL BUILDING <-> tra_patio | exceto aeronautico",
+    { "__comment": "AL015 GENERAL BUILDING <-> tra_patio | exceto aeronautico",
       "classe_ida": "al015",
       "classe_volta": "tra_patio",
       "filtro_ida": {
@@ -6195,8 +6302,7 @@
         }
       ]
     },
-    {
-      "__comment": "AL015 GENERAL BUILDING <-> edf_edif_comerc_serv | servicos_postais", 
+    { "__comment": "AL015 GENERAL BUILDING <-> edf_edif_comerc_serv | servicos_postais", 
       "classe_ida": "al015",
       "classe_volta": "edf_edif_comerc_serv",
       "sentido":"ida",
@@ -6265,8 +6371,7 @@
         }
       ]
     },
-    {
-      "__comment": "AL015 GENERAL BUILDING <-> edf_edif_comerc_serv | Hotel",
+    { "__comment": "AL015 GENERAL BUILDING <-> edf_edif_comerc_serv | Hotel",
       "classe_ida": "al015",
       "classe_volta": "edf_edif_comerc_serv",
       "filtro_ida": {
@@ -6334,8 +6439,7 @@
         }
       ]
     },
-    {
-      "__comment": "AL015 GENERAL BUILDING -> edf_edif_residencial",
+    { "__comment": "AL015 GENERAL BUILDING -> edf_edif_residencial",
       "classe_ida": "al015",
       "classe_volta": "edf_edif_residencial",
       "filtro_ida": {
@@ -6391,8 +6495,7 @@
         }
       ]
     },
-    {
-      "__comment": "AL015 GENERAL BUILDING <-> edf_edif_comerc_serv | servicos_impressao",
+    { "__comment": "AL015 GENERAL BUILDING <-> edf_edif_comerc_serv | servicos_impressao",
       "classe_ida": "al015",
       "classe_volta": "edf_edif_comerc_serv",
       "sentido":"ida",
@@ -6461,8 +6564,7 @@
         }
       ]
     },
-    {
-      "__comment": "AL015 GENERAL BUILDING <-> edf_edif_comunic | radio",
+    { "__comment": "AL015 GENERAL BUILDING <-> edf_edif_comunic | radio",
       "classe_ida": "al015",
       "classe_volta": "edf_edif_comunic",
       "filtro_ida": {
@@ -6526,8 +6628,7 @@
         }
       ]
     },
-    {
-      "__comment": "AL015 GENERAL BUILDING <-> edf_edif_comunic | televisao",
+    { "__comment": "AL015 GENERAL BUILDING <-> edf_edif_comunic | televisao",
       "classe_ida": "al015",
       "classe_volta": "edf_edif_comunic",
       "filtro_ida": {
@@ -6591,8 +6692,7 @@
         }
       ]
     },
-    {
-      "__comment": "AL015 GENERAL BUILDING <-> edf_edif_comunic | telecomunicacoes",
+    { "__comment": "AL015 GENERAL BUILDING <-> edf_edif_comunic | telecomunicacoes",
       "classe_ida": "al015",
       "classe_volta": "edf_edif_comunic",
       "filtro_ida": {
@@ -6668,8 +6768,7 @@
         }
       ]
     },
-    {
-      "__comment": "AL015 GENERAL BUILDING -> edf_edificacao | controle_solo_via_sat",
+    { "__comment": "AL015 GENERAL BUILDING -> edf_edificacao | controle_solo_via_sat",
       "classe_ida": "al015",
       "classe_volta": "edf_edificacao",
       "sentido":"ida",
@@ -6726,8 +6825,7 @@
         }
       ]
     },
-    {
-      "__comment": "AL015 GENERAL BUILDING <-> edf_edif_comerc_serv | banco",
+    { "__comment": "AL015 GENERAL BUILDING <-> edf_edif_comerc_serv | banco",
       "classe_ida": "al015",
       "classe_volta": "edf_edif_comerc_serv",
       "filtro_ida": {
@@ -6795,8 +6893,7 @@
         }
       ]
     },
-    {
-      "__comment": "AL015 GENERAL BUILDING <-> edf_edificacao | pesquisa_cientifica_desenvolvimento", 
+    { "__comment": "AL015 GENERAL BUILDING <-> edf_edificacao | pesquisa_cientifica_desenvolvimento", 
       "classe_ida": "al015",
       "classe_volta": "edf_edificacao",
       "filtro_ida": {
@@ -6870,8 +6967,7 @@
         }
       ]
     },
-    {
-      "__comment": "AL015 GENERAL BUILDING <-> edf_edificacao | observatorio",
+    { "__comment": "AL015 GENERAL BUILDING <-> edf_edificacao | observatorio",
       "classe_ida": "al015",
       "classe_volta": "edf_edificacao",
       "sentido":"ida",
@@ -6928,8 +7024,7 @@
         }
       ]
     },
-    {
-      "__comment": "AL015 GENERAL BUILDING <-> edf_edif_constr_est_med_fen | CLIMA", 
+    { "__comment": "AL015 GENERAL BUILDING <-> edf_edif_constr_est_med_fen | CLIMA", 
       "classe_ida": "al015",
       "classe_volta": "edf_edif_constr_est_med_fen",
       "filtro_ida": {
@@ -6977,8 +7072,7 @@
         }
       ]
     },
-    {
-      "__comment": "AL015 GENERAL BUILDING <-> edf_edificacao | tunel_vento",
+    { "__comment": "AL015 GENERAL BUILDING <-> edf_edificacao | tunel_vento",
       "classe_ida": "al015",
       "classe_volta": "edf_edificacao",
       "sentido":"ida",
@@ -7049,8 +7143,7 @@
         }
       ]
     },
-    {
-      "__comment": "AL015 GENERAL BUILDING <-> edf_edificacao",
+    { "__comment": "AL015 GENERAL BUILDING <-> edf_edificacao",
       "classe_ida": "al015",
       "classe_volta": "edf_edificacao",
       "sentido":"ida",
@@ -7107,8 +7200,7 @@
         }
       ]
     },
-    {
-      "__comment": "AL015 GENERAL BUILDING -> edf_edificacao", 
+    { "__comment": "AL015 GENERAL BUILDING -> edf_edificacao", 
       "classe_ida": "al015",
       "classe_volta": "edf_edificacao",
       "sentido":"ida",
@@ -7183,8 +7275,7 @@
         }
       ]
     },
-    {
-      "__comment": "AL015 GENERAL BUILDING <-> edf_edif_pub_civil | sede_governo",
+    { "__comment": "AL015 GENERAL BUILDING <-> edf_edif_pub_civil | sede_governo",
       "classe_ida": "al015",
       "classe_volta": "edf_edif_pub_civil",
       "filtro_ida": {
@@ -7270,8 +7361,7 @@
         }
       ]
     },
-    {
-      "__comment": "AL015 GENERAL BUILDING <-> edf_edif_pub_civil | palacio",
+    { "__comment": "AL015 GENERAL BUILDING <-> edf_edif_pub_civil | palacio",
       "classe_ida": "al015",
       "classe_volta": "edf_edif_pub_civil",
       "sentido":"ida",
@@ -7344,8 +7434,7 @@
         }
       ]
     },
-    {
-      "__comment": "AL015 GENERAL BUILDING <-> edf_representacao_diplomatica | consulado",
+    { "__comment": "AL015 GENERAL BUILDING <-> edf_representacao_diplomatica | consulado",
       "classe_ida": "al015",
       "classe_volta": "edf_representacao_diplomatica",
       "filtro_ida": {
@@ -7409,8 +7498,7 @@
         }
       ]
     },
-    {
-      "__comment": "AL015 GENERAL BUILDING <-> edf_representacao_diplomatica | embaixada",
+    { "__comment": "AL015 GENERAL BUILDING <-> edf_representacao_diplomatica | embaixada",
       "classe_ida": "al015",
       "classe_volta": "edf_representacao_diplomatica",
       "filtro_ida": {
@@ -7474,8 +7562,7 @@
         }
       ]
     },
-    {
-      "__comment": "AL015 GENERAL BUILDING <-> edf_edif_pub_civil | defesa",
+    { "__comment": "AL015 GENERAL BUILDING <-> edf_edif_pub_civil | defesa",
       "classe_ida": "al015",
       "classe_volta": "edf_edif_pub_civil",
       "filtro_ida": {
@@ -7549,8 +7636,7 @@
         }
       ]
     },
-    {
-      "__comment": "AL015 GENERAL BUILDING <-> edf_edif_policia",
+    { "__comment": "AL015 GENERAL BUILDING <-> edf_edif_policia",
       "classe_ida": "al015",
       "classe_volta": "edf_edif_policia",
       "filtro_ida": {
@@ -7618,8 +7704,7 @@
         }
       ]
     },
-    {
-      "__comment": "AL015 GENERAL BUILDING <-> edf_edif_pub_civil | prisional",
+    { "__comment": "AL015 GENERAL BUILDING <-> edf_edif_pub_civil | prisional",
       "classe_ida": "al015",
       "classe_volta": "edf_edif_pub_civil",
       "filtro_ida": {
@@ -7691,8 +7776,7 @@
         }
       ]
     },
-    {
-      "__comment": "AL015 GENERAL BUILDING <-> edf_edif_pub_civil | bombeiros",
+    { "__comment": "AL015 GENERAL BUILDING <-> edf_edif_pub_civil | bombeiros",
       "classe_ida": "al015",
       "classe_volta": "edf_edif_pub_civil",
       "sentido":"ida",
@@ -7765,8 +7849,7 @@
         }
       ]
     },
-    {
-      "__comment": "AL015 GENERAL BUILDING <-> edf_edif_ensino | ensino_basico_profissionalizante",
+    { "__comment": "AL015 GENERAL BUILDING <-> edf_edif_ensino | ensino_basico_profissionalizante",
       "classe_ida": "al015",
       "classe_volta": "edf_edif_ensino",
       "filtro_ida": {
@@ -7864,8 +7947,7 @@
         }
       ]
     },
-    {
-      "__comment": "AL015 GENERAL BUILDING <-> edf_edif_ensino | ensino_superior",
+    { "__comment": "AL015 GENERAL BUILDING <-> edf_edif_ensino | ensino_superior",
       "classe_ida": "al015",
       "classe_volta": "edf_edif_ensino",
       "filtro_ida": {
@@ -7942,8 +8024,7 @@
         }
       ]
     },
-    {
-      "__comment": "AL015 GENERAL BUILDING | INSTITUITION & SOCIAL_WORK <-> edf_edif_servico_social",
+    { "__comment": "AL015 GENERAL BUILDING | INSTITUITION & SOCIAL_WORK <-> edf_edif_servico_social",
       "classe_ida": "al015",
       "classe_volta": "edf_edif_servico_social",
       "filtro_ida": {
@@ -7999,8 +8080,7 @@
         }
       ]
     },
-    {
-      "__comment": "AL015 GENERAL BUILDING | INSTITUITION & SOCIAL_WORK <-> edf_edif_servico_social",
+    { "__comment": "AL015 GENERAL BUILDING | INSTITUITION & SOCIAL_WORK <-> edf_edif_servico_social",
       "classe_ida": "al015",
       "classe_volta": "edf_edif_servico_social",
       "filtro_ida": {
@@ -8056,8 +8136,7 @@
         }
       ]
     },
-    {
-      "__comment": "AL015 GENERAL BUILDING | Human Health Activities  & In-patient Care  <-> edf_edif_saude",
+    { "__comment": "AL015 GENERAL BUILDING | Human Health Activities  & In-patient Care  <-> edf_edif_saude",
       "classe_ida": "al015",
       "classe_volta": "edf_edif_saude",
       "filtro_ida": {
@@ -8110,6 +8189,10 @@
         "$or":[
           {
             "nome_atributo":"classeativecon",
+            "valor":26
+          },
+          {
+            "nome_atributo":"classeativecon",
             "valor":27
           },
           {
@@ -8141,8 +8224,7 @@
         }
       ]
     },
-    {
-      "__comment": "AL015 GENERAL BUILDING <-> edf_edif_constr_lazer | teatro",
+    { "__comment": "AL015 GENERAL BUILDING <-> edf_edif_constr_lazer | teatro",
       "classe_ida": "al015",
       "classe_volta": "edf_edif_constr_lazer",
       "filtro_ida": {
@@ -8210,8 +8292,7 @@
         }
       ]
     },
-    {
-      "__comment": "AL015 GENERAL BUILDING <-> edf_edif_comerc_serv | auditorio",
+    { "__comment": "AL015 GENERAL BUILDING <-> edf_edif_comerc_serv | auditorio",
       "classe_ida": "al015",
       "classe_volta": "edf_edif_comerc_serv",
       "filtro_ida": {
@@ -8297,8 +8378,7 @@
         }
       ]
     },
-    {
-      "__comment": "AL015 GENERAL BUILDING <-> edf_edif_constr_lazer | espaco_eventos_cultura",
+    { "__comment": "AL015 GENERAL BUILDING <-> edf_edif_constr_lazer | espaco_eventos_cultura",
       "classe_ida": "al015",
       "classe_volta": "edf_edif_constr_lazer",
       "filtro_ida": {
@@ -8358,8 +8438,7 @@
         }
       ]
     },
-    {
-      "__comment": "AL015 GENERAL BUILDING -> edf_edif_constr_lazer | opera",
+    { "__comment": "AL015 GENERAL BUILDING -> edf_edif_constr_lazer | opera",
       "classe_ida": "al015",
       "classe_volta": "edf_edif_constr_lazer",
       "sentido":"ida",
@@ -8434,8 +8513,7 @@
         }
       ]
     },
-    {
-      "__comment": "AL015 GENERAL BUILDING <-> edf_edif_constr_lazer | biblioteca",
+    { "__comment": "AL015 GENERAL BUILDING <-> edf_edif_constr_lazer | biblioteca",
       "classe_ida": "al015",
       "classe_volta": "edf_edif_constr_lazer",
       "filtro_ida": {
@@ -8495,8 +8573,7 @@
         }
       ]
     },
-    {
-      "__comment": "AL015 GENERAL BUILDING <-> edf_edif_constr_lazer | museu",
+    { "__comment": "AL015 GENERAL BUILDING <-> edf_edif_constr_lazer | museu",
       "classe_ida": "al015",
       "classe_volta": "edf_edif_constr_lazer",
       "filtro_ida": {
@@ -8556,8 +8633,7 @@
         }
       ]
     },
-    {
-      "__comment": "AL015 GENERAL BUILDING <-> edf_edif_constr_lazer | Ginasio",
+    { "__comment": "AL015 GENERAL BUILDING <-> edf_edif_constr_lazer | Ginasio",
       "classe_ida": "al015",
       "classe_volta": "edf_edif_constr_lazer",
       "filtro_ida": {
@@ -8617,8 +8693,7 @@
         }
       ]
     },
-    {
-      "__comment": "AL015 GENERAL BUILDING <-> edf_edif_comerc_serv | hospedagem_animais",
+    { "__comment": "AL015 GENERAL BUILDING <-> edf_edif_comerc_serv | hospedagem_animais",
       "classe_ida": "al015",
       "classe_volta": "edf_edif_comerc_serv",
       "sentido":"ida",
@@ -8687,8 +8762,7 @@
         }
       ]
     },
-    {
-      "__comment": "AL015 GENERAL BUILDING |  Place of Worship  & Religious Activities <-> edf_edif_religiosa",
+    { "__comment": "AL015 GENERAL BUILDING |  Place of Worship  & Religious Activities <-> edf_edif_religiosa",
       "classe_ida": "al015",
       "classe_volta": "edf_edif_religiosa",
       "filtro_ida": {
@@ -8855,8 +8929,7 @@
         }
       ]
     },
-    {
-      "__comment": "AL015 GENERAL BUILDING <-> edf_edif_constr_lazer | Yate-clube",
+    { "__comment": "AL015 GENERAL BUILDING <-> edf_edif_constr_lazer | Yate-clube",
       "classe_ida": "al015",
       "classe_volta": "edf_edif_constr_lazer",
       "sentido":"ida",
@@ -8917,8 +8990,219 @@
         }
       ]
     },
-    {
-      "__comment": "AL015 GENERAL BUILDING -> edf_edificacao | outros",
+    { "__comment": "AL015 GENERAL BUILDING | Transport <- edf_edif_constr_aeroportuaria | todos menos Hangar e Serviço de combate a incendios",
+      "classe_ida": "al015",
+      "classe_volta": "edf_edif_constr_aeroportuaria",
+      "sentido":"volta",
+      "filtro_volta": {
+        "$not":{
+          "$or":[
+            {
+              "nome_atributo": "tipoedifaero",
+              "valor": 29
+            },
+            {
+              "nome_atributo":"tipoedifaero",
+              "valor":30
+            }
+          ]
+        }
+      },
+      "atributos_default_volta": [
+        {
+          "nome_atributo": "ffn",
+          "valor": 480
+        },
+        {
+          "nome_atributo": "hgt",
+          "valor": -32767.0
+        },
+        {
+          "nome_atributo": "hwt",
+          "valor": 998
+        },
+        {
+          "nome_atributo": "voi",
+          "valor": "UNK"
+        }
+      ]
+    },
+    { "__comment": "AL015 GENERAL BUILDING | Transport <- edf_edif_rodoviaria",
+      "classe_ida": "al015",
+      "classe_volta": "edf_edif_rodoviaria",
+      "sentido":"volta",
+      "atributos_default_volta": [
+        {
+          "nome_atributo": "ffn",
+          "valor": 480
+        },
+        {
+          "nome_atributo": "hgt",
+          "valor": -32767.0
+        },
+        {
+          "nome_atributo": "hwt",
+          "valor": 998
+        },
+        {
+          "nome_atributo": "voi",
+          "valor": "UNK"
+        }
+      ]
+    },
+    { "__comment": "AL015 GENERAL BUILDING | Power Generation <-> edf_edif_energia",
+      "classe_ida": "al015",
+      "classe_volta": "edf_edif_energia",
+      "filtro_ida": {
+        "nome_atributo": "ffn",
+        "valor": 350
+      },
+      "atributos_default_ida": [
+        {
+          "nome_atributo": "tipoedifenergia",
+          "valor": 0
+        },
+        {
+          "nome_atributo": "operacional",
+          "valor": 0
+        },
+        {
+          "nome_atributo": "matconstr",
+          "valor": 0
+        },
+        {
+          "nome_atributo": "turistica",
+          "valor": 0
+        },
+        {
+          "nome_atributo": "cultura",
+          "valor": 0
+        },
+        {
+          "nome_atributo": "administracao",
+          "valor": 0
+        },
+        {
+          "nome_atributo": "classeativecon",
+          "valor": 15
+        },
+        {
+          "nome_atributo": "divisaoativecon",
+          "valor": 0
+        },
+        {
+          "nome_atributo": "grupoativecon",
+          "valor": 0
+        },
+        {
+          "nome_atributo": "proprioadm",
+          "valor": 0
+        }
+      ],
+      "atributos_default_volta": [
+        {
+          "nome_atributo": "ffn",
+          "valor": 350
+        },
+        {
+          "nome_atributo": "hgt",
+          "valor": -32767.0
+        },
+        {
+          "nome_atributo": "hwt",
+          "valor": 998
+        },
+        {
+          "nome_atributo": "voi",
+          "valor": "UNK"
+        }
+      ]
+    },
+    { "__comment": "AL015 GENERAL BUILDING | Other <- edf_edif_ext_mineral",
+      "classe_ida": "al015",
+      "classe_volta": "edf_edif_ext_mineral",
+      "sentido": "volta",
+      "atributos_default_volta": [
+        {
+          "nome_atributo": "ffn",
+          "valor": 999
+        },
+        {
+          "nome_atributo": "hgt",
+          "valor": -32767.0
+        },
+        {
+          "nome_atributo": "hwt",
+          "valor": 998
+        },
+        {
+          "nome_atributo": "voi",
+          "valor": "UNK"
+        },
+        {
+          "nome_atributo": "txt",
+          "valor": "Extraction Mine Building",
+          "concatenar": true
+        }
+      ]
+    },
+    { "__comment": "AL015 GENERAL BUILDING | Other <- edf_hab_indigena",
+      "classe_ida": "al015",
+      "classe_volta": "edf_hab_indigena",
+      "sentido": "volta",
+      "atributos_default_volta": [
+        {
+          "nome_atributo": "ffn",
+          "valor": 999
+        },
+        {
+          "nome_atributo": "hgt",
+          "valor": -32767.0
+        },
+        {
+          "nome_atributo": "hwt",
+          "valor": 998
+        },
+        {
+          "nome_atributo": "voi",
+          "valor": "UNK"
+        },
+        {
+          "nome_atributo": "txt",
+          "valor": "Indigenous hut",
+          "concatenar": true
+        }
+      ]
+    },
+    { "__comment": "AL015 GENERAL BUILDING | Other <- edf_posto_fiscal",
+      "classe_ida": "al015",
+      "classe_volta": "edf_posto_fiscal",
+      "sentido": "volta",
+      "atributos_default_volta": [
+        {
+          "nome_atributo": "ffn",
+          "valor": 999
+        },
+        {
+          "nome_atributo": "hgt",
+          "valor": -32767.0
+        },
+        {
+          "nome_atributo": "hwt",
+          "valor": 998
+        },
+        {
+          "nome_atributo": "voi",
+          "valor": "UNK"
+        },
+        {
+          "nome_atributo": "txt",
+          "valor": "Tax office",
+          "concatenar": true
+        }
+      ]
+    },
+    { "__comment": "AL015 GENERAL BUILDING -> edf_edificacao | outros",
       "classe_ida": "al015",
       "classe_volta": "edf_edificacao",
       "sentido":"ida",
@@ -8957,13 +9241,11 @@
         }
       ]
     },
-    {
-      "__comment": "ZD040 Named Location <-> lml_nome_local",
+    { "__comment": "ZD040 Named Location <-> lml_nome_local",
       "classe_ida": "zd040",
       "classe_volta": "lml_nome_local"
     },
-    {
-      "__comment": "GB005 LAND AERODROME <-> cbge_area_uso_especifico | aeroporto",
+    { "__comment": "GB005 LAND AERODROME <-> cbge_area_uso_especifico | aeroporto",
       "classe_ida": "gb005",
       "classe_volta": "cbge_area_uso_especifico",
       "atributos_default_ida": [
@@ -8999,8 +9281,7 @@
         "valor":16
       }
     },
-    {
-      "__comment": "GB015 APRON <-> tra_patio | aeronautico",
+    { "__comment": "GB015 APRON <-> tra_patio | aeronautico",
       "classe_ida": "gb015",
       "classe_volta": "tra_patio",
       "atributos_default_ida": [
@@ -9036,8 +9317,7 @@
         }
       ]
     },
-    {
-      "__comment": "GB230 AIRCRAFT HANGAR <-> edf_edif_constr_aeroportuaria | hangar",
+    { "__comment": "GB230 AIRCRAFT HANGAR <-> edf_edif_constr_aeroportuaria | hangar",
       "classe_ida": "gb230",
       "classe_volta": "edf_edif_constr_aeroportuaria",
       "atributos_default_ida": [
@@ -9087,8 +9367,7 @@
         "valor":29
       }
     },
-    {
-      "__comment": "AM020 GRAIN STORAGE STRUCTURE <-> cbge_deposito_geral | Silo",
+    { "__comment": "AM020 GRAIN STORAGE STRUCTURE <-> cbge_deposito_geral | Silo",
       "classe_ida": "am020",
       "classe_volta": "cbge_deposito_geral",
       "filtro_volta": {
@@ -9152,8 +9431,7 @@
         }
       ]
     },
-    {
-      "__comment": "AL070 FENCE <-> cbge_delimitacao_fisica",
+    { "__comment": "AL070 FENCE <-> cbge_delimitacao_fisica",
       "classe_ida": "al070",
       "classe_volta": "cbge_delimitacao_fisica",
       "atributos_default_ida": [
@@ -9177,8 +9455,7 @@
         }
       }
     },
-    {
-      "__comment": "AL260 WALL <-> cbge_delimitacao_fisica",
+    { "__comment": "AL260 WALL <-> cbge_delimitacao_fisica",
       "classe_ida": "al260",
       "classe_volta": "cbge_delimitacao_fisica",
       "atributos_default_ida": [
@@ -9202,8 +9479,7 @@
         }
       ]
     },
-    {
-      "__comment": "DB090 ENBANKMENT <-> rel_aterro",
+    { "__comment": "DB090 ENBANKMENT <-> rel_aterro",
       "classe_ida": "db090",
       "classe_volta": "rel_aterro",
       "atributos_default_ida": [
@@ -9233,8 +9509,7 @@
         }
       ]
     },
-    {
-      "__comment": "DB010 STEEP TERRAIN FACE <-> rel_elemento_fisiografico_natural | Escarpa/Falésia",
+    { "__comment": "DB010 STEEP TERRAIN FACE <-> rel_elemento_fisiografico_natural | Escarpa/Falésia",
       "classe_ida": "db010",
       "classe_volta": "rel_elemento_fisiografico_natural",
       "filtro_volta": {
@@ -9264,8 +9539,7 @@
         }
       ]
     },
-    {
-      "__comment": "DA010 SOIL SURFACE REGION <-> rel_terreno_exposto",
+    { "__comment": "DA010 SOIL SURFACE REGION <-> rel_terreno_exposto",
       "classe_ida": "da010",
       "classe_volta": "rel_terreno_exposto",
       "atributos_default_ida": [
@@ -9280,20 +9554,23 @@
           "attr_volta":"tipoterrexp",
           "traducao":[
             {
+              "valor_ida":0,
+              "valor_volta":0
+            },
+            {
+              "valor_ida":5,
+              "valor_volta":0,
+              "sentido":"ida"
+            },
+            {
               "valor_ida":8,
-              "valor_volta":4
+              "valor_volta":0,
+              "sentido":"ida"
             },
             {
-              "valor_ida":999,
-              "valor_volta":9999
-            },
-            {
-              "valor_ida":88,
-              "valor_volta":12
-            },
-            {
-              "valor_ida":104,
-              "valor_volta":23
+              "valor_ida":21,
+              "valor_volta":0,
+              "sentido": "ida"
             },
             {
               "valor_ida":46,
@@ -9305,86 +9582,90 @@
               "sentido": "volta"
             },
             {
-              "valor_ida":21,
-              "valor_volta":0,
-              "sentido": "volta"
-            },
-            {
               "valor_ida":52,
               "valor_volta":0,
-              "sentido": "volta"
+              "sentido": "ida"
             },
             {
               "valor_ida":55,
               "valor_volta":0,
-              "sentido": "volta"
+              "sentido": "ida"
             },
             {
               "valor_ida":65,
               "valor_volta":0,
-              "sentido": "volta"
+              "sentido": "ida"
             },
             {
               "valor_ida":67,
               "valor_volta":0,
-              "sentido": "volta"
+              "sentido": "ida"
             },
             {
               "valor_ida":84,
-              "valor_volta":0,
-              "sentido": "volta"
+              "valor_volta":4
             },
             {
               "valor_ida":87,
-              "valor_volta":0,
-              "sentido": "volta"
+              "valor_volta":12
+            },
+            {
+              "valor_ida":88,
+              "valor_volta":12
             },
             {
               "valor_ida":103,
               "valor_volta":0,
-              "sentido": "volta"
+              "sentido": "ida"
+            },
+            {
+              "valor_ida":104,
+              "valor_volta":23
             },
             {
               "valor_ida":120,
-              "valor_volta":0,
-              "sentido": "volta"
+              "valor_volta":18
             },
             {
               "valor_ida":122,
               "valor_volta":0,
-              "sentido": "volta"
+              "sentido": "ida"
             },
             {
               "valor_ida":124,
-              "valor_volta":0,
-              "sentido": "volta"
+              "valor_volta":12,
+              "sentido": "ida"
             },
             {
               "valor_ida":126,
-              "valor_volta":0,
-              "sentido": "volta"
+              "valor_volta":12,
+              "sentido": "ida"
             },
             {
               "valor_ida":257,
               "valor_volta":0,
-              "sentido": "volta"
+              "sentido": "ida"
             },
             {
               "valor_ida":258,
               "valor_volta":0,
-              "sentido": "volta"
+              "sentido": "ida"
             },
             {
-              "valor_ida":259,
+              "valor_ida":269,
               "valor_volta":0,
-              "sentido": "volta"
+              "sentido": "ida"
+            },
+            {
+              "valor_ida":999,
+              "valor_volta":0,
+              "sentido":"ida"
             }
           ]
         }
       ]
     },
-    {
-      "__comment":"EC040 CLEARED WAY -> veg_campo",
+    { "__comment": "EC040 CLEARED WAY -> veg_campo",
       "classe_ida":"ec040",
       "classe_volta":"veg_campo",
       "sentido":"ida",
@@ -9410,11 +9691,246 @@
           "valor":2
         }
       ]
+    },
+    { "__comment": "AL030 CEMETERY <-> cbge_cemiterio",
+      "classe_ida":"al030",
+      "classe_volta":"cbge_cemiterio",
+      "atributos_default_ida":[
+        {
+          "nome_atributo":"tipocemiterio",
+          "valor":0
+        },
+        {
+          "nome_atributo":"destinacaocemiterio",
+          "valor":2
+        }
+      ],
+      "mapeamento_atributos":[
+        {
+          "attr_ida":"rel",
+          "attr_volta":"denominacaoassociada",
+          "traducao":[
+            {
+              "valor_ida":0,
+              "valor_volta":0
+            },
+            {
+              "valor_ida":1,
+              "valor_volta":99,
+              "sentido": "ida"
+            },
+            {
+              "valor_ida":2,
+              "valor_volta":7
+            },
+            {
+              "valor_ida":4,
+              "valor_volta":5
+            },
+            {
+              "valor_ida":5,
+              "valor_volta":6
+            },
+            {
+              "valor_ida":999,
+              "valor_volta":99
+            },
+            {
+              "valor_ida":999,
+              "valor_volta":97,
+              "sentido": "volta"
+            }
+          ]
+        }
+      ]
+    },
+    { "__comment": "AK040 SPORTS GROUNDS <-> laz_campo_quadra",
+      "classe_ida":"ak040",
+      "classe_volta":"laz_campo_quadra",
+      "atributos_default_ida":[
+        {
+          "nome_atributo":"tipocampoquadra",
+          "valor":0
+        }
+      ],
+      "atributos_default_volta":[
+        {
+          "nome_atributo":"smc",
+          "valor":0
+        }
+      ]
+    },
+    { "__comment": "AD010 ELETRIC POWER STATION | Thermal <-> enc_termeletrica",
+      "classe_ida":"ad010",
+      "classe_volta":"enc_termeletrica",
+      "filtro_ida":{
+        "nome_atributo":"ppc",
+        "valor":7
+      },
+      "atributos_default_ida":[
+        {
+          "nome_atributo":"tipoestgerad",
+          "valor":9
+        },
+        {
+          "nome_atributo":"operacional",
+          "valor":0
+        },
+        {
+          "nome_atributo":"tipocombustivel",
+          "valor":0
+        }
+      ],
+      "atributos_default_volta":[
+        {
+          "nome_atributo":"ppc",
+          "valor":7
+        },
+        {
+          "nome_atributo":"hgt",
+          "valor": -32767.07
+        },
+        {
+          "nome_atributo":"voi",
+          "valor":"UNK"
+        }
+      ]
+    },
+    { "__comment": "AT030 POWER LINE | Thermal <-> enc_trecho_energia",
+      "classe_ida":"at030",
+      "classe_volta":"enc_trecho_energia",
+      "filtro_ida":{
+        "nome_atributo":"ppc",
+        "valor":7
+      },
+      "atributos_default_ida":[
+        {
+          "nome_atributo":"especie",
+          "valor":2
+        },
+        {
+          "nome_atributo":"posicaorelativa",
+          "valor":3
+        },
+        {
+          "nome_atributo":"sin",
+          "valor":0
+        }
+      ],
+      "atributos_default_volta":[
+        {
+          "nome_atributo":"hgt",
+          "valor": -32767.07
+        },
+        {
+          "nome_atributo":"voi",
+          "valor":"UNK"
+        }
+      ]
+    },
+    { "__comment": "ZD040 Named Location <- rel_elemento_fisiografico_natural | P",
+      "sentido": "volta",
+      "classe_ida": "zd040",
+      "classe_volta": "rel_elemento_fisiografico_natural",
+      "filtro_volta": {
+        "nome_atributo": "$GEOM_TYPE",
+        "valor": "POINT"
+      }
+    },
+    { "__comment": "ZD040 Named Location <- rel_pico | P",
+      "sentido": "volta",
+      "classe_ida": "zd040",
+      "classe_volta": "rel_pico",
+      "filtro_volta": {
+        "nome_atributo": "$GEOM_TYPE",
+        "valor": "POINT"
+      }
+    },
+    { "__comment": "BD130 HARZARDOUS ROCK <-> hid_rocha_em_agua",
+      "classe_ida": "bd130",
+      "classe_volta": "hid_rocha_em_agua",
+      "atributos_default_ida":[
+        {
+          "nome_atributo":"tipoelemnat",
+          "valor":23
+        },
+        {
+          "nome_atributo":"formarocha",
+          "valor":0
+        }
+      ],
+      "filtro_volta":{
+        "nome_atributo": "$GEOM_TYPE",
+        "valor": "POINT"
+      },
+      "mapeamento_atributos":[
+        {
+          "attr_ida":"wle",
+          "attr_volta":"situacaoemagua",
+          "traducao":[
+            {
+              "valor_ida":0,
+              "valor_volta":0
+            },
+            {
+              "valor_ida":1,
+              "valor_volta":7,
+              "sentido":"ida"
+            },
+            {
+              "valor_ida":2,
+              "valor_volta":4
+            },
+            {
+              "valor_ida":3,
+              "valor_volta":5
+            },
+            {
+              "valor_ida":4,
+              "valor_volta":7
+            },
+            {
+              "valor_ida":8,
+              "valor_volta":0,
+              "sentido":"ida"
+            },
+            {
+              "valor_ida":998,
+              "valor_volta":0,
+              "sentido":"ida"
+            },
+            {
+              "valor_ida":999,
+              "valor_volta":0,
+              "sentido": "ida"
+            }
+          ]
+        }
+      ]
+    },
+    { "__comment": "DB160 ROCK FORMATION <-> rel_rocha",
+      "classe_ida": "db160",
+      "classe_volta": "rel_rocha",
+      "atributos_default_ida":[
+        {
+          "nome_atributo":"tipoelemnat",
+          "valor":23
+        },
+        {
+          "nome_atributo":"formarocha",
+          "valor":0
+        }
+      ],
+      "atributos_default_volta":[
+        {
+          "nome_atributo":"rkf",
+          "valor":0
+        }
+      ]
     }
   ],
   "mapeamento_atributos": [
-    {
-      "__comment": "ACC Horizontal Accuracy Category <-> geometriaaproximada",
+    { "__comment": "ACC Horizontal Accuracy Category <-> geometriaaproximada",
       "attr_ida": "acc",
       "attr_volta": "geometriaaproximada",
       "traducao": [
@@ -9428,8 +9944,7 @@
         }
       ]
     },
-    {
-      "__comment": "WTC Road Weather Restriction <-> trafego",
+    { "__comment": "WTC Road Weather Restriction <-> trafego",
       "attr_ida": "wtc",
       "attr_volta": "trafego",
       "traducao": [
@@ -9443,7 +9958,7 @@
         }
       ]
     },
-    {
+    { "__comment": "CSP Crop Species <-> cultivopredominante",
       "attr_ida":"csp",
       "attr_volta":"cultivopredominante",
       "traducao":[
@@ -9677,8 +10192,7 @@
         }
       ]
     },
-    {
-      "__comment": "RST Load-bearing Surface Type  <-> revestimento",
+    { "__comment": "RST Load-bearing Surface Type  <-> revestimento",
       "attr_ida": "rst",
       "attr_volta": "revestimento",
       "traducao": [
@@ -9716,8 +10230,7 @@
             }
       ]
     },
-    {
-      "__comment": "HYP Hydrologic Persistence <-> regime",
+    { "__comment": "HYP Hydrologic Persistence <-> regime",
       "attr_ida": "hyp",
       "attr_volta": "regime",
       "traducao": [
@@ -9749,8 +10262,7 @@
         }
       ]
     },
-    {
-      "__comment": "FUN Condition of Facility <-> situacaofisica",
+    { "__comment": "FUN Condition of Facility <-> situacaofisica",
       "attr_ida": "fun",
       "attr_volta": "situacaofisica",
       "traducao": [
@@ -9801,8 +10313,7 @@
         }
       ]
     },
-    {
-      "__comment": "MCC Structural Material Type <-> matconstr",
+    { "__comment": "MCC Structural Material Type <-> matconstr",
       "attr_ida": "mcc",
       "attr_volta": "matconstr",
       "traducao": [
@@ -9919,28 +10430,23 @@
         }
       ]
     },
-    {
-      "__comment":"WID Width <-> largura",
+    { "__comment": "WID Width <-> largura",
       "attr_ida":"wid",
       "attr_volta":"largura"
     },
-    {
-      "__comment":"LEN Length <-> Extensão",
+    { "__comment": "LEN Length <-> Extensão",
       "attr_ida":"len",
       "attr_volta":"extensão"
     },
-    {
-      "__comment": "LTN Track or Lane Count <-> nrfaixas",
+    { "__comment": "LTN Track or Lane Count <-> nrfaixas",
       "attr_ida": "ltn",
       "attr_volta": "nrfaixas"
     },
-    {
-      "__comment": "OHB Overall Bridge Height <-> vaovertical",
+    { "__comment": "OHB Overall Bridge Height <-> vaovertical",
       "attr_ida": "ohb",
       "attr_volta": "vaovertical"
     },
-    {
-      "__comment": "NAM Name <-> nome",
+    { "__comment": "NAM Name <-> nome",
       "attr_ida": "nam",
       "attr_volta": "nome",
       "traducao":[
@@ -9951,8 +10457,7 @@
         }
       ]
     },
-    {
-      "__comment": "TXT Text <-> obs",
+    { "__comment": "TXT Text <-> obs",
       "attr_ida": "txt",
       "attr_volta": "obs" 
     }
@@ -9966,7 +10471,7 @@
   "atributos_default_volta": [
     {
       "nome_atributo": "srt",
-      "valor": 9999
+      "valor": 94
     }
   ]
 }
