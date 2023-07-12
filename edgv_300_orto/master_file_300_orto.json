@@ -2536,6 +2536,31 @@
           "nome": "data",
           "tipo": "varchar(255)",
           "cardinalidade": "0..1"
+        },
+        {
+          "nome": "tipo",
+          "tipo": "varchar(255)",
+          "cardinalidade": "0..1"
+        },
+        {
+          "nome": "plataforma",
+          "tipo": "varchar(255)",
+          "cardinalidade": "0..1"
+        },
+        {
+          "nome": "resolucao",
+          "tipo": "varchar(255)",
+          "cardinalidade": "0..1"
+        },
+        {
+          "nome": "bandas",
+          "tipo": "varchar(255)",
+          "cardinalidade": "0..1"
+        },
+        {
+          "nome": "nivel_produto",
+          "tipo": "varchar(255)",
+          "cardinalidade": "0..1"
         }
       ]
     },
