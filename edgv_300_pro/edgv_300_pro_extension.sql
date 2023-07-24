@@ -158,122 +158,25 @@ ALTER FUNCTION public.estilo()
 
 GRANT EXECUTE ON FUNCTION public.estilo() TO PUBLIC;
 
-
---########################################################
---Cria tabela menu profile
-
-CREATE TABLE public.qgis_menus
-(
-    id SERIAL NOT NULL PRIMARY KEY,
-    nome VARCHAR(255) NOT NULL,
-    definicao_menu TEXT NOT NULL,
-    owner varchar(255) NOT NULL,
-	  update_time timestamp without time zone NOT NULL DEFAULT now(),
-    CONSTRAINT unique_menus UNIQUE (nome)
-);
-
-ALTER TABLE public.qgis_menus
-    OWNER to postgres;
-
-GRANT ALL ON TABLE public.qgis_menus TO PUBLIC;
-
---########################################################
---Cria tabela de regras
-
-CREATE TABLE public.layer_rules(
-	id SERIAL NOT NULL PRIMARY KEY,
-  nome varchar(255) NOT NULL,
-  cor_rgb varchar(255) NOT NULL,
-  ordem INTEGER NOT NULL,
-  regra TEXT NOT NULL,
-  owner varchar(255) NOT NULL,
-	update_time timestamp without time zone NOT NULL DEFAULT now(),
-  UNIQUE(nome)
-);
-
-ALTER TABLE public.layer_rules
-    OWNER to postgres;
-
-GRANT ALL ON TABLE public.layer_rules TO PUBLIC;
-
---########################################################
---Cria tabela de modelos
-
-CREATE TABLE public.qgis_models(
-	id SERIAL NOT NULL PRIMARY KEY,
-  nome varchar(255) NOT NULL UNIQUE,
-  descricao TEXT NOT NULL,
-  model_xml TEXT NOT NULL,
-  owner varchar(255) NOT NULL,
-	update_time timestamp without time zone NOT NULL DEFAULT now()
-);
-
-ALTER TABLE public.qgis_models
-    OWNER to postgres;
-
-GRANT ALL ON TABLE public.qgis_models TO PUBLIC;
-
---########################################################
---Cria tabela de atalhos
-
-CREATE TABLE public.qgis_shortcuts(
-	code SMALLINT NOT NULL PRIMARY KEY,
-  ferramenta VARCHAR(255) NOT NULL,
-  idioma VARCHAR(255) NOT NULL,
-  atalho VARCHAR(255),
-  owner varchar(255) NOT NULL,
-	update_time timestamp without time zone NOT NULL DEFAULT now()
-);
-
-ALTER TABLE public.qgis_shortcuts
-    OWNER to postgres;
-
-GRANT ALL ON TABLE public.qgis_shortcuts TO PUBLIC;
-
 --########################################################
 --Cria tabela sap local
 
-CREATE TABLE public.work_areas(
+CREATE TABLE public.sap_local(
 	id INTEGER NOT NULL PRIMARY KEY DEFAULT 1,
-  unidade_trabalho_id INTEGER NOT NULL,
   atividade_id INTEGER NOT NULL,
-  nome VARCHAR(255) NOT NULL,
-	epsg VARCHAR(5) NOT NULL,
- 	subfase VARCHAR(255) NOT NULL,
-	lote VARCHAR(255) NOT NULL,
-	bloco VARCHAR(255) NOT NULL,
-	etapa VARCHAR(255) NOT NULL,
+  json_atividade TEXT NOT NULL,
 	data_inicio timestamp with time zone,
 	data_fim timestamp with time zone,
   nome_usuario VARCHAR(255),
   usuario_uuid UUID,
-	observacao_ut text,
-  observacao_ativ text,
   geom geometry(POLYGON, 4326) NOT NULL,
   CONSTRAINT chk_single_row CHECK (id = 1)
 );
 
-ALTER TABLE public.work_areas
+ALTER TABLE public.sap_local
     OWNER to postgres;
 
-GRANT ALL ON TABLE public.work_areas TO PUBLIC;
-
---########################################################
---Cria tabela de temas
-CREATE TABLE public.qgis_themes(
-	  id SERIAL NOT NULL PRIMARY KEY,
-    nome text NOT NULL,
-    definicao_tema text NOT NULL,
-    owner varchar(255) NOT NULL,
-	  update_time timestamp without time zone NOT NULL DEFAULT now(),
-    CONSTRAINT unique_themes UNIQUE (nome)
-);
-
-ALTER TABLE public.qgis_themes
-    OWNER to postgres;
-
-GRANT ALL ON TABLE public.qgis_themes TO PUBLIC;
-
+GRANT ALL ON TABLE public.sap_local TO PUBLIC;
 
 --########################################################
 
