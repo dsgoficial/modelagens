@@ -1,6 +1,6 @@
 {
   "modelo": "EDGV 3.0 Orto",
-  "versao": "2.2.8",
+  "versao": "2.3.0",
   "schema_dados": "edgv",
   "schema_dominios": "dominios",
   "a_ser_preenchido": {
@@ -1392,6 +1392,12 @@
           "mapa_valor": "booleano"
         },
         {
+          "nome": "dentro_de_massa_dagua",
+          "tipo": "smallint",
+          "cardinalidade": "1..1",
+          "mapa_valor": "booleano"
+        },
+        {
           "nome": "texto_edicao",
           "tipo": "varchar(255)",
           "cardinalidade": "0..1"
@@ -1682,6 +1688,12 @@
           "tipo": "smallint",
           "cardinalidade": "1..1",
           "mapa_valor": "posicao_rotulo"
+        },
+        {
+          "nome": "direcao_fixada",
+          "tipo": "smallint",
+          "cardinalidade": "1..1",
+          "mapa_valor": "booleano"
         }
       ]
     },

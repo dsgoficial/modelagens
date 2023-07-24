@@ -60,6 +60,58 @@ BEGIN
 END$$;
 
 --########################################################
+--Metadados de feição para produção
+
+DO $$DECLARE r record;
+BEGIN
+	FOR r in select f_table_schema, f_table_name from public.geometry_columns
+    LOOP
+	IF r.f_table_schema = 'edgv' THEN
+		EXECUTE 'ALTER TABLE edgv.' || quote_ident(r.f_table_name) || ' ADD COLUMN operador_criacao VARCHAR(255);';
+		EXECUTE 'ALTER TABLE edgv.' || quote_ident(r.f_table_name) || ' ADD COLUMN data_criacao timestamp with time zone;';
+		EXECUTE 'ALTER TABLE edgv.' || quote_ident(r.f_table_name) || ' ADD COLUMN operador_atualizacao VARCHAR(255);';
+		EXECUTE 'ALTER TABLE edgv.' || quote_ident(r.f_table_name) || ' ADD COLUMN data_atualizacao timestamp with time zone;';
+	END IF;
+    END LOOP;
+END$$;
+
+CREATE OR REPLACE FUNCTION public.preenche_metadado()
+  RETURNS trigger AS
+$BODY$
+    BEGIN
+
+		IF TG_OP = 'UPDATE' THEN
+			NEW.operador_atualizacao = CURRENT_USER;
+			NEW.data_atualizacao = CURRENT_TIMESTAMP;
+      NEW.operador_criacao = OLD.operador_criacao;
+			NEW.data_criacao = OLD.data_criacao;
+    elsif  TG_OP = 'INSERT' THEN
+			NEW.operador_criacao = CURRENT_USER;
+			NEW.data_criacao = CURRENT_TIMESTAMP;
+	END IF;
+
+		RETURN NEW;
+	END;
+$BODY$
+  LANGUAGE plpgsql VOLATILE
+  COST 100;
+ALTER FUNCTION public.preenche_metadado()
+  OWNER TO postgres;
+
+GRANT EXECUTE ON FUNCTION public.preenche_metadado() TO PUBLIC;
+
+
+DO $$DECLARE r record;
+BEGIN
+	FOR r in select f_table_schema, f_table_name from public.geometry_columns
+    LOOP
+	IF r.f_table_schema = 'edgv' THEN
+		EXECUTE 'CREATE TRIGGER b_preenche_metadado BEFORE INSERT OR UPDATE ON edgv.' || quote_ident(r.f_table_name) || ' FOR EACH ROW EXECUTE PROCEDURE public.preenche_metadado()';
+	END IF;
+    END LOOP;
+END$$;
+
+--########################################################
 --Cria tabela de estilos
 
 CREATE TABLE public.layer_styles
