@@ -1,0 +1,6 @@
+name: Validate JSON
+
+on: 
+  push:
+    paths:
+      - '**/*.json'
