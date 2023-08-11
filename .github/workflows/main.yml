@@ -3,4 +3,24 @@ name: Validate JSON
 on: 
   push:
     paths:
-      - '**/*.json'
+      - 'arquivos_mapeamento/*.json'
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Check out the code
+      uses: actions/checkout@v2
+      
+    - name: Install JSON schema validator
+      run: |
+        sudo apt-get install -y jq
+        # Instale outras ferramentas ou dependências necessárias
+
+    - name: Validate JSON files in arquivos_mapeamento
+      run: |
+        for file in $(git diff --name-only --diff-filter=AM ${{ github.event.before }} ${{ github.sha }} | grep 'arquivos_mapeamento/.*\.json$'); do
+          # Use a ferramenta de validação aqui, por exemplo:
+          jq --argfile a $file --argfile b path_to_your_schema.json '. as $dot | $a | if ($dot == $b) then . else error("Schema validation failed") end'
+        done
