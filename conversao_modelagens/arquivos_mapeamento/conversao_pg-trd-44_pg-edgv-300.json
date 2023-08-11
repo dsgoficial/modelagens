@@ -1988,12 +1988,8 @@
         }
       ],
       "filtro_volta": {
-        "$or": [
-          {
             "nome_atributo": "tipoprodutoresiduo",
             "valor": 46
-          }
-        ]
       },
       "atributos_default_volta": [
         {
@@ -7613,12 +7609,6 @@
         {
           "nome_atributo": "tipousoedif",
           "valor": 0
-        }
-      ],
-      "mapeamento_atributos":[
-        {
-          "nome_atributo":"classeativecon",
-          "valor":12
         }
       ],
       "atributos_default_volta": [

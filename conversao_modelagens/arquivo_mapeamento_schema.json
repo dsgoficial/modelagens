@@ -18,17 +18,6 @@
       "required": ["tipo", "POINT", "LINESTRING", "POLYGON"],
       "additionalProperties": false
     },
-    "valores": {
-      "type": "object",
-      "properties": {
-        "nome_atributo": { "type": "string" },
-        "valor": {
-          "type": ["string", "number", "boolean", "null"]
-        }
-      },
-      "required": ["nome_atributo", "valor"],
-      "additionalProperties": false
-    },
     "valores_concatenar": {
       "type": "object",
       "properties": {
@@ -78,7 +67,7 @@
           "additionalProperties": false
         },
         {
-          "$ref": "#/definitions/valores"
+          "$ref": "#/definitions/valores_concatenar"
         }
       ]
     },
@@ -131,12 +120,12 @@
         },
         "atributos_default_ida": {
           "type": "array",
-          "items": { "$ref": "#/definitions/valores" },
+          "items": { "$ref": "#/definitions/valores_concatenar" },
           "minItems": 1
         },
         "atributos_default_volta": {
           "type": "array",
-          "items": { "$ref": "#/definitions/valores" },
+          "items": { "$ref": "#/definitions/valores_concatenar" },
           "minItems": 1
         },
         "mapeamento_atributos": {
@@ -196,12 +185,12 @@
     "atributos_default_ida": {
       "description": "Valores default aplicado a todas as classes no mapeamento de ida. Primeiro mapeamento a ser realizado.",
       "type": "array",
-      "items": { "$ref": "#/definitions/valores" }
+      "items": { "$ref": "#/definitions/valores_concatenar" }
     },
     "atributos_default_volta": {
       "description": "Valores default aplicado a todas as classes no mapeamento de volta. Primeiro mapeamento a ser realizado.",
       "type": "array",
-      "items": { "$ref": "#/definitions/valores" }
+      "items": { "$ref": "#/definitions/valores_concatenar" }
     },
     "schema_ida": { "type": "string" },
     "schema_volta": { "type": "string" },
@@ -209,6 +198,17 @@
     "agregar_geom_volta": { "type": "boolean" },
     "afixo_geom_ida": {
       "$ref": "#/definitions/afixo"
+    },
+    "metadados": {
+      "type": "object",
+      "properties": {
+          "versao_arquivo": {"type": "string"},
+          "modelo_ida": {"type": "string"},
+          "versao_modelo_ida": {"type": "string"},
+          "modelo_volta": {"type": "string"},
+          "versao_modelo_volta": {"type": "string"}
+      },
+      "additionalProperties": false
     },
     "afixo_geom_volta": {
       "$ref": "#/definitions/afixo"
