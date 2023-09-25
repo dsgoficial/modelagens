@@ -1,6 +1,6 @@
 {
   "modelo": "EDGV 3.0 Pro",
-  "versao": "1.3.0",
+  "versao": "1.3.1",
   "schema_dados": "edgv",
   "schema_dominios": "dominios",
   "a_ser_preenchido": {
@@ -2792,7 +2792,8 @@
           "value": "Duto – Outros",
           "valor_filtro": "Duto"
         }
-      ]
+      ],
+      "filtro" : true
     },
     {
       "nome": "tipo_travessia",
