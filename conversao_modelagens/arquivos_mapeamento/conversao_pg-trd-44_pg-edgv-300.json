@@ -397,10 +397,6 @@
       "classe_volta": "tra_travessia",
       "atributos_default_ida": [
         {
-          "nome_atributo": "tipotravessia",
-          "valor": 1
-        },
-        {
           "nome_atributo": "tipouso",
           "valor": 0
         },
@@ -421,10 +417,25 @@
           }
         ]
       },
-      "atributos_default_volta": [
+      "mapeamento_atributos": [
         {
-          "nome_atributo": "rst",
-          "valor": 0
+          "attr_ida": "rst",
+          "attr_volta": "tipotravessia",
+          "traducao": [
+            {
+              "valor_ida": 0,
+              "valor_volta": 0,
+              "sentido": "ida"
+            },
+            {
+              "valor_ida": 2,
+              "valor_volta": 1
+            },
+            {
+              "valor_ida": 1,
+              "valor_volta": 2
+            }
+          ]
         }
       ]
     },
@@ -1084,10 +1095,8 @@
         }
       ],
       "filtro_volta": {
-        "$not": {
           "nome_atributo": "tiposumvert",
-          "valor": 2
-        }
+          "valor": 1
       },
       "atributos_default_volta": [
         {
@@ -1171,16 +1180,70 @@
         }
       ]
     },
+    { "__comment": "BI010 CISTERN <-> snb_dep_abast_agua | cisterna",
+      "classe_ida": "bi010",
+      "classe_volta": "snb_dep_abast_agua",
+      "atributos_default_ida": [
+        {
+          "nome_atributo": "tipodepgeral",
+          "valor": 2
+        },
+        {
+          "nome_atributo": "matconstr",
+          "valor": 0
+        },
+        {
+          "nome_atributo": "tipoexposicao",
+          "valor": 0
+        },
+        {
+          "nome_atributo": "tipoprodutoresiduo",
+          "valor": 46
+        },
+        {
+          "nome_atributo": "tipoconteudo",
+          "valor": 0
+        },
+        {
+          "nome_atributo": "unidadevolume",
+          "valor": 0
+        },
+        {
+          "nome_atributo": "tratamento",
+          "valor": 0
+        },
+        {
+          "nome_atributo": "estadofisico",
+          "valor": 1
+        },
+        {
+          "nome_atributo": "finalidadedep",
+          "valor": 0
+        },
+        {
+          "nome_atributo": "situacaoagua",
+          "valor": 0
+        }
+      ],
+      "filtro_volta":{
+        "$and":[
+          {
+          "nome_atributo": "$GEOM_TYPE",
+          "valor": "POINT"
+          },
+          {
+          "nome_atributo":"tipodepgeral",
+          "valor":2
+          }
+        ]
+      }
+    },
     { "__comment": "BI020 DAM <-> hid_barragem",
       "classe_ida": "bi020",
       "classe_volta": "hid_barragem",
       "atributos_default_ida": [
         {
           "nome_atributo": "usoprincipal",
-          "valor": 0
-        },
-        {
-          "nome_atributo": "operacional",
           "valor": 0
         }
       ],
@@ -1252,7 +1315,8 @@
             },
             {
               "valor_ida": 0,
-              "valor_volta": 97
+              "valor_volta": 97,
+              "sentido": "volta"
             }
           ]
         }
@@ -1473,10 +1537,6 @@
           "valor": 1
         },
         {
-          "nome_atributo": "operacional",
-          "valor": 0
-        },
-        {
           "nome_atributo": "tipopocomina",
           "valor": 0
         },
@@ -1567,6 +1627,17 @@
               "valor_ida": 0,
               "valor_volta": 99,
               "sentido": "volta"
+            }
+          ]
+        },
+        {
+          "attr_ida": "mzn",
+          "attr_volta": "formaextracao",
+          "traducao": [
+            {
+              "valor_ida": 9,
+              "valor_volta": 6,
+              "sentido": "ida"
             }
           ]
         },
@@ -2049,6 +2120,10 @@
           "valor": 0
         },
         {
+          "nome_atributo": "tipoprodutoresiduo",
+          "valor": 0
+        },
+        {
           "nome_atributo": "tratamento",
           "valor": 0
         },
@@ -2245,7 +2320,7 @@
       "atributos_default_ida": [
         {
           "nome_atributo": "causa",
-          "valor": 4
+          "valor": 0
         },
         {
           "nome_atributo": "tiposumvert",
@@ -2264,6 +2339,33 @@
         {
           "nome_atributo":"hyp",
           "valor":0
+        }
+      ]
+    },
+    { "__comment": "BH170 NATURAL POOL | WATER-HOLE <->  hid_massa_dagua | Lago",
+      "classe_ida": "bh170",
+      "classe_volta": "hid_massa_dagua",
+      "sentido":"ida",
+      "filtro_ida": {
+        "nome_atributo": "swt",
+        "valor": 5
+      },
+      "atributos_default_ida": [
+        {
+          "nome_atributo": "tipomassadagua",
+          "valor": 7
+        },
+        {
+          "nome_atributo": "dominialidade",
+          "valor": 0
+        },
+        {
+          "nome_atributo": "artificial",
+          "valor": 0
+        },
+        {
+          "nome_atributo": "possuitrechodrenagem",
+          "valor": false
         }
       ]
     },
@@ -3674,11 +3776,6 @@
               "sentido": "ida"
             },
             {
-              "valor_ida": 10,
-              "valor_volta": 0,
-              "sentido": "ida"
-            },
-            {
               "valor_ida": 11,
               "valor_volta": 0,
               "sentido": "ida"
@@ -3950,20 +4047,12 @@
           "valor": 0
         },
         {
-          "nome_atributo": "operacional",
-          "valor": 0
-        },
-        {
           "nome_atributo": "tipopavimentacao",
           "valor": 0
         },
         {
           "nome_atributo": "tipovia",
           "valor": 9999
-        },
-        {
-          "nome_atributo": "jurisdicao",
-          "valor": 0
         }
       ],
       "atributos_default_volta": [
@@ -3982,37 +4071,13 @@
         {
           "nome_atributo": "wtc",
           "valor": 1
+        },
+        {
+          "nome_atributo": "sep",
+          "valor": 0
         }
       ],
       "mapeamento_atributos": [
-        {
-          "attr_ida": "rst",
-          "attr_volta": "revestimento",
-          "traducao": [
-            {
-              "valor_ida": 8,
-              "valor_volta": 1
-            },
-            {
-              "valor_ida": 1,
-              "valor_volta": 3
-            },
-            {
-              "valor_ida": 2,
-              "valor_volta": 2
-            },
-            {
-              "valor_ida": 0,
-              "valor_volta": 99,
-              "sentido": "volta"
-            },
-            {
-              "valor_ida": 4,
-              "valor_volta": 0,
-              "sentido": "volta"
-            }
-          ]
-        },
         {
           "attr_ida": "mes",
           "attr_volta": "canteirodivisorio",
@@ -4024,6 +4089,10 @@
             {
               "valor_ida": 1001,
               "valor_volta": 1
+            },
+            {
+              "valor_ida": 0,
+              "valor_volta": 0
             }
           ]
         },
@@ -4045,21 +4114,15 @@
               "valor_volta": 1
             }
           ]
-        }
-      ],
-      "mapeamento_multiplo": [
+        },
         {
-          "sentido": "ida",
-          "tupla_ida": [
+          "attr_ida": "hct",
+          "attr_volta": "jurisdicao",
+          "traducao": [
             {
-              "nome_atributo": "hct",
-              "valor": 3
-            }
-          ],
-          "tupla_volta": [
-            {
-              "nome_atributo": "jurisdicao",
-              "valor": 1
+              "valor_ida": 3,
+              "valor_volta": 1,
+              "sentido":"ida"
             }
           ]
         }
@@ -4134,15 +4197,6 @@
           "attr_ida": "sep",
           "attr_volta": "nrpistas",
           "traducao": [
-            {
-              "valor_ida": 0,
-              "valor_volta": 1,
-              "sentido":"ida"
-            },
-            {
-              "valor_ida": 1000,
-              "valor_volta": 2
-            },
             {
               "valor_ida": 1001,
               "valor_volta": 1
@@ -4226,16 +4280,8 @@
           "valor": 0
         },
         {
-          "nome_atributo": "operacional",
-          "valor": 0
-        },
-        {
           "nome_atributo": "posicaopista",
           "valor": 0
-        },
-        {
-          "nome_atributo": "nrpistas",
-          "valor": 1
         },
         {
           "nome_atributo": "tipopavimentacao",
@@ -4310,12 +4356,12 @@
             },
             {
               "valor_ida": 2,
-              "valor_volta": 0,
+              "valor_volta": 3,
               "sentido": "ida"
             },
             {
               "valor_ida": 3,
-              "valor_volta": 2,
+              "valor_volta": 3,
               "sentido": "ida"
             },
             {
@@ -4325,12 +4371,12 @@
             },
             {
               "valor_ida": 8,
-              "valor_volta": 0,
+              "valor_volta": 3,
               "sentido": "ida"
             },
             {
               "valor_ida": 19,
-              "valor_volta": 0,
+              "valor_volta": 3,
               "sentido": "ida"
             }
           ]
@@ -5135,7 +5181,7 @@
         },
         {
           "nome_atributo": "finalidade",
-          "valor": 4
+          "valor": 2
         },
         {
           "nome_atributo": "divisaoativecon",
@@ -5212,7 +5258,7 @@
         },
         {
           "nome_atributo": "finalidade",
-          "valor": 4
+          "valor": 2
         },
         {
           "nome_atributo":"matconstr",
@@ -5280,7 +5326,7 @@
         },
         {
           "nome_atributo": "finalidade",
-          "valor": 4
+          "valor": 2
         },
         {
           "nome_atributo": "divisaoativecon",
@@ -5356,14 +5402,9 @@
         },
         {
           "nome_atributo":"classeativecon",
-          "valor":10
+          "valor": 0
         }
       ],
-      "filtro_volta":
-      {
-        "nome_atributo":"classeativecon",
-        "valor":10
-      },
       "atributos_default_volta": [
         {
           "nome_atributo": "ffn",
@@ -5518,7 +5559,7 @@
         },
         {
           "nome_atributo": "classeativecon",
-          "valor": 5
+          "valor": 4
         },
         {
           "nome_atributo": "tipoedifabast",
@@ -9917,6 +9958,48 @@
           "valor":0
         }
       ]
+    },
+    { "__comment": "AJ030 HOLDING PEN <-> edif_agropec_ext_vegetal_pesca | curral",
+      "classe_ida": "aj030",
+      "classe_volta": "edif_agropec_ext_vegetal_pesca",
+      "atributos_default_ida":[
+        {
+          "nome_atributo":"matconstr",
+          "valor":0
+        },
+        {
+          "nome_atributo":"turistica",
+          "valor":0
+        },
+        {
+          "nome_atributo":"cultura",
+          "valor":0
+        },
+        {
+          "nome_atributo":"tipoedifagropec",
+          "valor":18
+        },
+        {
+          "nome_atributo":"administracao",
+          "valor":0
+        },
+        {
+          "nome_atributo":"classeativecon",
+          "valor":0
+        },
+        {
+          "nome_atributo":"divisaoativecon",
+          "valor":0
+        },
+        {
+          "nome_atributo":"grupoativecon",
+          "valor":0
+        }
+      ],
+      "filtro_volta":{
+          "nome_atributo":"tipoedifagropec",
+          "valor":18
+      }
     }
   ],
   "mapeamento_atributos": [
@@ -10300,6 +10383,47 @@
           "valor_ida": 0,
           "valor_volta": 97,
           "sentido": "volta"
+        }
+      ]
+    },
+    { "__comment": "FUN Condition of Facility <-> operacional",
+      "attr_ida": "fun",
+      "attr_volta": "operacional",
+      "traducao": [
+        {
+          "valor_ida": 0,
+          "valor_volta": 0,
+          "sentido": "ida"
+        },
+        {
+          "valor_ida": 1,
+          "valor_volta": 2,
+          "sentido": "ida"
+        },
+        {
+          "valor_ida": 2,
+          "valor_volta": 2,
+          "sentido": "ida"
+        },
+        {
+          "valor_ida": 3,
+          "valor_volta": 2,
+          "sentido": "ida"
+        },
+        {
+          "valor_ida": 4,
+          "valor_volta": 2,
+          "sentido": "ida"
+        },
+        {
+          "valor_ida": 6,
+          "valor_volta": 1,
+          "sentido": "ida"
+        },
+        {
+          "valor_ida": 13,
+          "valor_volta": 2,
+          "sentido": "ida"
         }
       ]
     },
