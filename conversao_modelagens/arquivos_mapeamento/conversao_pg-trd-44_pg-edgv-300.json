@@ -2342,33 +2342,6 @@
         }
       ]
     },
-    { "__comment": "BH170 NATURAL POOL | WATER-HOLE <->  hid_massa_dagua | Lago",
-      "classe_ida": "bh170",
-      "classe_volta": "hid_massa_dagua",
-      "sentido":"ida",
-      "filtro_ida": {
-        "nome_atributo": "swt",
-        "valor": 5
-      },
-      "atributos_default_ida": [
-        {
-          "nome_atributo": "tipomassadagua",
-          "valor": 7
-        },
-        {
-          "nome_atributo": "dominialidade",
-          "valor": 0
-        },
-        {
-          "nome_atributo": "artificial",
-          "valor": 0
-        },
-        {
-          "nome_atributo": "possuitrechodrenagem",
-          "valor": false
-        }
-      ]
-    },
     { "__comment": "AP050 TRAIL <-> tra_trilha_picada",
       "classe_ida": "ap050",
       "classe_volta": "tra_trilha_picada",
