@@ -3219,7 +3219,7 @@
             },
             {
               "valor_ida": 28,
-              "valor_volta": 1027
+              "valor_volta": 1028
             },
             {
               "valor_ida": 29,
@@ -3255,7 +3255,7 @@
             },
             {
               "valor_ida": 37,
-              "valor_volta": 1037998
+              "valor_volta": 1037
             },
             {
               "valor_ida": 45,
@@ -7025,6 +7025,34 @@
         {
           "nome_atributo": "tipo",
           "valor": 1001
+        }
+      ]
+    },
+    {"__comment": "laz_piscina <-> constr_ocupacao_solo | piscina",
+      "classe_ida": "laz_piscina",
+      "classe_volta": "constr_ocupacao_solo",
+      "filtro_volta": {
+        "nome_atributo": "tipo",
+        "valor": 501
+      },
+      "atributos_default_ida": [
+        {
+          "nome_atributo": "tipo",
+          "valor": 501
+        }
+      ]
+    },
+    {"__comment": "laz_ruina <-> constr_ocupacao_solo | ruina",
+      "classe_ida": "laz_ruina",
+      "classe_volta": "constr_ocupacao_solo",
+      "filtro_volta": {
+        "nome_atributo": "tipo",
+        "valor": 701
+      },
+      "atributos_default_ida": [
+        {
+          "nome_atributo": "tipo",
+          "valor": 701
         }
       ]
     },
