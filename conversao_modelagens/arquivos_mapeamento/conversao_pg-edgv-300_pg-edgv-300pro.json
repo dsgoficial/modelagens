@@ -7054,6 +7054,16 @@
           "nome_atributo": "tipo",
           "valor": 701
         }
+      ],
+      "atributos_default_volta": [
+        {
+          "nome_atributo": "turistica",
+          "valor": 0
+        },
+        {
+          "nome_atributo": "cultura",
+          "valor": 1
+        }
       ]
     },
     {"__comment": "hdv_sinalizacao <-> constr_ocupacao_solo | sinalizacao",
