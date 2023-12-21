@@ -1223,6 +1223,14 @@
         {
           "nome_atributo": "situacaoagua",
           "valor": 0
+        },
+        {
+          "nome_atributo": "operacional",
+          "valor": 0
+        },
+        {
+          "nome_atributo": "situacaofisica",
+          "valor": 0
         }
       ],
       "filtro_volta":{
@@ -1972,6 +1980,25 @@
           "valor": -32767.0
         }
       ]
+    }, 
+    { "__comment": "AL241 TOWER -> aux_revisao",
+      "sentido": "ida",
+      "classe_ida": "al241",
+      "classe_volta": "aux_revisao",
+      "filtro_ida":{
+        "nome_atributo": "ttc",
+        "valor": 0
+      },
+      "atributos_default_ida": [
+        {
+          "nome_atributo": "descricao",
+          "valor": "al241 | swt = 5 (Water-Hole)"
+        },
+        {
+          "nome_atributo": "corrigido",
+          "valor": false
+        }
+      ]
     },
     { "__comment": "AL241 TOWER | LIGHTHOUSE <-> hdv_sinalizacao | farol",
       "classe_ida": "al241",
@@ -2339,6 +2366,25 @@
         {
           "nome_atributo":"hyp",
           "valor":0
+        }
+      ]
+    },
+    { "__comment": "BH170 NATURAL POOL | WATER-HOLE ->  aux_revisao",
+      "classe_ida": "bh170",
+      "classe_volta": "aux_revisao",
+      "sentido":"ida",
+      "filtro_ida": {
+        "nome_atributo": "swt",
+        "valor": 5
+      },
+      "atributos_default_ida": [
+        {
+          "nome_atributo": "descricao",
+          "valor": "bh170 | swt = 5 (Water-Hole)"
+        },
+        {
+          "nome_atributo": "corrigido",
+          "valor": false
         }
       ]
     },
@@ -3668,7 +3714,7 @@
         },
         {
           "nome_atributo": "classificacaoporte",
-          "valor": 4
+          "valor": 1
         },
         {
           "nome_atributo": "secundaria",
@@ -9932,9 +9978,9 @@
         }
       ]
     },
-    { "__comment": "AJ030 HOLDING PEN <-> edif_agropec_ext_vegetal_pesca | curral",
+    { "__comment": "AJ030 HOLDING PEN <-> edf_edif_agropec_ext_vegetal_pesca | curral",
       "classe_ida": "aj030",
-      "classe_volta": "edif_agropec_ext_vegetal_pesca",
+      "classe_volta": "edf_edif_agropec_ext_vegetal_pesca",
       "atributos_default_ida":[
         {
           "nome_atributo":"matconstr",
@@ -9966,6 +10012,14 @@
         },
         {
           "nome_atributo":"grupoativecon",
+          "valor":0
+        },
+        {
+          "nome_atributo":"operacional",
+          "valor":0
+        },
+        {
+          "nome_atributo":"situacaofisica",
           "valor":0
         }
       ],

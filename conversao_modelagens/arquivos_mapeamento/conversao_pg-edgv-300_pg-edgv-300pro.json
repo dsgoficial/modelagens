@@ -28,6 +28,26 @@
       "classe_ida": "aux_moldura",
       "classe_volta": "aux_moldura"
     },
+    {"__comment": "aux_revisao <-> aux_revisao",
+      "classe_ida": "aux_revisao",
+      "classe_volta": "aux_revisao",
+      "mapeamento_atributos": [
+        {
+          "attr_ida": "corrigido",
+          "attr_volta": "corrigido",
+          "traducao": [
+            {
+              "valor_ida": false,
+              "valor_volta": 2
+            },
+            {
+              "valor_ida": true,
+              "valor_volta": 1
+            }
+          ]
+        }
+      ]
+    },
     {"__comment": "aer_pista_ponto_pouso <-> infra_pista_pouso",
       "classe_ida": "aer_pista_ponto_pouso",
       "classe_volta": "infra_pista_pouso",
@@ -131,6 +151,12 @@
           "valor": 0
         }
       ],
+      "atributos_default_ida": [
+        {
+          "nome_atributo": "suprimir_bandeira",
+          "valor": 9999
+        }
+      ],
       "mapeamento_atributos": [
         {
           "attr_ida": "tipoedifagropec",
@@ -190,6 +216,10 @@
         {
           "nome_atributo": "tipo",
           "valor": 0
+        },
+        {
+          "nome_atributo": "suprimir_bandeira",
+          "valor": 9999
         }
       ]
     },
@@ -250,6 +280,12 @@
         {
           "nome_atributo": "grupoativecon",
           "valor": 0
+        }
+      ],
+      "atributos_default_ida": [
+        {
+          "nome_atributo": "suprimir_bandeira",
+          "valor": 9999
         }
       ],
       "mapeamento_atributos": [
@@ -381,6 +417,12 @@
           "valor": 0
         }
       ],
+      "atributos_default_ida": [
+        {
+          "nome_atributo": "suprimir_bandeira",
+          "valor": 9999
+        }
+      ],
       "mapeamento_atributos": [
         {
           "attr_ida": "classeativecon",
@@ -501,6 +543,12 @@
           "valor": 0
         }
       ],
+      "atributos_default_ida": [
+        {
+          "nome_atributo": "suprimir_bandeira",
+          "valor": 9999
+        }
+      ],
       "mapeamento_atributos": [
         {
           "attr_ida": "divisaoativecon",
@@ -555,6 +603,10 @@
         {
           "nome_atributo": "tipo",
           "valor": 0
+        },
+        {
+          "nome_atributo": "suprimir_bandeira",
+          "valor": 9999
         }
       ],
       "atributos_default_volta": [
@@ -661,6 +713,12 @@
         {
           "nome_atributo": "grupoativecon",
           "valor": 0
+        }
+      ],
+      "atributos_default_ida": [
+        {
+          "nome_atributo": "suprimir_bandeira",
+          "valor": 9999
         }
       ],
       "mapeamento_multiplo": [
@@ -775,6 +833,12 @@
           "valor": 0
         }
       ],
+      "atributos_default_ida": [
+        {
+          "nome_atributo": "suprimir_bandeira",
+          "valor": 9999
+        }
+      ],
       "mapeamento_multiplo": [
         {
           "tupla_ida": [
@@ -886,6 +950,12 @@
         {
           "nome_atributo": "grupoativecon",
           "valor": 0
+        }
+      ],
+      "atributos_default_ida": [
+        {
+          "nome_atributo": "suprimir_bandeira",
+          "valor": 9999
         }
       ],
       "mapeamento_atributos": [
@@ -1153,6 +1223,14 @@
         {
           "nome_atributo": "dentro_poligono",
           "valor": 2
+        },
+        {
+          "nome_atributo": "posicao_rotulo",
+          "valor": 9999
+        },
+        {
+          "nome_atributo": "direcao_fixada",
+          "valor": 9999
         }
       ],
       "filtro_volta": {
@@ -1219,6 +1297,14 @@
         {
           "nome_atributo": "dentro_poligono",
           "valor": 2
+        },
+        {
+          "nome_atributo": "posicao_rotulo",
+          "valor": 9999
+        },
+        {
+          "nome_atributo": "direcao_fixada",
+          "valor": 9999
         }
       ],
       "filtro_volta": {
@@ -1393,6 +1479,11 @@
             {
               "valor_ida": 4,
               "valor_volta": 1003
+            },
+            {
+              "valor_ida": 23,
+              "valor_volta": 1000,
+              "sentido": "ida"
             }
           ]
         }
@@ -1770,8 +1861,16 @@
       "classe_ida": "veg_campo",
       "classe_volta": "cobter_vegetacao",
       "filtro_ida": {
-        "nome_atributo": "tipocampo",
-        "valor": 2
+        "$or":[
+          {
+            "nome_atributo": "tipocampo",
+            "valor": 1
+          },
+          {
+            "nome_atributo": "tipocampo",
+            "valor": 2
+          }
+        ]
       },
       "atributos_default_ida": [
         {
@@ -2434,6 +2533,12 @@
           "valor": 0
         }
       ],
+      "atributos_default_ida": [
+        {
+          "nome_atributo": "suprimir_bandeira",
+          "valor": 9999
+        }
+      ],
       "mapeamento_atributos": [
         {
           "attr_ida": "tipoedifabast",
@@ -2554,6 +2659,12 @@
           "valor": 0
         }
       ],
+      "atributos_default_ida": [
+        {
+          "nome_atributo": "suprimir_bandeira",
+          "valor": 9999
+        }
+      ],
       "mapeamento_atributos": [
         {
           "attr_ida": "tipoedifturist",
@@ -2644,6 +2755,14 @@
         {
           "nome_atributo": "posicao_pista",
           "valor": 97
+        },
+        {
+          "nome_atributo": "exibir_lado_simbologia",
+          "valor": 9999
+        },
+        {
+          "nome_atributo": "exibir_ponta_simbologia",
+          "valor": 9999
         }
       ],
       "filtro_volta": {
@@ -2766,6 +2885,12 @@
         {
           "nome_atributo": "divisaoativecon",
           "valor": 0
+        }
+      ],
+      "atributos_default_ida": [
+        {
+          "nome_atributo": "suprimir_bandeira",
+          "valor": 9999
         }
       ],
       "mapeamento_atributos": [
@@ -3160,6 +3285,12 @@
           "valor": 0
         }
       ],
+      "atributos_default_ida": [
+        {
+          "nome_atributo": "suprimir_bandeira",
+          "valor": 9999
+        }
+      ],
       "mapeamento_atributos": [
         {
           "attr_ida": "divisaoativecon",
@@ -3354,6 +3485,12 @@
           "valor": 1
         }
       ],
+      "atributos_default_ida": [
+        {
+          "nome_atributo": "suprimir_bandeira",
+          "valor": 9999
+        }
+      ],
       "mapeamento_atributos": [
         {
           "attr_ida": "tipoedifcomercserv",
@@ -3452,6 +3589,12 @@
         {
           "nome_atributo": "divisaoativecon",
           "valor": 0
+        }
+      ],
+      "atributos_default_ida": [
+        {
+          "nome_atributo": "suprimir_bandeira",
+          "valor": 9999
         }
       ],
       "mapeamento_atributos": [
@@ -3553,6 +3696,12 @@
         {
           "nome_atributo": "proprioadm",
           "valor": 0
+        }
+      ],
+      "atributos_default_ida": [
+        {
+          "nome_atributo": "suprimir_bandeira",
+          "valor": 9999
         }
       ],
       "mapeamento_atributos": [
@@ -3723,6 +3872,12 @@
           "valor": 0
         }
       ],
+      "atributos_default_ida": [
+        {
+          "nome_atributo": "suprimir_bandeira",
+          "valor": 9999
+        }
+      ],
       "mapeamento_atributos": [
         {
           "attr_ida": "tiporepdiplomatica",
@@ -3805,6 +3960,12 @@
         {
           "nome_atributo": "divisaoativecon",
           "valor": 0
+        }
+      ],
+      "atributos_default_ida": [
+        {
+          "nome_atributo": "suprimir_bandeira",
+          "valor": 9999
         }
       ],
       "mapeamento_atributos": [
@@ -3907,6 +4068,12 @@
           "valor": 1
         }
       ],
+      "atributos_default_ida": [
+        {
+          "nome_atributo": "suprimir_bandeira",
+          "valor": 9999
+        }
+      ],
       "mapeamento_atributos": [
         {
           "attr_ida": "tipoedifpubcivil",
@@ -3986,6 +4153,12 @@
           "nome_atributo": "tipousoedif",
           "valor": 6
         }
+      ],
+      "atributos_default_ida": [
+        {
+          "nome_atributo": "suprimir_bandeira",
+          "valor": 9999
+        }
       ]
     },
     {"__comment": "edf_posto_policia_rod_federal <-> constr_edificacao | posto pol rod federal",
@@ -4053,6 +4226,12 @@
         {
           "nome_atributo": "divisaoativecon",
           "valor": 0
+        }
+      ],
+      "atributos_default_ida": [
+        {
+          "nome_atributo": "suprimir_bandeira",
+          "valor": 9999
         }
       ],
       "mapeamento_atributos": [
@@ -4153,6 +4332,12 @@
         {
           "nome_atributo": "tipoedifpubcivil",
           "valor": 99
+        }
+      ],
+      "atributos_default_ida": [
+        {
+          "nome_atributo": "suprimir_bandeira",
+          "valor": 9999
         }
       ],
       "mapeamento_atributos": [
@@ -4328,6 +4513,12 @@
           "valor": 0
         }
       ],
+      "atributos_default_ida": [
+        {
+          "nome_atributo": "suprimir_bandeira",
+          "valor": 9999
+        }
+      ],
       "mapeamento_atributos": [
         {
           "attr_ida": "tipopostofisc",
@@ -4488,6 +4679,12 @@
         {
           "nome_atributo": "tipousoedif",
           "valor": 0
+        }
+      ],
+      "atributos_default_ida": [
+        {
+          "nome_atributo": "suprimir_bandeira",
+          "valor": 9999
         }
       ],
       "mapeamento_atributos": [
@@ -4696,6 +4893,12 @@
           "valor": 0
         }
       ],
+      "atributos_default_ida": [
+        {
+          "nome_atributo": "suprimir_bandeira",
+          "valor": 9999
+        }
+      ],
       "mapeamento_atributos": [
         {
           "attr_ida": "tipoedifcomunic",
@@ -4832,6 +5035,10 @@
         "$or": [
           {
             "nome_atributo": "tipotravessia",
+            "valor": 0
+          },
+          {
+            "nome_atributo": "tipotravessia",
             "valor": 1
           },
           {
@@ -4856,6 +5063,14 @@
         {
           "nome_atributo": "modal_uso",
           "valor": 4
+        },
+        {
+          "nome_atributo": "exibir_lado_simbologia",
+          "valor": 9999
+        },
+        {
+          "nome_atributo": "exibir_ponta_simbologia",
+          "valor": 9999
         }
       ],
       "filtro_volta": {
@@ -4875,6 +5090,10 @@
           "attr_ida": "tipotravessia",
           "attr_volta": "tipo",
           "traducao": [
+            {
+              "valor_ida": 0,
+              "valor_volta": 401
+            },
             {
               "valor_ida": 1,
               "valor_volta": 401
@@ -5050,6 +5269,18 @@
       "atributos_default_ida": [
         {
           "nome_atributo": "situacao_em_poligono",
+          "valor": 9999
+        },
+        {
+          "nome_atributo": "posicao_rotulo",
+          "valor": 9999
+        },
+        {
+          "nome_atributo": "direcao_fixada",
+          "valor": 9999
+        },
+        {
+          "nome_atributo": "direcao_fixada",
           "valor": 9999
         }
       ],
@@ -5246,6 +5477,10 @@
           {
             "nome_atributo": "tipovia",
             "valor": 99
+          },
+          {
+            "nome_atributo": "tipovia",
+            "valor": 9999
           }
         ]
       },
@@ -5300,6 +5535,27 @@
             },
             {
               "valor_ida": 99,
+              "valor_volta": 9999,
+              "sentido": "ida"
+            },
+            {
+              "valor_ida": 9999,
+              "valor_volta": 9999,
+              "sentido": "ida"
+            },
+            {
+              "valor_ida": 0,
+              "valor_volta": 9999,
+              "sentido": "ida"
+            }
+          ]
+        },
+        {
+          "attr_ida": "revestimento",
+          "attr_volta": "revestimento",
+          "traducao": [
+            {
+              "valor_ida": 0,
               "valor_volta": 9999,
               "sentido": "ida"
             }
@@ -5366,9 +5622,25 @@
               "sentido": "ida"
             },
             {
+              "valor_ida": 0,
+              "valor_volta": 9999,
+              "sentido": "ida"
+            },
+            {
               "valor_ida": 1,
               "valor_volta": 5,
               "sentido": "volta"
+            }
+          ]
+        },
+        {
+          "attr_ida": "revestimento",
+          "attr_volta": "revestimento",
+          "traducao": [
+            {
+              "valor_ida": 0,
+              "valor_volta": 9999,
+              "sentido": "ida"
             }
           ]
         }
@@ -5483,6 +5755,16 @@
           "valor": 0
         }
       ],
+      "atributos_default_ida": [
+        {
+          "nome_atributo": "exibir_lado_simbologia",
+          "valor": 9999
+        },
+        {
+          "nome_atributo": "exibir_ponta_simbologia",
+          "valor": 9999
+        }
+      ],
       "mapeamento_atributos": [
         {
           "attr_ida": "tipoponte",
@@ -5578,6 +5860,16 @@
           "valor": 0
         }
       ],
+      "atributos_default_ida": [
+        {
+          "nome_atributo": "exibir_lado_simbologia",
+          "valor": 9999
+        },
+        {
+          "nome_atributo": "exibir_ponta_simbologia",
+          "valor": 9999
+        }
+      ],
       "mapeamento_atributos": [
         {
           "attr_ida": "modaluso",
@@ -5622,6 +5914,16 @@
         {
           "nome_atributo": "tipopavimentacao",
           "valor": 0
+        }
+      ],
+      "atributos_default_ida": [
+        {
+          "nome_atributo": "exibir_lado_simbologia",
+          "valor": 9999
+        },
+        {
+          "nome_atributo": "exibir_ponta_simbologia",
+          "valor": 9999
         }
       ],
       "mapeamento_atributos": [
@@ -5688,6 +5990,16 @@
         {
           "nome_atributo": "tipopavimentacao",
           "valor": 0
+        }
+      ],
+      "atributos_default_ida": [
+        {
+          "nome_atributo": "exibir_lado_simbologia",
+          "valor": 9999
+        },
+        {
+          "nome_atributo": "exibir_ponta_simbologia",
+          "valor": 9999
         }
       ],
       "mapeamento_atributos": [
@@ -6494,6 +6806,12 @@
     {"__comment": "eco_ext_mineral <-> constr_extracao_mineral",
       "classe_ida": "eco_ext_mineral",
       "classe_volta": "constr_extracao_mineral",
+      "atributos_default_ida": [
+        {
+          "nome_atributo": "tipo_produto",
+          "valor": 0
+        }
+      ],
       "atributos_default_volta": [
         {
           "nome_atributo": "tipoalterantrop",
@@ -6504,7 +6822,7 @@
           "valor": 1
         },
         {
-          "nome_atributo": "tipoproduto",
+          "nome_atributo": "tipo_produto",
           "valor": 0
         },
         {
@@ -6547,6 +6865,10 @@
               "sentido": "ida"
             }
           ]
+        },
+        {
+          "attr_ida": "tipoproduto",
+          "attr_volta": "tipo_produto"
         }
       ]
     },
@@ -6717,6 +7039,11 @@
             {
               "valor_ida": 3,
               "valor_volta": 11
+            },
+            {
+              "valor_ida": 0,
+              "valor_volta": 9999,
+              "sentido": "ida"
             }
           ]
         }
@@ -7135,6 +7462,11 @@
           "attr_volta": "tipo",
           "traducao": [
             {
+              "valor_ida": 0,
+              "valor_volta": 9999,
+              "sentido": "ida"
+            },
+            {
               "valor_ida": 1,
               "valor_volta": 201
             },
@@ -7503,6 +7835,12 @@
           "valor": 0
         }
       ],
+      "atributos_default_ida": [
+        {
+          "nome_atributo": "suprimir_bandeira",
+          "valor": 9999
+        }
+      ],
       "mapeamento_atributos": [
         {
           "attr_ida": "tipoedifrelig",
@@ -7589,6 +7927,10 @@
         {
           "nome_atributo": "tipo",
           "valor": 611
+        },
+        {
+          "nome_atributo": "suprimir_bandeira",
+          "valor": 9999
         }
       ],
       "filtro_volta": {
@@ -7733,6 +8075,12 @@
           "valor": 0
         }
       ],
+      "atributos_default_ida": [
+        {
+          "nome_atributo": "suprimir_bandeira",
+          "valor": 9999
+        }
+      ],
       "mapeamento_atributos": [
         {
           "attr_ida": "tipoedifrod",
@@ -7859,6 +8207,12 @@
           "valor": 0
         }
       ],
+      "atributos_default_ida": [
+        {
+          "nome_atributo": "suprimir_bandeira",
+          "valor": 9999
+        }
+      ],
       "mapeamento_atributos": [
         {
           "attr_ida": "tipoedifsaneam",
@@ -7961,6 +8315,12 @@
         {
           "nome_atributo": "grupoativecon",
           "valor": 0
+        }
+      ],
+      "atributos_default_ida": [
+        {
+          "nome_atributo": "suprimir_bandeira",
+          "valor": 9999
         }
       ],
       "mapeamento_atributos": [
@@ -8106,6 +8466,12 @@
           "nome_atributo": "grupoativecon",
           "valor": 0
         }
+      ],
+      "atributos_default_ida": [
+        {
+          "nome_atributo": "suprimir_bandeira",
+          "valor": 9999
+        }
       ]
     },
     {"__comment": "edf_edif_saude -> constr_edificacao | saude",
@@ -8201,6 +8567,12 @@
         {
           "nome_atributo": "grupoativecon",
           "valor": 0
+        }
+      ],
+      "atributos_default_ida": [
+        {
+          "nome_atributo": "suprimir_bandeira",
+          "valor": 9999
         }
       ],
       "mapeamento_atributos": [
@@ -8349,6 +8721,12 @@
         {
           "nome_atributo": "grupoativecon",
           "valor": 0
+        }
+      ],
+      "atributos_default_ida": [
+        {
+          "nome_atributo": "suprimir_bandeira",
+          "valor": 9999
         }
       ],
       "mapeamento_atributos": [

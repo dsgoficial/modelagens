@@ -18025,6 +18025,33 @@
       ]
     },
     {
+      "nome": "revisao",
+      "categoria": "aux",
+      "primitivas": ["MultiPolygon", "MultiLinestring", "MultiPoint"],
+      "atributos": [
+        {
+          "nome": "descricao",
+          "tipo": "varchar(255)",
+          "cardinalidade": "0..1"
+        },
+        {
+          "nome": "subfase_id",
+          "tipo": "integer",
+          "cardinalidade": "0..1"
+        },
+        {
+          "nome": "corrigido",
+          "tipo": "boolean",
+          "cardinalidade": "1..1"
+        },
+        {
+          "nome": "justificativa",
+          "tipo": "varchar(255)",
+          "cardinalidade": "0..1"
+        }
+      ]
+    },
+    {
       "nome": "obstaculo_vertical",
       "categoria": "aux",
       "primitivas": [
