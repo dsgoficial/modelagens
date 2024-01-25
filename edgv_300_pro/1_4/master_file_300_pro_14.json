@@ -2579,6 +2579,21 @@
       "nome": "tipo_elemento_infraestrutura",
       "valores": [
         {
+          "code": 607,
+          "value": "Pedestre - Passagem subterrânea",
+          "valor_filtro": "Travessia pedestre"
+        },
+        {
+          "code": 608,
+          "value": "Pedestre - Passarela",
+          "valor_filtro": "Travessia pedestre"
+        },
+        {
+          "code": 609,
+          "value": "Pedestre - Pinguela",
+          "valor_filtro": "Travessia pedestre"
+        },
+        {
           "code": 701,
           "value": "Quebramar",
           "valor_filtro": "Quebramar"
@@ -2867,19 +2882,8 @@
           "valor_filtro": "Galeria/Bueiro"
         },
         {
-          "code": 607,
-          "value": "Pedestre - Passagem subterrânea",
-          "valor_filtro": "Travessia pedestre"
-        },
-        {
-          "code": 608,
-          "value": "Pedestre - Passarela",
-          "valor_filtro": "Travessia pedestre"
-        },
-        {
-          "code": 609,
-          "value": "Pedestre - Pinguela",
-          "valor_filtro": "Travessia pedestre"
+          "code": 97,
+          "value": "Não aplicável"
         }
       ],
       "filtro": true
@@ -4765,6 +4769,12 @@
           "mapa_valor": "regime"
         },
         {
+          "nome": "em_galeria_bueiro",
+          "tipo": "smallint",
+          "cardinalidade": "1..1",
+          "mapa_valor": "booleano"
+        },
+        {
           "nome": "texto_edicao",
           "tipo": "varchar(255)",
           "cardinalidade": "0..1"
@@ -5040,6 +5050,18 @@
           "mapa_valor": "tipo_elemento_infraestrutura",
           "valores": [
             {
+              "code": 607,
+              "primitivas": ["MultiPolygon", "MultiLinestring"]
+            },
+            {
+              "code": 608,
+              "primitivas": ["MultiPolygon", "MultiLinestring"]
+            },
+            {
+              "code": 609,
+              "primitivas": ["MultiPolygon", "MultiLinestring"]
+            },
+            {
               "code": 701,
               "primitivas": ["MultiPolygon", "MultiLinestring"]
             },
@@ -5174,7 +5196,8 @@
           "nome": "tipo",
           "tipo": "smallint",
           "cardinalidade": "1..1",
-          "mapa_valor": "tipo_elemento_viario"
+          "mapa_valor": "tipo_elemento_viario",
+          "valores": [101,102,201,202,203,204,301,302,401,402,501]
         },
         {
           "nome": "material_construcao",
@@ -5332,6 +5355,25 @@
           "nome": "concessionaria",
           "tipo": "varchar(255)",
           "cardinalidade": "0..1"
+        },
+        {
+          "nome": "tipo_elemento_viario",
+          "tipo": "smallint",
+          "cardinalidade": "1..1",
+          "mapa_valor": "tipo_elemento_viario",
+          "valores": [101,201,202,203,204,301,302,97]
+        },
+        {
+          "nome": "nome_elemento_viario",
+          "tipo": "varchar(255)",
+          "cardinalidade": "0..1"
+        },
+        {
+          "nome": "material_construcao_elemento_viario",
+          "tipo": "smallint",
+          "cardinalidade": "1..1",
+          "mapa_valor": "material_construcao",
+          "valores": [0, 1, 2, 3, 4, 5, 97, 98]
         },
         {
           "nome": "texto_edicao",
@@ -5634,6 +5676,31 @@
           "nome": "concessionaria",
           "tipo": "varchar(255)",
           "cardinalidade": "0..1"
+        },
+        {
+          "nome": "tipo_elemento_viario",
+          "tipo": "smallint",
+          "cardinalidade": "1..1",
+          "mapa_valor": "tipo_elemento_viario",
+          "valores": [101,102,201,202,203,204,301,302,401,402,97]
+        },
+        {
+          "nome": "nome_elemento_viario",
+          "tipo": "varchar(255)",
+          "cardinalidade": "0..1"
+        },
+        {
+          "nome": "posicao_pista_elemento_viario",
+          "tipo": "smallint",
+          "cardinalidade": "1..1",
+          "mapa_valor": "posicao_pista"
+        },
+        {
+          "nome": "material_construcao_elemento_viario",
+          "tipo": "smallint",
+          "cardinalidade": "1..1",
+          "mapa_valor": "material_construcao",
+          "valores": [0, 1, 2, 3, 4, 5, 97, 98]
         },
         {
           "nome": "texto_edicao",
