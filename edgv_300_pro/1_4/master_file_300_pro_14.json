@@ -767,23 +767,6 @@
       ]
     },
     {
-      "nome": "booleano_estendido",
-      "valores": [
-        {
-          "code": 0,
-          "value": "Desconhecido"
-        },
-        {
-          "code": 1,
-          "value": "Sim"
-        },
-        {
-          "code": 2,
-          "value": "Não"
-        }
-      ]
-    },
-    {
       "nome": "tipo_sumidouro_vertedouro",
       "valores": [
         {
@@ -3486,51 +3469,6 @@
         {
           "code": 5,
           "value": "Canal não operacional"
-        }
-      ]
-    },
-    {
-      "nome": "tipo_hid",
-      "valores": [
-        {
-          "code": 1,
-          "value": "Rio"
-        },
-        {
-          "code": 2,
-          "value": "Canal"
-        },
-        {
-          "code": 3,
-          "value": "Oceano"
-        },
-        {
-          "code": 4,
-          "value": "Baía"
-        },
-        {
-          "code": 5,
-          "value": "Enseada"
-        },
-        {
-          "code": 6,
-          "value": "Meando Abandonado"
-        },
-        {
-          "code": 7,
-          "value": "Lago ou Lagoa"
-        },
-        {
-          "code": 9,
-          "value": "Laguna"
-        },
-        {
-          "code": 10,
-          "value": "Represa"
-        },
-        {
-          "code": 11,
-          "value": "Açude"
         }
       ]
     },

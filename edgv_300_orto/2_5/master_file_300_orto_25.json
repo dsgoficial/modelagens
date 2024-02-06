@@ -8,7 +8,7 @@
     "value": "A SER PREENCHIDO"
   },
   "atributos_padrao": [
-    { "nome": "observacao", "tipo": "VARCHAR(255)", "cardinalidade": "0..1" }
+    { "nome": "observacao", "tipo": "varchar(255)", "cardinalidade": "0..1" }
   ],
   "coord_sys": 4674,
   "fill_factor": 80,
@@ -360,18 +360,15 @@
       "valores": [
         {
           "code": 0,
-          "value": "Desconhecido",
-          "descricao": "-"
+          "value": "Desconhecido"
         },
         {
           "code": 1,
-          "value": "Sim",
-          "descricao": "-"
+          "value": "Sim"
         },
         {
           "code": 2,
-          "value": "Não",
-          "descricao": "-"
+          "value": "Não"
         }
       ]
     },
@@ -400,18 +397,15 @@
       "valores": [
         {
           "code": 1,
-          "value": "Esquerda",
-          "descricao": "-"
+          "value": "Esquerda"
         },
         {
           "code": 2,
-          "value": "Centro",
-          "descricao": "-"
+          "value": "Centro"
         },
         {
           "code": 3,
-          "value": "Direita",
-          "descricao": "-"
+          "value": "Direita"
         }
       ]
     },
@@ -518,7 +512,7 @@
       "valores": [
         {
           "code": 1,
-          "value": "Poço / Água subterrânea"
+          "value": "Poço - água subterrânea"
         },
         {
           "code": 4,
@@ -534,7 +528,7 @@
         },
         {
           "code": 8,
-          "value": "Poço / Petróleo"
+          "value": "Poço - petróleo"
         }
       ]
     },
@@ -676,7 +670,8 @@
       "valores": [
         {
           "code": 303,
-          "value": "Linha de transmissão de energia"
+          "value": "Linha de transmissão de energia",
+          "valor_filtro": "Linha de energia"
         },
         {
           "code": 405,
@@ -710,13 +705,16 @@
         },
         {
           "code": 1801,
-          "value": "Subestação de transmissão de energia elétrica"
+          "value": "Subestação de transmissão de energia elétrica",
+          "valor_filtro": "Subestação de energia"
         },
         {
           "code": 1802,
-          "value": "Subestação de distribuição de energia elétrica"
+          "value": "Subestação de distribuição de energia elétrica",
+          "valor_filtro": "Subestação de energia"
         }
-      ]
+      ],
+      "filtro": true
     },
     {
       "nome": "bitola",
@@ -793,6 +791,10 @@
         {
           "code": 11,
           "value": "Represa/açude sem fluxo"
+        },
+        {
+          "code": 12,
+          "value": "Canal não operacional (sem fluxo)"
         }
       ]
     },
@@ -1087,6 +1089,14 @@
           "value": "Elevado"
         },
         {
+          "code": 4,
+          "value": "Emerso"
+        },
+        {
+          "code": 5,
+          "value": "Submerso"
+        },
+        {
           "code": 6,
           "value": "Subterrâneo"
         }
@@ -1151,33 +1161,41 @@
       "valores": [
         {
           "code": 1938,
-          "value": "Atrac - Cais"
+          "value": "Atrac - Cais",
+          "valor_filtro": "Atracadouro Terminal"
         },
         {
           "code": 1939,
-          "value": "Atrac - Cais flutuante"
+          "value": "Atrac - Cais flutuante",
+          "valor_filtro": "Atracadouro Terminal"
         },
         {
           "code": 1940,
-          "value": "Atrac - Trapiche"
+          "value": "Atrac - Trapiche",
+          "valor_filtro": "Atracadouro Terminal"
         },
         {
           "code": 1941,
-          "value": "Atrac - Molhe de atracação"
+          "value": "Atrac - Molhe de atracação",
+          "valor_filtro": "Atracadouro Terminal"
         },
         {
           "code": 1942,
-          "value": "Atrac - Pier"
+          "value": "Atrac - Pier",
+          "valor_filtro": "Atracadouro Terminal"
         },
         {
           "code": 1943,
-          "value": "Atrac - Dolfim"
+          "value": "Atrac - Dolfim",
+          "valor_filtro": "Atracadouro Terminal"
         },
         {
           "code": 1944,
-          "value": "Atrac - Desembarcadouro"
+          "value": "Atrac - Desembarcadouro",
+          "valor_filtro": "Atracadouro Terminal"
         }
-      ]
+      ],
+      "filtro": true
     },
     {
       "nome": "tipo_via_deslocamento",
@@ -1187,8 +1205,20 @@
           "value": "Estrada/Rodovia"
         },
         {
+          "code": 3,
+          "value": "Caminho carroçável"
+        },
+        {
           "code": 4,
           "value": "Auto-estrada"
+        },
+        {
+          "code": 5,
+          "value": "Arruamento"
+        },
+        {
+          "code": 6,
+          "value": "Trilha ou Picada"
         }
       ]
     },
@@ -1237,6 +1267,10 @@
     {
       "nome": "trafego",
       "valores": [
+        {
+          "code": 0,
+          "value": "Desconhecido"
+        },
         {
           "code": 1,
           "value": "Permanente"
@@ -1580,6 +1614,12 @@
           "tipo": "smallint",
           "cardinalidade": "1..1",
           "mapa_valor": "ancora_vertical"
+        },
+        {
+          "nome": "suprimir_simbologia",
+          "tipo": "smallint",
+          "cardinalidade": "1..1",
+          "mapa_valor": "booleano"
         }
       ]
     },
@@ -1687,6 +1727,12 @@
           "mapa_valor": "regime"
         },
         {
+          "nome": "em_galeria_bueiro",
+          "tipo": "smallint",
+          "cardinalidade": "1..1",
+          "mapa_valor": "booleano"
+        },
+        {
           "nome": "texto_edicao",
           "tipo": "varchar(255)",
           "cardinalidade": "0..1"
@@ -1738,13 +1784,46 @@
           "cardinalidade": "1..1",
           "mapa_valor": "material_construcao",
           "valores": [0, 1, 2, 3, 4, 5, 23]
+        },
+        {
+          "nome": "texto_edicao",
+          "tipo": "varchar(255)",
+          "cardinalidade": "0..1"
+        },
+        {
+          "nome": "label_x",
+          "tipo": "real",
+          "cardinalidade": "0..1"
+        },
+        {
+          "nome": "label_y",
+          "tipo": "real",
+          "cardinalidade": "0..1"
+        },
+        {
+          "nome": "sobreposto_transportes",
+          "tipo": "smallint",
+          "cardinalidade": "1..1",
+          "mapa_valor": "booleano"
+        },
+        {
+          "nome": "largura_simbologia",
+          "tipo": "real",
+          "cardinalidade": "0..1",
+          "primitivas": ["MultiLinestring"]
+        },
+        {
+          "nome": "visivel",
+          "tipo": "smallint",
+          "cardinalidade": "1..1",
+          "mapa_valor": "booleano"
         }
       ]
     },
     {
       "nome": "elemento_energia",
       "categoria": "infra",
-      "primitivas": ["MultiPoint", "MultiPolygon", "MultiLinestring"],
+      "primitivas": ["MultiPoint", "MultiLinestring", "MultiPolygon"],
       "atributos": [
         {
           "nome": "nome",
@@ -1756,11 +1835,38 @@
           "tipo": "smallint",
           "cardinalidade": "1..1",
           "mapa_valor": "tipo_elemento_energia",
-          "valores": {
-            "MultiPoint": [1801, 1802, 405, 408, 407, 498, 406, 409],
-            "MultiLinestring": [303],
-            "MultiPolygon": [1801, 1802, 405, 408, 407, 498, 406, 409]
-          }
+          "valores": [
+            {
+              "code": 303,
+              "primitivas": ["MultiLinestring"]
+            },
+            {
+              "code": 405
+            },
+            {
+              "code": 406
+            },
+            {
+              "code": 407
+            },
+            {
+              "code": 408
+            },
+            {
+              "code": 409
+            },
+            {
+              "code": 498
+            },
+            {
+              "code": 1801,
+              "primitivas": ["MultiPoint", "MultiPolygon"]
+            },
+            {
+              "code": 1802,
+              "primitivas": ["MultiPoint", "MultiPolygon"]
+            }
+          ]
         },
         {
           "nome": "situacao_fisica",
@@ -1878,7 +1984,8 @@
           "nome": "posicao_relativa",
           "tipo": "smallint",
           "cardinalidade": "1..1",
-          "mapa_valor": "posicao_relativa"
+          "mapa_valor": "posicao_relativa",
+          "valores": [2, 3, 6]
         },
         {
           "nome": "nr_linhas",
@@ -1920,6 +2027,25 @@
           "nome": "concessionaria",
           "tipo": "varchar(255)",
           "cardinalidade": "0..1"
+        },
+        {
+          "nome": "tipo_elemento_viario",
+          "tipo": "smallint",
+          "cardinalidade": "1..1",
+          "mapa_valor": "tipo_elemento_viario",
+          "valores": [101,201,202,203,204,301,302,97]
+        },
+        {
+          "nome": "nome_elemento_viario",
+          "tipo": "varchar(255)",
+          "cardinalidade": "0..1"
+        },
+        {
+          "nome": "material_construcao_elemento_viario",
+          "tipo": "smallint",
+          "cardinalidade": "1..1",
+          "mapa_valor": "material_construcao",
+          "valores": [0, 1, 2, 3, 4, 5, 97, 98]
         },
         {
           "nome": "texto_edicao",
@@ -1977,7 +2103,6 @@
         {
           "nome": "altitude",
           "tipo": "real",
-          "descricao": "-",
           "cardinalidade": "0..1"
         },
         {
@@ -2091,6 +2216,31 @@
           "cardinalidade": "0..1"
         },
         {
+          "nome": "tipo_elemento_viario",
+          "tipo": "smallint",
+          "cardinalidade": "1..1",
+          "mapa_valor": "tipo_elemento_viario",
+          "valores": [101,102,201,202,203,204,301,302,401,402,97]
+        },
+        {
+          "nome": "nome_elemento_viario",
+          "tipo": "varchar(255)",
+          "cardinalidade": "0..1"
+        },
+        {
+          "nome": "posicao_pista_elemento_viario",
+          "tipo": "smallint",
+          "cardinalidade": "1..1",
+          "mapa_valor": "posicao_pista"
+        },
+        {
+          "nome": "material_construcao_elemento_viario",
+          "tipo": "smallint",
+          "cardinalidade": "1..1",
+          "mapa_valor": "material_construcao",
+          "valores": [0, 1, 2, 3, 4, 5, 97, 98]
+        },
+        {
           "nome": "texto_edicao",
           "tipo": "varchar(255)",
           "cardinalidade": "0..1"
@@ -2100,6 +2250,11 @@
           "tipo": "smallint",
           "cardinalidade": "1..1",
           "mapa_valor": "booleano"
+        },
+        {
+          "nome": "ordem_simbologia",
+          "tipo": "integer",
+          "cardinalidade": "0..1"
         }
       ]
     },
@@ -2418,12 +2573,69 @@
           "mapa_valor": "booleano"
         }
       ]
-    }
-  ],
-  "extension_classes": [
+    },
     {
-      "nome": "area_pub_militar",
-      "categoria": "edicao",
+      "nome": "pais",
+      "categoria": "llp",
+      "descricao": "-",
+      "primitivas": ["MultiPolygon"],
+      "atributos": [
+        {
+          "nome": "nome",
+          "tipo": "varchar(255)",
+          "descricao": "-",
+          "cardinalidade": "0..1"
+        },
+        {
+          "nome": "sigla",
+          "tipo": "varchar(3)",
+          "descricao": "-",
+          "cardinalidade": "0..1"
+        },
+        {
+          "nome": "geometria_aproximada",
+          "tipo": "smallint",
+          "cardinalidade": "1..1",
+          "mapa_valor": "booleano"
+        }
+      ]
+    },
+    {
+      "nome": "area_sem_dados",
+      "categoria": "llp",
+      "primitivas": ["MultiPolygon"],
+      "atributos": [
+        {
+          "nome": "texto_edicao",
+          "tipo": "varchar(255)",
+          "cardinalidade": "0..1"
+        },
+        {
+          "nome": "label_x",
+          "tipo": "real",
+          "cardinalidade": "0..1"
+        },
+        {
+          "nome": "label_y",
+          "tipo": "real",
+          "cardinalidade": "0..1"
+        },
+        {
+          "nome": "tamanho_txt",
+          "tipo": "real",
+          "cardinalidade": "0..1"
+        },
+        {
+          "nome": "justificativa_txt",
+          "tipo": "smallint",
+          "cardinalidade": "1..1",
+          "mapa_valor": "justificativa"
+        }
+      ]
+    },
+    {
+      "nome": "limite_legal",
+      "categoria": "llp",
       "primitivas": ["MultiLinestring"],
       "atributos": [
         {
@@ -2432,10 +2644,21 @@
           "cardinalidade": "0..1"
         },
         {
+          "nome": "tipo",
+          "tipo": "smallint",
+          "cardinalidade": "1..1",
+          "mapa_valor": "tipo_limite_legal"
+        },
+        {
           "nome": "geometria_aproximada",
           "tipo": "smallint",
           "cardinalidade": "1..1",
           "mapa_valor": "booleano"
+        },
+        {
+          "nome": "texto_edicao",
+          "tipo": "varchar(255)",
+          "cardinalidade": "0..1"
         },
         {
           "nome": "sobreposto",
@@ -2448,17 +2671,13 @@
           "tipo": "smallint",
           "cardinalidade": "1..1",
           "mapa_valor": "booleano"
-        },
-        {
-          "nome": "visivel",
-          "tipo": "smallint",
-          "cardinalidade": "1..1",
-          "mapa_valor": "booleano"
         }
       ]
-    },
+    }
+  ],
+  "extension_classes": [
     {
-      "nome": "terra_indigena",
+      "nome": "area_pub_militar",
       "categoria": "edicao",
       "primitivas": ["MultiLinestring"],
       "atributos": [
@@ -2537,7 +2756,7 @@
       ]
     },
     {
-      "nome": "limite_legal",
+      "nome": "terra_indigena",
       "categoria": "edicao",
       "primitivas": ["MultiLinestring"],
       "atributos": [
@@ -2547,21 +2766,10 @@
           "cardinalidade": "0..1"
         },
         {
-          "nome": "tipo",
-          "tipo": "smallint",
-          "cardinalidade": "1..1",
-          "mapa_valor": "tipo_limite_legal"
-        },
-        {
           "nome": "geometria_aproximada",
           "tipo": "smallint",
           "cardinalidade": "1..1",
           "mapa_valor": "booleano"
-        },
-        {
-          "nome": "texto_edicao",
-          "tipo": "varchar(255)",
-          "cardinalidade": "0..1"
         },
         {
           "nome": "sobreposto",
@@ -2634,39 +2842,6 @@
           "nome": "nivel_produto",
           "tipo": "varchar(255)",
           "cardinalidade": "0..1"
-        }
-      ]
-    },
-    {
-      "nome": "area_sem_dados",
-      "categoria": "edicao",
-      "primitivas": ["MultiPolygon"],
-      "atributos": [
-        {
-          "nome": "texto_edicao",
-          "tipo": "varchar(255)",
-          "cardinalidade": "0..1"
-        },
-        {
-          "nome": "label_x",
-          "tipo": "real",
-          "cardinalidade": "0..1"
-        },
-        {
-          "nome": "label_y",
-          "tipo": "real",
-          "cardinalidade": "0..1"
-        },
-        {
-          "nome": "tamanho_txt",
-          "tipo": "real",
-          "cardinalidade": "0..1"
-        },
-        {
-          "nome": "justificativa_txt",
-          "tipo": "smallint",
-          "cardinalidade": "1..1",
-          "mapa_valor": "justificativa"
         }
       ]
     },
@@ -3025,6 +3200,18 @@
           "tipo": "smallint",
           "cardinalidade": "1..1",
           "mapa_valor": "booleano"
+        }
+      ]
+    },
+    {
+      "nome": "simb_direcao_corrente",
+      "categoria": "edicao",
+      "primitivas": ["MultiPoint"],
+      "atributos": [
+        {
+          "nome": "simb_rot",
+          "tipo": "real",
+          "cardinalidade": "0..1"
         }
       ]
     }
