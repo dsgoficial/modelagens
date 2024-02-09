@@ -2496,11 +2496,6 @@
       "nome": "tipo_elemento_energia",
       "valores": [
         {
-          "code": 302,
-          "value": "Linha de distribuição de energia",
-          "valor_filtro": "Linha de energia"
-        },
-        {
           "code": 303,
           "value": "Linha de transmissão de energia",
           "valor_filtro": "Linha de energia"
