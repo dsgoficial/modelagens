@@ -1275,19 +1275,6 @@
       ]
     },
     {
-      "nome": "tipo_delimitacao_fisica",
-      "valores": [
-        {
-          "code": 1,
-          "value": "Cerca"
-        },
-        {
-          "code": 2,
-          "value": "Muro"
-        }
-      ]
-    },
-    {
       "nome": "tipo_deposito",
       "valores": [
         {
@@ -2531,11 +2518,6 @@
           "valor_filtro": "Estação geradora de energia"
         },
         {
-          "code": 1401,
-          "value": "Torre de energia",
-          "valor_filtro": "Torre de energia"
-        },
-        {
           "code": 1701,
           "value": "Aerogerador",
           "valor_filtro": "Aerogerador"
@@ -2695,10 +2677,6 @@
         {
           "code": 1,
           "value": "Calçadão / Rua pedestre"
-        },
-        {
-          "code": 2,
-          "value": "Ciclovia"
         }
       ]
     },
@@ -3556,6 +3534,11 @@
           "valor_filtro": "Terreno Exposto"
         },
         {
+          "code": 1004,
+          "value": "Terreno exposto - pavimentado",
+          "valor_filtro": "Terreno Exposto"
+        },
+        {
           "code": 1296,
           "value": "Reflorestamento",
           "valor_filtro": "Reflorestamento"
@@ -3633,7 +3616,7 @@
   ],
   "classes": [
     {
-      "nome": "area_construida",
+      "nome": "area_edificada",
       "categoria": "cobter",
       "primitivas": ["MultiPolygon"],
       "atributos": [
@@ -5654,32 +5637,6 @@
       ]
     },
     {
-      "nome": "delimitacao_fisica",
-      "categoria": "llp",
-      "primitivas": ["MultiLinestring"],
-      "atributos": [
-        {
-          "nome": "tipo",
-          "tipo": "smallint",
-          "cardinalidade": "1..1",
-          "mapa_valor": "tipo_delimitacao_fisica"
-        },
-        {
-          "nome": "material_construcao",
-          "tipo": "smallint",
-          "cardinalidade": "1..1",
-          "mapa_valor": "material_construcao",
-          "valores": [0, 1, 4, 5, 9, 98]
-        },
-        {
-          "nome": "visivel",
-          "tipo": "smallint",
-          "cardinalidade": "1..1",
-          "mapa_valor": "booleano"
-        }
-      ]
-    },
-    {
       "nome": "limite_especial",
       "categoria": "llp",
       "primitivas": ["MultiPolygon"],
@@ -6174,7 +6131,7 @@
       "atributos": []
     },
     {
-      "nome": "area_construida",
+      "nome": "area_edificada",
       "categoria": "delimitador",
       "primitivas": ["MultiLinestring"],
       "atributos": []
@@ -6235,7 +6192,7 @@
       ]
     },
     {
-      "nome": "area_construida",
+      "nome": "area_edificada",
       "categoria": "centroide",
       "primitivas": ["MultiPoint"],
       "atributos": [
