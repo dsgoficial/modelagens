@@ -6059,6 +6059,12 @@
           "tipo": "smallint",
           "cardinalidade": "1..1",
           "mapa_valor": "booleano"
+        },
+        {
+          "nome": "exibir_linha_rotulo",
+          "tipo": "smallint",
+          "cardinalidade": "1..1",
+          "mapa_valor": "booleano"
         }
       ]
     },
