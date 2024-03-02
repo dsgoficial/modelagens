@@ -1280,6 +1280,19 @@
           "value": "Periódico"
         }
       ]
+    },
+    {
+      "nome": "tipo_sumidouro_vertedouro",
+      "valores": [
+        {
+          "code": 4,
+          "value": "Sumidouro"
+        },
+        {
+          "code": 5,
+          "value": "Vertedouro"
+        }
+      ]
     }
   ],
   "classes": [
@@ -2671,6 +2684,30 @@
           "tipo": "smallint",
           "cardinalidade": "1..1",
           "mapa_valor": "booleano"
+        }
+      ]
+    },
+    {
+      "nome": "sumidouro_vertedouro",
+      "categoria": "elemnat",
+      "primitivas": ["MultiPoint"],
+      "atributos": [
+        {
+          "nome": "tipo",
+          "tipo": "smallint",
+          "cardinalidade": "1..1",
+          "mapa_valor": "tipo_sumidouro_vertedouro"
+        },
+        {
+          "nome": "visivel",
+          "tipo": "smallint",
+          "cardinalidade": "1..1",
+          "mapa_valor": "booleano"
+        },
+        {
+          "nome": "simb_rot",
+          "tipo": "real",
+          "cardinalidade": "0..1"
         }
       ]
     }
