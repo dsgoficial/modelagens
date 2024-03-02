@@ -21,6 +21,31 @@
   },
   "dominios": [
     {
+      "nome": "tipo_obstrucao",
+      "valores": [
+        {
+          "code": 1,
+          "value": "Obstrução individual",
+          "descricao": "-"
+        },
+        {
+          "code": 2,
+          "value": "Obstrução múltipla",
+          "descricao": "-"
+        },
+        {
+          "code": 3,
+          "value": "Obstrução individual com heliponto",
+          "descricao": "-"
+        },
+        {
+          "code": 4,
+          "value": "Obstrução múltipla com heliponto",
+          "descricao": "-"
+        }
+      ]
+    },
+    {
       "nome": "exibir_lado_simbologia",
       "valores": [
         {
@@ -63,16 +88,6 @@
     {
       "nome": "tipo_area_uso_especifico",
       "valores": [
-        {
-          "code": 1,
-          "value": "Área de propriedade particular",
-          "descricao": "-"
-        },
-        {
-          "code": 2,
-          "value": "Área habitacional",
-          "descricao": "-"
-        },
         {
           "code": 3,
           "value": "Área relacionada a dutos",
@@ -2518,8 +2533,18 @@
           "valor_filtro": "Estação geradora de energia"
         },
         {
+          "code": 1401,
+          "value": "Torre de energia",
+          "valor_filtro": "Torre de energia"
+        },
+        {
           "code": 1701,
           "value": "Aerogerador",
+          "valor_filtro": "Aerogerador"
+        },
+        {
+          "code": 1702,
+          "value": "Múltiplos Aerogeradores",
           "valor_filtro": "Aerogerador"
         },
         {
@@ -4906,6 +4931,18 @@
           ]
         },
         {
+          "nome": "altitude",
+          "tipo": "real",
+          "cardinalidade": "0..1",
+          "primitivas": ["MultiPoint", "MultiLinestring"]
+        },
+        {
+          "nome": "altura",
+          "tipo": "real",
+          "cardinalidade": "0..1",
+          "primitivas": ["MultiPoint", "MultiLinestring"]
+        },
+        {
           "nome": "situacao_fisica",
           "tipo": "smallint",
           "cardinalidade": "1..1",
@@ -5501,6 +5538,35 @@
       ]
     },
     {
+      "nome": "trecho_hidroviario",
+      "categoria": "infra",
+      "primitivas": ["MultiLinestring"],
+      "atributos": [
+        {
+          "nome": "nome",
+          "tipo": "varchar(255)",
+          "cardinalidade": "0..1"
+        },
+        {
+          "nome": "situacao_fisica",
+          "tipo": "smallint",
+          "cardinalidade": "1..1",
+          "mapa_valor": "situacao_fisica"
+        },
+        {
+          "nome": "texto_edicao",
+          "tipo": "varchar(255)",
+          "cardinalidade": "0..1"
+        },
+        {
+          "nome": "visivel",
+          "tipo": "smallint",
+          "cardinalidade": "1..1",
+          "mapa_valor": "booleano"
+        }
+      ]
+    },
+    {
       "nome": "vala",
       "categoria": "infra",
       "primitivas": ["MultiLinestring"],
@@ -5955,6 +6021,47 @@
     }
   ],
   "extension_classes": [
+    {
+      "nome": "obstrucao_vertical",
+      "categoria": "edicao",
+      "primitivas": ["MultiPoint"],
+      "atributos": [
+        {
+          "nome": "nome",
+          "tipo": "varchar(255)",
+          "cardinalidade": "0..1"
+        },
+        {
+          "nome": "altitude",
+          "tipo": "real",
+          "cardinalidade": "0..1",
+          "primitivas": ["MultiPoint", "MultiLinestring"]
+        },
+        {
+          "nome": "altura",
+          "tipo": "real",
+          "cardinalidade": "0..1",
+          "primitivas": ["MultiPoint", "MultiLinestring"]
+        },
+        {
+          "nome": "tipo",
+          "tipo": "smallint",
+          "cardinalidade": "1..1",
+          "mapa_valor": "tipo_obstrucao"
+        },
+        {
+          "nome": "texto_edicao",
+          "tipo": "varchar(255)",
+          "cardinalidade": "0..1"
+        },
+        {
+          "nome": "visivel",
+          "tipo": "smallint",
+          "cardinalidade": "1..1",
+          "mapa_valor": "booleano"
+        }
+      ]
+    },
     {
       "nome": "limite_especial",
       "categoria": "edicao",
