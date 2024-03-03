@@ -4710,12 +4710,6 @@
           "mapa_valor": "regime"
         },
         {
-          "nome": "em_galeria_bueiro",
-          "tipo": "smallint",
-          "cardinalidade": "1..1",
-          "mapa_valor": "booleano"
-        },
-        {
           "nome": "texto_edicao",
           "tipo": "varchar(255)",
           "cardinalidade": "0..1"
@@ -5314,7 +5308,7 @@
           "tipo": "smallint",
           "cardinalidade": "1..1",
           "mapa_valor": "tipo_elemento_viario",
-          "valores": [101,201,202,203,204,301,302,97]
+          "valores": [101,201,202,203,204,301,302,501,97]
         },
         {
           "nome": "nome_elemento_viario",
@@ -5664,7 +5658,7 @@
           "tipo": "smallint",
           "cardinalidade": "1..1",
           "mapa_valor": "tipo_elemento_viario",
-          "valores": [101,102,201,202,203,204,301,302,401,402,97]
+          "valores": [101,102,201,202,203,204,301,302,401,402,501,97]
         },
         {
           "nome": "nome_elemento_viario",
