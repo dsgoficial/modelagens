@@ -24,9 +24,158 @@
     "agregar_geom_ida": true,
     "agregar_geom_volta": true,
     "mapeamento_classes": [
+        {            "__comment": "edu_arquibancada <-> laz_arquibancada",
+            "classe_ida": "edu_arquibancada",
+            "classe_volta": "laz_arquibancada"
+        },
+        {            "__comment": "edu_ruina <-> laz_ruina",
+            "classe_ida": "edu_ruina",
+            "classe_volta": "laz_ruina",
+            "atributos_default_ida": [
+                {
+                    "nome_atributo": "turistica",
+                    "valor": 0
+                },
+                {
+                    "nome_atributo": "cultura",
+                    "valor": 1
+                }
+            ]
+        },
+        {            "__comment": "enc_trecho_comunic <-> enc_trecho_comunic",
+            "classe_ida": "enc_trecho_comunic",
+            "classe_volta": "enc_trecho_comunic",
+            "mapeamento_atributos": [
+                {
+                    "attr_ida": "matconstr",
+                    "attr_volta": "matcondutor"
+                }
+            ]
+        },
+        {            "__comment": "hid_foz_maritima <-> hid_foz_maritima",
+            "classe_ida": "hid_foz_maritima",
+            "classe_volta": "hid_foz_maritima"
+        },
+        {            "__comment": "hid_recife <-> hid_recife",
+            "classe_ida": "hid_recife",
+            "classe_volta": "hid_recife",
+            "mapeamento_atributos": [
+                {
+                    "attr_ida": "situamare",
+                    "attr_volta": "situacaoemagua"
+                }
+            ]
+        },
+        {            "__comment": "lim_delimitacao_fisica <-> cbge_delimitacao_fisica",
+            "classe_ida": "lim_delimitacao_fisica",
+            "classe_volta": "cbge_delimitacao_fisica"
+        },
+        {            "__comment": "lim_marco_de_limite <-> pto_marco_de_limite",
+            "classe_ida": "lim_marco_de_limite",
+            "classe_volta": "pto_marco_de_limite"
+        },
+        {            "__comment": "lim_unidade_protecao_integral <-> lml_unidade_protecao_integral",
+            "classe_ida": "lim_unidade_protecao_integral",
+            "classe_volta": "lml_unidade_protecao_integral",
+            "atributos_default_ida": [
+                {
+                    "nome_atributo": "tipounidprotegida",
+                    "valor": 2
+                }
+            ]
+        },
         {            "__comment": "loc_area_edificada <-> lml_area_densamente_edificada",
             "classe_ida": "loc_area_edificada",
             "classe_volta": "lml_area_densamente_edificada"
+        },
+        {            "__comment": "pto_pto_ref_geod_topo <-> pto_pto_ref_geod_topo",
+            "classe_ida": "pto_pto_ref_geod_topo",
+            "classe_volta": "pto_pto_ref_geod_topo"
+        },
+        {            "__comment": "rel_duna <-> rel_duna",
+            "classe_ida": "rel_duna",
+            "classe_volta": "rel_duna"
+        },
+        {            "__comment": "rel_pico <-> rel_pico",
+            "classe_ida": "rel_pico",
+            "classe_volta": "rel_pico",
+            "atributos_default_ida": [
+                {
+                    "nome_atributo": "tipoelemnat",
+                    "valor": 22
+                }
+            ]
+        },
+        {            "__comment": "tra_condutor_hidrico <-> dut_trecho_duto",
+            "classe_ida": "tra_condutor_hidrico",
+            "classe_volta": "dut_trecho_duto",
+            "sentido": "ida",
+            "atributos_default_ida": [
+                {
+                    "nome_atributo": "tipotrechoduto",
+                    "valor": 1
+                }
+            ]
+        },
+        {            "__comment": "tra_obstaculo_navegacao <-> hdv_obstaculo_navegacao",
+            "classe_ida": "tra_obstaculo_navegacao",
+            "classe_volta": "hdv_obstaculo_navegacao"
+        },
+        {            "__comment": "tra_patio <-> tra_patio",
+            "classe_ida": "tra_patio",
+            "classe_volta": "tra_patio",
+            "atributos_default_ida": [
+                {
+                    "nome_atributo": "finalidadepatio",
+                    "valor": 0
+                }
+            ]
+        },
+        {            "__comment": "veg_estepe <-> veg_campo",
+            "classe_ida": "veg_estepe",
+            "classe_volta": "veg_campo",
+            "sentido": "ida",
+            "atributos_default_ida": [
+                {
+                    "nome_atributo": "classificacaoporte",
+                    "valor": 0
+                },
+                {
+                    "nome_atributo": "densidade",
+                    "valor": 0
+                },
+                {
+                    "nome_atributo": "secundaria",
+                    "valor": 0
+                },
+                {
+                    "nome_atributo": "tipocampo",
+                    "valor": 0
+                }
+            ]
+        },
+        {            "__comment": "veg_macega_chavascal <-> veg_campo",
+            "classe_ida": "veg_macega_chavascal",
+            "classe_volta": "veg_campo",
+            "sentido": "ida",
+            "atributos_default_ida": [
+                {
+                    "nome_atributo": "classificacaoporte",
+                    "valor": 0
+                },
+                {
+                    "nome_atributo": "densidade",
+                    "valor": 0
+                },
+                {
+                    "nome_atributo": "secundaria",
+                    "valor": 0
+                },
+                {
+                    "nome_atributo": "tipocampo",
+                    "valor": 0
+                }
+            ]
         },
         {            "__comment": "hid_massa_dagua <-> hid_massa_dagua | possuitrechodrenagem false",
             "classe_ida": "hid_massa_dagua",
@@ -1505,6 +1654,10 @@
                 {
                     "nome_atributo": "tipoalterantrop",
                     "valor": 32
+                },
+                {
+                    "nome_atributo": "secaoativecon",
+                    "valor": 1
                 }
             ],
             "mapeamento_atributos": [
@@ -1549,10 +1702,6 @@
                             "sentido": "ida"
                         }
                     ]
-                },
-                {   
-                    "attr_ida": "tiposecaocnae",
-                    "attr_volta": "secaoativecon"
                 }
             ]
         },
