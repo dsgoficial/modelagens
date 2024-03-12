@@ -9536,6 +9536,9 @@
           "mapa_valor": "tipo_uso_edif",
           "valores": [
             {
+              "code": 1
+            },
+            {
               "code": 5
             }
           ]
@@ -10431,6 +10434,9 @@
           "cardinalidade": "1..1",
           "mapa_valor": "tipo_uso_edif",
           "valores": [
+            {
+              "code": 1
+            },
             {
               "code": 6
             }
@@ -11334,6 +11340,9 @@
           "mapa_valor": "tipo_uso_edif",
           "valores": [
             {
+              "code": 1
+            },
+            {
               "code": 2
             }
           ]
@@ -11742,6 +11751,9 @@
               "code": 0
             },
             {
+              "code": 1
+            },
+            {
               "code": 2
             },
             {
@@ -11896,6 +11908,9 @@
           "valores": [
             {
               "code": 0
+            },
+            {
+              "code": 1
             },
             {
               "code": 2
