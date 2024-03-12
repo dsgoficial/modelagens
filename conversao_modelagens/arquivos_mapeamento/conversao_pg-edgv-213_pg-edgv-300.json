@@ -48,7 +48,33 @@
             "mapeamento_atributos": [
                 {
                     "attr_ida": "matconstr",
-                    "attr_volta": "matcondutor"
+                    "attr_volta": "matcondutor",
+                    "traducao": [
+                        {
+                            "valor_ida": 25,
+                            "valor_volta": 1
+                        },
+                        {
+                            "valor_ida": 26,
+                            "valor_volta": 2
+                        }
+                    ]
+                },
+                {
+                    "attr_ida": "tipotrechocomunic",
+                    "attr_volta": "tipotrechocomunic",
+                    "traducao": [
+                        {
+                            "valor_ida": 99,
+                            "valor_volta": 3,
+                            "sentido": "volta"
+                        },
+                        {
+                            "valor_ida": 6,
+                            "valor_volta": 99,
+                            "sentido": "ida"
+                        }
+                    ]
                 }
             ]
         },
@@ -62,7 +88,17 @@
             "mapeamento_atributos": [
                 {
                     "attr_ida": "situamare",
-                    "attr_volta": "situacaoemagua"
+                    "attr_volta": "situacaoemagua",
+                    "traducao": [
+                        {
+                            "valor_ida": 8,
+                            "valor_volta": 4
+                        },
+                        {
+                            "valor_ida": 9,
+                            "valor_volta": 5
+                        }
+                    ]
                 }
             ]
         },
@@ -72,7 +108,33 @@
         },
         {            "__comment": "lim_marco_de_limite <-> pto_marco_de_limite",
             "classe_ida": "lim_marco_de_limite",
-            "classe_volta": "pto_marco_de_limite"
+            "classe_volta": "pto_marco_de_limite",
+            "mapeamento_atributos": [
+                {
+                    "attr_ida": "tipomarcolim",
+                    "attr_volta": "tipomarcolim",
+                    "traducao": [
+                        {
+                            "valor_ida": 2,
+                            "valor_volta": 23
+                        },
+                        {
+                            "valor_ida": 1,
+                            "valor_volta": 26
+                        },
+                        {
+                            "valor_ida": 1,
+                            "valor_volta": 24,
+                            "sentido": "volta"
+                        },
+                        {
+                            "valor_ida": 1,
+                            "valor_volta": 25,
+                            "sentido": "volta"
+                        }
+                    ]
+                }
+            ]
         },
         {            "__comment": "lim_unidade_protecao_integral <-> lml_unidade_protecao_integral",
             "classe_ida": "lim_unidade_protecao_integral",
@@ -81,6 +143,10 @@
                 {
                     "nome_atributo": "tipounidprotegida",
                     "valor": 2
+                },
+                {
+                    "nome_atributo": "jurisdicao",
+                    "valor": 0
                 }
             ]
         },
@@ -90,11 +156,24 @@
         },
         {            "__comment": "pto_pto_ref_geod_topo <-> pto_pto_ref_geod_topo",
             "classe_ida": "pto_pto_ref_geod_topo",
-            "classe_volta": "pto_pto_ref_geod_topo"
+            "classe_volta": "pto_pto_ref_geod_topo",
+            "atributos_default_ida": [
+                {
+                    "nome_atributo": "redereferencia",
+                    "valor": 0
+                }
+            ]
+
         },
         {            "__comment": "rel_duna <-> rel_duna",
             "classe_ida": "rel_duna",
-            "classe_volta": "rel_duna"
+            "classe_volta": "rel_duna",
+            "atributos_default_ida": [
+                {
+                    "nome_atributo": "tipoelemnat",
+                    "valor": 17
+                }
+            ]
         },
         {            "__comment": "rel_pico <-> rel_pico",
             "classe_ida": "rel_pico",
@@ -142,7 +221,7 @@
                 },
                 {
                     "nome_atributo": "densidade",
-                    "valor": 0
+                    "valor": 2
                 },
                 {
                     "nome_atributo": "secundaria",
@@ -165,7 +244,7 @@
                 },
                 {
                     "nome_atributo": "densidade",
-                    "valor": 0
+                    "valor": 2
                 },
                 {
                     "nome_atributo": "secundaria",
