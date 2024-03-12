@@ -7,10 +7,10 @@ SET search_path TO pg_catalog,public,edgv,dominios;
 
 CREATE TABLE public.db_metadata(
 	 edgvversion varchar(50) NOT NULL DEFAULT 'EDGV 3.0',
-	 dbimplversion varchar(50) NOT NULL DEFAULT '1.1.3',
+	 dbimplversion varchar(50) NOT NULL DEFAULT '1.1.4',
 	 CONSTRAINT edgvversioncheck CHECK (edgvversion = 'EDGV 3.0')
 );
-INSERT INTO public.db_metadata (edgvversion, dbimplversion) VALUES ('EDGV 3.0','1.1.3');
+INSERT INTO public.db_metadata (edgvversion, dbimplversion) VALUES ('EDGV 3.0','1.1.4');
 
 CREATE TABLE dominios.aptidao_operacional_atracadouro (
 	 code smallint NOT NULL,
