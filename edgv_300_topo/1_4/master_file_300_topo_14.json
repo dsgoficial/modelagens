@@ -6016,8 +6016,8 @@
   ],
   "extension_classes": [
     {
-      "nome": "obstrucao_vertical",
-      "categoria": "edicao",
+      "nome": "obstaculo_vertical",
+      "categoria": "infra",
       "primitivas": ["MultiPoint"],
       "atributos": [
         {
