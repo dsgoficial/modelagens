@@ -2058,7 +2058,12 @@
             },
             {
               "valor_ida": 3,
-              "valor_volta": 196
+              "valor_volta": 196,
+              "sentido": "volta"
+            },
+            {
+              "valor_ida": 3,
+              "valor_volta": 197
             },
             {
               "valor_ida": 2,
@@ -5391,8 +5396,8 @@
         }
       ]
     },
-    {"__comment": "rel_aterro <-> infra_alteracao_fisiografica_antropica | corte",
-      "classe_ida": "rel_aterro",
+    {"__comment": "rel_corte <-> infra_alteracao_fisiografica_antropica | corte",
+      "classe_ida": "rel_corte",
       "classe_volta": "infra_alteracao_fisiografica_antropica",
       "atributos_default_ida": [
         {
