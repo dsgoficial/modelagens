@@ -420,6 +420,209 @@ class MasterGen():
             metadataDict[table_name]["columns"] = attributeDomainDict
             metadataDict[table_name]["sqlFilter"] = None
 
+    def buildMultiScaleSQL(self, dest, atributos_padrao=True, extension_classes=True, uuid=True, owner='postgres'):
+        master = self.master
+        scales = ['_250k', '_100k', '_50k', '_25k', '_10k']
+        sql = []
+        sql.append(u"CREATE SCHEMA {0};".format(master["schema_dados"]))
+        sql.append(u"CREATE SCHEMA {0};".format(master["schema_dominios"]))
+        sql.append(u"")
+        sql.append(u"CREATE EXTENSION postgis;")
+        if uuid:
+            sql.append(u"CREATE EXTENSION IF NOT EXISTS \"uuid-ossp\";")
+
+        sql.append(u"SET search_path TO pg_catalog,public,{0},{1};".format(
+            master["schema_dados"], master["schema_dominios"]))
+        sql.append(u"")
+        sql.append(u"CREATE TABLE public.db_metadata(")
+        sql.append(u"\t edgvversion varchar(50) NOT NULL DEFAULT '{0}',".format(
+            master["modelo"]))
+        sql.append(u"\t dbimplversion varchar(50) NOT NULL DEFAULT '{0}',".format(
+            master["versao"]))
+        sql.append(u"\t CONSTRAINT edgvversioncheck CHECK (edgvversion = '{0}')".format(
+            master["modelo"]))
+        sql.append(u");")
+        sql.append(u"INSERT INTO public.db_metadata (edgvversion, dbimplversion) VALUES ('{0}','{1}');".format(
+            master["modelo"], master["versao"]))
+        sql.append(u"")
+
+        for dominio in master["dominios"]:
+            sql.append(u"CREATE TABLE {0}.{1} (".format(
+                master["schema_dominios"], dominio["nome"]))
+            sql.append(u"\t code smallint NOT NULL,")
+            sql.append(u"\t code_name text NOT NULL,")
+            sql.append(
+                u"\t filter text NOT NULL,") if "filtro" in dominio and dominio["filtro"] else None
+            sql.append(
+                u"\t CONSTRAINT {0}_pk PRIMARY KEY (code)".format(dominio["nome"]))
+            sql.append(u");")
+            sql.append(u"")
+
+            for valor in dominio["valores"]:
+                domain_value = u"{0} ({1})".format(valor["value"].replace("'", "''"), valor["code"])
+                if "filtro" in dominio and dominio["filtro"]:
+                    sql.append(u"INSERT INTO {0}.{1} (code,code_name, filter) VALUES ({2},'{3}','{4}');".format(master["schema_dominios"],
+                                                                                                                dominio["nome"], valor["code"], domain_value, valor["valor_filtro"]))
+                else:
+                    sql.append(u"INSERT INTO {0}.{1} (code,code_name) VALUES ({2},'{3}');".format(master["schema_dominios"],
+                                                                                                dominio["nome"], valor["code"], domain_value))
+
+            if 'a_ser_preenchido' in master:
+                domain_value = u"{0} ({1})".format(master["a_ser_preenchido"]["value"], master["a_ser_preenchido"]["code"])
+                if "filtro" in dominio and dominio["filtro"]:
+                    sql.append(u"INSERT INTO {0}.{1} (code,code_name, filter) VALUES ({2},'{3}','{3}');".format(master["schema_dominios"],
+                                                                                                                dominio["nome"], master["a_ser_preenchido"]["code"], domain_value))
+                else:
+                    sql.append(u"INSERT INTO {0}.{1} (code,code_name) VALUES ({2},'{3}');".format(master["schema_dominios"],
+                                                                                                dominio["nome"], master["a_ser_preenchido"]["code"], domain_value))
+
+            sql.append(u"")
+
+            if owner:
+                sql.append(u"ALTER TABLE {0}.{1} OWNER TO {2};".format(master["schema_dominios"], dominio["nome"], owner))
+
+            sql.append(u"")
+
+        if extension_classes and "extension_classes" in master:
+            master["classes"].extend(master["extension_classes"])
+
+        for classe in master["classes"]:
+            if atributos_padrao and "atributos_padrao" in master:
+                classe["atributos"].extend(master["atributos_padrao"])
+
+            for primitiva in classe["primitivas"]:
+                for scale in scales:
+                    if "geom_suffix" in classe:
+                        class_name = "{0}{1}{2}".format(classe["nome"], scale, classe["geom_suffix"][primitiva])
+                    elif "geom_prefix" in classe:
+                        class_name = "{1}{0}{2}".format(classe["nome"], scale, classe["geom_prefix"][primitiva])
+                    elif "geom_suffix" in master:
+                        class_name = "{0}{1}{2}".format(classe["nome"], scale, master["geom_suffix"][primitiva])
+                    elif "geom_prefix" in master:
+                        class_name = "{1}{0}{2}".format(classe["nome"], scale, master["geom_prefix"][primitiva])
+
+                    if classe["categoria"]:
+                        class_name = "{0}_{1}".format(classe["categoria"], class_name)
+
+                    sql.append(u"CREATE TABLE {0}.{1}(".format(
+                        master["schema_dados"], class_name))
+
+                    if not uuid:
+                        sql.append(u"\t {0} serial NOT NULL,".format(
+                            master["nome_id"]))
+                    else:
+                        sql.append(u"\t {0} uuid NOT NULL DEFAULT uuid_generate_v4(),".format(
+                            master["nome_id"]))
+
+                    for atributo in classe["atributos"]:
+                        if "primitivas" in atributo and primitiva not in atributo["primitivas"]:
+                            continue
+                        if "mapa_valor" in atributo:
+                            sql.append(u"\t {0}_code smallint,".format(atributo["nome"]))
+                            sql.append(u"\t {0}_value varchar(255),".format(atributo["nome"]))
+                        else:
+                            if atributo["cardinalidade"] == "0..1":
+                                sql.append(u"\t {0} {1},".format(
+                                    atributo["nome"], atributo["tipo"]))
+                            elif atributo["cardinalidade"] == "1..1":
+                                sql.append(u"\t {0} {1} NOT NULL,".format(
+                                    atributo["nome"], atributo["tipo"]))
+                            elif atributo["cardinalidade"] == "0..*":
+                                sql.append(u"\t {0} {1}[],".format(
+                                    atributo["nome"], atributo["tipo"]))
+                            elif atributo["cardinalidade"] == "1..*":
+                                sql.append(u"\t {0} {1}[] NOT NULL,".format(
+                                    atributo["nome"], atributo["tipo"]))
+
+                    sql.append(u"\t {0} geometry({1}, {2}),".format(
+                        master["nome_geom"], primitiva, master["coord_sys"]))
+                    sql.append(u"\t CONSTRAINT {0}_pk PRIMARY KEY ({1})".format(class_name, master["nome_id"]))
+                    sql.append(u"\t WITH (FILLFACTOR = {0})".format(
+                        master["fill_factor"]))
+                    sql.append(u");")
+                    sql.append(u"CREATE INDEX {0}_geom ON {1}.{0} USING gist ({2});".format(class_name, master["schema_dados"], master["nome_geom"]))
+
+                    sql.append(u"")
+
+                    if owner:
+                        sql.append(u"ALTER TABLE {0}.{1} OWNER TO {2};".format(master["schema_dados"], class_name, owner))
+
+                    sql.append(u"")
+
+                    for atributo in classe["atributos"]:
+                        if "primitivas" in atributo and primitiva not in atributo["primitivas"]:
+                            continue
+                        if "mapa_valor" in atributo:
+                            valores_att = None
+                            if "valores" in atributo and isinstance(atributo["valores"], dict) and primitiva in atributo["valores"]:
+                                valores_att = atributo["valores"][primitiva]
+                            elif "valores" in atributo and len(atributo["valores"]) > 0:
+                                if isinstance(atributo["valores"][0], dict):
+                                    valores_att = [valor["code"] for valor in atributo["valores"]
+                                                if ("primitivas" in valor and primitiva in valor["primitivas"]) or "primitivas" not in valor]
+                                else:
+                                    valores_att = atributo["valores"]
+
+                            if atributo["cardinalidade"] == "0..1" or atributo["cardinalidade"] == "1..1":
+                                sql.append(u"ALTER TABLE {1}.{0}".format(class_name, master["schema_dados"]))
+                                sql.append(u"\t ADD CONSTRAINT {0}_{1}_fk FOREIGN KEY ({1}_code)".format(class_name, atributo["nome"]))
+                                sql.append(u"\t REFERENCES {1}.{0} (code) MATCH FULL".format(
+                                    atributo["mapa_valor"], master["schema_dominios"]))
+                                sql.append(
+                                    u"\t ON UPDATE NO ACTION ON DELETE NO ACTION;")
+                                sql.append(u"")
+                                dominio = [dominio for dominio in master["dominios"] if "nome" in dominio and dominio["nome"] == atributo["mapa_valor"]][0]
+                                dominio_att = [valor["code"] for valor in dominio["valores"]]
+
+                                if valores_att and len(set(dominio_att).difference(valores_att)) > 0:
+                                    sql.append(u"ALTER TABLE {0}.{1}".format(master["schema_dados"], class_name))
+                                    sql.append(u"\t ADD CONSTRAINT {0}_{1}_check ".format(class_name, atributo["nome"]))
+
+                                    if 'a_ser_preenchido' in master:
+                                        valores_att.append(
+                                            master["a_ser_preenchido"]["code"])
+
+                                    sql.append(u"\t CHECK ({0}_code = ANY(ARRAY[{1}])); ".format(atributo["nome"],
+                                                                                                ", ".join(["{0} :: SMALLINT".format(valor) for valor in valores_att])))
+
+                                    sql.append(u"")
+
+                                if master['a_ser_preenchido']:
+                                    sql.append(u"ALTER TABLE {1}.{0} ALTER COLUMN {2}_code SET DEFAULT {3};".format(class_name,
+                                                                                                                    master["schema_dados"], atributo["nome"],
+                                                                                                                    master["a_ser_preenchido"]["code"]))
+                                    sql.append(u"")
+
+                            elif atributo["cardinalidade"] == "0..*" or atributo["cardinalidade"] == "1..*":
+
+                                sql.append(u"ALTER TABLE {0}.{1}".format(master["schema_dados"], class_name))
+                                sql.append(u"\t ADD CONSTRAINT {0}_{1}_check ".format(class_name, atributo["nome"]))
+
+                                if 'a_ser_preenchido' in master:
+                                    valores_att.append(
+                                        master["a_ser_preenchido"]["code"])
+                                    sql.append(u"\t CHECK ({0}_code <@ ANY(ARRAY[{1}])); ".format(atributo["nome"],
+                                                                                                ", ".join(["{0} :: SMALLINT".format(valor) for valor in valores_att])))
+                                else:
+                                    sql.append(u"\t CHECK ({0}_code <@ ANY(ARRAY[{1}])); ".format(atributo["nome"],
+                                                                                                ", ".join(["{0} :: SMALLINT".format(valor) for valor in valores_att])))
+
+                                sql.append(u"")
+
+                                if master['a_ser_preenchido']:
+                                    sql.append(u"ALTER TABLE {1}.{0} ALTER COLUMN {2}_code SET DEFAULT ARRAY[{3} :: SMALLINT];".format(class_name,
+                                                                                                                                        master["schema_dados"], atributo["nome"],
+                                                                                                                                        master["a_ser_preenchido"]["code"]))
+                                    sql.append(u"")
+
+        try:
+            with open(dest, 'wb') as sql_file:
+                sql_text = "\r".join(sql).encode('utf-8')
+                sql_file.write(sql_text)
+                return "Arquivo de modelagem SQL gerado com sucesso em {0}".format(dest)
+        except Exception as e:
+            return "Erro: {0}".format(e)
+
 if __name__ == '__main__':
     import os
     outputFolder = 'edgv_3.0'
