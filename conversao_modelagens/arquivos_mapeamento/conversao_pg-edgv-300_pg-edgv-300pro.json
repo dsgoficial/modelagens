@@ -6353,10 +6353,6 @@
     {"__comment": "lml_area_densamente_edificada <-> cobter_area_construida",
       "classe_ida": "lml_area_densamente_edificada",
       "classe_volta": "cobter_area_construida",
-      "filtro_volta": {
-        "nome_atributo": "densamente_edificada",
-        "valor": 1
-      },
       "atributos_default_ida": [
         {
           "nome_atributo": "densamente_edificada",
