@@ -1293,6 +1293,27 @@
           "value": "Vertedouro"
         }
       ]
+    },
+    {
+      "nome": "tipo_simbolo_area",
+      "valores": [
+        {
+          "code": 1,
+          "value": "Subestação de energia"
+        },
+        {
+          "code": 2,
+          "value": "Extração mineral"
+        },
+        {
+          "code": 3,
+          "value": "Extração mineral não operacional"
+        },
+        {
+          "code": 4,
+          "value": "Extração mineral - salina"
+        }
+      ]
     }
   ],
   "classes": [
@@ -3245,6 +3266,24 @@
       "categoria": "edicao",
       "primitivas": ["MultiPoint"],
       "atributos": [
+        {
+          "nome": "simb_rot",
+          "tipo": "real",
+          "cardinalidade": "0..1"
+        }
+      ]
+    },
+    {
+      "nome": "simb_area",
+      "categoria": "edicao",
+      "primitivas": ["MultiPoint"],
+      "atributos": [
+        {
+          "nome": "tipo",
+          "tipo": "smallint",
+          "cardinalidade": "1..1",
+          "mapa_valor": "tipo_simbolo_area"
+        },
         {
           "nome": "simb_rot",
           "tipo": "real",
