@@ -5162,6 +5162,12 @@
           "tipo": "smallint",
           "cardinalidade": "1..1",
           "mapa_valor": "booleano"
+        },
+        {
+          "nome": "simb_rot",
+          "tipo": "real",
+          "cardinalidade": "0..1",
+          "primitivas": ["MultiPoint"]
         }
       ]
     },
