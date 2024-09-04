@@ -2533,6 +2533,11 @@
           "valor_filtro": "Estação geradora de energia"
         },
         {
+          "code": 501,
+          "value": "Casa de Força",
+          "valor_filtro": "Casa de Força"
+        },
+        {
           "code": 1401,
           "value": "Torre de energia",
           "valor_filtro": "Torre de energia"
@@ -3052,6 +3057,10 @@
         {
           "code": 8,
           "value": "Nome local"
+        },
+        {
+          "code": 9,
+          "value": "Praça"
         }
       ]
     },
@@ -4913,6 +4922,10 @@
             },
             {
               "code": 498
+            },
+            {
+              "code": 501,
+              "primitivas": ["MultiPoint"]
             },
             {
               "code": 1801,
