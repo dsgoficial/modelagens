@@ -3129,6 +3129,7 @@ CREATE TABLE edgv.infra_elemento_infraestrutura_p(
 	 label_y real,
 	 justificativa_txt smallint NOT NULL,
 	 visivel smallint NOT NULL,
+	 simb_rot real,
 	 observacao varchar(255),
 	 geom geometry(MultiPoint, 4674),
 	 CONSTRAINT infra_elemento_infraestrutura_p_pk PRIMARY KEY (id)
