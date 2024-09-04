@@ -1,33 +1,33 @@
 {
   "metadados":{
     "versao_arquivo": "0.1",
-    "modelo_ida": "EDGV 3.0 Pro",
-    "versao_modelo_ida": "1.4.0",
-    "modelo_volta": "EDGV 3.0 Orto",
-    "versao_modelo_volta": "2.5.0"
+    "modelo_A": "EDGV 3.0 Pro",
+    "versao_modelo_A": "1.4.0",
+    "modelo_B": "EDGV 3.0 Orto",
+    "versao_modelo_B": "2.5.0"
   },
   "__comment": "UTF-8",
-  "schema_ida": "edgv",
-  "schema_volta": "edgv",
-  "afixo_geom_ida": {
+  "schema_A": "edgv",
+  "schema_B": "edgv",
+  "afixo_geom_A": {
     "tipo": "sufixo",
     "POINT": "_p",
     "LINESTRING": "_l",
     "POLYGON": "_a"
   },
-  "afixo_geom_volta": {
+  "afixo_geom_B": {
     "tipo": "sufixo",
     "POINT": "_p",
     "LINESTRING": "_l",
     "POLYGON": "_a"
   },
-  "agregar_geom_ida": true,
-  "agregar_geom_volta": true,
+  "agregar_geom_A": true,
+  "agregar_geom_B": true,
   "mapeamento_classes": [
     { "__comment": "infra_elemento_energia <-> infra_elemento_energia",
-      "classe_ida": "infra_elemento_energia",
-      "classe_volta": "infra_elemento_energia",
-      "filtro_ida": {
+      "classe_A": "infra_elemento_energia",
+      "classe_B": "infra_elemento_energia",
+      "filtro_A": {
         "$or": [
           {
             "nome_atributo": "tipo",
@@ -69,17 +69,17 @@
       }
     },
     { "__comment": "constr_extracao_mineral <-> constr_extracao_mineral",
-      "classe_ida": "constr_extracao_mineral",
-      "classe_volta": "constr_extracao_mineral"
+      "classe_A": "constr_extracao_mineral",
+      "classe_B": "constr_extracao_mineral"
     },
     { "__comment": "edicao_area_sem_dados <-> edicao_area_sem_dados",
-      "classe_ida": "edicao_area_sem_dados",
-      "classe_volta": "edicao_area_sem_dados"
+      "classe_A": "edicao_area_sem_dados",
+      "classe_B": "edicao_area_sem_dados"
     },
     { "__comment": "cobter_massa_dagua <-> cobter_massa_dagua",
-      "classe_ida": "cobter_massa_dagua",
-      "classe_volta": "cobter_massa_dagua",
-      "filtro_ida": {
+      "classe_A": "cobter_massa_dagua",
+      "classe_B": "cobter_massa_dagua",
+      "filtro_A": {
         "$and": [
           {
             "$not": {
@@ -98,17 +98,17 @@
       }
     },
     { "__comment": "elemnat_terreno_sujeito_inundacao <-> elemnat_terreno_sujeito_inundacao",
-      "classe_ida": "elemnat_terreno_sujeito_inundacao",
-      "classe_volta": "elemnat_terreno_sujeito_inundacao"
+      "classe_A": "elemnat_terreno_sujeito_inundacao",
+      "classe_B": "elemnat_terreno_sujeito_inundacao"
     },
     { "__comment": "infra_barragem <-> infra_barragem",
-      "classe_ida": "infra_barragem",
-      "classe_volta": "infra_barragem"
+      "classe_A": "infra_barragem",
+      "classe_B": "infra_barragem"
     },
     { "__comment": "elemnat_elemento_hidrografico <-> elemnat_elemento_hidrografico",
-      "classe_ida": "elemnat_elemento_hidrografico",
-      "classe_volta": "elemnat_elemento_hidrografico",
-      "filtro_ida": {
+      "classe_A": "elemnat_elemento_hidrografico",
+      "classe_B": "elemnat_elemento_hidrografico",
+      "filtro_A": {
         "$and": [
           {
             "$not": {
@@ -144,9 +144,9 @@
       }
     },
     { "__comment": "elemnat_trecho_drenagem <-> elemnat_trecho_drenagem",
-      "classe_ida": "elemnat_trecho_drenagem",
-      "classe_volta": "elemnat_trecho_drenagem",
-      "filtro_ida": {
+      "classe_A": "elemnat_trecho_drenagem",
+      "classe_B": "elemnat_trecho_drenagem",
+      "filtro_A": {
         "$not": {
           "nome_atributo": "nome",
           "valor": null
@@ -154,9 +154,9 @@
       }
     },
     { "__comment": "llp_limite_especial <-> llp_unidade_conservacao",
-      "classe_ida": "llp_limite_especial",
-      "classe_volta": "llp_unidade_conservacao",
-      "filtro_ida": {
+      "classe_A": "llp_limite_especial",
+      "classe_B": "llp_unidade_conservacao",
+      "filtro_A": {
         "$or": [
           {
             "nome_atributo": "tipo",
@@ -214,13 +214,13 @@
       }
     },
     { "__comment": "llp_limite_especial <-> llp_terra_indigena",
-      "classe_ida": "llp_limite_especial",
-      "classe_volta": "llp_terra_indigena",
-      "filtro_ida": {
+      "classe_A": "llp_limite_especial",
+      "classe_B": "llp_terra_indigena",
+      "filtro_A": {
         "nome_atributo": "tipo",
         "valor": 2
       },
-      "atributos_default_volta": [
+      "atributos_default_A": [
         {
           "nome_atributo": "tipo",
           "valor": 2
@@ -228,13 +228,13 @@
       ]
     },
     { "__comment": "llp_limite_especial <-> llp_area_pub_militar",
-      "classe_ida": "llp_limite_especial",
-      "classe_volta": "llp_area_pub_militar",
-      "filtro_ida": {
+      "classe_A": "llp_limite_especial",
+      "classe_B": "llp_area_pub_militar",
+      "filtro_A": {
         "nome_atributo": "tipo",
         "valor": 36
       },
-      "atributos_default_volta": [
+      "atributos_default_A": [
         {
           "nome_atributo": "tipo",
           "valor": 36
@@ -242,9 +242,9 @@
       ]
     },
     { "__comment": "edicao_limite_especial <-> edicao_unidade_conservacao",
-      "classe_ida": "edicao_limite_especial",
-      "classe_volta": "edicao_unidade_conservacao",
-      "filtro_ida": {
+      "classe_A": "edicao_limite_especial",
+      "classe_B": "edicao_unidade_conservacao",
+      "filtro_A": {
         "$or": [
           {
             "nome_atributo": "tipo",
@@ -302,13 +302,13 @@
       }
     },
     { "__comment": "edicao_limite_especial <-> edicao_terra_indigena",
-      "classe_ida": "edicao_limite_especial",
-      "classe_volta": "edicao_terra_indigena",
-      "filtro_ida": {
+      "classe_A": "edicao_limite_especial",
+      "classe_B": "edicao_terra_indigena",
+      "filtro_A": {
         "nome_atributo": "tipo",
         "valor": 2
       },
-      "atributos_default_volta": [
+      "atributos_default_A": [
         {
           "nome_atributo": "tipo",
           "valor": 2
@@ -316,13 +316,13 @@
       ]
     },
     { "__comment": "edicao_limite_especial <-> edicao_area_pub_militar",
-      "classe_ida": "edicao_limite_especial",
-      "classe_volta": "edicao_area_pub_militar",
-      "filtro_ida": {
+      "classe_A": "edicao_limite_especial",
+      "classe_B": "edicao_area_pub_militar",
+      "filtro_A": {
         "nome_atributo": "tipo",
         "valor": 36
       },
-      "atributos_default_volta": [
+      "atributos_default_A": [
         {
           "nome_atributo": "tipo",
           "valor": 36
@@ -330,9 +330,9 @@
       ]
     },
     { "__comment": "llp_localidade <-> llp_localidade",
-      "classe_ida": "llp_localidade",
-      "classe_volta": "llp_localidade",
-      "filtro_ida": {
+      "classe_A": "llp_localidade",
+      "classe_B": "llp_localidade",
+      "filtro_A": {
         "$or": [
           {
             "nome_atributo": "tipo",
@@ -354,13 +354,13 @@
       }
     },
     { "__comment": "llp_localidade <-> llp_nome_local",
-      "classe_ida": "llp_localidade",
-      "classe_volta": "llp_nome_local",
-      "filtro_ida": {
+      "classe_A": "llp_localidade",
+      "classe_B": "llp_nome_local",
+      "filtro_A": {
         "nome_atributo": "tipo",
         "valor": 8
       },
-      "atributos_default_volta": [
+      "atributos_default_A": [
         {
           "nome_atributo": "tipo",
           "valor": 8
@@ -376,9 +376,9 @@
       ]
     },
     { "__comment": "llp_localidade <-> llp_aglomerado_rural",
-      "classe_ida": "llp_localidade",
-      "classe_volta": "llp_aglomerado_rural",
-      "filtro_ida": {
+      "classe_A": "llp_localidade",
+      "classe_B": "llp_aglomerado_rural",
+      "filtro_A": {
         "$or": [
           {
             "nome_atributo": "tipo",
@@ -396,29 +396,29 @@
       }
     },
     { "__comment": "llp_unidade_federacao <-> llp_unidade_federacao",
-      "classe_ida": "llp_unidade_federacao",
-      "classe_volta": "llp_unidade_federacao"
+      "classe_A": "llp_unidade_federacao",
+      "classe_B": "llp_unidade_federacao"
     },
     { "__comment": "elemnat_curva_nivel <-> elemnat_curva_nivel",
-      "classe_ida": "elemnat_curva_nivel",
-      "classe_volta": "elemnat_curva_nivel"
+      "classe_A": "elemnat_curva_nivel",
+      "classe_B": "elemnat_curva_nivel"
     },
     { "__comment": "elemnat_ponto_cotado <-> elemnat_ponto_cotado",
-      "classe_ida": "elemnat_ponto_cotado",
-      "classe_volta": "elemnat_ponto_cotado"
+      "classe_A": "elemnat_ponto_cotado",
+      "classe_B": "elemnat_ponto_cotado"
     },
     { "__comment": "infra_pista_pouso <-> infra_pista_pouso",
-      "classe_ida": "infra_pista_pouso",
-      "classe_volta": "infra_pista_pouso"
+      "classe_A": "infra_pista_pouso",
+      "classe_B": "infra_pista_pouso"
     },
     { "__comment": "infra_ferrovia <-> infra_ferrovia",
-      "classe_ida": "infra_ferrovia",
-      "classe_volta": "infra_ferrovia"
+      "classe_A": "infra_ferrovia",
+      "classe_B": "infra_ferrovia"
     },
     { "__comment": "infra_elemento_infraestrutura <-> infra_elemento_infraestrutura",
-      "classe_ida": "infra_elemento_infraestrutura",
-      "classe_volta": "infra_elemento_infraestrutura",
-      "filtro_ida": {
+      "classe_A": "infra_elemento_infraestrutura",
+      "classe_B": "infra_elemento_infraestrutura",
+      "filtro_A": {
         "$or": [
           {
             "nome_atributo": "tipo",
@@ -452,25 +452,25 @@
       }
     },
     { "__comment": "elemnat_ilha <-> elemnat_ilha",
-      "classe_ida": "elemnat_ilha",
-      "classe_volta": "elemnat_ilha"
+      "classe_A": "elemnat_ilha",
+      "classe_B": "elemnat_ilha"
     },
     { "__comment": "elemnat_toponimo_fisiografico_natural <-> elemnat_toponimo_fisiografico_natural",
-      "classe_ida": "elemnat_toponimo_fisiografico_natural",
-      "classe_volta": "elemnat_toponimo_fisiografico_natural"
+      "classe_A": "elemnat_toponimo_fisiografico_natural",
+      "classe_B": "elemnat_toponimo_fisiografico_natural"
     },
     { "__comment": "delimitador_massa_dagua <-> delimitador_massa_dagua",
-      "classe_ida": "delimitador_massa_dagua",
-      "classe_volta": "delimitador_massa_dagua"
+      "classe_A": "delimitador_massa_dagua",
+      "classe_B": "delimitador_massa_dagua"
     },
     { "__comment": "delimitador_elemento_hidrografico <-> delimitador_elemento_hidrografico",
-      "classe_ida": "delimitador_elemento_hidrografico",
-      "classe_volta": "delimitador_elemento_hidrografico"
+      "classe_A": "delimitador_elemento_hidrografico",
+      "classe_B": "delimitador_elemento_hidrografico"
     },
     { "__comment": "edicao_limite_legal <-> edicao_limite_legal",
-    "classe_ida": "edicao_limite_legal",
-    "classe_volta": "edicao_limite_legal",
-    "filtro_ida": {
+    "classe_A": "edicao_limite_legal",
+    "classe_B": "edicao_limite_legal",
+    "filtro_A": {
       "$or": [
         {
           "nome_atributo": "tipo",
@@ -484,9 +484,9 @@
     }
     },
     { "__comment": "centroide_massa_dagua <-> centroide_massa_dagua",
-      "classe_ida": "centroide_massa_dagua",
-      "classe_volta": "centroide_massa_dagua",
-      "filtro_ida": {
+      "classe_A": "centroide_massa_dagua",
+      "classe_B": "centroide_massa_dagua",
+      "filtro_A": {
         "$and": [
           {
             "$not": 
@@ -505,13 +505,13 @@
       }
     },
     { "__comment": "centroide_ilha <-> centroide_ilha",
-      "classe_ida": "centroide_ilha",
-      "classe_volta": "centroide_ilha"
+      "classe_A": "centroide_ilha",
+      "classe_B": "centroide_ilha"
     },
     { "__comment": "centroide_elemento_hidrografico <-> centroide_elemento_hidrografico",
-      "classe_ida": "centroide_elemento_hidrografico",
-      "classe_volta": "centroide_elemento_hidrografico",
-      "filtro_ida": {
+      "classe_A": "centroide_elemento_hidrografico",
+      "classe_B": "centroide_elemento_hidrografico",
+      "filtro_A": {
         "$and": [
           {
             "$not": {
@@ -547,37 +547,37 @@
       }
     },
     { "__comment": "edicao_identificador_trecho_rod <-> edicao_identificador_trecho_rod",
-      "classe_ida": "edicao_identificador_trecho_rod",
-      "classe_volta": "edicao_identificador_trecho_rod"
+      "classe_A": "edicao_identificador_trecho_rod",
+      "classe_B": "edicao_identificador_trecho_rod"
     },
     { "__comment": "edicao_simb_torre_energia <-> edicao_simb_torre_energia",
-      "classe_ida": "edicao_simb_torre_energia",
-      "classe_volta": "edicao_simb_torre_energia"
+      "classe_A": "edicao_simb_torre_energia",
+      "classe_B": "edicao_simb_torre_energia"
     },
     { "__comment": "edicao_simb_cota_mestra <-> edicao_simb_cota_mestra",
-      "classe_ida": "edicao_simb_cota_mestra",
-      "classe_volta": "edicao_simb_cota_mestra"
+      "classe_A": "edicao_simb_cota_mestra",
+      "classe_B": "edicao_simb_cota_mestra"
     },
     { "__comment": "delimitador_limite_especial <-> delimitador_limite_especial",
-      "classe_ida": "delimitador_limite_especial",
-      "classe_volta": "delimitador_limite_especial"
+      "classe_A": "delimitador_limite_especial",
+      "classe_B": "delimitador_limite_especial"
     },
     { "__comment": "delimitador_area_sem_dados <-> delimitador_area_sem_dados",
-      "classe_ida": "delimitador_area_sem_dados",
-      "classe_volta": "delimitador_area_sem_dados"
+      "classe_A": "delimitador_area_sem_dados",
+      "classe_B": "delimitador_area_sem_dados"
     },
     { "__comment": "centroide_area_sem_dados <-> centroide_area_sem_dados",
-      "classe_ida": "centroide_area_sem_dados",
-      "classe_volta": "centroide_area_sem_dados"
+      "classe_A": "centroide_area_sem_dados",
+      "classe_B": "centroide_area_sem_dados"
     },
     { "__comment": "centroide_limite_especial <-> centroide_limite_especial",
-      "classe_ida": "centroide_limite_especial",
-      "classe_volta": "centroide_limite_especial"
+      "classe_A": "centroide_limite_especial",
+      "classe_B": "centroide_limite_especial"
     },
     { "__comment": "infra_via_deslocamento <-> infra_via_deslocamento",
-      "classe_ida": "infra_via_deslocamento",
-      "classe_volta": "infra_via_deslocamento",
-      "filtro_ida": {
+      "classe_A": "infra_via_deslocamento",
+      "classe_B": "infra_via_deslocamento",
+      "filtro_A": {
         "$or": [
           {
             "nome_atributo": "jurisdicao",
@@ -591,13 +591,13 @@
       }
     },
     {"__comment": "aux_moldura <-> aux_moldura", 
-    "classe_ida": "aux_moldura",
-    "classe_volta": "aux_moldura"
+    "classe_A": "aux_moldura",
+    "classe_B": "aux_moldura"
     },
     {"__comment": "edicao_simb_area <-> edicao_simb_area", 
-    "classe_ida": "edicao_simb_area",
-    "classe_volta": "edicao_simb_area",
-    "filtro_ida": {
+    "classe_A": "edicao_simb_area",
+    "classe_B": "edicao_simb_area",
+    "filtro_A": {
       "$or": [
         {
           "nome_atributo": "tipo",
@@ -619,8 +619,8 @@
     }
     }
   ],
-  "atributos_default_ida": [],
-  "atributos_default_volta": [
+  "atributos_default_B": [],
+  "atributos_default_A": [
     {
       "nome_atributo": "visivel",
       "valor": 1
