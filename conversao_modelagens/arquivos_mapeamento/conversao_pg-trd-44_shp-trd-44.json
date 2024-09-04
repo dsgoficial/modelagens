@@ -1,33 +1,33 @@
 {
   "metadados":{
     "versao_arquivo": "0.0",
-    "modelo_ida": "TRD 4",
-    "versao_modelo_ida": "4.4",
-    "modelo_volta": "TRD 4",
-    "versao_modelo_volta": "1.0"
+    "modelo_A": "TRD 4",
+    "versao_modelo_A": "4.4",
+    "modelo_B": "TRD 4",
+    "versao_modelo_B": "1.0"
   },
   "__comment": "UTF-8",
-    "schema_ida": "mgcp",
-    "schema_volta": "",
-    "afixo_geom_ida": {
+    "schema_A": "mgcp",
+    "schema_B": "",
+    "afixo_geom_A": {
       "tipo": "prefixo",
       "POINT": "p",
       "LINESTRING": "l",
       "POLYGON": "a"
     },
-    "afixo_geom_volta": {
+    "afixo_geom_B": {
       "tipo": "prefixo",
       "POINT": "P",
       "LINESTRING": "L",
       "POLYGON": "A"
     },
-    "agregar_geom_ida": false,
-    "agregar_geom_volta": true,
+    "agregar_geom_A": false,
+    "agregar_geom_B": true,
     "mapeamento_classes": [
     {
-        "classe_ida": "aa010",
-        "classe_volta": "AA010",
-        "atributos_default_ida": [
+        "classe_A": "aa010",
+        "classe_B": "AA010",
+        "atributos_default_B": [
             {
             "nome_atributo": "FCODE",
             "valor": "AA010"
@@ -35,9 +35,9 @@
         ]
         },
         {
-        "classe_ida": "aa012",
-        "classe_volta": "AA012",
-        "atributos_default_ida": [
+        "classe_A": "aa012",
+        "classe_B": "AA012",
+        "atributos_default_B": [
             {
             "nome_atributo": "FCODE",
             "valor": "AA012"
@@ -45,9 +45,9 @@
         ]
         },
         {
-        "classe_ida": "aa040",
-        "classe_volta": "AA040",
-        "atributos_default_ida": [
+        "classe_A": "aa040",
+        "classe_B": "AA040",
+        "atributos_default_B": [
             {
             "nome_atributo": "FCODE",
             "valor": "AA040"
@@ -55,9 +55,9 @@
         ]
         },
         {
-        "classe_ida": "aa050",
-        "classe_volta": "AA050",
-        "atributos_default_ida": [
+        "classe_A": "aa050",
+        "classe_B": "AA050",
+        "atributos_default_B": [
             {
             "nome_atributo": "FCODE",
             "valor": "AA050"
@@ -65,9 +65,9 @@
         ]
         },
         {
-        "classe_ida": "aa052",
-        "classe_volta": "AA052",
-        "atributos_default_ida": [
+        "classe_A": "aa052",
+        "classe_B": "AA052",
+        "atributos_default_B": [
             {
             "nome_atributo": "FCODE",
             "valor": "AA052"
@@ -75,9 +75,9 @@
         ]
         },
         {
-        "classe_ida": "ab000",
-        "classe_volta": "AB000",
-        "atributos_default_ida": [
+        "classe_A": "ab000",
+        "classe_B": "AB000",
+        "atributos_default_B": [
             {
             "nome_atributo": "FCODE",
             "valor": "AB000"
@@ -85,9 +85,9 @@
         ]
         },
         {
-        "classe_ida": "ab010",
-        "classe_volta": "AB010",
-        "atributos_default_ida": [
+        "classe_A": "ab010",
+        "classe_B": "AB010",
+        "atributos_default_B": [
             {
             "nome_atributo": "FCODE",
             "valor": "AB010"
@@ -95,9 +95,9 @@
         ]
         },
         {
-        "classe_ida": "ac000",
-        "classe_volta": "AC000",
-        "atributos_default_ida": [
+        "classe_A": "ac000",
+        "classe_B": "AC000",
+        "atributos_default_B": [
             {
             "nome_atributo": "FCODE",
             "valor": "AC000"
@@ -105,9 +105,9 @@
         ]
         },
         {
-        "classe_ida": "ac020",
-        "classe_volta": "AC020",
-        "atributos_default_ida": [
+        "classe_A": "ac020",
+        "classe_B": "AC020",
+        "atributos_default_B": [
             {
             "nome_atributo": "FCODE",
             "valor": "AC020"
@@ -115,9 +115,9 @@
         ]
         },
         {
-        "classe_ida": "ac030",
-        "classe_volta": "AC030",
-        "atributos_default_ida": [
+        "classe_A": "ac030",
+        "classe_B": "AC030",
+        "atributos_default_B": [
             {
             "nome_atributo": "FCODE",
             "valor": "AC030"
@@ -125,9 +125,9 @@
         ]
         },
         {
-        "classe_ida": "ad010",
-        "classe_volta": "AD010",
-        "atributos_default_ida": [
+        "classe_A": "ad010",
+        "classe_B": "AD010",
+        "atributos_default_B": [
             {
             "nome_atributo": "FCODE",
             "valor": "AD010"
@@ -135,9 +135,9 @@
         ]
         },
         {
-        "classe_ida": "ad020",
-        "classe_volta": "AD020",
-        "atributos_default_ida": [
+        "classe_A": "ad020",
+        "classe_B": "AD020",
+        "atributos_default_B": [
             {
             "nome_atributo": "FCODE",
             "valor": "AD020"
@@ -145,9 +145,9 @@
         ]
         },
         {
-        "classe_ida": "ad030",
-        "classe_volta": "AD030",
-        "atributos_default_ida": [
+        "classe_A": "ad030",
+        "classe_B": "AD030",
+        "atributos_default_B": [
             {
             "nome_atributo": "FCODE",
             "valor": "AD030"
@@ -155,9 +155,9 @@
         ]
         },
         {
-        "classe_ida": "ad050",
-        "classe_volta": "AD050",
-        "atributos_default_ida": [
+        "classe_A": "ad050",
+        "classe_B": "AD050",
+        "atributos_default_B": [
             {
             "nome_atributo": "FCODE",
             "valor": "AD050"
@@ -165,9 +165,9 @@
         ]
         },
         {
-        "classe_ida": "af010",
-        "classe_volta": "AF010",
-        "atributos_default_ida": [
+        "classe_A": "af010",
+        "classe_B": "AF010",
+        "atributos_default_B": [
             {
             "nome_atributo": "FCODE",
             "valor": "AF010"
@@ -175,9 +175,9 @@
         ]
         },
         {
-        "classe_ida": "af020",
-        "classe_volta": "AF020",
-        "atributos_default_ida": [
+        "classe_A": "af020",
+        "classe_B": "AF020",
+        "atributos_default_B": [
             {
             "nome_atributo": "FCODE",
             "valor": "AF020"
@@ -185,9 +185,9 @@
         ]
         },
         {
-        "classe_ida": "af040",
-        "classe_volta": "AF040",
-        "atributos_default_ida": [
+        "classe_A": "af040",
+        "classe_B": "AF040",
+        "atributos_default_B": [
             {
             "nome_atributo": "FCODE",
             "valor": "AF040"
@@ -195,9 +195,9 @@
         ]
         },
         {
-        "classe_ida": "af070",
-        "classe_volta": "AF070",
-        "atributos_default_ida": [
+        "classe_A": "af070",
+        "classe_B": "AF070",
+        "atributos_default_B": [
             {
             "nome_atributo": "FCODE",
             "valor": "AF070"
@@ -205,9 +205,9 @@
         ]
         },
         {
-        "classe_ida": "ah025",
-        "classe_volta": "AH025",
-        "atributos_default_ida": [
+        "classe_A": "ah025",
+        "classe_B": "AH025",
+        "atributos_default_B": [
             {
             "nome_atributo": "FCODE",
             "valor": "AH025"
@@ -215,9 +215,9 @@
         ]
         },
         {
-        "classe_ida": "ah050",
-        "classe_volta": "AH050",
-        "atributos_default_ida": [
+        "classe_A": "ah050",
+        "classe_B": "AH050",
+        "atributos_default_B": [
             {
             "nome_atributo": "FCODE",
             "valor": "AH050"
@@ -225,9 +225,9 @@
         ]
         },
         {
-        "classe_ida": "ah070",
-        "classe_volta": "AH070",
-        "atributos_default_ida": [
+        "classe_A": "ah070",
+        "classe_B": "AH070",
+        "atributos_default_B": [
             {
             "nome_atributo": "FCODE",
             "valor": "AH070"
@@ -235,9 +235,9 @@
         ]
         },
         {
-        "classe_ida": "ai030",
-        "classe_volta": "AI030",
-        "atributos_default_ida": [
+        "classe_A": "ai030",
+        "classe_B": "AI030",
+        "atributos_default_B": [
             {
             "nome_atributo": "FCODE",
             "valor": "AI030"
@@ -245,9 +245,9 @@
         ]
         },
         {
-        "classe_ida": "aj010",
-        "classe_volta": "AJ010",
-        "atributos_default_ida": [
+        "classe_A": "aj010",
+        "classe_B": "AJ010",
+        "atributos_default_B": [
             {
             "nome_atributo": "FCODE",
             "valor": "AJ010"
@@ -255,9 +255,9 @@
         ]
         },
         {
-        "classe_ida": "aj030",
-        "classe_volta": "AJ030",
-        "atributos_default_ida": [
+        "classe_A": "aj030",
+        "classe_B": "AJ030",
+        "atributos_default_B": [
             {
             "nome_atributo": "FCODE",
             "valor": "AJ030"
@@ -265,9 +265,9 @@
         ]
         },
         {
-        "classe_ida": "aj050",
-        "classe_volta": "AJ050",
-        "atributos_default_ida": [
+        "classe_A": "aj050",
+        "classe_B": "AJ050",
+        "atributos_default_B": [
             {
             "nome_atributo": "FCODE",
             "valor": "AJ050"
@@ -275,9 +275,9 @@
         ]
         },
         {
-        "classe_ida": "aj051",
-        "classe_volta": "AJ051",
-        "atributos_default_ida": [
+        "classe_A": "aj051",
+        "classe_B": "AJ051",
+        "atributos_default_B": [
             {
             "nome_atributo": "FCODE",
             "valor": "AJ051"
@@ -285,9 +285,9 @@
         ]
         },
         {
-        "classe_ida": "aj110",
-        "classe_volta": "AJ110",
-        "atributos_default_ida": [
+        "classe_A": "aj110",
+        "classe_B": "AJ110",
+        "atributos_default_B": [
             {
             "nome_atributo": "FCODE",
             "valor": "AJ110"
@@ -295,9 +295,9 @@
         ]
         },
         {
-        "classe_ida": "ak030",
-        "classe_volta": "AK030",
-        "atributos_default_ida": [
+        "classe_A": "ak030",
+        "classe_B": "AK030",
+        "atributos_default_B": [
             {
             "nome_atributo": "FCODE",
             "valor": "AK030"
@@ -305,9 +305,9 @@
         ]
         },
         {
-        "classe_ida": "ak040",
-        "classe_volta": "AK040",
-        "atributos_default_ida": [
+        "classe_A": "ak040",
+        "classe_B": "AK040",
+        "atributos_default_B": [
             {
             "nome_atributo": "FCODE",
             "valor": "AK040"
@@ -315,9 +315,9 @@
         ]
         },
         {
-        "classe_ida": "ak060",
-        "classe_volta": "AK060",
-        "atributos_default_ida": [
+        "classe_A": "ak060",
+        "classe_B": "AK060",
+        "atributos_default_B": [
             {
             "nome_atributo": "FCODE",
             "valor": "AK060"
@@ -325,9 +325,9 @@
         ]
         },
         {
-        "classe_ida": "ak090",
-        "classe_volta": "AK090",
-        "atributos_default_ida": [
+        "classe_A": "ak090",
+        "classe_B": "AK090",
+        "atributos_default_B": [
             {
             "nome_atributo": "FCODE",
             "valor": "AK090"
@@ -335,9 +335,9 @@
         ]
         },
         {
-        "classe_ida": "ak100",
-        "classe_volta": "AK100",
-        "atributos_default_ida": [
+        "classe_A": "ak100",
+        "classe_B": "AK100",
+        "atributos_default_B": [
             {
             "nome_atributo": "FCODE",
             "valor": "AK100"
@@ -345,9 +345,9 @@
         ]
         },
         {
-        "classe_ida": "ak120",
-        "classe_volta": "AK120",
-        "atributos_default_ida": [
+        "classe_A": "ak120",
+        "classe_B": "AK120",
+        "atributos_default_B": [
             {
             "nome_atributo": "FCODE",
             "valor": "AK120"
@@ -355,9 +355,9 @@
         ]
         },
         {
-        "classe_ida": "ak130",
-        "classe_volta": "AK130",
-        "atributos_default_ida": [
+        "classe_A": "ak130",
+        "classe_B": "AK130",
+        "atributos_default_B": [
             {
             "nome_atributo": "FCODE",
             "valor": "AK130"
@@ -365,9 +365,9 @@
         ]
         },
         {
-        "classe_ida": "ak150",
-        "classe_volta": "AK150",
-        "atributos_default_ida": [
+        "classe_A": "ak150",
+        "classe_B": "AK150",
+        "atributos_default_B": [
             {
             "nome_atributo": "FCODE",
             "valor": "AK150"
@@ -375,9 +375,9 @@
         ]
         },
         {
-        "classe_ida": "ak160",
-        "classe_volta": "AK160",
-        "atributos_default_ida": [
+        "classe_A": "ak160",
+        "classe_B": "AK160",
+        "atributos_default_B": [
             {
             "nome_atributo": "FCODE",
             "valor": "AK160"
@@ -385,9 +385,9 @@
         ]
         },
         {
-        "classe_ida": "ak170",
-        "classe_volta": "AK170",
-        "atributos_default_ida": [
+        "classe_A": "ak170",
+        "classe_B": "AK170",
+        "atributos_default_B": [
             {
             "nome_atributo": "FCODE",
             "valor": "AK170"
@@ -395,9 +395,9 @@
         ]
         },
         {
-        "classe_ida": "ak180",
-        "classe_volta": "AK180",
-        "atributos_default_ida": [
+        "classe_A": "ak180",
+        "classe_B": "AK180",
+        "atributos_default_B": [
             {
             "nome_atributo": "FCODE",
             "valor": "AK180"
@@ -405,9 +405,9 @@
         ]
         },
         {
-        "classe_ida": "ak190",
-        "classe_volta": "AK190",
-        "atributos_default_ida": [
+        "classe_A": "ak190",
+        "classe_B": "AK190",
+        "atributos_default_B": [
             {
             "nome_atributo": "FCODE",
             "valor": "AK190"
@@ -415,9 +415,9 @@
         ]
         },
         {
-        "classe_ida": "al010",
-        "classe_volta": "AL010",
-        "atributos_default_ida": [
+        "classe_A": "al010",
+        "classe_B": "AL010",
+        "atributos_default_B": [
             {
             "nome_atributo": "FCODE",
             "valor": "AL010"
@@ -425,9 +425,9 @@
         ]
         },
         {
-        "classe_ida": "al012",
-        "classe_volta": "AL012",
-        "atributos_default_ida": [
+        "classe_A": "al012",
+        "classe_B": "AL012",
+        "atributos_default_B": [
             {
             "nome_atributo": "FCODE",
             "valor": "AL012"
@@ -435,9 +435,9 @@
         ]
         },
         {
-        "classe_ida": "al015",
-        "classe_volta": "AL015",
-        "atributos_default_ida": [
+        "classe_A": "al015",
+        "classe_B": "AL015",
+        "atributos_default_B": [
             {
             "nome_atributo": "FCODE",
             "valor": "AL015"
@@ -445,9 +445,9 @@
         ]
         },
         {
-        "classe_ida": "al019",
-        "classe_volta": "AL019",
-        "atributos_default_ida": [
+        "classe_A": "al019",
+        "classe_B": "AL019",
+        "atributos_default_B": [
             {
             "nome_atributo": "FCODE",
             "valor": "AL019"
@@ -455,9 +455,9 @@
         ]
         },
         {
-        "classe_ida": "al020",
-        "classe_volta": "AL020",
-        "atributos_default_ida": [
+        "classe_A": "al020",
+        "classe_B": "AL020",
+        "atributos_default_B": [
             {
             "nome_atributo": "FCODE",
             "valor": "AL020"
@@ -465,9 +465,9 @@
         ]
         },
         {
-        "classe_ida": "al025",
-        "classe_volta": "AL025",
-        "atributos_default_ida": [
+        "classe_A": "al025",
+        "classe_B": "AL025",
+        "atributos_default_B": [
             {
             "nome_atributo": "FCODE",
             "valor": "AL025"
@@ -475,9 +475,9 @@
         ]
         },
         {
-        "classe_ida": "al030",
-        "classe_volta": "AL030",
-        "atributos_default_ida": [
+        "classe_A": "al030",
+        "classe_B": "AL030",
+        "atributos_default_B": [
             {
             "nome_atributo": "FCODE",
             "valor": "AL030"
@@ -485,9 +485,9 @@
         ]
         },
         {
-        "classe_ida": "al060",
-        "classe_volta": "AL060",
-        "atributos_default_ida": [
+        "classe_A": "al060",
+        "classe_B": "AL060",
+        "atributos_default_B": [
             {
             "nome_atributo": "FCODE",
             "valor": "AL060"
@@ -495,9 +495,9 @@
         ]
         },
         {
-        "classe_ida": "al070",
-        "classe_volta": "AL070",
-        "atributos_default_ida": [
+        "classe_A": "al070",
+        "classe_B": "AL070",
+        "atributos_default_B": [
             {
             "nome_atributo": "FCODE",
             "valor": "AL070"
@@ -505,9 +505,9 @@
         ]
         },
         {
-        "classe_ida": "al099",
-        "classe_volta": "AL099",
-        "atributos_default_ida": [
+        "classe_A": "al099",
+        "classe_B": "AL099",
+        "atributos_default_B": [
             {
             "nome_atributo": "FCODE",
             "valor": "AL099"
@@ -515,9 +515,9 @@
         ]
         },
         {
-        "classe_ida": "al105",
-        "classe_volta": "AL105",
-        "atributos_default_ida": [
+        "classe_A": "al105",
+        "classe_B": "AL105",
+        "atributos_default_B": [
             {
             "nome_atributo": "FCODE",
             "valor": "AL105"
@@ -525,9 +525,9 @@
         ]
         },
         {
-        "classe_ida": "al130",
-        "classe_volta": "AL130",
-        "atributos_default_ida": [
+        "classe_A": "al130",
+        "classe_B": "AL130",
+        "atributos_default_B": [
             {
             "nome_atributo": "FCODE",
             "valor": "AL130"
@@ -535,9 +535,9 @@
         ]
         },
         {
-        "classe_ida": "al140",
-        "classe_volta": "AL140",
-        "atributos_default_ida": [
+        "classe_A": "al140",
+        "classe_B": "AL140",
+        "atributos_default_B": [
             {
             "nome_atributo": "FCODE",
             "valor": "AL140"
@@ -545,9 +545,9 @@
         ]
         },
         {
-        "classe_ida": "al170",
-        "classe_volta": "AL170",
-        "atributos_default_ida": [
+        "classe_A": "al170",
+        "classe_B": "AL170",
+        "atributos_default_B": [
             {
             "nome_atributo": "FCODE",
             "valor": "AL170"
@@ -555,9 +555,9 @@
         ]
         },
         {
-        "classe_ida": "al200",
-        "classe_volta": "AL200",
-        "atributos_default_ida": [
+        "classe_A": "al200",
+        "classe_B": "AL200",
+        "atributos_default_B": [
             {
             "nome_atributo": "FCODE",
             "valor": "AL200"
@@ -565,9 +565,9 @@
         ]
         },
         {
-        "classe_ida": "al208",
-        "classe_volta": "AL208",
-        "atributos_default_ida": [
+        "classe_A": "al208",
+        "classe_B": "AL208",
+        "atributos_default_B": [
             {
             "nome_atributo": "FCODE",
             "valor": "AL208"
@@ -575,9 +575,9 @@
         ]
         },
         {
-        "classe_ida": "al210",
-        "classe_volta": "AL210",
-        "atributos_default_ida": [
+        "classe_A": "al210",
+        "classe_B": "AL210",
+        "atributos_default_B": [
             {
             "nome_atributo": "FCODE",
             "valor": "AL210"
@@ -585,9 +585,9 @@
         ]
         },
         {
-        "classe_ida": "al241",
-        "classe_volta": "AL241",
-        "atributos_default_ida": [
+        "classe_A": "al241",
+        "classe_B": "AL241",
+        "atributos_default_B": [
             {
             "nome_atributo": "FCODE",
             "valor": "AL241"
@@ -595,9 +595,9 @@
         ]
         },
         {
-        "classe_ida": "al260",
-        "classe_volta": "AL260",
-        "atributos_default_ida": [
+        "classe_A": "al260",
+        "classe_B": "AL260",
+        "atributos_default_B": [
             {
             "nome_atributo": "FCODE",
             "valor": "AL260"
@@ -605,9 +605,9 @@
         ]
         },
         {
-        "classe_ida": "am010",
-        "classe_volta": "AM010",
-        "atributos_default_ida": [
+        "classe_A": "am010",
+        "classe_B": "AM010",
+        "atributos_default_B": [
             {
             "nome_atributo": "FCODE",
             "valor": "AM010"
@@ -615,9 +615,9 @@
         ]
         },
         {
-        "classe_ida": "am020",
-        "classe_volta": "AM020",
-        "atributos_default_ida": [
+        "classe_A": "am020",
+        "classe_B": "AM020",
+        "atributos_default_B": [
             {
             "nome_atributo": "FCODE",
             "valor": "AM020"
@@ -625,9 +625,9 @@
         ]
         },
         {
-        "classe_ida": "am030",
-        "classe_volta": "AM030",
-        "atributos_default_ida": [
+        "classe_A": "am030",
+        "classe_B": "AM030",
+        "atributos_default_B": [
             {
             "nome_atributo": "FCODE",
             "valor": "AM030"
@@ -635,9 +635,9 @@
         ]
         },
         {
-        "classe_ida": "am040",
-        "classe_volta": "AM040",
-        "atributos_default_ida": [
+        "classe_A": "am040",
+        "classe_B": "AM040",
+        "atributos_default_B": [
             {
             "nome_atributo": "FCODE",
             "valor": "AM040"
@@ -645,9 +645,9 @@
         ]
         },
         {
-        "classe_ida": "am060",
-        "classe_volta": "AM060",
-        "atributos_default_ida": [
+        "classe_A": "am060",
+        "classe_B": "AM060",
+        "atributos_default_B": [
             {
             "nome_atributo": "FCODE",
             "valor": "AM060"
@@ -655,9 +655,9 @@
         ]
         },
         {
-        "classe_ida": "am070",
-        "classe_volta": "AM070",
-        "atributos_default_ida": [
+        "classe_A": "am070",
+        "classe_B": "AM070",
+        "atributos_default_B": [
             {
             "nome_atributo": "FCODE",
             "valor": "AM070"
@@ -665,9 +665,9 @@
         ]
         },
         {
-        "classe_ida": "an010",
-        "classe_volta": "AN010",
-        "atributos_default_ida": [
+        "classe_A": "an010",
+        "classe_B": "AN010",
+        "atributos_default_B": [
             {
             "nome_atributo": "FCODE",
             "valor": "AN010"
@@ -675,9 +675,9 @@
         ]
         },
         {
-        "classe_ida": "an050",
-        "classe_volta": "AN050",
-        "atributos_default_ida": [
+        "classe_A": "an050",
+        "classe_B": "AN050",
+        "atributos_default_B": [
             {
             "nome_atributo": "FCODE",
             "valor": "AN050"
@@ -685,9 +685,9 @@
         ]
         },
         {
-        "classe_ida": "an060",
-        "classe_volta": "AN060",
-        "atributos_default_ida": [
+        "classe_A": "an060",
+        "classe_B": "AN060",
+        "atributos_default_B": [
             {
             "nome_atributo": "FCODE",
             "valor": "AN060"
@@ -695,9 +695,9 @@
         ]
         },
         {
-        "classe_ida": "an075",
-        "classe_volta": "AN075",
-        "atributos_default_ida": [
+        "classe_A": "an075",
+        "classe_B": "AN075",
+        "atributos_default_B": [
             {
             "nome_atributo": "FCODE",
             "valor": "AN075"
@@ -705,9 +705,9 @@
         ]
         },
         {
-        "classe_ida": "an076",
-        "classe_volta": "AN076",
-        "atributos_default_ida": [
+        "classe_A": "an076",
+        "classe_B": "AN076",
+        "atributos_default_B": [
             {
             "nome_atributo": "FCODE",
             "valor": "AN076"
@@ -715,9 +715,9 @@
         ]
         },
         {
-        "classe_ida": "ap010",
-        "classe_volta": "AP010",
-        "atributos_default_ida": [
+        "classe_A": "ap010",
+        "classe_B": "AP010",
+        "atributos_default_B": [
             {
             "nome_atributo": "FCODE",
             "valor": "AP010"
@@ -725,9 +725,9 @@
         ]
         },
         {
-        "classe_ida": "ap030",
-        "classe_volta": "AP030",
-        "atributos_default_ida": [
+        "classe_A": "ap030",
+        "classe_B": "AP030",
+        "atributos_default_B": [
             {
             "nome_atributo": "FCODE",
             "valor": "AP030"
@@ -735,9 +735,9 @@
         ]
         },
         {
-        "classe_ida": "ap050",
-        "classe_volta": "AP050",
-        "atributos_default_ida": [
+        "classe_A": "ap050",
+        "classe_B": "AP050",
+        "atributos_default_B": [
             {
             "nome_atributo": "FCODE",
             "valor": "AP050"
@@ -745,9 +745,9 @@
         ]
         },
         {
-        "classe_ida": "aq040",
-        "classe_volta": "AQ040",
-        "atributos_default_ida": [
+        "classe_A": "aq040",
+        "classe_B": "AQ040",
+        "atributos_default_B": [
             {
             "nome_atributo": "FCODE",
             "valor": "AQ040"
@@ -755,9 +755,9 @@
         ]
         },
         {
-        "classe_ida": "aq063",
-        "classe_volta": "AQ063",
-        "atributos_default_ida": [
+        "classe_A": "aq063",
+        "classe_B": "AQ063",
+        "atributos_default_B": [
             {
             "nome_atributo": "FCODE",
             "valor": "AQ063"
@@ -765,9 +765,9 @@
         ]
         },
         {
-        "classe_ida": "aq065",
-        "classe_volta": "AQ065",
-        "atributos_default_ida": [
+        "classe_A": "aq065",
+        "classe_B": "AQ065",
+        "atributos_default_B": [
             {
             "nome_atributo": "FCODE",
             "valor": "AQ065"
@@ -775,9 +775,9 @@
         ]
         },
         {
-        "classe_ida": "aq070",
-        "classe_volta": "AQ070",
-        "atributos_default_ida": [
+        "classe_A": "aq070",
+        "classe_B": "AQ070",
+        "atributos_default_B": [
             {
             "nome_atributo": "FCODE",
             "valor": "AQ070"
@@ -785,9 +785,9 @@
         ]
         },
         {
-        "classe_ida": "aq075",
-        "classe_volta": "AQ075",
-        "atributos_default_ida": [
+        "classe_A": "aq075",
+        "classe_B": "AQ075",
+        "atributos_default_B": [
             {
             "nome_atributo": "FCODE",
             "valor": "AQ075"
@@ -795,9 +795,9 @@
         ]
         },
         {
-        "classe_ida": "aq090",
-        "classe_volta": "AQ090",
-        "atributos_default_ida": [
+        "classe_A": "aq090",
+        "classe_B": "AQ090",
+        "atributos_default_B": [
             {
             "nome_atributo": "FCODE",
             "valor": "AQ090"
@@ -805,9 +805,9 @@
         ]
         },
         {
-        "classe_ida": "aq110",
-        "classe_volta": "AQ110",
-        "atributos_default_ida": [
+        "classe_A": "aq110",
+        "classe_B": "AQ110",
+        "atributos_default_B": [
             {
             "nome_atributo": "FCODE",
             "valor": "AQ110"
@@ -815,9 +815,9 @@
         ]
         },
         {
-        "classe_ida": "aq113",
-        "classe_volta": "AQ113",
-        "atributos_default_ida": [
+        "classe_A": "aq113",
+        "classe_B": "AQ113",
+        "atributos_default_B": [
             {
             "nome_atributo": "FCODE",
             "valor": "AQ113"
@@ -825,9 +825,9 @@
         ]
         },
         {
-        "classe_ida": "aq116",
-        "classe_volta": "AQ116",
-        "atributos_default_ida": [
+        "classe_A": "aq116",
+        "classe_B": "AQ116",
+        "atributos_default_B": [
             {
             "nome_atributo": "FCODE",
             "valor": "AQ116"
@@ -835,9 +835,9 @@
         ]
         },
         {
-        "classe_ida": "aq125",
-        "classe_volta": "AQ125",
-        "atributos_default_ida": [
+        "classe_A": "aq125",
+        "classe_B": "AQ125",
+        "atributos_default_B": [
             {
             "nome_atributo": "FCODE",
             "valor": "AQ125"
@@ -845,9 +845,9 @@
         ]
         },
         {
-        "classe_ida": "aq130",
-        "classe_volta": "AQ130",
-        "atributos_default_ida": [
+        "classe_A": "aq130",
+        "classe_B": "AQ130",
+        "atributos_default_B": [
             {
             "nome_atributo": "FCODE",
             "valor": "AQ130"
@@ -855,9 +855,9 @@
         ]
         },
         {
-        "classe_ida": "aq135",
-        "classe_volta": "AQ135",
-        "atributos_default_ida": [
+        "classe_A": "aq135",
+        "classe_B": "AQ135",
+        "atributos_default_B": [
             {
             "nome_atributo": "FCODE",
             "valor": "AQ135"
@@ -865,9 +865,9 @@
         ]
         },
         {
-        "classe_ida": "aq140",
-        "classe_volta": "AQ140",
-        "atributos_default_ida": [
+        "classe_A": "aq140",
+        "classe_B": "AQ140",
+        "atributos_default_B": [
             {
             "nome_atributo": "FCODE",
             "valor": "AQ140"
@@ -875,9 +875,9 @@
         ]
         },
         {
-        "classe_ida": "at010",
-        "classe_volta": "AT010",
-        "atributos_default_ida": [
+        "classe_A": "at010",
+        "classe_B": "AT010",
+        "atributos_default_B": [
             {
             "nome_atributo": "FCODE",
             "valor": "AT010"
@@ -885,9 +885,9 @@
         ]
         },
         {
-        "classe_ida": "at030",
-        "classe_volta": "AT030",
-        "atributos_default_ida": [
+        "classe_A": "at030",
+        "classe_B": "AT030",
+        "atributos_default_B": [
             {
             "nome_atributo": "FCODE",
             "valor": "AT030"
@@ -895,9 +895,9 @@
         ]
         },
         {
-        "classe_ida": "at041",
-        "classe_volta": "AT041",
-        "atributos_default_ida": [
+        "classe_A": "at041",
+        "classe_B": "AT041",
+        "atributos_default_B": [
             {
             "nome_atributo": "FCODE",
             "valor": "AT041"
@@ -905,9 +905,9 @@
         ]
         },
         {
-        "classe_ida": "at042",
-        "classe_volta": "AT042",
-        "atributos_default_ida": [
+        "classe_A": "at042",
+        "classe_B": "AT042",
+        "atributos_default_B": [
             {
             "nome_atributo": "FCODE",
             "valor": "AT042"
@@ -915,9 +915,9 @@
         ]
         },
         {
-        "classe_ida": "at045",
-        "classe_volta": "AT045",
-        "atributos_default_ida": [
+        "classe_A": "at045",
+        "classe_B": "AT045",
+        "atributos_default_B": [
             {
             "nome_atributo": "FCODE",
             "valor": "AT045"
@@ -925,9 +925,9 @@
         ]
         },
         {
-        "classe_ida": "at050",
-        "classe_volta": "AT050",
-        "atributos_default_ida": [
+        "classe_A": "at050",
+        "classe_B": "AT050",
+        "atributos_default_B": [
             {
             "nome_atributo": "FCODE",
             "valor": "AT050"
@@ -935,9 +935,9 @@
         ]
         },
         {
-        "classe_ida": "at060",
-        "classe_volta": "AT060",
-        "atributos_default_ida": [
+        "classe_A": "at060",
+        "classe_B": "AT060",
+        "atributos_default_B": [
             {
             "nome_atributo": "FCODE",
             "valor": "AT060"
@@ -945,9 +945,9 @@
         ]
         },
         {
-        "classe_ida": "ba010",
-        "classe_volta": "BA010",
-        "atributos_default_ida": [
+        "classe_A": "ba010",
+        "classe_B": "BA010",
+        "atributos_default_B": [
             {
             "nome_atributo": "FCODE",
             "valor": "BA010"
@@ -955,9 +955,9 @@
         ]
         },
         {
-        "classe_ida": "ba030",
-        "classe_volta": "BA030",
-        "atributos_default_ida": [
+        "classe_A": "ba030",
+        "classe_B": "BA030",
+        "atributos_default_B": [
             {
             "nome_atributo": "FCODE",
             "valor": "BA030"
@@ -965,9 +965,9 @@
         ]
         },
         {
-        "classe_ida": "ba040",
-        "classe_volta": "BA040",
-        "atributos_default_ida": [
+        "classe_A": "ba040",
+        "classe_B": "BA040",
+        "atributos_default_B": [
             {
             "nome_atributo": "FCODE",
             "valor": "BA040"
@@ -975,9 +975,9 @@
         ]
         },
         {
-        "classe_ida": "ba050",
-        "classe_volta": "BA050",
-        "atributos_default_ida": [
+        "classe_A": "ba050",
+        "classe_B": "BA050",
+        "atributos_default_B": [
             {
             "nome_atributo": "FCODE",
             "valor": "BA050"
@@ -985,9 +985,9 @@
         ]
         },
         {
-        "classe_ida": "bb005",
-        "classe_volta": "BB005",
-        "atributos_default_ida": [
+        "classe_A": "bb005",
+        "classe_B": "BB005",
+        "atributos_default_B": [
             {
             "nome_atributo": "FCODE",
             "valor": "BB005"
@@ -995,9 +995,9 @@
         ]
         },
         {
-        "classe_ida": "bb041",
-        "classe_volta": "BB041",
-        "atributos_default_ida": [
+        "classe_A": "bb041",
+        "classe_B": "BB041",
+        "atributos_default_B": [
             {
             "nome_atributo": "FCODE",
             "valor": "BB041"
@@ -1005,9 +1005,9 @@
         ]
         },
         {
-        "classe_ida": "bb043",
-        "classe_volta": "BB043",
-        "atributos_default_ida": [
+        "classe_A": "bb043",
+        "classe_B": "BB043",
+        "atributos_default_B": [
             {
             "nome_atributo": "FCODE",
             "valor": "BB043"
@@ -1015,9 +1015,9 @@
         ]
         },
         {
-        "classe_ida": "bb090",
-        "classe_volta": "BB090",
-        "atributos_default_ida": [
+        "classe_A": "bb090",
+        "classe_B": "BB090",
+        "atributos_default_B": [
             {
             "nome_atributo": "FCODE",
             "valor": "BB090"
@@ -1025,9 +1025,9 @@
         ]
         },
         {
-        "classe_ida": "bb140",
-        "classe_volta": "BB140",
-        "atributos_default_ida": [
+        "classe_A": "bb140",
+        "classe_B": "BB140",
+        "atributos_default_B": [
             {
             "nome_atributo": "FCODE",
             "valor": "BB140"
@@ -1035,9 +1035,9 @@
         ]
         },
         {
-        "classe_ida": "bb155",
-        "classe_volta": "BB155",
-        "atributos_default_ida": [
+        "classe_A": "bb155",
+        "classe_B": "BB155",
+        "atributos_default_B": [
             {
             "nome_atributo": "FCODE",
             "valor": "BB155"
@@ -1045,9 +1045,9 @@
         ]
         },
         {
-        "classe_ida": "bb190",
-        "classe_volta": "BB190",
-        "atributos_default_ida": [
+        "classe_A": "bb190",
+        "classe_B": "BB190",
+        "atributos_default_B": [
             {
             "nome_atributo": "FCODE",
             "valor": "BB190"
@@ -1055,9 +1055,9 @@
         ]
         },
         {
-        "classe_ida": "bb230",
-        "classe_volta": "BB230",
-        "atributos_default_ida": [
+        "classe_A": "bb230",
+        "classe_B": "BB230",
+        "atributos_default_B": [
             {
             "nome_atributo": "FCODE",
             "valor": "BB230"
@@ -1065,9 +1065,9 @@
         ]
         },
         {
-        "classe_ida": "bb240",
-        "classe_volta": "BB240",
-        "atributos_default_ida": [
+        "classe_A": "bb240",
+        "classe_B": "BB240",
+        "atributos_default_B": [
             {
             "nome_atributo": "FCODE",
             "valor": "BB240"
@@ -1075,9 +1075,9 @@
         ]
         },
         {
-        "classe_ida": "bd100",
-        "classe_volta": "BD100",
-        "atributos_default_ida": [
+        "classe_A": "bd100",
+        "classe_B": "BD100",
+        "atributos_default_B": [
             {
             "nome_atributo": "FCODE",
             "valor": "BD100"
@@ -1085,9 +1085,9 @@
         ]
         },
         {
-        "classe_ida": "bd110",
-        "classe_volta": "BD110",
-        "atributos_default_ida": [
+        "classe_A": "bd110",
+        "classe_B": "BD110",
+        "atributos_default_B": [
             {
             "nome_atributo": "FCODE",
             "valor": "BD110"
@@ -1095,9 +1095,9 @@
         ]
         },
         {
-        "classe_ida": "bd120",
-        "classe_volta": "BD120",
-        "atributos_default_ida": [
+        "classe_A": "bd120",
+        "classe_B": "BD120",
+        "atributos_default_B": [
             {
             "nome_atributo": "FCODE",
             "valor": "BD120"
@@ -1105,9 +1105,9 @@
         ]
         },
         {
-        "classe_ida": "bd130",
-        "classe_volta": "BD130",
-        "atributos_default_ida": [
+        "classe_A": "bd130",
+        "classe_B": "BD130",
+        "atributos_default_B": [
             {
             "nome_atributo": "FCODE",
             "valor": "BD130"
@@ -1115,9 +1115,9 @@
         ]
         },
         {
-        "classe_ida": "bd180",
-        "classe_volta": "BD180",
-        "atributos_default_ida": [
+        "classe_A": "bd180",
+        "classe_B": "BD180",
+        "atributos_default_B": [
             {
             "nome_atributo": "FCODE",
             "valor": "BD180"
@@ -1125,9 +1125,9 @@
         ]
         },
         {
-        "classe_ida": "bh010",
-        "classe_volta": "BH010",
-        "atributos_default_ida": [
+        "classe_A": "bh010",
+        "classe_B": "BH010",
+        "atributos_default_B": [
             {
             "nome_atributo": "FCODE",
             "valor": "BH010"
@@ -1135,9 +1135,9 @@
         ]
         },
         {
-        "classe_ida": "bh015",
-        "classe_volta": "BH015",
-        "atributos_default_ida": [
+        "classe_A": "bh015",
+        "classe_B": "BH015",
+        "atributos_default_B": [
             {
             "nome_atributo": "FCODE",
             "valor": "BH015"
@@ -1145,9 +1145,9 @@
         ]
         },
         {
-        "classe_ida": "bh020",
-        "classe_volta": "BH020",
-        "atributos_default_ida": [
+        "classe_A": "bh020",
+        "classe_B": "BH020",
+        "atributos_default_B": [
             {
             "nome_atributo": "FCODE",
             "valor": "BH020"
@@ -1155,9 +1155,9 @@
         ]
         },
         {
-        "classe_ida": "bh030",
-        "classe_volta": "BH030",
-        "atributos_default_ida": [
+        "classe_A": "bh030",
+        "classe_B": "BH030",
+        "atributos_default_B": [
             {
             "nome_atributo": "FCODE",
             "valor": "BH030"
@@ -1165,9 +1165,9 @@
         ]
         },
         {
-        "classe_ida": "bh040",
-        "classe_volta": "BH040",
-        "atributos_default_ida": [
+        "classe_A": "bh040",
+        "classe_B": "BH040",
+        "atributos_default_B": [
             {
             "nome_atributo": "FCODE",
             "valor": "BH040"
@@ -1175,9 +1175,9 @@
         ]
         },
         {
-        "classe_ida": "bh050",
-        "classe_volta": "BH050",
-        "atributos_default_ida": [
+        "classe_A": "bh050",
+        "classe_B": "BH050",
+        "atributos_default_B": [
             {
             "nome_atributo": "FCODE",
             "valor": "BH050"
@@ -1185,9 +1185,9 @@
         ]
         },
         {
-        "classe_ida": "bh051",
-        "classe_volta": "BH051",
-        "atributos_default_ida": [
+        "classe_A": "bh051",
+        "classe_B": "BH051",
+        "atributos_default_B": [
             {
             "nome_atributo": "FCODE",
             "valor": "BH051"
@@ -1195,9 +1195,9 @@
         ]
         },
         {
-        "classe_ida": "bh060",
-        "classe_volta": "BH060",
-        "atributos_default_ida": [
+        "classe_A": "bh060",
+        "classe_B": "BH060",
+        "atributos_default_B": [
             {
             "nome_atributo": "FCODE",
             "valor": "BH060"
@@ -1205,9 +1205,9 @@
         ]
         },
         {
-        "classe_ida": "bh070",
-        "classe_volta": "BH070",
-        "atributos_default_ida": [
+        "classe_A": "bh070",
+        "classe_B": "BH070",
+        "atributos_default_B": [
             {
             "nome_atributo": "FCODE",
             "valor": "BH070"
@@ -1215,9 +1215,9 @@
         ]
         },
         {
-        "classe_ida": "bh080",
-        "classe_volta": "BH080",
-        "atributos_default_ida": [
+        "classe_A": "bh080",
+        "classe_B": "BH080",
+        "atributos_default_B": [
             {
             "nome_atributo": "FCODE",
             "valor": "BH080"
@@ -1225,9 +1225,9 @@
         ]
         },
         {
-        "classe_ida": "bh090",
-        "classe_volta": "BH090",
-        "atributos_default_ida": [
+        "classe_A": "bh090",
+        "classe_B": "BH090",
+        "atributos_default_B": [
             {
             "nome_atributo": "FCODE",
             "valor": "BH090"
@@ -1235,9 +1235,9 @@
         ]
         },
         {
-        "classe_ida": "bh110",
-        "classe_volta": "BH110",
-        "atributos_default_ida": [
+        "classe_A": "bh110",
+        "classe_B": "BH110",
+        "atributos_default_B": [
             {
             "nome_atributo": "FCODE",
             "valor": "BH110"
@@ -1245,9 +1245,9 @@
         ]
         },
         {
-        "classe_ida": "bh120",
-        "classe_volta": "BH120",
-        "atributos_default_ida": [
+        "classe_A": "bh120",
+        "classe_B": "BH120",
+        "atributos_default_B": [
             {
             "nome_atributo": "FCODE",
             "valor": "BH120"
@@ -1255,9 +1255,9 @@
         ]
         },
         {
-        "classe_ida": "bh130",
-        "classe_volta": "BH130",
-        "atributos_default_ida": [
+        "classe_A": "bh130",
+        "classe_B": "BH130",
+        "atributos_default_B": [
             {
             "nome_atributo": "FCODE",
             "valor": "BH130"
@@ -1265,9 +1265,9 @@
         ]
         },
         {
-        "classe_ida": "bh135",
-        "classe_volta": "BH135",
-        "atributos_default_ida": [
+        "classe_A": "bh135",
+        "classe_B": "BH135",
+        "atributos_default_B": [
             {
             "nome_atributo": "FCODE",
             "valor": "BH135"
@@ -1275,9 +1275,9 @@
         ]
         },
         {
-        "classe_ida": "bh140",
-        "classe_volta": "BH140",
-        "atributos_default_ida": [
+        "classe_A": "bh140",
+        "classe_B": "BH140",
+        "atributos_default_B": [
             {
             "nome_atributo": "FCODE",
             "valor": "BH140"
@@ -1285,9 +1285,9 @@
         ]
         },
         {
-        "classe_ida": "bh145",
-        "classe_volta": "BH145",
-        "atributos_default_ida": [
+        "classe_A": "bh145",
+        "classe_B": "BH145",
+        "atributos_default_B": [
             {
             "nome_atributo": "FCODE",
             "valor": "BH145"
@@ -1295,9 +1295,9 @@
         ]
         },
         {
-        "classe_ida": "bh150",
-        "classe_volta": "BH150",
-        "atributos_default_ida": [
+        "classe_A": "bh150",
+        "classe_B": "BH150",
+        "atributos_default_B": [
             {
             "nome_atributo": "FCODE",
             "valor": "BH150"
@@ -1305,9 +1305,9 @@
         ]
         },
         {
-        "classe_ida": "bh155",
-        "classe_volta": "BH155",
-        "atributos_default_ida": [
+        "classe_A": "bh155",
+        "classe_B": "BH155",
+        "atributos_default_B": [
             {
             "nome_atributo": "FCODE",
             "valor": "BH155"
@@ -1315,9 +1315,9 @@
         ]
         },
         {
-        "classe_ida": "bh160",
-        "classe_volta": "BH160",
-        "atributos_default_ida": [
+        "classe_A": "bh160",
+        "classe_B": "BH160",
+        "atributos_default_B": [
             {
             "nome_atributo": "FCODE",
             "valor": "BH160"
@@ -1325,9 +1325,9 @@
         ]
         },
         {
-        "classe_ida": "bh165",
-        "classe_volta": "BH165",
-        "atributos_default_ida": [
+        "classe_A": "bh165",
+        "classe_B": "BH165",
+        "atributos_default_B": [
             {
             "nome_atributo": "FCODE",
             "valor": "BH165"
@@ -1335,9 +1335,9 @@
         ]
         },
         {
-        "classe_ida": "bh170",
-        "classe_volta": "BH170",
-        "atributos_default_ida": [
+        "classe_A": "bh170",
+        "classe_B": "BH170",
+        "atributos_default_B": [
             {
             "nome_atributo": "FCODE",
             "valor": "BH170"
@@ -1345,9 +1345,9 @@
         ]
         },
         {
-        "classe_ida": "bh180",
-        "classe_volta": "BH180",
-        "atributos_default_ida": [
+        "classe_A": "bh180",
+        "classe_B": "BH180",
+        "atributos_default_B": [
             {
             "nome_atributo": "FCODE",
             "valor": "BH180"
@@ -1355,9 +1355,9 @@
         ]
         },
         {
-        "classe_ida": "bi010",
-        "classe_volta": "BI010",
-        "atributos_default_ida": [
+        "classe_A": "bi010",
+        "classe_B": "BI010",
+        "atributos_default_B": [
             {
             "nome_atributo": "FCODE",
             "valor": "BI010"
@@ -1365,9 +1365,9 @@
         ]
         },
         {
-        "classe_ida": "bi020",
-        "classe_volta": "BI020",
-        "atributos_default_ida": [
+        "classe_A": "bi020",
+        "classe_B": "BI020",
+        "atributos_default_B": [
             {
             "nome_atributo": "FCODE",
             "valor": "BI020"
@@ -1375,9 +1375,9 @@
         ]
         },
         {
-        "classe_ida": "bi030",
-        "classe_volta": "BI030",
-        "atributos_default_ida": [
+        "classe_A": "bi030",
+        "classe_B": "BI030",
+        "atributos_default_B": [
             {
             "nome_atributo": "FCODE",
             "valor": "BI030"
@@ -1385,9 +1385,9 @@
         ]
         },
         {
-        "classe_ida": "bi040",
-        "classe_volta": "BI040",
-        "atributos_default_ida": [
+        "classe_A": "bi040",
+        "classe_B": "BI040",
+        "atributos_default_B": [
             {
             "nome_atributo": "FCODE",
             "valor": "BI040"
@@ -1395,9 +1395,9 @@
         ]
         },
         {
-        "classe_ida": "bi041",
-        "classe_volta": "BI041",
-        "atributos_default_ida": [
+        "classe_A": "bi041",
+        "classe_B": "BI041",
+        "atributos_default_B": [
             {
             "nome_atributo": "FCODE",
             "valor": "BI041"
@@ -1405,9 +1405,9 @@
         ]
         },
         {
-        "classe_ida": "bi050",
-        "classe_volta": "BI050",
-        "atributos_default_ida": [
+        "classe_A": "bi050",
+        "classe_B": "BI050",
+        "atributos_default_B": [
             {
             "nome_atributo": "FCODE",
             "valor": "BI050"
@@ -1415,9 +1415,9 @@
         ]
         },
         {
-        "classe_ida": "bj020",
-        "classe_volta": "BJ020",
-        "atributos_default_ida": [
+        "classe_A": "bj020",
+        "classe_B": "BJ020",
+        "atributos_default_B": [
             {
             "nome_atributo": "FCODE",
             "valor": "BJ020"
@@ -1425,9 +1425,9 @@
         ]
         },
         {
-        "classe_ida": "bj030",
-        "classe_volta": "BJ030",
-        "atributos_default_ida": [
+        "classe_A": "bj030",
+        "classe_B": "BJ030",
+        "atributos_default_B": [
             {
             "nome_atributo": "FCODE",
             "valor": "BJ030"
@@ -1435,9 +1435,9 @@
         ]
         },
         {
-        "classe_ida": "bj031",
-        "classe_volta": "BJ031",
-        "atributos_default_ida": [
+        "classe_A": "bj031",
+        "classe_B": "BJ031",
+        "atributos_default_B": [
             {
             "nome_atributo": "FCODE",
             "valor": "BJ031"
@@ -1445,9 +1445,9 @@
         ]
         },
         {
-        "classe_ida": "bj040",
-        "classe_volta": "BJ040",
-        "atributos_default_ida": [
+        "classe_A": "bj040",
+        "classe_B": "BJ040",
+        "atributos_default_B": [
             {
             "nome_atributo": "FCODE",
             "valor": "BJ040"
@@ -1455,9 +1455,9 @@
         ]
         },
         {
-        "classe_ida": "bj060",
-        "classe_volta": "BJ060",
-        "atributos_default_ida": [
+        "classe_A": "bj060",
+        "classe_B": "BJ060",
+        "atributos_default_B": [
             {
             "nome_atributo": "FCODE",
             "valor": "BJ060"
@@ -1465,9 +1465,9 @@
         ]
         },
         {
-        "classe_ida": "bj100",
-        "classe_volta": "BJ100",
-        "atributos_default_ida": [
+        "classe_A": "bj100",
+        "classe_B": "BJ100",
+        "atributos_default_B": [
             {
             "nome_atributo": "FCODE",
             "valor": "BJ100"
@@ -1475,9 +1475,9 @@
         ]
         },
         {
-        "classe_ida": "bj110",
-        "classe_volta": "BJ110",
-        "atributos_default_ida": [
+        "classe_A": "bj110",
+        "classe_B": "BJ110",
+        "atributos_default_B": [
             {
             "nome_atributo": "FCODE",
             "valor": "BJ110"
@@ -1485,9 +1485,9 @@
         ]
         },
         {
-        "classe_ida": "da010",
-        "classe_volta": "DA010",
-        "atributos_default_ida": [
+        "classe_A": "da010",
+        "classe_B": "DA010",
+        "atributos_default_B": [
             {
             "nome_atributo": "FCODE",
             "valor": "DA010"
@@ -1495,9 +1495,9 @@
         ]
         },
         {
-        "classe_ida": "db010",
-        "classe_volta": "DB010",
-        "atributos_default_ida": [
+        "classe_A": "db010",
+        "classe_B": "DB010",
+        "atributos_default_B": [
             {
             "nome_atributo": "FCODE",
             "valor": "DB010"
@@ -1505,9 +1505,9 @@
         ]
         },
         {
-        "classe_ida": "db029",
-        "classe_volta": "DB029",
-        "atributos_default_ida": [
+        "classe_A": "db029",
+        "classe_B": "DB029",
+        "atributos_default_B": [
             {
             "nome_atributo": "FCODE",
             "valor": "DB029"
@@ -1515,9 +1515,9 @@
         ]
         },
         {
-        "classe_ida": "db061",
-        "classe_volta": "DB061",
-        "atributos_default_ida": [
+        "classe_A": "db061",
+        "classe_B": "DB061",
+        "atributos_default_B": [
             {
             "nome_atributo": "FCODE",
             "valor": "DB061"
@@ -1525,9 +1525,9 @@
         ]
         },
         {
-        "classe_ida": "db070",
-        "classe_volta": "DB070",
-        "atributos_default_ida": [
+        "classe_A": "db070",
+        "classe_B": "DB070",
+        "atributos_default_B": [
             {
             "nome_atributo": "FCODE",
             "valor": "DB070"
@@ -1535,9 +1535,9 @@
         ]
         },
         {
-        "classe_ida": "db071",
-        "classe_volta": "DB071",
-        "atributos_default_ida": [
+        "classe_A": "db071",
+        "classe_B": "DB071",
+        "atributos_default_B": [
             {
             "nome_atributo": "FCODE",
             "valor": "DB071"
@@ -1545,9 +1545,9 @@
         ]
         },
         {
-        "classe_ida": "db090",
-        "classe_volta": "DB090",
-        "atributos_default_ida": [
+        "classe_A": "db090",
+        "classe_B": "DB090",
+        "atributos_default_B": [
             {
             "nome_atributo": "FCODE",
             "valor": "DB090"
@@ -1555,9 +1555,9 @@
         ]
         },
         {
-        "classe_ida": "db100",
-        "classe_volta": "DB100",
-        "atributos_default_ida": [
+        "classe_A": "db100",
+        "classe_B": "DB100",
+        "atributos_default_B": [
             {
             "nome_atributo": "FCODE",
             "valor": "DB100"
@@ -1565,9 +1565,9 @@
         ]
         },
         {
-        "classe_ida": "db110",
-        "classe_volta": "DB110",
-        "atributos_default_ida": [
+        "classe_A": "db110",
+        "classe_B": "DB110",
+        "atributos_default_B": [
             {
             "nome_atributo": "FCODE",
             "valor": "DB110"
@@ -1575,9 +1575,9 @@
         ]
         },
         {
-        "classe_ida": "db115",
-        "classe_volta": "DB115",
-        "atributos_default_ida": [
+        "classe_A": "db115",
+        "classe_B": "DB115",
+        "atributos_default_B": [
             {
             "nome_atributo": "FCODE",
             "valor": "DB115"
@@ -1585,9 +1585,9 @@
         ]
         },
         {
-        "classe_ida": "db150",
-        "classe_volta": "DB150",
-        "atributos_default_ida": [
+        "classe_A": "db150",
+        "classe_B": "DB150",
+        "atributos_default_B": [
             {
             "nome_atributo": "FCODE",
             "valor": "DB150"
@@ -1595,9 +1595,9 @@
         ]
         },
         {
-        "classe_ida": "db160",
-        "classe_volta": "DB160",
-        "atributos_default_ida": [
+        "classe_A": "db160",
+        "classe_B": "DB160",
+        "atributos_default_B": [
             {
             "nome_atributo": "FCODE",
             "valor": "DB160"
@@ -1605,9 +1605,9 @@
         ]
         },
         {
-        "classe_ida": "db170",
-        "classe_volta": "DB170",
-        "atributos_default_ida": [
+        "classe_A": "db170",
+        "classe_B": "DB170",
+        "atributos_default_B": [
             {
             "nome_atributo": "FCODE",
             "valor": "DB170"
@@ -1615,9 +1615,9 @@
         ]
         },
         {
-        "classe_ida": "db180",
-        "classe_volta": "DB180",
-        "atributos_default_ida": [
+        "classe_A": "db180",
+        "classe_B": "DB180",
+        "atributos_default_B": [
             {
             "nome_atributo": "FCODE",
             "valor": "DB180"
@@ -1625,9 +1625,9 @@
         ]
         },
         {
-        "classe_ida": "db200",
-        "classe_volta": "DB200",
-        "atributos_default_ida": [
+        "classe_A": "db200",
+        "classe_B": "DB200",
+        "atributos_default_B": [
             {
             "nome_atributo": "FCODE",
             "valor": "DB200"
@@ -1635,9 +1635,9 @@
         ]
         },
         {
-        "classe_ida": "ea010",
-        "classe_volta": "EA010",
-        "atributos_default_ida": [
+        "classe_A": "ea010",
+        "classe_B": "EA010",
+        "atributos_default_B": [
             {
             "nome_atributo": "FCODE",
             "valor": "EA010"
@@ -1645,9 +1645,9 @@
         ]
         },
         {
-        "classe_ida": "ea020",
-        "classe_volta": "EA020",
-        "atributos_default_ida": [
+        "classe_A": "ea020",
+        "classe_B": "EA020",
+        "atributos_default_B": [
             {
             "nome_atributo": "FCODE",
             "valor": "EA020"
@@ -1655,9 +1655,9 @@
         ]
         },
         {
-        "classe_ida": "ea040",
-        "classe_volta": "EA040",
-        "atributos_default_ida": [
+        "classe_A": "ea040",
+        "classe_B": "EA040",
+        "atributos_default_B": [
             {
             "nome_atributo": "FCODE",
             "valor": "EA040"
@@ -1665,9 +1665,9 @@
         ]
         },
         {
-        "classe_ida": "ea050",
-        "classe_volta": "EA050",
-        "atributos_default_ida": [
+        "classe_A": "ea050",
+        "classe_B": "EA050",
+        "atributos_default_B": [
             {
             "nome_atributo": "FCODE",
             "valor": "EA050"
@@ -1675,9 +1675,9 @@
         ]
         },
         {
-        "classe_ida": "ea055",
-        "classe_volta": "EA055",
-        "atributos_default_ida": [
+        "classe_A": "ea055",
+        "classe_B": "EA055",
+        "atributos_default_B": [
             {
             "nome_atributo": "FCODE",
             "valor": "EA055"
@@ -1685,9 +1685,9 @@
         ]
         },
         {
-        "classe_ida": "eb010",
-        "classe_volta": "EB010",
-        "atributos_default_ida": [
+        "classe_A": "eb010",
+        "classe_B": "EB010",
+        "atributos_default_B": [
             {
             "nome_atributo": "FCODE",
             "valor": "EB010"
@@ -1695,9 +1695,9 @@
         ]
         },
         {
-        "classe_ida": "eb020",
-        "classe_volta": "EB020",
-        "atributos_default_ida": [
+        "classe_A": "eb020",
+        "classe_B": "EB020",
+        "atributos_default_B": [
             {
             "nome_atributo": "FCODE",
             "valor": "EB020"
@@ -1705,9 +1705,9 @@
         ]
         },
         {
-        "classe_ida": "ec010",
-        "classe_volta": "EC010",
-        "atributos_default_ida": [
+        "classe_A": "ec010",
+        "classe_B": "EC010",
+        "atributos_default_B": [
             {
             "nome_atributo": "FCODE",
             "valor": "EC010"
@@ -1715,9 +1715,9 @@
         ]
         },
         {
-        "classe_ida": "ec020",
-        "classe_volta": "EC020",
-        "atributos_default_ida": [
+        "classe_A": "ec020",
+        "classe_B": "EC020",
+        "atributos_default_B": [
             {
             "nome_atributo": "FCODE",
             "valor": "EC020"
@@ -1725,9 +1725,9 @@
         ]
         },
         {
-        "classe_ida": "ec030",
-        "classe_volta": "EC030",
-        "atributos_default_ida": [
+        "classe_A": "ec030",
+        "classe_B": "EC030",
+        "atributos_default_B": [
             {
             "nome_atributo": "FCODE",
             "valor": "EC030"
@@ -1735,9 +1735,9 @@
         ]
         },
         {
-        "classe_ida": "ec040",
-        "classe_volta": "EC040",
-        "atributos_default_ida": [
+        "classe_A": "ec040",
+        "classe_B": "EC040",
+        "atributos_default_B": [
             {
             "nome_atributo": "FCODE",
             "valor": "EC040"
@@ -1745,9 +1745,9 @@
         ]
         },
         {
-        "classe_ida": "ec060",
-        "classe_volta": "EC060",
-        "atributos_default_ida": [
+        "classe_A": "ec060",
+        "classe_B": "EC060",
+        "atributos_default_B": [
             {
             "nome_atributo": "FCODE",
             "valor": "EC060"
@@ -1755,9 +1755,9 @@
         ]
         },
         {
-        "classe_ida": "ed010",
-        "classe_volta": "ED010",
-        "atributos_default_ida": [
+        "classe_A": "ed010",
+        "classe_B": "ED010",
+        "atributos_default_B": [
             {
             "nome_atributo": "FCODE",
             "valor": "ED010"
@@ -1765,9 +1765,9 @@
         ]
         },
         {
-        "classe_ida": "ed020",
-        "classe_volta": "ED020",
-        "atributos_default_ida": [
+        "classe_A": "ed020",
+        "classe_B": "ED020",
+        "atributos_default_B": [
             {
             "nome_atributo": "FCODE",
             "valor": "ED020"
@@ -1775,9 +1775,9 @@
         ]
         },
         {
-        "classe_ida": "ed030",
-        "classe_volta": "ED030",
-        "atributos_default_ida": [
+        "classe_A": "ed030",
+        "classe_B": "ED030",
+        "atributos_default_B": [
             {
             "nome_atributo": "FCODE",
             "valor": "ED030"
@@ -1785,9 +1785,9 @@
         ]
         },
         {
-        "classe_ida": "fa015",
-        "classe_volta": "FA015",
-        "atributos_default_ida": [
+        "classe_A": "fa015",
+        "classe_B": "FA015",
+        "atributos_default_B": [
             {
             "nome_atributo": "FCODE",
             "valor": "FA015"
@@ -1795,9 +1795,9 @@
         ]
         },
         {
-        "classe_ida": "fa090",
-        "classe_volta": "FA090",
-        "atributos_default_ida": [
+        "classe_A": "fa090",
+        "classe_B": "FA090",
+        "atributos_default_B": [
             {
             "nome_atributo": "FCODE",
             "valor": "FA090"
@@ -1805,9 +1805,9 @@
         ]
         },
         {
-        "classe_ida": "fa100",
-        "classe_volta": "FA100",
-        "atributos_default_ida": [
+        "classe_A": "fa100",
+        "classe_B": "FA100",
+        "atributos_default_B": [
             {
             "nome_atributo": "FCODE",
             "valor": "FA100"
@@ -1815,9 +1815,9 @@
         ]
         },
         {
-        "classe_ida": "ga034",
-        "classe_volta": "GA034",
-        "atributos_default_ida": [
+        "classe_A": "ga034",
+        "classe_B": "GA034",
+        "atributos_default_B": [
             {
             "nome_atributo": "FCODE",
             "valor": "GA034"
@@ -1825,9 +1825,9 @@
         ]
         },
         {
-        "classe_ida": "gb005",
-        "classe_volta": "GB005",
-        "atributos_default_ida": [
+        "classe_A": "gb005",
+        "classe_B": "GB005",
+        "atributos_default_B": [
             {
             "nome_atributo": "FCODE",
             "valor": "GB005"
@@ -1835,9 +1835,9 @@
         ]
         },
         {
-        "classe_ida": "gb015",
-        "classe_volta": "GB015",
-        "atributos_default_ida": [
+        "classe_A": "gb015",
+        "classe_B": "GB015",
+        "atributos_default_B": [
             {
             "nome_atributo": "FCODE",
             "valor": "GB015"
@@ -1845,9 +1845,9 @@
         ]
         },
         {
-        "classe_ida": "gb030",
-        "classe_volta": "GB030",
-        "atributos_default_ida": [
+        "classe_A": "gb030",
+        "classe_B": "GB030",
+        "atributos_default_B": [
             {
             "nome_atributo": "FCODE",
             "valor": "GB030"
@@ -1855,9 +1855,9 @@
         ]
         },
         {
-        "classe_ida": "gb035",
-        "classe_volta": "GB035",
-        "atributos_default_ida": [
+        "classe_A": "gb035",
+        "classe_B": "GB035",
+        "atributos_default_B": [
             {
             "nome_atributo": "FCODE",
             "valor": "GB035"
@@ -1865,9 +1865,9 @@
         ]
         },
         {
-        "classe_ida": "gb040",
-        "classe_volta": "GB040",
-        "atributos_default_ida": [
+        "classe_A": "gb040",
+        "classe_B": "GB040",
+        "atributos_default_B": [
             {
             "nome_atributo": "FCODE",
             "valor": "GB040"
@@ -1875,9 +1875,9 @@
         ]
         },
         {
-        "classe_ida": "gb045",
-        "classe_volta": "GB045",
-        "atributos_default_ida": [
+        "classe_A": "gb045",
+        "classe_B": "GB045",
+        "atributos_default_B": [
             {
             "nome_atributo": "FCODE",
             "valor": "GB045"
@@ -1885,9 +1885,9 @@
         ]
         },
         {
-        "classe_ida": "gb050",
-        "classe_volta": "GB050",
-        "atributos_default_ida": [
+        "classe_A": "gb050",
+        "classe_B": "GB050",
+        "atributos_default_B": [
             {
             "nome_atributo": "FCODE",
             "valor": "GB050"
@@ -1895,9 +1895,9 @@
         ]
         },
         {
-        "classe_ida": "gb055",
-        "classe_volta": "GB055",
-        "atributos_default_ida": [
+        "classe_A": "gb055",
+        "classe_B": "GB055",
+        "atributos_default_B": [
             {
             "nome_atributo": "FCODE",
             "valor": "GB055"
@@ -1905,9 +1905,9 @@
         ]
         },
         {
-        "classe_ida": "gb065",
-        "classe_volta": "GB065",
-        "atributos_default_ida": [
+        "classe_A": "gb065",
+        "classe_B": "GB065",
+        "atributos_default_B": [
             {
             "nome_atributo": "FCODE",
             "valor": "GB065"
@@ -1915,9 +1915,9 @@
         ]
         },
         {
-        "classe_ida": "gb075",
-        "classe_volta": "GB075",
-        "atributos_default_ida": [
+        "classe_A": "gb075",
+        "classe_B": "GB075",
+        "atributos_default_B": [
             {
             "nome_atributo": "FCODE",
             "valor": "GB075"
@@ -1925,9 +1925,9 @@
         ]
         },
         {
-        "classe_ida": "gb220",
-        "classe_volta": "GB220",
-        "atributos_default_ida": [
+        "classe_A": "gb220",
+        "classe_B": "GB220",
+        "atributos_default_B": [
             {
             "nome_atributo": "FCODE",
             "valor": "GB220"
@@ -1935,9 +1935,9 @@
         ]
         },
         {
-        "classe_ida": "gb230",
-        "classe_volta": "GB230",
-        "atributos_default_ida": [
+        "classe_A": "gb230",
+        "classe_B": "GB230",
+        "atributos_default_B": [
             {
             "nome_atributo": "FCODE",
             "valor": "GB230"
@@ -1945,9 +1945,9 @@
         ]
         },
         {
-        "classe_ida": "gb485",
-        "classe_volta": "GB485",
-        "atributos_default_ida": [
+        "classe_A": "gb485",
+        "classe_B": "GB485",
+        "atributos_default_B": [
             {
             "nome_atributo": "FCODE",
             "valor": "GB485"
@@ -1955,9 +1955,9 @@
         ]
         },
         {
-        "classe_ida": "su001",
-        "classe_volta": "SU001",
-        "atributos_default_ida": [
+        "classe_A": "su001",
+        "classe_B": "SU001",
+        "atributos_default_B": [
             {
             "nome_atributo": "FCODE",
             "valor": "SU001"
@@ -1965,9 +1965,9 @@
         ]
         },
         {
-        "classe_ida": "zd020",
-        "classe_volta": "ZD020",
-        "atributos_default_ida": [
+        "classe_A": "zd020",
+        "classe_B": "ZD020",
+        "atributos_default_B": [
             {
             "nome_atributo": "FCODE",
             "valor": "ZD020"
@@ -1975,9 +1975,9 @@
         ]
         },
         {
-        "classe_ida": "zd040",
-        "classe_volta": "ZD040",
-        "atributos_default_ida": [
+        "classe_A": "zd040",
+        "classe_B": "ZD040",
+        "atributos_default_B": [
             {
             "nome_atributo": "FCODE",
             "valor": "ZD040"
@@ -1987,452 +1987,452 @@
     ],
     "mapeamento_atributos": [
         {
-            "attr_ida": "acc",
-            "attr_volta": "ACC"
+            "attr_A": "acc",
+            "attr_B": "ACC"
           },
           {
-            "attr_ida": "afa",
-            "attr_volta": "AFA"
+            "attr_A": "afa",
+            "attr_B": "AFA"
           },
           {
-            "attr_ida": "aoo",
-            "attr_volta": "AOO"
+            "attr_A": "aoo",
+            "attr_B": "AOO"
           },
           {
-            "attr_ida": "atc",
-            "attr_volta": "ATC"
+            "attr_A": "atc",
+            "attr_B": "ATC"
           },
           {
-            "attr_ida": "azc",
-            "attr_volta": "AZC"
+            "attr_A": "azc",
+            "attr_B": "AZC"
           },
           {
-            "attr_ida": "bac",
-            "attr_volta": "BAC"
+            "attr_A": "bac",
+            "attr_B": "BAC"
           },
           {
-            "attr_ida": "boc",
-            "attr_volta": "BOC"
+            "attr_A": "boc",
+            "attr_B": "BOC"
           },
           {
-            "attr_ida": "bot",
-            "attr_volta": "BOT"
+            "attr_A": "bot",
+            "attr_B": "BOT"
           },
           {
-            "attr_ida": "bsc",
-            "attr_volta": "BSC"
+            "attr_A": "bsc",
+            "attr_B": "BSC"
           },
           {
-            "attr_ida": "caa",
-            "attr_volta": "CAA"
+            "attr_A": "caa",
+            "attr_B": "CAA"
           },
           {
-            "attr_ida": "cab",
-            "attr_volta": "CAB"
+            "attr_A": "cab",
+            "attr_B": "CAB"
           },
           {
-            "attr_ida": "cat",
-            "attr_volta": "CAT"
+            "attr_A": "cat",
+            "attr_B": "CAT"
           },
           {
-            "attr_ida": "ccn",
-            "attr_volta": "CCN"
+            "attr_A": "ccn",
+            "attr_B": "CCN"
           },
           {
-            "attr_ida": "cct",
-            "attr_volta": "CCT"
+            "attr_A": "cct",
+            "attr_B": "CCT"
           },
           {
-            "attr_ida": "cda",
-            "attr_volta": "CDA"
+            "attr_A": "cda",
+            "attr_B": "CDA"
           },
           {
-            "attr_ida": "cns",
-            "attr_volta": "CNS"
+            "attr_A": "cns",
+            "attr_B": "CNS"
           },
           {
-            "attr_ida": "cod",
-            "attr_volta": "COD"
+            "attr_A": "cod",
+            "attr_B": "COD"
           },
           {
-            "attr_ida": "con",
-            "attr_volta": "CON"
+            "attr_A": "con",
+            "attr_B": "CON"
           },
           {
-            "attr_ida": "cra",
-            "attr_volta": "CRA"
+            "attr_A": "cra",
+            "attr_B": "CRA"
           },
           {
-            "attr_ida": "crm",
-            "attr_volta": "CRM"
+            "attr_A": "crm",
+            "attr_B": "CRM"
           },
           {
-            "attr_ida": "csp",
-            "attr_volta": "CSP"
+            "attr_A": "csp",
+            "attr_B": "CSP"
           },
           {
-            "attr_ida": "dmb",
-            "attr_volta": "DMB"
+            "attr_A": "dmb",
+            "attr_B": "DMB"
           },
           {
-            "attr_ida": "dmt",
-            "attr_volta": "DMT"
+            "attr_A": "dmt",
+            "attr_B": "DMT"
           },
           {
-            "attr_ida": "eet",
-            "attr_volta": "EET"
+            "attr_A": "eet",
+            "attr_B": "EET"
           },
           {
-            "attr_ida": "fac",
-            "attr_volta": "FAC"
+            "attr_A": "fac",
+            "attr_B": "FAC"
           },
           {
-            "attr_ida": "ffn",
-            "attr_volta": "FFN"
+            "attr_A": "ffn",
+            "attr_B": "FFN"
           },
           {
-            "attr_ida": "ffp",
-            "attr_volta": "FFP"
+            "attr_A": "ffp",
+            "attr_B": "FFP"
           },
           {
-            "attr_ida": "fhc",
-            "attr_volta": "FHC"
+            "attr_A": "fhc",
+            "attr_B": "FHC"
           },
           {
-            "attr_ida": "fic",
-            "attr_volta": "FIC"
+            "attr_A": "fic",
+            "attr_B": "FIC"
           },
           {
-            "attr_ida": "fmm",
-            "attr_volta": "FMM"
+            "attr_A": "fmm",
+            "attr_B": "FMM"
           },
           {
-            "attr_ida": "fpt",
-            "attr_volta": "FPT"
+            "attr_A": "fpt",
+            "attr_B": "FPT"
           },
           {
-            "attr_ida": "frt",
-            "attr_volta": "FRT"
+            "attr_A": "frt",
+            "attr_B": "FRT"
           },
           {
-            "attr_ida": "fuc",
-            "attr_volta": "FUC"
+            "attr_A": "fuc",
+            "attr_B": "FUC"
           },
           {
-            "attr_ida": "fun",
-            "attr_volta": "FUN"
+            "attr_A": "fun",
+            "attr_B": "FUN"
           },
           {
-            "attr_ida": "gaw",
-            "attr_volta": "GAW"
+            "attr_A": "gaw",
+            "attr_B": "GAW"
           },
           {
-            "attr_ida": "gnc",
-            "attr_volta": "GNC"
+            "attr_A": "gnc",
+            "attr_B": "GNC"
           },
           {
-            "attr_ida": "haf",
-            "attr_volta": "HAF"
+            "attr_A": "haf",
+            "attr_B": "HAF"
           },
           {
-            "attr_ida": "hct",
-            "attr_volta": "HCT"
+            "attr_A": "hct",
+            "attr_B": "HCT"
           },
           {
-            "attr_ida": "hgt",
-            "attr_volta": "HGT"
+            "attr_A": "hgt",
+            "attr_B": "HGT"
           },
           {
-            "attr_ida": "hwt",
-            "attr_volta": "HWT"
+            "attr_A": "hwt",
+            "attr_B": "HWT"
           },
           {
-            "attr_ida": "hyp",
-            "attr_volta": "HYP"
+            "attr_A": "hyp",
+            "attr_B": "HYP"
           },
           {
-            "attr_ida": "id",
-            "attr_volta": "ID"
+            "attr_A": "id",
+            "attr_B": "ID"
           },
           {
-            "attr_ida": "iko",
-            "attr_volta": "IKO"
+            "attr_A": "iko",
+            "attr_B": "IKO"
           },
           {
-            "attr_ida": "len",
-            "attr_volta": "LEN"
+            "attr_A": "len",
+            "attr_B": "LEN"
           },
           {
-            "attr_ida": "lfa",
-            "attr_volta": "LFA"
+            "attr_A": "lfa",
+            "attr_B": "LFA"
           },
           {
-            "attr_ida": "loc",
-            "attr_volta": "LOC"
+            "attr_A": "loc",
+            "attr_B": "LOC"
           },
           {
-            "attr_ida": "ltn",
-            "attr_volta": "LTN"
+            "attr_A": "ltn",
+            "attr_B": "LTN"
           },
           {
-            "attr_ida": "mcc",
-            "attr_volta": "MCC"
+            "attr_A": "mcc",
+            "attr_B": "MCC"
           },
           {
-            "attr_ida": "mes",
-            "attr_volta": "MES"
+            "attr_A": "mes",
+            "attr_B": "MES"
           },
           {
-            "attr_ida": "mi",
-            "attr_volta": "MI"
+            "attr_A": "mi",
+            "attr_B": "MI"
           },
           {
-            "attr_ida": "mzn",
-            "attr_volta": "MZN"
+            "attr_A": "mzn",
+            "attr_B": "MZN"
           },
           {
-            "attr_ida": "na2",
-            "attr_volta": "NA2"
+            "attr_A": "na2",
+            "attr_B": "NA2"
           },
           {
-            "attr_ida": "nam",
-            "attr_volta": "NAM"
+            "attr_A": "nam",
+            "attr_B": "NAM"
           },
           {
-            "attr_ida": "nfi",
-            "attr_volta": "NFI"
+            "attr_A": "nfi",
+            "attr_B": "NFI"
           },
           {
-            "attr_ida": "nfn",
-            "attr_volta": "NFN"
+            "attr_A": "nfn",
+            "attr_B": "NFN"
           },
           {
-            "attr_ida": "nos",
-            "attr_volta": "NOS"
+            "attr_A": "nos",
+            "attr_B": "NOS"
           },
           {
-            "attr_ida": "nst",
-            "attr_volta": "NST"
+            "attr_A": "nst",
+            "attr_B": "NST"
           },
           {
-            "attr_ida": "ohb",
-            "attr_volta": "OHB"
+            "attr_A": "ohb",
+            "attr_B": "OHB"
           },
           {
-            "attr_ida": "opc",
-            "attr_volta": "OPC"
+            "attr_A": "opc",
+            "attr_B": "OPC"
           },
           {
-            "attr_ida": "ord",
-            "attr_volta": "ORD"
+            "attr_A": "ord",
+            "attr_B": "ORD"
           },
           {
-            "attr_ida": "pby",
-            "attr_volta": "PBY"
+            "attr_A": "pby",
+            "attr_B": "PBY"
           },
           {
-            "attr_ida": "ppc",
-            "attr_volta": "PPC"
+            "attr_A": "ppc",
+            "attr_B": "PPC"
           },
           {
-            "attr_ida": "ppo",
-            "attr_volta": "PPO"
+            "attr_A": "ppo",
+            "attr_B": "PPO"
           },
           {
-            "attr_ida": "prm",
-            "attr_volta": "PRM"
+            "attr_A": "prm",
+            "attr_B": "PRM"
           },
           {
-            "attr_ida": "pwc",
-            "attr_volta": "PWC"
+            "attr_A": "pwc",
+            "attr_B": "PWC"
           },
           {
-            "attr_ida": "rac",
-            "attr_volta": "RAC"
+            "attr_A": "rac",
+            "attr_B": "RAC"
           },
           {
-            "attr_ida": "ray",
-            "attr_volta": "RAY"
+            "attr_A": "ray",
+            "attr_B": "RAY"
           },
           {
-            "attr_ida": "rel",
-            "attr_volta": "REL"
+            "attr_A": "rel",
+            "attr_B": "REL"
           },
           {
-            "attr_ida": "rgc",
-            "attr_volta": "RGC"
+            "attr_A": "rgc",
+            "attr_B": "RGC"
           },
           {
-            "attr_ida": "rir",
-            "attr_volta": "RIR"
+            "attr_A": "rir",
+            "attr_B": "RIR"
           },
           {
-            "attr_ida": "rkf",
-            "attr_volta": "RKF"
+            "attr_A": "rkf",
+            "attr_B": "RKF"
           },
           {
-            "attr_ida": "rra",
-            "attr_volta": "RRA"
+            "attr_A": "rra",
+            "attr_B": "RRA"
           },
           {
-            "attr_ida": "rrc",
-            "attr_volta": "RRC"
+            "attr_A": "rrc",
+            "attr_B": "RRC"
           },
           {
-            "attr_ida": "rsa",
-            "attr_volta": "RSA"
+            "attr_A": "rsa",
+            "attr_B": "RSA"
           },
           {
-            "attr_ida": "rst",
-            "attr_volta": "RST"
+            "attr_A": "rst",
+            "attr_B": "RST"
           },
           {
-            "attr_ida": "rta",
-            "attr_volta": "RTA"
+            "attr_A": "rta",
+            "attr_B": "RTA"
           },
           {
-            "attr_ida": "rwc",
-            "attr_volta": "RWC"
+            "attr_A": "rwc",
+            "attr_B": "RWC"
           },
           {
-            "attr_ida": "scc",
-            "attr_volta": "SCC"
+            "attr_A": "scc",
+            "attr_B": "SCC"
           },
           {
-            "attr_ida": "sdo",
-            "attr_volta": "SDO"
+            "attr_A": "sdo",
+            "attr_B": "SDO"
           },
           {
-            "attr_ida": "sdp",
-            "attr_volta": "SDP"
+            "attr_A": "sdp",
+            "attr_B": "SDP"
           },
           {
-            "attr_ida": "sdt",
-            "attr_volta": "SDT"
+            "attr_A": "sdt",
+            "attr_B": "SDT"
           },
           {
-            "attr_ida": "sdv",
-            "attr_volta": "SDV"
+            "attr_A": "sdv",
+            "attr_B": "SDV"
           },
           {
-            "attr_ida": "sep",
-            "attr_volta": "SEP"
+            "attr_A": "sep",
+            "attr_B": "SEP"
           },
           {
-            "attr_ida": "sfs",
-            "attr_volta": "SFS"
+            "attr_A": "sfs",
+            "attr_B": "SFS"
           },
           {
-            "attr_ida": "slt",
-            "attr_volta": "SLT"
+            "attr_A": "slt",
+            "attr_B": "SLT"
           },
           {
-            "attr_ida": "smc",
-            "attr_volta": "SMC"
+            "attr_A": "smc",
+            "attr_B": "SMC"
           },
           {
-            "attr_ida": "srt",
-            "attr_volta": "SRT"
+            "attr_A": "srt",
+            "attr_B": "SRT"
           },
           {
-            "attr_ida": "ssc",
-            "attr_volta": "SSC"
+            "attr_A": "ssc",
+            "attr_B": "SSC"
           },
           {
-            "attr_ida": "sta",
-            "attr_volta": "STA"
+            "attr_A": "sta",
+            "attr_B": "STA"
           },
           {
-            "attr_ida": "suc",
-            "attr_volta": "SUC"
+            "attr_A": "suc",
+            "attr_B": "SUC"
           },
           {
-            "attr_ida": "swt",
-            "attr_volta": "SWT"
+            "attr_A": "swt",
+            "attr_B": "SWT"
           },
           {
-            "attr_ida": "tid",
-            "attr_volta": "TID"
+            "attr_A": "tid",
+            "attr_B": "TID"
           },
           {
-            "attr_ida": "tipo",
-            "attr_volta": "TIPO"
+            "attr_A": "tipo",
+            "attr_B": "TIPO"
           },
           {
-            "attr_ida": "tos",
-            "attr_volta": "TOS"
+            "attr_A": "tos",
+            "attr_B": "TOS"
           },
           {
-            "attr_ida": "tre",
-            "attr_volta": "TRE"
+            "attr_A": "tre",
+            "attr_B": "TRE"
           },
           {
-            "attr_ida": "trs",
-            "attr_volta": "TRS"
+            "attr_A": "trs",
+            "attr_B": "TRS"
           },
           {
-            "attr_ida": "ttc",
-            "attr_volta": "TTC"
+            "attr_A": "ttc",
+            "attr_B": "TTC"
           },
           {
-            "attr_ida": "tuc",
-            "attr_volta": "TUC"
+            "attr_A": "tuc",
+            "attr_B": "TUC"
           },
           {
-            "attr_ida": "txt",
-            "attr_volta": "TXT"
+            "attr_A": "txt",
+            "attr_B": "TXT"
           },
           {
-            "attr_ida": "uid",
-            "attr_volta": "UID"
+            "attr_A": "uid",
+            "attr_B": "UID"
           },
           {
-            "attr_ida": "veg",
-            "attr_volta": "VEG"
+            "attr_A": "veg",
+            "attr_B": "VEG"
           },
           {
-            "attr_ida": "vgt",
-            "attr_volta": "VGT"
+            "attr_A": "vgt",
+            "attr_B": "VGT"
           },
           {
-            "attr_ida": "voi",
-            "attr_volta": "VOI"
+            "attr_A": "voi",
+            "attr_B": "VOI"
           },
           {
-            "attr_ida": "vsp",
-            "attr_volta": "VSP"
+            "attr_A": "vsp",
+            "attr_B": "VSP"
           },
           {
-            "attr_ida": "wcc",
-            "attr_volta": "WCC"
+            "attr_A": "wcc",
+            "attr_B": "WCC"
           },
           {
-            "attr_ida": "wd1",
-            "attr_volta": "WD1"
+            "attr_A": "wd1",
+            "attr_B": "WD1"
           },
           {
-            "attr_ida": "wft",
-            "attr_volta": "WFT"
+            "attr_A": "wft",
+            "attr_B": "WFT"
           },
           {
-            "attr_ida": "wid",
-            "attr_volta": "WID"
+            "attr_A": "wid",
+            "attr_B": "WID"
           },
           {
-            "attr_ida": "wle",
-            "attr_volta": "WLE"
+            "attr_A": "wle",
+            "attr_B": "WLE"
           },
           {
-            "attr_ida": "wst",
-            "attr_volta": "WST"
+            "attr_A": "wst",
+            "attr_B": "WST"
           },
           {
-            "attr_ida": "wtc",
-            "attr_volta": "WTC"
+            "attr_A": "wtc",
+            "attr_B": "WTC"
           },
           {
-            "attr_ida": "zva",
-            "attr_volta": "ZVA"
+            "attr_A": "zva",
+            "attr_B": "ZVA"
           }
     ]
 }

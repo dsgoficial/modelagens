@@ -75,55 +75,55 @@
       "type": "object",
       "properties": {
         "__comment": { "type": "string" },
-        "attr_ida": { "type": "string" },
-        "attr_volta": { "type": "string" },
+        "attr_A": { "type": "string" },
+        "attr_B": { "type": "string" },
         "traducao": {
           "type": "array",
           "items": {
             "type": "object",
             "properties": {
-              "valor_ida": {
+              "valor_A": {
                 "type": ["string", "number", "boolean", "null"]
               },
-              "valor_volta": {
+              "valor_B": {
                 "type": ["string", "number", "boolean", "null"]
               },
               "sentido": {
                 "type": "string",
-                "enum": ["ida", "volta"]
+                "enum": ["A=>B", "B=>A"]
               }
             },
-            "required": ["valor_ida", "valor_volta"],
+            "required": ["valor_A", "valor_B"],
             "additionalProperties": false
           },
           "minItems": 1
         }
       },
-      "required": ["attr_ida", "attr_volta"],
+      "required": ["attr_A", "attr_B"],
       "additionalProperties": false
     },
     "mapeamento_classes": {
       "type": "object",
       "properties": {
         "__comment": { "type": "string" },
-        "classe_ida": { "type": "string" },
-        "classe_volta": { "type": "string" },
-        "com_afixo_geom_ida": { "type": "boolean" },
-        "com_afixo_geom_volta": { "type": "boolean" },
-        "agregar_geom_ida": { "type": "boolean" },
-        "agregar_geom_volta": { "type": "boolean" },
-        "com_schema_ida": { "type": "boolean" },
-        "com_schema_volta": { "type": "boolean" },
+        "classe_A": { "type": "string" },
+        "classe_B": { "type": "string" },
+        "com_afixo_geom_A": { "type": "boolean" },
+        "com_afixo_geom_B": { "type": "boolean" },
+        "agregar_geom_A": { "type": "boolean" },
+        "agregar_geom_B": { "type": "boolean" },
+        "com_schema_A": { "type": "boolean" },
+        "com_schema_B": { "type": "boolean" },
         "sentido": {
           "type": "string",
-          "enum": ["ida", "volta"]
+          "enum": ["A=>B", "B=>A"]
         },
-        "atributos_default_ida": {
+        "atributos_default_B": {
           "type": "array",
           "items": { "$ref": "#/definitions/valores_concatenar" },
           "minItems": 1
         },
-        "atributos_default_volta": {
+        "atributos_default_A": {
           "type": "array",
           "items": { "$ref": "#/definitions/valores_concatenar" },
           "minItems": 1
@@ -133,10 +133,10 @@
           "items": { "$ref": "#/definitions/mapeamento_atributos" },
           "minItems": 1
         },
-        "filtro_ida": {
+        "filtro_A": {
           "$ref": "#/definitions/filtro"
         },
-        "filtro_volta": {
+        "filtro_B": {
           "$ref": "#/definitions/filtro"
         },
         "mapeamento_multiplo": {
@@ -147,28 +147,28 @@
               "__comment": {
                 "type": "string"
               },
-              "tupla_ida": {
+              "tupla_A": {
                 "type": "array",
                 "items": { "$ref": "#/definitions/valores_concatenar" },
                 "minItems": 1
               },
-              "tupla_volta": {
+              "tupla_B": {
                 "type": "array",
                 "items": { "$ref": "#/definitions/valores_concatenar" },
                 "minItems": 1
               },
               "sentido": {
                 "type": "string",
-                "enum": ["ida", "volta"]
+                "enum": ["A=>B", "B=>A"]
               }
             },
-            "required": ["tupla_ida", "tupla_volta"],
+            "required": ["tupla_A", "tupla_B"],
             "additionalProperties": false
           },
           "minItems": 1
         }
       },
-      "required": ["classe_ida", "classe_volta"],
+      "required": ["classe_A", "classe_B"],
       "additionalProperties": false
     }
   },
@@ -182,35 +182,35 @@
       "type": "array",
       "items": { "$ref": "#/definitions/mapeamento_atributos" }
     },
-    "atributos_default_ida": {
-      "description": "Valores default aplicado a todas as classes no mapeamento de ida. Primeiro mapeamento a ser realizado.",
+    "atributos_default_B": {
+      "description": "Valores default aplicado a todas as classes no mapeamento de B=>A. Primeiro mapeamento a ser realizado.",
       "type": "array",
       "items": { "$ref": "#/definitions/valores_concatenar" }
     },
-    "atributos_default_volta": {
-      "description": "Valores default aplicado a todas as classes no mapeamento de volta. Primeiro mapeamento a ser realizado.",
+    "atributos_default_A": {
+      "description": "Valores default aplicado a todas as classes no mapeamento de A=>B. Primeiro mapeamento a ser realizado.",
       "type": "array",
       "items": { "$ref": "#/definitions/valores_concatenar" }
     },
-    "schema_ida": { "type": "string" },
-    "schema_volta": { "type": "string" },
-    "agregar_geom_ida": { "type": "boolean" },
-    "agregar_geom_volta": { "type": "boolean" },
-    "afixo_geom_ida": {
+    "schema_A": { "type": "string" },
+    "schema_B": { "type": "string" },
+    "agregar_geom_A": { "type": "boolean" },
+    "agregar_geom_B": { "type": "boolean" },
+    "afixo_geom_A": {
       "$ref": "#/definitions/afixo"
     },
     "metadados": {
       "type": "object",
       "properties": {
           "versao_arquivo": {"type": "string"},
-          "modelo_ida": {"type": "string"},
-          "versao_modelo_ida": {"type": "string"},
-          "modelo_volta": {"type": "string"},
-          "versao_modelo_volta": {"type": "string"}
+          "modelo_A": {"type": "string"},
+          "versao_modeloA": {"type": "string"},
+          "modelo_B": {"type": "string"},
+          "versao_modelo_B": {"type": "string"}
       },
       "additionalProperties": false
     },
-    "afixo_geom_volta": {
+    "afixo_geom_B": {
       "$ref": "#/definitions/afixo"
     },
     "__comment": {
@@ -220,11 +220,11 @@
   "additionalProperties": false,
   "required": [
     "mapeamento_classes",
-    "agregar_geom_ida",
-    "agregar_geom_volta",
-    "schema_ida",
-    "schema_volta",
-    "afixo_geom_ida",
-    "afixo_geom_volta"
+    "agregar_geom_A",
+    "agregar_geom_B",
+    "schema_A",
+    "schema_B",
+    "afixo_geom_A",
+    "afixo_geom_B"
   ]
 }

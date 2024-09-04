@@ -1,623 +1,623 @@
 {
   "metadados":{
     "versao_arquivo": "0.0",
-    "modelo_ida": "EDGV 2.1.3 DSGTools",
-    "versao_modelo_ida": "2.01",
-    "modelo_volta": "EDGV 2.1.3 Gothic",
-    "versao_modelo_volta": "2.1.3"
+    "modelo_A": "EDGV 2.1.3 DSGTools",
+    "versao_modelo_A": "2.01",
+    "modelo_B": "EDGV 2.1.3 Gothic",
+    "versao_modelo_B": "2.1.3"
   },
   "__comment":"UTF-8",
-  "schema_ida": "cb",
-  "schema_volta": "",
-  "afixo_geom_ida": {
+  "schema_A": "cb",
+  "schema_B": "",
+  "afixo_geom_A": {
     "tipo": "sufixo",
     "POINT": "_p",
     "LINESTRING": "_l",
     "POLYGON": "_a"
   },
-  "agregar_geom_ida": false,
-  "agregar_geom_volta": true,
+  "agregar_geom_A": false,
+  "agregar_geom_B": true,
   "mapeamento_classes": [
     {"__comment":"tra_ponto_rodoviario_ferrov <-> Ponto_Rodoviario_Ferrov",
-      "classe_ida": "tra_ponto_rodoviario_ferrov",
-      "classe_volta": "Ponto_Rodoviario_Ferrov"
+      "classe_A": "tra_ponto_rodoviario_ferrov",
+      "classe_B": "Ponto_Rodoviario_Ferrov"
     },
     {"__comment":"asb_edif_abast_agua <-> Edif_Abast_Agua",
-      "classe_ida": "asb_edif_abast_agua",
-      "classe_volta": "Edif_Abast_Agua",
+      "classe_A": "asb_edif_abast_agua",
+      "classe_B": "Edif_Abast_Agua",
       "mapeamento_atributos": [
         {
-          "attr_ida": "situacaofisica",
-          "attr_volta": "situacaoFisica",
+          "attr_A": "situacaofisica",
+          "attr_B": "situacaoFisica",
           "traducao": [
             {
-              "valor_ida": 4,
-              "valor_volta": 0,
-              "sentido": "ida"
+              "valor_A": 4,
+              "valor_B": 0,
+              "sentido": "A=>B"
             }
           ]
         },
         {
-          "attr_ida": "matconstr",
-          "attr_volta": "matConstr",
+          "attr_A": "matconstr",
+          "attr_B": "matConstr",
           "traducao": [
             {
-              "valor_ida": 5,
-              "valor_volta": 0,
-              "sentido": "ida"
+              "valor_A": 5,
+              "valor_B": 0,
+              "sentido": "A=>B"
             }
           ]
         }
       ]
     },
     {"__comment":"asb_edif_saneamento <-> Edif_Saneamento",
-      "classe_ida": "asb_edif_saneamento",
-      "classe_volta": "Edif_Saneamento",
+      "classe_A": "asb_edif_saneamento",
+      "classe_B": "Edif_Saneamento",
       "mapeamento_atributos": [
         {
-          "attr_ida": "situacaofisica",
-          "attr_volta": "situacaoFisica",
+          "attr_A": "situacaofisica",
+          "attr_B": "situacaoFisica",
           "traducao": [
             {
-              "valor_ida": 4,
-              "valor_volta": 0,
-              "sentido": "ida"
+              "valor_A": 4,
+              "valor_B": 0,
+              "sentido": "A=>B"
             }
           ]
         }
       ]
     },
     {"__comment":"eco_ext_mineral <-> Ext_Mineral",
-      "classe_ida": "eco_ext_mineral",
-      "classe_volta": "Ext_Mineral",
+      "classe_A": "eco_ext_mineral",
+      "classe_B": "Ext_Mineral",
       "mapeamento_atributos": [
         {
-          "attr_ida": "tipoprodutoresiduo",
-          "attr_volta": "tipoProdutoResiduo",
+          "attr_A": "tipoprodutoresiduo",
+          "attr_B": "tipoProdutoResiduo",
           "traducao": [
             {
-              "valor_ida": 98,
-              "valor_volta": 0,
-              "sentido": "ida"
+              "valor_A": 98,
+              "valor_B": 0,
+              "sentido": "A=>B"
             }
           ]
         }
       ]
     },
     {"__comment":"enc_area_energia_eletrica <-> Area_Energia_Eletrica",
-      "classe_ida": "enc_area_energia_eletrica",
-      "classe_volta": "Area_Energia_Eletrica"
+      "classe_A": "enc_area_energia_eletrica",
+      "classe_B": "Area_Energia_Eletrica"
     },
     {"__comment":"enc_est_gerad_energia_eletr <-> Est_Gerad_Energia_Eletr",
-      "classe_ida": "enc_est_gerad_energia_eletr",
-      "classe_volta": "Est_Gerad_Energia_Eletr",
+      "classe_A": "enc_est_gerad_energia_eletr",
+      "classe_B": "Est_Gerad_Energia_Eletr",
       "mapeamento_atributos": [
         {
-          "attr_ida": "situacaofisica",
-          "attr_volta": "situacaoFisica",
+          "attr_A": "situacaofisica",
+          "attr_B": "situacaoFisica",
           "traducao": [
             {
-              "valor_ida": 3,
-              "valor_volta": 0,
-              "sentido": "ida"
+              "valor_A": 3,
+              "valor_B": 0,
+              "sentido": "A=>B"
             }
           ]
         }
       ]
     },
     {"__comment":"enc_ponto_trecho_energia <-> Ponto_Trecho_Energia",
-      "classe_ida": "enc_ponto_trecho_energia",
-      "classe_volta": "Ponto_Trecho_Energia",
+      "classe_A": "enc_ponto_trecho_energia",
+      "classe_B": "Ponto_Trecho_Energia",
       "mapeamento_atributos": [
         {
-          "attr_ida": "tipoptoenergia",
-          "attr_volta": "tipoPtoEnergia",
+          "attr_A": "tipoptoenergia",
+          "attr_B": "tipoPtoEnergia",
           "traducao": [
             {
-              "valor_ida": 0,
-              "valor_volta": 7,
-              "sentido": "volta"
+              "valor_A": 0,
+              "valor_B": 7,
+              "sentido": "B=>A"
             },
             {
-              "valor_ida": 0,
-              "valor_volta": 9,
-              "sentido": "volta"
+              "valor_A": 0,
+              "valor_B": 9,
+              "sentido": "B=>A"
             }
           ]
         }
       ]
     },
     {"__comment":"hid_massa_dagua <-> Massa_Dagua",
-      "classe_ida": "hid_massa_dagua",
-      "classe_volta": "Massa_Dagua",
+      "classe_A": "hid_massa_dagua",
+      "classe_B": "Massa_Dagua",
       "mapeamento_atributos": [
         {
-          "attr_ida": "tipomassadagua",
-          "attr_volta": "tipoMassaDagua",
+          "attr_A": "tipomassadagua",
+          "attr_B": "tipoMassaDagua",
           "traducao": [
             {
-              "valor_ida": 0,
-              "valor_volta": 99,
-              "sentido": "volta"
+              "valor_A": 0,
+              "valor_B": 99,
+              "sentido": "B=>A"
             }
           ]
         }
       ]
     },
     {"__comment":"hid_ponto_drenagem <-> Ponto_Drenagem",
-      "classe_ida": "hid_ponto_drenagem",
-      "classe_volta": "Ponto_Drenagem",
+      "classe_A": "hid_ponto_drenagem",
+      "classe_B": "Ponto_Drenagem",
       "mapeamento_atributos": [
         {
-          "attr_ida": "relacionado",
-          "attr_volta": "relacionado",
+          "attr_A": "relacionado",
+          "attr_B": "relacionado",
           "traducao": [
             {
-              "valor_ida": 8,
-              "valor_volta": 80,
-              "sentido": "volta"
+              "valor_A": 8,
+              "valor_B": 80,
+              "sentido": "B=>A"
             },
             {
-              "valor_ida": 9,
-              "valor_volta": 90,
-              "sentido": "volta"
+              "valor_A": 9,
+              "valor_B": 90,
+              "sentido": "B=>A"
             },
             {
-              "valor_ida": 10,
-              "valor_volta": 100,
-              "sentido": "volta"
+              "valor_A": 10,
+              "valor_B": 100,
+              "sentido": "B=>A"
             },
             {
-              "valor_ida": 11,
-              "valor_volta": 110,
-              "sentido": "volta"
+              "valor_A": 11,
+              "valor_B": 110,
+              "sentido": "B=>A"
             },
             {
-              "valor_ida": 12,
-              "valor_volta": 120,
-              "sentido": "volta"
+              "valor_A": 12,
+              "valor_B": 120,
+              "sentido": "B=>A"
             }
           ]
         }
       ]
     },
     {"__comment":"hid_trecho_drenagem <-> Trecho_Drenagem",
-      "classe_ida": "hid_trecho_drenagem",
-      "classe_volta": "Trecho_Drenagem",
+      "classe_A": "hid_trecho_drenagem",
+      "classe_B": "Trecho_Drenagem",
       "mapeamento_atributos": [
         {
-          "attr_ida": "coincidecomdentrode",
-          "attr_volta": "coincideComDentroDe",
+          "attr_A": "coincidecomdentrode",
+          "attr_B": "coincideComDentroDe",
           "traducao": [
             {
-              "valor_ida": 15,
-              "valor_volta": 1,
-              "sentido": "ida"
+              "valor_A": 15,
+              "valor_B": 1,
+              "sentido": "A=>B"
             },
             {
-              "valor_ida": 97,
-              "valor_volta": 24,
-              "sentido": "volta"
+              "valor_A": 97,
+              "valor_B": 24,
+              "sentido": "B=>A"
             }
           ]
         }
       ]
     },
     {"__comment":"lim_limite_area_especial <-> Limite_Area_Especial",
-      "classe_ida": "lim_limite_area_especial",
-      "classe_volta": "Limite_Area_Especial",
+      "classe_A": "lim_limite_area_especial",
+      "classe_B": "Limite_Area_Especial",
       "mapeamento_atributos": [
         {
-          "attr_ida": "coincidecomdentrode",
-          "attr_volta": "coincideComDentroDe",
+          "attr_A": "coincidecomdentrode",
+          "attr_B": "coincideComDentroDe",
           "traducao": [
             {
-              "valor_ida": 9,
-              "valor_volta": 8,
-              "sentido": "ida"
+              "valor_A": 9,
+              "valor_B": 8,
+              "sentido": "A=>B"
             }
           ]
         }
       ]
     },
     {"__comment":"lim_limite_intra_munic_adm <-> Limite_Intra_Munic_Adm",
-      "classe_ida": "lim_limite_intra_munic_adm",
-      "classe_volta": "Limite_Intra_Munic_Adm",
+      "classe_A": "lim_limite_intra_munic_adm",
+      "classe_B": "Limite_Intra_Munic_Adm",
       "mapeamento_atributos": [
         {
-          "attr_ida": "coincidecomdentrode",
-          "attr_volta": "coincideComDentroDe",
+          "attr_A": "coincidecomdentrode",
+          "attr_B": "coincideComDentroDe",
           "traducao": [
             {
-              "valor_ida": 9,
-              "valor_volta": 8,
-              "sentido": "ida"
+              "valor_A": 9,
+              "valor_B": 8,
+              "sentido": "A=>B"
             }
           ]
         }
       ]
     },
     {"__comment":"lim_limite_operacional <-> Limite_Operacional",
-      "classe_ida": "lim_limite_operacional",
-      "classe_volta": "Limite_Operacional",
+      "classe_A": "lim_limite_operacional",
+      "classe_B": "Limite_Operacional",
       "mapeamento_atributos": [
         {
-          "attr_ida": "coincidecomdentrode",
-          "attr_volta": "coincideComDentroDe",
+          "attr_A": "coincidecomdentrode",
+          "attr_B": "coincideComDentroDe",
           "traducao": [
             {
-              "valor_ida": 9,
-              "valor_volta": 8,
-              "sentido": "ida"
+              "valor_A": 9,
+              "valor_B": 8,
+              "sentido": "A=>B"
             }
           ]
         }
       ]
     },
     {"__comment":"lim_limite_particular <-> Limite_Particular",
-      "classe_ida": "lim_limite_particular",
-      "classe_volta": "Limite_Particular",
+      "classe_A": "lim_limite_particular",
+      "classe_B": "Limite_Particular",
       "mapeamento_atributos": [
         {
-          "attr_ida": "coincidecomdentrode",
-          "attr_volta": "coincideComDentroDe",
+          "attr_A": "coincidecomdentrode",
+          "attr_B": "coincideComDentroDe",
           "traducao": [
             {
-              "valor_ida": 9,
-              "valor_volta": 8,
-              "sentido": "ida"
+              "valor_A": 9,
+              "valor_B": 8,
+              "sentido": "A=>B"
             }
           ]
         }
       ]
     },
     {"__comment":"lim_limite_politico_adm <-> Limite_Politico_Adm",
-      "classe_ida": "lim_limite_politico_adm",
-      "classe_volta": "Limite_Politico_Adm",
+      "classe_A": "lim_limite_politico_adm",
+      "classe_B": "Limite_Politico_Adm",
       "mapeamento_atributos": [
         {
-          "attr_ida": "coincidecomdentrode",
-          "attr_volta": "coincideComDentroDe",
+          "attr_A": "coincidecomdentrode",
+          "attr_B": "coincideComDentroDe",
           "traducao": [
             {
-              "valor_ida": 9,
-              "valor_volta": 8,
-              "sentido": "ida"
+              "valor_A": 9,
+              "valor_B": 8,
+              "sentido": "A=>B"
             }
           ]
         }
       ]
     },
     {"__comment":"lim_linha_de_limite <-> Linha_De_Limite",
-      "classe_ida": "lim_linha_de_limite",
-      "classe_volta": "Linha_De_Limite",
+      "classe_A": "lim_linha_de_limite",
+      "classe_B": "Linha_De_Limite",
       "mapeamento_atributos": [
         {
-          "attr_ida": "coincidecomdentrode",
-          "attr_volta": "coincideComDentroDe",
+          "attr_A": "coincidecomdentrode",
+          "attr_B": "coincideComDentroDe",
           "traducao": [
             {
-              "valor_ida": 9,
-              "valor_volta": 8,
-              "sentido": "ida"
+              "valor_A": 9,
+              "valor_B": 8,
+              "sentido": "A=>B"
             }
           ]
         }
       ]
     },
     {"__comment":"lim_outros_limites_oficiais <-> Outros_Limites_Oficiais",
-      "classe_ida": "lim_outros_limites_oficiais",
-      "classe_volta": "Outros_Limites_Oficiais",
+      "classe_A": "lim_outros_limites_oficiais",
+      "classe_B": "Outros_Limites_Oficiais",
       "mapeamento_atributos": [
         {
-          "attr_ida": "coincidecomdentrode",
-          "attr_volta": "coincideComDentroDe",
+          "attr_A": "coincidecomdentrode",
+          "attr_B": "coincideComDentroDe",
           "traducao": [
             {
-              "valor_ida": 9,
-              "valor_volta": 8,
-              "sentido": "ida"
+              "valor_A": 9,
+              "valor_B": 8,
+              "sentido": "A=>B"
             }
           ]
         }
       ]
     },
     {"__comment":"lim_terra_indigena <-> Terra_Indigena",
-      "classe_ida": "lim_terra_indigena",
-      "classe_volta": "Terra_Indigena",
+      "classe_A": "lim_terra_indigena",
+      "classe_B": "Terra_Indigena",
       "mapeamento_atributos": [
         {
-          "attr_ida": "situacaojuridica",
-          "attr_volta": "situacaoJuridica",
+          "attr_A": "situacaojuridica",
+          "attr_B": "situacaoJuridica",
           "traducao": [
             {
-              "valor_ida": 0,
-              "valor_volta": 1,
-              "sentido": "ida"
+              "valor_A": 0,
+              "valor_B": 1,
+              "sentido": "A=>B"
             }
           ]
         }
       ]
     },
     {"__comment":"loc_edif_habitacional <-> Edif_Habitacional",
-      "classe_ida": "loc_edif_habitacional",
-      "classe_volta": "Edif_Habitacional",
+      "classe_A": "loc_edif_habitacional",
+      "classe_B": "Edif_Habitacional",
       "mapeamento_atributos": [
         {
-          "attr_ida": "matconstr",
-          "attr_volta": "matConstr",
+          "attr_A": "matconstr",
+          "attr_B": "matConstr",
           "traducao": [
             {
-              "valor_ida": 4,
-              "valor_volta": 0,
-              "sentido": "ida"
+              "valor_A": 4,
+              "valor_B": 0,
+              "sentido": "A=>B"
             }
           ]
         }
       ]
     },
     {"__comment":"pto_pto_ref_geod_topo <-> Pto_Ref_Geod_Topo",
-      "classe_ida": "pto_pto_ref_geod_topo",
-      "classe_volta": "Pto_Ref_Geod_Topo",
+      "classe_A": "pto_pto_ref_geod_topo",
+      "classe_B": "Pto_Ref_Geod_Topo",
       "mapeamento_atributos": [
         {
-          "attr_ida": "referencialaltim",
-          "attr_volta": "referencialAltim",
+          "attr_A": "referencialaltim",
+          "attr_B": "referencialAltim",
           "traducao": [
             {
-              "valor_ida": 5,
-              "valor_volta": 6
+              "valor_A": 5,
+              "valor_B": 6
             }
           ]
         }
       ]
     },
     {"__comment":"rel_elemento_fisiog_natural <-> Elemento_Fisiog_Natural",
-      "classe_ida": "rel_elemento_fisiog_natural",
-      "classe_volta": "Elemento_Fisiog_Natural",
+      "classe_A": "rel_elemento_fisiog_natural",
+      "classe_B": "Elemento_Fisiog_Natural",
       "mapeamento_atributos": [
         {
-          "attr_ida": "tipoelemnat",
-          "attr_volta": "tipoElemNat",
+          "attr_A": "tipoelemnat",
+          "attr_B": "tipoElemNat",
           "traducao": [
             {
-              "valor_ida": 8,
-              "valor_volta": 16
+              "valor_A": 8,
+              "valor_B": 16
             },
             {
-              "valor_ida": 13,
-              "valor_volta": 18
+              "valor_A": 13,
+              "valor_B": 18
             },
             {
-              "valor_ida": 14,
-              "valor_volta": 17
+              "valor_A": 14,
+              "valor_B": 17
             }
           ]
         }  
       ]
     },
     {"__comment":"rel_terreno_exposto <-> Terreno_Exposto",
-      "classe_ida": "rel_terreno_exposto",
-      "classe_volta": "Terreno_Exposto",
+      "classe_A": "rel_terreno_exposto",
+      "classe_B": "Terreno_Exposto",
       "mapeamento_atributos": [
         {
-          "attr_ida": "causaexposicao",
-          "attr_volta": "causaExposicao",
+          "attr_A": "causaexposicao",
+          "attr_B": "causaExposicao",
           "traducao": [
             {
-              "valor_ida": 0,
-              "valor_volta": 4,
-              "sentido": "ida"
+              "valor_A": 0,
+              "valor_B": 4,
+              "sentido": "A=>B"
             }
           ]
         }
       ]
     },
     {"__comment":"tra_atracadouro <-> Atracadouro",
-      "classe_ida": "tra_atracadouro",
-      "classe_volta": "Atracadouro",
+      "classe_A": "tra_atracadouro",
+      "classe_B": "Atracadouro",
       "mapeamento_atributos": [
         {
-          "attr_ida": "matconstr",
-          "attr_volta": "matConstr",
+          "attr_A": "matconstr",
+          "attr_B": "matConstr",
           "traducao": [
             {
-              "valor_ida": 4,
-              "valor_volta": 0,
-              "sentido": "ida"
+              "valor_A": 4,
+              "valor_B": 0,
+              "sentido": "A=>B"
             }
           ]
         }
       ]
     },
     {"__comment":"tra_condutor_hidrico <-> Condutor_Hidrico",
-      "classe_ida": "tra_condutor_hidrico",
-      "classe_volta": "Condutor_Hidrico",
+      "classe_A": "tra_condutor_hidrico",
+      "classe_B": "Condutor_Hidrico",
       "mapeamento_atributos": [
         {
-          "attr_ida": "posicaorelativa",
-          "attr_volta": "posicaoRelativa",
+          "attr_A": "posicaorelativa",
+          "attr_B": "posicaoRelativa",
           "traducao": [
             {
-              "valor_ida": 4,
-              "valor_volta": 2,
-              "sentido": "ida"
+              "valor_A": 4,
+              "valor_B": 2,
+              "sentido": "A=>B"
             },
             {
-              "valor_ida": 5,
-              "valor_volta": 6,
-              "sentido": "ida"
+              "valor_A": 5,
+              "valor_B": 6,
+              "sentido": "A=>B"
             }
           ]
         },
         {
-          "attr_ida": "tipocondutor",
-          "attr_volta": "tipoTrechoDuto"
+          "attr_A": "tipocondutor",
+          "attr_B": "tipoTrechoDuto"
         }
       ]
     },
     {"__comment":"tra_eclusa <-> Eclusa",
-      "classe_ida": "tra_eclusa",
-      "classe_volta": "Eclusa",
+      "classe_A": "tra_eclusa",
+      "classe_B": "Eclusa",
       "mapeamento_atributos": [
         {
-          "attr_ida": "situacaofisica",
-          "attr_volta": "situacaoFisica",
+          "attr_A": "situacaofisica",
+          "attr_B": "situacaoFisica",
           "traducao": [
             {
-              "valor_ida": 0,
-              "valor_volta": 4,
-              "sentido": "volta"
+              "valor_A": 0,
+              "valor_B": 4,
+              "sentido": "B=>A"
             }
           ]
         }
       ]
     },
     {"__comment":"tra_edif_constr_aeroportuaria <-> Edif_Const_Aeroportuaria",
-      "classe_ida": "tra_edif_constr_aeroportuaria",
-      "classe_volta": "Edif_Const_Aeroportuaria",
+      "classe_A": "tra_edif_constr_aeroportuaria",
+      "classe_B": "Edif_Const_Aeroportuaria",
       "mapeamento_atributos": [
         {
-          "attr_ida": "administracao",
-          "attr_volta": "administracao",
+          "attr_A": "administracao",
+          "attr_B": "administracao",
           "traducao": [
             {
-              "valor_ida": 0,
-              "valor_volta": 7,
-              "sentido": "volta"
+              "valor_A": 0,
+              "valor_B": 7,
+              "sentido": "B=>A"
             }
           ]
         }
       ]
     },
     {"__comment":"tra_funicular <-> Funicular",
-      "classe_ida": "tra_funicular",
-      "classe_volta": "Funicular",
+      "classe_A": "tra_funicular",
+      "classe_B": "Funicular",
       "mapeamento_atributos": [
         {
-          "attr_ida": "situacaofisica",
-          "attr_volta": "situacaoFisica",
+          "attr_A": "situacaofisica",
+          "attr_B": "situacaoFisica",
           "traducao": [
             {
-              "valor_ida": 4,
-              "valor_volta": 0,
-              "sentido": "ida"
+              "valor_A": 4,
+              "valor_B": 0,
+              "sentido": "A=>B"
             }
           ]
         }
       ]
     },
     {"__comment":"tra_local_critico <-> Local_Critico",
-      "classe_ida": "tra_local_critico",
-      "classe_volta": "Local_Critico",
+      "classe_A": "tra_local_critico",
+      "classe_B": "Local_Critico",
       "mapeamento_atributos": [
         {
-          "attr_ida": "tipolocalcrit",
-          "attr_volta": "tipoLocalCrit",
+          "attr_A": "tipolocalcrit",
+          "attr_B": "tipoLocalCrit",
           "traducao": [
             {
-              "valor_ida": 0,
-              "valor_volta": 7,
-              "sentido": "ida"
+              "valor_A": 0,
+              "valor_B": 7,
+              "sentido": "A=>B"
             }
           ]
         }
       ]
     },
     {"__comment":"tra_trecho_ferroviario <-> Trecho_Ferroviario",
-      "classe_ida": "tra_trecho_ferroviario",
-      "classe_volta": "Trecho_Ferroviario",
+      "classe_A": "tra_trecho_ferroviario",
+      "classe_B": "Trecho_Ferroviario",
       "mapeamento_atributos": [
         {
-          "attr_ida": "posicaorelativa",
-          "attr_volta": "posicaoRelativa",
+          "attr_A": "posicaorelativa",
+          "attr_B": "posicaoRelativa",
           "traducao": [
             {
-              "valor_ida": 0,
-              "valor_volta": 2,
-              "sentido": "ida"
+              "valor_A": 0,
+              "valor_B": 2,
+              "sentido": "A=>B"
             }
           ]
         },
         {
-          "attr_ida": "cargasuportmaxima",
-          "attr_volta": "pesoMaxSuportTon"
+          "attr_A": "cargasuportmaxima",
+          "attr_B": "pesoMaxSuportTon"
         }
       ]
     },
     {"__comment":"tra_tunel <-> Tunel",
-      "classe_ida": "tra_tunel",
-      "classe_volta": "Tunel",
+      "classe_A": "tra_tunel",
+      "classe_B": "Tunel",
       "mapeamento_atributos": [
         {
-          "attr_ida": "posicaopista",
-          "attr_volta": "posicaoPista",
+          "attr_A": "posicaopista",
+          "attr_B": "posicaoPista",
           "traducao": [
             {
-              "valor_ida": 97,
-              "valor_volta": 16,
-              "sentido": "volta"
+              "valor_A": 97,
+              "valor_B": 16,
+              "sentido": "B=>A"
             }
           ]
         }
       ]
     },
     {"__comment":"veg_veg_cultivada <-> Veg_Cultivada",
-      "classe_ida": "veg_veg_cultivada",
-      "classe_volta": "Veg_Cultivada",
+      "classe_A": "veg_veg_cultivada",
+      "classe_B": "Veg_Cultivada",
       "mapeamento_atributos": [
         {
-          "attr_ida": "cultivopredominante",
-          "attr_volta": "cultivoPredominante",
+          "attr_A": "cultivopredominante",
+          "attr_B": "cultivoPredominante",
           "traducao": [
             {
-              "valor_ida": 96,
-              "valor_volta": 0,
-              "sentido": "volta"
+              "valor_A": 96,
+              "valor_B": 0,
+              "sentido": "B=>A"
             },
             {
-              "valor_ida": 96,
-              "valor_volta": 34,
-              "sentido": "volta"
+              "valor_A": 96,
+              "valor_B": 34,
+              "sentido": "B=>A"
             },
             {
-              "valor_ida": 96,
-              "valor_volta": 35,
-              "sentido": "volta"
+              "valor_A": 96,
+              "valor_B": 35,
+              "sentido": "B=>A"
             },
             {
-              "valor_ida": 96,
-              "valor_volta": 36,
-              "sentido": "volta"
+              "valor_A": 96,
+              "valor_B": 36,
+              "sentido": "B=>A"
             },
             {
-              "valor_ida": 96,
-              "valor_volta": 37,
-              "sentido": "volta"
+              "valor_A": 96,
+              "valor_B": 37,
+              "sentido": "B=>A"
             },
             {
-              "valor_ida": 96,
-              "valor_volta": 38,
-              "sentido": "volta"
+              "valor_A": 96,
+              "valor_B": 38,
+              "sentido": "B=>A"
             },
             {
-              "valor_ida": 96,
-              "valor_volta": 39,
-              "sentido": "volta"
+              "valor_A": 96,
+              "valor_B": 39,
+              "sentido": "B=>A"
             }
           ]
         }
       ]
     },
     {"__comment":"loc_cidade <-> Cidade | tipoCidade = 1",
-      "classe_ida": "loc_cidade",
-      "classe_volta": "Cidade",
-      "filtro_volta": 
+      "classe_A": "loc_cidade",
+      "classe_B": "Cidade",
+      "filtro_B": 
           {
             "nome_atributo": "tipoCidade",
             "valor": 1
           },
-      "atributos_default_ida": [
+      "atributos_default_B": [
         {
           "nome_atributo": "tipoCidade",
           "valor": 1
@@ -625,9 +625,9 @@
       ]
     },
     {"__comment":"loc_capital <-> Cidade | tipoCidade = 2 OR tipoCidade = 3",
-      "classe_ida": "loc_capital",
-      "classe_volta": "Cidade",
-      "filtro_volta": {
+      "classe_A": "loc_capital",
+      "classe_B": "Cidade",
+      "filtro_B": {
           "$or": [
             {
               "nome_atributo": "tipoCidade",
@@ -641,25 +641,25 @@
         },
       "mapeamento_atributos": [
         {
-          "attr_ida": "tipocapital",
-          "attr_volta": "tipoCidade"
+          "attr_A": "tipocapital",
+          "attr_B": "tipoCidade"
         }  
       ]
     },
     {"__comment":"loc_aglom_rural_de_ext_urbana <-> Aglomerado_Rural | tipoAglomerado = 1",
-      "classe_ida": "loc_aglom_rural_de_ext_urbana",
-      "classe_volta": "Aglomerado_Rural",
-      "filtro_volta": {
+      "classe_A": "loc_aglom_rural_de_ext_urbana",
+      "classe_B": "Aglomerado_Rural",
+      "filtro_B": {
               "nome_atributo": "tipoAglomerado",
               "valor": 1
         },
       "mapeamento_atributos": [
         {
-          "attr_ida": "identificador",
-          "attr_volta": "identificadorPosicGeo"
+          "attr_A": "identificador",
+          "attr_B": "identificadorPosicGeo"
         }
       ],
-      "atributos_default_ida": [
+      "atributos_default_B": [
         {
           "nome_atributo": "tipoAglomerado",
           "valor": 1
@@ -667,9 +667,9 @@
       ]
     },
     {"__comment":"loc_aglomerado_rural_isolado <-> Aglomerado_Rural | tipoAglomerado = 2,3,4",
-      "classe_ida": "loc_aglomerado_rural_isolado",
-      "classe_volta": "Aglomerado_Rural",
-      "filtro_volta": {
+      "classe_A": "loc_aglomerado_rural_isolado",
+      "classe_B": "Aglomerado_Rural",
+      "filtro_B": {
         "$or": [
           {
             "nome_atributo": "tipoAglomerado",
@@ -687,37 +687,37 @@
       },
       "mapeamento_atributos": [
         {
-          "attr_ida": "identificador",
-          "attr_volta": "identificadorPosicGeo"
+          "attr_A": "identificador",
+          "attr_B": "identificadorPosicGeo"
         },
         {
-          "attr_ida": "tipoaglomrurisol",
-          "attr_volta": "tipoAglomerado",
+          "attr_A": "tipoaglomrurisol",
+          "attr_B": "tipoAglomerado",
           "traducao": [
             {
-              "valor_ida": 5,
-              "valor_volta": 2
+              "valor_A": 5,
+              "valor_B": 2
             },
             {
-              "valor_ida": 6,
-              "valor_volta": 3
+              "valor_A": 6,
+              "valor_B": 3
             },
             {
-              "valor_ida": 7,
-              "valor_volta": 4
+              "valor_A": 7,
+              "valor_B": 4
             }
           ]
         }
       ]
     },
     {"__comment":"loc_area_urbana_isolada | tipoassociado = 1 <-> Area_Urbana_Cidade",
-      "classe_ida": "loc_area_urbana_isolada",
-      "filtro_ida": {
+      "classe_A": "loc_area_urbana_isolada",
+      "filtro_A": {
             "nome_atributo": "tipoassociado",
             "valor": 1
       },
-      "classe_volta": "Area_Urbana_Cidade",
-      "atributos_default_volta": [
+      "classe_B": "Area_Urbana_Cidade",
+      "atributos_default_A": [
         {
           "nome_atributo": "tipoassociado",
           "valor": 1
@@ -725,13 +725,13 @@
       ]
     },
     {"__comment":"loc_area_urbana_isolada | tipoassociado = 4 <-> Area_Urbana_Isolada_Vila",
-      "classe_ida": "loc_area_urbana_isolada",
-      "filtro_ida": {
+      "classe_A": "loc_area_urbana_isolada",
+      "filtro_A": {
             "nome_atributo": "tipoassociado",
             "valor": 4
       },
-      "classe_volta": "Area_Urbana_Isolada_Vila",
-      "atributos_default_volta": [
+      "classe_B": "Area_Urbana_Isolada_Vila",
+      "atributos_default_A": [
         {
           "nome_atributo": "tipoassociado",
           "valor": 4
@@ -739,233 +739,233 @@
       ]
     },
     {"__comment":"adm_area_pub_civil <-> Area_Pub_Civil",
-      "classe_ida": "adm_area_pub_civil",
-      "classe_volta": "Area_Pub_Civil"
+      "classe_A": "adm_area_pub_civil",
+      "classe_B": "Area_Pub_Civil"
     },
     {"__comment":"adm_area_pub_militar <-> Area_Pub_Militar",
-      "classe_ida": "adm_area_pub_militar",
-      "classe_volta": "Area_Pub_Militar"
+      "classe_A": "adm_area_pub_militar",
+      "classe_B": "Area_Pub_Militar"
     },
     {"__comment":"adm_descontinuidade_geometrica <-> Descontinuidade_Geom_ADM",
-      "classe_ida": "adm_descontinuidade_geometrica",
-      "classe_volta": "Descontinuidade_Geom_ADM"
+      "classe_A": "adm_descontinuidade_geometrica",
+      "classe_B": "Descontinuidade_Geom_ADM"
     },
     {"__comment":"adm_edif_pub_civil <-> Edif_Pub_Civil",
-      "classe_ida": "adm_edif_pub_civil",
-      "classe_volta": "Edif_Pub_Civil",
+      "classe_A": "adm_edif_pub_civil",
+      "classe_B": "Edif_Pub_Civil",
       "mapeamento_atributos": [
         {
-          "attr_ida": "tipoedifcivil",
-          "attr_volta": "tipoEdif"
+          "attr_A": "tipoedifcivil",
+          "attr_B": "tipoEdif"
         }
       ]
     },
     {"__comment":"adm_edif_pub_militar <-> Edif_Pub_Militar",
-      "classe_ida": "adm_edif_pub_militar",
-      "classe_volta": "Edif_Pub_Militar",
+      "classe_A": "adm_edif_pub_militar",
+      "classe_B": "Edif_Pub_Militar",
       "mapeamento_atributos": [
         {
-          "attr_ida": "tipoedifmil",
-          "attr_volta": "tipoEdif"
+          "attr_A": "tipoedifmil",
+          "attr_B": "tipoEdif"
         }
       ]
     },
     {"__comment":"adm_posto_fiscal <-> Posto_Fiscal",
-      "classe_ida": "adm_posto_fiscal",
-      "classe_volta": "Posto_Fiscal",
+      "classe_A": "adm_posto_fiscal",
+      "classe_B": "Posto_Fiscal",
       "mapeamento_atributos": [
         {
-          "attr_ida": "tipopostofisc",
-          "attr_volta": "tipoEdif"
+          "attr_A": "tipopostofisc",
+          "attr_B": "tipoEdif"
         }
       ]
     },
     {"__comment":"adm_posto_pol_rod <-> Posto_Pol_Rod",
-      "classe_ida": "adm_posto_pol_rod",
-      "classe_volta": "Posto_Pol_Rod",
+      "classe_A": "adm_posto_pol_rod",
+      "classe_B": "Posto_Pol_Rod",
       "mapeamento_atributos": [
         {
-          "attr_ida": "tipopostopol",
-          "attr_volta": "tipoEdif"
+          "attr_A": "tipopostopol",
+          "attr_B": "tipoEdif"
         }
       ]
     },
     {"__comment":"asb_area_abast_agua <-> Area_Abast_Agua",
-      "classe_ida": "asb_area_abast_agua",
-      "classe_volta": "Area_Abast_Agua"
+      "classe_A": "asb_area_abast_agua",
+      "classe_B": "Area_Abast_Agua"
     },
     {"__comment":"asb_area_saneamento <-> Area_Saneamento",
-      "classe_ida": "asb_area_saneamento",
-      "classe_volta": "Area_Saneamento"
+      "classe_A": "asb_area_saneamento",
+      "classe_B": "Area_Saneamento"
     },
     {"__comment":"asb_cemiterio <-> Cemiterio",
-      "classe_ida": "asb_cemiterio",
-      "classe_volta": "Cemiterio"
+      "classe_A": "asb_cemiterio",
+      "classe_B": "Cemiterio"
     },
     {"__comment":"asb_dep_abast_agua <-> Dep_Abast_Agua",
-      "classe_ida": "asb_dep_abast_agua",
-      "classe_volta": "Dep_Abast_Agua"
+      "classe_A": "asb_dep_abast_agua",
+      "classe_B": "Dep_Abast_Agua"
     },
     {"__comment":"asb_dep_saneamento <-> Dep_Saneamento",
-      "classe_ida": "asb_dep_saneamento",
-      "classe_volta": "Dep_Saneamento"
+      "classe_A": "asb_dep_saneamento",
+      "classe_B": "Dep_Saneamento"
     },
     {"__comment":"asb_descontinuidade_geometrica <-> Descontinuidade_Geom_ASB",
-      "classe_ida": "asb_descontinuidade_geometrica",
-      "classe_volta": "Descontinuidade_Geom_ASB"
+      "classe_A": "asb_descontinuidade_geometrica",
+      "classe_B": "Descontinuidade_Geom_ASB"
     },
     {"__comment":"aux_moldura <-> limitegeografico",
-      "classe_ida": "aux_moldura",
-      "classe_volta": "limitegeografico"
+      "classe_A": "aux_moldura",
+      "classe_B": "limitegeografico"
     },
     {"__comment":"aux_objeto_desconhecido <-> Objeto_Desconhecido",
-      "classe_ida": "aux_objeto_desconhecido",
-      "classe_volta": "Objeto_Desconhecido"
+      "classe_A": "aux_objeto_desconhecido",
+      "classe_B": "Objeto_Desconhecido"
     },
     {"__comment":"eco_area_agrop_ext_veg_pesca <-> Area_Agrop_Ext_Veg_Pesca",
-      "classe_ida": "eco_area_agrop_ext_veg_pesca",
-      "classe_volta": "Area_Agrop_Ext_Veg_Pesca"
+      "classe_A": "eco_area_agrop_ext_veg_pesca",
+      "classe_B": "Area_Agrop_Ext_Veg_Pesca"
     },
     {"__comment":"eco_area_comerc_serv <-> Area_Comerc_Serv",
-      "classe_ida": "eco_area_comerc_serv",
-      "classe_volta": "Area_Comerc_Serv"
+      "classe_A": "eco_area_comerc_serv",
+      "classe_B": "Area_Comerc_Serv"
     },
     {"__comment":"eco_area_ext_mineral <-> Area_Ext_Mineral",
-      "classe_ida": "eco_area_ext_mineral",
-      "classe_volta": "Area_Ext_Mineral"
+      "classe_A": "eco_area_ext_mineral",
+      "classe_B": "Area_Ext_Mineral"
     },
     {"__comment":"eco_area_industrial <-> Area_Industrial",
-      "classe_ida": "eco_area_industrial",
-      "classe_volta": "Area_Industrial"
+      "classe_A": "eco_area_industrial",
+      "classe_B": "Area_Industrial"
     },
     {"__comment":"eco_deposito_geral <-> Deposito_Geral",
-      "classe_ida": "eco_deposito_geral",
-      "classe_volta": "Deposito_Geral"
+      "classe_A": "eco_deposito_geral",
+      "classe_B": "Deposito_Geral"
     },
     {"__comment":"eco_descontinuidade_geometrica <-> Descontinuidade_Geom_ECO",
-      "classe_ida": "eco_descontinuidade_geometrica",
-      "classe_volta": "Descontinuidade_Geom_ECO"
+      "classe_A": "eco_descontinuidade_geometrica",
+      "classe_B": "Descontinuidade_Geom_ECO"
     },
     {"__comment":"eco_edif_agrop_ext_veg_pesca <-> Edif_Agrop_Ext_Veg_Pesca",
-      "classe_ida": "eco_edif_agrop_ext_veg_pesca",
-      "classe_volta": "Edif_Agrop_Ext_Veg_Pesca"
+      "classe_A": "eco_edif_agrop_ext_veg_pesca",
+      "classe_B": "Edif_Agrop_Ext_Veg_Pesca"
     },
     {"__comment":"eco_edif_comerc_serv <-> Edif_Comerc_Serv",
-      "classe_ida": "eco_edif_comerc_serv",
-      "classe_volta": "Edif_Comerc_Serv"
+      "classe_A": "eco_edif_comerc_serv",
+      "classe_B": "Edif_Comerc_Serv"
     },
     {"__comment":"eco_edif_ext_mineral <-> Edif_Ext_Mineral",
-      "classe_ida": "eco_edif_ext_mineral",
-      "classe_volta": "Edif_Ext_Mineral"
+      "classe_A": "eco_edif_ext_mineral",
+      "classe_B": "Edif_Ext_Mineral"
     },
     {"__comment":"eco_edif_industrial <-> Edif_Industrial",
-      "classe_ida": "eco_edif_industrial",
-      "classe_volta": "Edif_Industrial"
+      "classe_A": "eco_edif_industrial",
+      "classe_B": "Edif_Industrial"
     },
     {"__comment":"eco_equip_agropec <-> Equip_Agropec",
-      "classe_ida": "eco_equip_agropec",
-      "classe_volta": "Equip_Agropec"
+      "classe_A": "eco_equip_agropec",
+      "classe_B": "Equip_Agropec"
     },
     {"__comment":"eco_plataforma <-> Plataforma",
-      "classe_ida": "eco_plataforma",
-      "classe_volta": "Plataforma"
+      "classe_A": "eco_plataforma",
+      "classe_B": "Plataforma"
     },
     {"__comment":"edu_area_ensino <-> Area_Ensino",
-      "classe_ida": "edu_area_ensino",
-      "classe_volta": "Area_Ensino"
+      "classe_A": "edu_area_ensino",
+      "classe_B": "Area_Ensino"
     },
     {"__comment":"edu_area_lazer <-> Area_Lazer",
-      "classe_ida": "edu_area_lazer",
-      "classe_volta": "Area_Lazer"
+      "classe_A": "edu_area_lazer",
+      "classe_B": "Area_Lazer"
     },
     {"__comment":"edu_area_religiosa <-> Area_Religiosa",
-      "classe_ida": "edu_area_religiosa",
-      "classe_volta": "Area_Religiosa"
+      "classe_A": "edu_area_religiosa",
+      "classe_B": "Area_Religiosa"
     },
     {"__comment":"edu_area_ruinas <-> Area_Ruinas",
-      "classe_ida": "edu_area_ruinas",
-      "classe_volta": "Area_Ruinas"
+      "classe_A": "edu_area_ruinas",
+      "classe_B": "Area_Ruinas"
     },
     {"__comment":"edu_arquibancada <-> Arquibancada",
-      "classe_ida": "edu_arquibancada",
-      "classe_volta": "Arquibancada"
+      "classe_A": "edu_arquibancada",
+      "classe_B": "Arquibancada"
     },
     {"__comment":"edu_campo_quadra <-> Campo_Quadra",
-      "classe_ida": "edu_campo_quadra",
-      "classe_volta": "Campo_Quadra"
+      "classe_A": "edu_campo_quadra",
+      "classe_B": "Campo_Quadra"
     },
     {"__comment":"edu_coreto_tribuna <-> Coreto_Tribuna",
-      "classe_ida": "edu_coreto_tribuna",
-      "classe_volta": "Coreto_Tribuna"
+      "classe_A": "edu_coreto_tribuna",
+      "classe_B": "Coreto_Tribuna"
     },
     {"__comment":"edu_descontinuidade_geometrica <-> Descontinuidade_Geom_EDU",
-      "classe_ida": "edu_descontinuidade_geometrica",
-      "classe_volta": "Descontinuidade_Geom_EDU"
+      "classe_A": "edu_descontinuidade_geometrica",
+      "classe_B": "Descontinuidade_Geom_EDU"
     },
     {"__comment":"edu_edif_const_lazer <-> Edif_Const_Lazer",
-      "classe_ida": "edu_edif_const_lazer",
-      "classe_volta": "Edif_Const_Lazer"
+      "classe_A": "edu_edif_const_lazer",
+      "classe_B": "Edif_Const_Lazer"
     },
     {"__comment":"edu_edif_const_turistica <-> Edif_Const_Turistica",
-      "classe_ida": "edu_edif_const_turistica",
-      "classe_volta": "Edif_Const_Turistica"
+      "classe_A": "edu_edif_const_turistica",
+      "classe_B": "Edif_Const_Turistica"
     },
     {"__comment":"edu_edif_ensino <-> Edif_Ensino",
-      "classe_ida": "edu_edif_ensino",
-      "classe_volta": "Edif_Ensino"
+      "classe_A": "edu_edif_ensino",
+      "classe_B": "Edif_Ensino"
     },
     {"__comment":"edu_edif_religiosa <-> Edif_Religiosa",
-      "classe_ida": "edu_edif_religiosa",
-      "classe_volta": "Edif_Religiosa"
+      "classe_A": "edu_edif_religiosa",
+      "classe_B": "Edif_Religiosa"
     },
     {"__comment":"edu_piscina <-> Piscina",
-      "classe_ida": "edu_piscina",
-      "classe_volta": "Piscina"
+      "classe_A": "edu_piscina",
+      "classe_B": "Piscina"
     },
     {"__comment":"edu_pista_competicao <-> Pista_Competicao",
-      "classe_ida": "edu_pista_competicao",
-      "classe_volta": "Pista_Competicao"
+      "classe_A": "edu_pista_competicao",
+      "classe_B": "Pista_Competicao"
     },
     {"__comment":"edu_ruina <-> Ruina",
-      "classe_ida": "edu_ruina",
-      "classe_volta": "Ruina"
+      "classe_A": "edu_ruina",
+      "classe_B": "Ruina"
     },
     {"__comment":"enc_antena_comunic <-> Antena_Comunic",
-      "classe_ida": "enc_antena_comunic",
-      "classe_volta": "Antena_Comunic"
+      "classe_A": "enc_antena_comunic",
+      "classe_B": "Antena_Comunic"
     },
     {"__comment":"enc_area_comunicacao <-> Area_Comunicacao",
-      "classe_ida": "enc_area_comunicacao",
-      "classe_volta": "Area_Comunicacao"
+      "classe_A": "enc_area_comunicacao",
+      "classe_B": "Area_Comunicacao"
     },
     {"__comment":"enc_area_energia_eletrica <-> Area_Energia_Eletrica",
-      "classe_ida": "enc_area_energia_eletrica",
-      "classe_volta": "Area_Energia_Eletrica"
+      "classe_A": "enc_area_energia_eletrica",
+      "classe_B": "Area_Energia_Eletrica"
     },
     {"__comment":"enc_descontinuidade_geometrica <-> Descontinuidade_Geom_ENC",
-      "classe_ida": "enc_descontinuidade_geometrica",
-      "classe_volta": "Descontinuidade_Geom_ENC"
+      "classe_A": "enc_descontinuidade_geometrica",
+      "classe_B": "Descontinuidade_Geom_ENC"
     },
     {"__comment":"enc_edif_comunic <-> Edif_Comunic",
-      "classe_ida": "enc_edif_comunic",
-      "classe_volta": "Edif_Comunic"
+      "classe_A": "enc_edif_comunic",
+      "classe_B": "Edif_Comunic"
     },
     {"__comment":"enc_edif_energia <-> Edif_Energia",
-      "classe_ida": "enc_edif_energia",
-      "classe_volta": "Edif_Energia"
+      "classe_A": "enc_edif_energia",
+      "classe_B": "Edif_Energia"
     },
     {"__comment":"enc_grupo_transformadores <-> Grupo_Transform_Energ",
-      "classe_ida": "enc_grupo_transformadores",
-      "classe_volta": "Grupo_Transform_Energ"
+      "classe_A": "enc_grupo_transformadores",
+      "classe_B": "Grupo_Transform_Energ"
     },
     {"__comment":"enc_hidreletrica <-> Hidreletrica",
-      "classe_ida": "enc_hidreletrica",
-      "classe_volta": "Hidreletrica"
+      "classe_A": "enc_hidreletrica",
+      "classe_B": "Hidreletrica"
     },
     {"__comment":"enc_termeletrica <-> Termeletrica",
-      "classe_ida": "enc_termeletrica",
-      "classe_volta": "Termeletrica",
-      "atributos_default_volta": [
+      "classe_A": "enc_termeletrica",
+      "classe_B": "Termeletrica",
+      "atributos_default_A": [
         {
           "nome_atributo": "destenergelet",
           "valor": 0
@@ -974,1396 +974,1396 @@
       
     },
     {"__comment":"enc_torre_comunic <-> Torre_Comunic",
-      "classe_ida": "enc_torre_comunic",
-      "classe_volta": "Torre_Comunic"
+      "classe_A": "enc_torre_comunic",
+      "classe_B": "Torre_Comunic"
     },
     {"__comment":"enc_torre_energia <-> Torre_Energia",
-      "classe_ida": "enc_torre_energia",
-      "classe_volta": "Torre_Energia"
+      "classe_A": "enc_torre_energia",
+      "classe_B": "Torre_Energia"
     },
     {"__comment":"enc_trecho_comunic <-> Trecho_Comunic",
-      "classe_ida": "enc_trecho_comunic",
-      "classe_volta": "Trecho_Comunic"
+      "classe_A": "enc_trecho_comunic",
+      "classe_B": "Trecho_Comunic"
     },
     {"__comment":"enc_trecho_energia <-> Trecho_Energia",
-      "classe_ida": "enc_trecho_energia",
-      "classe_volta": "Trecho_Energia"
+      "classe_A": "enc_trecho_energia",
+      "classe_B": "Trecho_Energia"
     },
     {"__comment":"enc_zona_linhas_energia_com <-> Zona_Linhas_Energia_Com",
-      "classe_ida": "enc_zona_linhas_energia_com",
-      "classe_volta": "Zona_Linhas_Energia_Com"
+      "classe_A": "enc_zona_linhas_energia_com",
+      "classe_B": "Zona_Linhas_Energia_Com"
     },
     {"__comment":"hid_area_umida <-> Area_Umida",
-      "classe_ida": "hid_area_umida",
-      "classe_volta": "Area_Umida"
+      "classe_A": "hid_area_umida",
+      "classe_B": "Area_Umida"
     },
     {"__comment":"hid_bacia_hidrografica <-> Bacia_Hidrografica",
-      "classe_ida": "hid_bacia_hidrografica",
-      "classe_volta": "Bacia_Hidrografica"
+      "classe_A": "hid_bacia_hidrografica",
+      "classe_B": "Bacia_Hidrografica"
     },
     {"__comment":"hid_banco_areia <-> Banco_Areia",
-      "classe_ida": "hid_banco_areia",
-      "classe_volta": "Banco_Areia"
+      "classe_A": "hid_banco_areia",
+      "classe_B": "Banco_Areia"
     },
     {"__comment":"hid_barragem <-> Barragem",
-      "classe_ida": "hid_barragem",
-      "classe_volta": "Barragem"
+      "classe_A": "hid_barragem",
+      "classe_B": "Barragem"
     },
     {"__comment":"hid_comporta <-> Comporta",
-      "classe_ida": "hid_comporta",
-      "classe_volta": "Comporta"
+      "classe_A": "hid_comporta",
+      "classe_B": "Comporta"
     },
     {"__comment":"hid_confluencia <-> Confluencia",
-      "classe_ida": "hid_confluencia",
-      "classe_volta": "Confluencia"
+      "classe_A": "hid_confluencia",
+      "classe_B": "Confluencia"
     },
     {"__comment":"hid_corredeira <-> Corredeira",
-      "classe_ida": "hid_corredeira",
-      "classe_volta": "Corredeira"
+      "classe_A": "hid_corredeira",
+      "classe_B": "Corredeira"
     },
     {"__comment":"hid_descontinuidade_geometrica <-> Descontinuidade_Geom_HID",
-      "classe_ida": "hid_descontinuidade_geometrica",
-      "classe_volta": "Descontinuidade_Geom_HID"
+      "classe_A": "hid_descontinuidade_geometrica",
+      "classe_B": "Descontinuidade_Geom_HID"
     },
     {"__comment":"hid_fonte_dagua <-> Fonte_Dagua",
-      "classe_ida": "hid_fonte_dagua",
-      "classe_volta": "Fonte_Dagua"
+      "classe_A": "hid_fonte_dagua",
+      "classe_B": "Fonte_Dagua"
     },
     {"__comment":"hid_foz_maritima <-> Foz_Maritima",
-      "classe_ida": "hid_foz_maritima",
-      "classe_volta": "Foz_Maritima"
+      "classe_A": "hid_foz_maritima",
+      "classe_B": "Foz_Maritima"
     },
     {"__comment":"hid_ilha <-> Ilha",
-      "classe_ida": "hid_ilha",
-      "classe_volta": "Ilha",
+      "classe_A": "hid_ilha",
+      "classe_B": "Ilha",
       "mapeamento_atributos": [
         {
-          "attr_ida": "tipoilha",
-          "attr_volta": "tipoElemNat"
+          "attr_A": "tipoilha",
+          "attr_B": "tipoElemNat"
         }
       ]
     },
     {"__comment":"hid_limite_massa_dagua <-> Limite_Massa_Dagua",
-      "classe_ida": "hid_limite_massa_dagua",
-      "classe_volta": "Limite_Massa_Dagua"
+      "classe_A": "hid_limite_massa_dagua",
+      "classe_B": "Limite_Massa_Dagua"
     },
     {"__comment":"hid_natureza_fundo <-> Natureza_Fundo",
-      "classe_ida": "hid_natureza_fundo",
-      "classe_volta": "Natureza_Fundo"
+      "classe_A": "hid_natureza_fundo",
+      "classe_B": "Natureza_Fundo"
     },
     {"__comment":"hid_ponto_inicio_drenagem <-> Ponto_Inicio_Drenagem",
-      "classe_ida": "hid_ponto_inicio_drenagem",
-      "classe_volta": "Ponto_Inicio_Drenagem"
+      "classe_A": "hid_ponto_inicio_drenagem",
+      "classe_B": "Ponto_Inicio_Drenagem"
     },
     {"__comment":"hid_quebramar_molhe <-> Quebramar_Molhe",
-      "classe_ida": "hid_quebramar_molhe",
-      "classe_volta": "Quebramar_Molhe"
+      "classe_A": "hid_quebramar_molhe",
+      "classe_B": "Quebramar_Molhe"
     },
     {"__comment":"hid_queda_dagua <-> Queda_Dagua",
-      "classe_ida": "hid_queda_dagua",
-      "classe_volta": "Queda_Dagua"
+      "classe_A": "hid_queda_dagua",
+      "classe_B": "Queda_Dagua"
     },
     {"__comment":"hid_recife <-> Recife",
-      "classe_ida": "hid_recife",
-      "classe_volta": "Recife"
+      "classe_A": "hid_recife",
+      "classe_B": "Recife"
     },
     {"__comment":"hid_reservatorio_hidrico <-> Reservatorio_Hidrico",
-      "classe_ida": "hid_reservatorio_hidrico",
-      "classe_volta": "Reservatorio_Hidrico"
+      "classe_A": "hid_reservatorio_hidrico",
+      "classe_B": "Reservatorio_Hidrico"
     },
     {"__comment":"hid_rocha_em_agua <-> Rocha_Em_Agua",
-      "classe_ida": "hid_rocha_em_agua",
-      "classe_volta": "Rocha_Em_Agua"
+      "classe_A": "hid_rocha_em_agua",
+      "classe_B": "Rocha_Em_Agua"
     },
     {"__comment":"hid_sumidouro_vertedouro <-> Sumidouro_Vertedouro",
-      "classe_ida": "hid_sumidouro_vertedouro",
-      "classe_volta": "Sumidouro_Vertedouro"
+      "classe_A": "hid_sumidouro_vertedouro",
+      "classe_B": "Sumidouro_Vertedouro"
     },
     {"__comment":"hid_terreno_suj_inundacao <-> Terreno_Suj_Inundacao",
-      "classe_ida": "hid_terreno_suj_inundacao",
-      "classe_volta": "Terreno_Suj_Inundacao"
+      "classe_A": "hid_terreno_suj_inundacao",
+      "classe_B": "Terreno_Suj_Inundacao"
     },
     {"__comment":"hid_trecho_massa_dagua <-> Trecho_Massa_Dagua",
-      "classe_ida": "hid_trecho_massa_dagua",
-      "classe_volta": "Trecho_Massa_Dagua",
+      "classe_A": "hid_trecho_massa_dagua",
+      "classe_B": "Trecho_Massa_Dagua",
       "mapeamento_atributos": [
         {
-          "attr_ida": "tipotrechomassa",
-          "attr_volta": "tipoMassaDagua"
+          "attr_A": "tipotrechomassa",
+          "attr_B": "tipoMassaDagua"
         }
       ]
     },
     {"__comment":"lim_area_de_litigio <-> Area_De_Litigio",
-      "classe_ida": "lim_area_de_litigio",
-      "classe_volta": "Area_De_Litigio"
+      "classe_A": "lim_area_de_litigio",
+      "classe_B": "Area_De_Litigio"
     },
     {"__comment":"lim_area_desenv_controle <-> Area_Desenv_Controle",
-      "classe_ida": "lim_area_desenv_controle",
-      "classe_volta": "Area_Desenv_Controle"
+      "classe_A": "lim_area_desenv_controle",
+      "classe_B": "Area_Desenv_Controle"
     },
     {"__comment":"lim_area_particular <-> Area_Particular",
-      "classe_ida": "lim_area_particular",
-      "classe_volta": "Area_Particular"
+      "classe_A": "lim_area_particular",
+      "classe_B": "Area_Particular"
     },
     {"__comment":"lim_area_uso_comunitario <-> Area_Uso_Comunitario",
-      "classe_ida": "lim_area_uso_comunitario",
-      "classe_volta": "Area_Uso_Comunitario"
+      "classe_A": "lim_area_uso_comunitario",
+      "classe_B": "Area_Uso_Comunitario"
     },
     {"__comment":"lim_bairro <-> Bairro",
-      "classe_ida": "lim_bairro",
-      "classe_volta": "Bairro"
+      "classe_A": "lim_bairro",
+      "classe_B": "Bairro"
     },
     {"__comment":"lim_delimitacao_fisica <-> Delimitacao_Fisica",
-      "classe_ida": "lim_delimitacao_fisica",
-      "classe_volta": "Delimitacao_Fisica"
+      "classe_A": "lim_delimitacao_fisica",
+      "classe_B": "Delimitacao_Fisica"
     },
     {"__comment":"lim_descontinuidade_geometrica <-> Descontinuidade_Geom_LIM",
-      "classe_ida": "lim_descontinuidade_geometrica",
-      "classe_volta": "Descontinuidade_Geom_LIM"
+      "classe_A": "lim_descontinuidade_geometrica",
+      "classe_B": "Descontinuidade_Geom_LIM"
     },
     {"__comment":"lim_distrito <-> Distrito",
-      "classe_ida": "lim_distrito",
-      "classe_volta": "Distrito"
+      "classe_A": "lim_distrito",
+      "classe_B": "Distrito"
     },
     {"__comment":"lim_marco_de_limite <-> Marco_De_Limite",
-      "classe_ida": "lim_marco_de_limite",
-      "classe_volta": "Marco_De_Limite"
+      "classe_A": "lim_marco_de_limite",
+      "classe_B": "Marco_De_Limite"
     },
     {"__comment":"lim_municipio <-> Municipio",
-      "classe_ida": "lim_municipio",
-      "classe_volta": "Municipio"
+      "classe_A": "lim_municipio",
+      "classe_B": "Municipio"
     },
     {"__comment":"lim_outras_unid_protegidas <-> Outras_Unid_Protegidas",
-      "classe_ida": "lim_outras_unid_protegidas",
-      "classe_volta": "Outras_Unid_Protegidas"
+      "classe_A": "lim_outras_unid_protegidas",
+      "classe_B": "Outras_Unid_Protegidas"
     },
     {"__comment":"lim_pais <-> Pais",
-      "classe_ida": "lim_pais",
-      "classe_volta": "Pais"
+      "classe_A": "lim_pais",
+      "classe_B": "Pais"
     },
     {"__comment":"lim_regiao_administrativa <-> Regiao_Administrativa",
-      "classe_ida": "lim_regiao_administrativa",
-      "classe_volta": "Regiao_Administrativa"
+      "classe_A": "lim_regiao_administrativa",
+      "classe_B": "Regiao_Administrativa"
     },
     {"__comment":"lim_sub_distrito <-> Sub_Distrito",
-      "classe_ida": "lim_sub_distrito",
-      "classe_volta": "Sub_Distrito"
+      "classe_A": "lim_sub_distrito",
+      "classe_B": "Sub_Distrito"
     },
     {"__comment":"lim_terra_publica <-> Terra_Publica",
-      "classe_ida": "lim_terra_publica",
-      "classe_volta": "Terra_Publica"
+      "classe_A": "lim_terra_publica",
+      "classe_B": "Terra_Publica"
     },
     {"__comment":"lim_unidade_conserv_nao_snuc <-> Unidade_Conserv_Nao_SNUC",
-      "classe_ida": "lim_unidade_conserv_nao_snuc",
-      "classe_volta": "Unidade_Conserv_Nao_SNUC"
+      "classe_A": "lim_unidade_conserv_nao_snuc",
+      "classe_B": "Unidade_Conserv_Nao_SNUC"
     },
     {"__comment":"lim_unidade_federacao <-> Unidade_Federacao",
-      "classe_ida": "lim_unidade_federacao",
-      "classe_volta": "Unidade_Federacao"
+      "classe_A": "lim_unidade_federacao",
+      "classe_B": "Unidade_Federacao"
     },
     {"__comment":"lim_unidade_protecao_integral <-> Unid_Protecao_Integral",
-      "classe_ida": "lim_unidade_protecao_integral",
-      "classe_volta": "Unid_Protecao_Integral"
+      "classe_A": "lim_unidade_protecao_integral",
+      "classe_B": "Unid_Protecao_Integral"
     },
     {"__comment":"lim_unidade_uso_sustentavel <-> Unidade_Uso_Sustentavel",
-      "classe_ida": "lim_unidade_uso_sustentavel",
-      "classe_volta": "Unidade_Uso_Sustentavel"
+      "classe_A": "lim_unidade_uso_sustentavel",
+      "classe_B": "Unidade_Uso_Sustentavel"
     },
     {"__comment":"loc_area_edificada <-> Area_Edificada",
-      "classe_ida": "loc_area_edificada",
-      "classe_volta": "Area_Edificada"
+      "classe_A": "loc_area_edificada",
+      "classe_B": "Area_Edificada"
     },
     {"__comment":"loc_area_habitacional <-> Area_Habitacional",
-      "classe_ida": "loc_area_habitacional",
-      "classe_volta": "Area_Habitacional"
+      "classe_A": "loc_area_habitacional",
+      "classe_B": "Area_Habitacional"
     },
     {"__comment":"loc_descontinuidade_geometrica <-> Descontinuidade_Geom_LOC",
-      "classe_ida": "loc_descontinuidade_geometrica",
-      "classe_volta": "Descontinuidade_Geom_LOC"
+      "classe_A": "loc_descontinuidade_geometrica",
+      "classe_B": "Descontinuidade_Geom_LOC"
     },
     {"__comment":"loc_edificacao <-> Edificacao",
-      "classe_ida": "loc_edificacao",
-      "classe_volta": "Edificacao"
+      "classe_A": "loc_edificacao",
+      "classe_B": "Edificacao"
     },
     {"__comment":"loc_hab_indigena <-> Hab_Indigena",
-      "classe_ida": "loc_hab_indigena",
-      "classe_volta": "Hab_Indigena"
+      "classe_A": "loc_hab_indigena",
+      "classe_B": "Hab_Indigena"
     },
     {"__comment":"loc_nome_local <-> Nome_Local",
-      "classe_ida": "loc_nome_local",
-      "classe_volta": "Nome_Local"
+      "classe_A": "loc_nome_local",
+      "classe_B": "Nome_Local"
     },
     {"__comment":"loc_vila <-> Vila",
-      "classe_ida": "loc_vila",
-      "classe_volta": "Vila"
+      "classe_A": "loc_vila",
+      "classe_B": "Vila"
     },
     {"__comment":"pto_area_est_med_fenom <-> Area_Est_Med_Fenomenos",
-      "classe_ida": "pto_area_est_med_fenom",
-      "classe_volta": "Area_Est_Med_Fenomenos"
+      "classe_A": "pto_area_est_med_fenom",
+      "classe_B": "Area_Est_Med_Fenomenos"
     },
     {"__comment":"pto_descontinuidade_geometrica <-> Descontinuidade_Geom_PTO",
-      "classe_ida": "pto_descontinuidade_geometrica",
-      "classe_volta": "Descontinuidade_Geom_PTO"
+      "classe_A": "pto_descontinuidade_geometrica",
+      "classe_B": "Descontinuidade_Geom_PTO"
     },
     {"__comment":"pto_edif_constr_est_med_fen <-> Edif_Constr_Est_Med",
-      "classe_ida": "pto_edif_constr_est_med_fen",
-      "classe_volta": "Edif_Constr_Est_Med"
+      "classe_A": "pto_edif_constr_est_med_fen",
+      "classe_B": "Edif_Constr_Est_Med"
     },
     {"__comment":"pto_pto_controle <-> Pto_Controle",
-      "classe_ida": "pto_pto_controle",
-      "classe_volta": "Pto_Controle"
+      "classe_A": "pto_pto_controle",
+      "classe_B": "Pto_Controle"
     },
     {"__comment":"pto_pto_est_med_fenomenos <-> Pto_Est_Med_Fenomenos",
-      "classe_ida": "pto_pto_est_med_fenomenos",
-      "classe_volta": "Pto_Est_Med_Fenomenos"
+      "classe_A": "pto_pto_est_med_fenomenos",
+      "classe_B": "Pto_Est_Med_Fenomenos"
     },
     {"__comment":"rel_alter_fisiog_antropica <-> Alter_Fisiog_Antropica",
-      "classe_ida": "rel_alter_fisiog_antropica",
-      "classe_volta": "Alter_Fisiog_Antropica"
+      "classe_A": "rel_alter_fisiog_antropica",
+      "classe_B": "Alter_Fisiog_Antropica"
     },
     {"__comment":"rel_curva_batimetrica <-> Curva_Batimetrica",
-      "classe_ida": "rel_curva_batimetrica",
-      "classe_volta": "Curva_Batimetrica"
+      "classe_A": "rel_curva_batimetrica",
+      "classe_B": "Curva_Batimetrica"
     },
     {"__comment":"rel_curva_nivel <-> Curva_Nivel",
-      "classe_ida": "rel_curva_nivel",
-      "classe_volta": "Curva_Nivel"
+      "classe_A": "rel_curva_nivel",
+      "classe_B": "Curva_Nivel"
     },
     {"__comment":"rel_descontinuidade_geometrica <-> Descontinuidade_Geom_REL",
-      "classe_ida": "rel_descontinuidade_geometrica",
-      "classe_volta": "Descontinuidade_Geom_REL"
+      "classe_A": "rel_descontinuidade_geometrica",
+      "classe_B": "Descontinuidade_Geom_REL"
     },
     {"__comment":"rel_dolina <-> Dolina",
-      "classe_ida": "rel_dolina",
-      "classe_volta": "Dolina",
+      "classe_A": "rel_dolina",
+      "classe_B": "Dolina",
       "mapeamento_atributos": [
         {
-          "attr_ida": "tipoelemnat",
-          "attr_volta": "tipoElemNat"
+          "attr_A": "tipoelemnat",
+          "attr_B": "tipoElemNat"
         }
       ]
     },
     {"__comment":"rel_duna <-> Duna",
-      "classe_ida": "rel_duna",
-      "classe_volta": "Duna",
+      "classe_A": "rel_duna",
+      "classe_B": "Duna",
       "mapeamento_atributos": [
         {
-          "attr_ida": "tipoelemnat",
-          "attr_volta": "tipoElemNat"
+          "attr_A": "tipoelemnat",
+          "attr_B": "tipoElemNat"
         }
       ]
     },
     {"__comment":"rel_gruta_caverna <-> Gruta_Caverna",
-      "classe_ida": "rel_gruta_caverna",
-      "classe_volta": "Gruta_Caverna",
+      "classe_A": "rel_gruta_caverna",
+      "classe_B": "Gruta_Caverna",
       "mapeamento_atributos": [
         {
-          "attr_ida": "tipogrutacaverna",
-          "attr_volta": "tipoElemNat"
+          "attr_A": "tipogrutacaverna",
+          "attr_B": "tipoElemNat"
         }
       ]
     },
     {"__comment":"rel_pico <-> Pico",
-      "classe_ida": "rel_pico",
-      "classe_volta": "Pico",
+      "classe_A": "rel_pico",
+      "classe_B": "Pico",
       "mapeamento_atributos": [
         {
-          "attr_ida": "tipogrutacaverna",
-          "attr_volta": "tipoElemNat"
+          "attr_A": "tipogrutacaverna",
+          "attr_B": "tipoElemNat"
         }
       ]
     },
     {"__comment":"rel_ponto_cotado_altimetrico <-> Ponto_Cotado_Altimetrico",
-      "classe_ida": "rel_ponto_cotado_altimetrico",
-      "classe_volta": "Ponto_Cotado_Altimetrico"
+      "classe_A": "rel_ponto_cotado_altimetrico",
+      "classe_B": "Ponto_Cotado_Altimetrico"
     },
     {"__comment":"rel_ponto_cotado_batimetrico <-> Ponto_Cotado_Batimetrico",
-      "classe_ida": "rel_ponto_cotado_batimetrico",
-      "classe_volta": "Ponto_Cotado_Batimetrico"
+      "classe_A": "rel_ponto_cotado_batimetrico",
+      "classe_B": "Ponto_Cotado_Batimetrico"
     },
     {"__comment":"rel_rocha <-> Rocha",
-      "classe_ida": "rel_rocha",
-      "classe_volta": "Rocha",
+      "classe_A": "rel_rocha",
+      "classe_B": "Rocha",
       "mapeamento_atributos": [
         {
-          "attr_ida": "tiporocha",
-          "attr_volta": "tipoElemNat"
+          "attr_A": "tiporocha",
+          "attr_B": "tipoElemNat"
         }
       ]
     },
     {"__comment":"sau_area_saude <-> Area_Saude",
-      "classe_ida": "sau_area_saude",
-      "classe_volta": "Area_Saude"
+      "classe_A": "sau_area_saude",
+      "classe_B": "Area_Saude"
     },
     {"__comment":"sau_area_servico_social <-> Area_Servico_Social",
-      "classe_ida": "sau_area_servico_social",
-      "classe_volta": "Area_Servico_Social"
+      "classe_A": "sau_area_servico_social",
+      "classe_B": "Area_Servico_Social"
     },
     {"__comment":"sau_descontinuidade_geometrica <-> Descontinuidade_Geom_SAU",
-      "classe_ida": "sau_descontinuidade_geometrica",
-      "classe_volta": "Descontinuidade_Geom_SAU"
+      "classe_A": "sau_descontinuidade_geometrica",
+      "classe_B": "Descontinuidade_Geom_SAU"
     },
     {"__comment":"sau_edif_saude <-> Edif_Saude",
-      "classe_ida": "sau_edif_saude",
-      "classe_volta": "Edif_Saude"
+      "classe_A": "sau_edif_saude",
+      "classe_B": "Edif_Saude"
     },
     {"__comment":"sau_edif_servico_social <-> Edif_Servico_Social",
-      "classe_ida": "sau_edif_servico_social",
-      "classe_volta": "Edif_Servico_Social"
+      "classe_A": "sau_edif_servico_social",
+      "classe_B": "Edif_Servico_Social"
     },
     {"__comment":"tra_area_duto <-> Area_Duto",
-      "classe_ida": "tra_area_duto",
-      "classe_volta": "Area_Duto"
+      "classe_A": "tra_area_duto",
+      "classe_B": "Area_Duto"
     },
     {"__comment":"tra_area_estrut_transporte <-> Area_Estrut_Transporte",
-      "classe_ida": "tra_area_estrut_transporte",
-      "classe_volta": "Area_Estrut_Transporte"
+      "classe_A": "tra_area_estrut_transporte",
+      "classe_B": "Area_Estrut_Transporte"
     },
     {"__comment":"tra_arruamento <-> Arruamento",
-      "classe_ida": "tra_arruamento",
-      "classe_volta": "Arruamento"
+      "classe_A": "tra_arruamento",
+      "classe_B": "Arruamento"
     },
     {"__comment":"tra_caminho_aereo <-> Caminho_Aereo",
-      "classe_ida": "tra_caminho_aereo",
-      "classe_volta": "Caminho_Aereo"
+      "classe_A": "tra_caminho_aereo",
+      "classe_B": "Caminho_Aereo"
     },
     {"__comment":"tra_ciclovia <-> Ciclovia",
-      "classe_ida": "tra_ciclovia",
-      "classe_volta": "Ciclovia"
+      "classe_A": "tra_ciclovia",
+      "classe_B": "Ciclovia"
     },
     {"__comment":"tra_cremalheira <-> Cremalheira",
-      "classe_ida": "tra_cremalheira",
-      "classe_volta": "Cremalheira"
+      "classe_A": "tra_cremalheira",
+      "classe_B": "Cremalheira"
     },
     {"__comment":"tra_descontinuidade_geometrica <-> Descontinuidade_Geom_TRA",
-      "classe_ida": "tra_descontinuidade_geometrica",
-      "classe_volta": "Descontinuidade_Geom_TRA"
+      "classe_A": "tra_descontinuidade_geometrica",
+      "classe_B": "Descontinuidade_Geom_TRA"
     },
     {"__comment":"tra_edif_constr_portuaria <-> Edif_Constr_Portuaria",
-      "classe_ida": "tra_edif_constr_portuaria",
-      "classe_volta": "Edif_Constr_Portuaria"
+      "classe_A": "tra_edif_constr_portuaria",
+      "classe_B": "Edif_Constr_Portuaria"
     },
     {"__comment":"tra_edif_metro_ferroviaria <-> Edif_Metro_Ferroviaria",
-      "classe_ida": "tra_edif_metro_ferroviaria",
-      "classe_volta": "Edif_Metro_Ferroviaria"
+      "classe_A": "tra_edif_metro_ferroviaria",
+      "classe_B": "Edif_Metro_Ferroviaria"
     },
     {"__comment":"tra_edif_rodoviaria <-> Edif_Rodoviaria",
-      "classe_ida": "tra_edif_rodoviaria",
-      "classe_volta": "Edif_Rodoviaria"
+      "classe_A": "tra_edif_rodoviaria",
+      "classe_B": "Edif_Rodoviaria"
     },
     {"__comment":"tra_entroncamento <-> Entroncamento",
-      "classe_ida": "tra_entroncamento",
-      "classe_volta": "Entroncamento"
+      "classe_A": "tra_entroncamento",
+      "classe_B": "Entroncamento"
     },
     {"__comment":"tra_faixa_seguranca <-> Faixa_Seguranca",
-      "classe_ida": "tra_faixa_seguranca",
-      "classe_volta": "Faixa_Seguranca"
+      "classe_A": "tra_faixa_seguranca",
+      "classe_B": "Faixa_Seguranca"
     },
     {"__comment":"tra_fundeadouro <-> Fundeadouro",
-      "classe_ida": "tra_fundeadouro",
-      "classe_volta": "Fundeadouro"
+      "classe_A": "tra_fundeadouro",
+      "classe_B": "Fundeadouro"
     },
     {"__comment":"tra_galeria_bueiro <-> Galeria_Bueiro",
-      "classe_ida": "tra_galeria_bueiro",
-      "classe_volta": "Galeria_Bueiro",
+      "classe_A": "tra_galeria_bueiro",
+      "classe_B": "Galeria_Bueiro",
       "mapeamento_atributos": [
         {
-          "attr_ida": "pesosuportmaximo",
-          "attr_volta": "pesoMaxSuportTon"
+          "attr_A": "pesosuportmaximo",
+          "attr_B": "pesoMaxSuportTon"
         }
       ]
     },
     {"__comment":"tra_girador_ferroviario <-> Girador_Ferroviario",
-      "classe_ida": "tra_girador_ferroviario",
-      "classe_volta": "Girador_Ferroviario"
+      "classe_A": "tra_girador_ferroviario",
+      "classe_B": "Girador_Ferroviario"
     },
     {"__comment":"tra_identific_trecho_rod <-> Identific_Trecho_Rod",
-      "classe_ida": "tra_identific_trecho_rod",
-      "classe_volta": "Identific_Trecho_Rod"
+      "classe_A": "tra_identific_trecho_rod",
+      "classe_B": "Identific_Trecho_Rod"
     },
     {"__comment":"tra_obstaculo_navegacao <-> Obstaculo_Navegacao",
-      "classe_ida": "tra_obstaculo_navegacao",
-      "classe_volta": "Obstaculo_Navegacao"
+      "classe_A": "tra_obstaculo_navegacao",
+      "classe_B": "Obstaculo_Navegacao"
     },
     {"__comment":"tra_passag_elevada_viaduto <-> Passag_Elevada_Viaduto",
-      "classe_ida": "tra_passag_elevada_viaduto",
-      "classe_volta": "Passag_Elevada_Viaduto",
+      "classe_A": "tra_passag_elevada_viaduto",
+      "classe_B": "Passag_Elevada_Viaduto",
       "mapeamento_atributos": [
         {
-          "attr_ida": "cargasuportmaxima",
-          "attr_volta": "pesoMaxSuportTon"
+          "attr_A": "cargasuportmaxima",
+          "attr_B": "pesoMaxSuportTon"
         }
       ]
     },
     {"__comment":"tra_passagem_nivel <-> Passagem_Nivel",
-      "classe_ida": "tra_passagem_nivel",
-      "classe_volta": "Passagem_Nivel"
+      "classe_A": "tra_passagem_nivel",
+      "classe_B": "Passagem_Nivel"
     },
     {"__comment":"tra_patio <-> Patio",
-      "classe_ida": "tra_patio",
-      "classe_volta": "Patio"
+      "classe_A": "tra_patio",
+      "classe_B": "Patio"
     },
     {"__comment":"tra_pista_ponto_pouso <-> Pista_Ponto_Pouso",
-      "classe_ida": "tra_pista_ponto_pouso",
-      "classe_volta": "Pista_Ponto_Pouso"
+      "classe_A": "tra_pista_ponto_pouso",
+      "classe_B": "Pista_Ponto_Pouso"
     },
     {"__comment":"tra_ponte <-> Ponte",
-      "classe_ida": "tra_ponte",
-      "classe_volta": "Ponte",
+      "classe_A": "tra_ponte",
+      "classe_B": "Ponte",
       "mapeamento_atributos": [
         {
-          "attr_ida": "cargasuportmaxima",
-          "attr_volta": "pesoMaxSuportTon"
+          "attr_A": "cargasuportmaxima",
+          "attr_B": "pesoMaxSuportTon"
         }
       ]
     },
     {"__comment":"tra_ponto_duto <-> Ponto_Duto",
-      "classe_ida": "tra_ponto_duto",
-      "classe_volta": "Ponto_Duto"
+      "classe_A": "tra_ponto_duto",
+      "classe_B": "Ponto_Duto"
     },
     {"__comment":"tra_ponto_hidroviario <-> Ponto_Hidroviario",
-      "classe_ida": "tra_ponto_hidroviario",
-      "classe_volta": "Ponto_Hidroviario"
+      "classe_A": "tra_ponto_hidroviario",
+      "classe_B": "Ponto_Hidroviario"
     },
     {"__comment":"tra_posto_combustivel <-> Posto_Combustivel",
-      "classe_ida": "tra_posto_combustivel",
-      "classe_volta": "Posto_Combustivel"
+      "classe_A": "tra_posto_combustivel",
+      "classe_B": "Posto_Combustivel"
     },
     {"__comment":"tra_sinalizacao <-> Sinalizacao",
-      "classe_ida": "tra_sinalizacao",
-      "classe_volta": "Sinalizacao"
+      "classe_A": "tra_sinalizacao",
+      "classe_B": "Sinalizacao"
     },
     {"__comment":"tra_travessia <-> Travessia",
-      "classe_ida": "tra_travessia",
-      "classe_volta": "Travessia"
+      "classe_A": "tra_travessia",
+      "classe_B": "Travessia"
     },
     {"__comment":"tra_travessia_pedestre <-> Travessia_Pedestre",
-      "classe_ida": "tra_travessia_pedestre",
-      "classe_volta": "Travessia_Pedestre"
+      "classe_A": "tra_travessia_pedestre",
+      "classe_B": "Travessia_Pedestre"
     },
     {"__comment":"tra_trecho_duto <-> Trecho_Duto",
-      "classe_ida": "tra_trecho_duto",
-      "classe_volta": "Trecho_Duto",
+      "classe_A": "tra_trecho_duto",
+      "classe_B": "Trecho_Duto",
       "mapeamento_atributos": [
         {
-          "attr_ida": "tipotrechoduto",
-          "attr_volta": "tipoTrechoDuto"
+          "attr_A": "tipotrechoduto",
+          "attr_B": "tipoTrechoDuto"
         }
       ]
     },
     {"__comment":"tra_trecho_hidroviario <-> Trecho_Hidroviario",
-      "classe_ida": "tra_trecho_hidroviario",
-      "classe_volta": "Trecho_Hidroviario"
+      "classe_A": "tra_trecho_hidroviario",
+      "classe_B": "Trecho_Hidroviario"
     },
     {"__comment":"tra_trecho_rodoviario <-> Trecho_Rodoviario",
-      "classe_ida": "tra_trecho_rodoviario",
-      "classe_volta": "Trecho_Rodoviario",
+      "classe_A": "tra_trecho_rodoviario",
+      "classe_B": "Trecho_Rodoviario",
       "mapeamento_atributos": [
         {
-          "attr_ida": "capaccarga",
-          "attr_volta": "pesoMaxSuportTon"
+          "attr_A": "capaccarga",
+          "attr_B": "pesoMaxSuportTon"
         },
         {
-          "attr_ida": "codtrechorodov",
-          "attr_volta": "sigla"
+          "attr_A": "codtrechorodov",
+          "attr_B": "sigla"
         }
       ]
     },
     {"__comment":"tra_trilha_picada <-> Trilha_Picada",
-      "classe_ida": "tra_trilha_picada",
-      "classe_volta": "Trilha_Picada"
+      "classe_A": "tra_trilha_picada",
+      "classe_B": "Trilha_Picada"
     },
     {"__comment":"veg_brejo_pantano <-> Brejo_Pantano",
-      "classe_ida": "veg_brejo_pantano",
-      "classe_volta": "Brejo_Pantano"
+      "classe_A": "veg_brejo_pantano",
+      "classe_B": "Brejo_Pantano"
     },
     {"__comment":"veg_caatinga <-> Caatinga",
-      "classe_ida": "veg_caatinga",
-      "classe_volta": "Caatinga"
+      "classe_A": "veg_caatinga",
+      "classe_B": "Caatinga"
     },
     {"__comment":"veg_campinarana <-> Campinarana",
-      "classe_ida": "veg_campinarana",
-      "classe_volta": "Campinarana"
+      "classe_A": "veg_campinarana",
+      "classe_B": "Campinarana"
     },
     {"__comment":"veg_campo <-> Campo",
-      "classe_ida": "veg_campo",
-      "classe_volta": "Campo"
+      "classe_A": "veg_campo",
+      "classe_B": "Campo"
     },
     {"__comment":"veg_cerrado_cerradao <-> Cerrado_Cerradao",
-      "classe_ida": "veg_cerrado_cerradao",
-      "classe_volta": "Cerrado_Cerradao"
+      "classe_A": "veg_cerrado_cerradao",
+      "classe_B": "Cerrado_Cerradao"
     },
     {"__comment":"veg_descontinuidade_geometrica <-> Descontinuidade_Geom_VEG",
-      "classe_ida": "veg_descontinuidade_geometrica",
-      "classe_volta": "Descontinuidade_Geom_VEG"
+      "classe_A": "veg_descontinuidade_geometrica",
+      "classe_B": "Descontinuidade_Geom_VEG"
     },
     {"__comment":"veg_estepe <-> Estepe",
-      "classe_ida": "veg_estepe",
-      "classe_volta": "Estepe"
+      "classe_A": "veg_estepe",
+      "classe_B": "Estepe"
     },
     {"__comment":"veg_floresta <-> Floresta",
-      "classe_ida": "veg_floresta",
-      "classe_volta": "Floresta"
+      "classe_A": "veg_floresta",
+      "classe_B": "Floresta"
     },
     {"__comment":"veg_macega_chavascal <-> Macega_Chavascal",
-      "classe_ida": "veg_macega_chavascal",
-      "classe_volta": "Macega_Chavascal"
+      "classe_A": "veg_macega_chavascal",
+      "classe_B": "Macega_Chavascal"
     },
     {"__comment":"veg_mangue <-> Mangue",
-      "classe_ida": "veg_mangue",
-      "classe_volta": "Mangue"
+      "classe_A": "veg_mangue",
+      "classe_B": "Mangue"
     },
     {"__comment":"veg_veg_area_contato <-> Veg_Area_Contato",
-      "classe_ida": "veg_veg_area_contato",
-      "classe_volta": "Veg_Area_Contato"
+      "classe_A": "veg_veg_area_contato",
+      "classe_B": "Veg_Area_Contato"
     },
     {"__comment":"veg_veg_restinga <-> Veg_Restinga",
-      "classe_ida": "veg_veg_restinga",
-      "classe_volta": "Veg_Restinga"
+      "classe_A": "veg_veg_restinga",
+      "classe_B": "Veg_Restinga"
     }
   ],
   "mapeamento_atributos":[
     {
-      "attr_ida": "altitudeortometrica",
-      "attr_volta": "altitudeOrtometrica"
+      "attr_A": "altitudeortometrica",
+      "attr_B": "altitudeOrtometrica"
     },
     {
-      "attr_ida": "alturaestimada",
-      "attr_volta": "alturaEstimada"
+      "attr_A": "alturaestimada",
+      "attr_B": "alturaEstimada"
     },
     {
-      "attr_ida": "alturalamina",
-      "attr_volta": "alturaLamina"
+      "attr_A": "alturalamina",
+      "attr_B": "alturaLamina"
     },
     {
-      "attr_ida": "alturamediaindividuos",
-      "attr_volta": "alturaMediaIndividuos"
+      "attr_A": "alturamediaindividuos",
+      "attr_B": "alturaMediaIndividuos"
     },
     {
-      "attr_ida": "alturamediamargem",
-      "attr_volta": "alturaMediaMargem"
+      "attr_A": "alturamediamargem",
+      "attr_B": "alturaMediaMargem"
     },
     {
-      "attr_ida": "anocriacao",
-      "attr_volta": "anoCriacao"
+      "attr_A": "anocriacao",
+      "attr_B": "anoCriacao"
     },
     {
-      "attr_ida": "anodereferencia",
-      "attr_volta": "anoDeReferencia"
+      "attr_A": "anodereferencia",
+      "attr_B": "anoDeReferencia"
     },
     {
-      "attr_ida": "areaoficial",
-      "attr_volta": "areaOficial"
+      "attr_A": "areaoficial",
+      "attr_B": "areaOficial"
     },
     {
-      "attr_ida": "areaoficialha",
-      "attr_volta": "areaOficialHa"
+      "attr_A": "areaoficialha",
+      "attr_B": "areaOficialHa"
     },
     {
-      "attr_ida": "arranjofases",
-      "attr_volta": "arranjoFases"
+      "attr_A": "arranjofases",
+      "attr_B": "arranjoFases"
     },
     {
-      "attr_ida": "atolegal",
-      "attr_volta": "atoLegal"
+      "attr_A": "atolegal",
+      "attr_B": "atoLegal"
     },
     {
-      "attr_ida": "caladomax",
-      "attr_volta": "caladoMax"
+      "attr_A": "caladomax",
+      "attr_B": "caladoMax"
     },
     {
-      "attr_ida": "caladomaxseca",
-      "attr_volta": "caladoMaxSeca"
+      "attr_A": "caladomaxseca",
+      "attr_B": "caladoMaxSeca"
     },
     {
-      "attr_ida": "canteirodivisorio",
-      "attr_volta": "canteiroDivisorio",
+      "attr_A": "canteirodivisorio",
+      "attr_B": "canteiroDivisorio",
       "traducao": [
         {
-          "valor_ida": 2,
-          "valor_volta": null,
-          "sentido": "volta"
+          "valor_A": 2,
+          "valor_B": null,
+          "sentido": "B=>A"
         }
       ]
     },
     {
-      "attr_ida": "caracteristicafloresta",
-      "attr_volta": "caracteristicaFloresta"
+      "attr_A": "caracteristicafloresta",
+      "attr_B": "caracteristicaFloresta"
     },
     {
-      "attr_ida": "causaexposicao",
-      "attr_volta": "causaExposicao"
+      "attr_A": "causaexposicao",
+      "attr_B": "causaExposicao"
     },
     {
-      "attr_ida": "classificacao",
-      "attr_volta": "classificacaoTxt"
+      "attr_A": "classificacao",
+      "attr_B": "classificacaoTxt"
     },
     {
-      "attr_ida": "classificacaoporte",
-      "attr_volta": "classificacaoPorte"
+      "attr_A": "classificacaoporte",
+      "attr_B": "classificacaoPorte"
     },
     {
-      "attr_ida": "codestacao",
-      "attr_volta": "codEstacao"
+      "attr_A": "codestacao",
+      "attr_B": "codEstacao"
     },
     {
-      "attr_ida": "codigoestacao",
-      "attr_volta": "codigoEstacao"
+      "attr_A": "codigoestacao",
+      "attr_B": "codigoEstacao"
     },
     {
-      "attr_ida": "codigootto",
-      "attr_volta": "codigoOtto"
+      "attr_A": "codigootto",
+      "attr_B": "codigoOtto"
     },
     {
-      "attr_ida": "codiso3166",
-      "attr_volta": "codIso3166"
+      "attr_A": "codiso3166",
+      "attr_B": "codIso3166"
     },
     {
-      "attr_ida": "codponto",
-      "attr_volta": "codPonto"
+      "attr_A": "codponto",
+      "attr_B": "codPonto"
     },
     {
-      "attr_ida": "codprojeto",
-      "attr_volta": "codProjeto"
+      "attr_A": "codprojeto",
+      "attr_B": "codProjeto"
     },
     {
-      "attr_ida": "codtrechoferrov",
-      "attr_volta": "codTrechoFerrov"
+      "attr_A": "codtrechoferrov",
+      "attr_B": "codTrechoFerrov"
     },
     {
-      "attr_ida": "codtrechorodov",
-      "attr_volta": "codTrechoRodov"
+      "attr_A": "codtrechorodov",
+      "attr_B": "codTrechoRodov"
     },
     {
-      "attr_ida": "coincidecomdentrode",
-      "attr_volta": "coincideComDentroDe",
+      "attr_A": "coincidecomdentrode",
+      "attr_B": "coincideComDentroDe",
       "traducao": [
         {
-          "valor_ida": 96,
-          "valor_volta": null,
-          "sentido": "volta"
+          "valor_A": 96,
+          "valor_B": null,
+          "sentido": "B=>A"
         }
       ]
     },
     {
-      "attr_ida": "combrenovavel",
-      "attr_volta": "combRenovavel"
+      "attr_A": "combrenovavel",
+      "attr_B": "combRenovavel"
     },
     {
-      "attr_ida": "cotacomprovada",
-      "attr_volta": "cotaComprovada"
+      "attr_A": "cotacomprovada",
+      "attr_B": "cotaComprovada"
     },
     {
-      "attr_ida": "cultivopredominante",
-      "attr_volta": "cultivoPredominante"
+      "attr_A": "cultivopredominante",
+      "attr_B": "cultivoPredominante"
     },
     {
-      "attr_ida": "datasituacaojuridica",
-      "attr_volta": "dataSituacaoJuridica"
+      "attr_A": "datasituacaojuridica",
+      "attr_B": "dataSituacaoJuridica"
     },
     {
-      "attr_ida": "datavisita",
-      "attr_volta": "dataVisita"
+      "attr_A": "datavisita",
+      "attr_B": "dataVisita"
     },
     {
-      "attr_ida": "denominacaoassociada",
-      "attr_volta": "denominacaoAssociada",
+      "attr_A": "denominacaoassociada",
+      "attr_B": "denominacaoAssociada",
       "traducao": [
         {
-          "valor_ida": 0,
-          "valor_volta": null,
-          "sentido": "volta"
+          "valor_A": 0,
+          "valor_B": null,
+          "sentido": "B=>A"
         }
       ]
     },
     {
-      "attr_ida": "dentrodepoligono",
-      "attr_volta": "dentroDePoligono"
+      "attr_A": "dentrodepoligono",
+      "attr_B": "dentroDePoligono"
     },
     {
-      "attr_ida": "destenergelet",
-      "attr_volta": "destEnergElet",
+      "attr_A": "destenergelet",
+      "attr_B": "destEnergElet",
       "traducao": [
         {
-          "valor_ida": 0,
-          "valor_volta": null,
-          "sentido": "volta"
+          "valor_A": 0,
+          "valor_B": null,
+          "sentido": "B=>A"
         }
       ]
     },
     {
-      "attr_ida": "destinacaofundeadouro",
-      "attr_volta": "destinacaoFundeadouro"
+      "attr_A": "destinacaofundeadouro",
+      "attr_B": "destinacaoFundeadouro"
     },
     {
-      "attr_ida": "destinadoa",
-      "attr_volta": "destinadoA"
+      "attr_A": "destinadoa",
+      "attr_B": "destinadoA"
     },
     {
-      "attr_ida": "eixoprincipal",
-      "attr_volta": "eixoPrincipal"
+      "attr_A": "eixoprincipal",
+      "attr_B": "eixoPrincipal"
     },
     {
-      "attr_ida": "emarruamento",
-      "attr_volta": "emArruamento"
+      "attr_A": "emarruamento",
+      "attr_B": "emArruamento"
     },
     {
-      "attr_ida": "emduto",
-      "attr_volta": "emDuto"
+      "attr_A": "emduto",
+      "attr_B": "emDuto"
     },
     {
-      "attr_ida": "espacamentoindividuos",
-      "attr_volta": "espacamentoIndividuos"
+      "attr_A": "espacamentoindividuos",
+      "attr_B": "espacamentoIndividuos"
     },
     {
-      "attr_ida": "especiepredominante",
-      "attr_volta": "especiePredominante"
+      "attr_A": "especiepredominante",
+      "attr_B": "especiePredominante"
     },
     {
-      "attr_ida": "espessalgas",
-      "attr_volta": "espessAlgas"
+      "attr_A": "espessalgas",
+      "attr_B": "espessAlgas"
     },
     {
-      "attr_ida": "espessuradap",
-      "attr_volta": "espessuraDAP"
+      "attr_A": "espessuradap",
+      "attr_B": "espessuraDAP"
     },
     {
-      "attr_ida": "extensaotrecho",
-      "attr_volta": "extensaoTrecho"
+      "attr_A": "extensaotrecho",
+      "attr_B": "extensaoTrecho"
     },
     {
-      "attr_ida": "formaextracao",
-      "attr_volta": "formaExtracao"
+      "attr_A": "formaextracao",
+      "attr_B": "formaExtracao"
     },
     {
-      "attr_ida": "funcaoedifmetroferrov",
-      "attr_volta": "funcaoEdifMetroFerrov"
+      "attr_A": "funcaoedifmetroferrov",
+      "attr_B": "funcaoEdifMetroFerrov"
     },
     {
-      "attr_ida": "gabhorizsup",
-      "attr_volta": "gabHorizSup"
+      "attr_A": "gabhorizsup",
+      "attr_B": "gabHorizSup"
     },
     {
-      "attr_ida": "gabvertsup",
-      "attr_volta": "gabVertSup"
+      "attr_A": "gabvertsup",
+      "attr_B": "gabVertSup"
     },
     {
-      "attr_ida": "geometriaaproximada",
-      "attr_volta": "geometriaAproximada"
+      "attr_A": "geometriaaproximada",
+      "attr_B": "geometriaAproximada"
     },
     {
-      "attr_ida": "grupoetnico",
-      "attr_volta": "grupoEtnico"
+      "attr_A": "grupoetnico",
+      "attr_B": "grupoEtnico"
     },
     {
-      "attr_ida": "historicomodificacao",
-      "attr_volta": "historicoModificacao"
+      "attr_A": "historicomodificacao",
+      "attr_B": "historicoModificacao"
     },
     {
-      "attr_ida": "identificador",
-      "attr_volta": "identificadorPosicGeo"
+      "attr_A": "identificador",
+      "attr_B": "identificadorPosicGeo"
     },
     {
-      "attr_ida": "larguramedia",
-      "attr_volta": "larguraMedia"
+      "attr_A": "larguramedia",
+      "attr_B": "larguraMedia"
     },
     {
-      "attr_ida": "matconstr",
-      "attr_volta": "matConstr"
+      "attr_A": "matconstr",
+      "attr_B": "matConstr"
     },
     {
-      "attr_ida": "materialpredominante",
-      "attr_volta": "materialPredominante"
+      "attr_A": "materialpredominante",
+      "attr_B": "materialPredominante"
     },
     {
-      "attr_ida": "mattransp",
-      "attr_volta": "matTransp"
+      "attr_A": "mattransp",
+      "attr_B": "matTransp"
     },
     {
-      "attr_ida": "modaluso",
-      "attr_volta": "modalUso"
+      "attr_A": "modaluso",
+      "attr_B": "modalUso"
     },
     {
-      "attr_ida": "motivodescontinuidade",
-      "attr_volta": "motivoDescontinuidade",
+      "attr_A": "motivodescontinuidade",
+      "attr_B": "motivoDescontinuidade",
       "traducao": [
         {
-          "valor_ida": 1,
-          "valor_volta": null,
-          "sentido": "volta"
+          "valor_A": 1,
+          "valor_B": null,
+          "sentido": "B=>A"
         }
       ]
     },
     {
-      "attr_ida": "namaximomaximorum",
-      "attr_volta": "naMaximoMaximorum"
+      "attr_A": "namaximomaximorum",
+      "attr_B": "naMaximoMaximorum"
     },
     {
-      "attr_ida": "namaximooperacional",
-      "attr_volta": "naMaximoOperacional"
+      "attr_A": "namaximooperacional",
+      "attr_B": "naMaximoOperacional"
     },
     {
-      "attr_ida": "nivelatencao",
-      "attr_volta": "nivelAtencao",
+      "attr_A": "nivelatencao",
+      "attr_B": "nivelAtencao",
       "traducao": [
         {
-          "valor_ida": 0,
-          "valor_volta": null,
-          "sentido": "volta"
+          "valor_A": 0,
+          "valor_B": null,
+          "sentido": "B=>A"
         }
       ]
     },
     {
-      "attr_ida": "nivelotto",
-      "attr_volta": "nivelOtto"
+      "attr_A": "nivelotto",
+      "attr_B": "nivelOtto"
     },
     {
-      "attr_ida": "nomeabrev",
-      "attr_volta": "nomeAbrev"
+      "attr_A": "nomeabrev",
+      "attr_B": "nomeAbrev"
     },
     {
-      "attr_ida": "nometi",
-      "attr_volta": "nomeTi"
+      "attr_A": "nometi",
+      "attr_B": "nomeTi"
     },
     {
-      "attr_ida": "nrdutos",
-      "attr_volta": "nrDutos"
+      "attr_A": "nrdutos",
+      "attr_B": "nrDutos"
     },
     {
-      "attr_ida": "nrfaixas",
-      "attr_volta": "nrFaixas"
+      "attr_A": "nrfaixas",
+      "attr_B": "nrFaixas"
     },
     {
-      "attr_ida": "nrlinhas",
-      "attr_volta": "nrLinhas"
+      "attr_A": "nrlinhas",
+      "attr_B": "nrLinhas"
     },
     {
-      "attr_ida": "nrpistas",
-      "attr_volta": "nrPistas"
+      "attr_A": "nrpistas",
+      "attr_B": "nrPistas"
     },
     {
-      "attr_ida": "numcircuitos",
-      "attr_volta": "numCircuitos"
+      "attr_A": "numcircuitos",
+      "attr_B": "numCircuitos"
     },
     {
-      "attr_ida": "obssituacao",
-      "attr_volta": "obsSituacao"
+      "attr_A": "obssituacao",
+      "attr_B": "obsSituacao"
     },
     {
-      "attr_ida": "ocorrenciaem",
-      "attr_volta": "ocorrenciaEm"
+      "attr_A": "ocorrenciaem",
+      "attr_B": "ocorrenciaEm"
     },
     {
-      "attr_ida": "orgaoenteresp",
-      "attr_volta": "orgaoEnteResp"
+      "attr_A": "orgaoenteresp",
+      "attr_B": "orgaoEnteResp"
     },
     {
-      "attr_ida": "orgresp",
-      "attr_volta": "orgResp"
+      "attr_A": "orgresp",
+      "attr_B": "orgResp"
     },
     {
-      "attr_ida": "outrarefalt",
-      "attr_volta": "outraRefAlt"
+      "attr_A": "outrarefalt",
+      "attr_B": "outraRefAlt"
     },
     {
-      "attr_ida": "outrarefplan",
-      "attr_volta": "outraRefPlan"
+      "attr_A": "outrarefplan",
+      "attr_B": "outraRefPlan"
     },
     {
-      "attr_ida": "operacional",
-      "attr_volta": "operacional",
+      "attr_A": "operacional",
+      "attr_B": "operacional",
       "traducao": [
         {
-          "valor_ida": 0,
-          "valor_volta": null,
-          "sentido": "volta"
+          "valor_A": 0,
+          "valor_B": null,
+          "sentido": "B=>A"
         }
       ]
     },
     {
-      "attr_ida": "perimetrooficial",
-      "attr_volta": "perimetroOficial"
+      "attr_A": "perimetrooficial",
+      "attr_B": "perimetroOficial"
     },
     {
-      "attr_ida": "periodicidadeinunda",
-      "attr_volta": "periodicidadeInunda"
+      "attr_A": "periodicidadeinunda",
+      "attr_B": "periodicidadeInunda"
     },
     {
-      "attr_ida": "posicaopista",
-      "attr_volta": "posicaoPista"
+      "attr_A": "posicaopista",
+      "attr_B": "posicaoPista"
     },
     {
-      "attr_ida": "posicaorelativa",
-      "attr_volta": "posicaoRelativa"
+      "attr_A": "posicaorelativa",
+      "attr_B": "posicaoRelativa"
     },
     {
-      "attr_ida": "posicaoreledific",
-      "attr_volta": "posicaoRelEdific"
+      "attr_A": "posicaoreledific",
+      "attr_B": "posicaoRelEdific"
     },
     {
-      "attr_ida": "potenciafiscalizada",
-      "attr_volta": "potenciaFiscalizadaKW"
+      "attr_A": "potenciafiscalizada",
+      "attr_B": "potenciaFiscalizadaKW"
     },
     {
-      "attr_ida": "potenciaoutorgada",
-      "attr_volta": "potenciaOutorgadaKW"
+      "attr_A": "potenciaoutorgada",
+      "attr_B": "potenciaOutorgadaKW"
     },
     {
-      "attr_ida": "procextracao",
-      "attr_volta": "procExtracao"
+      "attr_A": "procextracao",
+      "attr_B": "procExtracao"
     },
     {
-      "attr_ida": "profundidademedia",
-      "attr_volta": "profundidadeMedia"
+      "attr_A": "profundidademedia",
+      "attr_B": "profundidadeMedia"
     },
     {
-      "attr_ida": "qualidagua",
-      "attr_volta": "qualidAgua"
+      "attr_A": "qualidagua",
+      "attr_B": "qualidAgua"
     },
     {
-      "attr_ida": "referencialaltim",
-      "attr_volta": "referencialAltim"
+      "attr_A": "referencialaltim",
+      "attr_B": "referencialAltim"
     },
     {
-      "attr_ida": "referencialgrav",
-      "attr_volta": "referencialGrav"
+      "attr_A": "referencialgrav",
+      "attr_B": "referencialGrav"
     },
     {
-      "attr_ida": "sistemageodesico",
-      "attr_volta": "sistemaGeodesico"
+      "attr_A": "sistemageodesico",
+      "attr_B": "sistemaGeodesico"
     },
     {
-      "attr_ida": "situacaoagua",
-      "attr_volta": "situacaoAgua"
+      "attr_A": "situacaoagua",
+      "attr_B": "situacaoAgua"
     },
     {
-      "attr_ida": "situacaocosta",
-      "attr_volta": "situacaoCosta"
+      "attr_A": "situacaocosta",
+      "attr_B": "situacaoCosta"
     },
     {
-      "attr_ida": "situacaoemagua",
-      "attr_volta": "situacaoEmAgua"
+      "attr_A": "situacaoemagua",
+      "attr_B": "situacaoEmAgua"
     },
     {
-      "attr_ida": "situacaoespacial",
-      "attr_volta": "situacaoEspacial",
+      "attr_A": "situacaoespacial",
+      "attr_B": "situacaoEspacial",
       "traducao": [
         {
-          "valor_ida": 0,
-          "valor_volta": null,
-          "sentido": "volta"
+          "valor_A": 0,
+          "valor_B": null,
+          "sentido": "B=>A"
         }
       ]
     },
     {
-      "attr_ida": "situacaofisica",
-      "attr_volta": "situacaoFisica",
+      "attr_A": "situacaofisica",
+      "attr_B": "situacaoFisica",
       "traducao": [
         {
-          "valor_ida": 0,
-          "valor_volta": null,
-          "sentido": "volta"
+          "valor_A": 0,
+          "valor_B": null,
+          "sentido": "B=>A"
         }
       ]
     },
     {
-      "attr_ida": "situacaojuridica",
-      "attr_volta": "situacaoJuridica"
+      "attr_A": "situacaojuridica",
+      "attr_B": "situacaoJuridica"
     },
     {
-      "attr_ida": "situacaomarco",
-      "attr_volta": "situacaoMarco"
+      "attr_A": "situacaomarco",
+      "attr_B": "situacaoMarco"
     },
     {
-      "attr_ida": "situamare",
-      "attr_volta": "situaMare",
+      "attr_A": "situamare",
+      "attr_B": "situaMare",
       "traducao": [
         {
-          "valor_ida": 0,
-          "valor_volta": null,
-          "sentido": "volta"
+          "valor_A": 0,
+          "valor_B": null,
+          "sentido": "B=>A"
         }
       ]
     },
     {
-      "attr_ida": "tensaoeletrica",
-      "attr_volta": "tensaoEletrica"
+      "attr_A": "tensaoeletrica",
+      "attr_B": "tensaoEletrica"
     },
     {
-      "attr_ida": "tipoalterantrop",
-      "attr_volta": "tipoAlterAntrop"
+      "attr_A": "tipoalterantrop",
+      "attr_B": "tipoAlterAntrop"
     },
     {
-      "attr_ida": "tipoareaumida",
-      "attr_volta": "tipoAreaUmida",
+      "attr_A": "tipoareaumida",
+      "attr_B": "tipoAreaUmida",
       "traducao": [
         {
-          "valor_ida": 0,
-          "valor_volta": null,
-          "sentido": "volta"
+          "valor_A": 0,
+          "valor_B": null,
+          "sentido": "B=>A"
         }
       ]
     },
     {
-      "attr_ida": "tipoareausocomun",
-      "attr_volta": "tipoAreaUsoComun"
+      "attr_A": "tipoareausocomun",
+      "attr_B": "tipoAreaUsoComun"
     },
     {
-      "attr_ida": "tipoatracad",
-      "attr_volta": "tipoAtracad"
+      "attr_A": "tipoatracad",
+      "attr_B": "tipoAtracad"
     },
     {
-      "attr_ida": "tipobanco",
-      "attr_volta": "tipoBanco"
+      "attr_A": "tipobanco",
+      "attr_B": "tipoBanco"
     },
     {
-      "attr_ida": "tipobrejopantano",
-      "attr_volta": "tipoBrejoPantano"
+      "attr_A": "tipobrejopantano",
+      "attr_B": "tipoBrejoPantano"
     },
     {
-      "attr_ida": "tipocaminhoaereo",
-      "attr_volta": "tipoCaminhoAereo"
+      "attr_A": "tipocaminhoaereo",
+      "attr_B": "tipoCaminhoAereo"
     },
     {
-      "attr_ida": "tipocampo",
-      "attr_volta": "tipoCampo"
+      "attr_A": "tipocampo",
+      "attr_B": "tipoCampo"
     },
     {
-      "attr_ida": "tipocampoquadra",
-      "attr_volta": "tipoCampoQuadra"
+      "attr_A": "tipocampoquadra",
+      "attr_B": "tipoCampoQuadra"
     },
     {
-      "attr_ida": "tipocemiterio",
-      "attr_volta": "tipoCemiterio"
+      "attr_A": "tipocemiterio",
+      "attr_B": "tipoCemiterio"
     },
     {
-      "attr_ida": "tipocerr",
-      "attr_volta": "tipoCerr"
+      "attr_A": "tipocerr",
+      "attr_B": "tipoCerr"
     },
     {
-      "attr_ida": "tipoclassecnae",
-      "attr_volta": "tipoClasseCnae"
+      "attr_A": "tipoclassecnae",
+      "attr_B": "tipoClasseCnae"
     },
     {
-      "attr_ida": "tipocombustivel",
-      "attr_volta": "tipoCombustivel"
+      "attr_A": "tipocombustivel",
+      "attr_B": "tipoCombustivel"
     },
     {
-      "attr_ida": "tipoconteudo",
-      "attr_volta": "tipoConteudo"
+      "attr_A": "tipoconteudo",
+      "attr_B": "tipoConteudo"
     },
     {
-      "attr_ida": "tipodelimfis",
-      "attr_volta": "tipoDelimFis"
+      "attr_A": "tipodelimfis",
+      "attr_B": "tipoDelimFis"
     },
     {
-      "attr_ida": "tipodepabast",
-      "attr_volta": "tipoDepAbast"
+      "attr_A": "tipodepabast",
+      "attr_B": "tipoDepAbast"
     },
     {
-      "attr_ida": "tipodepgeral",
-      "attr_volta": "tipoDepGeral"
+      "attr_A": "tipodepgeral",
+      "attr_B": "tipoDepGeral"
     },
     {
-      "attr_ida": "tipodepsaneam",
-      "attr_volta": "tipoDepSaneam"
+      "attr_A": "tipodepsaneam",
+      "attr_B": "tipoDepSaneam"
     },
     {
-      "attr_ida": "tipodivisaocnae",
-      "attr_volta": "tipoDivisaoCnae"
+      "attr_A": "tipodivisaocnae",
+      "attr_B": "tipoDivisaoCnae"
     },
     {
-      "attr_ida": "tipoedifabast",
-      "attr_volta": "tipoEdifAbast"
+      "attr_A": "tipoedifabast",
+      "attr_B": "tipoEdifAbast"
     },
     {
-      "attr_ida": "tipoedifaero",
-      "attr_volta": "tipoEdifAero"
+      "attr_A": "tipoedifaero",
+      "attr_B": "tipoEdifAero"
     },
     {
-      "attr_ida": "tipoedifagropec",
-      "attr_volta": "tipoEdifAgropec"
+      "attr_A": "tipoedifagropec",
+      "attr_B": "tipoEdifAgropec"
     },
     {
-      "attr_ida": "tipoedifcomercserv",
-      "attr_volta": "tipoEdifComercServ"
+      "attr_A": "tipoedifcomercserv",
+      "attr_B": "tipoEdifComercServ"
     },
     {
-      "attr_ida": "tipoedifcomunic",
-      "attr_volta": "tipoEdifComunic"
+      "attr_A": "tipoedifcomunic",
+      "attr_B": "tipoEdifComunic"
     },
     {
-      "attr_ida": "tipoedifenergia",
-      "attr_volta": "tipoEdifEnergia"
+      "attr_A": "tipoedifenergia",
+      "attr_B": "tipoEdifEnergia"
     },
     {
-      "attr_ida": "tipoediflazer",
-      "attr_volta": "tipoEdifLazer"
+      "attr_A": "tipoediflazer",
+      "attr_B": "tipoEdifLazer"
     },
     {
-      "attr_ida": "tipoedifport",
-      "attr_volta": "tipoEdifPort"
+      "attr_A": "tipoedifport",
+      "attr_B": "tipoEdifPort"
     },
     {
-      "attr_ida": "tipoedifrelig",
-      "attr_volta": "tipoEdifRelig"
+      "attr_A": "tipoedifrelig",
+      "attr_B": "tipoEdifRelig"
     },
     {
-      "attr_ida": "tipoedifrod",
-      "attr_volta": "tipoEdifRod"
+      "attr_A": "tipoedifrod",
+      "attr_B": "tipoEdifRod"
     },
     {
-      "attr_ida": "tipoedifsaneam",
-      "attr_volta": "tipoEdifSaneam"
+      "attr_A": "tipoedifsaneam",
+      "attr_B": "tipoEdifSaneam"
     },
     {
-      "attr_ida": "tipoedifturist",
-      "attr_volta": "tipoEdifTurist"
+      "attr_A": "tipoedifturist",
+      "attr_B": "tipoEdifTurist"
     },
     {
-      "attr_ida": "tipoentroncamento",
-      "attr_volta": "tipoEntroncamento"
+      "attr_A": "tipoentroncamento",
+      "attr_B": "tipoEntroncamento"
     },
     {
-      "attr_ida": "tipoequipagropec",
-      "attr_volta": "tipoEquipAgropec"
+      "attr_A": "tipoequipagropec",
+      "attr_B": "tipoEquipAgropec"
     },
     {
-      "attr_ida": "tipoestgerad",
-      "attr_volta": "tipoEstGerad"
+      "attr_A": "tipoestgerad",
+      "attr_B": "tipoEstGerad"
     },
     {
-      "attr_ida": "tipoexposicao",
-      "attr_volta": "tipoExposicao"
+      "attr_A": "tipoexposicao",
+      "attr_B": "tipoExposicao"
     },
     {
-      "attr_ida": "tipoextmin",
-      "attr_volta": "tipoExtMin"
+      "attr_A": "tipoextmin",
+      "attr_B": "tipoExtMin"
     },
     {
-      "attr_ida": "tipofontedagua",
-      "attr_volta": "tipoFonteDagua"
+      "attr_A": "tipofontedagua",
+      "attr_B": "tipoFonteDagua"
     },
     {
-      "attr_ida": "tipolavoura",
-      "attr_volta": "tipoLavoura"
+      "attr_A": "tipolavoura",
+      "attr_B": "tipoLavoura"
     },
     {
-      "attr_ida": "tipolimareaesp",
-      "attr_volta": "tipoLimAreaEsp"
+      "attr_A": "tipolimareaesp",
+      "attr_B": "tipoLimAreaEsp"
     },
     {
-      "attr_ida": "tipolimintramun",
-      "attr_volta": "tipoLimIntraMun"
+      "attr_A": "tipolimintramun",
+      "attr_B": "tipoLimIntraMun"
     },
     {
-      "attr_ida": "tipolimmassa",
-      "attr_volta": "tipoLimMassa"
+      "attr_A": "tipolimmassa",
+      "attr_B": "tipoLimMassa"
     },
     {
-      "attr_ida": "tipolimoper",
-      "attr_volta": "tipoLimOper"
+      "attr_A": "tipolimoper",
+      "attr_B": "tipoLimOper"
     },
     {
-      "attr_ida": "tipolimpol",
-      "attr_volta": "tipoLimPol"
+      "attr_A": "tipolimpol",
+      "attr_B": "tipoLimPol"
     },
     {
-      "attr_ida": "tipolocalcrit",
-      "attr_volta": "tipoLocalCrit"
+      "attr_A": "tipolocalcrit",
+      "attr_B": "tipoLocalCrit"
     },
     {
-      "attr_ida": "tipomacchav",
-      "attr_volta": "tipoMacChav"
+      "attr_A": "tipomacchav",
+      "attr_B": "tipoMacChav"
     },
     {
-      "attr_ida": "tipomaqtermica",
-      "attr_volta": "tipoMaqTermica"
+      "attr_A": "tipomaqtermica",
+      "attr_B": "tipoMaqTermica"
     },
     {
-      "attr_ida": "tipomarcolim",
-      "attr_volta": "tipoMarcoLim"
+      "attr_A": "tipomarcolim",
+      "attr_B": "tipoMarcoLim"
     },
     {
-      "attr_ida": "tipoobst",
-      "attr_volta": "tipoObst"
+      "attr_A": "tipoobst",
+      "attr_B": "tipoObst"
     },
     {
-      "attr_ida": "tipooutlimofic",
-      "attr_volta": "tipoOutLimOfic"
+      "attr_A": "tipooutlimofic",
+      "attr_B": "tipoOutLimOfic"
     },
     {
-      "attr_ida": "tipooutunidprot",
-      "attr_volta": "tipoOutUnidProt"
+      "attr_A": "tipooutunidprot",
+      "attr_B": "tipoOutUnidProt"
     },
     {
-      "attr_ida": "tipopassagviad",
-      "attr_volta": "tipoPassagViad"
+      "attr_A": "tipopassagviad",
+      "attr_B": "tipoPassagViad"
     },
     {
-      "attr_ida": "tipopista",
-      "attr_volta": "tipoPista"
+      "attr_A": "tipopista",
+      "attr_B": "tipoPista"
     },
     {
-      "attr_ida": "tipoplataforma",
-      "attr_volta": "tipoPlataforma"
+      "attr_A": "tipoplataforma",
+      "attr_B": "tipoPlataforma"
     },
     {
-      "attr_ida": "tipopocomina",
-      "attr_volta": "tipoPocoMina"
+      "attr_A": "tipopocomina",
+      "attr_B": "tipoPocoMina"
     },
     {
-      "attr_ida": "tipoponte",
-      "attr_volta": "tipoPonte"
+      "attr_A": "tipoponte",
+      "attr_B": "tipoPonte"
     },
     {
-      "attr_ida": "tipoprodutoresiduo",
-      "attr_volta": "tipoProdutoResiduo"
+      "attr_A": "tipoprodutoresiduo",
+      "attr_B": "tipoProdutoResiduo"
     },
     {
-      "attr_ida": "tipoptocontrole",
-      "attr_volta": "tipoPtoControle"
+      "attr_A": "tipoptocontrole",
+      "attr_B": "tipoPtoControle"
     },
     {
-      "attr_ida": "tipoptoenergia",
-      "attr_volta": "tipoPtoEnergia"
+      "attr_A": "tipoptoenergia",
+      "attr_B": "tipoPtoEnergia"
     },
     {
-      "attr_ida": "tipoptoestmed",
-      "attr_volta": "tipoPtoEstMed"
+      "attr_A": "tipoptoestmed",
+      "attr_B": "tipoPtoEstMed"
     },
     {
-      "attr_ida": "tipoptorefgeodtopo",
-      "attr_volta": "tipoPtoRefGeodTopo"
+      "attr_A": "tipoptorefgeodtopo",
+      "attr_B": "tipoPtoRefGeodTopo"
     },
     {
-      "attr_ida": "tipoquebramolhe",
-      "attr_volta": "tipoQuebramarMolhe"
+      "attr_A": "tipoquebramolhe",
+      "attr_B": "tipoQuebramarMolhe"
     },
     {
-      "attr_ida": "tipoqueda",
-      "attr_volta": "tipoQueda"
+      "attr_A": "tipoqueda",
+      "attr_B": "tipoQueda"
     },
     {
-      "attr_ida": "tiporecife",
-      "attr_volta": "tipoRecife"
+      "attr_A": "tiporecife",
+      "attr_B": "tipoRecife"
     },
     {
-      "attr_ida": "tiporef",
-      "attr_volta": "tipoRef"
+      "attr_A": "tiporef",
+      "attr_B": "tipoRef"
     },
     {
-      "attr_ida": "tiporesiduo",
-      "attr_volta": "tipoResiduo"
+      "attr_A": "tiporesiduo",
+      "attr_B": "tipoResiduo"
     },
     {
-      "attr_ida": "tiposecaocnae",
-      "attr_volta": "tipoSecaoCnae",
+      "attr_A": "tiposecaocnae",
+      "attr_B": "tipoSecaoCnae",
       "traducao": [
         {
-          "valor_ida": 0,
-          "valor_volta": null,
-          "sentido": "volta"
+          "valor_A": 0,
+          "valor_B": null,
+          "sentido": "B=>A"
         }
       ]
     },
     {
-      "attr_ida": "tiposinal",
-      "attr_volta": "tipoSinal"
+      "attr_A": "tiposinal",
+      "attr_B": "tipoSinal"
     },
     {
-      "attr_ida": "tiposumvert",
-      "attr_volta": "tipoSumVert"
+      "attr_A": "tiposumvert",
+      "attr_B": "tipoSumVert"
     },
     {
-      "attr_ida": "tipoterrexp",
-      "attr_volta": "tipoTerrExp"
+      "attr_A": "tipoterrexp",
+      "attr_B": "tipoTerrExp"
     },
     {
-      "attr_ida": "tipotorre",
-      "attr_volta": "tipoTorre"
+      "attr_A": "tipotorre",
+      "attr_B": "tipoTorre"
     },
     {
-      "attr_ida": "tipotravessia",
-      "attr_volta": "tipoTravessia"
+      "attr_A": "tipotravessia",
+      "attr_B": "tipoTravessia"
     },
     {
-      "attr_ida": "tipotravessiaped",
-      "attr_volta": "tipoTravessiaPed"
+      "attr_A": "tipotravessiaped",
+      "attr_B": "tipoTravessiaPed"
     },
     {
-      "attr_ida": "tipotrechocomunic",
-      "attr_volta": "tipoTrechoComunic"
+      "attr_A": "tipotrechocomunic",
+      "attr_B": "tipoTrechoComunic"
     },
     {
-      "attr_ida": "tipotrechoferrov",
-      "attr_volta": "tipoTrechoFerrov"
+      "attr_A": "tipotrechoferrov",
+      "attr_B": "tipoTrechoFerrov"
     },
 
     {
-      "attr_ida": "tipotrechorod",
-      "attr_volta": "tipoTrechoRod"
+      "attr_A": "tipotrechorod",
+      "attr_B": "tipoTrechoRod"
     },
     {
-      "attr_ida": "tipotunel",
-      "attr_volta": "tipoTunel",
+      "attr_A": "tipotunel",
+      "attr_B": "tipoTunel",
       "traducao": [
         {
-          "valor_ida": 1,
-          "valor_volta": null,
-          "sentido": "volta"
+          "valor_A": 1,
+          "valor_B": null,
+          "sentido": "B=>A"
         }
       ]
     },
     {
-      "attr_ida": "tipounidprotinteg",
-      "attr_volta": "tipoUnidProtInteg"
+      "attr_A": "tipounidprotinteg",
+      "attr_B": "tipoUnidProtInteg"
     },
     {
-      "attr_ida": "tipounidusosust",
-      "attr_volta": "tipoUnidUsoSust"
+      "attr_A": "tipounidusosust",
+      "attr_B": "tipoUnidUsoSust"
     },
     {
-      "attr_ida": "tipousocaminhoaer",
-      "attr_volta": "tipoUsoCaminhoAer"
+      "attr_A": "tipousocaminhoaer",
+      "attr_B": "tipoUsoCaminhoAer"
     },
     {
-      "attr_ida": "tipousoedif",
-      "attr_volta": "tipoUsoEdif"
+      "attr_A": "tipousoedif",
+      "attr_B": "tipoUsoEdif"
     },
     {
-      "attr_ida": "unidadevolume",
-      "attr_volta": "unidadeVolume"
+      "attr_A": "unidadevolume",
+      "attr_B": "unidadeVolume"
     },
     {
-      "attr_ida": "usopista",
-      "attr_volta": "usoPista"
+      "attr_A": "usopista",
+      "attr_B": "usoPista"
     },
     {
-      "attr_ida": "usoprincipal",
-      "attr_volta": "usoPrincipal"
+      "attr_A": "usoprincipal",
+      "attr_B": "usoPrincipal"
     },
     {
-      "attr_ida": "valorvolume",
-      "attr_volta": "valorVolume"
+      "attr_A": "valorvolume",
+      "attr_B": "valorVolume"
     },
     {
-      "attr_ida": "vaolivrehoriz",
-      "attr_volta": "vaoLivreHoriz"
+      "attr_A": "vaolivrehoriz",
+      "attr_B": "vaoLivreHoriz"
     },
     {
-      "attr_ida": "vaovertical",
-      "attr_volta": "vaoVertical"
+      "attr_A": "vaovertical",
+      "attr_B": "vaoVertical"
     },
     {
-      "attr_ida": "velocidademedcorrente",
-      "attr_volta": "velocidadeMedCorrente"
+      "attr_A": "velocidademedcorrente",
+      "attr_B": "velocidadeMedCorrente"
     },
     {
-      "attr_ida": "volumeutil",
-      "attr_volta": "volumeUtil"
+      "attr_A": "volumeutil",
+      "attr_B": "volumeUtil"
     }
   ],
-  "atributos_default_ida": [],
-  "atributos_default_volta": []
+  "atributos_default_B": [],
+  "atributos_default_A": []
 }
