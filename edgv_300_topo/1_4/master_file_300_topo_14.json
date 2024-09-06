@@ -2508,8 +2508,8 @@
           "valor_filtro": "Estação geradora de energia"
         },
         {
-          "code": 408,
-          "value": "Estação geradora – Hidrelétrica",
+          "code": 406,
+          "value": "Estação geradora – Solar",
           "valor_filtro": "Estação geradora de energia"
         },
         {
@@ -2518,18 +2518,18 @@
           "valor_filtro": "Estação geradora de energia"
         },
         {
-          "code": 498,
-          "value": "Estação geradora – Outras",
-          "valor_filtro": "Estação geradora de energia"
-        },
-        {
-          "code": 406,
-          "value": "Estação geradora – Solar",
+          "code": 408,
+          "value": "Estação geradora – Hidrelétrica",
           "valor_filtro": "Estação geradora de energia"
         },
         {
           "code": 409,
           "value": "Estação geradora – Termelétrica",
+          "valor_filtro": "Estação geradora de energia"
+        },
+        {
+          "code": 498,
+          "value": "Estação geradora – Outras",
           "valor_filtro": "Estação geradora de energia"
         },
         {
@@ -4890,10 +4890,6 @@
           "mapa_valor": "tipo_elemento_energia",
           "valores": [
             {
-              "code": 302,
-              "primitivas": ["MultiLinestring"]
-            },
-            {
               "code": 303,
               "primitivas": ["MultiLinestring"]
             },
@@ -4903,6 +4899,10 @@
             },
             {
               "code": 1701,
+              "primitivas": ["MultiPoint"]
+            },
+            {
+              "code": 1702,
               "primitivas": ["MultiPoint"]
             },
             {
