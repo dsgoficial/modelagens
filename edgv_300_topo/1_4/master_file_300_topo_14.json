@@ -32,16 +32,6 @@
           "code": 2,
           "value": "Obstrução múltipla",
           "descricao": "-"
-        },
-        {
-          "code": 3,
-          "value": "Obstrução individual com heliponto",
-          "descricao": "-"
-        },
-        {
-          "code": 4,
-          "value": "Obstrução múltipla com heliponto",
-          "descricao": "-"
         }
       ]
     },
@@ -785,8 +775,12 @@
       "nome": "tipo_sumidouro_vertedouro",
       "valores": [
         {
+          "code": 3,
+          "value": "Sumidouro - Canalização, Gruta ou fenda"
+        },
+        {
           "code": 4,
-          "value": "Sumidouro"
+          "value": "Sumidouro - Desconhecida, Absorção"
         },
         {
           "code": 5,
@@ -2239,6 +2233,11 @@
           "valor_filtro": "Edificação portuária"
         },
         {
+          "code": 2502,
+          "value": "Port - Rampa transportadora",
+          "valor_filtro": "Edificação portuária"
+        },
+        {
           "code": 2601,
           "value": "Posto de combustivel",
           "valor_filtro": "Posto de combustivel"
@@ -2336,6 +2335,11 @@
         {
           "code": 16,
           "value": "Duna"
+        },
+        {
+          "code": 18,
+          "value": "Falha",
+          "descricao": "-"
         },
         {
           "code": 19,
@@ -3283,6 +3287,16 @@
           "valor_filtro": "Farol"
         },
         {
+          "code": 1201,
+          "value": "Obstáculo de navegação - natural",
+          "valor_filtro": "Obstáculo de navegação"
+        },
+        {
+          "code": 1202,
+          "value": "Obstáculo de navegação - artificial",
+          "valor_filtro": "Obstáculo de navegação"
+        },
+        {
           "code": 1601,
           "value": "Estação climatológica principal",
           "valor_filtro": "Ponto de estacão de medição de fenômenos"
@@ -3482,6 +3496,16 @@
     {
       "nome": "tipo_veg",
       "valores": [
+        {
+          "code": 107,
+          "value": "Cult - Cana-de-açúcar",
+          "valor_filtro": "Vegetação Cultivada"
+        },
+        {
+          "code": 142,
+          "value": "Cult - Videira",
+          "valor_filtro": "Vegetação Cultivada"
+        },
         {
           "code": 150,
           "value": "Cult - Arroz de inundação",
@@ -4183,6 +4207,14 @@
             {
               "code": 1101,
               "primitivas": ["MultiPoint"]
+            },
+            {
+              "code": 1201,
+              "primitivas": ["MultiPolygon", "MultiLinestring", "MultiPoint"]
+            },
+            {
+              "code": 1202,
+              "primitivas": ["MultiPolygon", "MultiLinestring", "MultiPoint"]
             },
             {
               "code": 1601,
@@ -5467,7 +5499,7 @@
     {
       "nome": "travessia_hidroviaria",
       "categoria": "infra",
-      "primitivas": ["MultiLinestring"],
+      "primitivas": ["MultiLinestring",  "MultiPoint"],
       "atributos": [
         {
           "nome": "nome",
