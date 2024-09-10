@@ -626,6 +626,34 @@
             ]
         },
         {
+            "nome": "Assentamento_Precario",
+            "categoria": "CBGE",
+            "descricao": "-",
+            "primitivas": [
+                "MultiPolygon"
+            ],
+            "atributos": [
+                {
+                    "nome": "NOME",
+                    "tipo": "varchar(255)",
+                    "descricao": "-",
+                    "cardinalidade": "0..1"
+                },
+                {
+                    "nome": "GEOAPROX",
+                    "tipo": "boolean",
+                    "descricao": "-",
+                    "cardinalidade": "0..1"
+                },
+                {
+                    "nome": "TIPOASSENT",
+                    "tipo": "varchar(255)",
+                    "descricao": "-",
+                    "cardinalidade": "0..1"
+                }
+            ]
+        },
+        {
             "nome": "Estacionamento",
             "categoria": "CBGE",
             "descricao": "-",

@@ -1,7 +1,7 @@
 {
   "modelo": "EDGV 3.0",
   "comentario": "Modelo da EDGV 3.0 sem atributos multivalorados, e com modificações de forma a ser compatível com a EDGV 2.1.3",
-  "versao": "1.1.4",
+  "versao": "1.1.5",
   "schema_dados": "edgv",
   "schema_dominios": "dominios",
   "a_ser_preenchido": {
@@ -2626,6 +2626,46 @@
         {
           "code": 20,
           "value": "Garagem",
+          "descricao": "-"
+        },
+        {
+          "code": 99,
+          "value": "Outros",
+          "descricao": "-"
+        }
+      ]
+    },
+    {
+      "nome": "tipo_assentamento_precario",
+      "valores": [
+        {
+          "code": 1,
+          "value": "Cortiço",
+          "descricao": "-"
+        },
+        {
+          "code": 2,
+          "value": "Conjunto habitacional degradado",
+          "descricao": "-"
+        },
+        {
+          "code": 3,
+          "value": "Favela",
+          "descricao": "-"
+        },
+        {
+          "code": 4,
+          "value": "Loteamento irregular da periferia",
+          "descricao": "-"
+        },
+        {
+          "code": 5,
+          "value": "Mocambos",
+          "descricao": "-"
+        },
+        {
+          "code": 6,
+          "value": "Palafitas",
           "descricao": "-"
         },
         {
@@ -7640,6 +7680,33 @@
               "code": 2
             }
           ]
+        }
+      ]
+    },
+    {
+      "nome": "assentamento_precario",
+      "categoria": "cbge",
+      "descricao": "-",
+      "primitivas": ["MultiPolygon"],
+      "atributos": [
+        {
+          "nome": "nome",
+          "tipo": "varchar(255)",
+          "descricao": "-",
+          "cardinalidade": "0..1"
+        },
+        {
+          "nome": "geometriaaproximada",
+          "tipo": "boolean",
+          "descricao": "-",
+          "cardinalidade": "1..1"
+        },
+        {
+          "nome": "tipoassentamentoprecario",
+          "tipo": "smallint",
+          "descricao": "-",
+          "cardinalidade": "1..1",
+          "mapa_valor": "tipo_assentamento_precario"
         }
       ]
     },

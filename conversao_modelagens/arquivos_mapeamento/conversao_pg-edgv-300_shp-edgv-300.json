@@ -81,6 +81,10 @@
       "classe_B": "CBGE_Area_Habitacional"
     },
     {
+        "classe_A": "assentamento_precario",
+        "classe_B": "CBGE_Assentamento_Precario"
+    },
+    {
       "classe_A": "cbge_estacionamento",
       "classe_B": "CBGE_Estacionamento"
     },
@@ -1895,6 +1899,40 @@
             {
                 "valor_A": 19,
                 "valor_B": "Área relacionada a ruínas de valor histórico"
+            },
+            {
+                "valor_A": 99,
+                "valor_B": "Outros"
+            }
+        ]
+    },
+    {
+        "attr_A": "tipoassentamentoprecario",
+        "attr_B": "TIPOASSENT",
+        "traducao": [
+            {
+                "valor_A": 1,
+                "valor_B": "Cortiço"
+            },
+            {
+                "valor_A": 2,
+                "valor_B": "Conjunto habitacional degradado"
+            },
+            {
+                "valor_A": 3,
+                "valor_B": "Favela"
+            },
+            {
+                "valor_A": 4,
+                "valor_B": "Loteamento irregular da periferia"
+            },
+            {
+                "valor_A": 5,
+                "valor_B": "Mocambos"
+            },
+            {
+                "valor_A": 6,
+                "valor_B": "Palafitas"
             },
             {
                 "valor_A": 99,

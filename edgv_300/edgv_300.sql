@@ -7,10 +7,10 @@ SET search_path TO pg_catalog,public,edgv,dominios;
 
 CREATE TABLE public.db_metadata(
 	 edgvversion varchar(50) NOT NULL DEFAULT 'EDGV 3.0',
-	 dbimplversion varchar(50) NOT NULL DEFAULT '1.1.4',
+	 dbimplversion varchar(50) NOT NULL DEFAULT '1.1.5',
 	 CONSTRAINT edgvversioncheck CHECK (edgvversion = 'EDGV 3.0')
 );
-INSERT INTO public.db_metadata (edgvversion, dbimplversion) VALUES ('EDGV 3.0','1.1.4');
+INSERT INTO public.db_metadata (edgvversion, dbimplversion) VALUES ('EDGV 3.0','1.1.5');
 
 CREATE TABLE dominios.aptidao_operacional_atracadouro (
 	 code smallint NOT NULL,
@@ -956,6 +956,22 @@ INSERT INTO dominios.tipo_edif_rod (code,code_name) VALUES (99,'Outros (99)');
 INSERT INTO dominios.tipo_edif_rod (code,code_name) VALUES (9999,'A SER PREENCHIDO (9999)');
 
 ALTER TABLE dominios.tipo_edif_rod OWNER TO postgres;
+
+
+CREATE TABLE dominios.tipo_assentamento_precario (
+	 code smallint NOT NULL,
+	 code_name text NOT NULL,
+	 CONSTRAINT tipo_area_pk PRIMARY KEY (code)
+);
+
+INSERT INTO dominios.tipo_assentamento_precario (code,code_name) VALUES (1,'Cortiço (1)');
+INSERT INTO dominios.tipo_assentamento_precario (code,code_name) VALUES (2,'Conjunto habitacional degradado (2)');
+INSERT INTO dominios.tipo_assentamento_precario (code,code_name) VALUES (3,'Favela (3)');
+INSERT INTO dominios.tipo_assentamento_precario (code,code_name) VALUES (4,'Loteamento irregular da periferia (4)');
+INSERT INTO dominios.tipo_assentamento_precario (code,code_name) VALUES (5,'Mocambos (5)');
+INSERT INTO dominios.tipo_assentamento_precario (code,code_name) VALUES (6,'Palafitas (6)');
+INSERT INTO dominios.tipo_assentamento_precario (code,code_name) VALUES (99,'Outros (99)');
+INSERT INTO dominios.tipo_assentamento_precario (code,code_name) VALUES (9999,'A SER PREENCHIDO (9999)');
 
 CREATE TABLE dominios.tipo_area (
 	 code smallint NOT NULL,
@@ -3714,6 +3730,28 @@ ALTER TABLE edgv.cbge_area_habitacional_a
 	 CHECK (tipoarea = ANY(ARRAY[2 :: SMALLINT, 9999 :: SMALLINT])); 
 
 ALTER TABLE edgv.cbge_area_habitacional_a ALTER COLUMN tipoarea SET DEFAULT 9999;
+
+CREATE TABLE edgv.cbge_assentamento_precario_a(
+	 id uuid NOT NULL DEFAULT uuid_generate_v4(),
+	 nome varchar(255),
+	 geometriaaproximada boolean NOT NULL,
+	 tipoarea smallint NOT NULL,
+	 observacao VARCHAR(255),
+	 geom geometry(MultiPolygon, 4674),
+	 CONSTRAINT cbge_assentamento_precario_a_pk PRIMARY KEY (id)
+	 WITH (FILLFACTOR = 80)
+);
+CREATE INDEX cbge_assentamento_precario_a_geom ON edgv.cbge_assentamento_precario_a USING gist (geom);
+
+ALTER TABLE edgv.cbge_assentamento_precario_a OWNER TO postgres;
+
+ALTER TABLE edgv.cbge_assentamento_precario_a
+	 ADD CONSTRAINT cbge_assentamento_precario_a_tipoassentamentoprecario_fk FOREIGN KEY (tipoassentamentoprecario)
+	 REFERENCES dominios.tipo_assentamento_precario (code) MATCH FULL
+	 ON UPDATE NO ACTION ON DELETE NO ACTION;
+
+ALTER TABLE edgv.cbge_assentamento_precario_a ALTER COLUMN tipoassentamentoprecario SET DEFAULT 9999;
+
 
 CREATE TABLE edgv.cbge_estacionamento_a(
 	 id uuid NOT NULL DEFAULT uuid_generate_v4(),
