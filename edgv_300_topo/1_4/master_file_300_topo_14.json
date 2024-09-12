@@ -6079,14 +6079,12 @@
         {
           "nome": "altitude",
           "tipo": "real",
-          "cardinalidade": "0..1",
-          "primitivas": ["MultiPoint", "MultiLinestring"]
+          "cardinalidade": "0..1"
         },
         {
           "nome": "altura",
           "tipo": "real",
-          "cardinalidade": "0..1",
-          "primitivas": ["MultiPoint", "MultiLinestring"]
+          "cardinalidade": "0..1"
         },
         {
           "nome": "tipo",
