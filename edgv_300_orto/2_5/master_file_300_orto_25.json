@@ -21,6 +21,21 @@
   },
   "dominios": [
     {
+      "nome": "tipo_obstrucao",
+      "valores": [
+        {
+          "code": 1,
+          "value": "Obstrução individual",
+          "descricao": "-"
+        },
+        {
+          "code": 2,
+          "value": "Obstrução múltipla",
+          "descricao": "-"
+        }
+      ]
+    },
+    {
       "nome": "tipo_produto_residuo",
       "valores": [
         {
@@ -2735,6 +2750,51 @@
   ],
   "extension_classes": [
     {
+      "nome": "obstaculo_vertical",
+      "categoria": "infra",
+      "primitivas": ["MultiPoint"],
+      "atributos": [
+        {
+          "nome": "nome",
+          "tipo": "varchar(255)",
+          "cardinalidade": "0..1"
+        },
+        {
+          "nome": "altitude",
+          "tipo": "real",
+          "cardinalidade": "0..1"
+        },
+        {
+          "nome": "altura",
+          "tipo": "real",
+          "cardinalidade": "0..1"
+        },
+        {
+          "nome": "tipo",
+          "tipo": "smallint",
+          "cardinalidade": "1..1",
+          "mapa_valor": "tipo_obstrucao"
+        },
+        {
+          "nome": "texto_edicao",
+          "tipo": "varchar(255)",
+          "cardinalidade": "0..1"
+        },
+        {
+          "nome": "visivel",
+          "tipo": "smallint",
+          "cardinalidade": "1..1",
+          "mapa_valor": "booleano"
+        },
+        {
+          "nome": "exibir_linha_rotulo",
+          "tipo": "smallint",
+          "cardinalidade": "1..1",
+          "mapa_valor": "booleano"
+        }
+      ]
+    },
+    {
       "nome": "area_pub_militar",
       "categoria": "edicao",
       "primitivas": ["MultiLinestring"],
@@ -3234,41 +3294,6 @@
         {
           "nome": "fonte",
           "tipo": "varchar(255)",
-          "cardinalidade": "0..1"
-        }
-      ]
-    },
-    {
-      "nome": "ponto_mudanca",
-      "categoria": "edicao",
-      "primitivas": ["MultiPoint"],
-      "atributos": [
-        {
-          "nome": "simb_rot",
-          "tipo": "real",
-          "cardinalidade": "0..1"
-        },
-        {
-          "nome": "desloc",
-          "tipo": "real",
-          "cardinalidade": "0..1"
-        },
-        {
-          "nome": "visivel",
-          "tipo": "smallint",
-          "cardinalidade": "1..1",
-          "mapa_valor": "booleano"
-        }
-      ]
-    },
-    {
-      "nome": "simb_direcao_corrente",
-      "categoria": "edicao",
-      "primitivas": ["MultiPoint"],
-      "atributos": [
-        {
-          "nome": "simb_rot",
-          "tipo": "real",
           "cardinalidade": "0..1"
         }
       ]
