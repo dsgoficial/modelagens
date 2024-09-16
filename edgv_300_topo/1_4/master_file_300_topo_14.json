@@ -4105,28 +4105,36 @@
               "primitivas": ["MultiPolygon", "MultiPoint"]
             },
             {
-              "code": 301
+              "code": 301,
+              "primitivas": ["MultiLinestring"]
             },
             {
-              "code": 302
+              "code": 302,
+              "primitivas": ["MultiLinestring"]
             },
             {
-              "code": 303
+              "code": 303,
+              "primitivas": ["MultiLinestring"]
             },
             {
-              "code": 304
+              "code": 304,
+              "primitivas": ["MultiLinestring"]
             },
             {
-              "code": 305
+              "code": 305,
+              "primitivas": ["MultiLinestring"]
             },
             {
-              "code": 306
+              "code": 306,
+              "primitivas": ["MultiLinestring"]
             },
             {
-              "code": 307
+              "code": 307,
+              "primitivas": ["MultiLinestring"]
             },
             {
-              "code": 398
+              "code": 398,
+              "primitivas": ["MultiLinestring"]
             },
             {
               "code": 404,
