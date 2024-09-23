@@ -3680,12 +3680,6 @@
           "cardinalidade": "0..1"
         },
         {
-          "nome": "densamente_edificada",
-          "tipo": "smallint",
-          "cardinalidade": "1..1",
-          "mapa_valor": "booleano"
-        },
-        {
           "nome": "assentamento_precario",
           "tipo": "smallint",
           "cardinalidade": "1..1",
@@ -4336,7 +4330,7 @@
           "mapa_valor": "booleano"
         },
         {
-          "nome": "dentro_de_massa_dagua",
+          "nome": "dentro_massa_dagua",
           "tipo": "smallint",
           "cardinalidade": "1..1",
           "mapa_valor": "booleano"
@@ -4389,6 +4383,10 @@
             {
               "code": 16,
               "primitivas": ["MultiPolygon"]
+            },
+            {
+              "code": 18,
+              "primitivas": ["MultiLinestring"]
             },
             {
               "code": 19,
@@ -6071,7 +6069,7 @@
   ],
   "extension_classes": [
     {
-      "nome": "obstaculo_vertical",
+      "nome": "obstrucao_vertical",
       "categoria": "infra",
       "primitivas": ["MultiPoint"],
       "atributos": [
@@ -6360,12 +6358,6 @@
           "nome": "nome",
           "tipo": "varchar(255)",
           "cardinalidade": "0..1"
-        },
-        {
-          "nome": "densamente_edificada",
-          "tipo": "smallint",
-          "cardinalidade": "1..1",
-          "mapa_valor": "booleano"
         },
         {
           "nome": "assentamento_precario",
