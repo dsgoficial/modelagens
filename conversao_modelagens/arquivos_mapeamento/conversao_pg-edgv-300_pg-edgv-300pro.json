@@ -3973,6 +3973,10 @@
         {
           "nome_atributo": "divisaoativecon",
           "valor": 0
+        },
+        {
+          "nome_atributo": "tipousoedif",
+          "valor": 0
         }
       ],
       "atributos_default_B": [
@@ -6503,6 +6507,44 @@
             {
               "valor_A": 44,
               "valor_B": 1944
+            }
+          ]
+        }
+      ]
+    },
+    {"__comment": "tra_caminho_aereo <-> infra_elemento_infraestrutura | teleférico",
+      "classe_A": "tra_caminho_aereo",
+      "classe_B": "infra_elemento_infraestrutura",
+      "filtro_B": {
+        "$or": [
+          {
+            "nome_atributo": "tipo",
+            "valor": 2001
+          },
+          {
+            "nome_atributo": "tipo",
+            "valor": 2098
+          }
+        ]
+      },
+      "atributos_default_A": [
+        {
+          "nome_atributo": "tipousocaminhoaer",
+          "valor": 0
+        }
+      ],
+      "mapeamento_atributos": [
+        {
+          "attr_A": "tipocaminhoaereo",
+          "attr_B": "tipo",
+          "traducao": [
+            {
+              "valor_A": 12,
+              "valor_B": 2001
+            },
+            {
+              "valor_A": 99,
+              "valor_B": 2098
             }
           ]
         }
