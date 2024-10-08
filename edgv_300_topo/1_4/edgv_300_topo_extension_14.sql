@@ -28,7 +28,7 @@ $BODY$
 		END LOOP;
 
 		IF TG_OP = 'UPDATE' THEN
-			EXECUTE 'DELETE FROM ' || quote_ident(TG_TABLE_SCHEMA) || '.' || quote_ident(TG_TABLE_NAME) || ' WHERE id = ' || OLD.id;
+			EXECUTE 'DELETE FROM ' || quote_ident(TG_TABLE_SCHEMA) || '.' || quote_ident(TG_TABLE_NAME) || ' WHERE id = ' || quote_literal(OLD.id);
 		END IF;
 
 
