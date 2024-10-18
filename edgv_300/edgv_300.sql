@@ -961,7 +961,7 @@ ALTER TABLE dominios.tipo_edif_rod OWNER TO postgres;
 CREATE TABLE dominios.tipo_assentamento_precario (
 	 code smallint NOT NULL,
 	 code_name text NOT NULL,
-	 CONSTRAINT tipo_area_pk PRIMARY KEY (code)
+	 CONSTRAINT tipo_assentamento_pk PRIMARY KEY (code)
 );
 
 INSERT INTO dominios.tipo_assentamento_precario (code,code_name) VALUES (1,'Cortiço (1)');
@@ -3735,7 +3735,7 @@ CREATE TABLE edgv.cbge_assentamento_precario_a(
 	 id uuid NOT NULL DEFAULT uuid_generate_v4(),
 	 nome varchar(255),
 	 geometriaaproximada boolean NOT NULL,
-	 tipoarea smallint NOT NULL,
+	 tipoassentamentoprecario smallint NOT NULL,
 	 observacao VARCHAR(255),
 	 geom geometry(MultiPolygon, 4674),
 	 CONSTRAINT cbge_assentamento_precario_a_pk PRIMARY KEY (id)
