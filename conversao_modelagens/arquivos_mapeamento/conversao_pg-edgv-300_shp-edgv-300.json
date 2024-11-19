@@ -1,10 +1,10 @@
 {
   "metadados":{
-    "versao_arquivo": "0.0",
+    "versao_arquivo": "0.1",
     "modelo_A": "EDGV 3.0",
-    "versao_modelo_A": "1.1",
+    "versao_modelo_A": "1.1.6",
     "modelo_B": "EDGV 3.0 SHP",
-    "versao_modelo_B": "1.0"
+    "versao_modelo_B": "1.1"
   },
   "__comment": "UTF-8",
   "schema_A": "edgv",
@@ -25,858 +25,850 @@
   "agregar_geom_B": true,
   "mapeamento_classes": [
     {
-      "classe_A": "aer_pista_ponto_pouso",
-      "classe_B": "AER_Pista_Ponto_Pouso"
+        "classe_A": "aer_pista_ponto_pouso",
+        "classe_B": "AER_Pista_Ponto_Pouso"
     },
     {
-      "classe_A": "enc_subest_transm_distrib_energia_eletrica",
-      "classe_B": "ENC_Subest_Transm_Distrib_Energia_Eletrica"
+        "classe_A": "enc_subest_transm_distrib_energia_eletrica",
+        "classe_B": "ENC_Subest_Transm_Distrib_Energia_Eletrica"
     },
     {
-      "classe_A": "cbge_deposito_geral",
-      "classe_B": "CBGE_Deposito_Geral"
+        "classe_A": "cbge_deposito_geral",
+        "classe_B": "CBGE_Deposito_Geral"
     },
     {
-      "classe_A": "cbge_area_agropec_ext_vegetal_pesca",
-      "classe_B": "CBGE_Area_Agropec_Ext_Vegetal_Pesca"
+        "classe_A": "cbge_area_agropec_ext_vegetal_pesca",
+        "classe_B": "CBGE_Area_Agropec_Ext_Vegetal_Pesca"
     },
     {
-      "classe_A": "cbge_canteiro_central",
-      "classe_B": "CBGE_Canteiro_Central"
+        "classe_A": "cbge_canteiro_central",
+        "classe_B": "CBGE_Canteiro_Central"
     },
     {
-      "classe_A": "cbge_poste",
-      "classe_B": "CBGE_Poste"
+        "classe_A": "cbge_poste",
+        "classe_B": "CBGE_Poste"
     },
     {
-      "classe_A": "cbge_espelho_dagua",
-      "classe_B": "CBGE_Espelho_Dagua"
+        "classe_A": "cbge_espelho_dagua",
+        "classe_B": "CBGE_Espelho_Dagua"
     },
     {
-      "classe_A": "cbge_entroncamento_area",
-      "classe_B": "CBGE_Entroncamento_Area"
+        "classe_A": "cbge_entroncamento_area",
+        "classe_B": "CBGE_Entroncamento_Area"
     },
     {
-      "classe_A": "cbge_retorno",
-      "classe_B": "CBGE_Retorno"
+        "classe_A": "cbge_retorno",
+        "classe_B": "CBGE_Retorno"
     },
     {
-      "classe_A": "cbge_trecho_arruamento",
-      "classe_B": "CBGE_Trecho_Arruamento"
+        "classe_A": "cbge_trecho_arruamento",
+        "classe_B": "CBGE_Trecho_Arruamento"
     },
     {
-      "classe_A": "cbge_cemiterio",
-      "classe_B": "CBGE_Cemiterio"
+        "classe_A": "cbge_cemiterio",
+        "classe_B": "CBGE_Cemiterio"
     },
     {
-      "classe_A": "cbge_delimitacao_fisica",
-      "classe_B": "CBGE_Delimitacao_Fisica"
+        "classe_A": "cbge_delimitacao_fisica",
+        "classe_B": "CBGE_Delimitacao_Fisica"
     },
     {
-      "classe_A": "cbge_area_construida",
-      "classe_B": "CBGE_Area_Construida"
+        "classe_A": "cbge_area_construida",
+        "classe_B": "CBGE_Area_Construida"
     },
     {
-      "classe_A": "cbge_area_habitacional",
-      "classe_B": "CBGE_Area_Habitacional"
+        "classe_A": "cbge_area_habitacional",
+        "classe_B": "CBGE_Area_Habitacional"
     },
     {
-        "classe_A": "assentamento_precario",
+        "classe_A": "cbge_assentamento_precario",
         "classe_B": "CBGE_Assentamento_Precario"
     },
     {
-      "classe_A": "cbge_estacionamento",
-      "classe_B": "CBGE_Estacionamento"
+        "classe_A": "cbge_estacionamento",
+        "classe_B": "CBGE_Estacionamento"
     },
     {
-      "classe_A": "cbge_praca",
-      "classe_B": "CBGE_Praca"
+        "classe_A": "cbge_praca",
+        "classe_B": "CBGE_Praca"
     },
     {
-      "classe_A": "cbge_area_duto",
-      "classe_B": "CBGE_Area_Duto"
+        "classe_A": "cbge_area_duto",
+        "classe_B": "CBGE_Area_Duto"
     },
     {
-      "classe_A": "cbge_area_de_propriedade_particular",
-      "classe_B": "CBGE_Area_De_Propriedade_Particular"
+        "classe_A": "cbge_area_de_propriedade_particular",
+        "classe_B": "CBGE_Area_De_Propriedade_Particular"
     },
     {
-      "classe_A": "cbge_quadra",
-      "classe_B": "CBGE_Quadra"
+        "classe_A": "cbge_quadra",
+        "classe_B": "CBGE_Quadra"
     },
     {
-      "classe_A": "cbge_area_uso_especifico",
-      "classe_B": "CBGE_Area_Uso_Especifico"
+        "classe_A": "cbge_area_uso_especifico",
+        "classe_B": "CBGE_Area_Uso_Especifico"
     },
     {
-      "classe_A": "cbge_passeio",
-      "classe_B": "CBGE_Passeio"
+        "classe_A": "cbge_passeio",
+        "classe_B": "CBGE_Passeio"
     },
     {
-      "classe_A": "cbge_largo",
-      "classe_B": "CBGE_Largo"
+        "classe_A": "cbge_largo",
+        "classe_B": "CBGE_Largo"
     },
     {
-      "classe_A": "dut_galeria_bueiro",
-      "classe_B": "DUT_Galeria_Bueiro"
+        "classe_A": "dut_galeria_bueiro",
+        "classe_B": "DUT_Galeria_Bueiro"
     },
     {
-      "classe_A": "dut_trecho_duto",
-      "classe_B": "DUT_Trecho_Duto"
+        "classe_A": "dut_trecho_duto",
+        "classe_B": "DUT_Trecho_Duto"
     },
     {
-      "classe_A": "eco_equip_agropec",
-      "classe_B": "ECO_Equip_Agropec"
+        "classe_A": "eco_equip_agropec",
+        "classe_B": "ECO_Equip_Agropec"
     },
     {
-      "classe_A": "eco_ext_mineral",
-      "classe_B": "ECO_Ext_Mineral"
+        "classe_A": "eco_ext_mineral",
+        "classe_B": "ECO_Ext_Mineral"
     },
     {
-      "classe_A": "eco_plataforma",
-      "classe_B": "ECO_Plataforma"
+        "classe_A": "eco_plataforma",
+        "classe_B": "ECO_Plataforma"
     },
     {
-      "classe_A": "edf_edif_rodoviaria",
-      "classe_B": "EDF_Edif_Rodoviaria"
+        "classe_A": "edf_edif_rodoviaria",
+        "classe_B": "EDF_Edif_Rodoviaria"
     },
     {
-      "classe_A": "edf_edif_constr_turistica",
-      "classe_B": "EDF_Edif_Constr_Turistica"
+        "classe_A": "edf_edif_constr_turistica",
+        "classe_B": "EDF_Edif_Constr_Turistica"
     },
     {
-      "classe_A": "edf_representacao_diplomatica",
-      "classe_B": "EDF_Representacao_Diplomatica"
+        "classe_A": "edf_representacao_diplomatica",
+        "classe_B": "EDF_Representacao_Diplomatica"
     },
     {
-      "classe_A": "edf_edif_agropec_ext_vegetal_pesca",
-      "classe_B": "EDF_Edif_Agropec_Ext_Vegetal_Pesca"
+        "classe_A": "edf_edif_agropec_ext_vegetal_pesca",
+        "classe_B": "EDF_Edif_Agropec_Ext_Vegetal_Pesca"
     },
     {
-      "classe_A": "edf_edif_constr_aeroportuaria",
-      "classe_B": "EDF_Edif_Constr_Aeroportuaria"
+        "classe_A": "edf_edif_constr_aeroportuaria",
+        "classe_B": "EDF_Edif_Constr_Aeroportuaria"
     },
     {
-      "classe_A": "edf_banheiro_publico",
-      "classe_B": "EDF_Banheiro_Publico"
+        "classe_A": "edf_banheiro_publico",
+        "classe_B": "EDF_Banheiro_Publico"
     },
     {
-      "classe_A": "edf_edif_metro_ferroviaria",
-      "classe_B": "EDF_Edif_Metro_Ferroviaria"
+        "classe_A": "edf_edif_metro_ferroviaria",
+        "classe_B": "EDF_Edif_Metro_Ferroviaria"
     },
     {
-      "classe_A": "edf_edif_comerc_serv",
-      "classe_B": "EDF_Edif_Comerc_Serv",
-      "mapeamento_atributos": [
-        {
-          "attr_A": "finalidade",
-          "attr_B": "FINALIDADE",
-          "traducao": [
-            {
-              "valor_A": 0,
-              "valor_B": "Desconhecida"
-            },
-            {
-              "valor_A": 1,
-              "valor_B": "Comercial"
-            },
-            {
-              "valor_A": 2,
-              "valor_B": "Serviço"
-            },
-            {
-              "valor_A": 4,
-              "valor_B": "Residencial"
-            },
-            {
-              "valor_A": 99,
-              "valor_B": "Outros"
-            }
-          ]
-        }
-      ]
+        "classe_A": "edf_edif_comerc_serv",
+        "classe_B": "EDF_Edif_Comerc_Serv",
+        "mapeamento_atributos": [
+          {
+            "attr_A": "finalidade",
+            "attr_B": "FINALIDADE",
+            "traducao": [
+              {
+                "valor_A": 0,
+                "valor_B": "Desconhecida"
+              },
+              {
+                "valor_A": 1,
+                "valor_B": "Comercial"
+              },
+              {
+                "valor_A": 2,
+                "valor_B": "Serviço"
+              },
+              {
+                "valor_A": 4,
+                "valor_B": "Residencial"
+              },
+              {
+                "valor_A": 99,
+                "valor_B": "Outros"
+              }
+            ]
+          }
+        ]
     },
     {
-      "classe_A": "edf_edificacao",
-      "classe_B": "EDF_Edificacao"
+        "classe_A": "edf_edificacao",
+        "classe_B": "EDF_Edificacao"
     },
     {
-      "classe_A": "edf_edif_saude",
-      "classe_B": "EDF_Edif_Saude"
+        "classe_A": "edf_edif_saude",
+        "classe_B": "EDF_Edif_Saude"
     },
     {
-      "classe_A": "edf_posto_guarda_municipal",
-      "classe_B": "EDF_Posto_Guarda_Municipal"
+        "classe_A": "edf_posto_guarda_municipal",
+        "classe_B": "EDF_Posto_Guarda_Municipal"
     },
     {
-      "classe_A": "edf_edif_abast_agua",
-      "classe_B": "EDF_Edif_Abast_Agua"
+        "classe_A": "edf_edif_abast_agua",
+        "classe_B": "EDF_Edif_Abast_Agua"
     },
     {
-      "classe_A": "edf_posto_fiscal",
-      "classe_B": "EDF_Posto_Fiscal"
+        "classe_A": "edf_posto_fiscal",
+        "classe_B": "EDF_Posto_Fiscal"
     },
     {
-      "classe_A": "edf_edif_religiosa",
-      "classe_B": "EDF_Edif_Religiosa"
+        "classe_A": "edf_edif_religiosa",
+        "classe_B": "EDF_Edif_Religiosa"
     },
     {
-      "classe_A": "edf_edif_ext_mineral",
-      "classe_B": "EDF_Edif_Ext_Mineral"
+        "classe_A": "edf_edif_ext_mineral",
+        "classe_B": "EDF_Edif_Ext_Mineral"
     },
     {
-      "classe_A": "edf_edif_constr_est_med_fen",
-      "classe_B": "EDF_Edif_Constr_Est_Med_Fen"
+        "classe_A": "edf_edif_constr_est_med_fen",
+        "classe_B": "EDF_Edif_Constr_Est_Med_Fen"
     },
     {
-      "classe_A": "edf_edif_ensino",
-      "classe_B": "EDF_Edif_Ensino"
+        "classe_A": "edf_edif_ensino",
+        "classe_B": "EDF_Edif_Ensino"
     },
     {
-      "classe_A": "edf_posto_combustivel",
-      "classe_B": "EDF_Posto_Combustivel",
-      "mapeamento_atributos": [
-        {
-          "attr_A": "finalidade",
-          "attr_B": "FINALIDADE",
-          "traducao": [
-            {
-              "valor_A": 0,
-              "valor_B": "Desconhecida"
-            },
-            {
-              "valor_A": 1,
-              "valor_B": "Comercial"
-            },
-            {
-              "valor_A": 2,
-              "valor_B": "Serviço"
-            },
-            {
-              "valor_A": 4,
-              "valor_B": "Residencial"
-            },
-            {
-              "valor_A": 99,
-              "valor_B": "Outros"
-            }
-          ]
-        }
-      ]
+        "classe_A": "edf_posto_combustivel",
+        "classe_B": "EDF_Posto_Combustivel",
+        "mapeamento_atributos": [
+          {
+            "attr_A": "finalidade",
+            "attr_B": "FINALIDADE",
+            "traducao": [
+              {
+                "valor_A": 0,
+                "valor_B": "Desconhecida"
+              },
+              {
+                "valor_A": 1,
+                "valor_B": "Comercial"
+              },
+              {
+                "valor_A": 2,
+                "valor_B": "Serviço"
+              },
+              {
+                "valor_A": 4,
+                "valor_B": "Residencial"
+              },
+              {
+                "valor_A": 99,
+                "valor_B": "Outros"
+              }
+            ]
+          }
+        ]
     },
     {
-      "classe_A": "edf_posto_policia_militar",
-      "classe_B": "EDF_Posto_Policia_Militar"
+        "classe_A": "edf_posto_policia_militar",
+        "classe_B": "EDF_Posto_Policia_Militar"
     },
     {
-      "classe_A": "edf_hab_indigena",
-      "classe_B": "EDF_Hab_Indigena"
+        "classe_A": "edf_hab_indigena",
+        "classe_B": "EDF_Hab_Indigena"
     },
     {
-      "classe_A": "edf_edif_desenv_social",
-      "classe_B": "EDF_Edif_Desenv_Social"
+        "classe_A": "edf_edif_desenv_social",
+        "classe_B": "EDF_Edif_Desenv_Social"
     },
     {
-      "classe_A": "edf_edif_constr_lazer",
-      "classe_B": "EDF_Edif_Constr_Lazer"
+        "classe_A": "edf_edif_constr_lazer",
+        "classe_B": "EDF_Edif_Constr_Lazer"
     },
     {
-      "classe_A": "edf_edif_energia",
-      "classe_B": "EDF_Edif_Energia"
+        "classe_A": "edf_edif_energia",
+        "classe_B": "EDF_Edif_Energia"
     },
     {
-      "classe_A": "edf_edif_industrial",
-      "classe_B": "EDF_Edif_Industrial"
+        "classe_A": "edf_edif_industrial",
+        "classe_B": "EDF_Edif_Industrial"
     },
     {
-      "classe_A": "edf_edif_constr_portuaria",
-      "classe_B": "EDF_Edif_Constr_Portuaria"
+        "classe_A": "edf_edif_constr_portuaria",
+        "classe_B": "EDF_Edif_Constr_Portuaria"
     },
     {
-      "classe_A": "edf_edif_comunic",
-      "classe_B": "EDF_Edif_Comunic"
+        "classe_A": "edf_edif_comunic",
+        "classe_B": "EDF_Edif_Comunic"
     },
     {
-      "classe_A": "edf_posto_policia_rod_federal",
-      "classe_B": "EDF_Posto_Policia_Rod_Federal"
+        "classe_A": "edf_posto_policia_rod_federal",
+        "classe_B": "EDF_Posto_Policia_Rod_Federal"
     },
     {
-      "classe_A": "edf_edif_pub_civil",
-      "classe_B": "EDF_Edif_Pub_Civil"
+        "classe_A": "edf_edif_pub_civil",
+        "classe_B": "EDF_Edif_Pub_Civil"
     },
     {
-      "classe_A": "edf_edif_saneamento",
-      "classe_B": "EDF_Edif_Saneamento"
+        "classe_A": "edf_edif_saneamento",
+        "classe_B": "EDF_Edif_Saneamento"
     },
     {
-      "classe_A": "edf_edif_policia",
-      "classe_B": "EDF_Edif_Policia"
+        "classe_A": "edf_edif_policia",
+        "classe_B": "EDF_Edif_Policia"
     },
     {
-      "classe_A": "edf_edif_pub_militar",
-      "classe_B": "EDF_Edif_Pub_Militar"
+        "classe_A": "edf_edif_pub_militar",
+        "classe_B": "EDF_Edif_Pub_Militar"
     },
     {
-      "classe_A": "edf_edif_residencial",
-      "classe_B": "EDF_Edif_Residencial"
+        "classe_A": "edf_edif_residencial",
+        "classe_B": "EDF_Edif_Residencial"
     },
     {
-      "classe_A": "emu_acesso",
-      "classe_B": "EMU_Acesso"
+        "classe_A": "emu_acesso",
+        "classe_B": "EMU_Acesso"
     },
     {
-      "classe_A": "emu_rampa",
-      "classe_B": "EMU_Rampa"
+        "classe_A": "emu_rampa",
+        "classe_B": "EMU_Rampa"
     },
     {
-      "classe_A": "emu_ciclovia",
-      "classe_B": "EMU_Ciclovia"
+        "classe_A": "emu_ciclovia",
+        "classe_B": "EMU_Ciclovia"
     },
     {
-      "classe_A": "emu_elevador",
-      "classe_B": "EMU_Elevador"
+        "classe_A": "emu_elevador",
+        "classe_B": "EMU_Elevador"
     },
     {
-      "classe_A": "emu_escadaria",
-      "classe_B": "EMU_Escadaria"
+        "classe_A": "emu_escadaria",
+        "classe_B": "EMU_Escadaria"
     },
     {
-      "classe_A": "emu_poste_sinalizacao",
-      "classe_B": "EMU_Poste_Sinalizacao"
+        "classe_A": "emu_poste_sinalizacao",
+        "classe_B": "EMU_Poste_Sinalizacao"
     },
     {
-      "classe_A": "enc_casa_de_forca",
-      "classe_B": "ENC_Casa_De_Forca"
+        "classe_A": "enc_casa_de_forca",
+        "classe_B": "ENC_Casa_De_Forca"
     },
     {
-      "classe_A": "enc_torre_energia",
-      "classe_B": "ENC_Torre_Energia"
+        "classe_A": "enc_torre_energia",
+        "classe_B": "ENC_Torre_Energia"
     },
     {
-      "classe_A": "enc_trecho_energia",
-      "classe_B": "ENC_Trecho_Energia"
+        "classe_A": "enc_trecho_energia",
+        "classe_B": "ENC_Trecho_Energia"
     },
     {
-      "classe_A": "enc_grupo_transformadores",
-      "classe_B": "ENC_Grupo_Transformadores"
+        "classe_A": "enc_grupo_transformadores",
+        "classe_B": "ENC_Grupo_Transformadores"
     },
     {
-      "classe_A": "enc_est_gerad_energia_eletrica",
-      "classe_B": "ENC_Est_Gerad_Energia_Eletrica"
+        "classe_A": "enc_est_gerad_energia_eletrica",
+        "classe_B": "ENC_Est_Gerad_Energia_Eletrica"
     },
     {
-      "classe_A": "enc_central_geradora_eolica",
-      "classe_B": "ENC_Central_Geradora_Eolica"
+        "classe_A": "enc_central_geradora_eolica",
+        "classe_B": "ENC_Central_Geradora_Eolica"
     },
     {
-      "classe_A": "enc_aerogerador",
-      "classe_B": "ENC_Aerogerador"
+        "classe_A": "enc_aerogerador",
+        "classe_B": "ENC_Aerogerador"
     },
     {
-      "classe_A": "enc_hidreletrica",
-      "classe_B": "ENC_Hidreletrica"
+        "classe_A": "enc_hidreletrica",
+        "classe_B": "ENC_Hidreletrica"
     },
     {
-      "classe_A": "enc_antena_comunic",
-      "classe_B": "ENC_Antena_Comunic"
+        "classe_A": "enc_antena_comunic",
+        "classe_B": "ENC_Antena_Comunic"
     },
     {
-      "classe_A": "enc_termeletrica",
-      "classe_B": "ENC_Termeletrica"
+        "classe_A": "enc_termeletrica",
+        "classe_B": "ENC_Termeletrica"
     },
     {
-      "classe_A": "enc_trecho_comunic",
-      "classe_B": "ENC_Trecho_Comunic"
+        "classe_A": "enc_trecho_comunic",
+        "classe_B": "ENC_Trecho_Comunic"
     },
     {
-      "classe_A": "enc_torre_comunic",
-      "classe_B": "ENC_Torre_Comunic"
+        "classe_A": "enc_torre_comunic",
+        "classe_B": "ENC_Torre_Comunic"
     },
     {
-      "classe_A": "enc_zona_linhas_energia_comunicacao",
-      "classe_B": "ENC_Zona_Linhas_Energia_Comunicacao"
+        "classe_A": "enc_zona_linhas_energia_comunicacao",
+        "classe_B": "ENC_Zona_Linhas_Energia_Comunicacao"
     },
     {
-      "classe_A": "fer_girador_ferroviario",
-      "classe_B": "FER_Girador_Ferroviario"
+        "classe_A": "fer_girador_ferroviario",
+        "classe_B": "FER_Girador_Ferroviario"
     },
     {
-      "classe_A": "fer_trecho_ferroviario",
-      "classe_B": "FER_Trecho_Ferroviario"
+        "classe_A": "fer_trecho_ferroviario",
+        "classe_B": "FER_Trecho_Ferroviario"
     },
     {
-      "classe_A": "fer_cremalheira",
-      "classe_B": "FER_Cremalheira"
+        "classe_A": "fer_cremalheira",
+        "classe_B": "FER_Cremalheira"
     },
     {
-      "classe_A": "hdv_eclusa",
-      "classe_B": "HDV_Eclusa"
+        "classe_A": "hdv_eclusa",
+        "classe_B": "HDV_Eclusa"
     },
     {
-      "classe_A": "hdv_obstaculo_navegacao",
-      "classe_B": "HDV_Obstaculo_Navegacao"
+        "classe_A": "hdv_obstaculo_navegacao",
+        "classe_B": "HDV_Obstaculo_Navegacao"
     },
     {
-      "classe_A": "hdv_sinalizacao",
-      "classe_B": "HDV_Sinalizacao"
+        "classe_A": "hdv_sinalizacao",
+        "classe_B": "HDV_Sinalizacao"
     },
     {
-      "classe_A": "hdv_atracadouro_terminal",
-      "classe_B": "HDV_Atracadouro_Terminal"
+        "classe_A": "hdv_atracadouro_terminal",
+        "classe_B": "HDV_Atracadouro_Terminal"
     },
     {
-      "classe_A": "hdv_fundeadouro",
-      "classe_B": "HDV_Fundeadouro"
+        "classe_A": "hdv_fundeadouro",
+        "classe_B": "HDV_Fundeadouro"
     },
     {
-      "classe_A": "hdv_trecho_hidroviario",
-      "classe_B": "HDV_Trecho_Hidroviario"
+        "classe_A": "hdv_trecho_hidroviario",
+        "classe_B": "HDV_Trecho_Hidroviario"
     },
     {
-      "classe_A": "hid_sumidouro_vertedouro",
-      "classe_B": "HID_Sumidouro_Vertedouro"
+        "classe_A": "hid_sumidouro_vertedouro",
+        "classe_B": "HID_Sumidouro_Vertedouro"
     },
     {
-      "classe_A": "hid_ilha",
-      "classe_B": "HID_Ilha"
+        "classe_A": "hid_ilha",
+        "classe_B": "HID_Ilha"
     },
     {
-      "classe_A": "hid_vala",
-      "classe_B": "HID_Vala"
+        "classe_A": "hid_vala",
+        "classe_B": "HID_Vala"
     },
     {
-      "classe_A": "hid_dique",
-      "classe_B": "HID_Dique"
+        "classe_A": "hid_dique",
+        "classe_B": "HID_Dique"
     },
     {
-      "classe_A": "hid_canal",
-      "classe_B": "HID_Canal"
+        "classe_A": "hid_canal",
+        "classe_B": "HID_Canal"
     },
     {
-      "classe_A": "hid_massa_dagua",
-      "classe_B": "HID_Massa_Dagua"
+        "classe_A": "hid_massa_dagua",
+        "classe_B": "HID_Massa_Dagua"
     },
     {
-      "classe_A": "hid_trecho_drenagem",
-      "classe_B": "HID_Trecho_Drenagem"
+        "classe_A": "hid_trecho_drenagem",
+        "classe_B": "HID_Trecho_Drenagem"
     },
     {
-      "classe_A": "hid_comporta",
-      "classe_B": "HID_Comporta"
+        "classe_A": "hid_comporta",
+        "classe_B": "HID_Comporta"
     },
     {
-      "classe_A": "hid_corredeira",
-      "classe_B": "HID_Corredeira"
+        "classe_A": "hid_corredeira",
+        "classe_B": "HID_Corredeira"
     },
     {
-      "classe_A": "hid_queda_dagua",
-      "classe_B": "HID_Queda_Dagua"
+        "classe_A": "hid_queda_dagua",
+        "classe_B": "HID_Queda_Dagua"
     },
     {
-      "classe_A": "hid_recife",
-      "classe_B": "HID_Recife"
+        "classe_A": "hid_recife",
+        "classe_B": "HID_Recife"
     },
     {
-      "classe_A": "hid_terreno_sujeito_inundacao",
-      "classe_B": "HID_Terreno_Sujeito_Inundacao"
+        "classe_A": "hid_terreno_sujeito_inundacao",
+        "classe_B": "HID_Terreno_Sujeito_Inundacao"
     },
     {
-      "classe_A": "hid_rocha_em_agua",
-      "classe_B": "HID_Rocha_Em_Agua"
+        "classe_A": "hid_rocha_em_agua",
+        "classe_B": "HID_Rocha_Em_Agua"
     },
     {
-      "classe_A": "hid_banco_areia",
-      "classe_B": "HID_Banco_Areia"
+        "classe_A": "hid_banco_areia",
+        "classe_B": "HID_Banco_Areia"
     },
     {
-      "classe_A": "hid_quebramar_molhe",
-      "classe_B": "HID_Quebramar_Molhe"
+        "classe_A": "hid_quebramar_molhe",
+        "classe_B": "HID_Quebramar_Molhe"
     },
     {
-      "classe_A": "hid_foz_maritima",
-      "classe_B": "HID_Foz_Maritima"
+        "classe_A": "hid_foz_maritima",
+        "classe_B": "HID_Foz_Maritima"
     },
     {
-      "classe_A": "hid_fonte_dagua",
-      "classe_B": "HID_Fonte_Dagua"
+        "classe_A": "hid_fonte_dagua",
+        "classe_B": "HID_Fonte_Dagua"
     },
     {
-      "classe_A": "hid_area_umida",
-      "classe_B": "HID_Area_Umida"
+        "classe_A": "hid_area_umida",
+        "classe_B": "HID_Area_Umida"
     },
     {
-      "classe_A": "hid_barragem",
-      "classe_B": "HID_Barragem"
+        "classe_A": "hid_barragem",
+        "classe_B": "HID_Barragem"
     },
     {
-      "classe_A": "laz_sitio_arqueologico",
-      "classe_B": "LAZ_Sitio_Arqueologico"
+        "classe_A": "laz_sitio_arqueologico",
+        "classe_B": "LAZ_Sitio_Arqueologico"
     },
     {
-      "classe_A": "laz_pista_competicao",
-      "classe_B": "LAZ_Pista_Competicao"
+        "classe_A": "laz_pista_competicao",
+        "classe_B": "LAZ_Pista_Competicao"
     },
     {
-      "classe_A": "laz_arquibancada",
-      "classe_B": "LAZ_Arquibancada"
+        "classe_A": "laz_arquibancada",
+        "classe_B": "LAZ_Arquibancada"
     },
     {
-      "classe_A": "laz_campo_quadra",
-      "classe_B": "LAZ_Campo_Quadra"
+        "classe_A": "laz_campo_quadra",
+        "classe_B": "LAZ_Campo_Quadra"
     },
     {
-      "classe_A": "laz_piscina",
-      "classe_B": "LAZ_Piscina"
+        "classe_A": "laz_piscina",
+        "classe_B": "LAZ_Piscina"
     },
     {
-      "classe_A": "laz_ruina",
-      "classe_B": "LAZ_Ruina"
+        "classe_A": "laz_ruina",
+        "classe_B": "LAZ_Ruina"
     },
     {
-      "classe_A": "lml_pais",
-      "classe_B": "LML_Pais"
+        "classe_A": "lml_pais",
+        "classe_B": "LML_Pais"
     },
     {
-      "classe_A": "lml_limite_politico_administrativo",
-      "classe_B": "LML_Limite_Politico_Administrativo"
+        "classe_A": "lml_posic_geo_localidade",
+        "classe_B": "LML_Posic_Geo_Localidade"
     },
     {
-      "classe_A": "lml_posic_geo_localidade",
-      "classe_B": "LML_Posic_Geo_Localidade"
+        "classe_A": "lml_distrito",
+        "classe_B": "LML_Distrito"
     },
     {
-      "classe_A": "lml_distrito",
-      "classe_B": "LML_Distrito"
+        "classe_A": "lml_area_densamente_edificada",
+        "classe_B": "LML_Area_Densamente_Edificada"
     },
     {
-      "classe_A": "lml_area_densamente_edificada",
-      "classe_B": "LML_Area_Densamente_Edificada"
+        "classe_A": "lml_unidade_federacao",
+        "classe_B": "LML_Unidade_Federacao"
     },
     {
-      "classe_A": "lml_unidade_federacao",
-      "classe_B": "LML_Unidade_Federacao"
+        "classe_A": "lml_terra_indigena",
+        "classe_B": "LML_Terra_Indigena"
     },
     {
-      "classe_A": "lml_terra_indigena",
-      "classe_B": "LML_Terra_Indigena"
+        "classe_A": "lml_unidade_protecao_integral",
+        "classe_B": "LML_Unidade_Protecao_Integral"
     },
     {
-      "classe_A": "lml_unidade_protecao_integral",
-      "classe_B": "LML_Unidade_Protecao_Integral"
+        "classe_A": "lml_unidade_uso_sustentavel",
+        "classe_B": "LML_Unidade_Uso_Sustentavel"
     },
     {
-      "classe_A": "lml_unidade_uso_sustentavel",
-      "classe_B": "LML_Unidade_Uso_Sustentavel"
+        "classe_A": "lml_municipio",
+        "classe_B": "LML_Municipio"
     },
     {
-      "classe_A": "lml_municipio",
-      "classe_B": "LML_Municipio"
+        "classe_A": "lml_terra_publica",
+        "classe_B": "LML_Terra_Publica"
     },
     {
-      "classe_A": "lml_terra_publica",
-      "classe_B": "LML_Terra_Publica"
+        "classe_A": "lml_area_pub_militar",
+        "classe_B": "LML_Area_Pub_Militar"
     },
     {
-      "classe_A": "lml_area_pub_militar",
-      "classe_B": "LML_Area_Pub_Militar"
+        "classe_A": "lml_area_urbana_isolada",
+        "classe_B": "LML_Area_Urbana_Isolada"
     },
     {
-      "classe_A": "lml_area_urbana_isolada",
-      "classe_B": "LML_Area_Urbana_Isolada"
+        "classe_A": "lml_nome_local",
+        "classe_B": "LML_Nome_Local"
     },
     {
-      "classe_A": "lml_nome_local",
-      "classe_B": "LML_Nome_Local"
+        "classe_A": "lml_unidade_conservacao",
+        "classe_B": "LML_Unidade_Conservacao"
     },
     {
-      "classe_A": "lml_unidade_conservacao",
-      "classe_B": "LML_Unidade_Conservacao"
+        "classe_A": "pto_marco_de_limite",
+        "classe_B": "PTO_Marco_De_Limite"
     },
     {
-      "classe_A": "pto_marco_de_limite",
-      "classe_B": "PTO_Marco_De_Limite"
+        "classe_A": "pto_pto_ref_geod_topo",
+        "classe_B": "PTO_Pto_Ref_Geod_Topo"
     },
     {
-      "classe_A": "pto_pto_ref_geod_topo",
-      "classe_B": "PTO_Pto_Ref_Geod_Topo"
+        "classe_A": "pto_pto_geod_topo_controle",
+        "classe_B": "PTO_Pto_Geod_Topo_Controle"
     },
     {
-      "classe_A": "pto_pto_geod_topo_controle",
-      "classe_B": "PTO_Pto_Geod_Topo_Controle"
+        "classe_A": "pto_pto_est_med_fenomenos",
+        "classe_B": "PTO_Pto_Est_Med_Fenomenos"
     },
     {
-      "classe_A": "pto_pto_est_med_fenomenos",
-      "classe_B": "PTO_Pto_Est_Med_Fenomenos"
+        "classe_A": "rel_curva_nivel",
+        "classe_B": "REL_Curva_Nivel"
     },
     {
-      "classe_A": "rel_curva_nivel",
-      "classe_B": "REL_Curva_Nivel"
+        "classe_A": "rel_gruta_caverna",
+        "classe_B": "REL_Gruta_Caverna"
     },
     {
-      "classe_A": "rel_gruta_caverna",
-      "classe_B": "REL_Gruta_Caverna"
+        "classe_A": "rel_rocha",
+        "classe_B": "REL_Rocha"
     },
     {
-      "classe_A": "rel_rocha",
-      "classe_B": "REL_Rocha"
+        "classe_A": "rel_corte",
+        "classe_B": "REL_Corte"
     },
     {
-      "classe_A": "rel_corte",
-      "classe_B": "REL_Corte"
+        "classe_A": "rel_terreno_exposto",
+        "classe_B": "REL_Terreno_Exposto"
     },
     {
-      "classe_A": "rel_terreno_exposto",
-      "classe_B": "REL_Terreno_Exposto"
+        "classe_A": "rel_dolina",
+        "classe_B": "REL_Dolina"
     },
     {
-      "classe_A": "rel_dolina",
-      "classe_B": "REL_Dolina"
+        "classe_A": "rel_aterro",
+        "classe_B": "REL_Aterro"
     },
     {
-      "classe_A": "rel_aterro",
-      "classe_B": "REL_Aterro"
+        "classe_A": "rel_ponto_cotado_altimetrico",
+        "classe_B": "REL_Ponto_Cotado_Altimetrico"
     },
     {
-      "classe_A": "rel_ponto_cotado_altimetrico",
-      "classe_B": "REL_Ponto_Cotado_Altimetrico"
+        "classe_A": "rel_elemento_fisiografico_natural",
+        "classe_B": "REL_Elemento_Fisiografico_Natural"
     },
     {
-      "classe_A": "rel_elemento_fisiografico_natural",
-      "classe_B": "REL_Elemento_Fisiografico_Natural"
+        "classe_A": "rel_pico",
+        "classe_B": "REL_Pico"
     },
     {
-      "classe_A": "rel_pico",
-      "classe_B": "REL_Pico"
+        "classe_A": "rel_duna",
+        "classe_B": "REL_Duna"
     },
     {
-      "classe_A": "rel_duna",
-      "classe_B": "REL_Duna"
+        "classe_A": "rel_curva_batimetrica",
+        "classe_B": "REL_Curva_Batimetrica"
     },
     {
-      "classe_A": "rel_curva_batimetrica",
-      "classe_B": "REL_Curva_Batimetrica"
+        "classe_A": "rel_alteracao_fisiografica_antropica",
+        "classe_B": "REL_Alteracao_Fisiografica_Antropica"
     },
     {
-      "classe_A": "rel_alteracao_fisiografica_antropica",
-      "classe_B": "REL_Alteracao_Fisiografica_Antropica"
+        "classe_A": "rel_ponto_cotado_batimetrico",
+        "classe_B": "REL_Ponto_Cotado_Batimetrico"
     },
     {
-      "classe_A": "rel_ponto_cotado_batimetrico",
-      "classe_B": "REL_Ponto_Cotado_Batimetrico"
+        "classe_A": "rod_trecho_rodoviario",
+        "classe_B": "ROD_Trecho_Rodoviario"
     },
     {
-      "classe_A": "rod_trecho_rodoviario",
-      "classe_B": "ROD_Trecho_Rodoviario"
+        "classe_A": "snb_dep_abast_agua",
+        "classe_B": "SNB_Dep_Abast_Agua"
     },
     {
-      "classe_A": "snb_dep_abast_agua",
-      "classe_B": "SNB_Dep_Abast_Agua"
+        "classe_A": "snb_barragem_calcadao",
+        "classe_B": "SNB_Barragem_Calcadao"
     },
     {
-      "classe_A": "snb_barragem_calcadao",
-      "classe_B": "SNB_Barragem_Calcadao"
+        "classe_A": "tra_entroncamento_pto",
+        "classe_B": "TRA_Entroncamento_Pto"
     },
     {
-      "classe_A": "tra_entroncamento_pto",
-      "classe_B": "TRA_Entroncamento_Pto"
+        "classe_A": "tra_funicular",
+        "classe_B": "TRA_Funicular"
     },
     {
-      "classe_A": "tra_funicular",
-      "classe_B": "TRA_Funicular"
+        "classe_A": "tra_ponte",
+        "classe_B": "TRA_Ponte"
     },
     {
-      "classe_A": "tra_ponte",
-      "classe_B": "TRA_Ponte"
+        "classe_A": "tra_caminho_aereo",
+        "classe_B": "TRA_Caminho_Aereo"
     },
     {
-      "classe_A": "tra_caminho_aereo",
-      "classe_B": "TRA_Caminho_Aereo"
+        "classe_A": "tra_trilha_picada",
+        "classe_B": "TRA_Trilha_Picada"
     },
     {
-      "classe_A": "tra_trilha_picada",
-      "classe_B": "TRA_Trilha_Picada"
+        "classe_A": "tra_passagem_nivel",
+        "classe_B": "TRA_Passagem_Nivel"
     },
     {
-      "classe_A": "tra_passagem_nivel",
-      "classe_B": "TRA_Passagem_Nivel"
+        "classe_A": "tra_travessia_pedestre",
+        "classe_B": "TRA_Travessia_Pedestre"
     },
     {
-      "classe_A": "tra_travessia_pedestre",
-      "classe_B": "TRA_Travessia_Pedestre"
+        "classe_A": "tra_travessia",
+        "classe_B": "TRA_Travessia"
     },
     {
-      "classe_A": "tra_travessia",
-      "classe_B": "TRA_Travessia"
+        "classe_A": "tra_caminho_carrocavel",
+        "classe_B": "TRA_Caminho_Carrocavel"
     },
     {
-      "classe_A": "lml_limite_politico_administrativo",
-      "classe_B": "LML_Limite_Politico_Administrativo"
+        "classe_A": "tra_tunel",
+        "classe_B": "TRA_Tunel"
     },
     {
-      "classe_A": "tra_caminho_carrocavel",
-      "classe_B": "TRA_Caminho_Carrocavel"
+        "classe_A": "tra_passagem_elevada_viaduto",
+        "classe_B": "TRA_Passagem_Elevada_Viaduto"
     },
     {
-      "classe_A": "tra_tunel",
-      "classe_B": "TRA_Tunel"
+        "classe_A": "tra_patio",
+        "classe_B": "TRA_Patio"
     },
     {
-      "classe_A": "tra_passagem_elevada_viaduto",
-      "classe_B": "TRA_Passagem_Elevada_Viaduto"
+        "classe_A": "veg_floresta",
+        "classe_B": "VEG_Floresta"
     },
     {
-      "classe_A": "tra_patio",
-      "classe_B": "TRA_Patio"
+        "classe_A": "veg_campinarana",
+        "classe_B": "VEG_Campinarana"
     },
     {
-      "classe_A": "veg_floresta",
-      "classe_B": "VEG_Floresta"
+        "classe_A": "veg_veg_cultivada",
+        "classe_B": "VEG_Veg_Cultivada",
+        "mapeamento_atributos": [
+          {
+            "attr_A": "finalidade",
+            "attr_B": "FINALIDADE",
+            "traducao": [
+              {
+                "valor_A": 0,
+                "valor_B": "Desconhecida"
+              },
+              {
+                "valor_A": 1,
+                "valor_B": "Exploração econômica"
+              },
+              {
+                "valor_A": 2,
+                "valor_B": "Subsistência"
+              },
+              {
+                "valor_A": 3,
+                "valor_B": "Conservação ambiental"
+              },
+              {
+                "valor_A": 4,
+                "valor_B": "Ornamental"
+              },
+              {
+                "valor_A": 99,
+                "valor_B": "Outros"
+              }
+            ]
+          }
+        ]
     },
     {
-      "classe_A": "veg_campinarana",
-      "classe_B": "VEG_Campinarana"
+        "classe_A": "veg_veg_restinga",
+        "classe_B": "VEG_Veg_Restinga"
     },
     {
-      "classe_A": "veg_veg_cultivada",
-      "classe_B": "VEG_Veg_Cultivada",
-      "mapeamento_atributos": [
-        {
-          "attr_A": "finalidade",
-          "attr_B": "FINALIDADE",
-          "traducao": [
-            {
-              "valor_A": 0,
-              "valor_B": "Desconhecida"
-            },
-            {
-              "valor_A": 1,
-              "valor_B": "Exploração econômica"
-            },
-            {
-              "valor_A": 2,
-              "valor_B": "Subsistência"
-            },
-            {
-              "valor_A": 3,
-              "valor_B": "Conservação ambiental"
-            },
-            {
-              "valor_A": 4,
-              "valor_B": "Ornamental"
-            },
-            {
-              "valor_A": 99,
-              "valor_B": "Outros"
-            }
-          ]
-        }
-      ]
+        "classe_A": "veg_cerrado",
+        "classe_B": "VEG_Cerrado"
     },
     {
-      "classe_A": "veg_veg_restinga",
-      "classe_B": "VEG_Veg_Restinga"
+        "classe_A": "veg_brejo_pantano",
+        "classe_B": "VEG_Brejo_Pantano"
     },
     {
-      "classe_A": "veg_cerrado",
-      "classe_B": "VEG_Cerrado"
+        "classe_A": "veg_mangue",
+        "classe_B": "VEG_Mangue"
     },
     {
-      "classe_A": "veg_brejo_pantano",
-      "classe_B": "VEG_Brejo_Pantano"
+        "classe_A": "veg_reflorestamento",
+        "classe_B": "VEG_Reflorestamento",
+        "mapeamento_atributos": [
+          {
+            "attr_A": "finalidade",
+            "attr_B": "FINALIDADE",
+            "traducao": [
+              {
+                "valor_A": 0,
+                "valor_B": "Desconhecida"
+              },
+              {
+                "valor_A": 1,
+                "valor_B": "Exploração econômica"
+              },
+              {
+                "valor_A": 2,
+                "valor_B": "Subsistência"
+              },
+              {
+                "valor_A": 3,
+                "valor_B": "Conservação ambiental"
+              },
+              {
+                "valor_A": 4,
+                "valor_B": "Ornamental"
+              },
+              {
+                "valor_A": 99,
+                "valor_B": "Outros"
+              }
+            ]
+          }
+        ]
     },
     {
-      "classe_A": "veg_mangue",
-      "classe_B": "VEG_Mangue"
+        "classe_A": "veg_campo",
+        "classe_B": "VEG_Campo"
     },
     {
-      "classe_A": "veg_reflorestamento",
-      "classe_B": "VEG_Reflorestamento",
-      "mapeamento_atributos": [
-        {
-          "attr_A": "finalidade",
-          "attr_B": "FINALIDADE",
-          "traducao": [
-            {
-              "valor_A": 0,
-              "valor_B": "Desconhecida"
-            },
-            {
-              "valor_A": 1,
-              "valor_B": "Exploração econômica"
-            },
-            {
-              "valor_A": 2,
-              "valor_B": "Subsistência"
-            },
-            {
-              "valor_A": 3,
-              "valor_B": "Conservação ambiental"
-            },
-            {
-              "valor_A": 4,
-              "valor_B": "Ornamental"
-            },
-            {
-              "valor_A": 99,
-              "valor_B": "Outros"
-            }
-          ]
-        }
-      ]
+        "classe_A": "veg_caatinga",
+        "classe_B": "VEG_Caatinga"
     },
     {
-      "classe_A": "veg_campo",
-      "classe_B": "VEG_Campo"
+        "classe_A": "veg_veg_area_contato",
+        "classe_B": "VEG_Veg_Area_Contato"
     },
     {
-      "classe_A": "veg_caatinga",
-      "classe_B": "VEG_Caatinga"
+        "classe_A": "ver_arvore_isolada",
+        "classe_B": "VER_Arvore_Isolada"
     },
     {
-      "classe_A": "veg_veg_area_contato",
-      "classe_B": "VEG_Veg_Area_Contato"
-    },
-    {
-      "classe_A": "ver_arvore_isolada",
-      "classe_B": "VER_Arvore_Isolada"
-    },
-    {
-      "classe_A": "ver_jardim",
-      "classe_B": "VER_Jardim",
-      "mapeamento_atributos": [
-        {
-          "attr_A": "finalidade",
-          "attr_B": "FINALIDADE",
-          "traducao": [
-            {
-              "valor_A": 0,
-              "valor_B": "Desconhecida"
-            },
-            {
-              "valor_A": 1,
-              "valor_B": "Exploração econômica"
-            },
-            {
-              "valor_A": 2,
-              "valor_B": "Subsistência"
-            },
-            {
-              "valor_A": 3,
-              "valor_B": "Conservação ambiental"
-            },
-            {
-              "valor_A": 4,
-              "valor_B": "Ornamental"
-            },
-            {
-              "valor_A": 99,
-              "valor_B": "Outros"
-            }
-          ]
-        }
-      ]
+        "classe_A": "ver_jardim",
+        "classe_B": "VER_Jardim",
+        "mapeamento_atributos": [
+          {
+            "attr_A": "finalidade",
+            "attr_B": "FINALIDADE",
+            "traducao": [
+              {
+                "valor_A": 0,
+                "valor_B": "Desconhecida"
+              },
+              {
+                "valor_A": 1,
+                "valor_B": "Exploração econômica"
+              },
+              {
+                "valor_A": 2,
+                "valor_B": "Subsistência"
+              },
+              {
+                "valor_A": 3,
+                "valor_B": "Conservação ambiental"
+              },
+              {
+                "valor_A": 4,
+                "valor_B": "Ornamental"
+              },
+              {
+                "valor_A": 99,
+                "valor_B": "Outros"
+              }
+            ]
+          }
+        ]
     }
-  ],
+],
   "mapeamento_atributos": [
     {
         "attr_A": "nome",
@@ -1907,40 +1899,6 @@
         ]
     },
     {
-        "attr_A": "tipoassentamentoprecario",
-        "attr_B": "TIPOASSENT",
-        "traducao": [
-            {
-                "valor_A": 1,
-                "valor_B": "Cortiço"
-            },
-            {
-                "valor_A": 2,
-                "valor_B": "Conjunto habitacional degradado"
-            },
-            {
-                "valor_A": 3,
-                "valor_B": "Favela"
-            },
-            {
-                "valor_A": 4,
-                "valor_B": "Loteamento irregular da periferia"
-            },
-            {
-                "valor_A": 5,
-                "valor_B": "Mocambos"
-            },
-            {
-                "valor_A": 6,
-                "valor_B": "Palafitas"
-            },
-            {
-                "valor_A": 99,
-                "valor_B": "Outros"
-            }
-        ]
-    },
-    {
         "attr_A": "destinadoa",
         "attr_B": "DESTINADOA",
         "traducao": [
@@ -2467,6 +2425,40 @@
             {
                 "valor_A": 2,
                 "valor_B": "Não"
+            }
+        ]
+    },
+    {
+        "attr_A": "tipoassentamentoprecario",
+        "attr_B": "TIPOASSENTAMENTOPRECARIO",
+        "traducao": [
+            {
+                "valor_A": 1,
+                "valor_B": "Cortiço"
+            },
+            {
+                "valor_A": 2,
+                "valor_B": "Conjunto habitacional degradado"
+            },
+            {
+                "valor_A": 3,
+                "valor_B": "Favela"
+            },
+            {
+                "valor_A": 4,
+                "valor_B": "Loteamento irregular da periferia"
+            },
+            {
+                "valor_A": 5,
+                "valor_B": "Mocambos"
+            },
+            {
+                "valor_A": 6,
+                "valor_B": "Palafitas"
+            },
+            {
+                "valor_A": 99,
+                "valor_B": "Outros"
             }
         ]
     },
@@ -6210,7 +6202,7 @@
             },
             {
                 "valor_A": 4,
-                "valor_B": "Capital"
+                "valor_B": "Capital Estadual"
             },
             {
                 "valor_A": 5,
@@ -6219,6 +6211,10 @@
             {
                 "valor_A": 6,
                 "valor_B": "Vila"
+            },
+            {
+                "valor_A": 7,
+                "valor_B": "Capital Federal"
             }
         ]
     },
@@ -7903,24 +7899,6 @@
             {
                 "valor_A": 11,
                 "valor_B": "Caatinga"
-            }
-        ]
-    },
-    {
-        "attr_A": "tipolimpol",
-        "attr_B": "TIPOLIMPOL",
-        "traducao": [
-            {
-                "valor_A": 1,
-                "valor_B": "Internacional"
-            },
-            {
-                "valor_A": 2,
-                "valor_B": "Estadual"
-            },
-            {
-                "valor_A": 3,
-                "valor_B": "Municipal"
             }
         ]
     }

@@ -7,10 +7,10 @@ SET search_path TO pg_catalog,public,edgv,dominios;
 
 CREATE TABLE public.db_metadata(
 	 edgvversion varchar(50) NOT NULL DEFAULT 'EDGV 3.0',
-	 dbimplversion varchar(50) NOT NULL DEFAULT '1.1.5',
+	 dbimplversion varchar(50) NOT NULL DEFAULT '1.1.6',
 	 CONSTRAINT edgvversioncheck CHECK (edgvversion = 'EDGV 3.0')
 );
-INSERT INTO public.db_metadata (edgvversion, dbimplversion) VALUES ('EDGV 3.0','1.1.5');
+INSERT INTO public.db_metadata (edgvversion, dbimplversion) VALUES ('EDGV 3.0','1.1.6');
 
 CREATE TABLE dominios.aptidao_operacional_atracadouro (
 	 code smallint NOT NULL,
@@ -957,11 +957,10 @@ INSERT INTO dominios.tipo_edif_rod (code,code_name) VALUES (9999,'A SER PREENCHI
 
 ALTER TABLE dominios.tipo_edif_rod OWNER TO postgres;
 
-
 CREATE TABLE dominios.tipo_assentamento_precario (
 	 code smallint NOT NULL,
 	 code_name text NOT NULL,
-	 CONSTRAINT tipo_assentamento_pk PRIMARY KEY (code)
+	 CONSTRAINT tipo_assentamento_precario_pk PRIMARY KEY (code)
 );
 
 INSERT INTO dominios.tipo_assentamento_precario (code,code_name) VALUES (1,'Cortiço (1)');
@@ -972,6 +971,8 @@ INSERT INTO dominios.tipo_assentamento_precario (code,code_name) VALUES (5,'Moca
 INSERT INTO dominios.tipo_assentamento_precario (code,code_name) VALUES (6,'Palafitas (6)');
 INSERT INTO dominios.tipo_assentamento_precario (code,code_name) VALUES (99,'Outros (99)');
 INSERT INTO dominios.tipo_assentamento_precario (code,code_name) VALUES (9999,'A SER PREENCHIDO (9999)');
+
+ALTER TABLE dominios.tipo_assentamento_precario OWNER TO postgres;
 
 CREATE TABLE dominios.tipo_area (
 	 code smallint NOT NULL,
@@ -3751,7 +3752,6 @@ ALTER TABLE edgv.cbge_assentamento_precario_a
 	 ON UPDATE NO ACTION ON DELETE NO ACTION;
 
 ALTER TABLE edgv.cbge_assentamento_precario_a ALTER COLUMN tipoassentamentoprecario SET DEFAULT 9999;
-
 
 CREATE TABLE edgv.cbge_estacionamento_a(
 	 id uuid NOT NULL DEFAULT uuid_generate_v4(),
@@ -15161,6 +15161,35 @@ ALTER TABLE edgv.laz_pista_competicao_a
 	 ON UPDATE NO ACTION ON DELETE NO ACTION;
 
 ALTER TABLE edgv.laz_pista_competicao_a ALTER COLUMN tipopistacomp SET DEFAULT 9999;
+
+CREATE TABLE edgv.laz_arquibancada_l(
+	 id uuid NOT NULL DEFAULT uuid_generate_v4(),
+	 nome varchar(255),
+	 geometriaaproximada boolean NOT NULL,
+	 operacional smallint NOT NULL,
+	 situacaofisica smallint NOT NULL,
+	 observacao VARCHAR(255),
+	 geom geometry(MultiLinestring, 4674),
+	 CONSTRAINT laz_arquibancada_l_pk PRIMARY KEY (id)
+	 WITH (FILLFACTOR = 80)
+);
+CREATE INDEX laz_arquibancada_l_geom ON edgv.laz_arquibancada_l USING gist (geom);
+
+ALTER TABLE edgv.laz_arquibancada_l OWNER TO postgres;
+
+ALTER TABLE edgv.laz_arquibancada_l
+	 ADD CONSTRAINT laz_arquibancada_l_operacional_fk FOREIGN KEY (operacional)
+	 REFERENCES dominios.auxiliar (code) MATCH FULL
+	 ON UPDATE NO ACTION ON DELETE NO ACTION;
+
+ALTER TABLE edgv.laz_arquibancada_l ALTER COLUMN operacional SET DEFAULT 9999;
+
+ALTER TABLE edgv.laz_arquibancada_l
+	 ADD CONSTRAINT laz_arquibancada_l_situacaofisica_fk FOREIGN KEY (situacaofisica)
+	 REFERENCES dominios.situacao_fisica (code) MATCH FULL
+	 ON UPDATE NO ACTION ON DELETE NO ACTION;
+
+ALTER TABLE edgv.laz_arquibancada_l ALTER COLUMN situacaofisica SET DEFAULT 9999;
 
 CREATE TABLE edgv.laz_arquibancada_a(
 	 id uuid NOT NULL DEFAULT uuid_generate_v4(),

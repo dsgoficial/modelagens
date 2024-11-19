@@ -26,7 +26,6 @@ class ParserSHP():
 		for field in fields:
 			nome			= field['nome']
 			tipo			= field['tipo']
-			descricao		= field['descricao']
 			cardinalidade	= field['cardinalidade']  
 			data_type = None
 			if 'varchar' in tipo:
@@ -65,7 +64,6 @@ with open(json_path) as json_file:
 			print('Percentual Concluido: '+  str(round((i/classes_criar)*100)) + ' %')
 		classe_nome 		=  classe['nome']
 		classe_categoria 	=  classe['categoria']
-		classe_descricao 	=  classe['descricao']
 		classe_primitivas 	=  classe['primitivas']
 		new_layer 			= None
 		for primitiva in classe_primitivas:

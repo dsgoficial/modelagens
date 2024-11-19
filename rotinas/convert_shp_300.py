@@ -1,8 +1,8 @@
 import json
 import csv
 
-jsonfile = 'd:/Desenvolvimento/modelagens/edgv_300/master_file_300.json'
-csvfile = 'd:/Desenvolvimento/modelagens/rotinas/fixed_att_shp.csv'
+jsonfile = r'C:\Users\marcel\Desktop\GitHub\modelagens\edgv_300\master_file_300.json'
+csvfile = r'C:\Users\marcel\Desktop\GitHub\modelagens\rotinas\fixed_att_shp.csv'
 
 fix_att = []
 with open(csvfile, newline='') as csvfile:
@@ -14,10 +14,10 @@ with open(csvfile, newline='') as csvfile:
             mapeamento_classe = []
             for classe in master['classes']:
                 aux = {}
-                aux['classe_ida'] = classe['categoria'] + '_' + classe['nome']
+                aux['classe_A'] = classe['categoria'] + '_' + classe['nome']
                 classe['nome'] = '_'.join([x.title() for x in classe['nome'].split('_')])
                 classe['categoria'] = classe['categoria'].upper()
-                aux['classe_volta'] = classe['categoria'] + '_' + classe['nome']
+                aux['classe_B'] = classe['categoria'] + '_' + classe['nome']
                 mapeamento_classe.append(aux)
             
             with open('map_classe.json', 'w', encoding='utf-8') as outfile:
@@ -34,8 +34,8 @@ with open(csvfile, newline='') as csvfile:
                     aux = aux.upper()
                     if atributo['nome'] not in mapeamento_atributo_aux:
                         mapeamento_atributo_aux[atributo['nome']] = {}
-                        mapeamento_atributo_aux[atributo['nome']]['attr_ida'] = atributo['nome']
-                        mapeamento_atributo_aux[atributo['nome']]['attr_volta'] = aux
+                        mapeamento_atributo_aux[atributo['nome']]['attr_A'] = atributo['nome']
+                        mapeamento_atributo_aux[atributo['nome']]['attr_B'] = aux
                         
                         if 'mapa_valor' in atributo:
                             mapeamento_atributo_aux[atributo['nome']]['traducao'] = []
@@ -43,8 +43,8 @@ with open(csvfile, newline='') as csvfile:
                                 if atributo['mapa_valor'] == dominio['nome']:
                                     for valor in dominio['valores']:
                                         aux2 = {}
-                                        aux2['valor_ida'] = valor['code']
-                                        aux2['valor_volta'] = valor['value']
+                                        aux2['valor_A'] = valor['code']
+                                        aux2['valor_B'] = valor['value']
                                         mapeamento_atributo_aux[atributo['nome']]['traducao'].append(aux2)
 
             mapeamento_atributo = []

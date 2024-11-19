@@ -1,7 +1,7 @@
 {
     "modelo": "EDGV 3.0 SHP",
     "comentario": "Modelo da EDGV 3.0 para o formato Shapefile",
-    "versao": "1.0",
+    "versao": "1.1",
     "coord_sys": 4674,
     "nome_id": "ID",
     "geom_suffix": {
@@ -93,6 +93,7 @@
             "categoria": "ENC",
             "descricao": "-",
             "primitivas": [
+                "MultiPoint",
                 "MultiPolygon"
             ],
             "atributos": [
@@ -6608,6 +6609,7 @@
             "categoria": "LAZ",
             "descricao": "-",
             "primitivas": [
+                "MultiLinestring",
                 "MultiPolygon"
             ],
             "atributos": [
@@ -9785,33 +9787,29 @@
             ]
         },
         {
-            "nome": "Limite_Politico_Administrativo",
-            "categoria": "LML",
-            "descricao": "-",
+            "nome": "Obstaculo_Vertical",
+            "categoria": "AUX",
             "primitivas": [
-                "MultiLinestring"
+              "MultiPoint"
             ],
             "atributos": [
-                {
-                    "nome": "NOME",
-                    "tipo": "varchar(255)",
-                    "descricao": "-",
-                    "cardinalidade": "0..1"
-                },
-                {
-                    "nome": "GEOAPROX",
-                    "tipo": "boolean",
-                    "descricao": "-",
-                    "cardinalidade": "0..1"
-                },
-                {
-                    "nome": "TIPOLIMPOL",
-                    "tipo": "varchar(255)",
-                    "descricao": "-",
-                    "cardinalidade": "0..1"
-                }
+              {
+                "nome": "NOME",
+                "tipo": "varchar(255)",
+                "cardinalidade": "0..1"
+              },
+              {
+                "nome": "ALTITUDE",
+                "tipo": "real",
+                "cardinalidade": "1..1"
+              },
+              {
+                "nome": "ALTURA",
+                "tipo": "real",
+                "cardinalidade": "1..1"
+              }
             ]
-        }
+          }
     ],
     "extension_classes": [
         {

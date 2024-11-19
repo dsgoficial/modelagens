@@ -1,7 +1,7 @@
 {
   "modelo": "EDGV 3.0",
   "comentario": "Modelo da EDGV 3.0 sem atributos multivalorados, e com modificações de forma a ser compatível com a EDGV 2.1.3",
-  "versao": "1.1.5",
+  "versao": "1.1.6",
   "schema_dados": "edgv",
   "schema_dominios": "dominios",
   "a_ser_preenchido": {
@@ -14409,7 +14409,7 @@
       "nome": "arquibancada",
       "categoria": "laz",
       "descricao": "-",
-      "primitivas": ["MultiPolygon"],
+      "primitivas": ["MultiLinestring","MultiPolygon"],
       "atributos": [
         {
           "nome": "nome",
