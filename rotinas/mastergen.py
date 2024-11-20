@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 import os
-# from jinja2 import Environment, FileSystemLoader
 import json
 from collections import defaultdict
+import argparse
 
 THIS_DIR = os.path.dirname(os.path.abspath(__file__))
 class MasterGen():
@@ -346,9 +346,6 @@ class MasterGen():
         except Exception as e:
             return "Erro: {0}".format(e)
 
-    def build_SHP(self, dest):
-        pass
-
     def buildTableMetadataDict(self, dest, outputDbType=PostGIS):
         schemaSep = "." if outputDbType == self.PostGIS else "_"
         domainTableDict = self.buildDomainTableDict(schemaSep)
@@ -369,7 +366,6 @@ class MasterGen():
                 json.dumps(metadataDict, indent=4, ensure_ascii=False)
             )
         
-
     def buildDomainTableDict(self, schemaSep):
         domainTableDict = defaultdict(dict)
         for dominio in self.master["dominios"]:
@@ -624,13 +620,42 @@ class MasterGen():
             return "Erro: {0}".format(e)
 
 if __name__ == '__main__':
-    import os
-    outputFolder = 'edgv_3.0'
-    masterFileName = 'masterfile300_dsgtools.json'
-    outputPath = os.path.join(os.path.dirname(__file__), '..', outputFolder)
-    masterFile = os.path.join(outputPath, masterFileName)
-    outputFile = os.path.join(outputPath, 'edgv3_gpkg.sql')
-    mg = MasterGen(masterFile)
-    x=mg.build_gpkg_SQL(outputFile)
-    # x = mg.buildTableMetadataDict(outputFile, outputDbType=MasterGen.GPKG)
-    print(x)
+    parser = argparse.ArgumentParser(description='Generate SQL from master file')
+    parser.add_argument('master_path', 
+                       type=str,
+                       help='Path to the master JSON file')
+    parser.add_argument('output_path', 
+                       type=str,
+                       help='Path where the output SQL file will be saved')
+    parser.add_argument('--no-uuid', 
+                       action='store_false',
+                       dest='uuid',
+                       help='Disable UUID generation for primary keys')
+    parser.add_argument('--no-extension', 
+                       action='store_false',
+                       dest='extension_classes',
+                       help='Disable extension classes')
+    parser.add_argument('--no-default-attrs', 
+                       action='store_false',
+                       dest='default_attrs',
+                       help='Disable default attributes')
+    parser.add_argument('--owner',
+                       type=str,
+                       default='postgres',
+                       help='Owner of the database objects (default: postgres)')
+    
+    args = parser.parse_args()
+    
+    try:
+        mg = MasterGen(args.master_path)
+        result = mg.buildSQL(
+            args.output_path,
+            atributos_padrao=args.default_attrs,
+            extension_classes=args.extension_classes,
+            uuid=args.uuid,
+            owner=args.owner
+        )
+        print(result)
+    except Exception as e:
+        print(f"Error: {str(e)}")
+        exit(1)
