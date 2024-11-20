@@ -21,16 +21,16 @@
   },
   "dominios": [
     {
-      "nome": "tipo_obstrucao",
+      "nome": "tipo_obstaculo",
       "valores": [
         {
           "code": 1,
-          "value": "Obstrução individual",
+          "value": "Obstáculo individual",
           "descricao": "-"
         },
         {
           "code": 2,
-          "value": "Obstrução múltipla",
+          "value": "Obstáculo múltipla",
           "descricao": "-"
         }
       ]
@@ -2873,7 +2873,8 @@
         },
         {
           "code": 97,
-          "value": "Não aplicável"
+          "value": "Não aplicável",
+          "valor_filtro": "Não aplicável"
         }
       ],
       "filtro": true
@@ -5185,7 +5186,7 @@
     {
       "nome": "elemento_viario",
       "categoria": "infra",
-      "primitivas": ["MultiLinestring", "MultiPoint"],
+      "primitivas": ["MultiLinestring"],
       "atributos": [
         {
           "nome": "nome",
@@ -5253,6 +5254,12 @@
           "nome": "largura_simbologia",
           "tipo": "real",
           "cardinalidade": "0..1"
+        },
+        {
+          "nome": "config_comprimento_simb",
+          "tipo": "smallint",
+          "cardinalidade": "1..1",
+          "mapa_valor": "auxiliar"
         },
         {
           "nome": "simb_rot",
@@ -6069,7 +6076,7 @@
   ],
   "extension_classes": [
     {
-      "nome": "obstrucao_vertical",
+      "nome": "obstaculo_vertical",
       "categoria": "infra",
       "primitivas": ["MultiPoint"],
       "atributos": [
@@ -6092,7 +6099,7 @@
           "nome": "tipo",
           "tipo": "smallint",
           "cardinalidade": "1..1",
-          "mapa_valor": "tipo_obstrucao"
+          "mapa_valor": "tipo_obstaculo"
         },
         {
           "nome": "texto_edicao",
