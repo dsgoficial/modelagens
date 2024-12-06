@@ -21,6 +21,89 @@
   },
   "dominios": [
     {
+      "nome": "posicao_pista",
+      "valores": [
+        {
+          "code": 12,
+          "value": "Adjacentes"
+        },
+        {
+          "code": 13,
+          "value": "Superpostas"
+        },
+        {
+          "code": 97,
+          "value": "Não aplicável"
+        }
+      ]
+    },
+    {
+      "nome": "tipo_elemento_viario",
+      "valores": [
+        {
+          "code": 101,
+          "value": "Túnel",
+          "valor_filtro": "Túnel"
+        },
+        {
+          "code": 102,
+          "value": "Túnel - Passagem subterrânea sob via",
+          "valor_filtro": "Túnel"
+        },
+        {
+          "code": 201,
+          "value": "Ponte móvel",
+          "valor_filtro": "Ponte"
+        },
+        {
+          "code": 202,
+          "value": "Ponte pênsil",
+          "valor_filtro": "Ponte"
+        },
+        {
+          "code": 203,
+          "value": "Ponte fixa",
+          "valor_filtro": "Ponte"
+        },
+        {
+          "code": 204,
+          "value": "Ponte estaiada",
+          "valor_filtro": "Ponte"
+        },
+        {
+          "code": 301,
+          "value": "Passagem elevada",
+          "valor_filtro": "Passagem elevada / Viaduto"
+        },
+        {
+          "code": 302,
+          "value": "Viaduto",
+          "valor_filtro": "Passagem elevada / Viaduto"
+        },
+        {
+          "code": 401,
+          "value": "Travessia - Vau natural",
+          "valor_filtro": "Travessia"
+        },
+        {
+          "code": 402,
+          "value": "Travessia - Vau construído",
+          "valor_filtro": "Travessia"
+        },
+        {
+          "code": 501,
+          "value": "Galeria/Bueiro",
+          "valor_filtro": "Galeria/Bueiro"
+        },
+        {
+          "code": 97,
+          "value": "Não aplicável",
+          "valor_filtro": "Não aplicável"
+        }
+      ],
+      "filtro": true
+    },
+    {
       "nome": "tipo_obstrucao",
       "valores": [
         {

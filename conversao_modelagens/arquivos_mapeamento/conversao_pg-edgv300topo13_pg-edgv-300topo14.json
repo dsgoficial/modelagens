@@ -1,0 +1,181 @@
+{
+    "metadados":{
+      "versao_arquivo": "0.1",
+      "modelo_A": "EDGV 3.0 Topo",
+      "versao_modelo_A": "1.3.0",
+      "modelo_B": "EDGV 3.0 Topo",
+      "versao_modelo_B": "1.4.0"
+    },
+    "__comment": "UTF-8",
+    "schema_A": "edgv",
+    "schema_B": "edgv",
+    "afixo_geom_A": {
+      "tipo": "sufixo",
+      "POINT": "_p",
+      "LINESTRING": "_l",
+      "POLYGON": "_a"
+    },
+    "afixo_geom_B": {
+      "tipo": "sufixo",
+      "POINT": "_p",
+      "LINESTRING": "_l",
+      "POLYGON": "_a"
+    },
+    "agregar_geom_A": true,
+    "agregar_geom_B": true,
+    "mapeamento_classes": [
+      {
+        "classe_A": "infra_elemento_viario",
+        "classe_B": "infra_elemento_viario",
+        "filtro_A": {
+          "$not": {
+            "$or": [
+              {
+                "nome_atributo": "tipo",
+                "valor": 607
+              },
+              {
+                "nome_atributo": "tipo",
+                "valor": 608
+              },
+              {
+                "nome_atributo": "tipo",
+                "valor": 609
+              },
+              {
+                "nome_atributo": "tipo",
+                "valor": 701
+              }
+            ]
+          }
+        },
+        "atributos_default_B": [
+          {
+            "nome_atributo": "config_comprimento_simb",
+            "valor": 9999
+          }
+        ]
+      },
+      {
+        "classe_A": "infra_elemento_viario",
+        "classe_B": "infra_elemento_infraestrutura",
+        "filtro_A": {
+            "$or": [
+              {
+                "nome_atributo": "tipo",
+                "valor": 607
+              },
+              {
+                "nome_atributo": "tipo",
+                "valor": 608
+              },
+              {
+                "nome_atributo": "tipo",
+                "valor": 609
+              }
+            ]
+        }
+      },
+      {
+        "classe_A": "infra_ferrovia",
+        "classe_B": "infra_ferrovia",
+        "atributos_default_B": [
+          {
+            "nome_atributo": "tipo_elemento_viario",
+            "valor": 9999
+          },
+          {
+            "nome_atributo": "material_construcao_elemento_viario",
+            "valor": 9999
+          }
+        ]
+      },
+      {
+        "classe_A": "infra_via_deslocamento",
+        "classe_B": "infra_via_deslocamento",
+        "atributos_default_B": [
+          {
+            "nome_atributo": "tipo_elemento_viario",
+            "valor": 9999
+          },
+          {
+            "nome_atributo": "material_construcao_elemento_viario",
+            "valor": 9999
+          },
+          {
+            "nome_atributo": "posicao_pista_elemento_viario",
+            "valor": 9999
+          }
+        ]
+      },
+      {
+        "classe_A": "edicao_limite_legal",
+        "classe_B": "llp_limite_legal"
+      },
+      {
+        "classe_A": "edicao_area_sem_dados",
+        "classe_B": "llp_area_sem_dados"
+      },
+      {
+        "classe_A": "cobter_area_construida",
+        "classe_B": "cobter_area_edificada",
+        "atributos_default_A": [
+          {
+            "nome_atributo": "densamente_edificada",
+            "valor": 1
+          }
+        ]
+      },
+      {
+        "classe_A": "elemnat_curva_nivel",
+        "classe_B": "elemnat_curva_nivel",
+        "mapeamento_atributos": [
+          {
+            "attr_A": "dentro_de_massa_dagua",
+            "attr_B": "dentro_massa_dagua"
+          }
+        ]
+      },
+      {
+        "classe_A": "infra_elemento_energia",
+        "classe_B": "infra_elemento_energia",
+        "filtro_A": {
+          "$not": {
+            "nome_atributo": "tipo",
+            "valor": 302
+          }
+        }
+      },
+      {
+        "classe_A": "infra_mobilidade_urbana",
+        "classe_B": "infra_mobilidade_urbana",
+        "filtro_A": {
+          "$not": {
+            "nome_atributo": "tipo",
+            "valor": 2
+          }
+        }
+      },
+      {
+        "classe_A": "constr_area_uso_especifico",
+        "classe_B": "constr_area_uso_especifico",
+        "filtro_A": {
+          "$not": {
+            "$or": [
+              {
+                "nome_atributo": "tipo",
+                "valor": 1
+              },
+              {
+                "nome_atributo": "tipo",
+                "valor": 2
+              }
+            ]
+          }
+        }
+      }
+    ],
+    "mapeamento_atributos": [],
+    "atributos_default_B": [],
+    "atributos_default_A": []
+}

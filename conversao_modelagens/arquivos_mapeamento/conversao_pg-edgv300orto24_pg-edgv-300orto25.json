@@ -1,0 +1,30 @@
+{
+    "metadados":{
+      "versao_arquivo": "0.1",
+      "modelo_A": "EDGV 3.0 Orto",
+      "versao_modelo_A": "2.4.0",
+      "modelo_B": "EDGV 3.0 Orto",
+      "versao_modelo_B": "2.5.0"
+    },
+    "__comment": "UTF-8",
+    "schema_A": "edgv",
+    "schema_B": "edgv",
+    "afixo_geom_A": {
+      "tipo": "sufixo",
+      "POINT": "_p",
+      "LINESTRING": "_l",
+      "POLYGON": "_a"
+    },
+    "afixo_geom_B": {
+      "tipo": "sufixo",
+      "POINT": "_p",
+      "LINESTRING": "_l",
+      "POLYGON": "_a"
+    },
+    "agregar_geom_A": true,
+    "agregar_geom_B": true,
+    "mapeamento_classes": [],
+    "mapeamento_atributos": [],
+    "atributos_default_B": [],
+    "atributos_default_A": []
+}

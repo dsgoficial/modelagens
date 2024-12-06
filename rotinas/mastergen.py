@@ -646,16 +646,12 @@ if __name__ == '__main__':
     
     args = parser.parse_args()
     
-    try:
-        mg = MasterGen(args.master_path)
-        result = mg.buildSQL(
-            args.output_path,
-            atributos_padrao=args.default_attrs,
-            extension_classes=args.extension_classes,
-            uuid=args.uuid,
-            owner=args.owner
-        )
-        print(result)
-    except Exception as e:
-        print(f"Error: {str(e)}")
-        exit(1)
+    mg = MasterGen(args.master_path)
+    result = mg.buildSQL(
+        args.output_path,
+        atributos_padrao=args.default_attrs,
+        extension_classes=args.extension_classes,
+        uuid=args.uuid,
+        owner=args.owner
+    )
+    print(result)
