@@ -104,16 +104,16 @@
       "filtro": true
     },
     {
-      "nome": "tipo_obstrucao",
+      "nome": "tipo_obstaculo",
       "valores": [
         {
           "code": 1,
-          "value": "Obstrução individual",
+          "value": "Obstáculo individual",
           "descricao": "-"
         },
         {
           "code": 2,
-          "value": "Obstrução múltipla",
+          "value": "Obstáculo múltiplo",
           "descricao": "-"
         }
       ]
@@ -1383,8 +1383,12 @@
       "nome": "tipo_sumidouro_vertedouro",
       "valores": [
         {
+          "code": 3,
+          "value": "Sumidouro - Canalização, Gruta ou fenda"
+        },
+        {
           "code": 4,
-          "value": "Sumidouro"
+          "value": "Sumidouro - Desconhecida, Absorção"
         },
         {
           "code": 5,
@@ -2001,6 +2005,18 @@
           ]
         },
         {
+          "nome": "altitude",
+          "tipo": "real",
+          "cardinalidade": "0..1",
+          "primitivas": ["MultiPoint", "MultiLinestring"]
+        },
+        {
+          "nome": "altura",
+          "tipo": "real",
+          "cardinalidade": "0..1",
+          "primitivas": ["MultiPoint", "MultiLinestring"]
+        },
+        {
           "nome": "situacao_fisica",
           "tipo": "smallint",
           "cardinalidade": "1..1",
@@ -2208,7 +2224,7 @@
           "cardinalidade": "1..1",
           "mapa_valor": "tipo_pista_pouso",
           "valores": {
-            "MultiPoint": [9, 11],
+            "MultiPoint": [11],
             "MultiLinestring": [9, 10],
             "MultiPolygon": [9, 10]
           }
@@ -2856,7 +2872,7 @@
           "nome": "tipo",
           "tipo": "smallint",
           "cardinalidade": "1..1",
-          "mapa_valor": "tipo_obstrucao"
+          "mapa_valor": "tipo_obstaculo"
         },
         {
           "nome": "texto_edicao",

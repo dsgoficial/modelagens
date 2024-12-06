@@ -30,7 +30,7 @@
         },
         {
           "code": 2,
-          "value": "Obstáculo múltipla",
+          "value": "Obstáculo múltiplo",
           "descricao": "-"
         }
       ]
@@ -6072,9 +6072,7 @@
           "mapa_valor": "booleano"
         }
       ]
-    }
-  ],
-  "extension_classes": [
+    },
     {
       "nome": "obstaculo_vertical",
       "categoria": "infra",
@@ -6119,7 +6117,9 @@
           "mapa_valor": "booleano"
         }
       ]
-    },
+    }
+  ],
+  "extension_classes": [
     {
       "nome": "limite_especial",
       "categoria": "edicao",
