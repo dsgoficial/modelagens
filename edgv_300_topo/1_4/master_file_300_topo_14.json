@@ -5054,15 +5054,15 @@
           "valores": [
             {
               "code": 607,
-              "primitivas": ["MultiPolygon", "MultiLinestring"]
+              "primitivas": ["MultiLinestring"]
             },
             {
               "code": 608,
-              "primitivas": ["MultiPolygon", "MultiLinestring"]
+              "primitivas": ["MultiLinestring"]
             },
             {
               "code": 609,
-              "primitivas": ["MultiPolygon", "MultiLinestring"]
+              "primitivas": ["MultiLinestring"]
             },
             {
               "code": 701,

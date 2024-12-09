@@ -47,7 +47,13 @@
               "valor": 701
             }
           ]
-        }
+        },
+        "$and": [
+          {
+            "nome_atributo": "$GEOM_TYPE",
+            "valor": "LINESTRING"
+          }
+        ]
       },
       "atributos_default_B": [
         {
@@ -82,18 +88,26 @@
       "classe_A": "infra_elemento_viario",
       "classe_B": "infra_elemento_infraestrutura",
       "filtro_A": {
-        "$or": [
+        "$and": [
           {
-            "nome_atributo": "tipo",
-            "valor": 607
+            "$or": [
+              {
+                "nome_atributo": "tipo",
+                "valor": 607
+              },
+              {
+                "nome_atributo": "tipo",
+                "valor": 608
+              },
+              {
+                "nome_atributo": "tipo",
+                "valor": 609
+              }
+            ]
           },
           {
-            "nome_atributo": "tipo",
-            "valor": 608
-          },
-          {
-            "nome_atributo": "tipo",
-            "valor": 609
+            "nome_atributo": "$GEOM_TYPE",
+            "valor": "LINESTRING"
           }
         ]
       },
@@ -290,7 +304,7 @@
     {
       "classe_A": "infra_elemento_energia",
       "classe_B": "infra_elemento_energia",
-      "filtro_B":  {
+      "filtro_B": {
         "$not": {
           "nome_atributo": "tipo",
           "valor": "501"
@@ -301,7 +315,7 @@
       "classe_A": "constr_edificacao",
       "classe_B": "infra_elemento_energia",
       "sentido": "B=>A",
-      "filtro_B":  {
+      "filtro_B": {
         "nome_atributo": "tipo",
         "valor": "501"
       },
@@ -447,7 +461,20 @@
     },
     {
       "classe_A": "elemnat_elemento_hidrografico",
-      "classe_B": "elemnat_elemento_hidrografico"
+      "classe_B": "elemnat_elemento_hidrografico",
+      "mapeamento_atributos": [
+        {
+          "attr_A": "tipo",
+          "attr_B": "tipo",
+          "traducao": [
+            {
+              "valor_A": 3,
+              "valor_B": 4,
+              "sentido": "B=>A"
+            }
+          ]
+        }
+      ]
     },
     {
       "classe_A": "elemnat_ilha",
