@@ -46,7 +46,231 @@
     },
     {
       "classe_A": "elemnat_ponto_cotado",
-      "classe_B": "elemnat_ponto_cotado"
+      "classe_B": "elemnat_ponto_cotado",
+      "atributos_default_B": [
+        {
+          "nome_atributo": "suprimir_simbologia",
+          "valor": 9999
+        }
+      ]
+    },
+    {
+      "classe_A": "elemnat_terreno_sujeito_inundacao",
+      "classe_B": "elemnat_terreno_sujeito_inundacao"
+    },
+    {
+      "classe_A": "elemnat_toponimo_fisiografico_natural",
+      "classe_B": "elemnat_toponimo_fisiografico_natural"
+    },
+    {
+      "classe_A": "elemnat_trecho_drenagem",
+      "classe_B": "elemnat_trecho_drenagem",
+      "atributos_default_B": [
+        {
+          "nome_atributo": "em_galeria_bueiro",
+          "valor": 9999
+        }
+      ]
+    },
+    {
+      "classe_A": "infra_barragem",
+      "classe_B": "infra_barragem",
+      "atributos_default_B": [
+        {
+          "nome_atributo": "sobreposto_transportes",
+          "valor": 9999
+        },
+        {
+          "nome_atributo": "visivel",
+          "valor": 9999
+        }
+      ]
+    },
+    {
+      "classe_A": "infra_elemento_energia",
+      "classe_B": "infra_elemento_energia"
+    },
+    {
+      "classe_A": "infra_elemento_infraestrutura",
+      "classe_B": "infra_elemento_infraestrutura"
+    },
+    {
+      "classe_A": "infra_ferrovia",
+      "classe_B": "infra_ferrovia",
+      "atributos_default_B": [
+        {
+          "nome_atributo": "tipo_elemento_viario",
+          "valor": 9999
+        },
+        {
+          "nome_atributo": "material_construcao_elemento_viario",
+          "valor": 9999
+        }
+      ]
+    },
+    {
+      "classe_A": "infra_pista_pouso",
+      "classe_B": "infra_pista_pouso",
+      "filtro_A": {
+        "$not": {
+          "$and": [
+            {
+              "nome_atributo": "$GEOM_TYPE",
+              "valor": "POINT"
+            },
+            {
+              "nome_atributo": "tipo",
+              "valor": 9
+            }
+          ]
+        }
+      }
+    },
+    {
+      "classe_A": "infra_via_deslocamento",
+      "classe_B": "infra_via_deslocamento",
+      "atributos_default_B": [
+        {
+          "nome_atributo": "tipo_elemento_viario",
+          "valor": 9999
+        },
+        {
+          "nome_atributo": "material_construcao_elemento_viario",
+          "valor": 9999
+        },
+        {
+          "nome_atributo": "posicao_pista_elemento_viario",
+          "valor": 9999
+        }
+      ]
+    },
+    {
+      "classe_A": "llp_aglomerado_rural",
+      "classe_B": "llp_aglomerado_rural"
+    },
+    {
+      "classe_A": "llp_area_pub_militar",
+      "classe_B": "llp_area_pub_militar"
+    },
+    {
+      "classe_A": "llp_localidade",
+      "classe_B": "llp_localidade"
+    },
+    {
+      "classe_A": "llp_nome_local",
+      "classe_B": "llp_nome_local"
+    },
+    {
+      "classe_A": "llp_terra_indigena",
+      "classe_B": "llp_terra_indigena"
+    },
+    {
+      "classe_A": "llp_unidade_conservacao",
+      "classe_B": "llp_unidade_conservacao"
+    },
+    {
+      "classe_A": "llp_unidade_federacao",
+      "classe_B": "llp_unidade_federacao"
+    },
+    {
+      "classe_A": "edicao_area_pub_militar",
+      "classe_B": "edicao_area_pub_militar"
+    },
+    {
+      "classe_A": "edicao_terra_indigena",
+      "classe_B": "edicao_terra_indigena"
+    },
+    {
+      "classe_A": "edicao_unidade_conservacao",
+      "classe_B": "edicao_unidade_conservacao"
+    },
+    {
+      "classe_A": "edicao_limite_legal",
+      "classe_B": "llp_limite_legal"
+    },
+    {
+      "classe_A": "edicao_grid_edicao",
+      "classe_B": "edicao_grid_edicao"
+    },
+    {
+      "classe_A": "edicao_articulacao_imagem",
+      "classe_B": "edicao_articulacao_imagem"
+    },
+    {
+      "classe_A": "edicao_area_sem_dados",
+      "classe_B": "llp_area_sem_dados"
+    },
+    {
+      "classe_A": "delimitador_area_sem_dados",
+      "classe_B": "delimitador_area_sem_dados"
+    },
+    {
+      "classe_A": "aux_validacao",
+      "classe_B": "aux_validacao"
+    },
+    {
+      "classe_A": "aux_revisao",
+      "classe_B": "aux_revisao"
+    },
+    {
+      "classe_A": "aux_moldura",
+      "classe_B": "aux_moldura"
+    },
+    {
+      "classe_A": "aux_moldura_area_continua",
+      "classe_B": "aux_moldura_area_continua"
+    },
+    {
+      "classe_A": "delimitador_massa_dagua",
+      "classe_B": "delimitador_massa_dagua"
+    },
+    {
+      "classe_A": "delimitador_elemento_hidrografico",
+      "classe_B": "delimitador_elemento_hidrografico"
+    },
+    {
+      "classe_A": "centroide_massa_dagua",
+      "classe_B": "centroide_massa_dagua"
+    },
+    {
+      "classe_A": "centroide_ilha",
+      "classe_B": "centroide_ilha"
+    },
+    {
+      "classe_A": "centroide_elemento_hidrografico",
+      "classe_B": "centroide_elemento_hidrografico"
+    },
+    {
+      "classe_A": "edicao_identificador_trecho_rod",
+      "classe_B": "edicao_identificador_trecho_rod"
+    },
+    {
+      "classe_A": "edicao_simb_torre_energia",
+      "classe_B": "edicao_simb_torre_energia"
+    },
+    {
+      "classe_A": "edicao_simb_cota_mestra",
+      "classe_B": "edicao_simb_cota_mestra"
+    },
+    {
+      "classe_A": "edicao_texto_generico",
+      "classe_B": "edicao_texto_generico"
+    },
+    {
+      "classe_A": "delimitador_limite_especial",
+      "classe_B": "delimitador_limite_especial"
+    },
+    {
+      "classe_A": "centroide_area_sem_dados",
+      "classe_B": "centroide_area_sem_dados"
+    },
+    {
+      "classe_A": "centroide_limite_especial",
+      "classe_B": "centroide_limite_especial"
+    },
+    {
+      "classe_A": "aux_insumo_externo",
+      "classe_B": "aux_insumo_externo"
     }
   ],
   "mapeamento_atributos": [],

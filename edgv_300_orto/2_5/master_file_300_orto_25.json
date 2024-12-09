@@ -2181,7 +2181,7 @@
           "tipo": "smallint",
           "cardinalidade": "1..1",
           "mapa_valor": "tipo_elemento_viario",
-          "valores": [101,201,202,203,204,301,302,97]
+          "valores": [101, 201, 202, 203, 204, 301, 302, 97]
         },
         {
           "nome": "nome_elemento_viario",
@@ -2368,7 +2368,7 @@
           "tipo": "smallint",
           "cardinalidade": "1..1",
           "mapa_valor": "tipo_elemento_viario",
-          "valores": [101,102,201,202,203,204,301,302,401,402,97]
+          "valores": [101, 102, 201, 202, 203, 204, 301, 302, 401, 402, 97]
         },
         {
           "nome": "nome_elemento_viario",
@@ -2845,9 +2845,7 @@
           "cardinalidade": "0..1"
         }
       ]
-    }
-  ],
-  "extension_classes": [
+    },
     {
       "nome": "obstaculo_vertical",
       "categoria": "infra",
@@ -2892,7 +2890,9 @@
           "mapa_valor": "booleano"
         }
       ]
-    },
+    }
+  ],
+  "extension_classes": [
     {
       "nome": "area_pub_militar",
       "categoria": "edicao",
@@ -3012,8 +3012,7 @@
       "nome": "grid_edicao",
       "categoria": "edicao",
       "primitivas": ["MultiLinestring"],
-      "atributos": [
-      ]
+      "atributos": []
     },
     {
       "nome": "articulacao_imagem",
@@ -3272,9 +3271,7 @@
     {
       "nome": "simb_cota_mestra",
       "categoria": "edicao",
-      "primitivas": [
-        "MultiLinestring"
-      ],
+      "primitivas": ["MultiLinestring"],
       "atributos": [
         {
           "nome": "texto_edicao",
