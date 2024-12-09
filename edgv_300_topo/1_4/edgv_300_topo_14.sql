@@ -908,7 +908,8 @@ CREATE TABLE dominios.tipo_elemento_hidrografico (
 
 INSERT INTO dominios.tipo_elemento_hidrografico (code,code_name) VALUES (1,'Poço dágua (1)');
 INSERT INTO dominios.tipo_elemento_hidrografico (code,code_name) VALUES (2,'Poço artesiano (2)');
-INSERT INTO dominios.tipo_elemento_hidrografico (code,code_name) VALUES (3,'Olho dágua (3)');
+INSERT INTO dominios.tipo_elemento_hidrografico (code,code_name) VALUES (3,'Olho dágua - permanente (3)');
+INSERT INTO dominios.tipo_elemento_hidrografico (code,code_name) VALUES (4,'Olho dágua - intermitente (4)');
 INSERT INTO dominios.tipo_elemento_hidrografico (code,code_name) VALUES (6,'Foz marítima (6)');
 INSERT INTO dominios.tipo_elemento_hidrografico (code,code_name) VALUES (8,'Rocha em água (8)');
 INSERT INTO dominios.tipo_elemento_hidrografico (code,code_name) VALUES (9,'Cachoeira (9)');
@@ -2363,7 +2364,7 @@ ALTER TABLE edgv.elemnat_elemento_hidrografico_p
 
 ALTER TABLE edgv.elemnat_elemento_hidrografico_p
 	 ADD CONSTRAINT elemnat_elemento_hidrografico_p_tipo_check 
-	 CHECK (tipo = ANY(ARRAY[1 :: SMALLINT, 2 :: SMALLINT, 3 :: SMALLINT, 6 :: SMALLINT, 8 :: SMALLINT, 9 :: SMALLINT, 10 :: SMALLINT, 11 :: SMALLINT, 12 :: SMALLINT, 18 :: SMALLINT, 19 :: SMALLINT, 9999 :: SMALLINT])); 
+	 CHECK (tipo = ANY(ARRAY[1 :: SMALLINT, 2 :: SMALLINT, 3 :: SMALLINT, 4 :: SMALLINT, 6 :: SMALLINT, 8 :: SMALLINT, 9 :: SMALLINT, 10 :: SMALLINT, 11 :: SMALLINT, 12 :: SMALLINT, 18 :: SMALLINT, 19 :: SMALLINT, 9999 :: SMALLINT])); 
 
 ALTER TABLE edgv.elemnat_elemento_hidrografico_p ALTER COLUMN tipo SET DEFAULT 9999;
 
