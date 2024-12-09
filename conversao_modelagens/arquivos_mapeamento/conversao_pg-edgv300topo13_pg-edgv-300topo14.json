@@ -494,7 +494,13 @@
     },
     {
       "classe_A": "elemnat_trecho_drenagem",
-      "classe_B": "elemnat_trecho_drenagem"
+      "classe_B": "elemnat_trecho_drenagem",
+      "atributos_default_B": [
+        {
+          "nome_atributo": "em_galeria_bueiro",
+          "valor": 9999
+        }
+      ]
     },
     {
       "classe_A": "infra_alteracao_fisiografica_antropica",

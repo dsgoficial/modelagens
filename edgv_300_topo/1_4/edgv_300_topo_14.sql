@@ -2607,6 +2607,7 @@ CREATE TABLE edgv.elemnat_trecho_drenagem_l(
 	 tipo smallint NOT NULL,
 	 situacao_em_poligono smallint NOT NULL,
 	 regime smallint NOT NULL,
+	 em_galeria_bueiro smallint NOT NULL,
 	 texto_edicao varchar(255),
 	 tamanho_txt real,
 	 visivel smallint NOT NULL,
@@ -2641,6 +2642,13 @@ ALTER TABLE edgv.elemnat_trecho_drenagem_l
 	 ON UPDATE NO ACTION ON DELETE NO ACTION;
 
 ALTER TABLE edgv.elemnat_trecho_drenagem_l ALTER COLUMN regime SET DEFAULT 9999;
+
+ALTER TABLE edgv.elemnat_trecho_drenagem_l
+	 ADD CONSTRAINT elemnat_trecho_drenagem_l_em_galeria_bueiro_fk FOREIGN KEY (em_galeria_bueiro)
+	 REFERENCES dominios.booleano (code) MATCH FULL
+	 ON UPDATE NO ACTION ON DELETE NO ACTION;
+
+ALTER TABLE edgv.elemnat_trecho_drenagem_l ALTER COLUMN em_galeria_bueiro SET DEFAULT 9999;
 
 ALTER TABLE edgv.elemnat_trecho_drenagem_l
 	 ADD CONSTRAINT elemnat_trecho_drenagem_l_visivel_fk FOREIGN KEY (visivel)

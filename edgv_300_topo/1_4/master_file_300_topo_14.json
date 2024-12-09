@@ -4762,6 +4762,12 @@
           "mapa_valor": "regime"
         },
         {
+          "nome": "em_galeria_bueiro",
+          "tipo": "smallint",
+          "cardinalidade": "1..1",
+          "mapa_valor": "booleano"
+        },
+        {
           "nome": "texto_edicao",
           "tipo": "varchar(255)",
           "cardinalidade": "0..1"
