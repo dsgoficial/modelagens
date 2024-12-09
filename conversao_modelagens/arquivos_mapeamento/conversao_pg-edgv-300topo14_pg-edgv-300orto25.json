@@ -1,5 +1,5 @@
 {
-  "metadados":{
+  "metadados": {
     "versao_arquivo": "0.1",
     "modelo_A": "EDGV 3.0 Topo",
     "versao_modelo_A": "1.4.0",
@@ -306,11 +306,10 @@
       "filtro_A": {
         "$and": [
           {
-            "$not": 
-              {
-                "nome_atributo": "tipo",
-                "valor": 12
-              }
+            "$not": {
+              "nome_atributo": "tipo",
+              "valor": 12
+            }
           },
           {
             "$not": {
@@ -386,10 +385,6 @@
     {
       "classe_A": "infra_obstaculo_vertical",
       "classe_B": "infra_obstaculo_vertical"
-    },
-    {
-      "classe_A": "edicao_articulacao_imagem",
-      "classe_B": "edicao_articulacao_imagem"
     },
     {
       "__comment": "llp_limite_especial <-> llp_unidade_conservacao",
@@ -610,14 +605,6 @@
         {
           "nome_atributo": "tipo",
           "valor": 8
-        },
-        {
-          "nome_atributo": "rotular_carta_mini",
-          "valor": 2
-        },
-        {
-          "nome_atributo": "simbolizar_carta_mini",
-          "valor": 2
         }
       ]
     },
@@ -643,8 +630,8 @@
       }
     },
     {
-    "classe_A": "centroide_limite_especial",
-    "classe_B": "centroide_limite_especial"
+      "classe_A": "centroide_limite_especial",
+      "classe_B": "centroide_limite_especial"
     }
   ],
   "mapeamento_atributos": [],
