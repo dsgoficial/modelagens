@@ -25,6 +25,17 @@
   "agregar_geom_B": true,
   "mapeamento_classes": [
     {
+      "__comment": "aux_obstaculo_vertical <-> infra_obstaculo_vertical",
+      "classe_A": "aux_obstaculo_vertical",
+      "classe_B": "infra_obstaculo_vertical",
+      "atributos_default_B": [
+        {
+          "nome_atributo": "tipo",
+          "valor": 1
+        }
+      ]
+    },
+    {
       "__comment": "aux_moldura <-> aux_moldura",
       "classe_A": "aux_moldura",
       "classe_B": "aux_moldura"
@@ -71,20 +82,6 @@
       "__comment": "edf_edif_agropec_ext_vegetal_pesca <-> constr_edificacao | edif_agropec",
       "classe_A": "edf_edif_agropec_ext_vegetal_pesca",
       "classe_B": "constr_edificacao",
-      "filtro_A": {
-        "$not": {
-          "$or": [
-            {
-              "nome_atributo": "situacaofisica",
-              "valor": 1
-            },
-            {
-              "nome_atributo": "situacaofisica",
-              "valor": 2
-            }
-          ]
-        }
-      },
       "filtro_B": {
         "$or": [
           {
@@ -122,10 +119,6 @@
         ]
       },
       "atributos_default_A": [
-        {
-          "nome_atributo": "situacaofisica",
-          "valor": 5
-        },
         {
           "nome_atributo": "turistica",
           "valor": 0
@@ -232,29 +225,11 @@
       "__comment": "edf_edif_energia -> constr_edificacao | energia",
       "classe_A": "edf_edif_energia",
       "classe_B": "constr_edificacao",
-      "filtro_A": {
-        "$not": {
-          "$or": [
-            {
-              "nome_atributo": "situacaofisica",
-              "valor": 1
-            },
-            {
-              "nome_atributo": "situacaofisica",
-              "valor": 2
-            }
-          ]
-        }
-      },
       "filtro_B": {
         "nome_atributo": "tipo",
         "valor": 201
       },
       "atributos_default_A": [
-        {
-          "nome_atributo": "situacaofisica",
-          "valor": 5
-        },
         {
           "nome_atributo": "tipoedifenergia",
           "valor": 0
@@ -336,20 +311,6 @@
       "__comment": "edf_edif_ensino -> constr_edificacao | ensino",
       "classe_A": "edf_edif_ensino",
       "classe_B": "constr_edificacao",
-      "filtro_A": {
-        "$not": {
-          "$or": [
-            {
-              "nome_atributo": "situacaofisica",
-              "valor": 1
-            },
-            {
-              "nome_atributo": "situacaofisica",
-              "valor": 2
-            }
-          ]
-        }
-      },
       "filtro_B": {
         "$or": [
           {
@@ -395,10 +356,6 @@
         ]
       },
       "atributos_default_A": [
-        {
-          "nome_atributo": "situacaofisica",
-          "valor": 5
-        },
         {
           "nome_atributo": "turistica",
           "valor": 0
@@ -483,20 +440,6 @@
       "__comment": "edf_edif_ext_mineral -> constr_edificacao | ext_mineral",
       "classe_A": "edf_edif_ext_mineral",
       "classe_B": "constr_edificacao",
-      "filtro_A": {
-        "$not": {
-          "$or": [
-            {
-              "nome_atributo": "situacaofisica",
-              "valor": 1
-            },
-            {
-              "nome_atributo": "situacaofisica",
-              "valor": 2
-            }
-          ]
-        }
-      },
       "filtro_B": {
         "$or": [
           {
@@ -522,10 +465,6 @@
         ]
       },
       "atributos_default_A": [
-        {
-          "nome_atributo": "situacaofisica",
-          "valor": 5
-        },
         {
           "nome_atributo": "turistica",
           "valor": 0
@@ -590,20 +529,6 @@
       "__comment": "edf_edificacao <-> constr_edificacao | edif genérica",
       "classe_A": "edf_edificacao",
       "classe_B": "constr_edificacao",
-      "filtro_A": {
-        "$not": {
-          "$or": [
-            {
-              "nome_atributo": "situacaofisica",
-              "valor": 1
-            },
-            {
-              "nome_atributo": "situacaofisica",
-              "valor": 2
-            }
-          ]
-        }
-      },
       "filtro_B": {
         "$or": [
           {
@@ -627,10 +552,6 @@
         }
       ],
       "atributos_default_A": [
-        {
-          "nome_atributo": "situacaofisica",
-          "valor": 5
-        },
         {
           "nome_atributo": "turistica",
           "valor": 0
@@ -666,36 +587,14 @@
       "classe_A": "edf_hab_indigena",
       "classe_B": "constr_edificacao",
       "filtro_A": {
-        "$and": [
-          {
-            "nome_atributo": "coletiva",
-            "valor": 1
-          },
-          {
-            "$not": {
-              "$or": [
-                {
-                  "nome_atributo": "situacaofisica",
-                  "valor": 1
-                },
-                {
-                  "nome_atributo": "situacaofisica",
-                  "valor": 2
-                }
-              ]
-            }
-          }
-        ]
+        "nome_atributo": "coletiva",
+        "valor": 1
       },
       "filtro_B": {
         "nome_atributo": "tipo",
         "valor": 1401
       },
       "atributos_default_A": [
-        {
-          "nome_atributo": "situacaofisica",
-          "valor": 5
-        },
         {
           "nome_atributo": "turistica",
           "valor": 0
@@ -783,38 +682,16 @@
       "classe_A": "edf_hab_indigena",
       "classe_B": "constr_edificacao",
       "filtro_A": {
-        "$and": [
-          {
-            "$not": {
-              "nome_atributo": "coletiva",
-              "valor": 1
-            }
-          },
-          {
-            "$not": {
-              "$or": [
-                {
-                  "nome_atributo": "situacaofisica",
-                  "valor": 1
-                },
-                {
-                  "nome_atributo": "situacaofisica",
-                  "valor": 2
-                }
-              ]
-            }
-          }
-        ]
+        "$not": {
+          "nome_atributo": "coletiva",
+          "valor": 1
+        }
       },
       "filtro_B": {
         "nome_atributo": "tipo",
         "valor": 1402
       },
       "atributos_default_A": [
-        {
-          "nome_atributo": "situacaofisica",
-          "valor": 5
-        },
         {
           "nome_atributo": "turistica",
           "valor": 0
@@ -901,20 +778,6 @@
       "__comment": "edf_edif_constr_lazer -> constr_edificacao | lazer",
       "classe_A": "edf_edif_constr_lazer",
       "classe_B": "constr_edificacao",
-      "filtro_A": {
-        "$not": {
-          "$or": [
-            {
-              "nome_atributo": "situacaofisica",
-              "valor": 1
-            },
-            {
-              "nome_atributo": "situacaofisica",
-              "valor": 2
-            }
-          ]
-        }
-      },
       "filtro_B": {
         "$or": [
           { "nome_atributo": "tipo", "valor": 801 },
@@ -939,10 +802,6 @@
         ]
       },
       "atributos_default_A": [
-        {
-          "nome_atributo": "situacaofisica",
-          "valor": 5
-        },
         {
           "nome_atributo": "turistica",
           "valor": 0
@@ -2519,20 +2378,6 @@
       "__comment": "edf_edif_abast_agua -> constr_edificacao | abast água",
       "classe_A": "edf_edif_abast_agua",
       "classe_B": "constr_edificacao",
-      "filtro_A": {
-        "$not": {
-          "$or": [
-            {
-              "nome_atributo": "situacaofisica",
-              "valor": 1
-            },
-            {
-              "nome_atributo": "situacaofisica",
-              "valor": 2
-            }
-          ]
-        }
-      },
       "filtro_B": {
         "$or": [
           {
@@ -2562,10 +2407,6 @@
         ]
       },
       "atributos_default_A": [
-        {
-          "nome_atributo": "situacaofisica",
-          "valor": 5
-        },
         {
           "nome_atributo": "turistica",
           "valor": 0
@@ -2638,20 +2479,6 @@
       "__comment": "edf_edif_constr_turistica -> constr_edificacao | turismo",
       "classe_A": "edf_edif_constr_turistica",
       "classe_B": "constr_edificacao",
-      "filtro_A": {
-        "$not": {
-          "$or": [
-            {
-              "nome_atributo": "situacaofisica",
-              "valor": 1
-            },
-            {
-              "nome_atributo": "situacaofisica",
-              "valor": 2
-            }
-          ]
-        }
-      },
       "filtro_B": {
         "$or": [
           {
@@ -2681,10 +2508,6 @@
         ]
       },
       "atributos_default_A": [
-        {
-          "nome_atributo": "situacaofisica",
-          "valor": 5
-        },
         {
           "nome_atributo": "turistica",
           "valor": 1
@@ -2868,20 +2691,6 @@
       "__comment": "edf_edif_comerc_serv <-> constr_edificacao | edif_comercial",
       "classe_A": "edf_edif_comerc_serv",
       "classe_B": "constr_edificacao",
-      "filtro_A": {
-        "$not": {
-          "$or": [
-            {
-              "nome_atributo": "situacaofisica",
-              "valor": 1
-            },
-            {
-              "nome_atributo": "situacaofisica",
-              "valor": 2
-            }
-          ]
-        }
-      },
       "filtro_B": {
         "$or": [
           {
@@ -2922,10 +2731,6 @@
         {
           "nome_atributo": "finalidade",
           "valor": 1
-        },
-        {
-          "nome_atributo": "situacaofisica",
-          "valor": 5
         },
         {
           "nome_atributo": "turistica",
@@ -3199,20 +3004,6 @@
       "__comment": "edf_edif_industrial <-> constr_edificacao | edif industrial",
       "classe_A": "edf_edif_industrial",
       "classe_B": "constr_edificacao",
-      "filtro_A": {
-        "$not": {
-          "$or": [
-            {
-              "nome_atributo": "situacaofisica",
-              "valor": 1
-            },
-            {
-              "nome_atributo": "situacaofisica",
-              "valor": 2
-            }
-          ]
-        }
-      },
       "filtro_B": {
         "$or": [
           {
@@ -3322,10 +3113,6 @@
         ]
       },
       "atributos_default_A": [
-        {
-          "nome_atributo": "situacaofisica",
-          "valor": 5
-        },
         {
           "nome_atributo": "turistica",
           "valor": 0
@@ -3464,11 +3251,6 @@
             },
             {
               "valor_A": 99,
-              "valor_B": 1046,
-              "sentido": "B=>A"
-            },
-            {
-              "valor_A": 99,
               "valor_B": 1098
             }
           ]
@@ -3500,29 +3282,11 @@
       "__comment": "edf_posto_combustivel <-> constr_edificacao | posto_combustivel",
       "classe_A": "edf_posto_combustivel",
       "classe_B": "constr_edificacao",
-      "filtro_A": {
-        "$not": {
-          "$or": [
-            {
-              "nome_atributo": "situacaofisica",
-              "valor": 1
-            },
-            {
-              "nome_atributo": "situacaofisica",
-              "valor": 2
-            }
-          ]
-        }
-      },
       "filtro_B": {
         "nome_atributo": "tipo",
         "valor": 2601
       },
       "atributos_default_A": [
-        {
-          "nome_atributo": "situacaofisica",
-          "valor": 5
-        },
         {
           "nome_atributo": "turistica",
           "valor": 0
@@ -3579,20 +3343,6 @@
       "__comment": "edf_edif_constr_aeroportuaria <-> constr_edificacao | edif aeroportuaria",
       "classe_A": "edf_edif_constr_aeroportuaria",
       "classe_B": "constr_edificacao",
-      "filtro_A": {
-        "$not": {
-          "$or": [
-            {
-              "nome_atributo": "situacaofisica",
-              "valor": 1
-            },
-            {
-              "nome_atributo": "situacaofisica",
-              "valor": 2
-            }
-          ]
-        }
-      },
       "filtro_B": {
         "$or": [
           {
@@ -3626,10 +3376,6 @@
         ]
       },
       "atributos_default_A": [
-        {
-          "nome_atributo": "situacaofisica",
-          "valor": 5
-        },
         {
           "nome_atributo": "turistica",
           "valor": 0
@@ -3715,29 +3461,19 @@
       "__comment": "edf_edif_constr_portuaria <-> constr_edificacao | edif portuaria",
       "classe_A": "edf_edif_constr_portuaria",
       "classe_B": "constr_edificacao",
-      "filtro_A": {
-        "$not": {
-          "$or": [
-            {
-              "nome_atributo": "situacaofisica",
-              "valor": 1
-            },
-            {
-              "nome_atributo": "situacaofisica",
-              "valor": 2
-            }
-          ]
-        }
-      },
       "filtro_B": {
-        "nome_atributo": "tipo",
-        "valor": 2501
+        "$or": [
+          {
+            "nome_atributo": "tipo",
+            "valor": 2501
+          },
+          {
+            "nome_atributo": "tipo",
+            "valor": 2502
+          }
+        ]
       },
       "atributos_default_A": [
-        {
-          "nome_atributo": "situacaofisica",
-          "valor": 5
-        },
         {
           "nome_atributo": "turistica",
           "valor": 0
@@ -3887,20 +3623,6 @@
       "__comment": "edf_representacao_diplomatica <-> constr_edificacao | edif portuaria",
       "classe_A": "edf_representacao_diplomatica",
       "classe_B": "constr_edificacao",
-      "filtro_A": {
-        "$not": {
-          "$or": [
-            {
-              "nome_atributo": "situacaofisica",
-              "valor": 1
-            },
-            {
-              "nome_atributo": "situacaofisica",
-              "valor": 2
-            }
-          ]
-        }
-      },
       "filtro_B": {
         "$or": [
           {
@@ -3914,10 +3636,6 @@
         ]
       },
       "atributos_default_A": [
-        {
-          "nome_atributo": "situacaofisica",
-          "valor": 5
-        },
         {
           "nome_atributo": "turistica",
           "valor": 0
@@ -3974,20 +3692,6 @@
       "__comment": "edf_edif_policia <-> constr_edificacao | edif policial",
       "classe_A": "edf_edif_policia",
       "classe_B": "constr_edificacao",
-      "filtro_A": {
-        "$not": {
-          "$or": [
-            {
-              "nome_atributo": "situacaofisica",
-              "valor": 1
-            },
-            {
-              "nome_atributo": "situacaofisica",
-              "valor": 2
-            }
-          ]
-        }
-      },
       "filtro_B": {
         "$or": [
           {
@@ -4001,10 +3705,6 @@
         ]
       },
       "atributos_default_A": [
-        {
-          "nome_atributo": "situacaofisica",
-          "valor": 5
-        },
         {
           "nome_atributo": "turistica",
           "valor": 0
@@ -4085,29 +3785,11 @@
       "__comment": "edf_posto_guarda_municipal <-> constr_edificacao | posto guarda",
       "classe_A": "edf_posto_guarda_municipal",
       "classe_B": "constr_edificacao",
-      "filtro_A": {
-        "$not": {
-          "$or": [
-            {
-              "nome_atributo": "situacaofisica",
-              "valor": 1
-            },
-            {
-              "nome_atributo": "situacaofisica",
-              "valor": 2
-            }
-          ]
-        }
-      },
       "filtro_B": {
         "nome_atributo": "tipo",
         "valor": 3003
       },
       "atributos_default_A": [
-        {
-          "nome_atributo": "situacaofisica",
-          "valor": 5
-        },
         {
           "nome_atributo": "turistica",
           "valor": 0
@@ -4172,20 +3854,6 @@
       "__comment": "edf_posto_policia_militar <-> constr_edificacao | posto pol militar",
       "classe_A": "edf_posto_policia_militar",
       "classe_B": "constr_edificacao",
-      "filtro_A": {
-        "$not": {
-          "$or": [
-            {
-              "nome_atributo": "situacaofisica",
-              "valor": 1
-            },
-            {
-              "nome_atributo": "situacaofisica",
-              "valor": 2
-            }
-          ]
-        }
-      },
       "filtro_B": {
         "nome_atributo": "tipo",
         "valor": 3002
@@ -4194,10 +3862,6 @@
         {
           "nome_atributo": "tipoinstalmilitar",
           "valor": 22
-        },
-        {
-          "nome_atributo": "situacaofisica",
-          "valor": 5
         },
         {
           "nome_atributo": "turistica",
@@ -4247,29 +3911,11 @@
       "__comment": "edf_posto_policia_rod_federal <-> constr_edificacao | posto pol rod federal",
       "classe_A": "edf_posto_policia_rod_federal",
       "classe_B": "constr_edificacao",
-      "filtro_A": {
-        "$not": {
-          "$or": [
-            {
-              "nome_atributo": "situacaofisica",
-              "valor": 1
-            },
-            {
-              "nome_atributo": "situacaofisica",
-              "valor": 2
-            }
-          ]
-        }
-      },
       "filtro_B": {
         "nome_atributo": "tipo",
         "valor": 3004
       },
       "atributos_default_A": [
-        {
-          "nome_atributo": "situacaofisica",
-          "valor": 5
-        },
         {
           "nome_atributo": "turistica",
           "valor": 0
@@ -4334,20 +3980,6 @@
       "__comment": "edf_posto_fiscal <-> constr_edificacao | posto fiscal",
       "classe_A": "edf_posto_fiscal",
       "classe_B": "constr_edificacao",
-      "filtro_A": {
-        "$not": {
-          "$or": [
-            {
-              "nome_atributo": "situacaofisica",
-              "valor": 1
-            },
-            {
-              "nome_atributo": "situacaofisica",
-              "valor": 2
-            }
-          ]
-        }
-      },
       "filtro_B": {
         "$or": [
           {
@@ -4373,10 +4005,6 @@
         ]
       },
       "atributos_default_A": [
-        {
-          "nome_atributo": "situacaofisica",
-          "valor": 5
-        },
         {
           "nome_atributo": "turistica",
           "valor": 0
@@ -4462,20 +4090,6 @@
       "__comment": "edf_edif_pub_civil <-> constr_edificacao | pub civil + prisional",
       "classe_A": "edf_edif_pub_civil",
       "classe_B": "constr_edificacao",
-      "filtro_A": {
-        "$not": {
-          "$or": [
-            {
-              "nome_atributo": "situacaofisica",
-              "valor": 1
-            },
-            {
-              "nome_atributo": "situacaofisica",
-              "valor": 2
-            }
-          ]
-        }
-      },
       "filtro_B": {
         "$or": [
           {
@@ -4553,10 +4167,6 @@
         ]
       },
       "atributos_default_A": [
-        {
-          "nome_atributo": "situacaofisica",
-          "valor": 5
-        },
         {
           "nome_atributo": "turistica",
           "valor": 0
@@ -4687,20 +4297,6 @@
       "__comment": "edf_edif_pub_militar <-> constr_edificacao | pub militar",
       "classe_A": "edf_edif_pub_militar",
       "classe_B": "constr_edificacao",
-      "filtro_A": {
-        "$not": {
-          "$or": [
-            {
-              "nome_atributo": "situacaofisica",
-              "valor": 1
-            },
-            {
-              "nome_atributo": "situacaofisica",
-              "valor": 2
-            }
-          ]
-        }
-      },
       "filtro_B": {
         "$or": [
           {
@@ -4726,10 +4322,6 @@
         ]
       },
       "atributos_default_A": [
-        {
-          "nome_atributo": "situacaofisica",
-          "valor": 5
-        },
         {
           "nome_atributo": "turistica",
           "valor": 0
@@ -4906,20 +4498,6 @@
       "__comment": "edf_edif_comunic -> constr_edificacao | Edificação de comunicação",
       "classe_A": "edf_edif_comunic",
       "classe_B": "constr_edificacao",
-      "filtro_A": {
-        "$not": {
-          "$or": [
-            {
-              "nome_atributo": "situacaofisica",
-              "valor": 1
-            },
-            {
-              "nome_atributo": "situacaofisica",
-              "valor": 2
-            }
-          ]
-        }
-      },
       "filtro_B": {
         "$or": [
           {
@@ -4945,10 +4523,6 @@
         ]
       },
       "atributos_default_A": [
-        {
-          "nome_atributo": "situacaofisica",
-          "valor": 5
-        },
         {
           "nome_atributo": "turistica",
           "valor": 0
@@ -5034,6 +4608,11 @@
             {
               "valor_A": 1,
               "valor_B": 4
+            },
+            {
+              "valor_A": 1,
+              "valor_B": 3,
+              "sentido": "B=>A"
             },
             {
               "valor_A": 2,
@@ -6107,9 +5686,9 @@
       ]
     },
     {
-      "__comment": "tra_travessia_pedestre <-> infra_elemento_viario | travessia de pedestre",
+      "__comment": "tra_travessia_pedestre <-> infra_elemento_infraestrutura | travessia de pedestre",
       "classe_A": "tra_travessia_pedestre",
-      "classe_B": "infra_elemento_viario",
+      "classe_B": "infra_elemento_infraestrutura",
       "filtro_B": {
         "$or": [
           {
@@ -6134,39 +5713,13 @@
         {
           "nome_atributo": "tipopavimentacao",
           "valor": 0
-        }
-      ],
-      "atributos_default_B": [
-        {
-          "nome_atributo": "exibir_lado_simbologia",
-          "valor": 9999
         },
         {
-          "nome_atributo": "exibir_ponta_simbologia",
-          "valor": 9999
-        },
-        {
-          "nome_atributo": "config_comprimento_simb",
-          "valor": 9999
+          "nome_atributo": "situacaoespacial",
+          "valor": 0
         }
       ],
       "mapeamento_atributos": [
-        {
-          "attr_A": "situacaoespacial",
-          "attr_B": "posicao_pista",
-          "traducao": [
-            {
-              "valor_A": 4,
-              "valor_B": 13,
-              "sentido": "A=>B"
-            },
-            {
-              "valor_A": 7,
-              "valor_B": 13,
-              "sentido": "A=>B"
-            }
-          ]
-        },
         {
           "attr_A": "tipotravessiaped",
           "attr_B": "tipo",
@@ -6189,10 +5742,6 @@
       "mapeamento_multiplo": [
         {
           "tupla_A": [
-            {
-              "nome_atributo": "tipotravessiaped",
-              "valor": 7
-            },
             {
               "nome_atributo": "situacao_espacial",
               "valor": 2
@@ -6926,6 +6475,12 @@
           "nome_atributo": "ovgd",
           "valor": 0
         }
+      ],
+      "mapeamento_atributos": [
+        {
+          "attr_A": "alturaestimada",
+          "attr_B": "altura"
+        }
       ]
     },
     {
@@ -6939,9 +6494,23 @@
         }
       ],
       "filtro_B": {
-        "nome_atributo": "tipo",
-        "valor": 1701
-      }
+        "$or": [
+          {
+            "nome_atributo": "tipo",
+            "valor": 1701
+          },
+          {
+            "nome_atributo": "tipo",
+            "valor": 1702
+          }
+        ]
+      },
+      "mapeamento_atributos": [
+        {
+          "attr_A": "alturatorreaer",
+          "attr_B": "altura"
+        }
+      ]
     },
     {
       "__comment": "enc_subest_transm_distrib_energia_eletrica <-> infra_elemento_energia | grupo transf",
@@ -7163,7 +6732,7 @@
       ]
     },
     {
-      "__comment": "rel_elemento_fisiografico_natural <-> elemnat_elemento_fisiografico | escarpa, falesia e talude",
+      "__comment": "rel_elemento_fisiografico_natural <-> elemnat_elemento_fisiografico | escarpa, falesia, falha e talude",
       "classe_A": "rel_elemento_fisiografico_natural",
       "classe_B": "elemnat_elemento_fisiografico",
       "filtro_B": {
@@ -7179,6 +6748,10 @@
           {
             "nome_atributo": "tipo",
             "valor": 14
+          },
+          {
+            "nome_atributo": "tipo",
+            "valor": 18
           }
         ]
       },
@@ -7703,6 +7276,10 @@
       "__comment": "laz_pista_competicao <-> constr_ocupacao_solo | pista_competicao",
       "classe_A": "laz_pista_competicao",
       "classe_B": "constr_ocupacao_solo",
+      "filtro_A": {
+        "nome_atributo": "$GEOM_TYPE",
+        "valor": "LINESTRING"
+      },
       "filtro_B": {
         "$or": [
           {
@@ -7914,36 +7491,18 @@
       "classe_A": "edf_edif_religiosa",
       "classe_B": "constr_edificacao",
       "filtro_A": {
-        "$and": [
-          {
-            "$not": {
-              "$and": [
-                {
-                  "nome_atributo": "tipoedifrelig",
-                  "valor": 1
-                },
-                {
-                  "nome_atributo": "crista",
-                  "valor": 2
-                }
-              ]
+        "$not": {
+          "$and": [
+            {
+              "nome_atributo": "tipoedifrelig",
+              "valor": 1
+            },
+            {
+              "nome_atributo": "crista",
+              "valor": 2
             }
-          },
-          {
-            "$not": {
-              "$or": [
-                {
-                  "nome_atributo": "situacaofisica",
-                  "valor": 1
-                },
-                {
-                  "nome_atributo": "situacaofisica",
-                  "valor": 2
-                }
-              ]
-            }
-          }
-        ]
+          ]
+        }
       },
       "filtro_B": {
         "$or": [
@@ -7994,10 +7553,6 @@
         ]
       },
       "atributos_default_A": [
-        {
-          "nome_atributo": "situacaofisica",
-          "valor": 5
-        },
         {
           "nome_atributo": "turistica",
           "valor": 0
@@ -8107,20 +7662,6 @@
           {
             "nome_atributo": "crista",
             "valor": 2
-          },
-          {
-            "$not": {
-              "$or": [
-                {
-                  "nome_atributo": "situacaofisica",
-                  "valor": 1
-                },
-                {
-                  "nome_atributo": "situacaofisica",
-                  "valor": 2
-                }
-              ]
-            }
           }
         ]
       },
@@ -8139,10 +7680,6 @@
         "valor": 611
       },
       "atributos_default_A": [
-        {
-          "nome_atributo": "situacaofisica",
-          "valor": 5
-        },
         {
           "nome_atributo": "turistica",
           "valor": 0
@@ -8189,20 +7726,6 @@
       "__comment": "edf_edif_rodoviaria -> constr_edificacao | rodoviaria",
       "classe_A": "edf_edif_rodoviaria",
       "classe_B": "constr_edificacao",
-      "filtro_A": {
-        "$not": {
-          "$or": [
-            {
-              "nome_atributo": "situacaofisica",
-              "valor": 1
-            },
-            {
-              "nome_atributo": "situacaofisica",
-              "valor": 2
-            }
-          ]
-        }
-      },
       "filtro_B": {
         "$or": [
           {
@@ -8232,10 +7755,6 @@
         ]
       },
       "atributos_default_A": [
-        {
-          "nome_atributo": "situacaofisica",
-          "valor": 5
-        },
         {
           "nome_atributo": "turistica",
           "valor": 0
@@ -8326,20 +7845,6 @@
       "__comment": "edf_edif_saneamento -> constr_edificacao | saneamento",
       "classe_A": "edf_edif_saneamento",
       "classe_B": "constr_edificacao",
-      "filtro_A": {
-        "$not": {
-          "$or": [
-            {
-              "nome_atributo": "situacaofisica",
-              "valor": 1
-            },
-            {
-              "nome_atributo": "situacaofisica",
-              "valor": 2
-            }
-          ]
-        }
-      },
       "filtro_B": {
         "$or": [
           {
@@ -8369,10 +7874,6 @@
         ]
       },
       "atributos_default_A": [
-        {
-          "nome_atributo": "situacaofisica",
-          "valor": 5
-        },
         {
           "nome_atributo": "turistica",
           "valor": 0
@@ -8453,20 +7954,6 @@
       "__comment": "edf_edif_desenv_social -> constr_edificacao | servico social",
       "classe_A": "edf_edif_desenv_social",
       "classe_B": "constr_edificacao",
-      "filtro_A": {
-        "$not": {
-          "$or": [
-            {
-              "nome_atributo": "situacaofisica",
-              "valor": 1
-            },
-            {
-              "nome_atributo": "situacaofisica",
-              "valor": 2
-            }
-          ]
-        }
-      },
       "filtro_B": {
         "nome_atributo": "tipo",
         "valor": 2101
@@ -8479,10 +7966,6 @@
         {
           "nome_atributo": "tipoequipdesenvsocial",
           "valor": 0
-        },
-        {
-          "nome_atributo": "situacaofisica",
-          "valor": 5
         },
         {
           "nome_atributo": "turistica",
@@ -8564,20 +8047,6 @@
       "__comment": "edf_edif_policia -> constr_edificacao | seguranca",
       "classe_A": "edf_edif_policia",
       "classe_B": "constr_edificacao",
-      "filtro_A": {
-        "$not": {
-          "$or": [
-            {
-              "nome_atributo": "situacaofisica",
-              "valor": 1
-            },
-            {
-              "nome_atributo": "situacaofisica",
-              "valor": 2
-            }
-          ]
-        }
-      },
       "filtro_B": {
         "$or": [
           {
@@ -8626,10 +8095,6 @@
         {
           "nome_atributo": "tipousoedif",
           "valor": 0
-        },
-        {
-          "nome_atributo": "situacaofisica",
-          "valor": 5
         },
         {
           "nome_atributo": "turistica",
@@ -8683,20 +8148,6 @@
       "__comment": "edf_edif_saude -> constr_edificacao | saude",
       "classe_A": "edf_edif_saude",
       "classe_B": "constr_edificacao",
-      "filtro_A": {
-        "$not": {
-          "$or": [
-            {
-              "nome_atributo": "situacaofisica",
-              "valor": 1
-            },
-            {
-              "nome_atributo": "situacaofisica",
-              "valor": 2
-            }
-          ]
-        }
-      },
       "filtro_B": {
         "$or": [
           {
@@ -8732,10 +8183,6 @@
       "atributos_default_A": [
         {
           "nome_atributo": "nivelatencao",
-          "valor": 5
-        },
-        {
-          "nome_atributo": "situacaofisica",
           "valor": 5
         },
         {
@@ -8857,20 +8304,6 @@
       "__comment": "edf_edif_metro_ferroviaria -> constr_edificacao | Edificação ferroviária ou metroviária",
       "classe_A": "edf_edif_metro_ferroviaria",
       "classe_B": "constr_edificacao",
-      "filtro_A": {
-        "$not": {
-          "$or": [
-            {
-              "nome_atributo": "situacaofisica",
-              "valor": 1
-            },
-            {
-              "nome_atributo": "situacaofisica",
-              "valor": 2
-            }
-          ]
-        }
-      },
       "filtro_B": {
         "$or": [
           {
@@ -8904,10 +8337,6 @@
         ]
       },
       "atributos_default_A": [
-        {
-          "nome_atributo": "situacaofisica",
-          "valor": 5
-        },
         {
           "nome_atributo": "turistica",
           "valor": 0
@@ -9015,27 +8444,6 @@
       ]
     },
     {
-      "__comment": "cbge_area_de_propriedade_particular <-> constr_area_uso_especifico | area propriedade particular",
-      "classe_A": "cbge_area_de_propriedade_particular",
-      "classe_B": "constr_area_uso_especifico",
-      "atributos_default_B": [
-        {
-          "nome_atributo": "tipo",
-          "valor": 1
-        }
-      ],
-      "filtro_B": {
-        "nome_atributo": "tipo",
-        "valor": 1
-      },
-      "atributos_default_A": [
-        {
-          "nome_atributo": "tipoarea",
-          "valor": 1
-        }
-      ]
-    },
-    {
       "__comment": "cbge_area_duto <-> constr_area_uso_especifico | area duto",
       "classe_A": "cbge_area_duto",
       "classe_B": "constr_area_uso_especifico",
@@ -9061,27 +8469,6 @@
         {
           "nome_atributo": "bombeamento",
           "valor": 0
-        }
-      ]
-    },
-    {
-      "__comment": "cbge_area_habitacional <-> constr_area_uso_especifico | area habitacional",
-      "classe_A": "cbge_area_habitacional",
-      "classe_B": "constr_area_uso_especifico",
-      "atributos_default_B": [
-        {
-          "nome_atributo": "tipo",
-          "valor": 2
-        }
-      ],
-      "filtro_B": {
-        "nome_atributo": "tipo",
-        "valor": 2
-      },
-      "atributos_default_A": [
-        {
-          "nome_atributo": "tipoarea",
-          "valor": 2
         }
       ]
     },
