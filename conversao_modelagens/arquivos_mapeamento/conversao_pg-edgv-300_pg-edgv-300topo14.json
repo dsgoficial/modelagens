@@ -24,11 +24,13 @@
   "agregar_geom_A": true,
   "agregar_geom_B": true,
   "mapeamento_classes": [
-    {"__comment": "aux_moldura <-> aux_moldura",
+    {
+      "__comment": "aux_moldura <-> aux_moldura",
       "classe_A": "aux_moldura",
       "classe_B": "aux_moldura"
     },
-    {"__comment": "aux_revisao <-> aux_revisao",
+    {
+      "__comment": "aux_revisao <-> aux_revisao",
       "classe_A": "aux_revisao",
       "classe_B": "aux_revisao",
       "mapeamento_atributos": [
@@ -48,7 +50,8 @@
         }
       ]
     },
-    {"__comment": "aer_pista_ponto_pouso <-> infra_pista_pouso",
+    {
+      "__comment": "aer_pista_ponto_pouso <-> infra_pista_pouso",
       "classe_A": "aer_pista_ponto_pouso",
       "classe_B": "infra_pista_pouso",
       "atributos_default_A": [
@@ -64,7 +67,8 @@
         }
       ]
     },
-    {"__comment": "edf_edif_agropec_ext_vegetal_pesca <-> constr_edificacao | edif_agropec",
+    {
+      "__comment": "edf_edif_agropec_ext_vegetal_pesca <-> constr_edificacao | edif_agropec",
       "classe_A": "edf_edif_agropec_ext_vegetal_pesca",
       "classe_B": "constr_edificacao",
       "filtro_A": {
@@ -208,7 +212,8 @@
         }
       ]
     },
-    {"__comment": "edf_edif_residencial -> constr_edificacao",
+    {
+      "__comment": "edf_edif_residencial -> constr_edificacao",
       "classe_A": "edf_edif_residencial",
       "classe_B": "constr_edificacao",
       "sentido": "A=>B",
@@ -223,7 +228,8 @@
         }
       ]
     },
-    {"__comment": "edf_edif_energia -> constr_edificacao | energia",
+    {
+      "__comment": "edf_edif_energia -> constr_edificacao | energia",
       "classe_A": "edf_edif_energia",
       "classe_B": "constr_edificacao",
       "filtro_A": {
@@ -326,7 +332,8 @@
         }
       ]
     },
-    {"__comment": "edf_edif_ensino -> constr_edificacao | ensino",
+    {
+      "__comment": "edf_edif_ensino -> constr_edificacao | ensino",
       "classe_A": "edf_edif_ensino",
       "classe_B": "constr_edificacao",
       "filtro_A": {
@@ -472,7 +479,8 @@
         }
       ]
     },
-    {"__comment": "edf_edif_ext_mineral -> constr_edificacao | ext_mineral",
+    {
+      "__comment": "edf_edif_ext_mineral -> constr_edificacao | ext_mineral",
       "classe_A": "edf_edif_ext_mineral",
       "classe_B": "constr_edificacao",
       "filtro_A": {
@@ -578,7 +586,8 @@
         }
       ]
     },
-    {"__comment": "edf_edificacao <-> constr_edificacao | edif genérica",
+    {
+      "__comment": "edf_edificacao <-> constr_edificacao | edif genérica",
       "classe_A": "edf_edificacao",
       "classe_B": "constr_edificacao",
       "filtro_A": {
@@ -652,7 +661,8 @@
         }
       ]
     },
-    {"__comment": "edf_hab_indigena <-> constr_edificacao | Habitacão indigena isolada",
+    {
+      "__comment": "edf_hab_indigena <-> constr_edificacao | Habitacão indigena isolada",
       "classe_A": "edf_hab_indigena",
       "classe_B": "constr_edificacao",
       "filtro_A": {
@@ -768,7 +778,8 @@
         }
       ]
     },
-    {"__comment": "edf_hab_indigena <-> constr_edificacao | Habitacão indigena isolada",
+    {
+      "__comment": "edf_hab_indigena <-> constr_edificacao | Habitacão indigena isolada",
       "classe_A": "edf_hab_indigena",
       "classe_B": "constr_edificacao",
       "filtro_A": {
@@ -886,7 +897,8 @@
         }
       ]
     },
-    {"__comment": "edf_edif_constr_lazer -> constr_edificacao | lazer",
+    {
+      "__comment": "edf_edif_constr_lazer -> constr_edificacao | lazer",
       "classe_A": "edf_edif_constr_lazer",
       "classe_B": "constr_edificacao",
       "filtro_A": {
@@ -1070,7 +1082,8 @@
         }
       ]
     },
-    {"__comment": "hid_ilha <-> elemnat_ilha",
+    {
+      "__comment": "hid_ilha <-> elemnat_ilha",
       "classe_A": "hid_ilha",
       "classe_B": "elemnat_ilha",
       "atributos_default_A": [
@@ -1086,7 +1099,8 @@
         }
       ]
     },
-    {"__comment": "hid_canal <-> cobter_massa_dagua | canal 2, Obs: canal encoberto 4, não vai para canal, é só MD",
+    {
+      "__comment": "hid_canal <-> cobter_massa_dagua | canal 2, Obs: canal encoberto 4, não vai para canal, é só MD",
       "classe_A": "hid_canal",
       "classe_B": "cobter_massa_dagua",
       "filtro_A": {
@@ -1138,7 +1152,8 @@
         }
       ]
     },
-    {"__comment": "hid_canal <-> cobter_massa_dagua | canal n op 12",
+    {
+      "__comment": "hid_canal <-> cobter_massa_dagua | canal n op 12",
       "classe_A": "hid_canal",
       "classe_B": "cobter_massa_dagua",
       "filtro_A": {
@@ -1204,7 +1219,8 @@
         }
       ]
     },
-    {"__comment": "hid_canal <-> elemnat_trecho_drenagem | canal 2, Obs: canal encoberto 4, não vai para canal, é só TD",
+    {
+      "__comment": "hid_canal <-> elemnat_trecho_drenagem | canal 2, Obs: canal encoberto 4, não vai para canal, é só TD",
       "classe_A": "hid_canal",
       "classe_B": "elemnat_trecho_drenagem",
       "filtro_A": {
@@ -1239,6 +1255,10 @@
         {
           "nome_atributo": "direcao_fixada",
           "valor": 9999
+        },
+        {
+          "nome_atributo": "em_galeria_bueiro",
+          "valor": 9999
         }
       ],
       "filtro_B": {
@@ -1268,7 +1288,8 @@
         }
       ]
     },
-    {"__comment": "hid_canal <-> elemnat_trecho_drenagem | canal n op 12",
+    {
+      "__comment": "hid_canal <-> elemnat_trecho_drenagem | canal n op 12",
       "classe_A": "hid_canal",
       "classe_B": "elemnat_trecho_drenagem",
       "filtro_A": {
@@ -1313,6 +1334,10 @@
         {
           "nome_atributo": "direcao_fixada",
           "valor": 9999
+        },
+        {
+          "nome_atributo": "em_galeria_bueiro",
+          "valor": 9999
         }
       ],
       "filtro_B": {
@@ -1346,7 +1371,8 @@
         }
       ]
     },
-    {"__comment": "hid_vala <-> infra_vala",
+    {
+      "__comment": "hid_vala <-> infra_vala",
       "classe_A": "hid_vala",
       "classe_B": "infra_vala",
       "filtro_A": {
@@ -1380,7 +1406,8 @@
         }
       ]
     },
-    {"__comment": "hid_terreno_sujeito_inundacao <-> elemnat_terreno_sujeito_inundacao",
+    {
+      "__comment": "hid_terreno_sujeito_inundacao <-> elemnat_terreno_sujeito_inundacao",
       "classe_A": "hid_terreno_sujeito_inundacao",
       "classe_B": "elemnat_terreno_sujeito_inundacao",
       "atributos_default_A": [
@@ -1390,7 +1417,8 @@
         }
       ]
     },
-    {"__comment": "rel_curva_nivel <-> elemnat_curva_nivel",
+    {
+      "__comment": "rel_curva_nivel <-> elemnat_curva_nivel",
       "classe_A": "rel_curva_nivel",
       "classe_B": "elemnat_curva_nivel",
       "mapeamento_atributos": [
@@ -1416,9 +1444,16 @@
             }
           ]
         }
+      ],
+      "atributos_default_B": [
+        {
+          "nome_atributo": "dentro_massa_dagua",
+          "valor": 9999
+        }
       ]
     },
-    {"__comment": "rel_ponto_cotado_altimetrico <-> elemnat_ponto_cotado",
+    {
+      "__comment": "rel_ponto_cotado_altimetrico <-> elemnat_ponto_cotado",
       "classe_A": "rel_ponto_cotado_altimetrico",
       "classe_B": "elemnat_ponto_cotado",
       "atributos_default_B": [
@@ -1444,7 +1479,8 @@
         }
       ]
     },
-    {"__comment": "rel_terreno_exposto <-> cobter_vegetacao | Terreno Exposto",
+    {
+      "__comment": "rel_terreno_exposto <-> cobter_vegetacao | Terreno Exposto",
       "classe_A": "rel_terreno_exposto",
       "classe_B": "cobter_vegetacao",
       "filtro_B": {
@@ -1503,7 +1539,8 @@
         }
       ]
     },
-    {"__comment": "tra_patio <-> constr_ocupacao_solo | patio",
+    {
+      "__comment": "tra_patio <-> constr_ocupacao_solo | patio",
       "classe_A": "tra_patio",
       "classe_B": "constr_ocupacao_solo",
       "filtro_B": {
@@ -1589,7 +1626,8 @@
         }
       ]
     },
-    {"__comment": "hid_massa_dagua <-> cobter_massa_dagua",
+    {
+      "__comment": "hid_massa_dagua <-> cobter_massa_dagua",
       "classe_A": "hid_massa_dagua",
       "classe_B": "cobter_massa_dagua",
       "filtro_B": {
@@ -1789,7 +1827,8 @@
         }
       ]
     },
-    {"__comment": "veg_brejo_pantano <-> cobter_vegetacao | brejo pântano",
+    {
+      "__comment": "veg_brejo_pantano <-> cobter_vegetacao | brejo pântano",
       "classe_A": "veg_brejo_pantano",
       "classe_B": "cobter_vegetacao",
       "filtro_B": {
@@ -1829,7 +1868,8 @@
         }
       ]
     },
-    {"__comment": "veg_mangue <-> cobter_vegetacao | mangue",
+    {
+      "__comment": "veg_mangue <-> cobter_vegetacao | mangue",
       "classe_A": "veg_mangue",
       "classe_B": "cobter_vegetacao",
       "filtro_B": {
@@ -1865,11 +1905,12 @@
         }
       ]
     },
-    {"__comment": "veg_campo <-> cobter_vegetacao | campo",
+    {
+      "__comment": "veg_campo <-> cobter_vegetacao | campo",
       "classe_A": "veg_campo",
       "classe_B": "cobter_vegetacao",
       "filtro_A": {
-        "$or":[
+        "$or": [
           {
             "nome_atributo": "tipocampo",
             "valor": 1
@@ -1913,7 +1954,8 @@
         }
       ]
     },
-    {"__comment": "veg_reflorestamento <-> cobter_vegetacao | reflorestamento",
+    {
+      "__comment": "veg_reflorestamento <-> cobter_vegetacao | reflorestamento",
       "classe_A": "veg_reflorestamento",
       "classe_B": "cobter_vegetacao",
       "filtro_B": {
@@ -1949,7 +1991,8 @@
         }
       ]
     },
-    {"__comment": "veg_floresta <-> cobter_vegetacao | floresta",
+    {
+      "__comment": "veg_floresta <-> cobter_vegetacao | floresta",
       "classe_A": "veg_floresta",
       "classe_B": "cobter_vegetacao",
       "filtro_B": {
@@ -2008,7 +2051,8 @@
         }
       ]
     },
-    {"__comment": "veg_veg_cultivada <-> cobter_vegetacao | Cultivo",
+    {
+      "__comment": "veg_veg_cultivada <-> cobter_vegetacao | Cultivo",
       "classe_A": "veg_veg_cultivada",
       "classe_B": "cobter_vegetacao",
       "filtro_A": {
@@ -2087,7 +2131,8 @@
         }
       ]
     },
-    {"__comment": "veg_veg_cultivada <-> cobter_vegetacao | Cultivo irrigado",
+    {
+      "__comment": "veg_veg_cultivada <-> cobter_vegetacao | Cultivo irrigado",
       "classe_A": "veg_veg_cultivada",
       "classe_B": "cobter_vegetacao",
       "filtro_A": {
@@ -2137,7 +2182,8 @@
         }
       ]
     },
-    {"__comment": "veg_veg_cultivada <-> cobter_vegetacao | arroz",
+    {
+      "__comment": "veg_veg_cultivada <-> cobter_vegetacao | arroz",
       "classe_A": "veg_veg_cultivada",
       "classe_B": "cobter_vegetacao",
       "filtro_A": {
@@ -2177,7 +2223,8 @@
         }
       ]
     },
-    {"__comment": "cbge_deposito_geral <-> constr_deposito - Geral e Saneamento",
+    {
+      "__comment": "cbge_deposito_geral <-> constr_deposito - Geral e Saneamento",
       "classe_A": "cbge_deposito_geral",
       "classe_B": "constr_deposito",
       "atributos_default_A": [
@@ -2362,7 +2409,8 @@
         }
       ]
     },
-    {"__comment": "snb_dep_abast_agua <-> constr_deposito",
+    {
+      "__comment": "snb_dep_abast_agua <-> constr_deposito",
       "classe_A": "snb_dep_abast_agua",
       "classe_B": "constr_deposito",
       "atributos_default_A": [
@@ -2467,7 +2515,8 @@
         }
       ]
     },
-    {"__comment": "edf_edif_abast_agua -> constr_edificacao | abast água",
+    {
+      "__comment": "edf_edif_abast_agua -> constr_edificacao | abast água",
       "classe_A": "edf_edif_abast_agua",
       "classe_B": "constr_edificacao",
       "filtro_A": {
@@ -2585,7 +2634,8 @@
         }
       ]
     },
-    {"__comment": "edf_edif_constr_turistica -> constr_edificacao | turismo",
+    {
+      "__comment": "edf_edif_constr_turistica -> constr_edificacao | turismo",
       "classe_A": "edf_edif_constr_turistica",
       "classe_B": "constr_edificacao",
       "filtro_A": {
@@ -2741,7 +2791,8 @@
         }
       ]
     },
-    {"__comment": "dut_galeria_bueiro <-> infra_elemento_viario | Galeria/bueiro",
+    {
+      "__comment": "dut_galeria_bueiro <-> infra_elemento_viario | Galeria/bueiro",
       "classe_A": "dut_galeria_bueiro",
       "classe_B": "infra_elemento_viario",
       "filtro_A": {
@@ -2776,6 +2827,10 @@
         {
           "nome_atributo": "exibir_ponta_simbologia",
           "valor": 9999
+        },
+        {
+          "nome_atributo": "config_comprimento_simb",
+          "valor": 9999
         }
       ],
       "filtro_B": {
@@ -2809,7 +2864,8 @@
         }
       ]
     },
-    {"__comment": "edf_edif_comerc_serv <-> constr_edificacao | edif_comercial",
+    {
+      "__comment": "edf_edif_comerc_serv <-> constr_edificacao | edif_comercial",
       "classe_A": "edf_edif_comerc_serv",
       "classe_B": "constr_edificacao",
       "filtro_A": {
@@ -3139,7 +3195,8 @@
         }
       ]
     },
-    {"__comment": "edf_edif_industrial <-> constr_edificacao | edif industrial",
+    {
+      "__comment": "edf_edif_industrial <-> constr_edificacao | edif industrial",
       "classe_A": "edf_edif_industrial",
       "classe_B": "constr_edificacao",
       "filtro_A": {
@@ -3439,7 +3496,8 @@
         }
       ]
     },
-    {"__comment": "edf_posto_combustivel <-> constr_edificacao | posto_combustivel",
+    {
+      "__comment": "edf_posto_combustivel <-> constr_edificacao | posto_combustivel",
       "classe_A": "edf_posto_combustivel",
       "classe_B": "constr_edificacao",
       "filtro_A": {
@@ -3517,7 +3575,8 @@
         }
       ]
     },
-    {"__comment": "edf_edif_constr_aeroportuaria <-> constr_edificacao | edif aeroportuaria",
+    {
+      "__comment": "edf_edif_constr_aeroportuaria <-> constr_edificacao | edif aeroportuaria",
       "classe_A": "edf_edif_constr_aeroportuaria",
       "classe_B": "constr_edificacao",
       "filtro_A": {
@@ -3652,7 +3711,8 @@
         }
       ]
     },
-    {"__comment": "edf_edif_constr_portuaria <-> constr_edificacao | edif portuaria",
+    {
+      "__comment": "edf_edif_constr_portuaria <-> constr_edificacao | edif portuaria",
       "classe_A": "edf_edif_constr_portuaria",
       "classe_B": "constr_edificacao",
       "filtro_A": {
@@ -3780,7 +3840,8 @@
         }
       ]
     },
-    {"__comment": "hid_quebramar_molhe <-> infra_elemento_infraestrutura | quebramar e molhe",
+    {
+      "__comment": "hid_quebramar_molhe <-> infra_elemento_infraestrutura | quebramar e molhe",
       "classe_A": "hid_quebramar_molhe",
       "classe_B": "infra_elemento_infraestrutura",
       "filtro_B": {
@@ -3822,7 +3883,8 @@
         }
       ]
     },
-    {"__comment": "edf_representacao_diplomatica <-> constr_edificacao | edif portuaria",
+    {
+      "__comment": "edf_representacao_diplomatica <-> constr_edificacao | edif portuaria",
       "classe_A": "edf_representacao_diplomatica",
       "classe_B": "constr_edificacao",
       "filtro_A": {
@@ -3908,7 +3970,8 @@
         }
       ]
     },
-    {"__comment": "edf_edif_policia <-> constr_edificacao | edif policial",
+    {
+      "__comment": "edf_edif_policia <-> constr_edificacao | edif policial",
       "classe_A": "edf_edif_policia",
       "classe_B": "constr_edificacao",
       "filtro_A": {
@@ -4018,7 +4081,8 @@
         }
       ]
     },
-    {"__comment": "edf_posto_guarda_municipal <-> constr_edificacao | posto guarda",
+    {
+      "__comment": "edf_posto_guarda_municipal <-> constr_edificacao | posto guarda",
       "classe_A": "edf_posto_guarda_municipal",
       "classe_B": "constr_edificacao",
       "filtro_A": {
@@ -4104,7 +4168,8 @@
         }
       ]
     },
-    {"__comment": "edf_posto_policia_militar <-> constr_edificacao | posto pol militar",
+    {
+      "__comment": "edf_posto_policia_militar <-> constr_edificacao | posto pol militar",
       "classe_A": "edf_posto_policia_militar",
       "classe_B": "constr_edificacao",
       "filtro_A": {
@@ -4178,7 +4243,8 @@
         }
       ]
     },
-    {"__comment": "edf_posto_policia_rod_federal <-> constr_edificacao | posto pol rod federal",
+    {
+      "__comment": "edf_posto_policia_rod_federal <-> constr_edificacao | posto pol rod federal",
       "classe_A": "edf_posto_policia_rod_federal",
       "classe_B": "constr_edificacao",
       "filtro_A": {
@@ -4264,7 +4330,8 @@
         }
       ]
     },
-    {"__comment": "edf_posto_fiscal <-> constr_edificacao | posto fiscal",
+    {
+      "__comment": "edf_posto_fiscal <-> constr_edificacao | posto fiscal",
       "classe_A": "edf_posto_fiscal",
       "classe_B": "constr_edificacao",
       "filtro_A": {
@@ -4391,7 +4458,8 @@
         }
       ]
     },
-    {"__comment": "edf_edif_pub_civil <-> constr_edificacao | pub civil + prisional",
+    {
+      "__comment": "edf_edif_pub_civil <-> constr_edificacao | pub civil + prisional",
       "classe_A": "edf_edif_pub_civil",
       "classe_B": "constr_edificacao",
       "filtro_A": {
@@ -4615,7 +4683,8 @@
         }
       ]
     },
-    {"__comment": "edf_edif_pub_militar <-> constr_edificacao | pub militar",
+    {
+      "__comment": "edf_edif_pub_militar <-> constr_edificacao | pub militar",
       "classe_A": "edf_edif_pub_militar",
       "classe_B": "constr_edificacao",
       "filtro_A": {
@@ -4783,7 +4852,8 @@
         }
       ]
     },
-    {"__comment": "enc_torre_comunic <-> infra_elemento_infraestrutura | torre comunic",
+    {
+      "__comment": "enc_torre_comunic <-> infra_elemento_infraestrutura | torre comunic",
       "classe_A": "enc_torre_comunic",
       "classe_B": "infra_elemento_infraestrutura",
       "atributos_default_B": [
@@ -4811,7 +4881,8 @@
         }
       ]
     },
-    {"__comment": "enc_antena_comunic <-> infra_elemento_infraestrutura | antena comunic",
+    {
+      "__comment": "enc_antena_comunic <-> infra_elemento_infraestrutura | antena comunic",
       "classe_A": "enc_antena_comunic",
       "classe_B": "infra_elemento_infraestrutura",
       "atributos_default_B": [
@@ -4831,7 +4902,8 @@
         }
       ]
     },
-    {"__comment": "edf_edif_comunic -> constr_edificacao | Edificação de comunicação",
+    {
+      "__comment": "edf_edif_comunic -> constr_edificacao | Edificação de comunicação",
       "classe_A": "edf_edif_comunic",
       "classe_B": "constr_edificacao",
       "filtro_A": {
@@ -4950,7 +5022,8 @@
         }
       ]
     },
-    {"__comment": "hid_sumidouro_vertedouro <-> elemnat_sumidouro_vertedouro",
+    {
+      "__comment": "hid_sumidouro_vertedouro <-> elemnat_sumidouro_vertedouro",
       "classe_A": "hid_sumidouro_vertedouro",
       "classe_B": "elemnat_sumidouro_vertedouro",
       "mapeamento_atributos": [
@@ -4976,7 +5049,8 @@
         }
       ]
     },
-    {"__comment": "lml_nome_local <-> llp_localidade | nome local",
+    {
+      "__comment": "lml_nome_local <-> llp_localidade | nome local",
       "classe_A": "lml_nome_local",
       "classe_B": "llp_localidade",
       "atributos_default_B": [
@@ -4990,7 +5064,8 @@
         "valor": 8
       }
     },
-    {"__comment": "lml_posic_geo_localidade <-> llp_localidade",
+    {
+      "__comment": "lml_posic_geo_localidade <-> llp_localidade",
       "classe_A": "lml_posic_geo_localidade",
       "classe_B": "llp_localidade",
       "filtro_B": {
@@ -5045,7 +5120,8 @@
         }
       ]
     },
-    {"__comment": "tra_travessia <-> infra_elemento_viario | vau",
+    {
+      "__comment": "tra_travessia <-> infra_elemento_viario | vau",
       "classe_A": "tra_travessia",
       "classe_B": "infra_elemento_viario",
       "filtro_A": {
@@ -5087,6 +5163,10 @@
         },
         {
           "nome_atributo": "exibir_ponta_simbologia",
+          "valor": 9999
+        },
+        {
+          "nome_atributo": "config_comprimento_simb",
           "valor": 9999
         }
       ],
@@ -5133,7 +5213,8 @@
         }
       ]
     },
-    {"__comment": "tra_travessia <-> infra_travessia_hidroviaria | balsa e bote transportador",
+    {
+      "__comment": "tra_travessia <-> infra_travessia_hidroviaria | balsa e bote transportador",
       "classe_A": "tra_travessia",
       "classe_B": "infra_travessia_hidroviaria",
       "filtro_A": {
@@ -5187,40 +5268,8 @@
         }
       ]
     },
-    {"__comment": "cbge_delimitacao_fisica <-> llp_delimitacao_fisica",
-      "classe_A": "cbge_delimitacao_fisica",
-      "classe_B": "llp_delimitacao_fisica",
-      "mapeamento_atributos": [
-        {
-          "attr_A": "tipodelimfis",
-          "attr_B": "tipo",
-          "traducao": [
-            {
-              "valor_A": 3,
-              "valor_B": 2,
-              "sentido": "A=>B"
-            },
-            {
-              "valor_A": 4,
-              "valor_B": 1,
-              "sentido": "A=>B"
-            },
-            {
-              "valor_A": 0,
-              "valor_B": 9999,
-              "sentido": "A=>B"
-            }
-          ]
-        }
-      ],
-      "atributos_default_A": [
-        {
-          "nome_atributo": "eletrificada",
-          "valor": 0
-        }
-      ]
-    },
-    {"__comment": "hid_barragem <-> infra_barragem | Barragem",
+    {
+      "__comment": "hid_barragem <-> infra_barragem | Barragem",
       "classe_A": "hid_barragem",
       "classe_B": "infra_barragem",
       "atributos_default_B": [
@@ -5244,7 +5293,8 @@
         }
       ]
     },
-    {"__comment": "hid_dique <-> infra_barragem | Dique",
+    {
+      "__comment": "hid_dique <-> infra_barragem | Dique",
       "classe_A": "hid_dique",
       "classe_B": "infra_barragem",
       "atributos_default_B": [
@@ -5258,7 +5308,8 @@
         "valor": 2
       }
     },
-    {"__comment": "hid_trecho_drenagem <-> elemnat_trecho_drenagem",
+    {
+      "__comment": "hid_trecho_drenagem <-> elemnat_trecho_drenagem",
       "classe_A": "hid_trecho_drenagem",
       "classe_B": "elemnat_trecho_drenagem",
       "filtro_B": {
@@ -5297,7 +5348,7 @@
           "valor": 9999
         },
         {
-          "nome_atributo": "direcao_fixada",
+          "nome_atributo": "em_galeria_bueiro",
           "valor": 9999
         }
       ],
@@ -5384,7 +5435,8 @@
         }
       ]
     },
-    {"__comment": "rel_aterro <-> infra_alteracao_fisiografica_antropica | aterro",
+    {
+      "__comment": "rel_aterro <-> infra_alteracao_fisiografica_antropica | aterro",
       "classe_A": "rel_aterro",
       "classe_B": "infra_alteracao_fisiografica_antropica",
       "atributos_default_B": [
@@ -5408,7 +5460,8 @@
         }
       ]
     },
-    {"__comment": "rel_corte <-> infra_alteracao_fisiografica_antropica | corte",
+    {
+      "__comment": "rel_corte <-> infra_alteracao_fisiografica_antropica | corte",
       "classe_A": "rel_corte",
       "classe_B": "infra_alteracao_fisiografica_antropica",
       "atributos_default_B": [
@@ -5432,7 +5485,8 @@
         }
       ]
     },
-    {"__comment": "rel_pico <-> elemnat_toponimo_fisiografico_natural | pico",
+    {
+      "__comment": "rel_pico <-> elemnat_toponimo_fisiografico_natural | pico",
       "classe_A": "rel_pico",
       "classe_B": "elemnat_toponimo_fisiografico_natural",
       "atributos_default_B": [
@@ -5452,7 +5506,8 @@
         }
       ]
     },
-    {"__comment": "rel_alteracao_fisiografica_antropica | caixa de empréstimo 24 <-> infra_alteracao_fisiografica_antropica | caixa de empréstimo 24",
+    {
+      "__comment": "rel_alteracao_fisiografica_antropica | caixa de empréstimo 24 <-> infra_alteracao_fisiografica_antropica | caixa de empréstimo 24",
       "classe_A": "rel_alteracao_fisiografica_antropica",
       "classe_B": "infra_alteracao_fisiografica_antropica",
       "filtro_A": {
@@ -5470,7 +5525,8 @@
         }
       ]
     },
-    {"__comment": "rod_trecho_rodoviario <-> infra_via_deslocamento",
+    {
+      "__comment": "rod_trecho_rodoviario <-> infra_via_deslocamento",
       "classe_A": "rod_trecho_rodoviario",
       "classe_B": "infra_via_deslocamento",
       "filtro_A": {
@@ -5578,9 +5634,24 @@
             }
           ]
         }
+      ],
+      "atributos_default_B": [
+        {
+          "nome_atributo": "tipo_elemento_viario",
+          "valor": 9999
+        },
+        {
+          "nome_atributo": "material_construcao_elemento_viario",
+          "valor": 9999
+        },
+        {
+          "nome_atributo": "posicao_pista_elemento_viario",
+          "valor": 9999
+        }
       ]
     },
-    {"__comment": "cbge_trecho_arruamento <-> infra_via_deslocamento",
+    {
+      "__comment": "cbge_trecho_arruamento <-> infra_via_deslocamento",
       "classe_A": "cbge_trecho_arruamento",
       "classe_B": "infra_via_deslocamento",
       "filtro_B": {
@@ -5661,9 +5732,24 @@
             }
           ]
         }
+      ],
+      "atributos_default_B": [
+        {
+          "nome_atributo": "tipo_elemento_viario",
+          "valor": 9999
+        },
+        {
+          "nome_atributo": "material_construcao_elemento_viario",
+          "valor": 9999
+        },
+        {
+          "nome_atributo": "posicao_pista_elemento_viario",
+          "valor": 9999
+        }
       ]
     },
-    {"__comment": "tra_caminho_carrocavel <-> infra_via_deslocamento",
+    {
+      "__comment": "tra_caminho_carrocavel <-> infra_via_deslocamento",
       "classe_A": "tra_caminho_carrocavel",
       "classe_B": "infra_via_deslocamento",
       "filtro_B": {
@@ -5698,10 +5784,23 @@
         {
           "nome_atributo": "jurisdicao",
           "valor": 0
+        },
+        {
+          "nome_atributo": "tipo_elemento_viario",
+          "valor": 9999
+        },
+        {
+          "nome_atributo": "material_construcao_elemento_viario",
+          "valor": 9999
+        },
+        {
+          "nome_atributo": "posicao_pista_elemento_viario",
+          "valor": 9999
         }
       ]
     },
-    {"__comment": "tra_trilha_picada <-> infra_via_deslocamento",
+    {
+      "__comment": "tra_trilha_picada <-> infra_via_deslocamento",
       "classe_A": "tra_trilha_picada",
       "classe_B": "infra_via_deslocamento",
       "filtro_B": {
@@ -5736,10 +5835,23 @@
         {
           "nome_atributo": "jurisdicao",
           "valor": 0
+        },
+        {
+          "nome_atributo": "tipo_elemento_viario",
+          "valor": 9999
+        },
+        {
+          "nome_atributo": "material_construcao_elemento_viario",
+          "valor": 9999
+        },
+        {
+          "nome_atributo": "posicao_pista_elemento_viario",
+          "valor": 9999
         }
       ]
     },
-    {"__comment": "tra_ponte <-> infra_elemento_viario | ponte",
+    {
+      "__comment": "tra_ponte <-> infra_elemento_viario | ponte",
       "classe_A": "tra_ponte",
       "classe_B": "infra_elemento_viario",
       "filtro_B": {
@@ -5779,6 +5891,10 @@
         },
         {
           "nome_atributo": "exibir_ponta_simbologia",
+          "valor": 9999
+        },
+        {
+          "nome_atributo": "config_comprimento_simb",
           "valor": 9999
         }
       ],
@@ -5848,7 +5964,8 @@
         }
       ]
     },
-    {"__comment": "tra_tunel <-> infra_elemento_viario | tunel e passagem subterrânea sob via",
+    {
+      "__comment": "tra_tunel <-> infra_elemento_viario | tunel e passagem subterrânea sob via",
       "classe_A": "tra_tunel",
       "classe_B": "infra_elemento_viario",
       "filtro_B": {
@@ -5885,6 +6002,10 @@
         {
           "nome_atributo": "exibir_ponta_simbologia",
           "valor": 9999
+        },
+        {
+          "nome_atributo": "config_comprimento_simb",
+          "valor": 9999
         }
       ],
       "mapeamento_atributos": [
@@ -5908,7 +6029,8 @@
         }
       ]
     },
-    {"__comment": "tra_passagem_elevada_viaduto <-> infra_elemento_viario | passagem elevada e viaduto",
+    {
+      "__comment": "tra_passagem_elevada_viaduto <-> infra_elemento_viario | passagem elevada e viaduto",
       "classe_A": "tra_passagem_elevada_viaduto",
       "classe_B": "infra_elemento_viario",
       "filtro_B": {
@@ -5940,6 +6062,10 @@
         },
         {
           "nome_atributo": "exibir_ponta_simbologia",
+          "valor": 9999
+        },
+        {
+          "nome_atributo": "config_comprimento_simb",
           "valor": 9999
         }
       ],
@@ -5980,7 +6106,8 @@
         }
       ]
     },
-    {"__comment": "tra_travessia_pedestre <-> infra_elemento_viario | travessia de pedestre",
+    {
+      "__comment": "tra_travessia_pedestre <-> infra_elemento_viario | travessia de pedestre",
       "classe_A": "tra_travessia_pedestre",
       "classe_B": "infra_elemento_viario",
       "filtro_B": {
@@ -6016,6 +6143,10 @@
         },
         {
           "nome_atributo": "exibir_ponta_simbologia",
+          "valor": 9999
+        },
+        {
+          "nome_atributo": "config_comprimento_simb",
           "valor": 9999
         }
       ],
@@ -6076,7 +6207,8 @@
         }
       ]
     },
-    {"__comment": "emu_acesso <-> infra_mobilidade_urbana | Calçadão / Rua pedestre ",
+    {
+      "__comment": "emu_acesso <-> infra_mobilidade_urbana | Calçadão / Rua pedestre ",
       "classe_A": "emu_acesso",
       "classe_B": "infra_mobilidade_urbana",
       "atributos_default_B": [
@@ -6100,27 +6232,8 @@
         }
       ]
     },
-    {"__comment": "emu_ciclovia <-> infra_mobilidade_urbana | ciclovia",
-      "classe_A": "emu_ciclovia",
-      "classe_B": "infra_mobilidade_urbana",
-      "atributos_default_B": [
-        {
-          "nome_atributo": "tipo",
-          "valor": 2
-        }
-      ],
-      "filtro_B": {
-        "nome_atributo": "tipo",
-        "valor": 2
-      },
-      "atributos_default_A": [
-        {
-          "nome_atributo": "revestimento",
-          "valor": 0
-        }
-      ]
-    },
-    {"__comment": "lml_terra_indigena <-> llp_limite_especial",
+    {
+      "__comment": "lml_terra_indigena <-> llp_limite_especial",
       "classe_A": "lml_terra_indigena",
       "classe_B": "llp_limite_especial",
       "atributos_default_B": [
@@ -6148,7 +6261,8 @@
         }
       ]
     },
-    {"__comment": "lml_area_pub_militar <-> llp_limite_especial",
+    {
+      "__comment": "lml_area_pub_militar <-> llp_limite_especial",
       "classe_A": "lml_area_pub_militar",
       "classe_B": "llp_limite_especial",
       "atributos_default_B": [
@@ -6172,7 +6286,8 @@
         }
       ]
     },
-    {"__comment": "lml_unidade_uso_sustentavel <-> llp_limite_especial",
+    {
+      "__comment": "lml_unidade_uso_sustentavel <-> llp_limite_especial",
       "classe_A": "lml_unidade_uso_sustentavel",
       "classe_B": "llp_limite_especial",
       "atributos_default_B": [
@@ -6264,7 +6379,8 @@
         }
       ]
     },
-    {"__comment": "lml_unidade_protecao_integral <-> llp_limite_especial",
+    {
+      "__comment": "lml_unidade_protecao_integral <-> llp_limite_especial",
       "classe_A": "lml_unidade_protecao_integral",
       "classe_B": "llp_limite_especial",
       "filtro_B": {
@@ -6334,7 +6450,8 @@
         }
       ]
     },
-    {"__comment": "lml_unidade_conservacao <-> llp_limite_especial",
+    {
+      "__comment": "lml_unidade_conservacao <-> llp_limite_especial",
       "classe_A": "lml_unidade_conservacao",
       "classe_B": "llp_limite_especial",
       "filtro_B": {
@@ -6362,25 +6479,24 @@
         }
       ]
     },
-    {"__comment": "lml_area_densamente_edificada <-> cobter_area_construida",
+    {
+      "__comment": "lml_area_densamente_edificada <-> cobter_area_edificada",
       "classe_A": "lml_area_densamente_edificada",
-      "classe_B": "cobter_area_construida",
+      "classe_B": "cobter_area_edificada",
       "atributos_default_B": [
-        {
-          "nome_atributo": "densamente_edificada",
-          "valor": 1
-        },
         {
           "nome_atributo": "assentamento_precario",
           "valor": 2
         }
       ]
     },
-    {"__comment": "lml_unidade_federacao <-> llp_unidade_federacao",
+    {
+      "__comment": "lml_unidade_federacao <-> llp_unidade_federacao",
       "classe_A": "lml_unidade_federacao",
       "classe_B": "llp_unidade_federacao"
     },
-    {"__comment": "dut_trecho_duto <-> infra_trecho_duto  | água 301",
+    {
+      "__comment": "dut_trecho_duto <-> infra_trecho_duto  | água 301",
       "classe_A": "dut_trecho_duto",
       "classe_B": "infra_trecho_duto",
       "filtro_A": {
@@ -6426,7 +6542,8 @@
         }
       ]
     },
-    {"__comment": "hdv_atracadouro_terminal <-> infra_elemento_infraestrutura | atracadouro",
+    {
+      "__comment": "hdv_atracadouro_terminal <-> infra_elemento_infraestrutura | atracadouro",
       "classe_A": "hdv_atracadouro_terminal",
       "classe_B": "infra_elemento_infraestrutura",
       "filtro_B": {
@@ -6512,7 +6629,8 @@
         }
       ]
     },
-    {"__comment": "tra_caminho_aereo <-> infra_elemento_infraestrutura | teleférico",
+    {
+      "__comment": "tra_caminho_aereo <-> infra_elemento_infraestrutura | teleférico",
       "classe_A": "tra_caminho_aereo",
       "classe_B": "infra_elemento_infraestrutura",
       "filtro_B": {
@@ -6550,7 +6668,8 @@
         }
       ]
     },
-    {"__comment": "enc_grupo_transformadores <-> infra_elemento_infraestrutura | atracadouro",
+    {
+      "__comment": "enc_grupo_transformadores <-> infra_elemento_infraestrutura | atracadouro",
       "classe_A": "enc_grupo_transformadores",
       "classe_B": "infra_elemento_infraestrutura",
       "atributos_default_B": [
@@ -6564,7 +6683,8 @@
         "valor": 601
       }
     },
-    {"__comment": "rel_elemento_fisiografico_natural <-> elemnat_toponimo_fisiografico_natural",
+    {
+      "__comment": "rel_elemento_fisiografico_natural <-> elemnat_toponimo_fisiografico_natural",
       "classe_A": "rel_elemento_fisiografico_natural",
       "classe_B": "elemnat_toponimo_fisiografico_natural",
       "filtro_A": {
@@ -6664,7 +6784,8 @@
         }
       ]
     },
-    {"__comment": "enc_est_gerad_energia_eletrica <-> infra_elemento_energia | estação geradora",
+    {
+      "__comment": "enc_est_gerad_energia_eletrica <-> infra_elemento_energia | estação geradora",
       "classe_A": "enc_est_gerad_energia_eletrica",
       "classe_B": "infra_elemento_energia",
       "filtro_B": {
@@ -6704,7 +6825,8 @@
         }
       ]
     },
-    {"__comment": "enc_termeletrica <-> infra_elemento_energia | estação geradora",
+    {
+      "__comment": "enc_termeletrica <-> infra_elemento_energia | estação geradora",
       "classe_A": "enc_termeletrica",
       "classe_B": "infra_elemento_energia",
       "filtro_B": {
@@ -6722,7 +6844,8 @@
         }
       ]
     },
-    {"__comment": "enc_central_geradora_eolica <-> infra_elemento_energia | estação geradora eólica",
+    {
+      "__comment": "enc_central_geradora_eolica <-> infra_elemento_energia | estação geradora eólica",
       "classe_A": "enc_central_geradora_eolica",
       "classe_B": "infra_elemento_energia",
       "filtro_B": {
@@ -6736,7 +6859,8 @@
         }
       ]
     },
-    {"__comment": "enc_hidreletrica <-> infra_elemento_energia | estação geradora hidrelétrica",
+    {
+      "__comment": "enc_hidreletrica <-> infra_elemento_energia | estação geradora hidrelétrica",
       "classe_A": "enc_hidreletrica",
       "classe_B": "infra_elemento_energia",
       "filtro_B": {
@@ -6754,7 +6878,8 @@
         }
       ]
     },
-    {"__comment": "enc_trecho_energia <-> infra_elemento_energia | linha energia",
+    {
+      "__comment": "enc_trecho_energia <-> infra_elemento_energia | linha energia",
       "classe_A": "enc_trecho_energia",
       "classe_B": "infra_elemento_energia",
       "atributos_default_B": [
@@ -6782,7 +6907,8 @@
         }
       ]
     },
-    {"__comment": "enc_torre_energia <-> infra_elemento_energia | torre de energia",
+    {
+      "__comment": "enc_torre_energia <-> infra_elemento_energia | torre de energia",
       "classe_A": "enc_torre_energia",
       "classe_B": "infra_elemento_energia",
       "atributos_default_B": [
@@ -6802,7 +6928,8 @@
         }
       ]
     },
-    {"__comment": "enc_aerogerador <-> infra_elemento_energia | aerogerador",
+    {
+      "__comment": "enc_aerogerador <-> infra_elemento_energia | aerogerador",
       "classe_A": "enc_aerogerador",
       "classe_B": "infra_elemento_energia",
       "atributos_default_B": [
@@ -6816,7 +6943,8 @@
         "valor": 1701
       }
     },
-    {"__comment": "enc_subest_transm_distrib_energia_eletrica <-> infra_elemento_energia | grupo transf",
+    {
+      "__comment": "enc_subest_transm_distrib_energia_eletrica <-> infra_elemento_energia | grupo transf",
       "classe_A": "enc_subest_transm_distrib_energia_eletrica",
       "classe_B": "infra_elemento_energia",
       "filtro_B": {
@@ -6854,7 +6982,8 @@
         }
       ]
     },
-    {"__comment": "eco_ext_mineral <-> constr_extracao_mineral",
+    {
+      "__comment": "eco_ext_mineral <-> constr_extracao_mineral",
       "classe_A": "eco_ext_mineral",
       "classe_B": "constr_extracao_mineral",
       "atributos_default_B": [
@@ -6923,7 +7052,8 @@
         }
       ]
     },
-    {"__comment": "rel_rocha <-> elemnat_elemento_fisiografico | rocha",
+    {
+      "__comment": "rel_rocha <-> elemnat_elemento_fisiografico | rocha",
       "classe_A": "rel_rocha",
       "classe_B": "elemnat_elemento_fisiografico",
       "filtro_B": {
@@ -6955,7 +7085,8 @@
         }
       ]
     },
-    {"__comment": "rel_gruta_caverna <-> elemnat_elemento_fisiografico | gruta e caverna",
+    {
+      "__comment": "rel_gruta_caverna <-> elemnat_elemento_fisiografico | gruta e caverna",
       "classe_A": "rel_gruta_caverna",
       "classe_B": "elemnat_elemento_fisiografico",
       "filtro_B": {
@@ -6983,7 +7114,8 @@
         }
       ]
     },
-    {"__comment": "rel_dolina <-> elemnat_elemento_fisiografico | dolina",
+    {
+      "__comment": "rel_dolina <-> elemnat_elemento_fisiografico | dolina",
       "classe_A": "rel_dolina",
       "classe_B": "elemnat_elemento_fisiografico",
       "filtro_B": {
@@ -7003,7 +7135,8 @@
         }
       ]
     },
-    {"__comment": "rel_duna <-> elemnat_elemento_fisiografico | duna",
+    {
+      "__comment": "rel_duna <-> elemnat_elemento_fisiografico | duna",
       "classe_A": "rel_duna",
       "classe_B": "elemnat_elemento_fisiografico",
       "filtro_B": {
@@ -7029,7 +7162,8 @@
         }
       ]
     },
-    {"__comment": "rel_elemento_fisiografico_natural <-> elemnat_elemento_fisiografico | escarpa, falesia e talude",
+    {
+      "__comment": "rel_elemento_fisiografico_natural <-> elemnat_elemento_fisiografico | escarpa, falesia e talude",
       "classe_A": "rel_elemento_fisiografico_natural",
       "classe_B": "elemnat_elemento_fisiografico",
       "filtro_B": {
@@ -7055,7 +7189,8 @@
         }
       ]
     },
-    {"__comment": "hid_queda_dagua <-> elemnat_elemento_hidrografico | queda dagua",
+    {
+      "__comment": "hid_queda_dagua <-> elemnat_elemento_hidrografico | queda dagua",
       "classe_A": "hid_queda_dagua",
       "classe_B": "elemnat_elemento_hidrografico",
       "filtro_B": {
@@ -7100,7 +7235,8 @@
         }
       ]
     },
-    {"__comment": "hid_corredeira <-> elemnat_elemento_hidrografico | corredeira",
+    {
+      "__comment": "hid_corredeira <-> elemnat_elemento_hidrografico | corredeira",
       "classe_A": "hid_corredeira",
       "classe_B": "elemnat_elemento_hidrografico",
       "filtro_B": {
@@ -7114,7 +7250,8 @@
         }
       ]
     },
-    {"__comment": "hid_rocha_em_agua <-> elemnat_elemento_hidrografico | rocha em agua",
+    {
+      "__comment": "hid_rocha_em_agua <-> elemnat_elemento_hidrografico | rocha em agua",
       "classe_A": "hid_rocha_em_agua",
       "classe_B": "elemnat_elemento_hidrografico",
       "filtro_B": {
@@ -7142,7 +7279,8 @@
         }
       ]
     },
-    {"__comment": "hid_banco_areia <-> elemnat_elemento_hidrografico | banco de areia",
+    {
+      "__comment": "hid_banco_areia <-> elemnat_elemento_hidrografico | banco de areia",
       "classe_A": "hid_banco_areia",
       "classe_B": "elemnat_elemento_hidrografico",
       "filtro_B": {
@@ -7200,7 +7338,8 @@
         }
       ]
     },
-    {"__comment": "cbge_cemiterio <-> constr_ocupacao_solo | cemitério desconhecido",
+    {
+      "__comment": "cbge_cemiterio <-> constr_ocupacao_solo | cemitério desconhecido",
       "classe_A": "cbge_cemiterio",
       "classe_B": "constr_ocupacao_solo",
       "filtro_A": {
@@ -7282,7 +7421,8 @@
         }
       ]
     },
-    {"__comment": "cbge_cemiterio <-> constr_ocupacao_solo | cemitério com denominação",
+    {
+      "__comment": "cbge_cemiterio <-> constr_ocupacao_solo | cemitério com denominação",
       "classe_A": "cbge_cemiterio",
       "classe_B": "constr_ocupacao_solo",
       "filtro_A": {
@@ -7360,7 +7500,8 @@
         }
       ]
     },
-    {"__comment": "cbge_estacionamento <-> constr_ocupacao_solo | estacionamento",
+    {
+      "__comment": "cbge_estacionamento <-> constr_ocupacao_solo | estacionamento",
       "classe_A": "cbge_estacionamento",
       "classe_B": "constr_ocupacao_solo",
       "filtro_B": {
@@ -7392,7 +7533,8 @@
         }
       ]
     },
-    {"__comment": "laz_arquibancada <-> constr_ocupacao_solo | arquibancada",
+    {
+      "__comment": "laz_arquibancada <-> constr_ocupacao_solo | arquibancada",
       "classe_A": "laz_arquibancada",
       "classe_B": "constr_ocupacao_solo",
       "filtro_B": {
@@ -7406,7 +7548,8 @@
         }
       ]
     },
-    {"__comment": "laz_piscina <-> constr_ocupacao_solo | piscina",
+    {
+      "__comment": "laz_piscina <-> constr_ocupacao_solo | piscina",
       "classe_A": "laz_piscina",
       "classe_B": "constr_ocupacao_solo",
       "filtro_B": {
@@ -7420,7 +7563,8 @@
         }
       ]
     },
-    {"__comment": "laz_ruina <-> constr_ocupacao_solo | ruina",
+    {
+      "__comment": "laz_ruina <-> constr_ocupacao_solo | ruina",
       "classe_A": "laz_ruina",
       "classe_B": "constr_ocupacao_solo",
       "filtro_B": {
@@ -7444,7 +7588,8 @@
         }
       ]
     },
-    {"__comment": "hdv_sinalizacao <-> constr_ocupacao_solo | sinalizacao",
+    {
+      "__comment": "hdv_sinalizacao <-> constr_ocupacao_solo | sinalizacao",
       "classe_A": "hdv_sinalizacao",
       "classe_B": "constr_ocupacao_solo",
       "filtro_A": {
@@ -7468,7 +7613,8 @@
         }
       ]
     },
-    {"__comment": "laz_campo_quadra <-> constr_ocupacao_solo | campo quadro",
+    {
+      "__comment": "laz_campo_quadra <-> constr_ocupacao_solo | campo quadro",
       "classe_A": "laz_campo_quadra",
       "classe_B": "constr_ocupacao_solo",
       "filtro_B": {
@@ -7553,7 +7699,8 @@
         }
       ]
     },
-    {"__comment": "laz_pista_competicao <-> constr_ocupacao_solo | pista_competicao",
+    {
+      "__comment": "laz_pista_competicao <-> constr_ocupacao_solo | pista_competicao",
       "classe_A": "laz_pista_competicao",
       "classe_B": "constr_ocupacao_solo",
       "filtro_B": {
@@ -7633,7 +7780,8 @@
         }
       ]
     },
-    {"__comment": "pto_pto_est_med_fenomenos <-> constr_ocupacao_solo | est_med_fenomenos",
+    {
+      "__comment": "pto_pto_est_med_fenomenos <-> constr_ocupacao_solo | est_med_fenomenos",
       "classe_A": "pto_pto_est_med_fenomenos",
       "classe_B": "constr_ocupacao_solo",
       "filtro_B": {
@@ -7761,7 +7909,8 @@
         }
       ]
     },
-    {"__comment": "edf_edif_religiosa -> constr_edificacao | religiosa",
+    {
+      "__comment": "edf_edif_religiosa -> constr_edificacao | religiosa",
       "classe_A": "edf_edif_religiosa",
       "classe_B": "constr_edificacao",
       "filtro_A": {
@@ -7945,7 +8094,8 @@
         }
       ]
     },
-    {"__comment": "edf_edif_religiosa -> constr_edificacao | religiosa igreja não cristã",
+    {
+      "__comment": "edf_edif_religiosa -> constr_edificacao | religiosa igreja não cristã",
       "classe_A": "edf_edif_religiosa",
       "classe_B": "constr_edificacao",
       "filtro_A": {
@@ -8035,7 +8185,8 @@
         }
       ]
     },
-    {"__comment": "edf_edif_rodoviaria -> constr_edificacao | rodoviaria",
+    {
+      "__comment": "edf_edif_rodoviaria -> constr_edificacao | rodoviaria",
       "classe_A": "edf_edif_rodoviaria",
       "classe_B": "constr_edificacao",
       "filtro_A": {
@@ -8171,7 +8322,8 @@
         }
       ]
     },
-    {"__comment": "edf_edif_saneamento -> constr_edificacao | saneamento",
+    {
+      "__comment": "edf_edif_saneamento -> constr_edificacao | saneamento",
       "classe_A": "edf_edif_saneamento",
       "classe_B": "constr_edificacao",
       "filtro_A": {
@@ -8297,7 +8449,8 @@
         }
       ]
     },
-    {"__comment": "edf_edif_desenv_social -> constr_edificacao | servico social",
+    {
+      "__comment": "edf_edif_desenv_social -> constr_edificacao | servico social",
       "classe_A": "edf_edif_desenv_social",
       "classe_B": "constr_edificacao",
       "filtro_A": {
@@ -8407,7 +8560,8 @@
         }
       ]
     },
-    {"__comment": "edf_edif_policia -> constr_edificacao | seguranca",
+    {
+      "__comment": "edf_edif_policia -> constr_edificacao | seguranca",
       "classe_A": "edf_edif_policia",
       "classe_B": "constr_edificacao",
       "filtro_A": {
@@ -8525,7 +8679,8 @@
         }
       ]
     },
-    {"__comment": "edf_edif_saude -> constr_edificacao | saude",
+    {
+      "__comment": "edf_edif_saude -> constr_edificacao | saude",
       "classe_A": "edf_edif_saude",
       "classe_B": "constr_edificacao",
       "filtro_A": {
@@ -8659,7 +8814,8 @@
         }
       ]
     },
-    {"__comment": "fer_trecho_ferroviario <-> infra_ferrovia",
+    {
+      "__comment": "fer_trecho_ferroviario <-> infra_ferrovia",
       "classe_A": "fer_trecho_ferroviario",
       "classe_B": "infra_ferrovia",
       "mapeamento_atributos": [
@@ -8685,9 +8841,20 @@
             }
           ]
         }
+      ],
+      "atributos_default_B": [
+        {
+          "nome_atributo": "tipo_elemento_viario",
+          "valor": 9999
+        },
+        {
+          "nome_atributo": "material_construcao_elemento_viario",
+          "valor": 9999
+        }
       ]
     },
-    {"__comment": "edf_edif_metro_ferroviaria -> constr_edificacao | Edificação ferroviária ou metroviária",
+    {
+      "__comment": "edf_edif_metro_ferroviaria -> constr_edificacao | Edificação ferroviária ou metroviária",
       "classe_A": "edf_edif_metro_ferroviaria",
       "classe_B": "constr_edificacao",
       "filtro_A": {
@@ -8822,7 +8989,8 @@
         }
       ]
     },
-    {"__comment": "cbge_area_agropec_ext_vegetal_pesca <-> constr_area_uso_especifico | area agropec",
+    {
+      "__comment": "cbge_area_agropec_ext_vegetal_pesca <-> constr_area_uso_especifico | area agropec",
       "classe_A": "cbge_area_agropec_ext_vegetal_pesca",
       "classe_B": "constr_area_uso_especifico",
       "atributos_default_B": [
@@ -8846,7 +9014,8 @@
         }
       ]
     },
-    {"__comment": "cbge_area_de_propriedade_particular <-> constr_area_uso_especifico | area propriedade particular",
+    {
+      "__comment": "cbge_area_de_propriedade_particular <-> constr_area_uso_especifico | area propriedade particular",
       "classe_A": "cbge_area_de_propriedade_particular",
       "classe_B": "constr_area_uso_especifico",
       "atributos_default_B": [
@@ -8866,7 +9035,8 @@
         }
       ]
     },
-    {"__comment": "cbge_area_duto <-> constr_area_uso_especifico | area duto",
+    {
+      "__comment": "cbge_area_duto <-> constr_area_uso_especifico | area duto",
       "classe_A": "cbge_area_duto",
       "classe_B": "constr_area_uso_especifico",
       "atributos_default_B": [
@@ -8894,7 +9064,8 @@
         }
       ]
     },
-    {"__comment": "cbge_area_habitacional <-> constr_area_uso_especifico | area habitacional",
+    {
+      "__comment": "cbge_area_habitacional <-> constr_area_uso_especifico | area habitacional",
       "classe_A": "cbge_area_habitacional",
       "classe_B": "constr_area_uso_especifico",
       "atributos_default_B": [
@@ -8914,7 +9085,8 @@
         }
       ]
     },
-    {"__comment": "cbge_area_uso_especifico <-> constr_area_uso_especifico | não é agropec ou prop particular ou duto ou habitacional",
+    {
+      "__comment": "cbge_area_uso_especifico <-> constr_area_uso_especifico | não é agropec ou prop particular ou duto ou habitacional",
       "classe_A": "cbge_area_uso_especifico",
       "classe_B": "constr_area_uso_especifico",
       "filtro_B": {
