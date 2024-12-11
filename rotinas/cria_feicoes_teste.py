@@ -136,43 +136,46 @@ class FeatureGenerator(QObject):
         """Processa as combinações de atributos em thread separada."""
         return self.generate_attribute_combinations(class_def, primitive_type)
 
-    def generate_test_features(self, layer, class_name: str, primitive_type: str):
+    def generate_test_features(self, layer, class_name: str, category: str, primitive_type: str):
         """Gera feições de teste usando threads para a primitiva específica da camada."""
-        # Procura a classe no masterfile
-        class_def = None
-        for c in self.masterfile['classes']:
-            if c['nome'] == class_name:
-                class_def = c
-                break
-
-        if not class_def and 'extension_classes' in self.masterfile:
-            for c in self.masterfile['extension_classes']:
-                if c['nome'] == class_name:
-                    class_def = c
-                    break
+        # Procura a classe no masterfile usando nome e categoria
+        class_def = find_class_in_masterfile(self.masterfile, class_name, category)
 
         if not class_def:
-            self.progressUpdated.emit(f"Classe {class_name} não encontrada", 0)
+            self.progressUpdated.emit(
+                f"Classe {class_name} com categoria {category} não encontrada", 0
+            )
             return
 
         # Verifica se a primitiva é válida para a classe
         if primitive_type not in class_def['primitivas']:
-            self.progressUpdated.emit(f"Primitiva {primitive_type} não é válida para a classe {class_name}", 0)
+            self.progressUpdated.emit(
+                f"Primitiva {primitive_type} não é válida para a classe {class_name}", 0
+            )
             return
 
+        # Cria a geometria uma única vez fora do loop
         geometry = self.create_test_geometry(primitive_type)
-
+        
         # Processa combinações em thread separada
-        workers = self.get_optimal_workers()
-        with ThreadPoolExecutor(max_workers=workers) as executor:
+        with ThreadPoolExecutor(max_workers=self.get_optimal_workers()) as executor:
             future = executor.submit(self.process_combinations, class_def, primitive_type)
             combinations = future.result()
             
-            # Cria lista de feições
+            if not combinations:
+                feature = QgsFeature()
+                if geometry:
+                    feature.setGeometry(geometry)
+                # Inicializa todos os atributos com None
+                feature.setAttributes([None for field in layer.fields()])
+                layer.addFeature(feature)
+                return
+
+            # Cria lista de feições reutilizando a mesma geometria
             features = []
             for attrs in combinations:
                 feature = QgsFeature()
-                if geometry:  # Usa a geometria já criada
+                if geometry:
                     feature.setGeometry(geometry)
                 feature.setAttributes([attrs.get(field.name(), None) 
                                 for field in layer.fields()])
@@ -181,15 +184,58 @@ class FeatureGenerator(QObject):
             # Adiciona todas as feições de uma vez
             layer.addFeatures(features)
 
-def get_primitive_type_from_layer_name(layer_name: str) -> str:
-    """Extrai o tipo de primitiva do nome da camada."""
-    if layer_name.endswith('_p'):
-        return 'MultiPoint'
-    elif layer_name.endswith('_l'):
-        return 'MultiLinestring'
-    elif layer_name.endswith('_a'):
-        return 'MultiPolygon'
+def find_class_in_masterfile(masterfile: Dict, class_name: str, category: str) -> Dict:
+    """
+    Procura a classe no masterfile considerando nome e categoria.
+    
+    Args:
+        masterfile: Dicionário do masterfile
+        class_name: Nome da classe
+        category: Categoria da classe
+        
+    Returns:
+        Dict: Definição da classe ou None se não encontrada
+    """
+    # Procura nas classes principais
+    for c in masterfile['classes']:
+        if c['nome'] == class_name and c.get('categoria') == category:
+            return c
+            
+    # Procura nas classes de extensão
+    if 'extension_classes' in masterfile:
+        for c in masterfile['extension_classes']:
+            if c['nome'] == class_name and c.get('categoria') == category:
+                return c
+                
     return None
+
+def extract_class_info_from_layer_name(layer_name: str) -> tuple:
+    """
+    Extrai nome da classe, categoria e tipo primitivo do nome da camada.
+    
+    Args:
+        layer_name: Nome da camada (ex: 'centroide_elemento_hidrografico_p')
+        
+    Returns:
+        tuple: (nome_classe, categoria, tipo_primitivo)
+    """
+    parts = layer_name.split('_')
+    
+    # O último elemento é sempre o tipo primitivo (p, l, a)
+    primitive_suffix = parts[-1]
+    primitive_type = {
+        'p': 'MultiPoint',
+        'l': 'MultiLinestring',
+        'a': 'MultiPolygon'
+    }.get(primitive_suffix)
+    
+    # O primeiro elemento é a categoria
+    categoria = parts[0]
+    
+    # O restante (exceto último) forma o nome da classe
+    nome_classe = '_'.join(parts[1:-1])
+    
+    return nome_classe, categoria, primitive_type
 
 def main():
     # Instancia o gerador de feições
@@ -206,20 +252,16 @@ def main():
         if layer.type() != QgsMapLayer.VectorLayer:
             continue
             
-        # Extrai o nome da classe e tipo de primitiva do nome da camada
-        layer_name = layer.name()
-        primitive_type = get_primitive_type_from_layer_name(layer_name)
+        # Extrai informações do nome da camada
+        class_name, category, primitive_type = extract_class_info_from_layer_name(layer.name())
+        
         if not primitive_type:
             continue
-            
-        class_name_parts = layer_name.split('_')
-        main_name = class_name_parts[1:-1]
-        class_name = '_'.join(main_name)
         
         layer.startEditing()
-        generator.generate_test_features(layer, class_name, primitive_type)
+        generator.generate_test_features(layer, class_name, category, primitive_type)
         layer.commitChanges()
-
+        
         print(f"Feições de teste geradas para {layer.name()}")
 
 main()
