@@ -1,183 +1,225 @@
-from qgis.core import QgsFeature, QgsGeometry, QgsPoint, QgsPointXY
+from qgis.core import QgsFeature, QgsGeometry, QgsPoint, QgsPointXY, QgsProject, QgsMapLayer
+from PyQt5.QtCore import QObject, pyqtSignal
+import multiprocessing
+from concurrent.futures import ThreadPoolExecutor
 import json
+import numpy as np
 import itertools
 from typing import Dict, List, Any
+from functools import partial
 
-def load_masterfile(path: str) -> Dict:
-    """Carrega e retorna o masterfile JSON."""
-    with open(path, 'r', encoding='utf-8') as f:
-        return json.load(f)
-
-def get_domain_values(masterfile: Dict, domain_name: str) -> List[int]:
-    """Retorna os códigos possíveis para um domínio específico."""
-    for domain in masterfile['dominios']:
-        if domain['nome'] == domain_name:
-            return [v['code'] for v in domain['valores']]
-    return []
-
-def get_allowed_domain_values(attr: Dict, domain_values: List[int], primitive_type: str) -> List[int]:
-    """
-    Filtra os valores de domínio baseado nas restrições definidas no atributo.
+class FeatureGenerator(QObject):
+    # Sinais para comunicação entre threads
+    progressUpdated = pyqtSignal(str, int)
+    featureGenerated = pyqtSignal(object, object, str)
     
-    Args:
-        attr: Definição do atributo do masterfile
-        domain_values: Lista de todos os valores possíveis do domínio
-        primitive_type: Tipo de primitiva geométrica atual ('MultiPoint', 'MultiLinestring', 'MultiPolygon')
-    
-    Returns:
-        Lista de valores permitidos do domínio
-    """
-    if 'valores' not in attr:
+    def __init__(self):
+        super().__init__()
+        self.masterfile = None
+        
+    def get_optimal_workers(self):
+        """Determina o número ótimo de workers baseado no hardware."""
+        cpu_count = multiprocessing.cpu_count()
+        return cpu_count + 1
+
+    def load_masterfile(self, path: str):
+        """Carrega o masterfile JSON."""
+        with open(path, 'r', encoding='utf-8') as f:
+            self.masterfile = json.load(f)
+
+    def get_domain_values(self, domain_name: str) -> List[int]:
+        """Retorna os códigos possíveis para um domínio específico."""
+        for domain in self.masterfile['dominios']:
+            if domain['nome'] == domain_name:
+                return [v['code'] for v in domain['valores']]
+        return []
+
+    def get_allowed_domain_values(self, attr: Dict, domain_values: List[int], primitive_type: str) -> List[int]:
+        """Filtra os valores de domínio baseado nas restrições."""
+        if 'valores' not in attr:
+            return domain_values
+
+        valores = attr['valores']
+        
+        if isinstance(valores, list) and all(isinstance(x, int) for x in valores):
+            return [v for v in domain_values if v in valores]
+            
+        if isinstance(valores, list) and all(isinstance(x, dict) for x in valores):
+            allowed_codes = []
+            for valor in valores:
+                if 'primitivas' in valor and primitive_type in valor['primitivas']:
+                    allowed_codes.append(valor['code'])
+                elif 'primitivas' not in valor:
+                    allowed_codes.append(valor['code'])
+            return [v for v in domain_values if v in allowed_codes]
+            
+        if isinstance(valores, dict) and primitive_type in valores:
+            return [v for v in domain_values if v in valores[primitive_type]]
+            
         return domain_values
 
-    valores = attr['valores']
-    
-    # Caso 1: Lista simples de inteiros
-    if isinstance(valores, list) and all(isinstance(x, int) for x in valores):
-        return [v for v in domain_values if v in valores]
+    def generate_attribute_combinations(self, class_def: Dict, primitive_type: str) -> List[Dict[str, Any]]:
+        """Gera combinações de atributos em thread separada."""
+        blacklist = {
+            'visivel', 'exibir_lado_simbologia', 'sobreposto_transportes',
+            'justificativa_txt', 'exibir_ponta_simbologia', 'dentro_de_massa_dagua',
+            'dentro_massa_dagua', 'tipo_elemento_viario', 'material_construcao_elemento_viario',
+            'posicao_pista_elemento_viario', 'posicao_rotulo', 'direcao_fixada',
+            'em_galeria_bueiro', 'exibir_linha_rotulo', 'suprimir_bandeira'
+        }
         
-    # Caso 2: Lista de objetos com code e primitivas
-    if isinstance(valores, list) and all(isinstance(x, dict) for x in valores):
-        allowed_codes = []
-        for valor in valores:
-            if 'primitivas' in valor:
-                if primitive_type in valor['primitivas']:
-                    allowed_codes.append(valor['code'])
-            else:
-                allowed_codes.append(valor['code'])
-        return [v for v in domain_values if v in allowed_codes]
+        attr_values = {}
+        single_value_attrs = {}
         
-    # Caso 3: Objeto com primitivas como chaves
-    if isinstance(valores, dict):
-        if primitive_type in valores:
-            return [v for v in domain_values if v in valores[primitive_type]]
-        return []
-    
-    return domain_values
-
-def generate_attribute_combinations(masterfile: Dict, class_def: Dict, primitive_type: str) -> List[Dict[str, Any]]:
-    """
-    Gera todas as combinações possíveis de atributos para uma classe e tipo de primitiva.
-    
-    Args:
-        masterfile: Dicionário com todo o conteúdo do masterfile
-        class_def: Definição da classe específica do masterfile
-        primitive_type: Tipo de primitiva geométrica ('MultiPoint', 'MultiLinestring', 'MultiPolygon')
-    
-    Returns:
-        Lista de dicionários com as combinações de atributos
-    """
-    attr_values = {}
-    
-    for attr in class_def['atributos']:
-        # Verifica se o atributo é válido para a primitiva atual
-        if 'primitivas' in attr and primitive_type not in attr['primitivas']:
-            continue
-            
-        if 'mapa_valor' in attr:
-            # Obtém todos os valores possíveis do domínio
-            domain_values = get_domain_values(masterfile, attr['mapa_valor'])
-            
-            # Filtra baseado nas restrições do atributo
-            allowed_values = get_allowed_domain_values(attr, domain_values, primitive_type)
-            
-            if allowed_values:  # Só inclui se houver valores permitidos
-                attr_values[attr['nome']] = allowed_values
+        for attr in class_def['atributos']:
+            if 'primitivas' in attr and primitive_type not in attr['primitivas']:
+                continue
                 
-        elif attr['tipo'] == 'varchar(255)':
-            attr_values[attr['nome']] = ['Teste']
-        elif attr['tipo'] in ['integer', 'real']:
-            attr_values[attr['nome']] = [42]
+            attr_name = attr['nome']
             
-    # Gera todas as combinações possíveis
-    keys = attr_values.keys()
-    values = attr_values.values()
-    
-    combinations = []
-    for combination in itertools.product(*values):
-        combinations.append(dict(zip(keys, combination)))
-    
-    return combinations
+            if attr_name in blacklist:
+                if 'mapa_valor' in attr:
+                    domain_values = self.get_domain_values(attr['mapa_valor'])
+                    allowed_values = self.get_allowed_domain_values(attr, domain_values, primitive_type)
+                    if allowed_values:
+                        single_value_attrs[attr_name] = allowed_values[0]
+                elif attr['tipo'] == 'varchar(255)':
+                    single_value_attrs[attr_name] = 'Teste'
+                elif attr['tipo'] in ['integer', 'real']:
+                    single_value_attrs[attr_name] = 42
+                continue
+                
+            if 'mapa_valor' in attr:
+                domain_values = self.get_domain_values(attr['mapa_valor'])
+                allowed_values = self.get_allowed_domain_values(attr, domain_values, primitive_type)
+                if allowed_values:
+                    attr_values[attr_name] = allowed_values
+            elif attr['tipo'] == 'varchar(255)':
+                attr_values[attr_name] = ['Teste']
+            elif attr['tipo'] in ['integer', 'real']:
+                attr_values[attr_name] = [42]
+        
+        combinations = []
+        if attr_values:
+            keys = attr_values.keys()
+            values = attr_values.values()
+            for combination in itertools.product(*values):
+                attr_dict = dict(zip(keys, combination))
+                attr_dict.update(single_value_attrs)
+                combinations.append(attr_dict)
+        else:
+            combinations = [single_value_attrs] if single_value_attrs else []
+        
+        return combinations
 
-def create_test_geometry(primitive_type: str) -> QgsGeometry:
-    """Cria uma geometria de teste baseada no tipo primitivo."""
-    if primitive_type == 'MultiPoint':
-        return QgsGeometry.fromMultiPointXY([
-            QgsPointXY(0, 0)
-        ])
-    elif primitive_type == 'MultiLinestring':
-        return QgsGeometry.fromMultiPolylineXY([[
-            QgsPointXY(0, 0),
-            QgsPointXY(1, 1),
-            QgsPointXY(2, 0)
-        ]])
-    elif primitive_type == 'MultiPolygon':
-        return QgsGeometry.fromMultiPolygonXY([[
-            [QgsPointXY(0, 0),
-             QgsPointXY(2, 0),
-             QgsPointXY(2, 2),
-             QgsPointXY(0, 2),
-             QgsPointXY(0, 0)]
-        ]])
+    def create_test_geometry(self, primitive_type: str) -> QgsGeometry:
+        """Cria geometria de teste."""
+        if primitive_type == 'MultiPoint':
+            return QgsGeometry.fromMultiPointXY([QgsPointXY(0, 0)])
+        elif primitive_type == 'MultiLinestring':
+            return QgsGeometry.fromMultiPolylineXY([[
+                QgsPointXY(0, 0),
+                QgsPointXY(1, 1),
+                QgsPointXY(2, 0)
+            ]])
+        elif primitive_type == 'MultiPolygon':
+            return QgsGeometry.fromMultiPolygonXY([[
+                [QgsPointXY(0, 0),
+                 QgsPointXY(2, 0),
+                 QgsPointXY(2, 2),
+                 QgsPointXY(0, 2),
+                 QgsPointXY(0, 0)]
+            ]])
+        return None
+
+    def process_combinations(self, class_def: Dict, primitive_type: str) -> List[Dict]:
+        """Processa as combinações de atributos em thread separada."""
+        return self.generate_attribute_combinations(class_def, primitive_type)
+
+    def generate_test_features(self, layer, class_name: str, primitive_type: str):
+        """Gera feições de teste usando threads para a primitiva específica da camada."""
+        # Procura a classe no masterfile
+        class_def = None
+        for c in self.masterfile['classes']:
+            if c['nome'] == class_name:
+                class_def = c
+                break
+
+        if not class_def and 'extension_classes' in self.masterfile:
+            for c in self.masterfile['extension_classes']:
+                if c['nome'] == class_name:
+                    class_def = c
+                    break
+
+        if not class_def:
+            self.progressUpdated.emit(f"Classe {class_name} não encontrada", 0)
+            return
+
+        # Verifica se a primitiva é válida para a classe
+        if primitive_type not in class_def['primitivas']:
+            self.progressUpdated.emit(f"Primitiva {primitive_type} não é válida para a classe {class_name}", 0)
+            return
+
+        geometry = self.create_test_geometry(primitive_type)
+
+        # Processa combinações em thread separada
+        workers = self.get_optimal_workers()
+        with ThreadPoolExecutor(max_workers=workers) as executor:
+            future = executor.submit(self.process_combinations, class_def, primitive_type)
+            combinations = future.result()
+            
+            # Cria lista de feições
+            features = []
+            for attrs in combinations:
+                feature = QgsFeature()
+                if geometry:  # Usa a geometria já criada
+                    feature.setGeometry(geometry)
+                feature.setAttributes([attrs.get(field.name(), None) 
+                                for field in layer.fields()])
+                features.append(feature)
+            
+            # Adiciona todas as feições de uma vez
+            layer.addFeatures(features)
+
+def get_primitive_type_from_layer_name(layer_name: str) -> str:
+    """Extrai o tipo de primitiva do nome da camada."""
+    if layer_name.endswith('_p'):
+        return 'MultiPoint'
+    elif layer_name.endswith('_l'):
+        return 'MultiLinestring'
+    elif layer_name.endswith('_a'):
+        return 'MultiPolygon'
     return None
 
-def generate_test_features(layer, masterfile: Dict, class_name: str):
-    """Gera feições de teste para uma camada específica."""
-    # Encontra a definição da classe no masterfile
-    class_def = None
-    for c in masterfile['classes']:
-        if c['nome'] == class_name:
-            class_def = c
-            break
-            
-    if not class_def:
-        print(f"Classe {class_name} não encontrada no masterfile")
-        return
-        
-    # Gera combinações de atributos
-    attr_combinations = generate_attribute_combinations(masterfile, class_def)
-    
-    # Para cada primitiva geométrica permitida
-    for primitive in class_def['primitivas']:
-        # Para cada combinação de atributos
-        for attrs in attr_combinations:
-            # Cria a feição
-            feature = QgsFeature()
-            
-            # Define a geometria
-            geom = create_test_geometry(primitive)
-            if geom:
-                feature.setGeometry(geom)
-            
-            # Define os atributos
-            feature.setAttributes([attrs.get(field.name(), None) 
-                                 for field in layer.fields()])
-            
-            # Adiciona a feição à camada
-            layer.addFeature(feature)
-    
-    # Commit das alterações
-    layer.commitChanges()
-
 def main():
-    # Carrega o masterfile
-    masterfile = load_masterfile('master_file_300_topo_14.json')
+    # Instancia o gerador de feições
+    generator = FeatureGenerator()
     
-    # Para cada camada no projeto
+    # Conecta sinais
+    generator.progressUpdated.connect(lambda msg, progress: print(msg))
+    
+    # Carrega o masterfile
+    generator.load_masterfile('c:/Diniz/modelagens/modelagens_legadas/edgv_300_topo/1_3/master_file_300_topo_13.json')
+    
+    # Processa cada camada
     for layer in QgsProject.instance().mapLayers().values():
         if layer.type() != QgsMapLayer.VectorLayer:
             continue
             
-        # Extrai o nome da classe do nome da camada
-        class_name = layer.name().split('_')[0]  # Ajuste conforme sua nomenclatura
+        # Extrai o nome da classe e tipo de primitiva do nome da camada
+        layer_name = layer.name()
+        primitive_type = get_primitive_type_from_layer_name(layer_name)
+        if not primitive_type:
+            continue
+            
+        class_name_parts = layer_name.split('_')
+        main_name = class_name_parts[1:-1]
+        class_name = '_'.join(main_name)
         
-        # Inicia a edição da camada
         layer.startEditing()
-        
-        # Gera as feições de teste
-        generate_test_features(layer, masterfile, class_name)
-        
+        generator.generate_test_features(layer, class_name, primitive_type)
+        layer.commitChanges()
+
         print(f"Feições de teste geradas para {layer.name()}")
 
-# Executa o script
 main()
