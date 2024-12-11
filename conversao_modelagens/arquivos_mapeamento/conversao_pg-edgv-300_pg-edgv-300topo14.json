@@ -1399,6 +1399,21 @@
       ]
     },
     {
+      "__comment": "cbge_area_construida <-> cobter_vegetacao | terreno exposto - pavimentado",
+      "classe_A": "cbge_area_construida",
+      "classe_B": "cobter_vegetacao",
+      "filtro_B": {
+        "nome_atributo": "tipo",
+        "valor": 1004
+      },
+      "atributos_default_B": [
+        {
+          "nome_atributo": "tipo",
+          "valor": 1004
+        }
+      ]
+    },
+    {
       "__comment": "tra_patio <-> constr_ocupacao_solo | patio",
       "classe_A": "tra_patio",
       "classe_B": "constr_ocupacao_solo",
@@ -2079,6 +2094,88 @@
         {
           "nome_atributo": "tipolavoura",
           "valor": 3
+        }
+      ]
+    },
+    {
+      "__comment": "veg_veg_cultivada <-> cobter_vegetacao | cana de açúcar",
+      "classe_A": "veg_veg_cultivada",
+      "classe_B": "cobter_vegetacao",
+      "filtro_A": {
+        "nome_atributo": "cultivopredominante",
+        "valor": 7
+      },
+      "atributos_default_B": [
+        {
+          "nome_atributo": "tipo",
+          "valor": 107
+        }
+      ],
+      "filtro_B": {
+        "nome_atributo": "tipo",
+        "valor": 107
+      },
+      "atributos_default_A": [
+        {
+          "nome_atributo": "classificacaoporte",
+          "valor": 3
+        },
+        {
+          "nome_atributo": "terreno",
+          "valor": 1
+        },
+        {
+          "nome_atributo": "finalidade",
+          "valor": 0
+        },
+        {
+          "nome_atributo": "cultivopredominante",
+          "valor": 7
+        },
+        {
+          "nome_atributo": "tipolavoura",
+          "valor": 2
+        }
+      ]
+    },
+    {
+      "__comment": "veg_veg_cultivada <-> cobter_vegetacao | videira",
+      "classe_A": "veg_veg_cultivada",
+      "classe_B": "cobter_vegetacao",
+      "filtro_A": {
+        "nome_atributo": "cultivopredominante",
+        "valor": 42
+      },
+      "atributos_default_B": [
+        {
+          "nome_atributo": "tipo",
+          "valor": 142
+        }
+      ],
+      "filtro_B": {
+        "nome_atributo": "tipo",
+        "valor": 142
+      },
+      "atributos_default_A": [
+        {
+          "nome_atributo": "classificacaoporte",
+          "valor": 2
+        },
+        {
+          "nome_atributo": "terreno",
+          "valor": 1
+        },
+        {
+          "nome_atributo": "finalidade",
+          "valor": 0
+        },
+        {
+          "nome_atributo": "cultivopredominante",
+          "valor": 42
+        },
+        {
+          "nome_atributo": "tipolavoura",
+          "valor": 1
         }
       ]
     },
@@ -5129,10 +5226,6 @@
           {
             "nome_atributo": "tipovia",
             "valor": 99
-          },
-          {
-            "nome_atributo": "tipovia",
-            "valor": 9999
           }
         ]
       },
@@ -5187,11 +5280,6 @@
             },
             {
               "valor_A": 99,
-              "valor_B": 9999,
-              "sentido": "A=>B"
-            },
-            {
-              "valor_A": 9999,
               "valor_B": 9999,
               "sentido": "A=>B"
             },
@@ -6409,6 +6497,32 @@
       ]
     },
     {
+      "__comment": "enc_casa_de_forca <-> infra_elemento_energia | casa de força",
+      "classe_A": "enc_casa_de_forca",
+      "classe_B": "infra_elemento_energia",
+      "filtro_B": {
+        "nome_atributo": "tipo",
+        "valor": 501
+      },
+      "atributos_default_B": [
+        {
+          "nome_atributo": "tipo",
+          "valor": 501
+        }
+      ]
+    },
+    {
+      "__comment": "hdv_trecho_hidroviario <-> infra_trecho_hidroviario",
+      "classe_A": "hdv_trecho_hidroviario",
+      "classe_B": "infra_trecho_hidroviario",
+      "atributos_default_A": [
+        {
+          "nome_atributo": "regime",
+          "valor": 0
+        }
+      ]
+    },
+    {
       "__comment": "enc_hidreletrica <-> infra_elemento_energia | estação geradora hidrelétrica",
       "classe_A": "enc_hidreletrica",
       "classe_B": "infra_elemento_energia",
@@ -6809,6 +6923,67 @@
       ]
     },
     {
+      "__comment": "hid_fonte_dagua <-> elemnat_elemento_hidrografico | olho dágua",
+      "classe_A": "hid_fonte_dagua",
+      "classe_B": "elemnat_elemento_hidrografico",
+      "filtro_B": {
+        "$or": [
+          {
+            "nome_atributo": "tipo",
+            "valor": 3
+          },
+          {
+            "nome_atributo": "tipo",
+            "valor": 4
+          }
+        ]
+      },
+      "atributos_default_A": [
+        {
+          "nome_atributo": "qualidagua",
+          "valor": 0
+        }
+      ],
+      "mapeamento_multiplo": [
+        {
+          "tupla_A": [
+            {
+              "nome_atributo": "tipofontedagua",
+              "valor": 3
+            },
+            {
+              "nome_atributo": "regime",
+              "valor": 1
+            }
+          ],
+          "tupla_B": [
+            {
+              "nome_atributo": "tipo",
+              "valor": 3
+            }
+          ]
+        },
+        {
+          "tupla_A": [
+            {
+              "nome_atributo": "tipofontedagua",
+              "valor": 3
+            },
+            {
+              "nome_atributo": "regime",
+              "valor": 3
+            }
+          ],
+          "tupla_B": [
+            {
+              "nome_atributo": "tipo",
+              "valor": 4
+            }
+          ]
+        }
+      ]
+    },
+    {
       "__comment": "hid_corredeira <-> elemnat_elemento_hidrografico | corredeira",
       "classe_A": "hid_corredeira",
       "classe_B": "elemnat_elemento_hidrografico",
@@ -7103,6 +7278,51 @@
         {
           "nome_atributo": "tipo",
           "valor": 901
+        }
+      ]
+    },
+        {
+      "__comment": "hdv_obstaculo_navegacao <-> constr_ocupacao_solo | obstáculo de navegação",
+      "classe_A": "hdv_obstaculo_navegacao",
+      "classe_B": "constr_ocupacao_solo",
+      "filtro_B": {
+        "$or": [
+          {
+            "nome_atributo": "tipo",
+            "valor": 1201
+          },
+          {
+            "nome_atributo": "tipo",
+            "valor": 1202
+          }
+        ]
+      },
+      "atributos_default_A": [
+        {
+          "nome_atributo": "situacaoemagua",
+          "valor": 0
+        }
+      ],
+      "atributos_default_B": [
+        {
+          "nome_atributo": "situacao_fisica",
+          "valor": 3
+        }
+      ],
+      "mapeamento_atributos": [
+        {
+          "attr_A": "tipoobst",
+          "attr_B": "tipo",
+          "traducao": [
+            {
+              "valor_A": 4,
+              "valor_B": 1201
+            },
+            {
+              "valor_A": 5,
+              "valor_B": 1202
+            }
+          ]
         }
       ]
     },

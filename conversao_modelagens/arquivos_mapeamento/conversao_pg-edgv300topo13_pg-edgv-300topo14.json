@@ -28,30 +28,32 @@
       "classe_A": "infra_elemento_viario",
       "classe_B": "infra_elemento_viario",
       "filtro_A": {
-        "$not": {
-          "$or": [
-            {
-              "nome_atributo": "tipo",
-              "valor": 607
-            },
-            {
-              "nome_atributo": "tipo",
-              "valor": 608
-            },
-            {
-              "nome_atributo": "tipo",
-              "valor": 609
-            },
-            {
-              "nome_atributo": "tipo",
-              "valor": 701
-            }
-          ]
-        },
         "$and": [
           {
             "nome_atributo": "$GEOM_TYPE",
             "valor": "LINESTRING"
+          },
+          {
+            "$not": {
+              "$or": [
+                {
+                  "nome_atributo": "tipo",
+                  "valor": 607
+                },
+                {
+                  "nome_atributo": "tipo",
+                  "valor": 608
+                },
+                {
+                  "nome_atributo": "tipo",
+                  "valor": 609
+                },
+                {
+                  "nome_atributo": "tipo",
+                  "valor": 701
+                }
+              ]
+            }
           }
         ]
       },
@@ -126,7 +128,29 @@
             "valor": 609
           }
         ]
-      }
+      },
+      "atributos_default_A": [
+        {
+          "nome_atributo": "material_construcao",
+          "valor": 0
+        },
+        {
+          "nome_atributo": "modal_uso",
+          "valor": 9999
+        },
+        {
+          "nome_atributo": "posicao_pista",
+          "valor": 9999
+        },
+        {
+          "nome_atributo": "exibir_lado_simbologia",
+          "valor": 9999
+        },
+        {
+          "nome_atributo": "exibir_ponta_simbologia",
+          "valor": 9999
+        }
+      ]
     },
     {
       "classe_A": "infra_ferrovia",
@@ -195,6 +219,12 @@
         "$not": {
           "nome_atributo": "tipo",
           "valor": 302
+        }
+      },
+      "filtro_B": {
+        "$not": {
+          "nome_atributo": "tipo",
+          "valor": "501"
         }
       },
       "mapeamento_atributos": [
@@ -302,16 +332,6 @@
       ]
     },
     {
-      "classe_A": "infra_elemento_energia",
-      "classe_B": "infra_elemento_energia",
-      "filtro_B": {
-        "$not": {
-          "nome_atributo": "tipo",
-          "valor": "501"
-        }
-      }
-    },
-    {
       "classe_A": "constr_edificacao",
       "classe_B": "infra_elemento_energia",
       "sentido": "B=>A",
@@ -319,7 +339,7 @@
         "nome_atributo": "tipo",
         "valor": "501"
       },
-      "atributos_default_B": [
+      "atributos_default_A": [
         {
           "nome_atributo": "tipo",
           "valor": 201
@@ -587,7 +607,7 @@
       "classe_B": "delimitador_massa_dagua"
     },
     {
-      "classe_A": "delimitador_area_edificada",
+      "classe_A": "delimitador_area_construida",
       "classe_B": "delimitador_area_edificada"
     },
     {
@@ -600,15 +620,44 @@
     },
     {
       "classe_A": "centroide_vegetacao",
-      "classe_B": "centroide_vegetacao"
+      "classe_B": "centroide_vegetacao",
+      "mapeamento_atributos": [
+        {
+          "attr_A": "tipo",
+          "attr_B": "tipo",
+          "traducao": [
+            {
+              "valor_A": 1000,
+              "valor_B": 1004,
+              "sentido": "B=>A"
+            },
+            {
+              "valor_A": 196,
+              "valor_B": 107,
+              "sentido": "B=>A"
+            },
+            {
+              "valor_A": 196,
+              "valor_B": 142,
+              "sentido": "B=>A"
+            }
+          ]
+        }
+      ]
     },
     {
       "classe_A": "centroide_massa_dagua",
       "classe_B": "centroide_massa_dagua"
     },
     {
-      "classe_A": "centroide_area_edificada",
-      "classe_B": "centroide_area_edificada"
+      "classe_A": "centroide_area_construida",
+      "classe_B": "centroide_area_edificada",
+      "atributos_default_A": [
+        {
+          "nome_atributo": "densamente_edificada",
+          "valor": 1
+        }
+      ]
     },
     {
       "classe_A": "centroide_ilha",
