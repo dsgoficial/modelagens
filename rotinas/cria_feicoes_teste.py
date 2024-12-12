@@ -87,6 +87,8 @@ class FeatureGenerator(QObject):
                     single_value_attrs[attr_name] = 'Teste'
                 elif attr['tipo'] in ['integer', 'real']:
                     single_value_attrs[attr_name] = 42
+                elif attr['tipo'] == 'boolean':
+                    single_value_attrs[attr_name] = True
                 continue
                 
             if 'mapa_valor' in attr:
@@ -98,6 +100,8 @@ class FeatureGenerator(QObject):
                 attr_values[attr_name] = ['Teste']
             elif attr['tipo'] in ['integer', 'real']:
                 attr_values[attr_name] = [42]
+            elif attr['tipo'] == 'boolean':
+                attr_values[attr_name] = True
         
         combinations = []
         if attr_values:
@@ -245,7 +249,7 @@ def main():
     generator.progressUpdated.connect(lambda msg, progress: print(msg))
     
     # Carrega o masterfile
-    generator.load_masterfile('c:/Diniz/modelagens/modelagens_legadas/edgv_300_topo/1_3/master_file_300_topo_13.json')
+    generator.load_masterfile('c:/Diniz/modelagens/edgv_300/master_file_300.json')
     
     # Processa cada camada
     for layer in QgsProject.instance().mapLayers().values():

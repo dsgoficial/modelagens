@@ -571,20 +571,12 @@
       "classe_B": "delimitador_area_sem_dados"
     },
     {
-      "classe_A": "aux_validacao",
-      "classe_B": "aux_validacao"
-    },
-    {
       "classe_A": "aux_revisao",
       "classe_B": "aux_revisao"
     },
     {
       "classe_A": "aux_reambulacao",
       "classe_B": "aux_reambulacao"
-    },
-    {
-      "classe_A": "aux_insumo_externo",
-      "classe_B": "aux_insumo_externo"
     },
     {
       "classe_A": "aux_moldura",

@@ -26,7 +26,20 @@
   "mapeamento_classes": [
     {
       "classe_A": "cobter_massa_dagua",
-      "classe_B": "cobter_massa_dagua"
+      "classe_B": "cobter_massa_dagua",
+      "mapeamento_atributos": [
+        {
+          "attr_A": "tipo",
+          "attr_B": "tipo",
+          "traducao": [
+            {
+              "valor_A": 2,
+              "valor_B": 12,
+              "sentido": "B=>A"
+            }
+          ]
+        }
+      ]
     },
     {
       "classe_A": "constr_extracao_mineral",
@@ -88,7 +101,45 @@
     },
     {
       "classe_A": "infra_elemento_energia",
-      "classe_B": "infra_elemento_energia"
+      "classe_B": "infra_elemento_energia",
+      "filtro_B": {
+        "$not": {
+          "$and": [
+            {
+              "nome_atributo": "$GEOM_TYPE",
+              "valor": "LINESTRING"
+            },
+            {
+              "$or": [
+                {
+                  "nome_atributo": "tipo",
+                  "valor": 405
+                },
+                {
+                  "nome_atributo": "tipo",
+                  "valor": 406
+                },
+                {
+                  "nome_atributo": "tipo",
+                  "valor": 407
+                },
+                {
+                  "nome_atributo": "tipo",
+                  "valor": 408
+                },
+                {
+                  "nome_atributo": "tipo",
+                  "valor": 409
+                },
+                {
+                  "nome_atributo": "tipo",
+                  "valor": 498
+                }
+              ]
+            }
+          ]
+        }
+      }
     },
     {
       "classe_A": "infra_elemento_infraestrutura",
@@ -129,6 +180,19 @@
     {
       "classe_A": "infra_via_deslocamento",
       "classe_B": "infra_via_deslocamento",
+      "mapeamento_atributos": [
+        {
+          "attr_A": "trafego",
+          "attr_B": "trafego",
+          "traducao": [
+            {
+              "valor_A": 1,
+              "valor_B": 0,
+              "sentido": "B=>A"
+            }
+          ]
+        }
+      ],
       "atributos_default_B": [
         {
           "nome_atributo": "tipo_elemento_viario",
@@ -186,7 +250,13 @@
     },
     {
       "classe_A": "edicao_limite_legal",
-      "classe_B": "llp_limite_legal"
+      "classe_B": "llp_limite_legal",
+      "atributos_default_A": [
+        {
+          "nome_atributo": "visivel",
+          "valor": 1
+        }
+      ]
     },
     {
       "classe_A": "edicao_grid_edicao",
@@ -203,10 +273,6 @@
     {
       "classe_A": "delimitador_area_sem_dados",
       "classe_B": "delimitador_area_sem_dados"
-    },
-    {
-      "classe_A": "aux_validacao",
-      "classe_B": "aux_validacao"
     },
     {
       "classe_A": "aux_revisao",
@@ -230,7 +296,20 @@
     },
     {
       "classe_A": "centroide_massa_dagua",
-      "classe_B": "centroide_massa_dagua"
+      "classe_B": "centroide_massa_dagua",
+      "mapeamento_atributos": [
+        {
+          "attr_A": "tipo",
+          "attr_B": "tipo",
+          "traducao": [
+            {
+              "valor_A": 2,
+              "valor_B": 12,
+              "sentido": "B=>A"
+            }
+          ]
+        }
+      ]
     },
     {
       "classe_A": "centroide_ilha",
@@ -267,10 +346,6 @@
     {
       "classe_A": "centroide_limite_especial",
       "classe_B": "centroide_limite_especial"
-    },
-    {
-      "classe_A": "aux_insumo_externo",
-      "classe_B": "aux_insumo_externo"
     }
   ],
   "mapeamento_atributos": [],

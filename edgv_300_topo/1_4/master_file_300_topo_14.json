@@ -4677,7 +4677,14 @@
       "nome": "terreno_sujeito_inundacao",
       "categoria": "elemnat",
       "primitivas": ["MultiPolygon"],
-      "atributos": []
+      "atributos": [
+        {
+          "nome": "visivel",
+          "tipo": "smallint",
+          "cardinalidade": "1..1",
+          "mapa_valor": "booleano"
+        }
+      ]
     },
     {
       "nome": "toponimo_fisiografico_natural",
@@ -4730,6 +4737,12 @@
           "nome": "espacamento",
           "tipo": "real",
           "cardinalidade": "0..1"
+        },
+        {
+          "nome": "visivel",
+          "tipo": "smallint",
+          "cardinalidade": "1..1",
+          "mapa_valor": "booleano"
         }
       ]
     },
@@ -5817,6 +5830,12 @@
           "tipo": "smallint",
           "cardinalidade": "1..1",
           "mapa_valor": "justificativa"
+        },
+        {
+          "nome": "visivel",
+          "tipo": "smallint",
+          "cardinalidade": "1..1",
+          "mapa_valor": "booleano"
         }
       ]
     },
@@ -6167,6 +6186,12 @@
           "tipo": "smallint",
           "cardinalidade": "1..1",
           "mapa_valor": "booleano"
+        },
+        {
+          "nome": "visivel",
+          "tipo": "smallint",
+          "cardinalidade": "1..1",
+          "mapa_valor": "booleano"
         }
       ]
     },
@@ -6183,18 +6208,13 @@
       "atributos": []
     },
     {
-      "nome": "validacao",
+      "nome": "observacao",
       "categoria": "aux",
       "primitivas": ["MultiPolygon", "MultiLinestring", "MultiPoint"],
       "atributos": [
         {
           "nome": "descricao",
           "tipo": "varchar(255)",
-          "cardinalidade": "0..1"
-        },
-        {
-          "nome": "subfase_id",
-          "tipo": "integer",
           "cardinalidade": "0..1"
         }
       ]
@@ -6234,23 +6254,6 @@
       "atributos": [
         {
           "nome": "descricao",
-          "tipo": "varchar(255)",
-          "cardinalidade": "0..1"
-        }
-      ]
-    },
-    {
-      "nome": "insumo_externo",
-      "categoria": "aux",
-      "primitivas": ["MultiPolygon", "MultiLinestring", "MultiPoint"],
-      "atributos": [
-        {
-          "nome": "nome",
-          "tipo": "varchar(255)",
-          "cardinalidade": "0..1"
-        },
-        {
-          "nome": "fonte",
           "tipo": "varchar(255)",
           "cardinalidade": "0..1"
         }

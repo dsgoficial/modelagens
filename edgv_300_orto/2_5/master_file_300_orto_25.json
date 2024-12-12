@@ -1303,20 +1303,8 @@
           "value": "Estrada/Rodovia"
         },
         {
-          "code": 3,
-          "value": "Caminho carroçável"
-        },
-        {
           "code": 4,
           "value": "Auto-estrada"
-        },
-        {
-          "code": 5,
-          "value": "Arruamento"
-        },
-        {
-          "code": 6,
-          "value": "Trilha ou Picada"
         }
       ]
     },
@@ -1472,12 +1460,6 @@
           "tipo": "smallint",
           "cardinalidade": "1..1",
           "mapa_valor": "booleano"
-        },
-        {
-          "nome": "visivel",
-          "tipo": "smallint",
-          "cardinalidade": "1..1",
-          "mapa_valor": "booleano"
         }
       ]
     },
@@ -1568,7 +1550,7 @@
           "mapa_valor": "booleano"
         },
         {
-          "nome": "dentro_de_massa_dagua",
+          "nome": "dentro_massa_dagua",
           "tipo": "smallint",
           "cardinalidade": "1..1",
           "mapa_valor": "booleano"
@@ -3068,18 +3050,13 @@
       "atributos": []
     },
     {
-      "nome": "validacao",
+      "nome": "observacao",
       "categoria": "aux",
       "primitivas": ["MultiPolygon", "MultiLinestring", "MultiPoint"],
       "atributos": [
         {
           "nome": "descricao",
           "tipo": "varchar(255)",
-          "cardinalidade": "0..1"
-        },
-        {
-          "nome": "subfase_id",
-          "tipo": "integer",
           "cardinalidade": "0..1"
         }
       ]
@@ -3374,23 +3351,6 @@
           "tipo": "smallint",
           "cardinalidade": "1..1",
           "mapa_valor": "booleano"
-        }
-      ]
-    },
-    {
-      "nome": "insumo_externo",
-      "categoria": "aux",
-      "primitivas": ["MultiPolygon", "MultiLinestring", "MultiPoint"],
-      "atributos": [
-        {
-          "nome": "nome",
-          "tipo": "varchar(255)",
-          "cardinalidade": "0..1"
-        },
-        {
-          "nome": "fonte",
-          "tipo": "varchar(255)",
-          "cardinalidade": "0..1"
         }
       ]
     },

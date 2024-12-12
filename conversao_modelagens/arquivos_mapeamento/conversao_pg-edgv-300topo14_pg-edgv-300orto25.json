@@ -174,7 +174,13 @@
             }
           }
         ]
-      }
+      },
+      "atributos_default_B": [
+        {
+          "nome_atributo": "apresentar_simbologia",
+          "valor": 2
+        }
+      ]
     },
     {
       "classe_A": "constr_extracao_mineral",
@@ -265,16 +271,12 @@
       "classe_B": "delimitador_area_sem_dados"
     },
     {
-      "classe_A": "aux_validacao",
-      "classe_B": "aux_validacao"
+      "classe_A": "aux_observacao",
+      "classe_B": "aux_observacao"
     },
     {
       "classe_A": "aux_revisao",
       "classe_B": "aux_revisao"
-    },
-    {
-      "classe_A": "aux_insumo_externo",
-      "classe_B": "aux_insumo_externo"
     },
     {
       "classe_A": "aux_moldura",
@@ -380,7 +382,27 @@
     },
     {
       "classe_A": "edicao_simb_area",
-      "classe_B": "edicao_simb_area"
+      "classe_B": "edicao_simb_area",
+      "filtro_A": {
+        "$or": [
+          {
+            "nome_atributo": "tipo",
+            "valor": 1
+          },
+          {
+            "nome_atributo": "tipo",
+            "valor": 2
+          },
+          {
+            "nome_atributo": "tipo",
+            "valor": 3
+          },
+          {
+            "nome_atributo": "tipo",
+            "valor": 4
+          }
+        ]
+      }
     },
     {
       "classe_A": "infra_obstaculo_vertical",

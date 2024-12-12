@@ -41,27 +41,6 @@
       "classe_B": "aux_moldura"
     },
     {
-      "__comment": "aux_revisao <-> aux_revisao",
-      "classe_A": "aux_revisao",
-      "classe_B": "aux_revisao",
-      "mapeamento_atributos": [
-        {
-          "attr_A": "corrigido",
-          "attr_B": "corrigido",
-          "traducao": [
-            {
-              "valor_A": false,
-              "valor_B": 2
-            },
-            {
-              "valor_A": true,
-              "valor_B": 1
-            }
-          ]
-        }
-      ]
-    },
-    {
       "__comment": "aer_pista_ponto_pouso <-> infra_pista_pouso",
       "classe_A": "aer_pista_ponto_pouso",
       "classe_B": "infra_pista_pouso",
