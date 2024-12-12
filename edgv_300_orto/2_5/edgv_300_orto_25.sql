@@ -620,10 +620,7 @@ CREATE TABLE dominios.tipo_via_deslocamento (
 );
 
 INSERT INTO dominios.tipo_via_deslocamento (code,code_name) VALUES (2,'Estrada/Rodovia (2)');
-INSERT INTO dominios.tipo_via_deslocamento (code,code_name) VALUES (3,'Caminho carroçável (3)');
 INSERT INTO dominios.tipo_via_deslocamento (code,code_name) VALUES (4,'Auto-estrada (4)');
-INSERT INTO dominios.tipo_via_deslocamento (code,code_name) VALUES (5,'Arruamento (5)');
-INSERT INTO dominios.tipo_via_deslocamento (code,code_name) VALUES (6,'Trilha ou Picada (6)');
 INSERT INTO dominios.tipo_via_deslocamento (code,code_name) VALUES (9999,'A SER PREENCHIDO (9999)');
 
 ALTER TABLE dominios.tipo_via_deslocamento OWNER TO postgres;
@@ -707,7 +704,6 @@ CREATE TABLE edgv.cobter_massa_dagua_a(
 	 tamanho_txt real,
 	 justificativa_txt smallint NOT NULL,
 	 apresentar_simbologia smallint NOT NULL,
-	 visivel smallint NOT NULL,
 	 observacao varchar(255),
 	 geom geometry(MultiPolygon, 4674),
 	 CONSTRAINT cobter_massa_dagua_a_pk PRIMARY KEY (id)
@@ -744,13 +740,6 @@ ALTER TABLE edgv.cobter_massa_dagua_a
 	 ON UPDATE NO ACTION ON DELETE NO ACTION;
 
 ALTER TABLE edgv.cobter_massa_dagua_a ALTER COLUMN apresentar_simbologia SET DEFAULT 9999;
-
-ALTER TABLE edgv.cobter_massa_dagua_a
-	 ADD CONSTRAINT cobter_massa_dagua_a_visivel_fk FOREIGN KEY (visivel)
-	 REFERENCES dominios.booleano (code) MATCH FULL
-	 ON UPDATE NO ACTION ON DELETE NO ACTION;
-
-ALTER TABLE edgv.cobter_massa_dagua_a ALTER COLUMN visivel SET DEFAULT 9999;
 
 CREATE TABLE edgv.constr_extracao_mineral_a(
 	 id uuid NOT NULL DEFAULT uuid_generate_v4(),
@@ -883,7 +872,7 @@ CREATE TABLE edgv.elemnat_curva_nivel_l(
 	 cota integer NOT NULL,
 	 indice smallint NOT NULL,
 	 depressao smallint NOT NULL,
-	 dentro_de_massa_dagua smallint NOT NULL,
+	 dentro_massa_dagua smallint NOT NULL,
 	 texto_edicao varchar(255),
 	 visivel smallint NOT NULL,
 	 observacao varchar(255),
@@ -910,11 +899,11 @@ ALTER TABLE edgv.elemnat_curva_nivel_l
 ALTER TABLE edgv.elemnat_curva_nivel_l ALTER COLUMN depressao SET DEFAULT 9999;
 
 ALTER TABLE edgv.elemnat_curva_nivel_l
-	 ADD CONSTRAINT elemnat_curva_nivel_l_dentro_de_massa_dagua_fk FOREIGN KEY (dentro_de_massa_dagua)
+	 ADD CONSTRAINT elemnat_curva_nivel_l_dentro_massa_dagua_fk FOREIGN KEY (dentro_massa_dagua)
 	 REFERENCES dominios.booleano (code) MATCH FULL
 	 ON UPDATE NO ACTION ON DELETE NO ACTION;
 
-ALTER TABLE edgv.elemnat_curva_nivel_l ALTER COLUMN dentro_de_massa_dagua SET DEFAULT 9999;
+ALTER TABLE edgv.elemnat_curva_nivel_l ALTER COLUMN dentro_massa_dagua SET DEFAULT 9999;
 
 ALTER TABLE edgv.elemnat_curva_nivel_l
 	 ADD CONSTRAINT elemnat_curva_nivel_l_visivel_fk FOREIGN KEY (visivel)
@@ -2824,44 +2813,41 @@ CREATE INDEX delimitador_area_sem_dados_l_geom ON edgv.delimitador_area_sem_dado
 
 ALTER TABLE edgv.delimitador_area_sem_dados_l OWNER TO postgres;
 
-CREATE TABLE edgv.aux_validacao_a(
+CREATE TABLE edgv.aux_observacao_a(
 	 id uuid NOT NULL DEFAULT uuid_generate_v4(),
 	 descricao varchar(255),
-	 subfase_id integer,
 	 observacao varchar(255),
 	 geom geometry(MultiPolygon, 4674),
-	 CONSTRAINT aux_validacao_a_pk PRIMARY KEY (id)
+	 CONSTRAINT aux_observacao_a_pk PRIMARY KEY (id)
 	 WITH (FILLFACTOR = 80)
 );
-CREATE INDEX aux_validacao_a_geom ON edgv.aux_validacao_a USING gist (geom);
+CREATE INDEX aux_observacao_a_geom ON edgv.aux_observacao_a USING gist (geom);
 
-ALTER TABLE edgv.aux_validacao_a OWNER TO postgres;
+ALTER TABLE edgv.aux_observacao_a OWNER TO postgres;
 
-CREATE TABLE edgv.aux_validacao_l(
+CREATE TABLE edgv.aux_observacao_l(
 	 id uuid NOT NULL DEFAULT uuid_generate_v4(),
 	 descricao varchar(255),
-	 subfase_id integer,
 	 observacao varchar(255),
 	 geom geometry(MultiLinestring, 4674),
-	 CONSTRAINT aux_validacao_l_pk PRIMARY KEY (id)
+	 CONSTRAINT aux_observacao_l_pk PRIMARY KEY (id)
 	 WITH (FILLFACTOR = 80)
 );
-CREATE INDEX aux_validacao_l_geom ON edgv.aux_validacao_l USING gist (geom);
+CREATE INDEX aux_observacao_l_geom ON edgv.aux_observacao_l USING gist (geom);
 
-ALTER TABLE edgv.aux_validacao_l OWNER TO postgres;
+ALTER TABLE edgv.aux_observacao_l OWNER TO postgres;
 
-CREATE TABLE edgv.aux_validacao_p(
+CREATE TABLE edgv.aux_observacao_p(
 	 id uuid NOT NULL DEFAULT uuid_generate_v4(),
 	 descricao varchar(255),
-	 subfase_id integer,
 	 observacao varchar(255),
 	 geom geometry(MultiPoint, 4674),
-	 CONSTRAINT aux_validacao_p_pk PRIMARY KEY (id)
+	 CONSTRAINT aux_observacao_p_pk PRIMARY KEY (id)
 	 WITH (FILLFACTOR = 80)
 );
-CREATE INDEX aux_validacao_p_geom ON edgv.aux_validacao_p USING gist (geom);
+CREATE INDEX aux_observacao_p_geom ON edgv.aux_observacao_p USING gist (geom);
 
-ALTER TABLE edgv.aux_validacao_p OWNER TO postgres;
+ALTER TABLE edgv.aux_observacao_p OWNER TO postgres;
 
 CREATE TABLE edgv.aux_revisao_a(
 	 id uuid NOT NULL DEFAULT uuid_generate_v4(),
@@ -3216,45 +3202,6 @@ ALTER TABLE edgv.centroide_limite_especial_p
 	 ON UPDATE NO ACTION ON DELETE NO ACTION;
 
 ALTER TABLE edgv.centroide_limite_especial_p ALTER COLUMN geometria_aproximada SET DEFAULT 9999;
-
-CREATE TABLE edgv.aux_insumo_externo_a(
-	 id uuid NOT NULL DEFAULT uuid_generate_v4(),
-	 nome varchar(255),
-	 fonte varchar(255),
-	 observacao varchar(255),
-	 geom geometry(MultiPolygon, 4674),
-	 CONSTRAINT aux_insumo_externo_a_pk PRIMARY KEY (id)
-	 WITH (FILLFACTOR = 80)
-);
-CREATE INDEX aux_insumo_externo_a_geom ON edgv.aux_insumo_externo_a USING gist (geom);
-
-ALTER TABLE edgv.aux_insumo_externo_a OWNER TO postgres;
-
-CREATE TABLE edgv.aux_insumo_externo_l(
-	 id uuid NOT NULL DEFAULT uuid_generate_v4(),
-	 nome varchar(255),
-	 fonte varchar(255),
-	 observacao varchar(255),
-	 geom geometry(MultiLinestring, 4674),
-	 CONSTRAINT aux_insumo_externo_l_pk PRIMARY KEY (id)
-	 WITH (FILLFACTOR = 80)
-);
-CREATE INDEX aux_insumo_externo_l_geom ON edgv.aux_insumo_externo_l USING gist (geom);
-
-ALTER TABLE edgv.aux_insumo_externo_l OWNER TO postgres;
-
-CREATE TABLE edgv.aux_insumo_externo_p(
-	 id uuid NOT NULL DEFAULT uuid_generate_v4(),
-	 nome varchar(255),
-	 fonte varchar(255),
-	 observacao varchar(255),
-	 geom geometry(MultiPoint, 4674),
-	 CONSTRAINT aux_insumo_externo_p_pk PRIMARY KEY (id)
-	 WITH (FILLFACTOR = 80)
-);
-CREATE INDEX aux_insumo_externo_p_geom ON edgv.aux_insumo_externo_p USING gist (geom);
-
-ALTER TABLE edgv.aux_insumo_externo_p OWNER TO postgres;
 
 CREATE TABLE edgv.edicao_simb_area_p(
 	 id uuid NOT NULL DEFAULT uuid_generate_v4(),

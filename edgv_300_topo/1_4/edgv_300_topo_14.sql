@@ -2526,6 +2526,7 @@ ALTER TABLE edgv.elemnat_ponto_cotado_p ALTER COLUMN suprimir_simbologia SET DEF
 
 CREATE TABLE edgv.elemnat_terreno_sujeito_inundacao_a(
 	 id uuid NOT NULL DEFAULT uuid_generate_v4(),
+	 visivel smallint NOT NULL,
 	 observacao varchar(255),
 	 geom geometry(MultiPolygon, 4674),
 	 CONSTRAINT elemnat_terreno_sujeito_inundacao_a_pk PRIMARY KEY (id)
@@ -2534,6 +2535,13 @@ CREATE TABLE edgv.elemnat_terreno_sujeito_inundacao_a(
 CREATE INDEX elemnat_terreno_sujeito_inundacao_a_geom ON edgv.elemnat_terreno_sujeito_inundacao_a USING gist (geom);
 
 ALTER TABLE edgv.elemnat_terreno_sujeito_inundacao_a OWNER TO postgres;
+
+ALTER TABLE edgv.elemnat_terreno_sujeito_inundacao_a
+	 ADD CONSTRAINT elemnat_terreno_sujeito_inundacao_a_visivel_fk FOREIGN KEY (visivel)
+	 REFERENCES dominios.booleano (code) MATCH FULL
+	 ON UPDATE NO ACTION ON DELETE NO ACTION;
+
+ALTER TABLE edgv.elemnat_terreno_sujeito_inundacao_a ALTER COLUMN visivel SET DEFAULT 9999;
 
 CREATE TABLE edgv.elemnat_toponimo_fisiografico_natural_p(
 	 id uuid NOT NULL DEFAULT uuid_generate_v4(),
@@ -2545,6 +2553,7 @@ CREATE TABLE edgv.elemnat_toponimo_fisiografico_natural_p(
 	 tamanho_txt real,
 	 justificativa_txt smallint NOT NULL,
 	 espacamento real,
+	 visivel smallint NOT NULL,
 	 observacao varchar(255),
 	 geom geometry(MultiPoint, 4674),
 	 CONSTRAINT elemnat_toponimo_fisiografico_natural_p_pk PRIMARY KEY (id)
@@ -2572,6 +2581,13 @@ ALTER TABLE edgv.elemnat_toponimo_fisiografico_natural_p
 
 ALTER TABLE edgv.elemnat_toponimo_fisiografico_natural_p ALTER COLUMN justificativa_txt SET DEFAULT 9999;
 
+ALTER TABLE edgv.elemnat_toponimo_fisiografico_natural_p
+	 ADD CONSTRAINT elemnat_toponimo_fisiografico_natural_p_visivel_fk FOREIGN KEY (visivel)
+	 REFERENCES dominios.booleano (code) MATCH FULL
+	 ON UPDATE NO ACTION ON DELETE NO ACTION;
+
+ALTER TABLE edgv.elemnat_toponimo_fisiografico_natural_p ALTER COLUMN visivel SET DEFAULT 9999;
+
 CREATE TABLE edgv.elemnat_toponimo_fisiografico_natural_l(
 	 id uuid NOT NULL DEFAULT uuid_generate_v4(),
 	 nome varchar(255),
@@ -2581,6 +2597,7 @@ CREATE TABLE edgv.elemnat_toponimo_fisiografico_natural_l(
 	 label_y real,
 	 tamanho_txt real,
 	 espacamento real,
+	 visivel smallint NOT NULL,
 	 observacao varchar(255),
 	 geom geometry(MultiLinestring, 4674),
 	 CONSTRAINT elemnat_toponimo_fisiografico_natural_l_pk PRIMARY KEY (id)
@@ -2600,6 +2617,13 @@ ALTER TABLE edgv.elemnat_toponimo_fisiografico_natural_l
 	 CHECK (tipo = ANY(ARRAY[1 :: SMALLINT, 2 :: SMALLINT, 12 :: SMALLINT, 9999 :: SMALLINT])); 
 
 ALTER TABLE edgv.elemnat_toponimo_fisiografico_natural_l ALTER COLUMN tipo SET DEFAULT 9999;
+
+ALTER TABLE edgv.elemnat_toponimo_fisiografico_natural_l
+	 ADD CONSTRAINT elemnat_toponimo_fisiografico_natural_l_visivel_fk FOREIGN KEY (visivel)
+	 REFERENCES dominios.booleano (code) MATCH FULL
+	 ON UPDATE NO ACTION ON DELETE NO ACTION;
+
+ALTER TABLE edgv.elemnat_toponimo_fisiografico_natural_l ALTER COLUMN visivel SET DEFAULT 9999;
 
 CREATE TABLE edgv.elemnat_trecho_drenagem_l(
 	 id uuid NOT NULL DEFAULT uuid_generate_v4(),
@@ -3936,6 +3960,7 @@ CREATE TABLE edgv.llp_limite_especial_a(
 	 label_y real,
 	 tamanho_txt real,
 	 justificativa_txt smallint NOT NULL,
+	 visivel smallint NOT NULL,
 	 observacao varchar(255),
 	 geom geometry(MultiPolygon, 4674),
 	 CONSTRAINT llp_limite_especial_a_pk PRIMARY KEY (id)
@@ -3965,6 +3990,13 @@ ALTER TABLE edgv.llp_limite_especial_a
 	 ON UPDATE NO ACTION ON DELETE NO ACTION;
 
 ALTER TABLE edgv.llp_limite_especial_a ALTER COLUMN justificativa_txt SET DEFAULT 9999;
+
+ALTER TABLE edgv.llp_limite_especial_a
+	 ADD CONSTRAINT llp_limite_especial_a_visivel_fk FOREIGN KEY (visivel)
+	 REFERENCES dominios.booleano (code) MATCH FULL
+	 ON UPDATE NO ACTION ON DELETE NO ACTION;
+
+ALTER TABLE edgv.llp_limite_especial_a ALTER COLUMN visivel SET DEFAULT 9999;
 
 CREATE TABLE edgv.llp_unidade_federacao_a(
 	 id uuid NOT NULL DEFAULT uuid_generate_v4(),
@@ -4238,6 +4270,7 @@ CREATE TABLE edgv.edicao_limite_especial_l(
 	 geometria_aproximada smallint NOT NULL,
 	 sobreposto smallint NOT NULL,
 	 exibir_rotulo_aproximado smallint NOT NULL,
+	 visivel smallint NOT NULL,
 	 observacao varchar(255),
 	 geom geometry(MultiLinestring, 4674),
 	 CONSTRAINT edicao_limite_especial_l_pk PRIMARY KEY (id)
@@ -4275,6 +4308,13 @@ ALTER TABLE edgv.edicao_limite_especial_l
 
 ALTER TABLE edgv.edicao_limite_especial_l ALTER COLUMN exibir_rotulo_aproximado SET DEFAULT 9999;
 
+ALTER TABLE edgv.edicao_limite_especial_l
+	 ADD CONSTRAINT edicao_limite_especial_l_visivel_fk FOREIGN KEY (visivel)
+	 REFERENCES dominios.booleano (code) MATCH FULL
+	 ON UPDATE NO ACTION ON DELETE NO ACTION;
+
+ALTER TABLE edgv.edicao_limite_especial_l ALTER COLUMN visivel SET DEFAULT 9999;
+
 CREATE TABLE edgv.centroide_area_sem_dados_p(
 	 id uuid NOT NULL DEFAULT uuid_generate_v4(),
 	 observacao varchar(255),
@@ -4297,44 +4337,41 @@ CREATE INDEX delimitador_area_sem_dados_l_geom ON edgv.delimitador_area_sem_dado
 
 ALTER TABLE edgv.delimitador_area_sem_dados_l OWNER TO postgres;
 
-CREATE TABLE edgv.aux_validacao_a(
+CREATE TABLE edgv.aux_observacao_a(
 	 id uuid NOT NULL DEFAULT uuid_generate_v4(),
 	 descricao varchar(255),
-	 subfase_id integer,
 	 observacao varchar(255),
 	 geom geometry(MultiPolygon, 4674),
-	 CONSTRAINT aux_validacao_a_pk PRIMARY KEY (id)
+	 CONSTRAINT aux_observacao_a_pk PRIMARY KEY (id)
 	 WITH (FILLFACTOR = 80)
 );
-CREATE INDEX aux_validacao_a_geom ON edgv.aux_validacao_a USING gist (geom);
+CREATE INDEX aux_observacao_a_geom ON edgv.aux_observacao_a USING gist (geom);
 
-ALTER TABLE edgv.aux_validacao_a OWNER TO postgres;
+ALTER TABLE edgv.aux_observacao_a OWNER TO postgres;
 
-CREATE TABLE edgv.aux_validacao_l(
+CREATE TABLE edgv.aux_observacao_l(
 	 id uuid NOT NULL DEFAULT uuid_generate_v4(),
 	 descricao varchar(255),
-	 subfase_id integer,
 	 observacao varchar(255),
 	 geom geometry(MultiLinestring, 4674),
-	 CONSTRAINT aux_validacao_l_pk PRIMARY KEY (id)
+	 CONSTRAINT aux_observacao_l_pk PRIMARY KEY (id)
 	 WITH (FILLFACTOR = 80)
 );
-CREATE INDEX aux_validacao_l_geom ON edgv.aux_validacao_l USING gist (geom);
+CREATE INDEX aux_observacao_l_geom ON edgv.aux_observacao_l USING gist (geom);
 
-ALTER TABLE edgv.aux_validacao_l OWNER TO postgres;
+ALTER TABLE edgv.aux_observacao_l OWNER TO postgres;
 
-CREATE TABLE edgv.aux_validacao_p(
+CREATE TABLE edgv.aux_observacao_p(
 	 id uuid NOT NULL DEFAULT uuid_generate_v4(),
 	 descricao varchar(255),
-	 subfase_id integer,
 	 observacao varchar(255),
 	 geom geometry(MultiPoint, 4674),
-	 CONSTRAINT aux_validacao_p_pk PRIMARY KEY (id)
+	 CONSTRAINT aux_observacao_p_pk PRIMARY KEY (id)
 	 WITH (FILLFACTOR = 80)
 );
-CREATE INDEX aux_validacao_p_geom ON edgv.aux_validacao_p USING gist (geom);
+CREATE INDEX aux_observacao_p_geom ON edgv.aux_observacao_p USING gist (geom);
 
-ALTER TABLE edgv.aux_validacao_p OWNER TO postgres;
+ALTER TABLE edgv.aux_observacao_p OWNER TO postgres;
 
 CREATE TABLE edgv.aux_revisao_a(
 	 id uuid NOT NULL DEFAULT uuid_generate_v4(),
@@ -4437,45 +4474,6 @@ CREATE TABLE edgv.aux_reambulacao_p(
 CREATE INDEX aux_reambulacao_p_geom ON edgv.aux_reambulacao_p USING gist (geom);
 
 ALTER TABLE edgv.aux_reambulacao_p OWNER TO postgres;
-
-CREATE TABLE edgv.aux_insumo_externo_a(
-	 id uuid NOT NULL DEFAULT uuid_generate_v4(),
-	 nome varchar(255),
-	 fonte varchar(255),
-	 observacao varchar(255),
-	 geom geometry(MultiPolygon, 4674),
-	 CONSTRAINT aux_insumo_externo_a_pk PRIMARY KEY (id)
-	 WITH (FILLFACTOR = 80)
-);
-CREATE INDEX aux_insumo_externo_a_geom ON edgv.aux_insumo_externo_a USING gist (geom);
-
-ALTER TABLE edgv.aux_insumo_externo_a OWNER TO postgres;
-
-CREATE TABLE edgv.aux_insumo_externo_l(
-	 id uuid NOT NULL DEFAULT uuid_generate_v4(),
-	 nome varchar(255),
-	 fonte varchar(255),
-	 observacao varchar(255),
-	 geom geometry(MultiLinestring, 4674),
-	 CONSTRAINT aux_insumo_externo_l_pk PRIMARY KEY (id)
-	 WITH (FILLFACTOR = 80)
-);
-CREATE INDEX aux_insumo_externo_l_geom ON edgv.aux_insumo_externo_l USING gist (geom);
-
-ALTER TABLE edgv.aux_insumo_externo_l OWNER TO postgres;
-
-CREATE TABLE edgv.aux_insumo_externo_p(
-	 id uuid NOT NULL DEFAULT uuid_generate_v4(),
-	 nome varchar(255),
-	 fonte varchar(255),
-	 observacao varchar(255),
-	 geom geometry(MultiPoint, 4674),
-	 CONSTRAINT aux_insumo_externo_p_pk PRIMARY KEY (id)
-	 WITH (FILLFACTOR = 80)
-);
-CREATE INDEX aux_insumo_externo_p_geom ON edgv.aux_insumo_externo_p USING gist (geom);
-
-ALTER TABLE edgv.aux_insumo_externo_p OWNER TO postgres;
 
 CREATE TABLE edgv.aux_moldura_a(
 	 id uuid NOT NULL DEFAULT uuid_generate_v4(),
