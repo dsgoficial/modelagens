@@ -128,3 +128,5 @@ venv.bak/
 #others
 *.pdf
 *.odt#
+
+node_modules
