@@ -12518,6 +12518,49 @@ ALTER TABLE edgv.enc_est_gerad_energia_eletrica_p
 
 ALTER TABLE edgv.enc_est_gerad_energia_eletrica_p ALTER COLUMN situacaofisica SET DEFAULT 9999;
 
+CREATE TABLE edgv.enc_est_gerad_energia_eletrica_l(
+	 id uuid NOT NULL DEFAULT uuid_generate_v4(),
+	 nome varchar(255),
+	 geometriaaproximada boolean NOT NULL,
+	 ceg varchar(16),
+	 tipoestgerad smallint NOT NULL,
+	 operacional smallint NOT NULL,
+	 situacaofisica smallint NOT NULL,
+	 potenciaout real,
+	 observacao VARCHAR(255),
+	 geom geometry(MultiLinestring, 4674),
+	 CONSTRAINT enc_est_gerad_energia_eletrica_l_pk PRIMARY KEY (id)
+	 WITH (FILLFACTOR = 80)
+);
+CREATE INDEX enc_est_gerad_energia_eletrica_l_geom ON edgv.enc_est_gerad_energia_eletrica_l USING gist (geom);
+
+ALTER TABLE edgv.enc_est_gerad_energia_eletrica_l OWNER TO postgres;
+
+ALTER TABLE edgv.enc_est_gerad_energia_eletrica_l
+	 ADD CONSTRAINT enc_est_gerad_energia_eletrica_l_tipoestgerad_fk FOREIGN KEY (tipoestgerad)
+	 REFERENCES dominios.tipo_est_gerad (code) MATCH FULL
+	 ON UPDATE NO ACTION ON DELETE NO ACTION;
+
+ALTER TABLE edgv.enc_est_gerad_energia_eletrica_l
+	 ADD CONSTRAINT enc_est_gerad_energia_eletrica_l_tipoestgerad_check 
+	 CHECK (tipoestgerad = ANY(ARRAY[0 :: SMALLINT, 6 :: SMALLINT, 7 :: SMALLINT, 99 :: SMALLINT, 9999 :: SMALLINT])); 
+
+ALTER TABLE edgv.enc_est_gerad_energia_eletrica_l ALTER COLUMN tipoestgerad SET DEFAULT 9999;
+
+ALTER TABLE edgv.enc_est_gerad_energia_eletrica_l
+	 ADD CONSTRAINT enc_est_gerad_energia_eletrica_l_operacional_fk FOREIGN KEY (operacional)
+	 REFERENCES dominios.auxiliar (code) MATCH FULL
+	 ON UPDATE NO ACTION ON DELETE NO ACTION;
+
+ALTER TABLE edgv.enc_est_gerad_energia_eletrica_l ALTER COLUMN operacional SET DEFAULT 9999;
+
+ALTER TABLE edgv.enc_est_gerad_energia_eletrica_l
+	 ADD CONSTRAINT enc_est_gerad_energia_eletrica_l_situacaofisica_fk FOREIGN KEY (situacaofisica)
+	 REFERENCES dominios.situacao_fisica (code) MATCH FULL
+	 ON UPDATE NO ACTION ON DELETE NO ACTION;
+
+ALTER TABLE edgv.enc_est_gerad_energia_eletrica_l ALTER COLUMN situacaofisica SET DEFAULT 9999;
+
 CREATE TABLE edgv.enc_est_gerad_energia_eletrica_a(
 	 id uuid NOT NULL DEFAULT uuid_generate_v4(),
 	 nome varchar(255),
@@ -12603,6 +12646,49 @@ ALTER TABLE edgv.enc_central_geradora_eolica_p
 	 ON UPDATE NO ACTION ON DELETE NO ACTION;
 
 ALTER TABLE edgv.enc_central_geradora_eolica_p ALTER COLUMN situacaofisica SET DEFAULT 9999;
+
+CREATE TABLE edgv.enc_central_geradora_eolica_l(
+	 id uuid NOT NULL DEFAULT uuid_generate_v4(),
+	 nome varchar(255),
+	 geometriaaproximada boolean NOT NULL,
+	 ceg varchar(16),
+	 tipoestgerad smallint NOT NULL,
+	 operacional smallint NOT NULL,
+	 situacaofisica smallint NOT NULL,
+	 potenciaout real,
+	 observacao VARCHAR(255),
+	 geom geometry(MultiLinestring, 4674),
+	 CONSTRAINT enc_central_geradora_eolica_l_pk PRIMARY KEY (id)
+	 WITH (FILLFACTOR = 80)
+);
+CREATE INDEX enc_central_geradora_eolica_l_geom ON edgv.enc_central_geradora_eolica_l USING gist (geom);
+
+ALTER TABLE edgv.enc_central_geradora_eolica_l OWNER TO postgres;
+
+ALTER TABLE edgv.enc_central_geradora_eolica_l
+	 ADD CONSTRAINT enc_central_geradora_eolica_l_tipoestgerad_fk FOREIGN KEY (tipoestgerad)
+	 REFERENCES dominios.tipo_est_gerad (code) MATCH FULL
+	 ON UPDATE NO ACTION ON DELETE NO ACTION;
+
+ALTER TABLE edgv.enc_central_geradora_eolica_l
+	 ADD CONSTRAINT enc_central_geradora_eolica_l_tipoestgerad_check 
+	 CHECK (tipoestgerad = ANY(ARRAY[5 :: SMALLINT, 9999 :: SMALLINT])); 
+
+ALTER TABLE edgv.enc_central_geradora_eolica_l ALTER COLUMN tipoestgerad SET DEFAULT 9999;
+
+ALTER TABLE edgv.enc_central_geradora_eolica_l
+	 ADD CONSTRAINT enc_central_geradora_eolica_l_operacional_fk FOREIGN KEY (operacional)
+	 REFERENCES dominios.auxiliar (code) MATCH FULL
+	 ON UPDATE NO ACTION ON DELETE NO ACTION;
+
+ALTER TABLE edgv.enc_central_geradora_eolica_l ALTER COLUMN operacional SET DEFAULT 9999;
+
+ALTER TABLE edgv.enc_central_geradora_eolica_l
+	 ADD CONSTRAINT enc_central_geradora_eolica_l_situacaofisica_fk FOREIGN KEY (situacaofisica)
+	 REFERENCES dominios.situacao_fisica (code) MATCH FULL
+	 ON UPDATE NO ACTION ON DELETE NO ACTION;
+
+ALTER TABLE edgv.enc_central_geradora_eolica_l ALTER COLUMN situacaofisica SET DEFAULT 9999;
 
 CREATE TABLE edgv.enc_central_geradora_eolica_a(
 	 id uuid NOT NULL DEFAULT uuid_generate_v4(),
@@ -14765,6 +14851,19 @@ ALTER TABLE edgv.hid_quebramar_molhe_a
 	 ON UPDATE NO ACTION ON DELETE NO ACTION;
 
 ALTER TABLE edgv.hid_quebramar_molhe_a ALTER COLUMN situacaofisica SET DEFAULT 9999;
+
+CREATE TABLE edgv.hid_foz_maritima_a(
+	 id uuid NOT NULL DEFAULT uuid_generate_v4(),
+	 nome varchar(255),
+	 geometriaaproximada boolean NOT NULL,
+	 observacao VARCHAR(255),
+	 geom geometry(MultiPolygon, 4674),
+	 CONSTRAINT hid_foz_maritima_a_pk PRIMARY KEY (id)
+	 WITH (FILLFACTOR = 80)
+);
+CREATE INDEX hid_foz_maritima_a_geom ON edgv.hid_foz_maritima_a USING gist (geom);
+
+ALTER TABLE edgv.hid_foz_maritima_a OWNER TO postgres;
 
 CREATE TABLE edgv.hid_foz_maritima_l(
 	 id uuid NOT NULL DEFAULT uuid_generate_v4(),

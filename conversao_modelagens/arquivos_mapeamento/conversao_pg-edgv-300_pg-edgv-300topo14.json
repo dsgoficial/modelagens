@@ -25,6 +25,11 @@
   "agregar_geom_B": true,
   "mapeamento_classes": [
     {
+      "__comment": "lml_pais <-> llp_pais",
+      "classe_A": "lml_pais",
+      "classe_B": "llp_pais"
+    },
+    {
       "__comment": "aux_obstaculo_vertical <-> infra_obstaculo_vertical",
       "classe_A": "aux_obstaculo_vertical",
       "classe_B": "infra_obstaculo_vertical",
@@ -7007,6 +7012,21 @@
       ]
     },
     {
+      "__comment": "hid_foz_maritima <-> elemnat_elemento_hidrografico | foz marítima",
+      "classe_A": "hid_foz_maritima",
+      "classe_B": "elemnat_elemento_hidrografico",
+      "filtro_B": {
+        "nome_atributo": "tipo",
+        "valor": 6
+      },
+      "atributos_default_B": [
+        {
+          "nome_atributo": "tipo",
+          "valor": 6
+        }
+      ]
+    },
+    {
       "__comment": "hid_banco_areia <-> elemnat_elemento_hidrografico | banco de areia",
       "classe_A": "hid_banco_areia",
       "classe_B": "elemnat_elemento_hidrografico",
@@ -8239,6 +8259,51 @@
               "valor_B": 498
             }
           ]
+        }
+      ]
+    },
+    {
+      "__comment": "edf_edif_constr_est_med_fen -> constr_edificacao | medição de fenômenos",
+      "classe_A": "edf_edif_constr_est_med_fen",
+      "classe_B": "constr_edificacao",
+      "filtro_B": {
+        "nome_atributo": "tipo",
+        "valor": 1501
+      },
+      "atributos_default_A": [
+        {
+          "nome_atributo": "turistica",
+          "valor": 0
+        },
+        {
+          "nome_atributo": "cultura",
+          "valor": 0
+        },
+        {
+          "nome_atributo": "proprioadm",
+          "valor": 0
+        },
+        {
+          "nome_atributo": "administracao",
+          "valor": 0
+        },
+        {
+          "nome_atributo": "classeativecon",
+          "valor": 0
+        },
+        {
+          "nome_atributo": "divisaoativecon",
+          "valor": 0
+        },
+        {
+          "nome_atributo": "grupoativecon",
+          "valor": 0
+        }
+      ],
+      "atributos_default_B": [
+        {
+          "nome_atributo": "tipo",
+          "valor": 1501
         }
       ]
     },

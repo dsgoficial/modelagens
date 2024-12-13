@@ -21,6 +21,146 @@
   },
   "dominios": [
     {
+      "nome": "sigla_uf",
+      "valores": [
+        {
+          "code": 1,
+          "value": "AC",
+          "descricao": "-"
+        },
+        {
+          "code": 2,
+          "value": "AL",
+          "descricao": "-"
+        },
+        {
+          "code": 3,
+          "value": "AM",
+          "descricao": "-"
+        },
+        {
+          "code": 4,
+          "value": "AP",
+          "descricao": "-"
+        },
+        {
+          "code": 5,
+          "value": "BA",
+          "descricao": "-"
+        },
+        {
+          "code": 6,
+          "value": "CE",
+          "descricao": "-"
+        },
+        {
+          "code": 7,
+          "value": "DF",
+          "descricao": "-"
+        },
+        {
+          "code": 8,
+          "value": "ES",
+          "descricao": "-"
+        },
+        {
+          "code": 9,
+          "value": "GO",
+          "descricao": "-"
+        },
+        {
+          "code": 10,
+          "value": "MA",
+          "descricao": "-"
+        },
+        {
+          "code": 11,
+          "value": "MG",
+          "descricao": "-"
+        },
+        {
+          "code": 12,
+          "value": "MS",
+          "descricao": "-"
+        },
+        {
+          "code": 13,
+          "value": "MT",
+          "descricao": "-"
+        },
+        {
+          "code": 14,
+          "value": "PA",
+          "descricao": "-"
+        },
+        {
+          "code": 15,
+          "value": "PB",
+          "descricao": "-"
+        },
+        {
+          "code": 16,
+          "value": "PE",
+          "descricao": "-"
+        },
+        {
+          "code": 17,
+          "value": "PI",
+          "descricao": "-"
+        },
+        {
+          "code": 18,
+          "value": "PR",
+          "descricao": "-"
+        },
+        {
+          "code": 19,
+          "value": "RJ",
+          "descricao": "-"
+        },
+        {
+          "code": 20,
+          "value": "RN",
+          "descricao": "-"
+        },
+        {
+          "code": 21,
+          "value": "RO",
+          "descricao": "-"
+        },
+        {
+          "code": 22,
+          "value": "RR",
+          "descricao": "-"
+        },
+        {
+          "code": 23,
+          "value": "RS",
+          "descricao": "-"
+        },
+        {
+          "code": 24,
+          "value": "SC",
+          "descricao": "-"
+        },
+        {
+          "code": 25,
+          "value": "SE",
+          "descricao": "-"
+        },
+        {
+          "code": 26,
+          "value": "SP",
+          "descricao": "-"
+        },
+        {
+          "code": 27,
+          "value": "TO",
+          "descricao": "-"
+        }
+      ]
+    },
+    {
       "nome": "tipo_obstaculo",
       "valores": [
         {
@@ -4980,7 +5120,8 @@
               "code": 408
             },
             {
-              "code": 409
+              "code": 409,
+              "primitivas": ["MultiPoint", "MultiPolygon"]
             },
             {
               "code": 498
@@ -5851,8 +5992,9 @@
         },
         {
           "nome": "sigla",
-          "tipo": "varchar(255)",
-          "cardinalidade": "0..1"
+          "tipo": "smallint",
+          "cardinalidade": "1..1",
+          "mapa_valor": "sigla_uf"
         },
         {
           "nome": "geometria_aproximada",

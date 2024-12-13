@@ -12573,7 +12573,7 @@
       "nome": "est_gerad_energia_eletrica",
       "categoria": "enc",
       "descricao": "-",
-      "primitivas": ["MultiPoint", "MultiPolygon"],
+      "primitivas": ["MultiPoint", "MultiLinestring", "MultiPolygon"],
       "atributos": [
         {
           "nome": "nome",
@@ -12640,7 +12640,7 @@
       "nome": "central_geradora_eolica",
       "categoria": "enc",
       "descricao": "-",
-      "primitivas": ["MultiPoint", "MultiPolygon"],
+      "primitivas": ["MultiPoint", "MultiLinestring", "MultiPolygon"],
       "atributos": [
         {
           "nome": "nome",
@@ -14193,7 +14193,7 @@
       "nome": "foz_maritima",
       "categoria": "hid",
       "descricao": "-",
-      "primitivas": ["MultiLinestring", "MultiPoint"],
+      "primitivas": ["MultiPolygon", "MultiLinestring", "MultiPoint"],
       "atributos": [
         {
           "nome": "nome",
