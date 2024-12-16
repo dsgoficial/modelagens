@@ -17464,7 +17464,7 @@ ALTER TABLE edgv.tra_ponte_l
 
 ALTER TABLE edgv.tra_ponte_l
 	 ADD CONSTRAINT tra_ponte_l_matconstr_check 
-	 CHECK (matconstr = ANY(ARRAY[0 :: SMALLINT, 1 :: SMALLINT, 2 :: SMALLINT, 3 :: SMALLINT, 4 :: SMALLINT, 5 :: SMALLINT, 8 :: SMALLINT, 99 :: SMALLINT, 9999 :: SMALLINT])); 
+	 CHECK (matconstr = ANY(ARRAY[0 :: SMALLINT, 1 :: SMALLINT, 2 :: SMALLINT, 3 :: SMALLINT, 4 :: SMALLINT, 5 :: SMALLINT, 99 :: SMALLINT, 9999 :: SMALLINT])); 
 
 ALTER TABLE edgv.tra_ponte_l ALTER COLUMN matconstr SET DEFAULT 9999;
 
@@ -17556,7 +17556,7 @@ ALTER TABLE edgv.tra_ponte_p
 
 ALTER TABLE edgv.tra_ponte_p
 	 ADD CONSTRAINT tra_ponte_p_matconstr_check 
-	 CHECK (matconstr = ANY(ARRAY[0 :: SMALLINT, 1 :: SMALLINT, 2 :: SMALLINT, 3 :: SMALLINT, 4 :: SMALLINT, 5 :: SMALLINT, 8 :: SMALLINT, 99 :: SMALLINT, 9999 :: SMALLINT])); 
+	 CHECK (matconstr = ANY(ARRAY[0 :: SMALLINT, 1 :: SMALLINT, 2 :: SMALLINT, 3 :: SMALLINT, 4 :: SMALLINT, 5 :: SMALLINT, 99 :: SMALLINT, 9999 :: SMALLINT])); 
 
 ALTER TABLE edgv.tra_ponte_p ALTER COLUMN matconstr SET DEFAULT 9999;
 
@@ -17648,7 +17648,7 @@ ALTER TABLE edgv.tra_ponte_a
 
 ALTER TABLE edgv.tra_ponte_a
 	 ADD CONSTRAINT tra_ponte_a_matconstr_check 
-	 CHECK (matconstr = ANY(ARRAY[0 :: SMALLINT, 1 :: SMALLINT, 2 :: SMALLINT, 3 :: SMALLINT, 4 :: SMALLINT, 5 :: SMALLINT, 8 :: SMALLINT, 99 :: SMALLINT, 9999 :: SMALLINT])); 
+	 CHECK (matconstr = ANY(ARRAY[0 :: SMALLINT, 1 :: SMALLINT, 2 :: SMALLINT, 3 :: SMALLINT, 4 :: SMALLINT, 5 :: SMALLINT, 99 :: SMALLINT, 9999 :: SMALLINT])); 
 
 ALTER TABLE edgv.tra_ponte_a ALTER COLUMN matconstr SET DEFAULT 9999;
 
@@ -18050,7 +18050,7 @@ ALTER TABLE edgv.tra_tunel_l
 
 ALTER TABLE edgv.tra_tunel_l
 	 ADD CONSTRAINT tra_tunel_l_modaluso_check 
-	 CHECK (modaluso = ANY(ARRAY[4 :: SMALLINT, 5 :: SMALLINT, 6 :: SMALLINT, 7 :: SMALLINT, 9 :: SMALLINT, 9999 :: SMALLINT])); 
+	 CHECK (modaluso = ANY(ARRAY[4 :: SMALLINT, 5 :: SMALLINT, 6 :: SMALLINT, 9 :: SMALLINT, 9999 :: SMALLINT])); 
 
 ALTER TABLE edgv.tra_tunel_l ALTER COLUMN modaluso SET DEFAULT 9999;
 
@@ -18140,7 +18140,7 @@ ALTER TABLE edgv.tra_tunel_p
 
 ALTER TABLE edgv.tra_tunel_p
 	 ADD CONSTRAINT tra_tunel_p_modaluso_check 
-	 CHECK (modaluso = ANY(ARRAY[4 :: SMALLINT, 5 :: SMALLINT, 6 :: SMALLINT, 7 :: SMALLINT, 9 :: SMALLINT, 9999 :: SMALLINT])); 
+	 CHECK (modaluso = ANY(ARRAY[4 :: SMALLINT, 5 :: SMALLINT, 6 :: SMALLINT, 9 :: SMALLINT, 9999 :: SMALLINT])); 
 
 ALTER TABLE edgv.tra_tunel_p ALTER COLUMN modaluso SET DEFAULT 9999;
 
@@ -18230,7 +18230,7 @@ ALTER TABLE edgv.tra_tunel_a
 
 ALTER TABLE edgv.tra_tunel_a
 	 ADD CONSTRAINT tra_tunel_a_modaluso_check 
-	 CHECK (modaluso = ANY(ARRAY[4 :: SMALLINT, 5 :: SMALLINT, 6 :: SMALLINT, 7 :: SMALLINT, 9 :: SMALLINT, 9999 :: SMALLINT])); 
+	 CHECK (modaluso = ANY(ARRAY[4 :: SMALLINT, 5 :: SMALLINT, 6 :: SMALLINT, 9 :: SMALLINT, 9999 :: SMALLINT])); 
 
 ALTER TABLE edgv.tra_tunel_a ALTER COLUMN modaluso SET DEFAULT 9999;
 

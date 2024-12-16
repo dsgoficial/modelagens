@@ -526,7 +526,7 @@ CREATE TABLE dominios.referencial_altim (
 INSERT INTO dominios.referencial_altim (code,code_name) VALUES (1,'Torres (1)');
 INSERT INTO dominios.referencial_altim (code,code_name) VALUES (2,'Imbituba (2)');
 INSERT INTO dominios.referencial_altim (code,code_name) VALUES (3,'Santana (3)');
-INSERT INTO dominios.referencial_altim (code,code_name) VALUES (4,'Local (4)');
+INSERT INTO dominios.referencial_altim (code,code_name) VALUES (99,'Outra referência (99)');
 INSERT INTO dominios.referencial_altim (code,code_name) VALUES (9999,'A SER PREENCHIDO (9999)');
 
 ALTER TABLE dominios.referencial_altim OWNER TO postgres;
@@ -1294,8 +1294,6 @@ INSERT INTO dominios.tipo_pto (code,code_name) VALUES (6,'Ponto Barométrico –
 INSERT INTO dominios.tipo_pto (code,code_name) VALUES (7,'Ponto Trigonométrico – RV (7)');
 INSERT INTO dominios.tipo_pto (code,code_name) VALUES (8,'Ponto de Satélite – SAT (8)');
 INSERT INTO dominios.tipo_pto (code,code_name) VALUES (9,'Ponto de controle (9)');
-INSERT INTO dominios.tipo_pto (code,code_name) VALUES (12,'Centro perspectivo (12)');
-INSERT INTO dominios.tipo_pto (code,code_name) VALUES (13,'Ponto fotogramétrico (13)');
 INSERT INTO dominios.tipo_pto (code,code_name) VALUES (14,'Marco internacional (14)');
 INSERT INTO dominios.tipo_pto (code,code_name) VALUES (15,'Marco estadual (15)');
 INSERT INTO dominios.tipo_pto (code,code_name) VALUES (16,'Marco municipal (16)');
@@ -3264,6 +3262,10 @@ ALTER TABLE edgv.infra_elemento_viario_l
 	 ADD CONSTRAINT infra_elemento_viario_l_modal_uso_fk FOREIGN KEY (modal_uso)
 	 REFERENCES dominios.modal_uso (code) MATCH FULL
 	 ON UPDATE NO ACTION ON DELETE NO ACTION;
+
+ALTER TABLE edgv.infra_elemento_viario_l
+	 ADD CONSTRAINT infra_elemento_viario_l_modal_uso_check 
+	 CHECK (modal_uso = ANY(ARRAY[4 :: SMALLINT, 5 :: SMALLINT, 6 :: SMALLINT, 9 :: SMALLINT, 97 :: SMALLINT, 9999 :: SMALLINT])); 
 
 ALTER TABLE edgv.infra_elemento_viario_l ALTER COLUMN modal_uso SET DEFAULT 9999;
 

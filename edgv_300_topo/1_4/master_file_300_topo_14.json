@@ -1203,8 +1203,9 @@
           "value": "Santana"
         },
         {
-          "code": 4,
-          "value": "Local"
+          "code": 99,
+          "value": "Outra referência",
+          "descricao": "-"
         }
       ]
     },
@@ -3567,14 +3568,6 @@
           "value": "Ponto de controle"
         },
         {
-          "code": 12,
-          "value": "Centro perspectivo"
-        },
-        {
-          "code": 13,
-          "value": "Ponto fotogramétrico"
-        },
-        {
           "code": 14,
           "value": "Marco internacional"
         },
@@ -5379,7 +5372,24 @@
           "nome": "modal_uso",
           "tipo": "smallint",
           "cardinalidade": "1..1",
-          "mapa_valor": "modal_uso"
+          "mapa_valor": "modal_uso",
+          "valores": [
+            {
+              "code": 4
+            },
+            {
+              "code": 5
+            },
+            {
+              "code": 6
+            },
+            {
+              "code": 9
+            },
+            {
+              "code": 97
+            }
+          ]
         },
         {
           "nome": "nr_faixas",

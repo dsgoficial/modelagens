@@ -25,6 +25,249 @@
   "agregar_geom_B": true,
   "mapeamento_classes": [
     {
+      "__comment": "pto_pto_geod_topo_controle <-> llp_ponto_controle",
+      "classe_A": "pto_pto_geod_topo_controle",
+      "classe_B": "llp_ponto_controle",
+      "filtro_B": {
+        "nome_atributo": "tipo",
+        "valor": 9
+      },
+      "atributos_default_B": [
+        {
+          "nome_atributo": "tipo",
+          "valor": 9
+        },
+        {
+          "nome_atributo": "referencial_grav",
+          "valor": 97
+        },
+        {
+          "nome_atributo": "situacao_marco",
+          "valor": 6
+        }
+      ],
+      "mapeamento_atributos": [
+        {
+          "attr_A": "altitudeortometrica",
+          "attr_B": "altitude_ortometrica"
+        },
+        {
+          "attr_A": "altitudegeometrica",
+          "attr_B": "altitude_geometrica"
+        },
+        {
+          "attr_A": "referencialaltim",
+          "attr_B": "referencial_altim"
+        },
+        {
+          "attr_A": "codponto",
+          "attr_B": "cod_ponto"
+        },
+        {
+          "attr_A": "tiporef",
+          "attr_B": "tipo_ref"
+        },
+        {
+          "attr_A": "sistemageodesico",
+          "attr_B": "sistema_geodesico",
+          "traducao": [
+            {
+              "valor_A": 7,
+              "valor_B": 6
+            },
+            {
+              "valor_A": 6,
+              "valor_B": 98
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "__comment": "pto_pto_ref_geod_topo <-> llp_ponto_controle",
+      "classe_A": "pto_pto_ref_geod_topo",
+      "classe_B": "llp_ponto_controle",
+      "filtro_B": {
+        "$or": [
+          {
+            "nome_atributo": "tipo",
+            "valor": 1
+          },
+          {
+            "nome_atributo": "tipo",
+            "valor": 2
+          },
+          {
+            "nome_atributo": "tipo",
+            "valor": 3
+          },
+          {
+            "nome_atributo": "tipo",
+            "valor": 4
+          },
+          {
+            "nome_atributo": "tipo",
+            "valor": 5
+          },
+          {
+            "nome_atributo": "tipo",
+            "valor": 6
+          },
+          {
+            "nome_atributo": "tipo",
+            "valor": 7
+          },
+          {
+            "nome_atributo": "tipo",
+            "valor": 8
+          }
+        ]
+      },
+      "atributos_default_A": [
+        {
+          "nome_atributo": "proximidade",
+          "valor": 0
+        },
+        {
+          "nome_atributo": "redereferencia",
+          "valor": 0
+        }
+      ],
+      "mapeamento_atributos": [
+        {
+          "attr_A": "tipoptorefgeodtopo",
+          "attr_B": "tipo"
+        },
+        {
+          "attr_A": "altitudeortometrica",
+          "attr_B": "altitude_ortometrica"
+        },
+        {
+          "attr_A": "referencialgrav",
+          "attr_B": "referencial_grav"
+        },
+        {
+          "attr_A": "situacaomarco",
+          "attr_B": "situacao_marco"
+        },
+        {
+          "attr_A": "altitudegeometrica",
+          "attr_B": "altitude_geometrica"
+        },
+        {
+          "attr_A": "referencialaltim",
+          "attr_B": "referencial_altim"
+        },
+        {
+          "attr_A": "codponto",
+          "attr_B": "cod_ponto"
+        },
+        {
+          "attr_A": "tiporef",
+          "attr_B": "tipo_ref"
+        },
+        {
+          "attr_A": "sistemageodesico",
+          "attr_B": "sistema_geodesico",
+          "traducao": [
+            {
+              "valor_A": 7,
+              "valor_B": 6
+            },
+            {
+              "valor_A": 6,
+              "valor_B": 98
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "__comment": "pto_marco_de_limite <-> llp_ponto_controle",
+      "classe_A": "pto_marco_de_limite",
+      "classe_B": "llp_ponto_controle",
+      "filtro_B": {
+        "$or": [
+          {
+            "nome_atributo": "tipo",
+            "valor": 14
+          },
+          {
+            "nome_atributo": "tipo",
+            "valor": 15
+          },
+          {
+            "nome_atributo": "tipo",
+            "valor": 16
+          }
+        ]
+      },
+      "atributos_default_B": [
+        {
+          "nome_atributo": "referencial_grav",
+          "valor": 97
+        },
+        {
+          "nome_atributo": "situacao_marco",
+          "valor": 6
+        }
+      ],
+      "mapeamento_atributos": [
+        {
+          "attr_A": "altitudeortometrica",
+          "attr_B": "altitude_ortometrica"
+        },
+        {
+          "attr_A": "referencialaltim",
+          "attr_B": "referencial_altim"
+        },
+        {
+          "attr_A": "nome",
+          "attr_B": "cod_ponto"
+        },
+        {
+          "attr_A": "tiporef",
+          "attr_B": "tipo_ref"
+        },
+        {
+          "attr_A": "orgaoenteresp",
+          "attr_B": "orgao_responsavel"
+        },
+        {
+          "attr_A": "sistemageodesico",
+          "attr_B": "sistema_geodesico",
+          "traducao": [
+            {
+              "valor_A": 7,
+              "valor_B": 6
+            },
+            {
+              "valor_A": 6,
+              "valor_B": 98
+            }
+          ]
+        },
+        {
+          "attr_A": "tipomarcolim",
+          "attr_B": "tipo",
+          "traducao": [
+            {
+              "valor_A": 26,
+              "valor_B": 14
+            },
+            {
+              "valor_A": 23,
+              "valor_B": 15
+            },
+            {
+              "valor_A": 3,
+              "valor_B": 16
+            }
+          ]
+        }
+      ]
+    },
+    {
       "__comment": "lml_pais <-> llp_pais",
       "classe_A": "lml_pais",
       "classe_B": "llp_pais"
@@ -1398,6 +1641,142 @@
       ]
     },
     {
+      "__comment": "veg_caatinga <-> cobter_vegetacao | caatinga",
+      "classe_A": "veg_caatinga",
+      "classe_B": "cobter_vegetacao",
+      "filtro_B": {
+        "nome_atributo": "tipo",
+        "valor": 801
+      },
+      "atributos_default_B": [
+        {
+          "nome_atributo": "tipo",
+          "valor": 801
+        }
+      ],
+      "atributos_default_A": [
+        {
+          "nome_atributo": "classificacaoporte",
+          "valor": 0
+        },
+        {
+          "nome_atributo": "antropizada",
+          "valor": 0
+        },
+        {
+          "nome_atributo": "densidade",
+          "valor": 0
+        },
+        {
+          "nome_atributo": "secundaria",
+          "valor": 0
+        }
+      ]
+    },
+    {
+      "__comment": "veg_cerrado <-> cobter_vegetacao | cerrado",
+      "classe_A": "veg_cerrado",
+      "classe_B": "cobter_vegetacao",
+      "filtro_B": {
+        "nome_atributo": "tipo",
+        "valor": 701
+      },
+      "atributos_default_B": [
+        {
+          "nome_atributo": "tipo",
+          "valor": 701
+        }
+      ],
+      "atributos_default_A": [
+        {
+          "nome_atributo": "classificacaoporte",
+          "valor": 0
+        },
+        {
+          "nome_atributo": "antropizada",
+          "valor": 0
+        },
+        {
+          "nome_atributo": "densidade",
+          "valor": 0
+        },
+        {
+          "nome_atributo": "secundaria",
+          "valor": 0
+        },
+        {
+          "nome_atributo": "vereda",
+          "valor": 0
+        }
+      ]
+    },
+    {
+      "__comment": "veg_campinarana <-> cobter_vegetacao | campinarana",
+      "classe_A": "veg_campinarana",
+      "classe_B": "cobter_vegetacao",
+      "filtro_B": {
+        "nome_atributo": "tipo",
+        "valor": 501
+      },
+      "atributos_default_B": [
+        {
+          "nome_atributo": "tipo",
+          "valor": 501
+        }
+      ],
+      "atributos_default_A": [
+        {
+          "nome_atributo": "classificacaoporte",
+          "valor": 0
+        },
+        {
+          "nome_atributo": "antropizada",
+          "valor": 0
+        },
+        {
+          "nome_atributo": "densidade",
+          "valor": 0
+        },
+        {
+          "nome_atributo": "secundaria",
+          "valor": 0
+        }
+      ]
+    },
+    {
+      "__comment": "veg_veg_restinga <-> cobter_vegetacao | restinga",
+      "classe_A": "veg_veg_restinga",
+      "classe_B": "cobter_vegetacao",
+      "filtro_B": {
+        "nome_atributo": "tipo",
+        "valor": 401
+      },
+      "atributos_default_B": [
+        {
+          "nome_atributo": "tipo",
+          "valor": 401
+        }
+      ],
+      "atributos_default_A": [
+        {
+          "nome_atributo": "classificacaoporte",
+          "valor": 0
+        },
+        {
+          "nome_atributo": "antropizada",
+          "valor": 0
+        },
+        {
+          "nome_atributo": "densidade",
+          "valor": 0
+        },
+        {
+          "nome_atributo": "secundaria",
+          "valor": 0
+        }
+      ]
+    },
+    {
       "__comment": "tra_patio <-> constr_ocupacao_solo | patio",
       "classe_A": "tra_patio",
       "classe_B": "constr_ocupacao_solo",
@@ -1474,7 +1853,7 @@
             },
             {
               "valor_A": 10,
-              "valor_B": 410
+              "valor_B": 415
             },
             {
               "valor_A": 14,
@@ -3635,11 +4014,6 @@
               "sentido": "A=>B"
             },
             {
-              "valor_A": 35,
-              "valor_B": 2501,
-              "sentido": "A=>B"
-            },
-            {
               "valor_A": 36,
               "valor_B": 2501,
               "sentido": "A=>B"
@@ -3652,6 +4026,10 @@
             {
               "valor_A": 99,
               "valor_B": 2501
+            },
+            {
+              "valor_A": 35,
+              "valor_B": 2502
             }
           ]
         }
@@ -5789,6 +6167,10 @@
         {
           "nome_atributo": "situacaoespacial",
           "valor": 0
+        },
+        {
+          "nome_atributo": "matconstr",
+          "valor": 0
         }
       ],
       "mapeamento_atributos": [
@@ -6117,7 +6499,7 @@
       "classe_B": "llp_unidade_federacao"
     },
     {
-      "__comment": "dut_trecho_duto <-> infra_trecho_duto  | água 301",
+      "__comment": "dut_trecho_duto <-> infra_trecho_duto",
       "classe_A": "dut_trecho_duto",
       "classe_B": "infra_trecho_duto",
       "filtro_A": {
@@ -6136,19 +6518,7 @@
           }
         ]
       },
-      "filtro_B": {
-        "nome_atributo": "tipo",
-        "valor": 301
-      },
       "atributos_default_A": [
-        {
-          "nome_atributo": "tipotrechoduto",
-          "valor": 1
-        },
-        {
-          "nome_atributo": "mattransp",
-          "valor": 1
-        },
         {
           "nome_atributo": "setor",
           "valor": 1
@@ -6160,6 +6530,304 @@
         {
           "nome_atributo": "situacaoespacial",
           "valor": 0
+        },
+        {
+          "nome_atributo": "situacaofisica",
+          "valor": 0
+        },
+        {
+          "nome_atributo": "posicaorelativa",
+          "valor": 0
+        }
+      ],
+      "mapeamento_multiplo": [
+        {
+          "tupla_A": [
+            {
+              "nome_atributo": "tipotrechoduto",
+              "valor": 2
+            },
+            {
+              "nome_atributo": "mattransp",
+              "valor": 1
+            }
+          ],
+          "tupla_B": [
+            {
+              "nome_atributo": "tipo",
+              "valor": 101
+            }
+          ]
+        },
+        {
+          "tupla_A": [
+            {
+              "nome_atributo": "tipotrechoduto",
+              "valor": 3
+            },
+            {
+              "nome_atributo": "mattransp",
+              "valor": 7
+            }
+          ],
+          "tupla_B": [
+            {
+              "nome_atributo": "tipo",
+              "valor": 201
+            }
+          ]
+        },
+        {
+          "tupla_A": [
+            {
+              "nome_atributo": "tipotrechoduto",
+              "valor": 3
+            },
+            {
+              "nome_atributo": "mattransp",
+              "valor": 6
+            }
+          ],
+          "tupla_B": [
+            {
+              "nome_atributo": "tipo",
+              "valor": 202
+            }
+          ]
+        },
+        {
+          "tupla_A": [
+            {
+              "nome_atributo": "tipotrechoduto",
+              "valor": 3
+            },
+            {
+              "nome_atributo": "mattransp",
+              "valor": 99
+            }
+          ],
+          "tupla_B": [
+            {
+              "nome_atributo": "tipo",
+              "valor": 298
+            }
+          ]
+        },
+        {
+          "tupla_A": [
+            {
+              "nome_atributo": "tipotrechoduto",
+              "valor": 1
+            },
+            {
+              "nome_atributo": "mattransp",
+              "valor": 0
+            }
+          ],
+          "tupla_B": [
+            {
+              "nome_atributo": "tipo",
+              "valor": 300
+            }
+          ]
+        },
+        {
+          "tupla_A": [
+            {
+              "nome_atributo": "tipotrechoduto",
+              "valor": 1
+            },
+            {
+              "nome_atributo": "mattransp",
+              "valor": 1
+            }
+          ],
+          "tupla_B": [
+            {
+              "nome_atributo": "tipo",
+              "valor": 301
+            }
+          ]
+        },
+        {
+          "tupla_A": [
+            {
+              "nome_atributo": "tipotrechoduto",
+              "valor": 1
+            },
+            {
+              "nome_atributo": "mattransp",
+              "valor": 2
+            }
+          ],
+          "tupla_B": [
+            {
+              "nome_atributo": "tipo",
+              "valor": 302
+            }
+          ]
+        },
+        {
+          "tupla_A": [
+            {
+              "nome_atributo": "tipotrechoduto",
+              "valor": 1
+            },
+            {
+              "nome_atributo": "mattransp",
+              "valor": 29
+            }
+          ],
+          "tupla_B": [
+            {
+              "nome_atributo": "tipo",
+              "valor": 303
+            }
+          ]
+        },
+        {
+          "tupla_A": [
+            {
+              "nome_atributo": "tipotrechoduto",
+              "valor": 1
+            },
+            {
+              "nome_atributo": "mattransp",
+              "valor": 30
+            }
+          ],
+          "tupla_B": [
+            {
+              "nome_atributo": "tipo",
+              "valor": 304
+            }
+          ]
+        },
+        {
+          "tupla_A": [
+            {
+              "nome_atributo": "tipotrechoduto",
+              "valor": 1
+            },
+            {
+              "nome_atributo": "mattransp",
+              "valor": 31
+            }
+          ],
+          "tupla_B": [
+            {
+              "nome_atributo": "tipo",
+              "valor": 305
+            }
+          ]
+        },
+        {
+          "tupla_A": [
+            {
+              "nome_atributo": "tipotrechoduto",
+              "valor": 1
+            },
+            {
+              "nome_atributo": "mattransp",
+              "valor": 3
+            }
+          ],
+          "tupla_B": [
+            {
+              "nome_atributo": "tipo",
+              "valor": 306
+            }
+          ]
+        },
+        {
+          "tupla_A": [
+            {
+              "nome_atributo": "tipotrechoduto",
+              "valor": 1
+            },
+            {
+              "nome_atributo": "mattransp",
+              "valor": 4
+            }
+          ],
+          "tupla_B": [
+            {
+              "nome_atributo": "tipo",
+              "valor": 307
+            }
+          ]
+        },
+        {
+          "tupla_A": [
+            {
+              "nome_atributo": "tipotrechoduto",
+              "valor": 1
+            },
+            {
+              "nome_atributo": "mattransp",
+              "valor": 5
+            }
+          ],
+          "tupla_B": [
+            {
+              "nome_atributo": "tipo",
+              "valor": 308
+            }
+          ]
+        },
+        {
+          "tupla_A": [
+            {
+              "nome_atributo": "tipotrechoduto",
+              "valor": 1
+            },
+            {
+              "nome_atributo": "mattransp",
+              "valor": 8
+            }
+          ],
+          "tupla_B": [
+            {
+              "nome_atributo": "tipo",
+              "valor": 309
+            }
+          ]
+        },
+        {
+          "tupla_A": [
+            {
+              "nome_atributo": "tipotrechoduto",
+              "valor": 1
+            },
+            {
+              "nome_atributo": "mattransp",
+              "valor": 9
+            }
+          ],
+          "tupla_B": [
+            {
+              "nome_atributo": "tipo",
+              "valor": 310
+            }
+          ]
+        },
+        {
+          "tupla_A": [
+            {
+              "nome_atributo": "tipotrechoduto",
+              "valor": 1
+            },
+            {
+              "nome_atributo": "mattransp",
+              "valor": 99
+            }
+          ],
+          "tupla_B": [
+            {
+              "nome_atributo": "tipo",
+              "valor": 398
+            }
+          ]
         }
       ]
     },
@@ -6303,6 +6971,168 @@
         "nome_atributo": "tipo",
         "valor": 601
       }
+    },
+    {
+      "__comment": "hid_comporta <-> infra_elemento_infraestrutura | comporta",
+      "classe_A": "hid_comporta",
+      "classe_B": "infra_elemento_infraestrutura",
+      "atributos_default_B": [
+        {
+          "nome_atributo": "tipo",
+          "valor": 901
+        }
+      ],
+      "filtro_B": {
+        "nome_atributo": "tipo",
+        "valor": 901
+      }
+    },
+    {
+      "__comment": "tra_funicular <-> infra_elemento_infraestrutura | funicular",
+      "classe_A": "tra_funicular",
+      "classe_B": "infra_elemento_infraestrutura",
+      "atributos_default_B": [
+        {
+          "nome_atributo": "tipo",
+          "valor": 1501
+        }
+      ],
+      "filtro_B": {
+        "nome_atributo": "tipo",
+        "valor": 1501
+      }
+    },
+    {
+      "__comment": "fer_cremalheira <-> infra_elemento_infraestrutura | Cremalheira",
+      "classe_A": "fer_cremalheira",
+      "classe_B": "infra_elemento_infraestrutura",
+      "atributos_default_B": [
+        {
+          "nome_atributo": "tipo",
+          "valor": 1601
+        }
+      ],
+      "filtro_B": {
+        "nome_atributo": "tipo",
+        "valor": 1601
+      }
+    },
+    {
+      "__comment": "fer_girador_ferroviario <-> infra_elemento_infraestrutura | girador ferroviário",
+      "classe_A": "fer_girador_ferroviario",
+      "classe_B": "infra_elemento_infraestrutura",
+      "atributos_default_B": [
+        {
+          "nome_atributo": "tipo",
+          "valor": 1701
+        }
+      ],
+      "filtro_B": {
+        "nome_atributo": "tipo",
+        "valor": 1701
+      },
+      "atributos_default_A": [
+        {
+          "nome_atributo": "administracao",
+          "valor": 0
+        }
+      ]
+    },
+    {
+      "__comment": "hdv_eclusa <-> infra_elemento_infraestrutura | eclusa",
+      "classe_A": "hdv_eclusa",
+      "classe_B": "infra_elemento_infraestrutura",
+      "atributos_default_B": [
+        {
+          "nome_atributo": "tipo",
+          "valor": 1001
+        }
+      ],
+      "filtro_B": {
+        "nome_atributo": "tipo",
+        "valor": 1001
+      },
+      "atributos_default_A": [
+        {
+          "nome_atributo": "matconstr",
+          "valor": 0
+        }
+      ]
+    },
+    {
+      "__comment": "hdv_fundeadouro <-> infra_elemento_infraestrutura | fundeadouro",
+      "classe_A": "hdv_fundeadouro",
+      "classe_B": "infra_elemento_infraestrutura",
+      "atributos_default_B": [
+        {
+          "nome_atributo": "tipo",
+          "valor": 1801
+        }
+      ],
+      "filtro_B": {
+        "nome_atributo": "tipo",
+        "valor": 1801
+      },
+      "atributos_default_A": [
+        {
+          "nome_atributo": "tipofundeadouro",
+          "valor": 0
+        },
+        {
+          "nome_atributo": "administracao",
+          "valor": 0
+        }
+      ]
+    },
+    {
+      "__comment": "eco_plataforma <-> infra_elemento_infraestrutura | plataforma",
+      "classe_A": "eco_plataforma",
+      "classe_B": "infra_elemento_infraestrutura",
+      "filtro_B": {
+        "$or": [
+          {
+            "nome_atributo": "tipo",
+            "valor": 1400
+          },
+          {
+            "nome_atributo": "tipo",
+            "valor": 1401
+          },
+          {
+            "nome_atributo": "tipo",
+            "valor": 1402
+          },
+          {
+            "nome_atributo": "tipo",
+            "valor": 1495
+          }
+        ]
+      },
+      "mapeamento_atributos": [
+        {
+          "attr_A": "tipoplataforma",
+          "attr_B": "tipo",
+          "traducao": [
+            {
+              "valor_A": 0,
+              "valor_B": 1400
+            },
+            {
+              "valor_A": 3,
+              "valor_B": 1401
+            },
+            {
+              "valor_A": 5,
+              "valor_B": 1402
+            },
+            {
+              "valor_A": 98,
+              "valor_B": 1495
+            }
+          ]
+        }
+      ]
+
     },
     {
       "__comment": "rel_elemento_fisiografico_natural <-> elemnat_toponimo_fisiografico_natural",
@@ -6861,6 +7691,49 @@
       ]
     },
     {
+      "__comment": "hid_recife <-> elemnat_elemento_hidrografico | recife",
+      "classe_A": "hid_recife",
+      "classe_B": "elemnat_elemento_hidrografico",
+      "filtro_B": {
+        "$or": [
+          {
+            "nome_atributo": "tipo",
+            "valor": 18
+          },
+          {
+            "nome_atributo": "tipo",
+            "valor": 19
+          }
+        ]
+      },
+      "atributos_default_A": [
+        {
+          "nome_atributo": "tiporecife",
+          "valor": 0
+        },
+        {
+          "nome_atributo": "situacaoemagua",
+          "valor": 0
+        }
+      ],
+      "mapeamento_atributos": [
+        {
+          "attr_A": "situacaocosta",
+          "attr_B": "tipo",
+          "traducao": [
+            {
+              "valor_A": 10,
+              "valor_B": 18
+            },
+            {
+              "valor_A": 11,
+              "valor_B": 19
+            }
+          ]
+        }
+      ]
+    },
+    {
       "__comment": "hid_queda_dagua <-> elemnat_elemento_hidrografico | queda dagua",
       "classe_A": "hid_queda_dagua",
       "classe_B": "elemnat_elemento_hidrografico",
@@ -6907,11 +7780,19 @@
       ]
     },
     {
-      "__comment": "hid_fonte_dagua <-> elemnat_elemento_hidrografico | olho dágua",
+      "__comment": "hid_fonte_dagua <-> elemnat_elemento_hidrografico | fonte dágua",
       "classe_A": "hid_fonte_dagua",
       "classe_B": "elemnat_elemento_hidrografico",
       "filtro_B": {
         "$or": [
+          {
+            "nome_atributo": "tipo",
+            "valor": 1
+          },
+          {
+            "nome_atributo": "tipo",
+            "valor": 2
+          },
           {
             "nome_atributo": "tipo",
             "valor": 3
@@ -6929,6 +7810,42 @@
         }
       ],
       "mapeamento_multiplo": [
+        {
+          "tupla_A": [
+            {
+              "nome_atributo": "tipofontedagua",
+              "valor": 1
+            },
+            {
+              "nome_atributo": "regime",
+              "valor": 0
+            }
+          ],
+          "tupla_B": [
+            {
+              "nome_atributo": "tipo",
+              "valor": 1
+            }
+          ]
+        },
+        {
+          "tupla_A": [
+            {
+              "nome_atributo": "tipofontedagua",
+              "valor": 2
+            },
+            {
+              "nome_atributo": "regime",
+              "valor": 0
+            }
+          ],
+          "tupla_B": [
+            {
+              "nome_atributo": "tipo",
+              "valor": 2
+            }
+          ]
+        },
         {
           "tupla_A": [
             {
@@ -7337,6 +8254,114 @@
         {
           "nome_atributo": "tipo",
           "valor": 1001
+        }
+      ]
+    },
+    {
+      "__comment": "laz_sitio_arqueologico <-> constr_ocupacao_solo | Sítio Arqueológico",
+      "classe_A": "laz_sitio_arqueologico",
+      "classe_B": "constr_ocupacao_solo",
+      "filtro_B": {
+        "nome_atributo": "tipo",
+        "valor": 601
+      },
+      "atributos_default_B": [
+        {
+          "nome_atributo": "tipo",
+          "valor": 601
+        }
+      ],
+      "atributos_default_A": [
+        {
+          "nome_atributo": "turistica",
+          "valor": 0
+        },
+        {
+          "nome_atributo": "cultura",
+          "valor": 1
+        }
+      ]
+    },
+    {
+      "__comment": "eco_equip_agropec <-> constr_ocupacao_solo | Equipamento agropecuário",
+      "classe_A": "eco_equip_agropec",
+      "classe_B": "constr_ocupacao_solo",
+      "filtro_B": {
+        "$or": [
+          {
+            "nome_atributo": "tipo",
+            "valor": 801
+          },
+          {
+            "nome_atributo": "tipo",
+            "valor": 802
+          },
+          {
+            "nome_atributo": "tipo",
+            "valor": 803
+          },
+          {
+            "nome_atributo": "tipo",
+            "valor": 804
+          },
+          {
+            "nome_atributo": "tipo",
+            "valor": 805
+          },
+          {
+            "nome_atributo": "tipo",
+            "valor": 806
+          }
+        ]
+      },
+      "atributos_default_A": [
+        {
+          "nome_atributo": "turistica",
+          "valor": 0
+        },
+        {
+          "nome_atributo": "cultura",
+          "valor": 1
+        },
+        {
+          "nome_atributo": "matconstr",
+          "valor": 0
+        },
+        {
+          "nome_atributo": "situacaofisica",
+          "valor": 5
+        }
+      ],
+      "mapeamento_atributos": [
+        {
+          "attr_A": "tipoequipagropec",
+          "attr_B": "tipo",
+          "traducao": [
+            {
+              "valor_A": 4,
+              "valor_B": 801
+            },
+            {
+              "valor_A": 2,
+              "valor_B": 802
+            },
+            {
+              "valor_A": 5,
+              "valor_B": 803
+            },
+            {
+              "valor_A": 6,
+              "valor_B": 804
+            },
+            {
+              "valor_A": 3,
+              "valor_B": 805
+            },
+            {
+              "valor_A": 1,
+              "valor_B": 806
+            }
+          ]
         }
       ]
     },

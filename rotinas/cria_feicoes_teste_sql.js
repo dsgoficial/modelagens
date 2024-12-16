@@ -106,7 +106,7 @@ class PostGISFeatureGenerator {
                     switch (attr.tipo) {
                         case 'varchar(255)':
                             // Regras específicas para campos varchar
-                            if (attrName === 'nr_pistas' || attrName === 'nr_faixas') {
+                            if (attrName === 'nr_pistas' || attrName === 'nr_faixas' || attrName === 'altitude_ortometrica' || attrName === 'altitude_geometrica') {
                                 singleValueAttrs[attrName] = '1';
                             } else if (attrName === 'sigla') {
                                 singleValueAttrs[attrName] = 'BR';
@@ -136,7 +136,7 @@ class PostGISFeatureGenerator {
                 switch (attr.tipo) {
                     case 'varchar(255)':
                         // Regras específicas para campos varchar
-                        if (attrName === 'nr_pistas' || attrName === 'nr_faixas') {
+                        if (attrName === 'nr_pistas' || attrName === 'nr_faixas' || attrName === 'altitude_ortometrica' || attrName === 'altitude_geometrica') {
                             attrValues[attrName] = ['1'];
                         } else if (attrName === 'sigla') {
                             attrValues[attrName] = ['BR'];
@@ -185,6 +185,57 @@ class PostGISFeatureGenerator {
             for (let j = 0; j < values.length; j++) {
                 combination[keys[j]] = values[j][indexes[j]];
             }
+
+            // Adiciona regras específicas para infra_elemento_viario_l
+            if (classDef.nome === 'elemento_viario' && classDef.categoria === 'infra') {
+                // Regra 1: modal_uso 97 só pode ser usado se tipo = 501
+                if (combination.tipo !== 501 && combination.modal_uso === 97) {
+                    i = 0;
+                    while (i < values.length) {
+                        indexes[i]++;
+                        if (indexes[i] < values[i].length) {
+                            break;
+                        }
+                        indexes[i] = 0;
+                        i++;
+                    }
+                    continue;
+                }
+                
+                // Regra 2: material_construcao 97 só pode ser usado se tipo = 401 ou 402
+                if (combination.material_construcao === 97 && 
+                    combination.tipo !== 401 && combination.tipo !== 402) {
+                    i = 0;
+                    while (i < values.length) {
+                        indexes[i]++;
+                        if (indexes[i] < values[i].length) {
+                            break;
+                        }
+                        indexes[i] = 0;
+                        i++;
+                    }
+                    continue;
+                }
+            }
+
+            // Regras específicas para llp_ponto_controle
+            if (classDef.nome === 'ponto_controle' && classDef.categoria === 'llp') {
+                // situacao_marco 97 só pode ser usado se tipo = 9, 14, 15 ou 16
+                const tiposPermitidos = [9, 14, 15, 16];
+                if (combination.situacao_marco === 97 && !tiposPermitidos.includes(combination.tipo)) {
+                    i = 0;
+                    while (i < values.length) {
+                        indexes[i]++;
+                        if (indexes[i] < values[i].length) {
+                            break;
+                        }
+                        indexes[i] = 0;
+                        i++;
+                    }
+                    continue;
+                }
+            }
+
             combinations.push({ ...combination, ...singleValueAttrs });
 
             // Atualiza os índices
@@ -319,7 +370,7 @@ async function main() {
     console.log('\n=== Iniciando processo de geração de features ===\n');
 
     const dbParams = {
-        database: 'edgv30',
+        database: 'topo14',
         user: 'postgres',
         password: 'postgres',
         host: 'localhost',
@@ -334,7 +385,7 @@ async function main() {
 
         const generator = new PostGISFeatureGenerator(dbParams);
         console.log('Carregando masterfile...');
-        await generator.loadMasterfile('c:/Diniz/modelagens/edgv_300/master_file_300.json');
+        await generator.loadMasterfile('c:/Diniz/modelagens/edgv_300_topo/1_4/master_file_300_topo_14.json');
 
         const client = await generator.pool.connect();
         console.log('Conectado ao banco de dados');
