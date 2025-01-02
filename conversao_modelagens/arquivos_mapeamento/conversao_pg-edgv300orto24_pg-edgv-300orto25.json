@@ -47,7 +47,13 @@
     },
     {
       "classe_A": "elemnat_curva_nivel",
-      "classe_B": "elemnat_curva_nivel"
+      "classe_B": "elemnat_curva_nivel",
+      "atributos_default_B": [
+        {
+          "nome_atributo": "dentro_massa_dagua",
+          "valor": 2
+        }
+      ]
     },
     {
       "classe_A": "elemnat_elemento_hidrografico",
