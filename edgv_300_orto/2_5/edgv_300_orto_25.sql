@@ -376,6 +376,7 @@ INSERT INTO dominios.tipo_elemento_energia (code,code_name, filter) VALUES (407,
 INSERT INTO dominios.tipo_elemento_energia (code,code_name, filter) VALUES (498,'Estação geradora – Outras (498)','Estação geradora de energia');
 INSERT INTO dominios.tipo_elemento_energia (code,code_name, filter) VALUES (406,'Estação geradora – Solar (406)','Estação geradora de energia');
 INSERT INTO dominios.tipo_elemento_energia (code,code_name, filter) VALUES (409,'Estação geradora – Termelétrica (409)','Estação geradora de energia');
+INSERT INTO dominios.tipo_elemento_energia (code,code_name, filter) VALUES (1401,'Torre de energia (1401)','Torre de energia');
 INSERT INTO dominios.tipo_elemento_energia (code,code_name, filter) VALUES (1801,'Subestação de transmissão de energia elétrica (1801)','Subestação de energia');
 INSERT INTO dominios.tipo_elemento_energia (code,code_name, filter) VALUES (1802,'Subestação de distribuição de energia elétrica (1802)','Subestação de energia');
 INSERT INTO dominios.tipo_elemento_energia (code,code_name, filter) VALUES (9999,'A SER PREENCHIDO (9999)','A SER PREENCHIDO (9999)');
@@ -1512,7 +1513,7 @@ ALTER TABLE edgv.infra_elemento_energia_p
 
 ALTER TABLE edgv.infra_elemento_energia_p
 	 ADD CONSTRAINT infra_elemento_energia_p_tipo_check 
-	 CHECK (tipo = ANY(ARRAY[405 :: SMALLINT, 406 :: SMALLINT, 407 :: SMALLINT, 408 :: SMALLINT, 409 :: SMALLINT, 498 :: SMALLINT, 1801 :: SMALLINT, 1802 :: SMALLINT, 9999 :: SMALLINT])); 
+	 CHECK (tipo = ANY(ARRAY[1401 :: SMALLINT, 405 :: SMALLINT, 406 :: SMALLINT, 407 :: SMALLINT, 408 :: SMALLINT, 409 :: SMALLINT, 498 :: SMALLINT, 1801 :: SMALLINT, 1802 :: SMALLINT, 9999 :: SMALLINT])); 
 
 ALTER TABLE edgv.infra_elemento_energia_p ALTER COLUMN tipo SET DEFAULT 9999;
 

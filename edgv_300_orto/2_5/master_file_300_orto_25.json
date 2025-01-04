@@ -942,6 +942,11 @@
           "valor_filtro": "Estação geradora de energia"
         },
         {
+          "code": 1401,
+          "value": "Torre de energia",
+          "valor_filtro": "Torre de energia"
+        },
+        {
           "code": 1801,
           "value": "Subestação de transmissão de energia elétrica",
           "valor_filtro": "Subestação de energia"
@@ -2097,6 +2102,10 @@
             {
               "code": 303,
               "primitivas": ["MultiLinestring"]
+            },
+            {
+              "code": 1401,
+              "primitivas": ["MultiPoint"]
             },
             {
               "code": 405
