@@ -510,7 +510,13 @@
     },
     {
       "classe_A": "elemnat_toponimo_fisiografico_natural",
-      "classe_B": "elemnat_toponimo_fisiografico_natural"
+      "classe_B": "elemnat_toponimo_fisiografico_natural",
+      "atributos_default_B": [
+        {
+          "nome_atributo": "visivel",
+          "valor": 1
+        }
+      ]
     },
     {
       "classe_A": "elemnat_trecho_drenagem",
@@ -540,7 +546,13 @@
     },
     {
       "classe_A": "llp_limite_especial",
-      "classe_B": "llp_limite_especial"
+      "classe_B": "llp_limite_especial",
+      "atributos_default_B": [
+        {
+          "nome_atributo": "visivel",
+          "valor": 1
+        }
+      ]
     },
     {
       "classe_A": "llp_unidade_federacao",
