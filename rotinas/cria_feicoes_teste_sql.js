@@ -12,6 +12,47 @@ class PostGISFeatureGenerator {
         this.pool.on('error', (err) => {
             console.error('Erro inesperado no pool de conexões:', err);
         });
+
+        this.gridPositions = {
+            MultiPoint: { x: 0, y: 0, count: 0 },
+            MultiLinestring: { x: 0, y: 0, count: 0 },
+            MultiPolygon: { x: 0, y: 0, count: 0 }
+        };
+
+        this.gridSpacing = 10;
+        this.maxPerRow = 10;
+        this.areaSpacing = 200;
+
+        this.geometrySizes = {
+            MultiPoint: 1,      // Size of point
+            MultiLinestring: 4, // Size of line
+            MultiPolygon: 6     // Size of polygon side
+        }
+
+        this.startingPositions = {
+            MultiPoint: { x: 0, y: 0 },
+            MultiLinestring: { x: 0, y: this.areaSpacing },
+            MultiPolygon: { x: 0, y: this.areaSpacing * 2 }
+        };
+    }
+
+    getNextGridPosition(primitiveType) {
+        const pos = this.gridPositions[primitiveType];
+        const start = this.startingPositions[primitiveType];
+        
+        // Calculate actual position
+        const x = start.x + (pos.x * this.gridSpacing);
+        const y = start.y + (pos.y * this.gridSpacing);
+        
+        // Update position for next feature
+        pos.count++;
+        pos.x++;
+        if (pos.x >= this.maxPerRow) {
+            pos.x = 0;
+            pos.y++;
+        }
+        
+        return { x, y };
     }
 
     async loadMasterfile(path) {
@@ -57,22 +98,49 @@ class PostGISFeatureGenerator {
     }
 
     createTestGeometry(primitiveType) {
+        const pos = this.getNextGridPosition(primitiveType);
+        const size = this.geometrySizes[primitiveType];
         let wkt;
+        
+        // Calculate center of the grid cell
+        const centerX = pos.x + (this.gridSpacing / 2);
+        const centerY = pos.y + (this.gridSpacing / 2);
+        
         switch (primitiveType) {
             case 'MultiPoint':
-                wkt = 'MULTIPOINT((0 0))';
+                wkt = `MULTIPOINT((${centerX} ${centerY}))`;
                 break;
             case 'MultiLinestring':
-                wkt = 'MULTILINESTRING((0 0, 1 1, 2 0))';
+                // Create a line segment centered in the cell
+                const halfLine = size / 2;
+                wkt = `MULTILINESTRING((
+                    ${centerX - halfLine} ${centerY - halfLine}, 
+                    ${centerX + halfLine} ${centerY + halfLine}
+                ))`;
                 break;
             case 'MultiPolygon':
-                wkt = 'MULTIPOLYGON(((0 0, 2 0, 2 2, 0 2, 0 0)))';
+                // Create a square centered in the cell
+                const halfSquare = size / 2;
+                wkt = `MULTIPOLYGON(((
+                    ${centerX - halfSquare} ${centerY - halfSquare}, 
+                    ${centerX + halfSquare} ${centerY - halfSquare}, 
+                    ${centerX + halfSquare} ${centerY + halfSquare}, 
+                    ${centerX - halfSquare} ${centerY + halfSquare}, 
+                    ${centerX - halfSquare} ${centerY - halfSquare}
+                )))`;
                 break;
             default:
                 console.warn(`Tipo de primitiva não reconhecido: ${primitiveType}`);
                 return null;
         }
         return wkt;
+    }
+
+    // Reset grid positions for a new batch of features
+    resetGridPositions() {
+        Object.keys(this.gridPositions).forEach(key => {
+            this.gridPositions[key] = { x: 0, y: 0, count: 0 };
+        });
     }
 
     generateAttributeCombinations(classDef, primitiveType) {
@@ -282,9 +350,6 @@ class PostGISFeatureGenerator {
                 return;
             }
 
-            const wkt = this.createTestGeometry(primitiveType);
-            if (!wkt) return;
-
             const client = await this.pool.connect();
 
             try {
@@ -295,6 +360,9 @@ class PostGISFeatureGenerator {
                 let batch = [];
 
                 for (const attrs of this.generateAttributeCombinations(classDef, primitiveType)) {
+                    const wkt = this.createTestGeometry(primitiveType);
+                    if (!wkt) continue;
+
                     const { sql, values } = this.generateInsertSQL(
                         schema, table, attrs, 'geom', wkt
                     );
@@ -317,6 +385,7 @@ class PostGISFeatureGenerator {
                 }
 
                 if (count === 0) {
+                    const wkt = this.createTestGeometry(primitiveType);
                     const sql = `
                         INSERT INTO ${schema}.${table} (geom)
                         VALUES (ST_GeomFromText($1, 4674))
@@ -370,7 +439,7 @@ async function main() {
     console.log('\n=== Iniciando processo de geração de features ===\n');
 
     const dbParams = {
-        database: 'topo14',
+        database: 'topo14_teste2',
         user: 'postgres',
         password: 'postgres',
         host: 'localhost',
