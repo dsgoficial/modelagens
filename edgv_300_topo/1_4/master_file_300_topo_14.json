@@ -1,6 +1,6 @@
 {
   "modelo": "EDGV 3.0 Topo",
-  "versao": "1.4.0",
+  "versao": "1.4.1",
   "schema_dados": "edgv",
   "schema_dominios": "dominios",
   "a_ser_preenchido": {
@@ -5546,7 +5546,7 @@
           "tipo": "smallint",
           "cardinalidade": "1..1",
           "mapa_valor": "tipo_elemento_viario",
-          "valores": [101, 201, 202, 203, 204, 301, 302, 501, 97]
+          "valores": [101, 102, 201, 202, 203, 204, 301, 302, 97]
         },
         {
           "nome": "nome_elemento_viario",
@@ -5896,7 +5896,7 @@
           "tipo": "smallint",
           "cardinalidade": "1..1",
           "mapa_valor": "tipo_elemento_viario",
-          "valores": [101, 102, 201, 202, 203, 204, 301, 302, 401, 402, 501, 97]
+          "valores": [101, 102, 201, 202, 203, 204, 301, 302, 401, 402, 97]
         },
         {
           "nome": "nome_elemento_viario",
