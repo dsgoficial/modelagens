@@ -7,10 +7,10 @@ SET search_path TO pg_catalog,public,edgv,dominios;
 
 CREATE TABLE public.db_metadata(
 	 edgvversion varchar(50) NOT NULL DEFAULT 'EDGV 3.0 Topo',
-	 dbimplversion varchar(50) NOT NULL DEFAULT '1.4.1',
+	 dbimplversion varchar(50) NOT NULL DEFAULT '1.4.2',
 	 CONSTRAINT edgvversioncheck CHECK (edgvversion = 'EDGV 3.0 Topo')
 );
-INSERT INTO public.db_metadata (edgvversion, dbimplversion) VALUES ('EDGV 3.0 Topo','1.4.1');
+INSERT INTO public.db_metadata (edgvversion, dbimplversion) VALUES ('EDGV 3.0 Topo','1.4.2');
 
 CREATE TABLE dominios.sigla_uf (
 	 code smallint NOT NULL,
@@ -3849,6 +3849,7 @@ ALTER TABLE edgv.infra_trecho_hidroviario_l ALTER COLUMN visivel SET DEFAULT 999
 CREATE TABLE edgv.infra_vala_l(
 	 id uuid NOT NULL DEFAULT uuid_generate_v4(),
 	 texto_edicao varchar(255),
+	 em_galeria_bueiro smallint NOT NULL,
 	 visivel smallint NOT NULL,
 	 observacao varchar(255),
 	 geom geometry(MultiLinestring, 4674),
@@ -3858,6 +3859,13 @@ CREATE TABLE edgv.infra_vala_l(
 CREATE INDEX infra_vala_l_geom ON edgv.infra_vala_l USING gist (geom);
 
 ALTER TABLE edgv.infra_vala_l OWNER TO postgres;
+
+ALTER TABLE edgv.infra_vala_l
+	 ADD CONSTRAINT infra_vala_l_em_galeria_bueiro_fk FOREIGN KEY (em_galeria_bueiro)
+	 REFERENCES dominios.booleano (code) MATCH FULL
+	 ON UPDATE NO ACTION ON DELETE NO ACTION;
+
+ALTER TABLE edgv.infra_vala_l ALTER COLUMN em_galeria_bueiro SET DEFAULT 9999;
 
 ALTER TABLE edgv.infra_vala_l
 	 ADD CONSTRAINT infra_vala_l_visivel_fk FOREIGN KEY (visivel)
