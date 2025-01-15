@@ -1,6 +1,6 @@
 {
   "modelo": "EDGV 3.0 Topo",
-  "versao": "1.4.2",
+  "versao": "1.4.3",
   "schema_dados": "edgv",
   "schema_dominios": "dominios",
   "a_ser_preenchido": {
@@ -6455,7 +6455,35 @@
       "nome": "grid_edicao",
       "categoria": "edicao",
       "primitivas": ["MultiLinestring"],
-      "atributos": []
+      "atributos": [
+        {
+          "nome": "tipo_grid",
+          "tipo": "varchar(255)",
+          "cardinalidade": "0..1"
+        },
+        {
+          "nome": "direcao",
+          "tipo": "varchar(255)",
+          "cardinalidade": "0..1"
+        }
+      ]
+    },
+    {
+      "nome": "grid_numerico",
+      "categoria": "edicao",
+      "primitivas": ["MultiPoint"],
+      "atributos": [
+        {
+          "nome": "numero",
+          "tipo": "varchar(255)",
+          "cardinalidade": "0..1"
+        },
+        {
+          "nome": "direcao",
+          "tipo": "varchar(255)",
+          "cardinalidade": "0..1"
+        }
+      ]
     },
     {
       "nome": "vegetacao",

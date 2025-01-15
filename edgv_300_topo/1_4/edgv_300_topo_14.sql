@@ -7,10 +7,10 @@ SET search_path TO pg_catalog,public,edgv,dominios;
 
 CREATE TABLE public.db_metadata(
 	 edgvversion varchar(50) NOT NULL DEFAULT 'EDGV 3.0 Topo',
-	 dbimplversion varchar(50) NOT NULL DEFAULT '1.4.2',
+	 dbimplversion varchar(50) NOT NULL DEFAULT '1.4.3',
 	 CONSTRAINT edgvversioncheck CHECK (edgvversion = 'EDGV 3.0 Topo')
 );
-INSERT INTO public.db_metadata (edgvversion, dbimplversion) VALUES ('EDGV 3.0 Topo','1.4.2');
+INSERT INTO public.db_metadata (edgvversion, dbimplversion) VALUES ('EDGV 3.0 Topo','1.4.3');
 
 CREATE TABLE dominios.sigla_uf (
 	 code smallint NOT NULL,
@@ -4561,6 +4561,8 @@ ALTER TABLE edgv.aux_moldura_area_continua_a OWNER TO postgres;
 
 CREATE TABLE edgv.edicao_grid_edicao_l(
 	 id uuid NOT NULL DEFAULT uuid_generate_v4(),
+	 tipo_grid varchar(255),
+	 direcao varchar(255),
 	 observacao varchar(255),
 	 geom geometry(MultiLinestring, 4674),
 	 CONSTRAINT edicao_grid_edicao_l_pk PRIMARY KEY (id)
@@ -4569,6 +4571,19 @@ CREATE TABLE edgv.edicao_grid_edicao_l(
 CREATE INDEX edicao_grid_edicao_l_geom ON edgv.edicao_grid_edicao_l USING gist (geom);
 
 ALTER TABLE edgv.edicao_grid_edicao_l OWNER TO postgres;
+
+CREATE TABLE edgv.edicao_grid_numerico_p(
+	 id uuid NOT NULL DEFAULT uuid_generate_v4(),
+	 numero varchar(255),
+	 direcao varchar(255),
+	 observacao varchar(255),
+	 geom geometry(MultiPoint, 4674),
+	 CONSTRAINT edicao_grid_numerico_p_pk PRIMARY KEY (id)
+	 WITH (FILLFACTOR = 80)
+);
+CREATE INDEX edicao_grid_numerico_p_geom ON edgv.edicao_grid_numerico_p USING gist (geom);
+
+ALTER TABLE edgv.edicao_grid_numerico_p OWNER TO postgres;
 
 CREATE TABLE edgv.delimitador_vegetacao_l(
 	 id uuid NOT NULL DEFAULT uuid_generate_v4(),
