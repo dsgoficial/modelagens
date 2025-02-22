@@ -506,7 +506,13 @@
     },
     {
       "classe_A": "elemnat_terreno_sujeito_inundacao",
-      "classe_B": "elemnat_terreno_sujeito_inundacao"
+      "classe_B": "elemnat_terreno_sujeito_inundacao",
+      "atributos_default_B": [
+        {
+          "nome_atributo": "visivel",
+          "valor": 1
+        }
+      ]
     },
     {
       "classe_A": "elemnat_toponimo_fisiografico_natural",
