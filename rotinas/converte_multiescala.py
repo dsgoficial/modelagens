@@ -1,15 +1,15 @@
 import json
 
-with open('../edgv_300_topo/1_3/master_file_300_topo_13.json', 'r', encoding='utf-8') as f:
+with open('../edgv_300_topo/1_4/master_file_300_topo_14.json', 'r', encoding='utf-8') as f:
     master = json.load(f)
 
 mapping = {
     "metadados": {
         "versao_arquivo": "1.0",
         "modelo_A": "EDGV 3.0 Topo",
-        "versao_modelo_A": "1.3.2",
+        "versao_modelo_A": "1.4.3",
         "modelo_B": "EDGV 3.0 Topo Multiescala",
-        "versao_modelo_B": "1.3.2"
+        "versao_modelo_B": "1.4.3"
     },
     "schema_A": master["schema_dados"],
     "schema_B": master["schema_dados"],
@@ -62,9 +62,9 @@ master["classes"].extend(master["extension_classes"])
 for classe in master["classes"]:
     if classe["categoria"] in ('centroide', 'delimitador'):
         pass
-    if classe["categoria"] in ('aux') and classe["nome"] not in ('moldura'):
+    if classe["categoria"] in ('aux') and classe["nome"] not in ('moldura', 'moldura_area_continua'):
         pass
-    if classe["categoria"] in ('edicao') and classe["nome"] not in ('limite_especial', 'limite_legal', 'area_sem_dados', 'simb_torre_energia', 'identificador_trecho_rod', 'simb_vegetacao'):
+    if classe["categoria"] in ('edicao') and classe["nome"] not in ('limite_especial', 'simb_torre_energia', 'identificador_trecho_rod', 'simb_vegetacao'):
         pass
     class_name_ida = classe["categoria"] + '_' + classe["nome"]
     class_name_volta = classe["categoria"] + '_' + classe["nome"]
@@ -75,7 +75,7 @@ for classe in master["classes"]:
         "mapeamento_atributos": map_attributes(classe)
     })
 
-with open('./conversao_pg-edgv-300topo_pg-edgv-300topo-multiescala.json', 'w', encoding='utf-8') as f:
+with open('./conversao_pg-edgv-300topo14_pg-edgv-300topo-multiescala14.json', 'w', encoding='utf-8') as f:
     json.dump(mapping, f, ensure_ascii=False, indent=4)
 
 print("Mapping file created successfully.")
