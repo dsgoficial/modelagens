@@ -1,5 +1,5 @@
 {
-  "metadados":{
+  "metadados": {
     "versao_arquivo": "0.1",
     "modelo_A": "TRD 4",
     "versao_modelo_A": "4.4",
@@ -10,10 +10,10 @@
   "schema_A": "mgcp",
   "schema_B": "edgv",
   "afixo_geom_A": {
-    "tipo": "prefixo",
-    "POINT": "p",
-    "LINESTRING": "l",
-    "POLYGON": "a"
+    "tipo": "sufixo",
+    "POINT": "_p",
+    "LINESTRING": "_l",
+    "POLYGON": "_a"
   },
   "afixo_geom_B": {
     "tipo": "sufixo",
@@ -24,7 +24,8 @@
   "agregar_geom_A": true,
   "agregar_geom_B": true,
   "mapeamento_classes": [
-    { "__comment": "AL020 Built-UP Area | Residencial area <-> lml_area_densamente_edificada",
+    {
+      "__comment": "AL020 Built-UP Area | Residencial area <-> lml_area_densamente_edificada",
       "classe_A": "al020",
       "classe_B": "lml_area_densamente_edificada",
       "filtro_A": {
@@ -70,7 +71,8 @@
         }
       ]
     },
-    { "__comment": "AL020 Built-UP Area | Nao residencial area <-> cbge_area_construida",
+    {
+      "__comment": "AL020 Built-UP Area | Nao residencial area <-> cbge_area_construida",
       "classe_A": "al020",
       "classe_B": "cbge_area_construida",
       "filtro_A": {
@@ -116,7 +118,8 @@
         }
       ]
     },
-    { "__comment": "AL020 Built-UP Area | Residencial Ponto <-> lml_posic_geo_localidade",
+    {
+      "__comment": "AL020 Built-UP Area | Residencial Ponto <-> lml_posic_geo_localidade",
       "classe_A": "al020",
       "classe_B": "lml_posic_geo_localidade",
       "filtro_A": {
@@ -174,7 +177,8 @@
         }
       ]
     },
-    { "__comment": "BA030 ISLAND <-> hid_ilha",
+    {
+      "__comment": "BA030 ISLAND <-> hid_ilha",
       "classe_A": "ba030",
       "classe_B": "hid_ilha",
       "filtro_B": {
@@ -192,7 +196,8 @@
         }
       ]
     },
-    { "__comment": "ZD040 Named Location <- hid_ilha",
+    {
+      "__comment": "ZD040 Named Location <- hid_ilha",
       "sentido": "B=>A",
       "classe_A": "zd040",
       "classe_B": "hid_ilha",
@@ -204,14 +209,15 @@
           },
           {
             "$not": {
-              "nome_atributo": "nome", 
+              "nome_atributo": "nome",
               "valor": ""
             }
           }
         ]
       }
     },
-    { "__comment": "BA040 TIDAL WATER <-> hid_massa_dagua | Oceano",
+    {
+      "__comment": "BA040 TIDAL WATER <-> hid_massa_dagua | Oceano",
       "classe_A": "ba040",
       "classe_B": "hid_massa_dagua",
       "atributos_default_B": [
@@ -245,7 +251,8 @@
         "valor": 3
       }
     },
-    { "__comment": "BA050 BEACH <-> rel_elemento_fisiografico_natural",
+    {
+      "__comment": "BA050 BEACH <-> rel_elemento_fisiografico_natural",
       "classe_A": "ba050",
       "classe_B": "rel_elemento_fisiografico_natural",
       "filtro_B": {
@@ -255,12 +262,11 @@
             "valor": 12
           },
           {
-          "$not": 
-          {
-            "nome_atributo": "$GEOM_TYPE",
-            "valor": "LINESTRING"
+            "$not": {
+              "nome_atributo": "$GEOM_TYPE",
+              "valor": "LINESTRING"
+            }
           }
-        }
         ]
       },
       "atributos_default_B": [
@@ -276,7 +282,8 @@
         }
       ]
     },
-    { "__comment": "BD120 REEF <-> hid_recife",
+    {
+      "__comment": "BD120 REEF <-> hid_recife",
       "classe_A": "bd120",
       "classe_B": "hid_recife",
       "mapeamento_atributos": [
@@ -347,7 +354,8 @@
         }
       ]
     },
-    { "__comment": "BH020 CANAL -> hid_canal | canal navegacao",
+    {
+      "__comment": "BH020 CANAL -> hid_canal | canal navegacao",
       "sentido": "A=>B",
       "classe_A": "bh020",
       "classe_B": "hid_canal",
@@ -392,7 +400,8 @@
         }
       ]
     },
-    { "__comment": "BH070 FORD <-> tra_travessia",
+    {
+      "__comment": "BH070 FORD <-> tra_travessia",
       "classe_A": "bh070",
       "classe_B": "tra_travessia",
       "atributos_default_B": [
@@ -439,21 +448,22 @@
         }
       ]
     },
-    { "__comment": "BH140 RIVER -> hid_canal | area",
+    {
+      "__comment": "BH140 RIVER -> hid_canal | area",
       "classe_A": "bh140",
       "classe_B": "hid_canal",
-      "sentido":"ida",
+      "sentido": "A=>B",
       "filtro_A": {
-        "$and":[
+        "$and": [
           {
             "nome_atributo": "$GEOM_TYPE",
             "valor": "POLYGON"
           },
           {
-              "nome_atributo":"wcc",
-              "valor":1
-            }
-          ]
+            "nome_atributo": "wcc",
+            "valor": 1
+          }
+        ]
       },
       "atributos_default_B": [
         {
@@ -477,20 +487,21 @@
           "valor": 0
         },
         {
-          "nome_atributo":"situacaofisica",
-          "valor":0
+          "nome_atributo": "situacaofisica",
+          "valor": 0
         }
       ]
     },
-    { "__comment": "BH140 RIVER <-> hid_massa_dagua | Rio",
+    {
+      "__comment": "BH140 RIVER <-> hid_massa_dagua | Rio",
       "classe_A": "bh140",
       "classe_B": "hid_massa_dagua",
       "filtro_A": {
-        "$and":[
+        "$and": [
           {
-            "$not":{
-              "nome_atributo":"wcc",
-              "valor":1
+            "$not": {
+              "nome_atributo": "wcc",
+              "valor": 1
             }
           },
           {
@@ -552,15 +563,16 @@
         }
       ]
     },
-    { "__comment": "BH140 RIVER <-> hid_trecho_drenagem | Rio e Pluvial",
+    {
+      "__comment": "BH140 RIVER <-> hid_trecho_drenagem | Rio e Pluvial",
       "classe_A": "bh140",
       "classe_B": "hid_trecho_drenagem",
       "filtro_A": {
-        "$and":[
+        "$and": [
           {
-            "$not":{
-              "nome_atributo":"wcc",
-              "valor":1
+            "$not": {
+              "nome_atributo": "wcc",
+              "valor": 1
             }
           },
           {
@@ -579,12 +591,12 @@
           "valor": 0
         },
         {
-          "nome_atributo":"geometriaaproximada",
+          "nome_atributo": "geometriaaproximada",
           "valor": true
         }
       ],
       "filtro_B": {
-        "$or":[
+        "$or": [
           {
             "nome_atributo": "tipotrechodrenagem",
             "valor": 4
@@ -629,21 +641,22 @@
             {
               "valor_A": 0,
               "valor_B": false,
-              "sentido":"ida" 
+              "sentido": "A=>B"
             }
           ]
         }
       ]
     },
-    { "__comment": "BH140 RIVER -> hid_canal | linha",
+    {
+      "__comment": "BH140 RIVER -> hid_canal | linha",
       "classe_A": "bh140",
       "classe_B": "hid_canal",
-      "sentido":"ida",
+      "sentido": "A=>B",
       "filtro_A": {
-        "$and":[
+        "$and": [
           {
-            "nome_atributo":"wcc",
-              "valor":1
+            "nome_atributo": "wcc",
+            "valor": 1
           },
           {
             "nome_atributo": "$GEOM_TYPE",
@@ -661,24 +674,25 @@
           "valor": 0
         },
         {
-          "nome_atributo":"situacaofisica",
+          "nome_atributo": "situacaofisica",
           "valor": 0
         },
         {
-          "nome_atributo":"matconstr",
-          "valor":0
+          "nome_atributo": "matconstr",
+          "valor": 0
         },
         {
-          "nome_atributo":"usoprincipal",
-          "valor":0
+          "nome_atributo": "usoprincipal",
+          "valor": 0
         },
         {
-          "nome_atributo":"finalidade",
-          "valor":0
+          "nome_atributo": "finalidade",
+          "valor": 0
         }
       ]
     },
-    { "__comment": "BH080 LAKE <-> hid_massa_dagua | Lago",
+    {
+      "__comment": "BH080 LAKE <-> hid_massa_dagua | Lago",
       "classe_A": "bh080",
       "classe_B": "hid_massa_dagua",
       "atributos_default_B": [
@@ -736,7 +750,8 @@
         }
       ]
     },
-    { "__comment": "BB190 BERTHING_STRUCTURE <-> hdv_atracadouro_terminal",
+    {
+      "__comment": "BB190 BERTHING_STRUCTURE <-> hdv_atracadouro_terminal",
       "classe_A": "bb190",
       "classe_B": "hdv_atracadouro_terminal",
       "atributos_default_B": [
@@ -812,7 +827,8 @@
         }
       ]
     },
-    { "__comment": "AN010 RAILWAY <-> fer_trecho_ferroviario",
+    {
+      "__comment": "AN010 RAILWAY <-> fer_trecho_ferroviario",
       "classe_A": "an010",
       "classe_B": "fer_trecho_ferroviario",
       "filtro_A": {
@@ -836,6 +852,10 @@
         },
         {
           "nome_atributo": "operacional",
+          "valor": 0
+        },
+        {
+          "nome_atributo": "tipotrechoferrov",
           "valor": 0
         }
       ],
@@ -938,9 +958,9 @@
               "valor_B": true
             },
             {
-              "valor_A":0,
-              "valor_B":false,
-              "sentido":"ida"
+              "valor_A": 0,
+              "valor_B": false,
+              "sentido": "A=>B"
             }
           ]
         },
@@ -971,7 +991,8 @@
         }
       ]
     },
-    { "__comment": "BH130 RESERVOIR <-> hid_massa_dagua | Acude",
+    {
+      "__comment": "BH130 RESERVOIR <-> hid_massa_dagua | Acude",
       "classe_A": "bh130",
       "classe_B": "hid_massa_dagua",
       "atributos_default_B": [
@@ -1007,7 +1028,8 @@
         "valor": 10
       }
     },
-    { "__comment": "BH030 DITCH <-> hid_vala | vala",
+    {
+      "__comment": "BH030 DITCH <-> hid_vala | vala",
       "classe_A": "bh030",
       "classe_B": "hid_vala",
       "atributos_default_B": [
@@ -1047,7 +1069,8 @@
         }
       ]
     },
-    { "__comment": "BH090 LAND SUBJECT TO INUNDATION <-> hid_terreno_sujeito_inundacao",
+    {
+      "__comment": "BH090 LAND SUBJECT TO INUNDATION <-> hid_terreno_sujeito_inundacao",
       "classe_A": "bh090",
       "classe_B": "hid_terreno_sujeito_inundacao",
       "atributos_default_B": [
@@ -1067,11 +1090,13 @@
         }
       ]
     },
-    { "__comment": "BH120 RAPIDS <-> hid_corredeira | outros",
+    {
+      "__comment": "BH120 RAPIDS <-> hid_corredeira | outros",
       "classe_A": "bh120",
       "classe_B": "hid_corredeira"
     },
-    { "__comment": "BH180 WATERFALL <-> hid_queda_dagua",
+    {
+      "__comment": "BH180 WATERFALL <-> hid_queda_dagua",
       "classe_A": "bh180",
       "classe_B": "hid_queda_dagua",
       "atributos_default_B": [
@@ -1081,7 +1106,8 @@
         }
       ]
     },
-    { "__comment": "BH145 VANISHING POINT <-> hid_sumidouro_vertedouro",
+    {
+      "__comment": "BH145 VANISHING POINT <-> hid_sumidouro_vertedouro",
       "classe_A": "bh145",
       "classe_B": "hid_sumidouro_vertedouro",
       "atributos_default_B": [
@@ -1095,8 +1121,8 @@
         }
       ],
       "filtro_B": {
-          "nome_atributo": "tiposumvert",
-          "valor": 1
+        "nome_atributo": "tiposumvert",
+        "valor": 1
       },
       "atributos_default_A": [
         {
@@ -1105,7 +1131,8 @@
         }
       ]
     },
-    { "__comment": "BH060 FLUME <-> dut_trecho_duto",
+    {
+      "__comment": "BH060 FLUME <-> dut_trecho_duto",
       "classe_A": "bh060",
       "classe_B": "dut_trecho_duto",
       "atributos_default_B": [
@@ -1134,9 +1161,9 @@
           "valor": 0
         }
       ],
-      "filtro_B":{
-        "nome_atributo":"tipotrechoduto",
-        "valor":2
+      "filtro_B": {
+        "nome_atributo": "tipotrechoduto",
+        "valor": 2
       },
       "mapeamento_atributos": [
         {
@@ -1154,23 +1181,24 @@
             {
               "valor_A": 0,
               "valor_B": 3,
-              "sentido":"volta"
+              "sentido": "B=>A"
             },
             {
               "valor_A": 0,
               "valor_B": 5,
-              "sentido":"volta"
+              "sentido": "B=>A"
             },
             {
               "valor_A": 0,
               "valor_B": 4,
-              "sentido":"volta"
+              "sentido": "B=>A"
             }
           ]
         }
       ]
     },
-    { "__comment": "AP010 CART TRACK <-> tra_caminho_carrocavel",
+    {
+      "__comment": "AP010 CART TRACK <-> tra_caminho_carrocavel",
       "classe_A": "ap010",
       "classe_B": "tra_caminho_carrocavel",
       "atributos_default_A": [
@@ -1180,7 +1208,8 @@
         }
       ]
     },
-    { "__comment": "BI010 CISTERN <-> snb_dep_abast_agua | cisterna",
+    {
+      "__comment": "BI010 CISTERN <-> snb_dep_abast_agua | cisterna",
       "classe_A": "bi010",
       "classe_B": "snb_dep_abast_agua",
       "atributos_default_B": [
@@ -1233,20 +1262,21 @@
           "valor": 0
         }
       ],
-      "filtro_B":{
-        "$and":[
+      "filtro_B": {
+        "$and": [
           {
-          "nome_atributo": "$GEOM_TYPE",
-          "valor": "POINT"
+            "nome_atributo": "$GEOM_TYPE",
+            "valor": "POINT"
           },
           {
-          "nome_atributo":"tipodepgeral",
-          "valor":2
+            "nome_atributo": "tipodepgeral",
+            "valor": 2
           }
         ]
       }
     },
-    { "__comment": "BI020 DAM <-> hid_barragem",
+    {
+      "__comment": "BI020 DAM <-> hid_barragem",
       "classe_A": "bi020",
       "classe_B": "hid_barragem",
       "atributos_default_B": [
@@ -1532,7 +1562,8 @@
         }
       ]
     },
-    { "__comment": "AA010 EXTRACTION MINE <-> eco_ext_mineral",
+    {
+      "__comment": "AA010 EXTRACTION MINE <-> eco_ext_mineral",
       "classe_A": "aa010",
       "classe_B": "eco_ext_mineral",
       "atributos_default_B": [
@@ -1735,7 +1766,8 @@
         }
       ]
     },
-    { "__comment": "AA052 HYDROCARBONS FIELD <-> eco_ext_mineral | Petroleo",
+    {
+      "__comment": "AA052 HYDROCARBONS FIELD <-> eco_ext_mineral | Petroleo",
       "classe_A": "aa052",
       "classe_B": "eco_ext_mineral",
       "atributos_default_B": [
@@ -1763,7 +1795,7 @@
           "nome_atributo": "procextracao",
           "valor": 0
         },
-        { 
+        {
           "nome_atributo": "secaoativecon",
           "valor": 1
         },
@@ -1781,31 +1813,32 @@
         }
       ],
       "filtro_B": {
-        "$and":[
-        {
-        "nome_atributo": "$GEOM_TYPE",
-        "valor": "POLYGON"
-        },
-        {
-          "$or":[
-            {
-              "nome_atributo":"tipoproduto",
-              "valor":3
-            },
-            {
-              "nome_atributo":"tipoproduto",
-              "valor":5
-            },
-            {
-              "nome_atributo":"tipoproduto",
-              "valor":29
-            }
-          ]
-        }
-      ]
+        "$and": [
+          {
+            "nome_atributo": "$GEOM_TYPE",
+            "valor": "POLYGON"
+          },
+          {
+            "$or": [
+              {
+                "nome_atributo": "tipoproduto",
+                "valor": 3
+              },
+              {
+                "nome_atributo": "tipoproduto",
+                "valor": 5
+              },
+              {
+                "nome_atributo": "tipoproduto",
+                "valor": 29
+              }
+            ]
+          }
+        ]
       }
     },
-    { "__comment": "AL019 SHED <-> cbge_deposito_geral | GALPAO",
+    {
+      "__comment": "AL019 SHED <-> cbge_deposito_geral | GALPAO",
       "classe_A": "al019",
       "classe_B": "cbge_deposito_geral",
       "filtro_B": {
@@ -1863,7 +1896,8 @@
         }
       ]
     },
-    { "__comment": "AL241 TOWER | comunicacao ou celular <-> enc_torre_comunic",
+    {
+      "__comment": "AL241 TOWER | comunicacao ou celular <-> enc_torre_comunic",
       "classe_A": "al241",
       "classe_B": "enc_torre_comunic",
       "filtro_A": {
@@ -1907,7 +1941,8 @@
         }
       ]
     },
-    { "__comment": "AT042 PYLON <-> enc_torre_energia",
+    {
+      "__comment": "AT042 PYLON <-> enc_torre_energia",
       "classe_A": "at042",
       "classe_B": "enc_torre_energia",
       "atributos_default_B": [
@@ -1918,6 +1953,10 @@
         {
           "nome_atributo": "ovgd",
           "valor": 0
+        },
+        {
+          "nome_atributo": "situacaofisica",
+          "valor": 5
         }
       ],
       "atributos_default_A": [
@@ -1926,8 +1965,8 @@
           "valor": 0
         },
         {
-          "nome_atributo":"cab",
-          "valor":0
+          "nome_atributo": "cab",
+          "valor": 0
         },
         {
           "nome_atributo": "hgt",
@@ -1935,13 +1974,14 @@
         }
       ]
     },
-    { "__comment": "AL241 TOWER | turistica <- edf_edif_constr_turistica",
+    {
+      "__comment": "AL241 TOWER | turistica <- edf_edif_constr_turistica",
       "sentido": "B=>A",
       "classe_A": "al241",
       "classe_B": "edf_edif_constr_turistica",
-      "filtro_B":{
-        "nome_atributo":"tipoedifturist",
-        "valor":18
+      "filtro_B": {
+        "nome_atributo": "tipoedifturist",
+        "valor": 18
       },
       "atributos_default_A": [
         {
@@ -1957,14 +1997,15 @@
           "valor": -32767.0
         }
       ]
-    }, 
-    { "__comment": "AL241 TOWER | chaminé turistica <- edf_edif_constr_turistica",
+    },
+    {
+      "__comment": "AL241 TOWER | chaminé turistica <- edf_edif_constr_turistica",
       "sentido": "B=>A",
       "classe_A": "al241",
       "classe_B": "edf_edif_constr_turistica",
-      "filtro_B":{
-        "nome_atributo":"tipoedifturist",
-        "valor":15
+      "filtro_B": {
+        "nome_atributo": "tipoedifturist",
+        "valor": 15
       },
       "atributos_default_A": [
         {
@@ -1980,19 +2021,28 @@
           "valor": -32767.0
         }
       ]
-    }, 
-    { "__comment": "AL241 TOWER -> aux_revisao",
+    },
+    {
+      "__comment": "AL241 TOWER -> aux_revisao",
       "sentido": "A=>B",
       "classe_A": "al241",
       "classe_B": "aux_revisao",
-      "filtro_A":{
-        "nome_atributo": "ttc",
-        "valor": 0
+      "filtro_A": {
+        "$or": [
+          {
+            "nome_atributo": "ttc",
+            "valor": 0
+          },
+          {
+            "nome_atributo": "ttc",
+            "valor": 2
+          }
+        ]
       },
       "atributos_default_B": [
         {
           "nome_atributo": "descricao",
-          "valor": "al241 | swt = 5 (Water-Hole)"
+          "valor": "al241 | Tower Unknown"
         },
         {
           "nome_atributo": "corrigido",
@@ -2000,7 +2050,8 @@
         }
       ]
     },
-    { "__comment": "AL241 TOWER | LIGHTHOUSE <-> hdv_sinalizacao | farol",
+    {
+      "__comment": "AL241 TOWER | LIGHTHOUSE <-> hdv_sinalizacao | farol",
       "classe_A": "al241",
       "classe_B": "hdv_sinalizacao",
       "filtro_A": {
@@ -2017,9 +2068,9 @@
           "valor": 4
         }
       ],
-      "filtro_B":{
-        "nome_atributo":"tiposinal",
-        "valor":4
+      "filtro_B": {
+        "nome_atributo": "tiposinal",
+        "valor": 4
       },
       "atributos_default_A": [
         {
@@ -2032,7 +2083,8 @@
         }
       ]
     },
-    { "__comment": "AM070 STORAGE TANK | WATER <-> snb_dep_abast_agua",
+    {
+      "__comment": "AM070 STORAGE TANK | WATER <-> snb_dep_abast_agua",
       "classe_A": "am070",
       "classe_B": "snb_dep_abast_agua",
       "filtro_A": {
@@ -2086,8 +2138,8 @@
         }
       ],
       "filtro_B": {
-            "nome_atributo": "tipoprodutoresiduo",
-            "valor": 46
+        "nome_atributo": "tipoprodutoresiduo",
+        "valor": 46
       },
       "atributos_default_A": [
         {
@@ -2108,13 +2160,14 @@
         }
       ]
     },
-    { "__comment": "AM070 STORAGE TANK <-> cbge_deposito_geral | Tanque & Reservatório", 
+    {
+      "__comment": "AM070 STORAGE TANK <-> cbge_deposito_geral | Tanque & Reservatório",
       "classe_A": "am070",
       "classe_B": "cbge_deposito_geral",
-      "filtro_A":{
-        "$not":{
-          "nome_atributo":"ppo",
-          "valor":122
+      "filtro_A": {
+        "$not": {
+          "nome_atributo": "ppo",
+          "valor": 122
         }
       },
       "atributos_default_B": [
@@ -2160,27 +2213,26 @@
         }
       ],
       "filtro_B": {
-        "$and":[
+        "$and": [
           {
-            "$not":
-            {
-              "nome_atributo":"tipoprodutoresiduo",
-              "valor":46
+            "$not": {
+              "nome_atributo": "tipoprodutoresiduo",
+              "valor": 46
             }
           },
           {
-            "$or":[
+            "$or": [
               {
-                "nome_atributo":"tipodepgeral",
-                "valor":1
+                "nome_atributo": "tipodepgeral",
+                "valor": 1
               },
               {
-                "nome_atributo":"tipodepgeral",
-                "valor":2
+                "nome_atributo": "tipodepgeral",
+                "valor": 2
               },
               {
-                "nome_atributo":"tipodepgeral",
-                "valor":19
+                "nome_atributo": "tipodepgeral",
+                "valor": 19
               }
             ]
           }
@@ -2205,7 +2257,8 @@
         }
       ]
     },
-    { "__comment": "AL241 TOWER | WATER <-> snb_dep_abast_agua",
+    {
+      "__comment": "AL241 TOWER | WATER <-> snb_dep_abast_agua",
       "classe_A": "al241",
       "classe_B": "snb_dep_abast_agua",
       "filtro_A": {
@@ -2265,12 +2318,12 @@
             "valor": 46
           },
           {
-            "nome_atributo":"tipodepgeral",
-            "valor":2
+            "nome_atributo": "tipodepgeral",
+            "valor": 2
           },
           {
-            "nome_atributo":"$GEOM_TYPE",
-            "valor":"POINT"
+            "nome_atributo": "$GEOM_TYPE",
+            "valor": "POINT"
           }
         ]
       },
@@ -2285,7 +2338,8 @@
         }
       ]
     },
-    { "__comment": "AQ065 CULVERT <-> dut_galeria_bueiro",
+    {
+      "__comment": "AQ065 CULVERT <-> dut_galeria_bueiro",
       "classe_A": "aq065",
       "classe_B": "dut_galeria_bueiro",
       "atributos_default_B": [
@@ -2337,7 +2391,8 @@
         }
       ]
     },
-    { "__comment": "BH170 NATURAL POOL | VERTEDOURO <->  hid_sumidouro_vertedouro",
+    {
+      "__comment": "BH170 NATURAL POOL | VERTEDOURO <->  hid_sumidouro_vertedouro",
       "classe_A": "bh170",
       "classe_B": "hid_sumidouro_vertedouro",
       "filtro_A": {
@@ -2364,15 +2419,16 @@
           "valor": 4
         },
         {
-          "nome_atributo":"hyp",
-          "valor":0
+          "nome_atributo": "hyp",
+          "valor": 0
         }
       ]
     },
-    { "__comment": "BH170 NATURAL POOL | WATER-HOLE ->  aux_revisao",
+    {
+      "__comment": "BH170 NATURAL POOL | WATER-HOLE ->  aux_revisao",
       "classe_A": "bh170",
       "classe_B": "aux_revisao",
-      "sentido":"ida",
+      "sentido": "A=>B",
       "filtro_A": {
         "nome_atributo": "swt",
         "valor": 5
@@ -2388,7 +2444,8 @@
         }
       ]
     },
-    { "__comment": "AP050 TRAIL <-> tra_trilha_picada",
+    {
+      "__comment": "AP050 TRAIL <-> tra_trilha_picada",
       "classe_A": "ap050",
       "classe_B": "tra_trilha_picada",
       "atributos_default_A": [
@@ -2398,7 +2455,8 @@
         }
       ]
     },
-    { "__comment": "AQ070 FERRY CROSSING <-> tra_travessia",
+    {
+      "__comment": "AQ070 FERRY CROSSING <-> tra_travessia",
       "classe_A": "aq070",
       "classe_B": "tra_travessia",
       "atributos_default_B": [
@@ -2415,15 +2473,15 @@
           "valor": 0
         }
       ],
-      "filtro_B":{
-        "$or":[
+      "filtro_B": {
+        "$or": [
           {
-            "nome_atributo":"tipotravessia",
-            "valor":3
+            "nome_atributo": "tipotravessia",
+            "valor": 3
           },
           {
-            "nome_atributo":"tipotravessia",
-            "valor":4
+            "nome_atributo": "tipotravessia",
+            "valor": 4
           }
         ]
       },
@@ -2434,7 +2492,8 @@
         }
       ]
     },
-    { "__comment": "GB055 RUNWAY <-> aer_pista_ponto_pouso",
+    {
+      "__comment": "GB055 RUNWAY <-> aer_pista_ponto_pouso",
       "classe_A": "gb055",
       "classe_B": "aer_pista_ponto_pouso",
       "atributos_default_B": [
@@ -2455,15 +2514,15 @@
           "valor": 0
         }
       ],
-      "filtro_B":{
-        "$and":[
+      "filtro_B": {
+        "$and": [
           {
-            "nome_atributo":"$GEOM_TYPE",
-            "valor":"POLYGON"
+            "nome_atributo": "$GEOM_TYPE",
+            "valor": "POLYGON"
           },
           {
-            "nome_atributo":"tipopista",
-            "valor":9
+            "nome_atributo": "tipopista",
+            "valor": 9
           }
         ]
       },
@@ -2490,7 +2549,8 @@
         }
       ]
     },
-    { "__comment": "GB030 HELIPAD <-> aer_pista_ponto_pouso",
+    {
+      "__comment": "GB030 HELIPAD <-> aer_pista_ponto_pouso",
       "classe_A": "gb030",
       "classe_B": "aer_pista_ponto_pouso",
       "atributos_default_B": [
@@ -2511,15 +2571,15 @@
           "valor": 0
         }
       ],
-      "filtro_B":{
-        "$and":[
+      "filtro_B": {
+        "$and": [
           {
-            "nome_atributo":"$GEOM_TYPE",
-            "valor":"POINT"
+            "nome_atributo": "$GEOM_TYPE",
+            "valor": "POINT"
           },
           {
-            "nome_atributo":"tipopista",
-            "valor":11
+            "nome_atributo": "tipopista",
+            "valor": 11
           }
         ]
       },
@@ -2534,7 +2594,8 @@
         }
       ]
     },
-    { "__comment": "GB075 TAXIWAY <-> aer_pista_ponto_pouso",
+    {
+      "__comment": "GB075 TAXIWAY <-> aer_pista_ponto_pouso",
       "classe_A": "gb075",
       "classe_B": "aer_pista_ponto_pouso",
       "atributos_default_B": [
@@ -2555,15 +2616,15 @@
           "valor": 0
         }
       ],
-      "filtro_B":{
-        "$and":[
+      "filtro_B": {
+        "$and": [
           {
-            "nome_atributo":"$GEOM_TYPE",
-            "valor":"POLYGON"
+            "nome_atributo": "$GEOM_TYPE",
+            "valor": "POLYGON"
           },
           {
-            "nome_atributo":"tipopista",
-            "valor":10
+            "nome_atributo": "tipopista",
+            "valor": 10
           }
         ]
       },
@@ -2574,7 +2635,8 @@
         }
       ]
     },
-    { "__comment": "EB010 GRASSLAND <-> veg_campo | campo limpo",
+    {
+      "__comment": "EB010 GRASSLAND <-> veg_campo | campo limpo",
       "classe_A": "eb010",
       "classe_B": "veg_campo",
       "atributos_default_B": [
@@ -2595,30 +2657,31 @@
           "valor": 0
         },
         {
-          "nome_atributo":"tipocampo",
-          "valor":2
+          "nome_atributo": "tipocampo",
+          "valor": 2
         }
       ],
-      "filtro_B":{
-        "$or":[
+      "filtro_B": {
+        "$or": [
           {
-            "nome_atributo":"tipocampo",
-            "valor":0
+            "nome_atributo": "tipocampo",
+            "valor": 0
           },
           {
-            "nome_atributo":"tipocampo",
-            "valor":2
+            "nome_atributo": "tipocampo",
+            "valor": 2
           }
         ]
       },
-      "atributos_default_A":[
+      "atributos_default_A": [
         {
-          "nome_atributo":"veg",
-          "valor":0
+          "nome_atributo": "veg",
+          "valor": 0
         }
       ]
     },
-    { "__comment": "EB020 THICKET <-> veg_campo | campo sujo",
+    {
+      "__comment": "EB020 THICKET <-> veg_campo | campo sujo",
       "classe_A": "eb020",
       "classe_B": "veg_campo",
       "atributos_default_B": [
@@ -2639,19 +2702,19 @@
           "valor": 0
         },
         {
-          "nome_atributo":"tipocampo",
-          "valor":1
+          "nome_atributo": "tipocampo",
+          "valor": 1
         }
       ],
-      "filtro_B":{
-        "$or":[
+      "filtro_B": {
+        "$or": [
           {
-            "nome_atributo":"tipocampo",
-            "valor":1
+            "nome_atributo": "tipocampo",
+            "valor": 1
           },
           {
-            "nome_atributo":"tipocampo",
-            "valor":3
+            "nome_atributo": "tipocampo",
+            "valor": 3
           }
         ]
       },
@@ -2662,7 +2725,8 @@
         }
       ]
     },
-    { "__comment": "ED010 MARSH <-> veg_brejo_pantano",
+    {
+      "__comment": "ED010 MARSH <-> veg_brejo_pantano",
       "classe_A": "ed010",
       "classe_B": "veg_brejo_pantano",
       "atributos_default_B": [
@@ -2694,7 +2758,8 @@
         }
       ]
     },
-    { "__comment": "ED020 SWAMP <-> veg_brejo_pantano",
+    {
+      "__comment": "ED020 SWAMP <-> veg_brejo_pantano",
       "classe_A": "ed020",
       "classe_B": "veg_brejo_pantano",
       "atributos_default_B": [
@@ -2738,7 +2803,8 @@
         }
       ]
     },
-    { "__comment": "EA040 ORCHARD <-> veg_veg_cultivada | Perene", 
+    {
+      "__comment": "EA040 ORCHARD <-> veg_veg_cultivada | Perene",
       "classe_A": "ea040",
       "classe_B": "veg_veg_cultivada",
       "atributos_default_B": [
@@ -2755,8 +2821,8 @@
           "valor": 0
         },
         {
-          "nome_atributo":"tipolavoura",
-          "valor":1
+          "nome_atributo": "tipolavoura",
+          "valor": 1
         }
       ],
       "atributos_default_A": [
@@ -2765,196 +2831,197 @@
           "valor": -32767.0
         }
       ],
-      "filtro_B":{
-        "$and":[
+      "filtro_B": {
+        "$and": [
           {
-            "nome_atributo":"tipolavoura",
-            "valor":1
+            "nome_atributo": "tipolavoura",
+            "valor": 1
           },
           {
-            "$or":[
+            "$or": [
               {
-                "nome_atributo":"cultivopredominante",
-                "valor":2
+                "nome_atributo": "cultivopredominante",
+                "valor": 2
               },
               {
-                "nome_atributo":"cultivopredominante",
-                "valor":3
+                "nome_atributo": "cultivopredominante",
+                "valor": 3
               },
               {
-                "nome_atributo":"cultivopredominante",
-                "valor":14
+                "nome_atributo": "cultivopredominante",
+                "valor": 14
               },
               {
-                "nome_atributo":"cultivopredominante",
-                "valor":15
+                "nome_atributo": "cultivopredominante",
+                "valor": 15
               },
               {
-                "nome_atributo":"cultivopredominante",
-                "valor":17
+                "nome_atributo": "cultivopredominante",
+                "valor": 17
               },
               {
-                "nome_atributo":"cultivopredominante",
-                "valor":18
+                "nome_atributo": "cultivopredominante",
+                "valor": 18
               },
               {
-                "nome_atributo":"cultivopredominante",
-                "valor":19
+                "nome_atributo": "cultivopredominante",
+                "valor": 19
               },
               {
-                "nome_atributo":"cultivopredominante",
-                "valor":22
+                "nome_atributo": "cultivopredominante",
+                "valor": 22
               },
               {
-                "nome_atributo":"cultivopredominante",
-                "valor":29
+                "nome_atributo": "cultivopredominante",
+                "valor": 29
               },
               {
-                "nome_atributo":"cultivopredominante",
-                "valor":30
+                "nome_atributo": "cultivopredominante",
+                "valor": 30
               },
               {
-                "nome_atributo":"cultivopredominante",
-                "valor":31
+                "nome_atributo": "cultivopredominante",
+                "valor": 31
               },
               {
-                "nome_atributo":"cultivopredominante",
-                "valor":43
+                "nome_atributo": "cultivopredominante",
+                "valor": 43
               },
               {
-                "nome_atributo":"cultivopredominante",
-                "valor":46
+                "nome_atributo": "cultivopredominante",
+                "valor": 46
               },
               {
-                "nome_atributo":"cultivopredominante",
-                "valor":51
+                "nome_atributo": "cultivopredominante",
+                "valor": 51
               },
               {
-                "nome_atributo":"cultivopredominante",
-                "valor":53
+                "nome_atributo": "cultivopredominante",
+                "valor": 53
               },
               {
-                "nome_atributo":"cultivopredominante",
-                "valor":55
+                "nome_atributo": "cultivopredominante",
+                "valor": 55
               },
               {
-                "nome_atributo":"cultivopredominante",
-                "valor":58
+                "nome_atributo": "cultivopredominante",
+                "valor": 58
               },
               {
-                "nome_atributo":"cultivopredominante",
-                "valor":59
+                "nome_atributo": "cultivopredominante",
+                "valor": 59
               },
               {
-                "nome_atributo":"cultivopredominante",
-                "valor":60
+                "nome_atributo": "cultivopredominante",
+                "valor": 60
               },
               {
-                "nome_atributo":"cultivopredominante",
-                "valor":64
+                "nome_atributo": "cultivopredominante",
+                "valor": 64
               },
               {
-                "nome_atributo":"cultivopredominante",
-                "valor":65
+                "nome_atributo": "cultivopredominante",
+                "valor": 65
               },
               {
-                "nome_atributo":"cultivopredominante",
-                "valor":66
+                "nome_atributo": "cultivopredominante",
+                "valor": 66
               },
               {
-                "nome_atributo":"cultivopredominante",
-                "valor":67
+                "nome_atributo": "cultivopredominante",
+                "valor": 67
               },
               {
-                "nome_atributo":"cultivopredominante",
-                "valor":68
+                "nome_atributo": "cultivopredominante",
+                "valor": 68
               },
               {
-                "nome_atributo":"cultivopredominante",
-                "valor":71
+                "nome_atributo": "cultivopredominante",
+                "valor": 71
               },
               {
-                "nome_atributo":"cultivopredominante",
-                "valor":74
+                "nome_atributo": "cultivopredominante",
+                "valor": 74
               },
               {
-                "nome_atributo":"cultivopredominante",
-                "valor":76
+                "nome_atributo": "cultivopredominante",
+                "valor": 76
               },
               {
-                "nome_atributo":"cultivopredominante",
-                "valor":78
+                "nome_atributo": "cultivopredominante",
+                "valor": 78
               },
               {
-                "nome_atributo":"cultivopredominante",
-                "valor":80
+                "nome_atributo": "cultivopredominante",
+                "valor": 80
               },
               {
-                "nome_atributo":"cultivopredominante",
-                "valor":83
+                "nome_atributo": "cultivopredominante",
+                "valor": 83
               },
               {
-                "nome_atributo":"cultivopredominante",
-                "valor":85
+                "nome_atributo": "cultivopredominante",
+                "valor": 85
               },
               {
-                "nome_atributo":"cultivopredominante",
-                "valor":86
+                "nome_atributo": "cultivopredominante",
+                "valor": 86
               },
               {
-                "nome_atributo":"cultivopredominante",
-                "valor":87
+                "nome_atributo": "cultivopredominante",
+                "valor": 87
               },
               {
-                "nome_atributo":"cultivopredominante",
-                "valor":101
+                "nome_atributo": "cultivopredominante",
+                "valor": 101
               },
               {
-                "nome_atributo":"cultivopredominante",
-                "valor":102
+                "nome_atributo": "cultivopredominante",
+                "valor": 102
               },
               {
-                "nome_atributo":"cultivopredominante",
-                "valor":104
+                "nome_atributo": "cultivopredominante",
+                "valor": 104
               },
               {
-                "nome_atributo":"cultivopredominante",
-                "valor":105
+                "nome_atributo": "cultivopredominante",
+                "valor": 105
               },
               {
-                "nome_atributo":"cultivopredominante",
-                "valor":112
+                "nome_atributo": "cultivopredominante",
+                "valor": 112
               },
               {
-                "nome_atributo":"cultivopredominante",
-                "valor":113
+                "nome_atributo": "cultivopredominante",
+                "valor": 113
               },
               {
-                "nome_atributo":"cultivopredominante",
-                "valor":115
+                "nome_atributo": "cultivopredominante",
+                "valor": 115
               },
               {
-                "nome_atributo":"cultivopredominante",
-                "valor":116
+                "nome_atributo": "cultivopredominante",
+                "valor": 116
               },
               {
-                "nome_atributo":"cultivopredominante",
-                "valor":118
+                "nome_atributo": "cultivopredominante",
+                "valor": 118
               },
               {
-                "nome_atributo":"cultivopredominante",
-                "valor":119
+                "nome_atributo": "cultivopredominante",
+                "valor": 119
               },
               {
-                "nome_atributo":"cultivopredominante",
-                "valor":120
+                "nome_atributo": "cultivopredominante",
+                "valor": 120
               }
             ]
           }
         ]
       }
     },
-    { "__comment": "EA050 VINEYARD <-> veg_veg_cultivada | uva", 
+    {
+      "__comment": "EA050 VINEYARD <-> veg_veg_cultivada | uva",
       "classe_A": "ea050",
       "classe_B": "veg_veg_cultivada",
       "atributos_default_B": [
@@ -2971,31 +3038,32 @@
           "valor": 1
         },
         {
-          "nome_atributo":"tipolavoura",
-          "valor":1
+          "nome_atributo": "tipolavoura",
+          "valor": 1
         },
         {
-          "nome_atributo":"cultivopredominante",
+          "nome_atributo": "cultivopredominante",
           "valor": 42
         }
       ],
-      "filtro_B":{
-        "$and":[
+      "filtro_B": {
+        "$and": [
           {
-            "nome_atributo":"tipolavoura",
-            "valor":1
+            "nome_atributo": "tipolavoura",
+            "valor": 1
           },
           {
-            "nome_atributo":"cultivopredominante",
+            "nome_atributo": "cultivopredominante",
             "valor": 42
           }
         ]
       }
     },
-    { "__comment": "EA055 HOP FIELD -> veg_veg_cultivada | não identificavel", 
+    {
+      "__comment": "EA055 HOP FIELD -> veg_veg_cultivada | não identificavel",
       "classe_A": "ea055",
       "classe_B": "veg_veg_cultivada",
-      "sentido":"ida",
+      "sentido": "A=>B",
       "atributos_default_B": [
         {
           "nome_atributo": "terreno",
@@ -3010,16 +3078,17 @@
           "valor": 0
         },
         {
-          "nome_atributo":"tipolavoura",
-          "valor":0
+          "nome_atributo": "tipolavoura",
+          "valor": 0
         },
         {
-          "nome_atributo":"cultivopredominante",
+          "nome_atributo": "cultivopredominante",
           "valor": 96
         }
       ]
     },
-    { "__comment": "EC010 CANE <-> veg_veg_cultivada | cana", 
+    {
+      "__comment": "EC010 CANE <-> veg_veg_cultivada | cana",
       "classe_A": "ec010",
       "classe_B": "veg_veg_cultivada",
       "atributos_default_B": [
@@ -3036,267 +3105,269 @@
           "valor": 0
         },
         {
-          "nome_atributo":"tipolavoura",
-          "valor":0
+          "nome_atributo": "tipolavoura",
+          "valor": 0
         },
         {
-          "nome_atributo":"cultivopredominante",
+          "nome_atributo": "cultivopredominante",
           "valor": 96
         }
       ],
-      "filtro_B":{
-        "nome_atributo":"cultivopredominante",
-        "valor":7
+      "filtro_B": {
+        "nome_atributo": "cultivopredominante",
+        "valor": 7
       }
     },
-    { "__comment": "BH135 RICE FIELD <-> veg_veg_cultivada | arroz", 
+    {
+      "__comment": "BH135 RICE FIELD <-> veg_veg_cultivada | arroz",
       "classe_A": "bh135",
       "classe_B": "veg_veg_cultivada",
-      "atributos_default_B":[
+      "atributos_default_B": [
         {
-          "nome_atributo":"tipolavoura",
+          "nome_atributo": "tipolavoura",
           "valor": 3
         },
         {
-          "nome_atributo":"finalidade",
-          "valor":1
+          "nome_atributo": "finalidade",
+          "valor": 1
         },
         {
-          "nome_atributo":"classificacaoporte",
+          "nome_atributo": "classificacaoporte",
           "valor": 2
         },
         {
-          "nome_atributo":"terreno",
-          "valor":3
+          "nome_atributo": "terreno",
+          "valor": 3
         }
       ],
-      "filtro_B":{
-          "nome_atributo":"cultivopredominante",
-          "valor": 13
-        },
-        "atributos_default_A":[
-          {
-            "nome_atributo":"ffp",
-            "valor":3
-          }
-        ]
+      "filtro_B": {
+        "nome_atributo": "cultivopredominante",
+        "valor": 13
+      },
+      "atributos_default_A": [
+        {
+          "nome_atributo": "ffp",
+          "valor": 3
+        }
+      ]
     },
-    { "__comment": "EA010 CROP LAND <-> veg_veg_cultivada", 
+    {
+      "__comment": "EA010 CROP LAND <-> veg_veg_cultivada",
       "classe_A": "ea010",
       "classe_B": "veg_veg_cultivada",
-      "filtro_B":{
-        "$or":[
+      "filtro_B": {
+        "$or": [
           {
-            "nome_atributo":"cultivopredominante",
-            "valor":1
+            "nome_atributo": "cultivopredominante",
+            "valor": 1
           },
           {
-            "nome_atributo":"cultivopredominante",
-            "valor":4
+            "nome_atributo": "cultivopredominante",
+            "valor": 4
           },
           {
-            "nome_atributo":"cultivopredominante",
-            "valor":6
+            "nome_atributo": "cultivopredominante",
+            "valor": 6
           },
           {
-            "nome_atributo":"cultivopredominante",
-            "valor":8
+            "nome_atributo": "cultivopredominante",
+            "valor": 8
           },
           {
-            "nome_atributo":"cultivopredominante",
-            "valor":9
+            "nome_atributo": "cultivopredominante",
+            "valor": 9
           },
           {
-            "nome_atributo":"cultivopredominante",
-            "valor":10
+            "nome_atributo": "cultivopredominante",
+            "valor": 10
           },
           {
-            "nome_atributo":"cultivopredominante",
-            "valor":11
+            "nome_atributo": "cultivopredominante",
+            "valor": 11
           },
           {
-            "nome_atributo":"cultivopredominante",
-            "valor":12
+            "nome_atributo": "cultivopredominante",
+            "valor": 12
           },
           {
-            "nome_atributo":"cultivopredominante",
-            "valor":16
+            "nome_atributo": "cultivopredominante",
+            "valor": 16
           },
           {
-            "nome_atributo":"cultivopredominante",
-            "valor":24
+            "nome_atributo": "cultivopredominante",
+            "valor": 24
           },
           {
-            "nome_atributo":"cultivopredominante",
-            "valor":25
+            "nome_atributo": "cultivopredominante",
+            "valor": 25
           },
           {
-            "nome_atributo":"cultivopredominante",
-            "valor":32
+            "nome_atributo": "cultivopredominante",
+            "valor": 32
           },
           {
-            "nome_atributo":"cultivopredominante",
-            "valor":33
+            "nome_atributo": "cultivopredominante",
+            "valor": 33
           },
           {
-            "nome_atributo":"cultivopredominante",
-            "valor":44
+            "nome_atributo": "cultivopredominante",
+            "valor": 44
           },
           {
-            "nome_atributo":"cultivopredominante",
-            "valor":45
+            "nome_atributo": "cultivopredominante",
+            "valor": 45
           },
           {
-            "nome_atributo":"cultivopredominante",
-            "valor":47
+            "nome_atributo": "cultivopredominante",
+            "valor": 47
           },
           {
-            "nome_atributo":"cultivopredominante",
-            "valor":48
+            "nome_atributo": "cultivopredominante",
+            "valor": 48
           },
           {
-            "nome_atributo":"cultivopredominante",
-            "valor":49
+            "nome_atributo": "cultivopredominante",
+            "valor": 49
           },
           {
-            "nome_atributo":"cultivopredominante",
-            "valor":50
+            "nome_atributo": "cultivopredominante",
+            "valor": 50
           },
           {
-            "nome_atributo":"cultivopredominante",
-            "valor":52
+            "nome_atributo": "cultivopredominante",
+            "valor": 52
           },
           {
-            "nome_atributo":"cultivopredominante",
-            "valor":54
+            "nome_atributo": "cultivopredominante",
+            "valor": 54
           },
           {
-            "nome_atributo":"cultivopredominante",
-            "valor":56
+            "nome_atributo": "cultivopredominante",
+            "valor": 56
           },
           {
-            "nome_atributo":"cultivopredominante",
-            "valor":57
+            "nome_atributo": "cultivopredominante",
+            "valor": 57
           },
           {
-            "nome_atributo":"cultivopredominante",
-            "valor":61
+            "nome_atributo": "cultivopredominante",
+            "valor": 61
           },
           {
-            "nome_atributo":"cultivopredominante",
-            "valor":62
+            "nome_atributo": "cultivopredominante",
+            "valor": 62
           },
           {
-            "nome_atributo":"cultivopredominante",
-            "valor":63
+            "nome_atributo": "cultivopredominante",
+            "valor": 63
           },
           {
-            "nome_atributo":"cultivopredominante",
-            "valor":69
+            "nome_atributo": "cultivopredominante",
+            "valor": 69
           },
           {
-            "nome_atributo":"cultivopredominante",
-            "valor":70
+            "nome_atributo": "cultivopredominante",
+            "valor": 70
           },
           {
-            "nome_atributo":"cultivopredominante",
-            "valor":72
+            "nome_atributo": "cultivopredominante",
+            "valor": 72
           },
           {
-            "nome_atributo":"cultivopredominante",
-            "valor":73
+            "nome_atributo": "cultivopredominante",
+            "valor": 73
           },
           {
-            "nome_atributo":"cultivopredominante",
-            "valor":75
+            "nome_atributo": "cultivopredominante",
+            "valor": 75
           },
           {
-            "nome_atributo":"cultivopredominante",
-            "valor":77
+            "nome_atributo": "cultivopredominante",
+            "valor": 77
           },
           {
-            "nome_atributo":"cultivopredominante",
-            "valor":79
+            "nome_atributo": "cultivopredominante",
+            "valor": 79
           },
           {
-            "nome_atributo":"cultivopredominante",
-            "valor":81
+            "nome_atributo": "cultivopredominante",
+            "valor": 81
           },
           {
-            "nome_atributo":"cultivopredominante",
-            "valor":82
+            "nome_atributo": "cultivopredominante",
+            "valor": 82
           },
           {
-            "nome_atributo":"cultivopredominante",
-            "valor":84
+            "nome_atributo": "cultivopredominante",
+            "valor": 84
           },
           {
-            "nome_atributo":"cultivopredominante",
-            "valor":88
+            "nome_atributo": "cultivopredominante",
+            "valor": 88
           },
           {
-            "nome_atributo":"cultivopredominante",
-            "valor":89
+            "nome_atributo": "cultivopredominante",
+            "valor": 89
           },
           {
-            "nome_atributo":"cultivopredominante",
-            "valor":90
+            "nome_atributo": "cultivopredominante",
+            "valor": 90
           },
           {
-            "nome_atributo":"cultivopredominante",
-            "valor":96
+            "nome_atributo": "cultivopredominante",
+            "valor": 96
           },
           {
-            "nome_atributo":"cultivopredominante",
-            "valor":99
+            "nome_atributo": "cultivopredominante",
+            "valor": 99
           },
           {
-            "nome_atributo":"cultivopredominante",
-            "valor":100
+            "nome_atributo": "cultivopredominante",
+            "valor": 100
           },
           {
-            "nome_atributo":"cultivopredominante",
-            "valor":103
+            "nome_atributo": "cultivopredominante",
+            "valor": 103
           },
           {
-            "nome_atributo":"cultivopredominante",
-            "valor":106
+            "nome_atributo": "cultivopredominante",
+            "valor": 106
           },
           {
-            "nome_atributo":"cultivopredominante",
-            "valor":108
+            "nome_atributo": "cultivopredominante",
+            "valor": 108
           },
           {
-            "nome_atributo":"cultivopredominante",
-            "valor":110
+            "nome_atributo": "cultivopredominante",
+            "valor": 110
           },
           {
-            "nome_atributo":"cultivopredominante",
-            "valor":111
+            "nome_atributo": "cultivopredominante",
+            "valor": 111
           },
           {
-            "nome_atributo":"cultivopredominante",
-            "valor":114
+            "nome_atributo": "cultivopredominante",
+            "valor": 114
           },
           {
-            "nome_atributo":"cultivopredominante",
-            "valor":117
+            "nome_atributo": "cultivopredominante",
+            "valor": 117
           },
           {
-            "nome_atributo":"cultivopredominante",
-            "valor":121
+            "nome_atributo": "cultivopredominante",
+            "valor": 121
           },
           {
-            "nome_atributo":"cultivopredominante",
-            "valor":122
+            "nome_atributo": "cultivopredominante",
+            "valor": 122
           },
           {
-            "nome_atributo":"cultivopredominante",
-            "valor":123
+            "nome_atributo": "cultivopredominante",
+            "valor": 123
           },
           {
-            "nome_atributo":"cultivopredominante",
-            "valor":124
+            "nome_atributo": "cultivopredominante",
+            "valor": 124
           }
         ]
       },
@@ -3330,344 +3401,345 @@
           "attr_B": "cultivopredominante",
           "traducao": [
             {
-              "valor_A":13,
-              "valor_B":1,
-              "sentido":"volta"
+              "valor_A": 13,
+              "valor_B": 1,
+              "sentido": "B=>A"
             },
             {
-              "valor_A":13,
-              "valor_B":4,
-              "sentido":"volta"
+              "valor_A": 13,
+              "valor_B": 4,
+              "sentido": "B=>A"
             },
             {
-              "valor_A":45,
-              "valor_B":6,
-              "sentido":"volta"
+              "valor_A": 45,
+              "valor_B": 6,
+              "sentido": "B=>A"
             },
             {
-              "valor_A":13,
-              "valor_B":8,
-              "sentido":"volta"
+              "valor_A": 13,
+              "valor_B": 8,
+              "sentido": "B=>A"
             },
             {
-              "valor_A":13,
-              "valor_B":9,
-              "sentido":"volta"
+              "valor_A": 13,
+              "valor_B": 9,
+              "sentido": "B=>A"
             },
             {
-              "valor_A":37,
-              "valor_B":10,
-              "sentido":"volta"
+              "valor_A": 37,
+              "valor_B": 10,
+              "sentido": "B=>A"
             },
             {
-              "valor_A":37,
-              "valor_B":11,
-              "sentido":"volta"
+              "valor_A": 37,
+              "valor_B": 11,
+              "sentido": "B=>A"
             },
             {
-              "valor_A":13,
-              "valor_B":12,
-              "sentido":"volta"
+              "valor_A": 13,
+              "valor_B": 12,
+              "sentido": "B=>A"
             },
             {
-              "valor_A":34,
-              "valor_B":16,
-              "sentido":"volta"
+              "valor_A": 34,
+              "valor_B": 16,
+              "sentido": "B=>A"
             },
             {
-              "valor_A":13,
-              "valor_B":24,
-              "sentido":"volta"
+              "valor_A": 13,
+              "valor_B": 24,
+              "sentido": "B=>A"
             },
             {
-              "valor_A":13,
-              "valor_B":32,
-              "sentido":"volta"
+              "valor_A": 13,
+              "valor_B": 32,
+              "sentido": "B=>A"
             },
             {
-              "valor_A":13,
-              "valor_B":33,
-              "sentido":"volta"
+              "valor_A": 13,
+              "valor_B": 33,
+              "sentido": "B=>A"
             },
             {
-              "valor_A":13,
-              "valor_B":44,
-              "sentido":"volta"
+              "valor_A": 13,
+              "valor_B": 44,
+              "sentido": "B=>A"
             },
             {
-              "valor_A":13,
-              "valor_B":45,
-              "sentido":"volta"
+              "valor_A": 13,
+              "valor_B": 45,
+              "sentido": "B=>A"
             },
             {
-              "valor_A":37,
-              "valor_B":47,
-              "sentido":"volta"
+              "valor_A": 37,
+              "valor_B": 47,
+              "sentido": "B=>A"
             },
             {
-              "valor_A":37,
-              "valor_B":48,
-              "sentido":"volta"
+              "valor_A": 37,
+              "valor_B": 48,
+              "sentido": "B=>A"
             },
             {
-              "valor_A":45,
-              "valor_B":49,
-              "sentido":"volta"
+              "valor_A": 45,
+              "valor_B": 49,
+              "sentido": "B=>A"
             },
             {
-              "valor_A":37,
-              "valor_B":50,
-              "sentido":"volta"
+              "valor_A": 37,
+              "valor_B": 50,
+              "sentido": "B=>A"
             },
             {
-              "valor_A":37,
-              "valor_B":52,
-              "sentido":"volta"
+              "valor_A": 37,
+              "valor_B": 52,
+              "sentido": "B=>A"
             },
             {
-              "valor_A":13,
-              "valor_B":54,
-              "sentido":"volta"
+              "valor_A": 13,
+              "valor_B": 54,
+              "sentido": "B=>A"
             },
             {
-              "valor_A":13,
-              "valor_B":56,
-              "sentido":"volta"
+              "valor_A": 13,
+              "valor_B": 56,
+              "sentido": "B=>A"
             },
             {
-              "valor_A":37,
-              "valor_B":57,
-              "sentido":"volta"
+              "valor_A": 37,
+              "valor_B": 57,
+              "sentido": "B=>A"
             },
             {
-              "valor_A":13,
-              "valor_B":61,
-              "sentido":"volta"
+              "valor_A": 13,
+              "valor_B": 61,
+              "sentido": "B=>A"
             },
             {
-              "valor_A":34,
-              "valor_B":63,
-              "sentido":"volta"
+              "valor_A": 34,
+              "valor_B": 63,
+              "sentido": "B=>A"
             },
             {
-              "valor_A":13,
-              "valor_B":69,
-              "sentido":"volta"
+              "valor_A": 13,
+              "valor_B": 69,
+              "sentido": "B=>A"
             },
             {
-              "valor_A":13,
-              "valor_B":70,
-              "sentido":"volta"
+              "valor_A": 13,
+              "valor_B": 70,
+              "sentido": "B=>A"
             },
             {
-              "valor_A":13,
-              "valor_B":72,
-              "sentido":"volta"
+              "valor_A": 13,
+              "valor_B": 72,
+              "sentido": "B=>A"
             },
             {
-              "valor_A":13,
-              "valor_B":73,
-              "sentido":"volta"
+              "valor_A": 13,
+              "valor_B": 73,
+              "sentido": "B=>A"
             },
             {
-              "valor_A":13,
-              "valor_B":75,
-              "sentido":"volta"
+              "valor_A": 13,
+              "valor_B": 75,
+              "sentido": "B=>A"
             },
             {
-              "valor_A":37,
-              "valor_B":77,
-              "sentido":"volta"
+              "valor_A": 37,
+              "valor_B": 77,
+              "sentido": "B=>A"
             },
             {
-              "valor_A":13,
-              "valor_B":79,
-              "sentido":"volta"
+              "valor_A": 13,
+              "valor_B": 79,
+              "sentido": "B=>A"
             },
             {
-              "valor_A":13,
-              "valor_B":81,
-              "sentido":"volta"
+              "valor_A": 13,
+              "valor_B": 81,
+              "sentido": "B=>A"
             },
             {
-              "valor_A":13,
-              "valor_B":82,
-              "sentido":"volta"
+              "valor_A": 13,
+              "valor_B": 82,
+              "sentido": "B=>A"
             },
             {
-              "valor_A":13,
-              "valor_B":84,
-              "sentido":"volta"
+              "valor_A": 13,
+              "valor_B": 84,
+              "sentido": "B=>A"
             },
             {
-              "valor_A":13,
-              "valor_B":88,
-              "sentido":"volta"
+              "valor_A": 13,
+              "valor_B": 88,
+              "sentido": "B=>A"
             },
             {
-              "valor_A":13,
-              "valor_B":89,
-              "sentido":"volta"
+              "valor_A": 13,
+              "valor_B": 89,
+              "sentido": "B=>A"
             },
             {
-              "valor_A":13,
-              "valor_B":90,
-              "sentido":"volta"
+              "valor_A": 13,
+              "valor_B": 90,
+              "sentido": "B=>A"
             },
             {
-              "valor_A":0,
-              "valor_B":96
+              "valor_A": 0,
+              "valor_B": 96
             },
             {
-              "valor_A":999,
-              "valor_B":96,
-              "sentido":"volta"
+              "valor_A": 999,
+              "valor_B": 96,
+              "sentido": "B=>A"
             },
             {
-              "valor_A":37,
-              "valor_B":100,
-              "sentido":"volta"
+              "valor_A": 37,
+              "valor_B": 100,
+              "sentido": "B=>A"
             },
             {
-              "valor_A":13,
-              "valor_B":103,
-              "sentido":"volta"
+              "valor_A": 13,
+              "valor_B": 103,
+              "sentido": "B=>A"
             },
             {
-              "valor_A":13,
-              "valor_B":106,
-              "sentido":"volta"
+              "valor_A": 13,
+              "valor_B": 106,
+              "sentido": "B=>A"
             },
             {
-              "valor_A":37,
-              "valor_B":108,
-              "sentido":"volta"
+              "valor_A": 37,
+              "valor_B": 108,
+              "sentido": "B=>A"
             },
             {
-              "valor_A":13,
-              "valor_B":110,
-              "sentido":"volta"
+              "valor_A": 13,
+              "valor_B": 110,
+              "sentido": "B=>A"
             },
             {
-              "valor_A":13,
-              "valor_B":111,
-              "sentido":"volta"
+              "valor_A": 13,
+              "valor_B": 111,
+              "sentido": "B=>A"
             },
             {
-              "valor_A":13,
-              "valor_B":117,
-              "sentido":"volta"
+              "valor_A": 13,
+              "valor_B": 117,
+              "sentido": "B=>A"
             },
             {
-              "valor_A":13,
-              "valor_B":121,
-              "sentido":"volta"
+              "valor_A": 13,
+              "valor_B": 121,
+              "sentido": "B=>A"
             },
             {
-              "valor_A":13,
-              "valor_B":122,
-              "sentido":"volta"
+              "valor_A": 13,
+              "valor_B": 122,
+              "sentido": "B=>A"
             },
             {
-              "valor_A":13,
-              "valor_B":123,
-              "sentido":"volta"
+              "valor_A": 13,
+              "valor_B": 123,
+              "sentido": "B=>A"
             },
             {
-              "valor_A":13,
-              "valor_B":124,
-              "sentido":"volta"
+              "valor_A": 13,
+              "valor_B": 124,
+              "sentido": "B=>A"
             },
             {
-              "valor_A":13,
-              "valor_B":96,
-              "sentido":"ida"
+              "valor_A": 13,
+              "valor_B": 96,
+              "sentido": "A=>B"
             },
             {
-              "valor_A":34,
-              "valor_B":96,
-              "sentido":"ida"
+              "valor_A": 34,
+              "valor_B": 96,
+              "sentido": "A=>B"
             },
             {
-              "valor_A":37,
-              "valor_B":96,
-              "sentido":"ida"
+              "valor_A": 37,
+              "valor_B": 96,
+              "sentido": "A=>B"
             },
             {
-              "valor_A":45,
-              "valor_B":96,
-              "sentido":"ida"
+              "valor_A": 45,
+              "valor_B": 96,
+              "sentido": "A=>B"
             }
           ]
         },
         {
-          "attr_A":"fmm",
-          "attr_B":"tipolavoura",
-          "traducao":[
+          "attr_A": "fmm",
+          "attr_B": "tipolavoura",
+          "traducao": [
             {
-              "valor_A":3,
-              "valor_B":1
+              "valor_A": 3,
+              "valor_B": 1
             },
             {
-              "valor_A":1,
-              "valor_B":3
+              "valor_A": 1,
+              "valor_B": 3
             },
             {
-              "valor_A":3,
-              "valor_B":2,
-              "sentido":"volta"
+              "valor_A": 3,
+              "valor_B": 2,
+              "sentido": "B=>A"
             },
             {
-              "valor_A":4,
-              "valor_B":0,
-              "sentido":"ida"
+              "valor_A": 4,
+              "valor_B": 0,
+              "sentido": "A=>B"
             },
             {
-              "valor_A":5,
-              "valor_B":0,
-              "sentido":"ida"
+              "valor_A": 5,
+              "valor_B": 0,
+              "sentido": "A=>B"
             },
             {
-              "valor_A":999,
-              "valor_B":0,
-              "sentido":"ida"
+              "valor_A": 999,
+              "valor_B": 0,
+              "sentido": "A=>B"
             }
           ]
         }
       ]
     },
-    { "__comment": "EC010 CANE <- veg_floresta | bambu", 
+    {
+      "__comment": "EC010 CANE <- veg_floresta | bambu",
       "classe_A": "ec010",
       "classe_B": "veg_floresta",
-      "sentido":"volta",
-      "filtro_B":
-        {
-          "nome_atributo":"especiepredominante",
-          "valor": 11
-        }
+      "sentido": "B=>A",
+      "filtro_B": {
+        "nome_atributo": "especiepredominante",
+        "valor": 11
+      }
     },
-    { "__comment": "EC030 WOOD <- veg_veg_cultivada | árvores", 
+    {
+      "__comment": "EC030 WOOD <- veg_veg_cultivada | árvores",
       "classe_A": "ec030",
       "classe_B": "veg_veg_cultivada",
-      "sentido":"volta",
-      "filtro_A":{
-        "$and":[
+      "sentido": "B=>A",
+      "filtro_A": {
+        "$and": [
           {
-            "nome_atributo":"classificacaoporte",
-            "valor":4
+            "nome_atributo": "classificacaoporte",
+            "valor": 4
           },
           {
-            "$or":[
+            "$or": [
               {
-                "nome_atributo":"cultivopredominante",
+                "nome_atributo": "cultivopredominante",
                 "valor": 26
               },
               {
-                "nome_atributo":"cultivopredominante",
+                "nome_atributo": "cultivopredominante",
                 "valor": 27
               },
               {
-                "nome_atributo":"cultivopredominante",
+                "nome_atributo": "cultivopredominante",
                 "valor": 28
               }
             ]
@@ -3685,25 +3757,25 @@
         },
         {
           "nome_atributo": "vsp",
-          "valor":0
+          "valor": 0
         }
       ]
     },
-    { "__comment": "EC030 WOOD | area <-> veg_floresta | sem bambu",
+    {
+      "__comment": "EC030 WOOD | area <-> veg_floresta | sem bambu",
       "classe_A": "ec030",
       "classe_B": "veg_floresta",
       "filtro_A": {
-        "$and":[
+        "$and": [
           {
-          "nome_atributo": "$GEOM_TYPE",
-          "valor": "POLYGON"
+            "nome_atributo": "$GEOM_TYPE",
+            "valor": "POLYGON"
           },
           {
-            "$not":
-                {
-                  "nome_atributo":"vsp",
-                  "valor": 10
-                }
+            "$not": {
+              "nome_atributo": "vsp",
+              "valor": 10
+            }
           }
         ]
       },
@@ -3727,10 +3799,10 @@
           "valor": 0
         }
       ],
-      "filtro_B":{
-        "$not":{
-          "nome_atributo":"especiepredominante",
-          "valor":11
+      "filtro_B": {
+        "$not": {
+          "nome_atributo": "especiepredominante",
+          "valor": 11
         }
       },
       "mapeamento_atributos": [
@@ -3808,28 +3880,29 @@
         }
       ]
     },
-    { "__comment": "EC030 WOOD | area <-> veg_reflorestamento",
+    {
+      "__comment": "EC030 WOOD | area <-> veg_reflorestamento",
       "classe_A": "ec030",
       "classe_B": "veg_reflorestamento",
-      "filtro_A":{
-        "nome_atributo":"vsp",
-        "valor":10
+      "filtro_A": {
+        "nome_atributo": "vsp",
+        "valor": 10
       },
-      "atributos_default_B":[
+      "atributos_default_B": [
         {
-          "nome_atributo":"classificacaoporte",
-          "valor":4
+          "nome_atributo": "classificacaoporte",
+          "valor": 4
         },
         {
-          "nome_atributo":"tipolavoura",
-          "valor":0
+          "nome_atributo": "tipolavoura",
+          "valor": 0
         },
         {
-          "nome_atributo":"terreno",
-          "valor":0
+          "nome_atributo": "terreno",
+          "valor": 0
         },
         {
-          "nome_atributo":"cultivopredominante",
+          "nome_atributo": "cultivopredominante",
           "valor": 20
         }
       ],
@@ -3839,27 +3912,27 @@
           "valor": 0
         },
         {
-          "nome_atributo":"dmt",
-          "valor":-32767.0
+          "nome_atributo": "dmt",
+          "valor": -32767.0
         },
         {
-          "nome_atributo":"vsp",
-          "valor":10
+          "nome_atributo": "vsp",
+          "valor": 10
         }
       ],
-      "filtro_B":{
-        "$or":[
+      "filtro_B": {
+        "$or": [
           {
-            "nome_atributo":"especiepredominante",
-            "valor":21
+            "nome_atributo": "especiepredominante",
+            "valor": 21
           },
           {
-            "nome_atributo":"especiepredominante",
-            "valor":20
+            "nome_atributo": "especiepredominante",
+            "valor": 20
           },
           {
-            "nome_atributo":"especiepredominante",
-            "valor":23
+            "nome_atributo": "especiepredominante",
+            "valor": 23
           }
         ]
       },
@@ -3899,7 +3972,7 @@
               "valor_B": 6
             },
             {
-              "valor_A": 0, 
+              "valor_A": 0,
               "valor_B": 10,
               "sentido": "B=>A"
             },
@@ -3942,7 +4015,8 @@
         }
       ]
     },
-    { "__comment": "AL099 HUT <-> edf_edificacao | desconhecido",
+    {
+      "__comment": "AL099 HUT <-> edf_edificacao | desconhecido",
       "sentido": "A=>B",
       "classe_A": "al099",
       "classe_B": "edf_edificacao",
@@ -3976,8 +4050,8 @@
           "valor": 0
         },
         {
-          "nome_atributo":"situacaofisica",
-          "valor":0
+          "nome_atributo": "situacaofisica",
+          "valor": 0
         },
         {
           "nome_atributo": "matconstr",
@@ -3985,7 +4059,8 @@
         }
       ]
     },
-    { "__comment": "AL241 TOWER | torre_controle  <-> edf_edif_constr_aeroportuaria | torre_controle",
+    {
+      "__comment": "AL241 TOWER | torre_controle  <-> edf_edif_constr_aeroportuaria | torre_controle",
       "classe_A": "al241",
       "classe_B": "edf_edif_constr_aeroportuaria",
       "filtro_A": {
@@ -4028,11 +4103,15 @@
         {
           "nome_atributo": "turistica",
           "valor": 0
+        },
+        {
+          "nome_atributo": "matconstr",
+          "valor": 0
         }
       ],
-      "filtro_B":{
-        "nome_atributo":"tipoedifaero",
-        "valor":28
+      "filtro_B": {
+        "nome_atributo": "tipoedifaero",
+        "valor": 28
       },
       "atributos_default_A": [
         {
@@ -4045,7 +4124,8 @@
         }
       ]
     },
-    { "__comment": "AP030 ROAD <->  rod_trecho_rodoviario",
+    {
+      "__comment": "AP030 ROAD <->  rod_trecho_rodoviario",
       "classe_A": "ap030",
       "classe_B": "rod_trecho_rodoviario",
       "atributos_default_B": [
@@ -4122,7 +4202,7 @@
             {
               "valor_A": 0,
               "valor_B": 1,
-              "sentido":"ida"
+              "sentido": "A=>B"
             },
             {
               "valor_A": 1000,
@@ -4141,13 +4221,14 @@
             {
               "valor_A": 3,
               "valor_B": 1,
-              "sentido":"ida"
+              "sentido": "A=>B"
             }
           ]
         }
       ]
     },
-    { "__comment": "AP030 ROAD <-  cbge_trecho_arruamento",
+    {
+      "__comment": "AP030 ROAD <-  cbge_trecho_arruamento",
       "classe_A": "ap030",
       "classe_B": "cbge_trecho_arruamento",
       "sentido": "B=>A",
@@ -4224,7 +4305,8 @@
         }
       ]
     },
-    { "__comment": "AL241 TOWER | torre_industrial / cooling  <-> edf_edif_industrial | chamine",
+    {
+      "__comment": "AL241 TOWER | torre_industrial / cooling  <-> edf_edif_industrial | chamine",
       "classe_A": "al241",
       "classe_B": "edf_edif_industrial",
       "filtro_A": {
@@ -4271,6 +4353,10 @@
         {
           "nome_atributo": "turistica",
           "valor": 0
+        },
+        {
+          "nome_atributo": "matconstr",
+          "valor": 0
         }
       ],
       "atributos_default_A": [
@@ -4284,7 +4370,8 @@
         }
       ]
     },
-    { "__comment": "AQ040 BRIDGE <-> tra_ponte | L",
+    {
+      "__comment": "AQ040 BRIDGE <-> tra_ponte | L",
       "classe_A": "aq040",
       "classe_B": "tra_ponte",
       "filtro_A": {
@@ -4308,9 +4395,9 @@
         }
       ],
       "filtro_B": {
-        "$not":{
-          "nome_atributo":"$GEOM_TYPE",
-          "valor":"POINT"
+        "$not": {
+          "nome_atributo": "$GEOM_TYPE",
+          "valor": "POINT"
         }
       },
       "atributos_default_A": [
@@ -4506,7 +4593,8 @@
         }
       ]
     },
-    { "__comment": "AQ040 BRIDGE <-> tra_travessia_pedestre | L",
+    {
+      "__comment": "AQ040 BRIDGE <-> tra_travessia_pedestre | L",
       "classe_A": "aq040",
       "classe_B": "tra_travessia_pedestre",
       "filtro_A": {
@@ -4528,9 +4616,9 @@
         }
       ],
       "filtro_B": {
-        "$not":{
-          "nome_atributo":"$GEOM_TYPE",
-          "valor":"POINT"
+        "$not": {
+          "nome_atributo": "$GEOM_TYPE",
+          "valor": "POINT"
         }
       },
       "atributos_default_A": [
@@ -4568,7 +4656,8 @@
         }
       ]
     },
-    { "__comment": "AL015 GENERAL BUILDING <-> edf_edificacao | desconhecido",
+    {
+      "__comment": "AL015 GENERAL BUILDING <-> edf_edificacao | desconhecido",
       "classe_A": "al015",
       "classe_B": "edf_edificacao",
       "filtro_A": {
@@ -4624,7 +4713,8 @@
         }
       ]
     },
-    { "__comment": "AL015 GENERAL BUILDING <-> edf_edif_agropec_ext_vegetal_pesca | sede_op_fazenda",
+    {
+      "__comment": "AL015 GENERAL BUILDING <-> edf_edif_agropec_ext_vegetal_pesca | sede_op_fazenda",
       "classe_A": "al015",
       "classe_B": "edf_edif_agropec_ext_vegetal_pesca",
       "filtro_A": {
@@ -4683,66 +4773,67 @@
           "valor": 0
         }
       ],
-      "mapeamento_atributos":[
+      "mapeamento_atributos": [
         {
-          "attr_A":"ffn",
-          "attr_B":"tipoedifagropec",
-          "traducao":[
+          "attr_A": "ffn",
+          "attr_B": "tipoedifagropec",
+          "traducao": [
             {
               "valor_A": 2,
               "valor_B": 4,
-              "sentido":"volta"
+              "sentido": "B=>A"
             },
             {
               "valor_A": 2,
               "valor_B": 12,
-              "sentido":"volta"
+              "sentido": "B=>A"
             },
             {
               "valor_A": 2,
               "valor_B": 13,
-              "sentido":"volta"
+              "sentido": "B=>A"
             },
             {
               "valor_A": 2,
               "valor_B": 14,
-              "sentido":"volta"
+              "sentido": "B=>A"
             },
             {
               "valor_A": 2,
               "valor_B": 15,
-              "sentido":"volta"
+              "sentido": "B=>A"
             },
             {
               "valor_A": 2,
               "valor_B": 16,
-              "sentido":"volta"
+              "sentido": "B=>A"
             },
             {
               "valor_A": 2,
               "valor_B": 17,
-              "sentido":"volta"
+              "sentido": "B=>A"
             },
             {
               "valor_A": 2,
               "valor_B": 18,
-              "sentido":"volta"
+              "sentido": "B=>A"
             },
             {
               "valor_A": 2,
               "valor_B": 99,
-              "sentido":"volta"
+              "sentido": "B=>A"
             },
             {
               "valor_A": 2,
               "valor_B": 0,
-              "sentido":"volta"
+              "sentido": "B=>A"
             }
           ]
         }
       ]
     },
-    { "__comment": "AL015 GENERAL BUILDING <-> edf_edif_industrial | silvicultura",
+    {
+      "__comment": "AL015 GENERAL BUILDING <-> edf_edif_industrial | silvicultura",
       "classe_A": "al015",
       "classe_B": "edf_edif_industrial",
       "filtro_A": {
@@ -4781,11 +4872,15 @@
         {
           "nome_atributo": "chamine",
           "valor": 0
+        },
+        {
+          "nome_atributo": "matconstr",
+          "valor": 0
         }
       ],
-      "filtro_B":{
-        "nome_atributo":"divisaoativecon",
-        "valor":2
+      "filtro_B": {
+        "nome_atributo": "divisaoativecon",
+        "valor": 2
       },
       "atributos_default_A": [
         {
@@ -4802,7 +4897,8 @@
         }
       ]
     },
-    { "__comment": "AL015 GENERAL BUILDING <-> edf_edif_industrial | fabricacao_prod_alimenticios",
+    {
+      "__comment": "AL015 GENERAL BUILDING <-> edf_edif_industrial | fabricacao_prod_alimenticios",
       "classe_A": "al015",
       "classe_B": "edf_edif_industrial",
       "filtro_A": {
@@ -4849,11 +4945,15 @@
         {
           "nome_atributo": "chamine",
           "valor": 0
+        },
+        {
+          "nome_atributo": "matconstr",
+          "valor": 0
         }
       ],
-      "filtro_B":{
-        "nome_atributo":"divisaoativecon",
-        "valor":15
+      "filtro_B": {
+        "nome_atributo": "divisaoativecon",
+        "valor": 15
       },
       "atributos_default_A": [
         {
@@ -4870,7 +4970,8 @@
         }
       ]
     },
-    { "__comment": "AL015 GENERAL BUILDING <-> edf_edif_industrial | fabricacao_madeira_e_celulose",
+    {
+      "__comment": "AL015 GENERAL BUILDING <-> edf_edif_industrial | fabricacao_madeira_e_celulose",
       "classe_A": "al015",
       "classe_B": "edf_edif_industrial",
       "filtro_A": {
@@ -4909,11 +5010,15 @@
         {
           "nome_atributo": "divisaoativecon",
           "valor": 20
+        },
+        {
+          "nome_atributo": "matconstr",
+          "valor": 0
         }
       ],
-      "filtro_B":{
-        "nome_atributo":"divisaoativecon",
-        "valor":20
+      "filtro_B": {
+        "nome_atributo": "divisaoativecon",
+        "valor": 20
       },
       "atributos_default_A": [
         {
@@ -4930,7 +5035,8 @@
         }
       ]
     },
-    { "__comment": "AL015 GENERAL BUILDING <-> edf_edif_industrial | fabricacao_papel_e_celulose",
+    {
+      "__comment": "AL015 GENERAL BUILDING <-> edf_edif_industrial | fabricacao_papel_e_celulose",
       "classe_A": "al015",
       "classe_B": "edf_edif_industrial",
       "filtro_A": {
@@ -4969,11 +5075,15 @@
         {
           "nome_atributo": "divisaoativecon",
           "valor": 21
+        },
+        {
+          "nome_atributo": "matconstr",
+          "valor": 0
         }
       ],
-      "filtro_B":{
-        "nome_atributo":"divisaoativecon", 
-        "valor":21
+      "filtro_B": {
+        "nome_atributo": "divisaoativecon",
+        "valor": 21
       },
       "atributos_default_A": [
         {
@@ -4990,7 +5100,8 @@
         }
       ]
     },
-    { "__comment": "AL015 GENERAL BUILDING <-> edf_edif_industrial | petroleo",
+    {
+      "__comment": "AL015 GENERAL BUILDING <-> edf_edif_industrial | petroleo",
       "classe_A": "al015",
       "classe_B": "edf_edif_industrial",
       "filtro_A": {
@@ -5029,11 +5140,15 @@
         {
           "nome_atributo": "divisaoativecon",
           "valor": 23
+        },
+        {
+          "nome_atributo": "matconstr",
+          "valor": 0
         }
       ],
-      "filtro_B":{
-        "nome_atributo":"divisaoativecon",
-        "valor":23
+      "filtro_B": {
+        "nome_atributo": "divisaoativecon",
+        "valor": 23
       },
       "atributos_default_A": [
         {
@@ -5050,7 +5165,8 @@
         }
       ]
     },
-    { "__comment": "AL015 GENERAL BUILDING <-> edf_edif_industrial | metal",
+    {
+      "__comment": "AL015 GENERAL BUILDING <-> edf_edif_industrial | metal",
       "classe_A": "al015",
       "classe_B": "edf_edif_industrial",
       "filtro_A": {
@@ -5089,11 +5205,15 @@
         {
           "nome_atributo": "divisaoativecon",
           "valor": 28
+        },
+        {
+          "nome_atributo": "matconstr",
+          "valor": 0
         }
       ],
-      "filtro_B":{
+      "filtro_B": {
         "nome_atributo": "divisaoativecon",
-          "valor": 28
+        "valor": 28
       },
       "atributos_default_A": [
         {
@@ -5110,7 +5230,8 @@
         }
       ]
     },
-    { "__comment": "AL015 GENERAL BUILDING <-> edf_edif_industrial | motor",
+    {
+      "__comment": "AL015 GENERAL BUILDING <-> edf_edif_industrial | motor",
       "classe_A": "al015",
       "classe_B": "edf_edif_industrial",
       "filtro_A": {
@@ -5149,6 +5270,10 @@
         {
           "nome_atributo": "divisaoativecon",
           "valor": 34
+        },
+        {
+          "nome_atributo": "matconstr",
+          "valor": 0
         }
       ],
       "atributos_default_A": [
@@ -5166,7 +5291,8 @@
         }
       ]
     },
-    { "__comment": "AL015 GENERAL BUILDING <-> edf_edif_comerc_serv | reparos",
+    {
+      "__comment": "AL015 GENERAL BUILDING <-> edf_edif_comerc_serv | reparos",
       "classe_A": "al015",
       "classe_B": "edf_edif_comerc_serv",
       "filtro_A": {
@@ -5211,19 +5337,19 @@
           "valor": 99
         },
         {
-          "nome_atributo":"matconstr",
-          "valor":0
+          "nome_atributo": "matconstr",
+          "valor": 0
         }
       ],
-      "filtro_B":{
-        "$and":[
+      "filtro_B": {
+        "$and": [
           {
-            "nome_atributo":"divisaoativecon",
-            "valor":74
+            "nome_atributo": "divisaoativecon",
+            "valor": 74
           },
           {
-            "nome_atributo":"tipoedifcomercserv",
-            "valor":99
+            "nome_atributo": "tipoedifcomercserv",
+            "valor": 99
           }
         ]
       },
@@ -5242,10 +5368,11 @@
         }
       ]
     },
-    { "__comment": "AL015 GENERAL BUILDING -> edf_edif_comerc_serv | outros_reparos_aeronaves",
+    {
+      "__comment": "AL015 GENERAL BUILDING -> edf_edif_comerc_serv | outros_reparos_aeronaves",
       "classe_A": "al015",
       "classe_B": "edf_edif_comerc_serv",
-      "sentido":"ida",
+      "sentido": "A=>B",
       "filtro_A": {
         "nome_atributo": "ffn",
         "valor": 341
@@ -5280,8 +5407,8 @@
           "valor": 2
         },
         {
-          "nome_atributo":"matconstr",
-          "valor":0
+          "nome_atributo": "matconstr",
+          "valor": 0
         }
       ],
       "mapeamento_multiplo": [
@@ -5311,7 +5438,8 @@
         }
       ]
     },
-    { "__comment": "AL015 GENERAL BUILDING <-> edf_edif_comerc_serv | reparos_veiculos_motores",
+    {
+      "__comment": "AL015 GENERAL BUILDING <-> edf_edif_comerc_serv | reparos_veiculos_motores",
       "classe_A": "al015",
       "classe_B": "edf_edif_comerc_serv",
       "filtro_A": {
@@ -5356,19 +5484,19 @@
           "valor": 17
         },
         {
-          "nome_atributo":"matconstr",
-          "valor":0
+          "nome_atributo": "matconstr",
+          "valor": 0
         }
       ],
-      "filtro_B":{
-        "$and":[
+      "filtro_B": {
+        "$and": [
           {
-            "nome_atributo":"divisaoativecon",
-            "valor":50
+            "nome_atributo": "divisaoativecon",
+            "valor": 50
           },
           {
-            "nome_atributo":"tipoedifcomercserv",
-            "valor":17
+            "nome_atributo": "tipoedifcomercserv",
+            "valor": 17
           }
         ]
       },
@@ -5387,7 +5515,8 @@
         }
       ]
     },
-    { "__comment": "AL015 GENERAL BUILDING <-> edf_edificacao | utilidade_pub",
+    {
+      "__comment": "AL015 GENERAL BUILDING <-> edf_edificacao | utilidade_pub",
       "classe_A": "al015",
       "classe_B": "edf_edificacao",
       "filtro_A": {
@@ -5420,7 +5549,11 @@
           "valor": 0
         },
         {
-          "nome_atributo":"classeativecon",
+          "nome_atributo": "classeativecon",
+          "valor": 0
+        },
+        {
+          "nome_atributo": "matconstr",
           "valor": 0
         }
       ],
@@ -5461,7 +5594,8 @@
         }
       ]
     },
-    { "__comment": "AL015 GENERAL BUILDING <-> enc_grupo_transformadores",
+    {
+      "__comment": "AL015 GENERAL BUILDING <-> enc_grupo_transformadores",
       "classe_A": "al015",
       "classe_B": "enc_grupo_transformadores",
       "filtro_A": {
@@ -5487,10 +5621,11 @@
         }
       ]
     },
-    { "__comment": "AL015 GENERAL BUILDING -> edf_edif_industrial | outros_resfriamento",
+    {
+      "__comment": "AL015 GENERAL BUILDING -> edf_edif_industrial | outros_resfriamento",
       "classe_A": "al015",
       "classe_B": "edf_edif_industrial",
-      "sentido":"ida",
+      "sentido": "A=>B",
       "filtro_A": {
         "nome_atributo": "ffn",
         "valor": 355
@@ -5523,6 +5658,10 @@
         {
           "nome_atributo": "chamine",
           "valor": 1
+        },
+        {
+          "nome_atributo": "matconstr",
+          "valor": 0
         }
       ],
       "mapeamento_multiplo": [
@@ -5548,7 +5687,8 @@
         }
       ]
     },
-    { "__comment": "AL015 GENERAL BUILDING <-> edf_edif_abast_agua | tratamento",
+    {
+      "__comment": "AL015 GENERAL BUILDING <-> edf_edif_abast_agua | tratamento",
       "classe_A": "al015",
       "classe_B": "edf_edif_abast_agua",
       "filtro_A": {
@@ -5589,8 +5729,7 @@
           "valor": 0
         }
       ],
-      "filtro_B":
-      {
+      "filtro_B": {
         "nome_atributo": "tipoedifabast",
         "valor": 2
       },
@@ -5609,7 +5748,8 @@
         }
       ]
     },
-    { "__comment": "AL015 GENERAL BUILDING <-> edf_edif_comerc_serv",
+    {
+      "__comment": "AL015 GENERAL BUILDING <-> edf_edif_comerc_serv",
       "classe_A": "al015",
       "classe_B": "edf_edif_comerc_serv",
       "filtro_A": {
@@ -5650,13 +5790,13 @@
           "valor": 0
         },
         {
-          "nome_atributo":"matconstr",
-          "valor":0
+          "nome_atributo": "matconstr",
+          "valor": 0
         }
       ],
-      "filtro_B":{
-        "nome_atributo":"tipoedifcomercserv",
-        "valor":0
+      "filtro_B": {
+        "nome_atributo": "tipoedifcomercserv",
+        "valor": 0
       },
       "atributos_default_A": [
         {
@@ -5695,7 +5835,8 @@
         }
       ]
     },
-    { "__comment": "AL015 GENERAL BUILDING <-> edf_posto_combustivel",
+    {
+      "__comment": "AL015 GENERAL BUILDING <-> edf_posto_combustivel",
       "classe_A": "al015",
       "classe_B": "edf_posto_combustivel",
       "filtro_A": {
@@ -5738,6 +5879,10 @@
         {
           "nome_atributo": "divisaoativecon",
           "valor": 50
+        },
+        {
+          "nome_atributo": "matconstr",
+          "valor": 0
         }
       ],
       "atributos_default_A": [
@@ -5755,7 +5900,8 @@
         }
       ]
     },
-    { "__comment": "AL015 GENERAL BUILDING <-> edf_edif_comerc_serv | mercado",
+    {
+      "__comment": "AL015 GENERAL BUILDING <-> edf_edif_comerc_serv | mercado",
       "classe_A": "al015",
       "classe_B": "edf_edif_comerc_serv",
       "filtro_A": {
@@ -5800,8 +5946,8 @@
           "valor": 4
         },
         {
-          "nome_atributo":"matconstr",
-          "valor":0
+          "nome_atributo": "matconstr",
+          "valor": 0
         }
       ],
       "atributos_default_A": [
@@ -5814,23 +5960,24 @@
           "valor": 0
         }
       ],
-      "filtro_B":{
-        "$or":[
+      "filtro_B": {
+        "$or": [
           {
-            "nome_atributo":"tipoedifcomercserv",
-            "valor":4
+            "nome_atributo": "tipoedifcomercserv",
+            "valor": 4
           },
           {
-            "nome_atributo":"tipoedifcomercserv",
-            "valor":23
+            "nome_atributo": "tipoedifcomercserv",
+            "valor": 23
           }
         ]
       }
     },
-    { "__comment": "AL015 GENERAL BUILDING -> edf_edificacao",
+    {
+      "__comment": "AL015 GENERAL BUILDING -> edf_edificacao",
       "classe_A": "al015",
       "classe_B": "edf_edificacao",
-      "sentido":"ida",
+      "sentido": "A=>B",
       "filtro_A": {
         "nome_atributo": "ffn",
         "valor": 480
@@ -5863,6 +6010,10 @@
         {
           "nome_atributo": "divisaoativecon",
           "valor": 0
+        },
+        {
+          "nome_atributo": "matconstr",
+          "valor": 0
         }
       ],
       "mapeamento_multiplo": [
@@ -5884,10 +6035,11 @@
         }
       ]
     },
-    { "__comment": "AL015 GENERAL BUILDING -> edf_edificacao",
+    {
+      "__comment": "AL015 GENERAL BUILDING -> edf_edificacao",
       "classe_A": "al015",
       "classe_B": "edf_edificacao",
-      "sentido":"ida",
+      "sentido": "A=>B",
       "filtro_A": {
         "nome_atributo": "ffn",
         "valor": 481
@@ -5920,6 +6072,10 @@
         {
           "nome_atributo": "divisaoativecon",
           "valor": 0
+        },
+        {
+          "nome_atributo": "matconstr",
+          "valor": 0
         }
       ],
       "mapeamento_multiplo": [
@@ -5941,7 +6097,8 @@
         }
       ]
     },
-    { "__comment": "AL015 GENERAL BUILDING <-> hdv_sinalizacao | desconhecido",
+    {
+      "__comment": "AL015 GENERAL BUILDING <-> hdv_sinalizacao | desconhecido",
       "classe_A": "al015",
       "classe_B": "hdv_sinalizacao",
       "filtro_A": {
@@ -5973,10 +6130,11 @@
         }
       ]
     },
-    { "__comment": "AL015 GENERAL BUILDING -> edf_edificacao | bombeamento", 
+    {
+      "__comment": "AL015 GENERAL BUILDING -> edf_edificacao | bombeamento",
       "classe_A": "al015",
       "classe_B": "edf_edificacao",
-      "sentido":"ida",
+      "sentido": "A=>B",
       "filtro_A": {
         "nome_atributo": "ffn",
         "valor": 501
@@ -6007,8 +6165,12 @@
           "valor": 0
         },
         {
-          "nome_atributo":"divisaoativecon",
-          "valor":0
+          "nome_atributo": "divisaoativecon",
+          "valor": 0
+        },
+        {
+          "nome_atributo": "matconstr",
+          "valor": 0
         }
       ],
       "mapeamento_multiplo": [
@@ -6030,10 +6192,11 @@
         }
       ]
     },
-    { "__comment": "AL015 GENERAL BUILDING -> edf_edif_comerc_serv | contratacao_piloto_maritimo", 
+    {
+      "__comment": "AL015 GENERAL BUILDING -> edf_edif_comerc_serv | contratacao_piloto_maritimo",
       "classe_A": "al015",
       "classe_B": "edf_edif_comerc_serv",
-      "sentido":"ida",
+      "sentido": "A=>B",
       "filtro_A": {
         "nome_atributo": "ffn",
         "valor": 511
@@ -6068,8 +6231,8 @@
           "valor": 4
         },
         {
-          "nome_atributo":"matconstr",
-          "valor":0
+          "nome_atributo": "matconstr",
+          "valor": 0
         }
       ],
       "mapeamento_multiplo": [
@@ -6099,7 +6262,8 @@
         }
       ]
     },
-    { "__comment": "AL015 GENERAL BUILDING | Harbour Control <-> edf_edif_pub_militar | capitania - acho que está errado, era bom revisar (obs Diogo)",
+    {
+      "__comment": "AL015 GENERAL BUILDING | Harbour Control <-> edf_edif_pub_militar | capitania - acho que está errado, era bom revisar (obs Diogo)",
       "classe_A": "al015",
       "classe_B": "edf_edif_pub_militar",
       "filtro_A": {
@@ -6152,9 +6316,9 @@
           "valor": 6
         }
       ],
-      "filtro_B":{
-        "nome_atributo":"tipoinstalmilitar",
-        "valor":16
+      "filtro_B": {
+        "nome_atributo": "tipoinstalmilitar",
+        "valor": 16
       },
       "atributos_default_A": [
         {
@@ -6171,7 +6335,8 @@
         }
       ]
     },
-    { "__comment": "AL015 GENERAL BUILDING | Defence Activities <-> edf_edif_pub_militar | todos menos capitania, Posto de policiamento urbano e Posto de policiamento rodoviário",
+    {
+      "__comment": "AL015 GENERAL BUILDING | Defence Activities <-> edf_edif_pub_militar | todos menos capitania, Posto de policiamento urbano e Posto de policiamento rodoviário",
       "classe_A": "al015",
       "classe_B": "edf_edif_pub_militar",
       "filtro_A": {
@@ -6228,19 +6393,19 @@
           "valor": 0
         }
       ],
-      "filtro_B":{
-        "$not":{
-          "$or":[
+      "filtro_B": {
+        "$not": {
+          "$or": [
             {
               "nome_atributo": "tipoinstalmilitar",
               "valor": 22
             },
             {
-              "nome_atributo":"tipoinstalmilitar",
+              "nome_atributo": "tipoinstalmilitar",
               "valor": 23
             },
             {
-              "nome_atributo":"tipoinstalmilitar",
+              "nome_atributo": "tipoinstalmilitar",
               "valor": 24
             }
           ]
@@ -6265,10 +6430,11 @@
         }
       ]
     },
-    { "__comment": "AL015 GENERAL BUILDING <-> cbge_deposito_geral", 
+    {
+      "__comment": "AL015 GENERAL BUILDING <-> cbge_deposito_geral",
       "classe_A": "al015",
       "classe_B": "cbge_deposito_geral",
-      "sentido":"ida",
+      "sentido": "A=>B",
       "filtro_A": {
         "nome_atributo": "ffn",
         "valor": 530
@@ -6301,10 +6467,23 @@
         {
           "nome_atributo": "tipodepgeral",
           "valor": 0
+        },
+        {
+          "nome_atributo": "matconstr",
+          "valor": 0
+        },
+        {
+          "nome_atributo": "tipoprodutoresiduo",
+          "valor": 0
+        },
+        {
+          "nome_atributo": "tipoconteudo",
+          "valor": 0
         }
       ]
     },
-    { "__comment": "AL015 GENERAL BUILDING <-> tra_patio | exceto aeronautico",
+    {
+      "__comment": "AL015 GENERAL BUILDING <-> tra_patio | exceto aeronautico",
       "classe_A": "al015",
       "classe_B": "tra_patio",
       "filtro_A": {
@@ -6358,10 +6537,11 @@
         }
       ]
     },
-    { "__comment": "AL015 GENERAL BUILDING <-> edf_edif_comerc_serv | servicos_postais", 
+    {
+      "__comment": "AL015 GENERAL BUILDING <-> edf_edif_comerc_serv | servicos_postais",
       "classe_A": "al015",
       "classe_B": "edf_edif_comerc_serv",
-      "sentido":"ida",
+      "sentido": "A=>B",
       "filtro_A": {
         "nome_atributo": "ffn",
         "valor": 540
@@ -6396,8 +6576,8 @@
           "valor": 4
         },
         {
-          "nome_atributo":"matconstr",
-          "valor":0
+          "nome_atributo": "matconstr",
+          "valor": 0
         }
       ],
       "mapeamento_multiplo": [
@@ -6427,7 +6607,8 @@
         }
       ]
     },
-    { "__comment": "AL015 GENERAL BUILDING <-> edf_edif_comerc_serv | Hotel",
+    {
+      "__comment": "AL015 GENERAL BUILDING <-> edf_edif_comerc_serv | Hotel",
       "classe_A": "al015",
       "classe_B": "edf_edif_comerc_serv",
       "filtro_A": {
@@ -6472,13 +6653,13 @@
           "valor": 7
         },
         {
-          "nome_atributo":"matconstr",
-          "valor":0
+          "nome_atributo": "matconstr",
+          "valor": 0
         }
       ],
-      "filtro_B":{
-        "nome_atributo":"tipoedifcomercserv",
-        "valor":7
+      "filtro_B": {
+        "nome_atributo": "tipoedifcomercserv",
+        "valor": 7
       },
       "atributos_default_A": [
         {
@@ -6495,7 +6676,8 @@
         }
       ]
     },
-    { "__comment": "AL015 GENERAL BUILDING -> edf_edif_residencial",
+    {
+      "__comment": "AL015 GENERAL BUILDING -> edf_edif_residencial",
       "classe_A": "al015",
       "classe_B": "edf_edif_residencial",
       "filtro_A": {
@@ -6551,10 +6733,11 @@
         }
       ]
     },
-    { "__comment": "AL015 GENERAL BUILDING <-> edf_edif_comerc_serv | servicos_impressao",
+    {
+      "__comment": "AL015 GENERAL BUILDING <-> edf_edif_comerc_serv | servicos_impressao",
       "classe_A": "al015",
       "classe_B": "edf_edif_comerc_serv",
-      "sentido":"ida",
+      "sentido": "A=>B",
       "filtro_A": {
         "nome_atributo": "ffn",
         "valor": 582
@@ -6593,8 +6776,8 @@
           "valor": 22
         },
         {
-          "nome_atributo":"matconstr",
-          "valor":0
+          "nome_atributo": "matconstr",
+          "valor": 0
         }
       ],
       "mapeamento_multiplo": [
@@ -6620,7 +6803,8 @@
         }
       ]
     },
-    { "__comment": "AL015 GENERAL BUILDING <-> edf_edif_comunic | radio",
+    {
+      "__comment": "AL015 GENERAL BUILDING <-> edf_edif_comunic | radio",
       "classe_A": "al015",
       "classe_B": "edf_edif_comunic",
       "filtro_A": {
@@ -6663,11 +6847,15 @@
         {
           "nome_atributo": "modalidade",
           "valor": 1
+        },
+        {
+          "nome_atributo": "matconstr",
+          "valor": 0
         }
       ],
-      "filtro_B":{
-        "nome_atributo":"modalidade",
-        "valor":1
+      "filtro_B": {
+        "nome_atributo": "modalidade",
+        "valor": 1
       },
       "atributos_default_A": [
         {
@@ -6684,7 +6872,8 @@
         }
       ]
     },
-    { "__comment": "AL015 GENERAL BUILDING <-> edf_edif_comunic | televisao",
+    {
+      "__comment": "AL015 GENERAL BUILDING <-> edf_edif_comunic | televisao",
       "classe_A": "al015",
       "classe_B": "edf_edif_comunic",
       "filtro_A": {
@@ -6727,11 +6916,15 @@
         {
           "nome_atributo": "modalidade",
           "valor": 2
+        },
+        {
+          "nome_atributo": "matconstr",
+          "valor": 0
         }
       ],
-      "filtro_B":{
-        "nome_atributo":"modalidade",
-        "valor":2
+      "filtro_B": {
+        "nome_atributo": "modalidade",
+        "valor": 2
       },
       "atributos_default_A": [
         {
@@ -6748,7 +6941,8 @@
         }
       ]
     },
-    { "__comment": "AL015 GENERAL BUILDING <-> edf_edif_comunic | telecomunicacoes",
+    {
+      "__comment": "AL015 GENERAL BUILDING <-> edf_edif_comunic | telecomunicacoes",
       "classe_A": "al015",
       "classe_B": "edf_edif_comunic",
       "filtro_A": {
@@ -6791,21 +6985,25 @@
         {
           "nome_atributo": "modalidade",
           "valor": 4
+        },
+        {
+          "nome_atributo": "matconstr",
+          "valor": 0
         }
       ],
-      "filtro_B":{
-        "$or":[
+      "filtro_B": {
+        "$or": [
           {
-            "nome_atributo":"modalidade",
-            "valor":3
+            "nome_atributo": "modalidade",
+            "valor": 3
           },
           {
-            "nome_atributo":"modalidade",
-            "valor":4
+            "nome_atributo": "modalidade",
+            "valor": 4
           },
           {
-            "nome_atributo":"modalidade",
-            "valor":5
+            "nome_atributo": "modalidade",
+            "valor": 5
           }
         ]
       },
@@ -6824,10 +7022,11 @@
         }
       ]
     },
-    { "__comment": "AL015 GENERAL BUILDING -> edf_edificacao | controle_solo_via_sat",
+    {
+      "__comment": "AL015 GENERAL BUILDING -> edf_edificacao | controle_solo_via_sat",
       "classe_A": "al015",
       "classe_B": "edf_edificacao",
-      "sentido":"ida",
+      "sentido": "A=>B",
       "filtro_A": {
         "nome_atributo": "ffn",
         "valor": 626
@@ -6856,6 +7055,10 @@
         {
           "nome_atributo": "classeativecon",
           "valor": 0
+        },
+        {
+          "nome_atributo": "matconstr",
+          "valor": 0
         }
       ],
       "mapeamento_multiplo": [
@@ -6881,7 +7084,8 @@
         }
       ]
     },
-    { "__comment": "AL015 GENERAL BUILDING <-> edf_edif_comerc_serv | banco",
+    {
+      "__comment": "AL015 GENERAL BUILDING <-> edf_edif_comerc_serv | banco",
       "classe_A": "al015",
       "classe_B": "edf_edif_comerc_serv",
       "filtro_A": {
@@ -6926,13 +7130,13 @@
           "valor": 11
         },
         {
-          "nome_atributo":"matconstr",
-          "valor":0
+          "nome_atributo": "matconstr",
+          "valor": 0
         }
       ],
-      "filtro_B":{
-        "nome_atributo":"tipocomercserv",
-        "valor":11
+      "filtro_B": {
+        "nome_atributo": "tipocomercserv",
+        "valor": 11
       },
       "atributos_default_A": [
         {
@@ -6949,7 +7153,8 @@
         }
       ]
     },
-    { "__comment": "AL015 GENERAL BUILDING <-> edf_edificacao | pesquisa_cientifica_desenvolvimento", 
+    {
+      "__comment": "AL015 GENERAL BUILDING <-> edf_edificacao | pesquisa_cientifica_desenvolvimento",
       "classe_A": "al015",
       "classe_B": "edf_edificacao",
       "filtro_A": {
@@ -6988,6 +7193,10 @@
         {
           "nome_atributo": "divisaoativecon",
           "valor": 0
+        },
+        {
+          "nome_atributo": "matconstr",
+          "valor": 0
         }
       ],
       "atributos_default_A": [
@@ -7023,10 +7232,11 @@
         }
       ]
     },
-    { "__comment": "AL015 GENERAL BUILDING <-> edf_edificacao | observatorio",
+    {
+      "__comment": "AL015 GENERAL BUILDING <-> edf_edificacao | observatorio",
       "classe_A": "al015",
       "classe_B": "edf_edificacao",
-      "sentido":"ida",
+      "sentido": "A=>B",
       "filtro_A": {
         "nome_atributo": "ffn",
         "valor": 721
@@ -7055,6 +7265,10 @@
         {
           "nome_atributo": "classeativecon",
           "valor": 0
+        },
+        {
+          "nome_atributo": "matconstr",
+          "valor": 0
         }
       ],
       "mapeamento_multiplo": [
@@ -7080,7 +7294,8 @@
         }
       ]
     },
-    { "__comment": "AL015 GENERAL BUILDING <-> edf_edif_constr_est_med_fen | CLIMA", 
+    {
+      "__comment": "AL015 GENERAL BUILDING <-> edf_edif_constr_est_med_fen | CLIMA",
       "classe_A": "al015",
       "classe_B": "edf_edif_constr_est_med_fen",
       "filtro_A": {
@@ -7128,10 +7343,11 @@
         }
       ]
     },
-    { "__comment": "AL015 GENERAL BUILDING <-> edf_edificacao | tunel_vento",
+    {
+      "__comment": "AL015 GENERAL BUILDING <-> edf_edificacao | tunel_vento",
       "classe_A": "al015",
       "classe_B": "edf_edificacao",
-      "sentido":"ida",
+      "sentido": "A=>B",
       "filtro_A": {
         "nome_atributo": "ffn",
         "valor": 730
@@ -7163,6 +7379,10 @@
         },
         {
           "nome_atributo": "classeativecon",
+          "valor": 0
+        },
+        {
+          "nome_atributo": "matconstr",
           "valor": 0
         }
       ],
@@ -7199,10 +7419,11 @@
         }
       ]
     },
-    { "__comment": "AL015 GENERAL BUILDING <-> edf_edificacao",
+    {
+      "__comment": "AL015 GENERAL BUILDING <-> edf_edificacao",
       "classe_A": "al015",
       "classe_B": "edf_edificacao",
-      "sentido":"ida",
+      "sentido": "A=>B",
       "filtro_A": {
         "nome_atributo": "ffn",
         "valor": 781
@@ -7235,6 +7456,10 @@
         {
           "nome_atributo": "classeativecon",
           "valor": 0
+        },
+        {
+          "nome_atributo": "matconstr",
+          "valor": 0
         }
       ],
       "mapeamento_multiplo": [
@@ -7256,10 +7481,11 @@
         }
       ]
     },
-    { "__comment": "AL015 GENERAL BUILDING -> edf_edificacao", 
+    {
+      "__comment": "AL015 GENERAL BUILDING -> edf_edificacao",
       "classe_A": "al015",
       "classe_B": "edf_edificacao",
-      "sentido":"ida",
+      "sentido": "A=>B",
       "filtro_A": {
         "nome_atributo": "ffn",
         "valor": 810
@@ -7296,6 +7522,10 @@
         {
           "nome_atributo": "classeativecon",
           "valor": 0
+        },
+        {
+          "nome_atributo": "matconstr",
+          "valor": 0
         }
       ],
       "atributos_default_A": [
@@ -7331,14 +7561,15 @@
         }
       ]
     },
-    { "__comment": "AL015 GENERAL BUILDING <-> edf_edif_pub_civil | sede_governo",
+    {
+      "__comment": "AL015 GENERAL BUILDING <-> edf_edif_pub_civil | sede_governo",
       "classe_A": "al015",
       "classe_B": "edf_edif_pub_civil",
       "filtro_A": {
         "nome_atributo": "ffn",
         "valor": 811
       },
-      "atributos_default_B": [ 
+      "atributos_default_B": [
         {
           "nome_atributo": "administracao",
           "valor": 0
@@ -7417,10 +7648,11 @@
         }
       ]
     },
-    { "__comment": "AL015 GENERAL BUILDING <-> edf_edif_pub_civil | palacio",
+    {
+      "__comment": "AL015 GENERAL BUILDING <-> edf_edif_pub_civil | palacio",
       "classe_A": "al015",
       "classe_B": "edf_edif_pub_civil",
-      "sentido":"ida",
+      "sentido": "A=>B",
       "filtro_A": {
         "nome_atributo": "ffn",
         "valor": 815
@@ -7490,7 +7722,8 @@
         }
       ]
     },
-    { "__comment": "AL015 GENERAL BUILDING <-> edf_representacao_diplomatica | consulado",
+    {
+      "__comment": "AL015 GENERAL BUILDING <-> edf_representacao_diplomatica | consulado",
       "classe_A": "al015",
       "classe_B": "edf_representacao_diplomatica",
       "filtro_A": {
@@ -7554,7 +7787,8 @@
         }
       ]
     },
-    { "__comment": "AL015 GENERAL BUILDING <-> edf_representacao_diplomatica | embaixada",
+    {
+      "__comment": "AL015 GENERAL BUILDING <-> edf_representacao_diplomatica | embaixada",
       "classe_A": "al015",
       "classe_B": "edf_representacao_diplomatica",
       "filtro_A": {
@@ -7618,7 +7852,8 @@
         }
       ]
     },
-    { "__comment": "AL015 GENERAL BUILDING <-> edf_edif_pub_civil | defesa",
+    {
+      "__comment": "AL015 GENERAL BUILDING <-> edf_edif_pub_civil | defesa",
       "classe_A": "al015",
       "classe_B": "edf_edif_pub_civil",
       "filtro_A": {
@@ -7686,7 +7921,8 @@
         }
       ]
     },
-    { "__comment": "AL015 GENERAL BUILDING <-> edf_edif_policia",
+    {
+      "__comment": "AL015 GENERAL BUILDING <-> edf_edif_policia",
       "classe_A": "al015",
       "classe_B": "edf_edif_policia",
       "filtro_A": {
@@ -7754,7 +7990,8 @@
         }
       ]
     },
-    { "__comment": "AL015 GENERAL BUILDING <-> edf_edif_pub_civil | prisional",
+    {
+      "__comment": "AL015 GENERAL BUILDING <-> edf_edif_pub_civil | prisional",
       "classe_A": "al015",
       "classe_B": "edf_edif_pub_civil",
       "filtro_A": {
@@ -7807,9 +8044,9 @@
           "valor": 0
         }
       ],
-      "filtro_B":{
-        "nome_atributo":"tipoedifpubcivil",
-        "valor":2
+      "filtro_B": {
+        "nome_atributo": "tipoedifpubcivil",
+        "valor": 2
       },
       "atributos_default_A": [
         {
@@ -7826,10 +8063,11 @@
         }
       ]
     },
-    { "__comment": "AL015 GENERAL BUILDING <-> edf_edif_pub_civil | bombeiros",
+    {
+      "__comment": "AL015 GENERAL BUILDING <-> edf_edif_pub_civil | bombeiros",
       "classe_A": "al015",
       "classe_B": "edf_edif_pub_civil",
-      "sentido":"ida",
+      "sentido": "A=>B",
       "filtro_A": {
         "nome_atributo": "ffn",
         "valor": 845
@@ -7899,7 +8137,8 @@
         }
       ]
     },
-    { "__comment": "AL015 GENERAL BUILDING <-> edf_edif_ensino | ensino_basico_profissionalizante",
+    {
+      "__comment": "AL015 GENERAL BUILDING <-> edf_edif_ensino | ensino_basico_profissionalizante",
       "classe_A": "al015",
       "classe_B": "edf_edif_ensino",
       "filtro_A": {
@@ -7926,37 +8165,45 @@
         {
           "nome_atributo": "grupoativecon",
           "valor": 98
+        },
+        {
+          "nome_atributo": "matconstr",
+          "valor": 0
+        },
+        {
+          "nome_atributo": "divisaoativecon",
+          "valor": 99
         }
       ],
-      "filtro_B":{
-        "$or":[
+      "filtro_B": {
+        "$or": [
           {
-            "nome_atributo":"classeativecon",
-            "valor":17
+            "nome_atributo": "classeativecon",
+            "valor": 17
           },
           {
-            "nome_atributo":"classeativecon",
-            "valor":18
+            "nome_atributo": "classeativecon",
+            "valor": 18
           },
           {
-            "nome_atributo":"classeativecon",
-            "valor":19
+            "nome_atributo": "classeativecon",
+            "valor": 19
           },
           {
-            "nome_atributo":"classeativecon",
-            "valor":20
+            "nome_atributo": "classeativecon",
+            "valor": 20
           },
           {
-            "nome_atributo":"classeativecon",
-            "valor":24
+            "nome_atributo": "classeativecon",
+            "valor": 24
           },
           {
-            "nome_atributo":"classeativecon",
-            "valor":25
+            "nome_atributo": "classeativecon",
+            "valor": 25
           },
           {
-            "nome_atributo":"classeativecon",
-            "valor":26
+            "nome_atributo": "classeativecon",
+            "valor": 26
           }
         ]
       },
@@ -7997,7 +8244,8 @@
         }
       ]
     },
-    { "__comment": "AL015 GENERAL BUILDING <-> edf_edif_ensino | ensino_superior",
+    {
+      "__comment": "AL015 GENERAL BUILDING <-> edf_edif_ensino | ensino_superior",
       "classe_A": "al015",
       "classe_B": "edf_edif_ensino",
       "filtro_A": {
@@ -8024,21 +8272,29 @@
         {
           "nome_atributo": "grupoativecon",
           "valor": 20
+        },
+        {
+          "nome_atributo": "matconstr",
+          "valor": 0
+        },
+        {
+          "nome_atributo": "divisaoativecon",
+          "valor": 99
         }
       ],
-      "filtro_B":{
-        "$or":[
+      "filtro_B": {
+        "$or": [
           {
-            "nome_atributo":"classeativecon",
-            "valor":21
+            "nome_atributo": "classeativecon",
+            "valor": 21
           },
           {
-            "nome_atributo":"classeativecon",
-            "valor":22
+            "nome_atributo": "classeativecon",
+            "valor": 22
           },
           {
-            "nome_atributo":"classeativecon",
-            "valor":23
+            "nome_atributo": "classeativecon",
+            "valor": 23
           }
         ]
       },
@@ -8074,13 +8330,14 @@
         }
       ]
     },
-    { "__comment": "AL015 GENERAL BUILDING | INSTITUITION & SOCIAL_WORK <-> edf_edif_servico_social",
+    {
+      "__comment": "AL015 GENERAL BUILDING | INSTITUITION & SOCIAL_WORK <-> edf_edif_servico_social",
       "classe_A": "al015",
       "classe_B": "edf_edif_servico_social",
       "filtro_A": {
-            "nome_atributo": "ffn",
-            "valor": 859
-          },
+        "nome_atributo": "ffn",
+        "valor": 859
+      },
       "atributos_default_B": [
         {
           "nome_atributo": "administracao",
@@ -8111,9 +8368,9 @@
           "valor": 0
         }
       ],
-      "filtro_B":{
-        "nome_atributo":"classeativecon",
-        "valor":33
+      "filtro_B": {
+        "nome_atributo": "classeativecon",
+        "valor": 33
       },
       "atributos_default_A": [
         {
@@ -8130,12 +8387,13 @@
         }
       ]
     },
-    { "__comment": "AL015 GENERAL BUILDING | INSTITUITION & SOCIAL_WORK <-> edf_edif_servico_social",
+    {
+      "__comment": "AL015 GENERAL BUILDING | INSTITUITION & SOCIAL_WORK <-> edf_edif_servico_social",
       "classe_A": "al015",
       "classe_B": "edf_edif_servico_social",
       "filtro_A": {
-            "nome_atributo": "ffn",
-            "valor": 887
+        "nome_atributo": "ffn",
+        "valor": 887
       },
       "atributos_default_B": [
         {
@@ -8167,9 +8425,9 @@
           "valor": 0
         }
       ],
-      "filtro_B":{
-        "nome_atributo":"classeativecon",
-        "valor":34
+      "filtro_B": {
+        "nome_atributo": "classeativecon",
+        "valor": 34
       },
       "atributos_default_A": [
         {
@@ -8186,7 +8444,8 @@
         }
       ]
     },
-    { "__comment": "AL015 GENERAL BUILDING | Human Health Activities  & In-patient Care  <-> edf_edif_saude",
+    {
+      "__comment": "AL015 GENERAL BUILDING | Human Health Activities  & In-patient Care  <-> edf_edif_saude",
       "classe_A": "al015",
       "classe_B": "edf_edif_saude",
       "filtro_A": {
@@ -8233,29 +8492,33 @@
         {
           "nome_atributo": "nivelatencao",
           "valor": 9999
+        },
+        {
+          "nome_atributo": "matconstr",
+          "valor": 0
         }
       ],
-      "filtro_B":{
-        "$or":[
+      "filtro_B": {
+        "$or": [
           {
-            "nome_atributo":"classeativecon",
-            "valor":26
+            "nome_atributo": "classeativecon",
+            "valor": 26
           },
           {
-            "nome_atributo":"classeativecon",
-            "valor":27
+            "nome_atributo": "classeativecon",
+            "valor": 27
           },
           {
-            "nome_atributo":"classeativecon",
-            "valor":28
+            "nome_atributo": "classeativecon",
+            "valor": 28
           },
           {
-            "nome_atributo":"classeativecon",
-            "valor":29
+            "nome_atributo": "classeativecon",
+            "valor": 29
           },
           {
-            "nome_atributo":"classeativecon",
-            "valor":30
+            "nome_atributo": "classeativecon",
+            "valor": 30
           }
         ]
       },
@@ -8274,7 +8537,8 @@
         }
       ]
     },
-    { "__comment": "AL015 GENERAL BUILDING <-> edf_edif_constr_lazer | teatro",
+    {
+      "__comment": "AL015 GENERAL BUILDING <-> edf_edif_constr_lazer | teatro",
       "classe_A": "al015",
       "classe_B": "edf_edif_constr_lazer",
       "filtro_A": {
@@ -8313,17 +8577,21 @@
         {
           "nome_atributo": "tipoediflazer",
           "valor": 4
+        },
+        {
+          "nome_atributo": "matconstr",
+          "valor": 0
         }
       ],
-      "filtro_B":{
-        "$or":[
+      "filtro_B": {
+        "$or": [
           {
-            "nome_atributo":"tipoediflazer",
-            "valor":4
+            "nome_atributo": "tipoediflazer",
+            "valor": 4
           },
           {
-            "nome_atributo":"tipoediflazer",
-            "valor":5
+            "nome_atributo": "tipoediflazer",
+            "valor": 5
           }
         ]
       },
@@ -8342,7 +8610,8 @@
         }
       ]
     },
-    { "__comment": "AL015 GENERAL BUILDING <-> edf_edif_comerc_serv | auditorio",
+    {
+      "__comment": "AL015 GENERAL BUILDING <-> edf_edif_comerc_serv | auditorio",
       "classe_A": "al015",
       "classe_B": "edf_edif_comerc_serv",
       "filtro_A": {
@@ -8387,13 +8656,13 @@
           "valor": 92
         },
         {
-          "nome_atributo":"matconstr",
-          "valor":0
+          "nome_atributo": "matconstr",
+          "valor": 0
         }
       ],
-      "filtro_B":{
-        "nome_atributo":"tipoedifcomercserv",
-        "valor":5
+      "filtro_B": {
+        "nome_atributo": "tipoedifcomercserv",
+        "valor": 5
       },
       "atributos_default_A": [
         {
@@ -8428,7 +8697,8 @@
         }
       ]
     },
-    { "__comment": "AL015 GENERAL BUILDING <-> edf_edif_constr_lazer | espaco_eventos_cultura",
+    {
+      "__comment": "AL015 GENERAL BUILDING <-> edf_edif_constr_lazer | espaco_eventos_cultura",
       "classe_A": "al015",
       "classe_B": "edf_edif_constr_lazer",
       "filtro_A": {
@@ -8467,11 +8737,15 @@
         {
           "nome_atributo": "tipoediflazer",
           "valor": 18
+        },
+        {
+          "nome_atributo": "matconstr",
+          "valor": 0
         }
       ],
-      "filtro_B":{
-        "nome_atributo":"tipoediflazer",
-        "valor":18
+      "filtro_B": {
+        "nome_atributo": "tipoediflazer",
+        "valor": 18
       },
       "atributos_default_A": [
         {
@@ -8488,10 +8762,11 @@
         }
       ]
     },
-    { "__comment": "AL015 GENERAL BUILDING -> edf_edif_constr_lazer | opera",
+    {
+      "__comment": "AL015 GENERAL BUILDING -> edf_edif_constr_lazer | opera",
       "classe_A": "al015",
       "classe_B": "edf_edif_constr_lazer",
-      "sentido":"ida",
+      "sentido": "A=>B",
       "filtro_A": {
         "nome_atributo": "ffn",
         "valor": 894
@@ -8524,6 +8799,10 @@
         {
           "nome_atributo": "divisaoativecon",
           "valor": 92
+        },
+        {
+          "nome_atributo": "matconstr",
+          "valor": 0
         }
       ],
       "atributos_default_A": [
@@ -8563,7 +8842,8 @@
         }
       ]
     },
-    { "__comment": "AL015 GENERAL BUILDING <-> edf_edif_constr_lazer | biblioteca",
+    {
+      "__comment": "AL015 GENERAL BUILDING <-> edf_edif_constr_lazer | biblioteca",
       "classe_A": "al015",
       "classe_B": "edf_edif_constr_lazer",
       "filtro_A": {
@@ -8602,11 +8882,15 @@
         {
           "nome_atributo": "tipoediflazer",
           "valor": 10
+        },
+        {
+          "nome_atributo": "matconstr",
+          "valor": 0
         }
       ],
-      "filtro_B":{
-        "nome_atributo":"tipoediflazer", 
-        "valor":10
+      "filtro_B": {
+        "nome_atributo": "tipoediflazer",
+        "valor": 10
       },
       "atributos_default_A": [
         {
@@ -8623,7 +8907,8 @@
         }
       ]
     },
-    { "__comment": "AL015 GENERAL BUILDING <-> edf_edif_constr_lazer | museu",
+    {
+      "__comment": "AL015 GENERAL BUILDING <-> edf_edif_constr_lazer | museu",
       "classe_A": "al015",
       "classe_B": "edf_edif_constr_lazer",
       "filtro_A": {
@@ -8662,11 +8947,15 @@
         {
           "nome_atributo": "tipoediflazer",
           "valor": 3
+        },
+        {
+          "nome_atributo": "matconstr",
+          "valor": 0
         }
       ],
-      "filtro_B":{
-        "nome_atributo":"tipoediflazer",
-        "valor":3
+      "filtro_B": {
+        "nome_atributo": "tipoediflazer",
+        "valor": 3
       },
       "atributos_default_A": [
         {
@@ -8683,7 +8972,8 @@
         }
       ]
     },
-    { "__comment": "AL015 GENERAL BUILDING <-> edf_edif_constr_lazer | Ginasio",
+    {
+      "__comment": "AL015 GENERAL BUILDING <-> edf_edif_constr_lazer | Ginasio",
       "classe_A": "al015",
       "classe_B": "edf_edif_constr_lazer",
       "filtro_A": {
@@ -8722,11 +9012,15 @@
         {
           "nome_atributo": "tipoediflazer",
           "valor": 2
+        },
+        {
+          "nome_atributo": "matconstr",
+          "valor": 0
         }
       ],
-      "filtro_B":{
-        "nome_atributo":"tipoediflazer",
-        "valor":2
+      "filtro_B": {
+        "nome_atributo": "tipoediflazer",
+        "valor": 2
       },
       "atributos_default_A": [
         {
@@ -8743,10 +9037,11 @@
         }
       ]
     },
-    { "__comment": "AL015 GENERAL BUILDING <-> edf_edif_comerc_serv | hospedagem_animais",
+    {
+      "__comment": "AL015 GENERAL BUILDING <-> edf_edif_comerc_serv | hospedagem_animais",
       "classe_A": "al015",
       "classe_B": "edf_edif_comerc_serv",
-      "sentido":"ida",
+      "sentido": "A=>B",
       "filtro_A": {
         "nome_atributo": "ffn",
         "valor": 919
@@ -8785,8 +9080,8 @@
           "valor": 92
         },
         {
-          "nome_atributo":"matconstr",
-          "valor":0
+          "nome_atributo": "matconstr",
+          "valor": 0
         }
       ],
       "mapeamento_multiplo": [
@@ -8812,7 +9107,8 @@
         }
       ]
     },
-    { "__comment": "AL015 GENERAL BUILDING |  Place of Worship  & Religious Activities <-> edf_edif_religiosa",
+    {
+      "__comment": "AL015 GENERAL BUILDING |  Place of Worship  & Religious Activities <-> edf_edif_religiosa",
       "classe_A": "al015",
       "classe_B": "edf_edif_religiosa",
       "filtro_A": {
@@ -8863,6 +9159,10 @@
         {
           "nome_atributo": "ensino",
           "valor": 9999
+        },
+        {
+          "nome_atributo": "matconstr",
+          "valor": 0
         }
       ],
       "atributos_default_A": [
@@ -8979,10 +9279,11 @@
         }
       ]
     },
-    { "__comment": "AL015 GENERAL BUILDING <-> edf_edif_constr_lazer | Yate-clube",
+    {
+      "__comment": "AL015 GENERAL BUILDING <-> edf_edif_constr_lazer | Yate-clube",
       "classe_A": "al015",
       "classe_B": "edf_edif_constr_lazer",
-      "sentido":"ida",
+      "sentido": "A=>B",
       "filtro_A": {
         "nome_atributo": "ffn",
         "valor": 955
@@ -9019,6 +9320,10 @@
         {
           "nome_atributo": "divisaoativecon",
           "valor": 92
+        },
+        {
+          "nome_atributo": "matconstr",
+          "valor": 0
         }
       ],
       "mapeamento_multiplo": [
@@ -9040,20 +9345,21 @@
         }
       ]
     },
-    { "__comment": "AL015 GENERAL BUILDING | Transport <- edf_edif_constr_aeroportuaria | todos menos Hangar e Serviço de combate a incendios",
+    {
+      "__comment": "AL015 GENERAL BUILDING | Transport <- edf_edif_constr_aeroportuaria | todos menos Hangar e Serviço de combate a incendios",
       "classe_A": "al015",
       "classe_B": "edf_edif_constr_aeroportuaria",
-      "sentido":"volta",
+      "sentido": "B=>A",
       "filtro_B": {
-        "$not":{
-          "$or":[
+        "$not": {
+          "$or": [
             {
               "nome_atributo": "tipoedifaero",
               "valor": 29
             },
             {
-              "nome_atributo":"tipoedifaero",
-              "valor":30
+              "nome_atributo": "tipoedifaero",
+              "valor": 30
             }
           ]
         }
@@ -9077,10 +9383,11 @@
         }
       ]
     },
-    { "__comment": "AL015 GENERAL BUILDING | Transport <- edf_edif_rodoviaria",
+    {
+      "__comment": "AL015 GENERAL BUILDING | Transport <- edf_edif_rodoviaria",
       "classe_A": "al015",
       "classe_B": "edf_edif_rodoviaria",
-      "sentido":"volta",
+      "sentido": "B=>A",
       "atributos_default_A": [
         {
           "nome_atributo": "ffn",
@@ -9100,7 +9407,8 @@
         }
       ]
     },
-    { "__comment": "AL015 GENERAL BUILDING | Power Generation <-> edf_edif_energia",
+    {
+      "__comment": "AL015 GENERAL BUILDING | Power Generation <-> edf_edif_energia",
       "classe_A": "al015",
       "classe_B": "edf_edif_energia",
       "filtro_A": {
@@ -9168,7 +9476,8 @@
         }
       ]
     },
-    { "__comment": "AL015 GENERAL BUILDING | Other <- edf_edif_ext_mineral",
+    {
+      "__comment": "AL015 GENERAL BUILDING | Other <- edf_edif_ext_mineral",
       "classe_A": "al015",
       "classe_B": "edf_edif_ext_mineral",
       "sentido": "B=>A",
@@ -9196,7 +9505,8 @@
         }
       ]
     },
-    { "__comment": "AL015 GENERAL BUILDING | Other <- edf_hab_indigena",
+    {
+      "__comment": "AL015 GENERAL BUILDING | Other <- edf_hab_indigena",
       "classe_A": "al015",
       "classe_B": "edf_hab_indigena",
       "sentido": "B=>A",
@@ -9224,7 +9534,8 @@
         }
       ]
     },
-    { "__comment": "AL015 GENERAL BUILDING | Other <- edf_posto_fiscal",
+    {
+      "__comment": "AL015 GENERAL BUILDING | Other <- edf_posto_fiscal",
       "classe_A": "al015",
       "classe_B": "edf_posto_fiscal",
       "sentido": "B=>A",
@@ -9252,10 +9563,11 @@
         }
       ]
     },
-    { "__comment": "AL015 GENERAL BUILDING -> edf_edificacao | outros",
+    {
+      "__comment": "AL015 GENERAL BUILDING -> edf_edificacao | outros",
       "classe_A": "al015",
       "classe_B": "edf_edificacao",
-      "sentido":"ida",
+      "sentido": "A=>B",
       "filtro_A": {
         "nome_atributo": "ffn",
         "valor": 999
@@ -9288,14 +9600,20 @@
         {
           "nome_atributo": "divisaoativecon",
           "valor": 0
+        },
+        {
+          "nome_atributo": "matconstr",
+          "valor": 0
         }
       ]
     },
-    { "__comment": "ZD040 Named Location <-> lml_nome_local",
+    {
+      "__comment": "ZD040 Named Location <-> lml_nome_local",
       "classe_A": "zd040",
       "classe_B": "lml_nome_local"
     },
-    { "__comment": "GB005 LAND AERODROME <-> cbge_area_uso_especifico | aeroporto",
+    {
+      "__comment": "GB005 LAND AERODROME <-> cbge_area_uso_especifico | aeroporto",
       "classe_A": "gb005",
       "classe_B": "cbge_area_uso_especifico",
       "atributos_default_B": [
@@ -9326,12 +9644,13 @@
           "valor": -32767.0
         }
       ],
-      "filtro_B":{
-        "nome_atributo":"tipoarea",
-        "valor":16
+      "filtro_B": {
+        "nome_atributo": "tipoarea",
+        "valor": 16
       }
     },
-    { "__comment": "GB015 APRON <-> tra_patio | aeronautico",
+    {
+      "__comment": "GB015 APRON <-> tra_patio | aeronautico",
       "classe_A": "gb015",
       "classe_B": "tra_patio",
       "atributos_default_B": [
@@ -9352,9 +9671,9 @@
           "valor": 0
         }
       ],
-      "filtro_B":{
-        "nome_atributo":"finalidadepatio",
-        "valor":5
+      "filtro_B": {
+        "nome_atributo": "finalidadepatio",
+        "valor": 5
       },
       "atributos_default_A": [
         {
@@ -9367,7 +9686,8 @@
         }
       ]
     },
-    { "__comment": "GB230 AIRCRAFT HANGAR <-> edf_edif_constr_aeroportuaria | hangar",
+    {
+      "__comment": "GB230 AIRCRAFT HANGAR <-> edf_edif_constr_aeroportuaria | hangar",
       "classe_A": "gb230",
       "classe_B": "edf_edif_constr_aeroportuaria",
       "atributos_default_B": [
@@ -9412,12 +9732,13 @@
           "valor": 0
         }
       ],
-      "filtro_B":{
-        "nome_atributo":"tipoedifaero",
-        "valor":29
+      "filtro_B": {
+        "nome_atributo": "tipoedifaero",
+        "valor": 29
       }
     },
-    { "__comment": "AM020 GRAIN STORAGE STRUCTURE <-> cbge_deposito_geral | Silo",
+    {
+      "__comment": "AM020 GRAIN STORAGE STRUCTURE <-> cbge_deposito_geral | Silo",
       "classe_A": "am020",
       "classe_B": "cbge_deposito_geral",
       "filtro_B": {
@@ -9481,7 +9802,8 @@
         }
       ]
     },
-    { "__comment": "AL070 FENCE <-> cbge_delimitacao_fisica",
+    {
+      "__comment": "AL070 FENCE <-> cbge_delimitacao_fisica",
       "classe_A": "al070",
       "classe_B": "cbge_delimitacao_fisica",
       "atributos_default_B": [
@@ -9498,14 +9820,15 @@
           "valor": 1
         }
       ],
-      "filtro_B":{
-        "$not":{
-          "nome_atributo":"tipodelimfis",
-          "valor":2
+      "filtro_B": {
+        "$not": {
+          "nome_atributo": "tipodelimfis",
+          "valor": 2
         }
       }
     },
-    { "__comment": "AL260 WALL <-> cbge_delimitacao_fisica",
+    {
+      "__comment": "AL260 WALL <-> cbge_delimitacao_fisica",
       "classe_A": "al260",
       "classe_B": "cbge_delimitacao_fisica",
       "atributos_default_B": [
@@ -9518,18 +9841,19 @@
           "valor": 2
         }
       ],
-      "filtro_B":{
-          "nome_atributo":"tipodelimfis",
-          "valor":2
-        },
-      "atributos_default_A":[
+      "filtro_B": {
+        "nome_atributo": "tipodelimfis",
+        "valor": 2
+      },
+      "atributos_default_A": [
         {
-          "nome_atributo":"wid",
-          "valor":-32767.0
+          "nome_atributo": "wid",
+          "valor": -32767.0
         }
       ]
     },
-    { "__comment": "DB090 ENBANKMENT <-> rel_aterro",
+    {
+      "__comment": "DB090 ENBANKMENT <-> rel_aterro",
       "classe_A": "db090",
       "classe_B": "rel_aterro",
       "atributos_default_B": [
@@ -9538,41 +9862,42 @@
           "valor": 27
         }
       ],
-      "filtro_B":{
-        "$not":{
-            "nome_atributo":"$GEOM_TYPE",
-            "valor":"POINT"
-          }
-        },
-      "atributos_default_A":[
+      "filtro_B": {
+        "$not": {
+          "nome_atributo": "$GEOM_TYPE",
+          "valor": "POINT"
+        }
+      },
+      "atributos_default_A": [
         {
-          "nome_atributo":"wid",
-          "valor":-32767.0
-        },
-        {
-          "nome_atributo":"trs",
-          "valor":0
+          "nome_atributo": "wid",
+          "valor": -32767.0
         },
         {
-          "nome_atributo":"fic",
-          "valor":0
+          "nome_atributo": "trs",
+          "valor": 0
+        },
+        {
+          "nome_atributo": "fic",
+          "valor": 0
         }
       ]
     },
-    { "__comment": "DB010 STEEP TERRAIN FACE <-> rel_elemento_fisiografico_natural | Escarpa/Falésia",
+    {
+      "__comment": "DB010 STEEP TERRAIN FACE <-> rel_elemento_fisiografico_natural | Escarpa/Falésia",
       "classe_A": "db010",
       "classe_B": "rel_elemento_fisiografico_natural",
       "filtro_B": {
         "$and": [
           {
-            "$or":[
+            "$or": [
               {
                 "nome_atributo": "tipoelemnat",
                 "valor": 8
               },
               {
-                "nome_atributo":"tipoelemnat",
-                "valor":13
+                "nome_atributo": "tipoelemnat",
+                "valor": 13
               }
             ]
           },
@@ -9589,7 +9914,8 @@
         }
       ]
     },
-    { "__comment": "DA010 SOIL SURFACE REGION <-> rel_terreno_exposto",
+    {
+      "__comment": "DA010 SOIL SURFACE REGION <-> rel_terreno_exposto",
       "classe_A": "da010",
       "classe_B": "rel_terreno_exposto",
       "atributos_default_B": [
@@ -9598,287 +9924,330 @@
           "valor": 0
         }
       ],
-      "mapeamento_atributos":[
+      "mapeamento_atributos": [
         {
-          "attr_A":"smc",
-          "attr_B":"tipoterrexp",
-          "traducao":[
+          "attr_A": "smc",
+          "attr_B": "tipoterrexp",
+          "traducao": [
             {
-              "valor_A":0,
-              "valor_B":0
+              "valor_A": 0,
+              "valor_B": 0
             },
             {
-              "valor_A":5,
-              "valor_B":0,
-              "sentido":"ida"
-            },
-            {
-              "valor_A":8,
-              "valor_B":0,
-              "sentido":"ida"
-            },
-            {
-              "valor_A":21,
-              "valor_B":0,
+              "valor_A": 5,
+              "valor_B": 0,
               "sentido": "A=>B"
             },
             {
-              "valor_A":46,
-              "valor_B":18
+              "valor_A": 8,
+              "valor_B": 0,
+              "sentido": "A=>B"
             },
             {
-              "valor_A":46,
-              "valor_B":24,
+              "valor_A": 21,
+              "valor_B": 0,
+              "sentido": "A=>B"
+            },
+            {
+              "valor_A": 46,
+              "valor_B": 18
+            },
+            {
+              "valor_A": 46,
+              "valor_B": 24,
               "sentido": "B=>A"
             },
             {
-              "valor_A":52,
-              "valor_B":0,
+              "valor_A": 52,
+              "valor_B": 0,
               "sentido": "A=>B"
             },
             {
-              "valor_A":55,
-              "valor_B":0,
+              "valor_A": 55,
+              "valor_B": 0,
               "sentido": "A=>B"
             },
             {
-              "valor_A":65,
-              "valor_B":0,
+              "valor_A": 65,
+              "valor_B": 0,
               "sentido": "A=>B"
             },
             {
-              "valor_A":67,
-              "valor_B":0,
+              "valor_A": 67,
+              "valor_B": 0,
               "sentido": "A=>B"
             },
             {
-              "valor_A":84,
-              "valor_B":4
+              "valor_A": 84,
+              "valor_B": 4
             },
             {
-              "valor_A":87,
-              "valor_B":12
+              "valor_A": 87,
+              "valor_B": 12
             },
             {
-              "valor_A":88,
-              "valor_B":12
+              "valor_A": 88,
+              "valor_B": 12
             },
             {
-              "valor_A":103,
-              "valor_B":0,
+              "valor_A": 103,
+              "valor_B": 0,
               "sentido": "A=>B"
             },
             {
-              "valor_A":104,
-              "valor_B":23
+              "valor_A": 104,
+              "valor_B": 23
             },
             {
-              "valor_A":120,
-              "valor_B":18
+              "valor_A": 120,
+              "valor_B": 18
             },
             {
-              "valor_A":122,
-              "valor_B":0,
+              "valor_A": 122,
+              "valor_B": 0,
               "sentido": "A=>B"
             },
             {
-              "valor_A":124,
-              "valor_B":12,
+              "valor_A": 124,
+              "valor_B": 12,
               "sentido": "A=>B"
             },
             {
-              "valor_A":126,
-              "valor_B":12,
+              "valor_A": 126,
+              "valor_B": 12,
               "sentido": "A=>B"
             },
             {
-              "valor_A":257,
-              "valor_B":0,
+              "valor_A": 257,
+              "valor_B": 0,
               "sentido": "A=>B"
             },
             {
-              "valor_A":258,
-              "valor_B":0,
+              "valor_A": 258,
+              "valor_B": 0,
               "sentido": "A=>B"
             },
             {
-              "valor_A":269,
-              "valor_B":0,
+              "valor_A": 269,
+              "valor_B": 0,
               "sentido": "A=>B"
             },
             {
-              "valor_A":999,
-              "valor_B":0,
-              "sentido":"ida"
+              "valor_A": 999,
+              "valor_B": 0,
+              "sentido": "A=>B"
             }
           ]
         }
       ]
     },
-    { "__comment": "EC040 CLEARED WAY -> veg_campo",
-      "classe_A":"ec040",
-      "classe_B":"veg_campo",
-      "sentido":"ida",
-      "atributos_default_B":[
+    {
+      "__comment": "EC040 CLEARED WAY -> veg_campo",
+      "classe_A": "ec040",
+      "classe_B": "veg_campo",
+      "sentido": "A=>B",
+      "atributos_default_B": [
         {
-          "nome_atributo":"classificacaoporte",
-          "valor":0
+          "nome_atributo": "classificacaoporte",
+          "valor": 0
         },
         {
-          "nome_atributo":"antropizada",
-          "valor":1
+          "nome_atributo": "antropizada",
+          "valor": 1
         },
         {
-          "nome_atributo":"densidade",
-          "valor":2
+          "nome_atributo": "densidade",
+          "valor": 2
         },
         {
-          "nome_atributo":"secundaria",
-          "valor":0
+          "nome_atributo": "secundaria",
+          "valor": 0
         },
         {
-          "nome_atributo":"tipocampo",
-          "valor":2
+          "nome_atributo": "tipocampo",
+          "valor": 2
         }
       ]
     },
-    { "__comment": "AL030 CEMETERY <-> cbge_cemiterio",
-      "classe_A":"al030",
-      "classe_B":"cbge_cemiterio",
-      "atributos_default_B":[
+    {
+      "__comment": "AL030 CEMETERY <-> cbge_cemiterio",
+      "classe_A": "al030",
+      "classe_B": "cbge_cemiterio",
+      "atributos_default_B": [
         {
-          "nome_atributo":"tipocemiterio",
-          "valor":0
+          "nome_atributo": "tipocemiterio",
+          "valor": 0
         },
         {
-          "nome_atributo":"destinacaocemiterio",
-          "valor":2
+          "nome_atributo": "destinacaocemiterio",
+          "valor": 2
         }
       ],
-      "mapeamento_atributos":[
+      "mapeamento_atributos": [
         {
-          "attr_A":"rel",
-          "attr_B":"denominacaoassociada",
-          "traducao":[
+          "attr_A": "rel",
+          "attr_B": "denominacaoassociada",
+          "traducao": [
             {
-              "valor_A":0,
-              "valor_B":0
+              "valor_A": 0,
+              "valor_B": 0
             },
             {
-              "valor_A":1,
-              "valor_B":99,
+              "valor_A": 1,
+              "valor_B": 99,
               "sentido": "A=>B"
             },
             {
-              "valor_A":2,
-              "valor_B":7
+              "valor_A": 2,
+              "valor_B": 7
             },
             {
-              "valor_A":4,
-              "valor_B":5
+              "valor_A": 4,
+              "valor_B": 5
             },
             {
-              "valor_A":5,
-              "valor_B":6
+              "valor_A": 5,
+              "valor_B": 6
             },
             {
-              "valor_A":999,
-              "valor_B":99
+              "valor_A": 999,
+              "valor_B": 99
             },
             {
-              "valor_A":999,
-              "valor_B":97,
+              "valor_A": 999,
+              "valor_B": 97,
               "sentido": "B=>A"
             }
           ]
         }
       ]
     },
-    { "__comment": "AK040 SPORTS GROUNDS <-> laz_campo_quadra",
-      "classe_A":"ak040",
-      "classe_B":"laz_campo_quadra",
-      "atributos_default_B":[
+    {
+      "__comment": "AK040 SPORTS GROUNDS <-> laz_campo_quadra",
+      "classe_A": "ak040",
+      "classe_B": "laz_campo_quadra",
+      "atributos_default_B": [
         {
-          "nome_atributo":"tipocampoquadra",
-          "valor":0
+          "nome_atributo": "tipocampoquadra",
+          "valor": 0
         }
       ],
-      "atributos_default_A":[
+      "atributos_default_A": [
         {
-          "nome_atributo":"smc",
-          "valor":0
+          "nome_atributo": "smc",
+          "valor": 0
         }
       ]
     },
-    { "__comment": "AD010 ELETRIC POWER STATION | Thermal <-> enc_termeletrica",
-      "classe_A":"ad010",
-      "classe_B":"enc_termeletrica",
-      "filtro_A":{
-        "nome_atributo":"ppc",
-        "valor":7
+    {
+      "__comment": "AD010 ELETRIC POWER STATION | Thermal <-> enc_termeletrica",
+      "classe_A": "ad010",
+      "classe_B": "enc_termeletrica",
+      "filtro_A": {
+        "nome_atributo": "ppc",
+        "valor": 7
       },
-      "atributos_default_B":[
+      "atributos_default_B": [
         {
-          "nome_atributo":"tipoestgerad",
-          "valor":9
+          "nome_atributo": "tipoestgerad",
+          "valor": 9
         },
         {
-          "nome_atributo":"operacional",
-          "valor":0
+          "nome_atributo": "operacional",
+          "valor": 0
         },
         {
-          "nome_atributo":"tipocombustivel",
-          "valor":0
+          "nome_atributo": "tipocombustivel",
+          "valor": 0
         }
       ],
-      "atributos_default_A":[
+      "atributos_default_A": [
         {
-          "nome_atributo":"ppc",
-          "valor":7
+          "nome_atributo": "ppc",
+          "valor": 7
         },
         {
-          "nome_atributo":"hgt",
+          "nome_atributo": "hgt",
           "valor": -32767.07
         },
         {
-          "nome_atributo":"voi",
-          "valor":"UNK"
+          "nome_atributo": "voi",
+          "valor": "UNK"
         }
       ]
     },
-    { "__comment": "AT030 POWER LINE | Thermal <-> enc_trecho_energia",
-      "classe_A":"at030",
-      "classe_B":"enc_trecho_energia",
-      "filtro_A":{
-        "nome_atributo":"ppc",
-        "valor":7
+    {
+      "__comment": "AD010 ELETRIC POWER STATION | Hydro-electric <-> enc_termeletrica",
+      "classe_A": "ad010",
+      "classe_B": "enc_hidreletrica",
+      "filtro_A": {
+        "nome_atributo": "ppc",
+        "valor": 1
       },
-      "atributos_default_B":[
+      "atributos_default_B": [
         {
-          "nome_atributo":"especie",
-          "valor":2
+          "nome_atributo": "tipoestgerad",
+          "valor": 8
         },
         {
-          "nome_atributo":"posicaorelativa",
-          "valor":3
+          "nome_atributo": "tipoahe",
+          "valor": 1
         },
         {
-          "nome_atributo":"sin",
-          "valor":0
+          "nome_atributo": "operacional",
+          "valor": 0
+        },
+        {
+          "nome_atributo": "tipocombustivel",
+          "valor": 0
         }
       ],
-      "atributos_default_A":[
+      "atributos_default_A": [
         {
-          "nome_atributo":"hgt",
+          "nome_atributo": "ppc",
+          "valor": 1
+        },
+        {
+          "nome_atributo": "hgt",
           "valor": -32767.07
         },
         {
-          "nome_atributo":"voi",
-          "valor":"UNK"
+          "nome_atributo": "voi",
+          "valor": "UNK"
         }
       ]
     },
-    { "__comment": "ZD040 Named Location <- rel_elemento_fisiografico_natural | P",
+    {
+      "__comment": "AT030 POWER LINE <-> enc_trecho_energia",
+      "classe_A": "at030",
+      "classe_B": "enc_trecho_energia",
+      "atributos_default_B": [
+        {
+          "nome_atributo": "especie",
+          "valor": 2
+        },
+        {
+          "nome_atributo": "posicaorelativa",
+          "valor": 3
+        },
+        {
+          "nome_atributo": "sin",
+          "valor": 0
+        }
+      ],
+      "atributos_default_A": [
+        {
+          "nome_atributo": "hgt",
+          "valor": -32767.07
+        },
+        {
+          "nome_atributo": "voi",
+          "valor": "UNK"
+        }
+      ]
+    },
+    {
+      "__comment": "ZD040 Named Location <- rel_elemento_fisiografico_natural | P",
       "sentido": "B=>A",
       "classe_A": "zd040",
       "classe_B": "rel_elemento_fisiografico_natural",
@@ -9887,7 +10256,8 @@
         "valor": "POINT"
       }
     },
-    { "__comment": "ZD040 Named Location <- rel_pico | P",
+    {
+      "__comment": "ZD040 Named Location <- rel_pico | P",
       "sentido": "B=>A",
       "classe_A": "zd040",
       "classe_B": "rel_pico",
@@ -9896,141 +10266,368 @@
         "valor": "POINT"
       }
     },
-    { "__comment": "BD130 HARZARDOUS ROCK <-> hid_rocha_em_agua",
+    {
+      "__comment": "BD130 HARZARDOUS ROCK <-> hid_rocha_em_agua",
       "classe_A": "bd130",
       "classe_B": "hid_rocha_em_agua",
-      "atributos_default_B":[
+      "atributos_default_B": [
         {
-          "nome_atributo":"tipoelemnat",
-          "valor":23
+          "nome_atributo": "tipoelemnat",
+          "valor": 23
         },
         {
-          "nome_atributo":"formarocha",
-          "valor":0
+          "nome_atributo": "formarocha",
+          "valor": 0
         }
       ],
-      "filtro_B":{
+      "filtro_B": {
         "nome_atributo": "$GEOM_TYPE",
         "valor": "POINT"
       },
-      "mapeamento_atributos":[
+      "mapeamento_atributos": [
         {
-          "attr_A":"wle",
-          "attr_B":"situacaoemagua",
-          "traducao":[
+          "attr_A": "wle",
+          "attr_B": "situacaoemagua",
+          "traducao": [
             {
-              "valor_A":0,
-              "valor_B":0
+              "valor_A": 0,
+              "valor_B": 0
             },
             {
-              "valor_A":1,
-              "valor_B":7,
-              "sentido":"ida"
+              "valor_A": 1,
+              "valor_B": 7,
+              "sentido": "A=>B"
             },
             {
-              "valor_A":2,
-              "valor_B":4
+              "valor_A": 2,
+              "valor_B": 4
             },
             {
-              "valor_A":3,
-              "valor_B":5
+              "valor_A": 3,
+              "valor_B": 5
             },
             {
-              "valor_A":4,
-              "valor_B":7
+              "valor_A": 4,
+              "valor_B": 7
             },
             {
-              "valor_A":8,
-              "valor_B":0,
-              "sentido":"ida"
+              "valor_A": 8,
+              "valor_B": 0,
+              "sentido": "A=>B"
             },
             {
-              "valor_A":998,
-              "valor_B":0,
-              "sentido":"ida"
+              "valor_A": 998,
+              "valor_B": 0,
+              "sentido": "A=>B"
             },
             {
-              "valor_A":999,
-              "valor_B":0,
+              "valor_A": 999,
+              "valor_B": 0,
               "sentido": "A=>B"
             }
           ]
         }
       ]
     },
-    { "__comment": "DB160 ROCK FORMATION <-> rel_rocha",
+    {
+      "__comment": "DB160 ROCK FORMATION <-> rel_rocha",
       "classe_A": "db160",
       "classe_B": "rel_rocha",
-      "atributos_default_B":[
+      "atributos_default_B": [
         {
-          "nome_atributo":"tipoelemnat",
-          "valor":23
+          "nome_atributo": "tipoelemnat",
+          "valor": 23
         },
         {
-          "nome_atributo":"formarocha",
-          "valor":0
+          "nome_atributo": "formarocha",
+          "valor": 0
         }
       ],
-      "atributos_default_A":[
+      "atributos_default_A": [
         {
-          "nome_atributo":"rkf",
-          "valor":0
+          "nome_atributo": "rkf",
+          "valor": 0
         }
       ]
     },
-    { "__comment": "AJ030 HOLDING PEN <-> edf_edif_agropec_ext_vegetal_pesca | curral",
+    {
+      "__comment": "AJ030 HOLDING PEN <-> edf_edif_agropec_ext_vegetal_pesca | curral",
       "classe_A": "aj030",
       "classe_B": "edf_edif_agropec_ext_vegetal_pesca",
-      "atributos_default_B":[
+      "atributos_default_B": [
         {
-          "nome_atributo":"matconstr",
-          "valor":0
+          "nome_atributo": "matconstr",
+          "valor": 0
         },
         {
-          "nome_atributo":"turistica",
-          "valor":0
+          "nome_atributo": "turistica",
+          "valor": 0
         },
         {
-          "nome_atributo":"cultura",
-          "valor":0
+          "nome_atributo": "cultura",
+          "valor": 0
         },
         {
-          "nome_atributo":"tipoedifagropec",
-          "valor":18
+          "nome_atributo": "tipoedifagropec",
+          "valor": 18
         },
         {
-          "nome_atributo":"administracao",
-          "valor":0
+          "nome_atributo": "administracao",
+          "valor": 0
         },
         {
-          "nome_atributo":"classeativecon",
-          "valor":0
+          "nome_atributo": "classeativecon",
+          "valor": 0
         },
         {
-          "nome_atributo":"divisaoativecon",
-          "valor":0
+          "nome_atributo": "divisaoativecon",
+          "valor": 0
         },
         {
-          "nome_atributo":"grupoativecon",
-          "valor":0
+          "nome_atributo": "grupoativecon",
+          "valor": 0
         },
         {
-          "nome_atributo":"operacional",
-          "valor":0
+          "nome_atributo": "operacional",
+          "valor": 0
         },
         {
-          "nome_atributo":"situacaofisica",
-          "valor":0
+          "nome_atributo": "situacaofisica",
+          "valor": 0
         }
       ],
-      "filtro_B":{
-          "nome_atributo":"tipoedifagropec",
-          "valor":18
+      "filtro_B": {
+        "nome_atributo": "tipoedifagropec",
+        "valor": 18
       }
+    },
+    {
+      "__comment": "gb485 Approach Lighting System ->  aux_revisao",
+      "classe_A": "gb485",
+      "classe_B": "aux_revisao",
+      "sentido": "A=>B",
+      "atributos_default_B": [
+        {
+          "nome_atributo": "descricao",
+          "valor": "gb485 (Approach Lighting System)"
+        },
+        {
+          "nome_atributo": "corrigido",
+          "valor": false
+        }
+      ]
+    },
+    {
+      "__comment": "gb045 Stopway ->  aux_revisao",
+      "classe_A": "gb045",
+      "classe_B": "aux_revisao",
+      "sentido": "A=>B",
+      "atributos_default_B": [
+        {
+          "nome_atributo": "descricao",
+          "valor": "gb045 (Stopway)"
+        },
+        {
+          "nome_atributo": "corrigido",
+          "valor": false
+        }
+      ]
+    },
+    {
+      "__comment": "ga034 Aeronautical Radio Navigation Service ->  aux_revisao",
+      "classe_A": "ga034",
+      "classe_B": "aux_revisao",
+      "sentido": "A=>B",
+      "atributos_default_B": [
+        {
+          "nome_atributo": "descricao",
+          "valor": "ga034 (Aeronautical Radio Navigation Service)"
+        },
+        {
+          "nome_atributo": "corrigido",
+          "valor": false
+        }
+      ]
+    },
+    {
+      "__comment": "bh165 Spillway ->  aux_revisao",
+      "classe_A": "bh165",
+      "classe_B": "aux_revisao",
+      "sentido": "A=>B",
+      "atributos_default_B": [
+        {
+          "nome_atributo": "descricao",
+          "valor": "bh165 (Spillway)"
+        },
+        {
+          "nome_atributo": "corrigido",
+          "valor": false
+        }
+      ]
+    },
+    {
+      "__comment": "at045 Radar Station -> edf_edif_comunic",
+      "classe_A": "at045",
+      "classe_B": "edf_edif_comunic",
+      "atributos_default_B": [
+        {
+          "nome_atributo": "tipoedifcomunic",
+          "valor": 3
+        },
+        {
+          "nome_atributo": "administracao",
+          "valor": 0
+        },
+        {
+          "nome_atributo": "cultura",
+          "valor": 0
+        },
+        {
+          "nome_atributo": "operacional",
+          "valor": 0
+        },
+        {
+          "nome_atributo": "turistica",
+          "valor": 0
+        },
+        {
+          "nome_atributo": "grupoativecon",
+          "valor": 0
+        },
+        {
+          "nome_atributo": "classeativecon",
+          "valor": 6
+        },
+        {
+          "nome_atributo": "divisaoativecon",
+          "valor": 0
+        },
+        {
+          "nome_atributo": "modalidade",
+          "valor": 4
+        },
+        {
+          "nome_atributo": "matconstr",
+          "valor": 0
+        }
+      ]
+    },
+    {
+      "__comment": "ac000 processing facility ->  aux_revisao",
+      "classe_A": "ac000",
+      "classe_B": "aux_revisao",
+      "sentido": "A=>B",
+      "atributos_default_B": [
+        {
+          "nome_atributo": "descricao",
+          "valor": "ac000 (processing facility)"
+        },
+        {
+          "nome_atributo": "corrigido",
+          "valor": false
+        }
+      ]
+    },
+    {
+      "__comment": "ak030 Amusement Park ->  aux_revisao",
+      "classe_A": "ak030",
+      "classe_B": "aux_revisao",
+      "sentido": "A=>B",
+      "atributos_default_B": [
+        {
+          "nome_atributo": "descricao",
+          "valor": "ak030 (Amusement Park)"
+        },
+        {
+          "nome_atributo": "corrigido",
+          "valor": false
+        }
+      ]
+    },
+    {
+      "__comment": "ak120 Park ->  aux_revisao",
+      "classe_A": "ak120",
+      "classe_B": "aux_revisao",
+      "sentido": "A=>B",
+      "atributos_default_B": [
+        {
+          "nome_atributo": "descricao",
+          "valor": "ak120 (Park)"
+        },
+        {
+          "nome_atributo": "corrigido",
+          "valor": false
+        }
+      ]
+    },
+    {
+      "__comment": "al010 Facility ->  aux_revisao",
+      "classe_A": "al010",
+      "classe_B": "aux_revisao",
+      "sentido": "A=>B",
+      "atributos_default_B": [
+        {
+          "nome_atributo": "descricao",
+          "valor": "al010 (Facility)"
+        },
+        {
+          "nome_atributo": "corrigido",
+          "valor": false
+        }
+      ]
+    },
+    {
+      "__comment": "al170 Public Square ->  aux_revisao",
+      "classe_A": "al170",
+      "classe_B": "aux_revisao",
+      "sentido": "A=>B",
+      "atributos_default_B": [
+        {
+          "nome_atributo": "descricao",
+          "valor": "al170 (Public Square)"
+        },
+        {
+          "nome_atributo": "corrigido",
+          "valor": false
+        }
+      ]
+    },
+    {
+      "__comment": "al020 Built-up Area ->  aux_revisao",
+      "classe_A": "al020",
+      "classe_B": "aux_revisao",
+      "sentido": "A=>B",
+      "filtro_A": {
+        "$and": [
+          {
+            "$or": [
+              {
+                "nome_atributo": "fuc",
+                "valor": 1
+              }
+            ]
+          },
+          {
+            "nome_atributo": "$GEOM_TYPE",
+            "valor": "POINT"
+          }
+        ]
+      },
+      "atributos_default_B": [
+        {
+          "nome_atributo": "descricao",
+          "valor": "al020 (Built-up Area Industrial)"
+        },
+        {
+          "nome_atributo": "corrigido",
+          "valor": false
+        }
+      ]
     }
   ],
   "mapeamento_atributos": [
-    { "__comment": "ACC Horizontal Accuracy Category <-> geometriaaproximada",
+    {
+      "__comment": "ACC Horizontal Accuracy Category <-> geometriaaproximada",
       "attr_A": "acc",
       "attr_B": "geometriaaproximada",
       "traducao": [
@@ -10044,7 +10641,8 @@
         }
       ]
     },
-    { "__comment": "WTC Road Weather Restriction <-> trafego",
+    {
+      "__comment": "WTC Road Weather Restriction <-> trafego",
       "attr_A": "wtc",
       "attr_B": "trafego",
       "traducao": [
@@ -10058,10 +10656,11 @@
         }
       ]
     },
-    { "__comment": "CSP Crop Species <-> cultivopredominante",
-      "attr_A":"csp",
-      "attr_B":"cultivopredominante",
-      "traducao":[
+    {
+      "__comment": "CSP Crop Species <-> cultivopredominante",
+      "attr_A": "csp",
+      "attr_B": "cultivopredominante",
+      "traducao": [
         {
           "valor_A": 41,
           "valor_B": 2
@@ -10069,177 +10668,177 @@
         {
           "valor_A": 15,
           "valor_B": 3,
-          "sentido":"volta"
+          "sentido": "B=>A"
         },
         {
           "valor_A": 15,
           "valor_B": 14,
-          "sentido":"volta"
+          "sentido": "B=>A"
         },
         {
           "valor_A": 15,
           "valor_B": 15,
-          "sentido":"volta"
+          "sentido": "B=>A"
         },
         {
           "valor_A": 15,
           "valor_B": 22,
-          "sentido":"volta"
+          "sentido": "B=>A"
         },
         {
           "valor_A": 15,
           "valor_B": 29,
-          "sentido":"volta"
+          "sentido": "B=>A"
         },
         {
           "valor_A": 15,
           "valor_B": 30,
-          "sentido":"volta"
+          "sentido": "B=>A"
         },
         {
           "valor_A": 15,
           "valor_B": 31,
-          "sentido":"volta"
+          "sentido": "B=>A"
         },
         {
           "valor_A": 15,
           "valor_B": 43,
-          "sentido":"volta"
+          "sentido": "B=>A"
         },
         {
           "valor_A": 15,
           "valor_B": 46,
-          "sentido":"volta"
+          "sentido": "B=>A"
         },
         {
           "valor_A": 15,
           "valor_B": 51,
-          "sentido":"volta"
+          "sentido": "B=>A"
         },
         {
           "valor_A": 15,
           "valor_B": 53,
-          "sentido":"volta"
+          "sentido": "B=>A"
         },
         {
           "valor_A": 15,
           "valor_B": 55,
-          "sentido":"volta"
+          "sentido": "B=>A"
         },
         {
           "valor_A": 15,
           "valor_B": 58,
-          "sentido":"volta"
+          "sentido": "B=>A"
         },
         {
           "valor_A": 15,
           "valor_B": 59,
-          "sentido":"volta"
+          "sentido": "B=>A"
         },
         {
           "valor_A": 15,
           "valor_B": 60,
-          "sentido":"volta"
+          "sentido": "B=>A"
         },
         {
           "valor_A": 15,
           "valor_B": 64,
-          "sentido":"volta"
+          "sentido": "B=>A"
         },
         {
           "valor_A": 15,
           "valor_B": 66,
-          "sentido":"volta"
+          "sentido": "B=>A"
         },
         {
           "valor_A": 15,
           "valor_B": 67,
-          "sentido":"volta"
+          "sentido": "B=>A"
         },
         {
           "valor_A": 15,
           "valor_B": 71,
-          "sentido":"volta"
+          "sentido": "B=>A"
         },
         {
           "valor_A": 15,
           "valor_B": 74,
-          "sentido":"volta"
+          "sentido": "B=>A"
         },
         {
           "valor_A": 15,
           "valor_B": 76,
-          "sentido":"volta"
+          "sentido": "B=>A"
         },
         {
           "valor_A": 15,
           "valor_B": 78,
-          "sentido":"volta"
+          "sentido": "B=>A"
         },
         {
           "valor_A": 15,
           "valor_B": 80,
-          "sentido":"volta"
+          "sentido": "B=>A"
         },
         {
           "valor_A": 15,
           "valor_B": 83,
-          "sentido":"volta"
+          "sentido": "B=>A"
         },
         {
           "valor_A": 15,
           "valor_B": 85,
-          "sentido":"volta"
+          "sentido": "B=>A"
         },
         {
           "valor_A": 15,
           "valor_B": 86,
-          "sentido":"volta"
+          "sentido": "B=>A"
         },
         {
           "valor_A": 15,
           "valor_B": 87,
-          "sentido":"volta"
+          "sentido": "B=>A"
         },
         {
           "valor_A": 15,
           "valor_B": 105,
-          "sentido":"volta"
+          "sentido": "B=>A"
         },
         {
           "valor_A": 15,
           "valor_B": 112,
-          "sentido":"volta"
+          "sentido": "B=>A"
         },
         {
           "valor_A": 15,
           "valor_B": 113,
-          "sentido":"volta"
+          "sentido": "B=>A"
         },
         {
           "valor_A": 15,
           "valor_B": 115,
-          "sentido":"volta"
+          "sentido": "B=>A"
         },
         {
           "valor_A": 15,
           "valor_B": 116,
-          "sentido":"volta"
+          "sentido": "B=>A"
         },
         {
           "valor_A": 15,
           "valor_B": 118,
-          "sentido":"volta"
+          "sentido": "B=>A"
         },
         {
           "valor_A": 15,
           "valor_B": 119,
-          "sentido":"volta"
+          "sentido": "B=>A"
         },
         {
           "valor_A": 15,
           "valor_B": 120,
-          "sentido":"volta"
+          "sentido": "B=>A"
         },
         {
           "valor_A": 19,
@@ -10248,89 +10847,91 @@
         {
           "valor_A": 113,
           "valor_B": 68,
-          "sentido":"volta"
+          "sentido": "B=>A"
         },
         {
           "valor_A": 113,
           "valor_B": 101,
-          "sentido":"volta"
+          "sentido": "B=>A"
         },
         {
           "valor_A": 157,
           "valor_B": 17,
-          "sentido":"volta"
+          "sentido": "B=>A"
         },
         {
           "valor_A": 113,
           "valor_B": 18,
-          "sentido":"volta"
+          "sentido": "B=>A"
         },
         {
           "valor_A": 113,
           "valor_B": 65,
-          "sentido":"volta"
+          "sentido": "B=>A"
         },
         {
           "valor_A": 113,
           "valor_B": 102,
-          "sentido":"volta"
+          "sentido": "B=>A"
         },
         {
           "valor_A": 113,
           "valor_B": 104,
-          "sentido":"volta"
+          "sentido": "B=>A"
         },
         {
           "valor_A": 0,
           "valor_B": 96,
-          "sentido":"volta"
+          "sentido": "B=>A"
         },
         {
           "valor_A": 999,
           "valor_B": 99,
-          "sentido":"volta"
+          "sentido": "B=>A"
         }
       ]
     },
-    { "__comment": "RST Load-bearing Surface Type  <-> revestimento",
+    {
+      "__comment": "RST Load-bearing Surface Type  <-> revestimento",
       "attr_A": "rst",
       "attr_B": "revestimento",
       "traducao": [
-            {
-              "valor_A": 8,
-              "valor_B": 1
-            },
-            {
-              "valor_A": 1,
-              "valor_B": 3
-            },
-            {
-              "valor_A": 2,
-              "valor_B": 2
-            },
-            {
-              "valor_A": 5,
-              "valor_B": 1,
-              "sentido": "A=>B"
-            },
-            {
-              "valor_A": 6,
-              "valor_B": 1,
-              "sentido": "A=>B"
-            },
-            {
-              "valor_A": 0,
-              "valor_B": 99,
-              "sentido": "B=>A"
-            },
-            {
-              "valor_A": 4,
-              "valor_B": 0,
-              "sentido": "B=>A"
-            }
+        {
+          "valor_A": 8,
+          "valor_B": 1
+        },
+        {
+          "valor_A": 1,
+          "valor_B": 3
+        },
+        {
+          "valor_A": 2,
+          "valor_B": 2
+        },
+        {
+          "valor_A": 5,
+          "valor_B": 1,
+          "sentido": "A=>B"
+        },
+        {
+          "valor_A": 6,
+          "valor_B": 1,
+          "sentido": "A=>B"
+        },
+        {
+          "valor_A": 0,
+          "valor_B": 99,
+          "sentido": "B=>A"
+        },
+        {
+          "valor_A": 4,
+          "valor_B": 0,
+          "sentido": "B=>A"
+        }
       ]
     },
-    { "__comment": "HYP Hydrologic Persistence <-> regime",
+    {
+      "__comment": "HYP Hydrologic Persistence <-> regime",
       "attr_A": "hyp",
       "attr_B": "regime",
       "traducao": [
@@ -10362,7 +10963,8 @@
         }
       ]
     },
-    { "__comment": "FUN Condition of Facility <-> situacaofisica",
+    {
+      "__comment": "FUN Condition of Facility <-> situacaofisica",
       "attr_A": "fun",
       "attr_B": "situacaofisica",
       "traducao": [
@@ -10413,7 +11015,8 @@
         }
       ]
     },
-    { "__comment": "FUN Condition of Facility <-> operacional",
+    {
+      "__comment": "FUN Condition of Facility <-> operacional",
       "attr_A": "fun",
       "attr_B": "operacional",
       "traducao": [
@@ -10454,7 +11057,8 @@
         }
       ]
     },
-    { "__comment": "MCC Structural Material Type <-> matconstr",
+    {
+      "__comment": "MCC Structural Material Type <-> matconstr",
       "attr_A": "mcc",
       "attr_B": "matconstr",
       "traducao": [
@@ -10571,26 +11175,31 @@
         }
       ]
     },
-    { "__comment": "WID Width <-> largura",
-      "attr_A":"wid",
-      "attr_B":"largura"
+    {
+      "__comment": "WID Width <-> largura",
+      "attr_A": "wid",
+      "attr_B": "largura"
     },
-    { "__comment": "LEN Length <-> Extensão",
-      "attr_A":"len",
-      "attr_B":"extensão"
+    {
+      "__comment": "LEN Length <-> Extensão",
+      "attr_A": "len",
+      "attr_B": "extensão"
     },
-    { "__comment": "LTN Track or Lane Count <-> nrfaixas",
+    {
+      "__comment": "LTN Track or Lane Count <-> nrfaixas",
       "attr_A": "ltn",
       "attr_B": "nrfaixas"
     },
-    { "__comment": "OHB Overall Bridge Height <-> vaovertical",
+    {
+      "__comment": "OHB Overall Bridge Height <-> vaovertical",
       "attr_A": "ohb",
       "attr_B": "vaovertical"
     },
-    { "__comment": "NAM Name <-> nome",
+    {
+      "__comment": "NAM Name <-> nome",
       "attr_A": "nam",
       "attr_B": "nome",
-      "traducao":[
+      "traducao": [
         {
           "valor_A": "UNK",
           "valor_B": null,
@@ -10598,15 +11207,16 @@
         }
       ]
     },
-    { "__comment": "TXT Text <-> obs",
+    {
+      "__comment": "TXT Text <-> obs",
       "attr_A": "txt",
-      "attr_B": "obs" 
+      "attr_B": "obs"
     }
   ],
   "atributos_default_B": [
     {
-      "nome_atributo":"proprioadm",
-      "valor":0
+      "nome_atributo": "proprioadm",
+      "valor": 0
     }
   ],
   "atributos_default_A": [
