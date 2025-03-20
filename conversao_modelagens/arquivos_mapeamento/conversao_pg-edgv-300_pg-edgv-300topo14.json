@@ -1490,6 +1490,12 @@
           "nome_atributo": "finalidade",
           "valor": 0
         }
+      ],
+      "atributos_default_B": [
+        {
+          "nome_atributo": "em_galeria_bueiro",
+          "valor": 9999
+        }
       ]
     },
     {
@@ -4284,10 +4290,6 @@
         {
           "nome_atributo": "tipousoedif",
           "valor": 5
-        },
-        {
-          "nome_atributo": "tipoedifpubcivil",
-          "valor": 1
         }
       ],
       "atributos_default_B": [
@@ -4661,10 +4663,6 @@
         {
           "nome_atributo": "tipousoedif",
           "valor": 0
-        },
-        {
-          "nome_atributo": "tipoedifpubcivil",
-          "valor": 0
         }
       ],
       "atributos_default_B": [
@@ -4675,7 +4673,7 @@
       ],
       "mapeamento_atributos": [
         {
-          "attr_A": "tipopostofisc",
+          "attr_A": "tipoedifpubcivil",
           "attr_B": "tipo",
           "traducao": [
             {
@@ -8010,6 +8008,10 @@
         "$or": [
           {
             "nome_atributo": "tipocemiterio",
+            "valor": 0
+          },
+          {
+            "nome_atributo": "tipocemiterio",
             "valor": 1
           },
           {
@@ -8056,6 +8058,10 @@
           "attr_B": "tipo",
           "traducao": [
             {
+              "valor_A": 0,
+              "valor_B": 104
+            },
+            {
               "valor_A": 1,
               "valor_B": 101
             },
@@ -8082,6 +8088,12 @@
         {
           "nome_atributo": "destinacaocemiterio",
           "valor": 2
+        }
+      ],
+      "atributos_default_B": [
+        {
+          "nome_atributo": "situacao_fisica",
+          "valor": 3
         }
       ]
     },
@@ -8161,6 +8173,12 @@
         {
           "nome_atributo": "destinacaocemiterio",
           "valor": 2
+        }
+      ],
+      "atributos_default_B": [
+        {
+          "nome_atributo": "situacao_fisica",
+          "valor": 3
         }
       ]
     },
@@ -8254,6 +8272,10 @@
         {
           "nome_atributo": "tipo",
           "valor": 1001
+        },
+        {
+          "nome_atributo": "situacao_fisica",
+          "valor": 3
         }
       ]
     },
@@ -8269,6 +8291,10 @@
         {
           "nome_atributo": "tipo",
           "valor": 601
+        },
+        {
+          "nome_atributo": "situacao_fisica",
+          "valor": 3
         }
       ],
       "atributos_default_A": [
@@ -8392,6 +8418,10 @@
         {
           "nome_atributo": "tipo",
           "valor": 701
+        },
+        {
+          "nome_atributo": "situacao_fisica",
+          "valor": 2
         }
       ],
       "atributos_default_A": [
@@ -8727,6 +8757,12 @@
               "valor_B": 1614
             }
           ]
+        }
+      ],
+      "atributos_default_B": [
+        {
+          "nome_atributo": "situacao_fisica",
+          "valor": 3
         }
       ]
     },
@@ -9519,32 +9555,20 @@
       ],
       "mapeamento_atributos": [
         {
-          "attr_A": "tipoedifsaneam",
+          "attr_A": "classeativecon",
           "attr_B": "tipo",
           "traducao": [
             {
-              "valor_A": 3,
-              "valor_B": 403
+              "valor_A": 26,
+              "valor_B": 2025
             },
             {
-              "valor_A": 5,
-              "valor_B": 405
+              "valor_A": 27,
+              "valor_B": 2027
             },
             {
-              "valor_A": 6,
-              "valor_B": 406
-            },
-            {
-              "valor_A": 7,
-              "valor_B": 407
-            },
-            {
-              "valor_A": 8,
-              "valor_B": 408
-            },
-            {
-              "valor_A": 99,
-              "valor_B": 498
+              "valor_A": 28,
+              "valor_B": 2028
             }
           ]
         }
@@ -9835,9 +9859,28 @@
           "attr_B": "tipo"
         }
       ]
+    },
+    {
+      "__comment": "aux_revisao <-> aux_revisao",
+      "classe_A": "aux_revisao",
+      "classe_B": "aux_revisao"
     }
   ],
   "mapeamento_atributos": [
+    {
+      "attr_A": "corrigido",
+      "attr_B": "corrigido",
+      "traducao": [
+        {
+          "valor_A": true,
+          "valor_B": 1
+        },
+        {
+          "valor_A": false,
+          "valor_B": 2
+        }
+      ]
+    },
     {
       "attr_A": "geometriaaproximada",
       "attr_B": "geometria_aproximada",
