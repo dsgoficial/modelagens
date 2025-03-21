@@ -658,6 +658,10 @@
             {
               "valor_A": 25,
               "valor_B": 525
+            },
+            {
+              "valor_A": 98,
+              "valor_B": 525
             }
           ]
         }
@@ -5479,6 +5483,10 @@
         {
           "nome_atributo": "tipo",
           "valor": 27
+        },
+        {
+          "nome_atributo": "exibir_lado_simbologia",
+          "valor": 9999
         }
       ],
       "filtro_B": {
@@ -7291,6 +7299,12 @@
           "nome_atributo": "tipocombustivel",
           "valor": 0
         }
+      ],
+      "atributos_default_B": [
+        {
+          "nome_atributo": "tipo",
+          "valor": 409
+        }
       ]
     },
     {
@@ -7305,6 +7319,12 @@
         {
           "nome_atributo": "tipoestgerad",
           "valor": 5
+        }
+      ],
+      "atributos_default_B": [
+        {
+          "nome_atributo": "tipo",
+          "valor": 405
         }
       ]
     },
@@ -7350,6 +7370,12 @@
         {
           "nome_atributo": "tipoahe",
           "valor": 1
+        }
+      ],
+      "atributos_default_B": [
+        {
+          "nome_atributo": "tipo",
+          "valor": 408
         }
       ]
     },
