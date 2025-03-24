@@ -1335,7 +1335,7 @@
           "valor": 2
         },
         {
-          "nome_atributo": "dentro_poligono",
+          "nome_atributo": "situacao_em_poligono",
           "valor": 2
         },
         {
@@ -1414,7 +1414,7 @@
           "valor": 5
         },
         {
-          "nome_atributo": "dentro_poligono",
+          "nome_atributo": "situacao_em_poligono",
           "valor": 2
         },
         {
@@ -3722,6 +3722,10 @@
             {
               "valor_A": 99,
               "valor_B": 1098
+            },
+            {
+              "valor_A": 9999,
+              "valor_B": 1098
             }
           ]
         }
@@ -4085,6 +4089,12 @@
               "valor_B": 801
             }
           ]
+        }
+      ],
+      "atributos_default_B": [
+        {
+          "nome_atributo": "situacao_fisica",
+          "valor": 3
         }
       ]
     },
@@ -4913,6 +4923,10 @@
         {
           "nome_atributo": "tipo",
           "valor": 1201
+        },
+        {
+          "nome_atributo": "situacao_fisica",
+          "valor": 3
         }
       ],
       "filtro_B": {
@@ -4942,6 +4956,10 @@
         {
           "nome_atributo": "tipo",
           "valor": 1301
+        },
+        {
+          "nome_atributo": "situacao_fisica",
+          "valor": 3
         }
       ],
       "filtro_B": {
@@ -5414,6 +5432,24 @@
             {
               "nome_atributo": "tipo",
               "valor": 1
+            }
+          ]
+        },
+        {
+          "tupla_A": [
+            {
+              "nome_atributo": "tipotrechodrenagem",
+              "valor": 4
+            },
+            {
+              "nome_atributo": "encoberto",
+              "valor": true
+            }
+          ],
+          "tupla_B": [
+            {
+              "nome_atributo": "tipo",
+              "valor": 4
             }
           ]
         },
@@ -6214,6 +6250,12 @@
             }
           ]
         }
+      ],
+      "atributos_default_B": [
+        {
+          "nome_atributo": "situacao_fisica",
+          "valor": 3
+        }
       ]
     },
     {
@@ -6922,6 +6964,12 @@
             }
           ]
         }
+      ],
+      "atributos_default_B": [
+        {
+          "nome_atributo": "situacao_fisica",
+          "valor": 3
+        }
       ]
     },
     {
@@ -6961,22 +7009,29 @@
             }
           ]
         }
+      ],
+      "atributos_default_B": [
+        {
+          "nome_atributo": "situacao_fisica",
+          "valor": 3
+        }
       ]
     },
     {
-      "__comment": "enc_grupo_transformadores <-> infra_elemento_infraestrutura | atracadouro",
+      "__comment": "enc_grupo_transformadores <-> infra_elemento_energia | grupo transf",
       "classe_A": "enc_grupo_transformadores",
-      "classe_B": "infra_elemento_infraestrutura",
+      "classe_B": "infra_elemento_energia",
+      "sentido": "A=>B",
       "atributos_default_B": [
         {
           "nome_atributo": "tipo",
-          "valor": 601
+          "valor": 1801
+        },
+        {
+          "nome_atributo": "situacao_fisica",
+          "valor": 3
         }
-      ],
-      "filtro_B": {
-        "nome_atributo": "tipo",
-        "valor": 601
-      }
+      ]
     },
     {
       "__comment": "hid_comporta <-> infra_elemento_infraestrutura | comporta",
@@ -6986,6 +7041,10 @@
         {
           "nome_atributo": "tipo",
           "valor": 901
+        },
+        {
+          "nome_atributo": "situacao_fisica",
+          "valor": 3
         }
       ],
       "filtro_B": {
@@ -7001,6 +7060,10 @@
         {
           "nome_atributo": "tipo",
           "valor": 1501
+        },
+        {
+          "nome_atributo": "situacao_fisica",
+          "valor": 3
         }
       ],
       "filtro_B": {
@@ -7016,6 +7079,10 @@
         {
           "nome_atributo": "tipo",
           "valor": 1601
+        },
+        {
+          "nome_atributo": "situacao_fisica",
+          "valor": 3
         }
       ],
       "filtro_B": {
@@ -7031,6 +7098,10 @@
         {
           "nome_atributo": "tipo",
           "valor": 1701
+        },
+        {
+          "nome_atributo": "situacao_fisica",
+          "valor": 3
         }
       ],
       "filtro_B": {
@@ -7052,6 +7123,10 @@
         {
           "nome_atributo": "tipo",
           "valor": 1001
+        },
+        {
+          "nome_atributo": "situacao_fisica",
+          "valor": 3
         }
       ],
       "filtro_B": {
@@ -7073,6 +7148,10 @@
         {
           "nome_atributo": "tipo",
           "valor": 1801
+        },
+        {
+          "nome_atributo": "situacao_fisica",
+          "valor": 3
         }
       ],
       "filtro_B": {
@@ -7137,8 +7216,13 @@
             }
           ]
         }
+      ],
+      "atributos_default_B": [
+        {
+          "nome_atributo": "situacao_fisica",
+          "valor": 3
+        }
       ]
-
     },
     {
       "__comment": "rel_elemento_fisiografico_natural <-> elemnat_toponimo_fisiografico_natural",
@@ -8482,7 +8566,7 @@
       "atributos_default_B": [
         {
           "nome_atributo": "tipo",
-          "valor": 1001
+          "valor": 1101
         }
       ]
     },
