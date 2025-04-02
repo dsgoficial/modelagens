@@ -507,6 +507,11 @@
               "sentido": "A=>B"
             },
             {
+              "valor_A": 1,
+              "valor_B": 201,
+              "sentido": "A=>B"
+            },
+            {
               "valor_A": 2,
               "valor_B": 201,
               "sentido": "A=>B"
@@ -1555,6 +1560,18 @@
       "atributos_default_B": [
         {
           "nome_atributo": "cota_mais_alta",
+          "valor": 9999
+        },
+        {
+          "nome_atributo": "ancora_horizontal",
+          "valor": 9999
+        },
+        {
+          "nome_atributo": "ancora_vertical",
+          "valor": 9999
+        },
+        {
+          "nome_atributo": "suprimir_simbologia",
           "valor": 9999
         }
       ],
@@ -5548,6 +5565,10 @@
         {
           "nome_atributo": "tipo",
           "valor": 26
+        },
+        {
+          "nome_atributo": "exibir_lado_simbologia",
+          "valor": 9999
         }
       ],
       "filtro_B": {
