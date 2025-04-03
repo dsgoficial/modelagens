@@ -6179,6 +6179,11 @@
               "valor_A": 7,
               "valor_B": 13,
               "sentido": "A=>B"
+            },
+            {
+              "valor_A": 0,
+              "valor_B": 9999,
+              "sentido": "A=>B"
             }
           ]
         },
@@ -8203,6 +8208,10 @@
             {
               "valor_A": 3,
               "valor_B": 103
+            },
+            {
+              "valor_A": 4,
+              "valor_B": 104
             },
             {
               "valor_A": 5,

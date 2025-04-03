@@ -1,6 +1,6 @@
 {
   "modelo": "EDGV 3.0 Topo",
-  "versao": "1.4.3",
+  "versao": "1.4.4",
   "schema_dados": "edgv",
   "schema_dominios": "dominios",
   "a_ser_preenchido": {
@@ -2764,22 +2764,22 @@
         },
         {
           "code": 1400,
-          "value": "Plataforma- Desconhecido",
+          "value": "Plataforma - Desconhecido",
           "valor_filtro": "Plataforma"
         },
         {
           "code": 1401,
-          "value": "Plataforma- Petróleo",
+          "value": "Plataforma - Petróleo",
           "valor_filtro": "Plataforma"
         },
         {
           "code": 1402,
-          "value": "Plataforma- Gás",
+          "value": "Plataforma - Gás",
           "valor_filtro": "Plataforma"
         },
         {
           "code": 1495,
-          "value": "Plataforma- Mista",
+          "value": "Plataforma - Mista",
           "valor_filtro": "Plataforma"
         },
         {
@@ -4516,11 +4516,11 @@
             },
             {
               "code": 15,
-              "primitivas": ["MultiPolygon"]
+              "primitivas": ["MultiPoint", "MultiPolygon"]
             },
             {
               "code": 16,
-              "primitivas": ["MultiPolygon"]
+              "primitivas": ["MultiPoint", "MultiPolygon"]
             },
             {
               "code": 18,

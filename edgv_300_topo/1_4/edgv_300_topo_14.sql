@@ -7,10 +7,10 @@ SET search_path TO pg_catalog,public,edgv,dominios;
 
 CREATE TABLE public.db_metadata(
 	 edgvversion varchar(50) NOT NULL DEFAULT 'EDGV 3.0 Topo',
-	 dbimplversion varchar(50) NOT NULL DEFAULT '1.4.3',
+	 dbimplversion varchar(50) NOT NULL DEFAULT '1.4.4',
 	 CONSTRAINT edgvversioncheck CHECK (edgvversion = 'EDGV 3.0 Topo')
 );
-INSERT INTO public.db_metadata (edgvversion, dbimplversion) VALUES ('EDGV 3.0 Topo','1.4.3');
+INSERT INTO public.db_metadata (edgvversion, dbimplversion) VALUES ('EDGV 3.0 Topo','1.4.4');
 
 CREATE TABLE dominios.sigla_uf (
 	 code smallint NOT NULL,
@@ -1003,10 +1003,10 @@ INSERT INTO dominios.tipo_elemento_infraestrutura (code,code_name, filter) VALUE
 INSERT INTO dominios.tipo_elemento_infraestrutura (code,code_name, filter) VALUES (1001,'Eclusa (1001)','Eclusa');
 INSERT INTO dominios.tipo_elemento_infraestrutura (code,code_name, filter) VALUES (1201,'Torre de comunicação (1201)','Torre de comunicação');
 INSERT INTO dominios.tipo_elemento_infraestrutura (code,code_name, filter) VALUES (1301,'Antena de comunicação (1301)','Antena de comunicação');
-INSERT INTO dominios.tipo_elemento_infraestrutura (code,code_name, filter) VALUES (1400,'Plataforma- Desconhecido (1400)','Plataforma');
-INSERT INTO dominios.tipo_elemento_infraestrutura (code,code_name, filter) VALUES (1401,'Plataforma- Petróleo (1401)','Plataforma');
-INSERT INTO dominios.tipo_elemento_infraestrutura (code,code_name, filter) VALUES (1402,'Plataforma- Gás (1402)','Plataforma');
-INSERT INTO dominios.tipo_elemento_infraestrutura (code,code_name, filter) VALUES (1495,'Plataforma- Mista (1495)','Plataforma');
+INSERT INTO dominios.tipo_elemento_infraestrutura (code,code_name, filter) VALUES (1400,'Plataforma - Desconhecido (1400)','Plataforma');
+INSERT INTO dominios.tipo_elemento_infraestrutura (code,code_name, filter) VALUES (1401,'Plataforma - Petróleo (1401)','Plataforma');
+INSERT INTO dominios.tipo_elemento_infraestrutura (code,code_name, filter) VALUES (1402,'Plataforma - Gás (1402)','Plataforma');
+INSERT INTO dominios.tipo_elemento_infraestrutura (code,code_name, filter) VALUES (1495,'Plataforma - Mista (1495)','Plataforma');
 INSERT INTO dominios.tipo_elemento_infraestrutura (code,code_name, filter) VALUES (1501,'Funicular (1501)','Funicular');
 INSERT INTO dominios.tipo_elemento_infraestrutura (code,code_name, filter) VALUES (1601,'Cremalheira (1601)','Cremalheira');
 INSERT INTO dominios.tipo_elemento_infraestrutura (code,code_name, filter) VALUES (1701,'Girador Ferroviário (1701)','Girador Ferroviário');
@@ -2269,7 +2269,7 @@ ALTER TABLE edgv.elemnat_elemento_fisiografico_p
 
 ALTER TABLE edgv.elemnat_elemento_fisiografico_p
 	 ADD CONSTRAINT elemnat_elemento_fisiografico_p_tipo_check 
-	 CHECK (tipo = ANY(ARRAY[19 :: SMALLINT, 20 :: SMALLINT, 21 :: SMALLINT, 22 :: SMALLINT, 9999 :: SMALLINT])); 
+	 CHECK (tipo = ANY(ARRAY[15 :: SMALLINT, 16 :: SMALLINT, 19 :: SMALLINT, 20 :: SMALLINT, 21 :: SMALLINT, 22 :: SMALLINT, 9999 :: SMALLINT])); 
 
 ALTER TABLE edgv.elemnat_elemento_fisiografico_p ALTER COLUMN tipo SET DEFAULT 9999;
 
