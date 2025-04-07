@@ -2052,10 +2052,6 @@
               "valor": 10
             },
             {
-              "nome_atributo": "artificial",
-              "valor": 1
-            },
-            {
               "nome_atributo": "possuitrechodrenagem",
               "valor": true
             }
@@ -2072,10 +2068,6 @@
             {
               "nome_atributo": "tipomassadagua",
               "valor": 10
-            },
-            {
-              "nome_atributo": "artificial",
-              "valor": 1
             },
             {
               "nome_atributo": "possuitrechodrenagem",
@@ -2173,18 +2165,6 @@
       "__comment": "veg_campo <-> cobter_vegetacao | campo",
       "classe_A": "veg_campo",
       "classe_B": "cobter_vegetacao",
-      "filtro_A": {
-        "$or": [
-          {
-            "nome_atributo": "tipocampo",
-            "valor": 1
-          },
-          {
-            "nome_atributo": "tipocampo",
-            "valor": 2
-          }
-        ]
-      },
       "atributos_default_B": [
         {
           "nome_atributo": "tipo",
@@ -6341,6 +6321,31 @@
     {
       "__comment": "lml_area_pub_militar <-> llp_limite_especial",
       "classe_A": "lml_area_pub_militar",
+      "classe_B": "llp_limite_especial",
+      "atributos_default_B": [
+        {
+          "nome_atributo": "tipo",
+          "valor": 36
+        }
+      ],
+      "filtro_B": {
+        "nome_atributo": "tipo",
+        "valor": 36
+      },
+      "atributos_default_A": [
+        {
+          "nome_atributo": "administracao",
+          "valor": 0
+        },
+        {
+          "nome_atributo": "jurisdicao",
+          "valor": 0
+        }
+      ]
+    },
+    {
+      "__comment": "lml_terra_publica <-> llp_limite_especial",
+      "classe_A": "lml_terra_publica",
       "classe_B": "llp_limite_especial",
       "atributos_default_B": [
         {
