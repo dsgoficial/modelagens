@@ -21,7 +21,36 @@ class MasterGen():
             # TODO Validate JSON file against JsonSchema
             pass
 
-    def buildSQL(self, dest, atributos_padrao=True, extension_classes=True, uuid = True, owner='postgres'):
+
+    def truncate_identifier(self, identifier, max_length=63):
+        """
+        Trunca identificadores para o tamanho máximo permitido pelo PostgreSQL (63 bytes).
+        Mantém o sufixo (_pk, _fk, _check) e usa hash para garantir unicidade se necessário.
+        """
+        if len(identifier) <= max_length:
+            return identifier
+        
+        # Separar o sufixo da constraint (pk, fk, check) do resto do nome
+        parts = identifier.split('_')
+        suffix = parts[-1]  # pk, fk, check
+        prefix = '_'.join(parts[:-1])
+        
+        # Calcular quanto do prefixo podemos manter
+        available_length = max_length - len(suffix) - 1  # -1 para o underscore
+        
+        # Se o nome ainda for muito longo, usar um hash para a parte do meio
+        if len(prefix) > available_length:
+            import hashlib
+            # Gerar um hash curto do nome original
+            hash_part = hashlib.md5(prefix.encode()).hexdigest()[:8]
+            # Pegar uma parte do início para manter legibilidade
+            prefix_length = available_length - len(hash_part) - 1  # -1 para o underscore
+            prefix_start = prefix[:prefix_length]
+            prefix = f"{prefix_start}_{hash_part}"
+        
+        return f"{prefix}_{suffix}"
+
+    def buildSQL(self, dest, atributos_padrao=True, extension_classes=True, uuid=True, owner='postgres'):
         master = self.master
         sql = []
         sql.append(u"CREATE SCHEMA {0};".format(master["schema_dados"]))
@@ -54,7 +83,7 @@ class MasterGen():
             sql.append(
                 u"\t filter text NOT NULL,") if "filtro" in dominio and dominio["filtro"] else None
             sql.append(
-                u"\t CONSTRAINT {0}_pk PRIMARY KEY (code)".format(dominio["nome"]))
+                u"\t CONSTRAINT {0} PRIMARY KEY (code)".format(self.truncate_identifier("{0}_pk".format(dominio["nome"]))))
             sql.append(u");")
             sql.append(u"")
 
@@ -62,7 +91,7 @@ class MasterGen():
                 domain_value = u"{0} ({1})".format(valor["value"].replace("'", "''"), valor["code"])
                 if "filtro" in dominio and dominio["filtro"]:
                     sql.append(u"INSERT INTO {0}.{1} (code,code_name, filter) VALUES ({2},'{3}','{4}');".format(master["schema_dominios"],
-                                                                                                                dominio["nome"], valor["code"], domain_value, valor["valor_filtro"]))
+                                                                                                            dominio["nome"], valor["code"], domain_value, valor["valor_filtro"]))
                 else:
                     sql.append(u"INSERT INTO {0}.{1} (code,code_name) VALUES ({2},'{3}');".format(master["schema_dominios"],
                                                                                                 dominio["nome"], valor["code"], domain_value))
@@ -71,7 +100,7 @@ class MasterGen():
                 domain_value = u"{0} ({1})".format(master["a_ser_preenchido"]["value"], master["a_ser_preenchido"]["code"])
                 if "filtro" in dominio and dominio["filtro"]:
                     sql.append(u"INSERT INTO {0}.{1} (code,code_name, filter) VALUES ({2},'{3}','{3}');".format(master["schema_dominios"],
-                                                                                                                dominio["nome"], master["a_ser_preenchido"]["code"], domain_value))
+                                                                                                            dominio["nome"], master["a_ser_preenchido"]["code"], domain_value))
                 else:
                     sql.append(u"INSERT INTO {0}.{1} (code,code_name) VALUES ({2},'{3}');".format(master["schema_dominios"],
                                                                                                 dominio["nome"], master["a_ser_preenchido"]["code"], domain_value))
@@ -131,11 +160,16 @@ class MasterGen():
 
                 sql.append(u"\t {0} geometry({1}, {2}),".format(
                     master["nome_geom"], primitiva, master["coord_sys"]))
-                sql.append(u"\t CONSTRAINT {0}_pk PRIMARY KEY ({1})".format(class_name, master["nome_id"]))
+                sql.append(u"\t CONSTRAINT {0} PRIMARY KEY ({1})".format(
+                    self.truncate_identifier("{0}_pk".format(class_name)), master["nome_id"]))
                 sql.append(u"\t WITH (FILLFACTOR = {0})".format(
                     master["fill_factor"]))
                 sql.append(u");")
-                sql.append(u"CREATE INDEX {0}_geom ON {1}.{0} USING gist ({2});".format(class_name,master["schema_dados"], master["nome_geom"]))
+                
+                # Truncar nome do índice para evitar problemas
+                index_name = self.truncate_identifier("{0}_geom".format(class_name))
+                sql.append(u"CREATE INDEX {0} ON {1}.{2} USING gist ({3});".format(
+                    index_name, master["schema_dados"], class_name, master["nome_geom"]))
 
                 sql.append(u"")
 
@@ -160,7 +194,9 @@ class MasterGen():
 
                         if atributo["cardinalidade"] == "0..1" or atributo["cardinalidade"] == "1..1":
                             sql.append(u"ALTER TABLE {1}.{0}".format(class_name, master["schema_dados"]))
-                            sql.append(u"\t ADD CONSTRAINT {0}_{1}_fk FOREIGN KEY ({1})".format(class_name, atributo["nome"]))
+                            constraint_name = self.truncate_identifier("{0}_{1}_fk".format(class_name, atributo["nome"]))
+                            sql.append(u"\t ADD CONSTRAINT {0} FOREIGN KEY ({1})".format(
+                                constraint_name, atributo["nome"]))
                             sql.append(u"\t REFERENCES {1}.{0} (code) MATCH FULL".format(
                                 atributo["mapa_valor"], master["schema_dominios"]))
                             sql.append(
@@ -171,7 +207,8 @@ class MasterGen():
 
                             if valores_att and len(set(dominio_att).difference(valores_att)) > 0:
                                 sql.append(u"ALTER TABLE {0}.{1}".format(master["schema_dados"], class_name))
-                                sql.append(u"\t ADD CONSTRAINT {0}_{1}_check ".format(class_name, atributo["nome"]))
+                                constraint_name = self.truncate_identifier("{0}_{1}_check".format(class_name, atributo["nome"]))
+                                sql.append(u"\t ADD CONSTRAINT {0} ".format(constraint_name))
 
                                 if 'a_ser_preenchido' in master:
                                     valores_att.append(
@@ -191,7 +228,8 @@ class MasterGen():
                         elif atributo["cardinalidade"] == "0..*" or atributo["cardinalidade"] == "1..*":
 
                             sql.append(u"ALTER TABLE {0}.{1}".format(master["schema_dados"], class_name))
-                            sql.append(u"\t ADD CONSTRAINT {0}_{1}_check ".format(class_name, atributo["nome"]))
+                            constraint_name = self.truncate_identifier("{0}_{1}_check".format(class_name, atributo["nome"]))
+                            sql.append(u"\t ADD CONSTRAINT {0} ".format(constraint_name))
 
                             if 'a_ser_preenchido' in master:
                                 valores_att.append(
@@ -418,7 +456,7 @@ class MasterGen():
 
     def buildMultiScaleSQL(self, dest, atributos_padrao=True, extension_classes=True, uuid=True, owner='postgres'):
         master = self.master
-        scales = ['_250k', '_100k', '_50k', '_25k', '_10k']
+        scales = ['_1m', '_500k', '_250k', '_100k', '_50k', '_25k', '_10k']
         sql = []
         sql.append(u"CREATE SCHEMA {0};".format(master["schema_dados"]))
         sql.append(u"CREATE SCHEMA {0};".format(master["schema_dominios"]))
@@ -450,7 +488,7 @@ class MasterGen():
             sql.append(
                 u"\t filter text NOT NULL,") if "filtro" in dominio and dominio["filtro"] else None
             sql.append(
-                u"\t CONSTRAINT {0}_pk PRIMARY KEY (code)".format(dominio["nome"]))
+                u"\t CONSTRAINT {0} PRIMARY KEY (code)".format(self.truncate_identifier("{0}_pk".format(dominio["nome"]))))
             sql.append(u");")
             sql.append(u"")
 
@@ -458,7 +496,7 @@ class MasterGen():
                 domain_value = u"{0} ({1})".format(valor["value"].replace("'", "''"), valor["code"])
                 if "filtro" in dominio and dominio["filtro"]:
                     sql.append(u"INSERT INTO {0}.{1} (code,code_name, filter) VALUES ({2},'{3}','{4}');".format(master["schema_dominios"],
-                                                                                                                dominio["nome"], valor["code"], domain_value, valor["valor_filtro"]))
+                                                                                                            dominio["nome"], valor["code"], domain_value, valor["valor_filtro"]))
                 else:
                     sql.append(u"INSERT INTO {0}.{1} (code,code_name) VALUES ({2},'{3}');".format(master["schema_dominios"],
                                                                                                 dominio["nome"], valor["code"], domain_value))
@@ -467,7 +505,7 @@ class MasterGen():
                 domain_value = u"{0} ({1})".format(master["a_ser_preenchido"]["value"], master["a_ser_preenchido"]["code"])
                 if "filtro" in dominio and dominio["filtro"]:
                     sql.append(u"INSERT INTO {0}.{1} (code,code_name, filter) VALUES ({2},'{3}','{3}');".format(master["schema_dominios"],
-                                                                                                                dominio["nome"], master["a_ser_preenchido"]["code"], domain_value))
+                                                                                                            dominio["nome"], master["a_ser_preenchido"]["code"], domain_value))
                 else:
                     sql.append(u"INSERT INTO {0}.{1} (code,code_name) VALUES ({2},'{3}');".format(master["schema_dominios"],
                                                                                                 dominio["nome"], master["a_ser_preenchido"]["code"], domain_value))
@@ -532,11 +570,19 @@ class MasterGen():
 
                     sql.append(u"\t {0} geometry({1}, {2}),".format(
                         master["nome_geom"], primitiva, master["coord_sys"]))
-                    sql.append(u"\t CONSTRAINT {0}_pk PRIMARY KEY ({1})".format(class_name, master["nome_id"]))
+                    
+                    # Truncar nome do constraint
+                    constraint_name = self.truncate_identifier("{0}_pk".format(class_name))
+                    sql.append(u"\t CONSTRAINT {0} PRIMARY KEY ({1})".format(
+                        constraint_name, master["nome_id"]))
                     sql.append(u"\t WITH (FILLFACTOR = {0})".format(
                         master["fill_factor"]))
                     sql.append(u");")
-                    sql.append(u"CREATE INDEX {0}_geom ON {1}.{0} USING gist ({2});".format(class_name, master["schema_dados"], master["nome_geom"]))
+                    
+                    # Truncar nome do índice
+                    index_name = self.truncate_identifier("{0}_geom".format(class_name))
+                    sql.append(u"CREATE INDEX {0} ON {1}.{2} USING gist ({3});".format(
+                        index_name, master["schema_dados"], class_name, master["nome_geom"]))
 
                     sql.append(u"")
 
@@ -561,7 +607,10 @@ class MasterGen():
 
                             if atributo["cardinalidade"] == "0..1" or atributo["cardinalidade"] == "1..1":
                                 sql.append(u"ALTER TABLE {1}.{0}".format(class_name, master["schema_dados"]))
-                                sql.append(u"\t ADD CONSTRAINT {0}_{1}_fk FOREIGN KEY ({1}_code)".format(class_name, atributo["nome"]))
+                                # Truncar nome do constraint
+                                constraint_name = self.truncate_identifier("{0}_{1}_fk".format(class_name, atributo["nome"]))
+                                sql.append(u"\t ADD CONSTRAINT {0} FOREIGN KEY ({1}_code)".format(
+                                    constraint_name, atributo["nome"]))
                                 sql.append(u"\t REFERENCES {1}.{0} (code) MATCH FULL".format(
                                     atributo["mapa_valor"], master["schema_dominios"]))
                                 sql.append(
@@ -572,7 +621,9 @@ class MasterGen():
 
                                 if valores_att and len(set(dominio_att).difference(valores_att)) > 0:
                                     sql.append(u"ALTER TABLE {0}.{1}".format(master["schema_dados"], class_name))
-                                    sql.append(u"\t ADD CONSTRAINT {0}_{1}_check ".format(class_name, atributo["nome"]))
+                                    # Truncar nome do constraint
+                                    constraint_name = self.truncate_identifier("{0}_{1}_check".format(class_name, atributo["nome"]))
+                                    sql.append(u"\t ADD CONSTRAINT {0} ".format(constraint_name))
 
                                     if 'a_ser_preenchido' in master:
                                         valores_att.append(
@@ -592,7 +643,9 @@ class MasterGen():
                             elif atributo["cardinalidade"] == "0..*" or atributo["cardinalidade"] == "1..*":
 
                                 sql.append(u"ALTER TABLE {0}.{1}".format(master["schema_dados"], class_name))
-                                sql.append(u"\t ADD CONSTRAINT {0}_{1}_check ".format(class_name, atributo["nome"]))
+                                # Truncar nome do constraint
+                                constraint_name = self.truncate_identifier("{0}_{1}_check".format(class_name, atributo["nome"]))
+                                sql.append(u"\t ADD CONSTRAINT {0} ".format(constraint_name))
 
                                 if 'a_ser_preenchido' in master:
                                     valores_att.append(
@@ -627,6 +680,10 @@ if __name__ == '__main__':
     parser.add_argument('output_path', 
                        type=str,
                        help='Path where the output SQL file will be saved')
+    parser.add_argument('--multi-scale', 
+                       action='store_true',
+                       dest='multi_scale',
+                       help='Generate multi-scale SQL (with different scale levels)')
     parser.add_argument('--no-uuid', 
                        action='store_false',
                        dest='uuid',
@@ -647,11 +704,23 @@ if __name__ == '__main__':
     args = parser.parse_args()
     
     mg = MasterGen(args.master_path)
-    result = mg.buildSQL(
-        args.output_path,
-        atributos_padrao=args.default_attrs,
-        extension_classes=args.extension_classes,
-        uuid=args.uuid,
-        owner=args.owner
-    )
+    
+    # Escolher entre buildSQL ou buildMultiScaleSQL dependendo do argumento --multi-scale
+    if args.multi_scale:
+        result = mg.buildMultiScaleSQL(
+            args.output_path,
+            atributos_padrao=args.default_attrs,
+            extension_classes=args.extension_classes,
+            uuid=args.uuid,
+            owner=args.owner
+        )
+    else:
+        result = mg.buildSQL(
+            args.output_path,
+            atributos_padrao=args.default_attrs,
+            extension_classes=args.extension_classes,
+            uuid=args.uuid,
+            owner=args.owner
+        )
+    
     print(result)
