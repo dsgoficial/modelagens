@@ -10,15 +10,15 @@
     "schema_B": "edgv",
     "afixo_geom_A": {
         "tipo": "sufixo",
-        "POINT": "p",
+        "POINT": "_p",
         "LINESTRING": "_l",
         "POLYGON": "_a"
     },
     "afixo_geom_B": {
         "tipo": "sufixo",
-        "POINT": "_250k_p",
-        "MultiLinestring": "_250k_l",
-        "MultiPolygon": "_250k_a"
+        "POINT": "_25k_p",
+        "LINESTRING": "_25k_l",
+        "POLYGON": "_25k_a"
     },
     "agregar_geom_A": true,
     "agregar_geom_B": true,
