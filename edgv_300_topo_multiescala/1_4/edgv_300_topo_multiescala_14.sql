@@ -710,7 +710,7 @@ INSERT INTO dominios.tipo_edificacao (code,code_name, filter) VALUES (519,'Ens -
 INSERT INTO dominios.tipo_edificacao (code,code_name, filter) VALUES (520,'Ens - Edificação de educação superior – Graduação (520)','Edificação de ensino');
 INSERT INTO dominios.tipo_edificacao (code,code_name, filter) VALUES (521,'Ens - Edificação de educação superior – graduação e pós-graduação (521)','Edificação de ensino');
 INSERT INTO dominios.tipo_edificacao (code,code_name, filter) VALUES (522,'Ens - Edificação de educação superior – pós-graduação e extensão (522)','Edificação de ensino');
-INSERT INTO dominios.tipo_edificacao (code,code_name, filter) VALUES (523,'Ens - Edificação de educação professional de nível técnico (523)','Edificação de ensino');
+INSERT INTO dominios.tipo_edificacao (code,code_name, filter) VALUES (523,'Ens - Edificação de educação profissional de nível técnico (523)','Edificação de ensino');
 INSERT INTO dominios.tipo_edificacao (code,code_name, filter) VALUES (524,'Ens - Edificação de educação profissional de nível tecnológico (524)','Edificação de ensino');
 INSERT INTO dominios.tipo_edificacao (code,code_name, filter) VALUES (525,'Ens - Outras atividades de ensino (525)','Edificação de ensino');
 INSERT INTO dominios.tipo_edificacao (code,code_name, filter) VALUES (601,'Rel - Igreja cristã (601)','Edificação religiosa');
