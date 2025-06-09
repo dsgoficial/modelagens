@@ -872,6 +872,10 @@
         {
           "nome_atributo": "suprimir_bandeira",
           "valor": 9999
+        },
+        {
+          "nome_atributo": "tipo",
+          "valor": 1401
         }
       ],
       "mapeamento_multiplo": [
@@ -4376,6 +4380,10 @@
         {
           "nome_atributo": "suprimir_bandeira",
           "valor": 9999
+        },
+        {
+          "nome_atributo": "tipo",
+          "valor": 3002
         }
       ]
     },
@@ -4433,6 +4441,10 @@
         {
           "nome_atributo": "suprimir_bandeira",
           "valor": 9999
+        },
+        {
+          "nome_atributo": "tipo",
+          "valor": 3004
         }
       ],
       "mapeamento_atributos": [
@@ -7616,6 +7628,12 @@
           "nome_atributo": "centrodecarga",
           "valor": 0
         }
+      ],
+      "atributos_default_B": [
+        {
+          "nome_atributo": "situacao_fisica",
+          "valor": 0
+        }
       ]
     },
     {
@@ -9433,6 +9451,10 @@
         {
           "nome_atributo": "suprimir_bandeira",
           "valor": 9999
+        },
+        {
+          "nome_atributo": "tipo",
+          "valor": 2101
         }
       ],
       "mapeamento_atributos": [
@@ -9714,6 +9736,10 @@
             {
               "valor_A": 28,
               "valor_B": 2028
+            },
+            {
+              "valor_A": 98,
+              "valor_B": 2030
             }
           ]
         }
