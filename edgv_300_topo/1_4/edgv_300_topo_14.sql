@@ -2783,7 +2783,7 @@ ALTER TABLE edgv.infra_alteracao_fisiografica_antropica_l
 ALTER TABLE edgv.infra_alteracao_fisiografica_antropica_l ALTER COLUMN tipo SET DEFAULT 9999;
 
 ALTER TABLE edgv.infra_alteracao_fisiografica_antropica_l
-	 ADD CONSTRAINT infra_alteracao_fisiografica_antropica_l_sobreposto_transportes_fk FOREIGN KEY (sobreposto_transportes)
+	 ADD CONSTRAINT infra_alteracao_fisiografica_antropica_l_sobreposto_c62b81a2_fk FOREIGN KEY (sobreposto_transportes)
 	 REFERENCES dominios.booleano (code) MATCH FULL
 	 ON UPDATE NO ACTION ON DELETE NO ACTION;
 
@@ -2797,7 +2797,7 @@ ALTER TABLE edgv.infra_alteracao_fisiografica_antropica_l
 ALTER TABLE edgv.infra_alteracao_fisiografica_antropica_l ALTER COLUMN visivel SET DEFAULT 9999;
 
 ALTER TABLE edgv.infra_alteracao_fisiografica_antropica_l
-	 ADD CONSTRAINT infra_alteracao_fisiografica_antropica_l_exibir_lado_simbologia_fk FOREIGN KEY (exibir_lado_simbologia)
+	 ADD CONSTRAINT infra_alteracao_fisiografica_antropica_l_exibir_lad_3d975d93_fk FOREIGN KEY (exibir_lado_simbologia)
 	 REFERENCES dominios.exibir_lado_simbologia (code) MATCH FULL
 	 ON UPDATE NO ACTION ON DELETE NO ACTION;
 
@@ -3490,6 +3490,7 @@ CREATE TABLE edgv.infra_pista_pouso_a(
 	 label_x real,
 	 label_y real,
 	 justificativa_txt smallint NOT NULL,
+	 simb_ponto smallint NOT NULL,
 	 observacao varchar(255),
 	 geom geometry(MultiPolygon, 4674),
 	 CONSTRAINT infra_pista_pouso_a_pk PRIMARY KEY (id)
@@ -3549,6 +3550,13 @@ ALTER TABLE edgv.infra_pista_pouso_a
 
 ALTER TABLE edgv.infra_pista_pouso_a ALTER COLUMN justificativa_txt SET DEFAULT 9999;
 
+ALTER TABLE edgv.infra_pista_pouso_a
+	 ADD CONSTRAINT infra_pista_pouso_a_simb_ponto_fk FOREIGN KEY (simb_ponto)
+	 REFERENCES dominios.booleano (code) MATCH FULL
+	 ON UPDATE NO ACTION ON DELETE NO ACTION;
+
+ALTER TABLE edgv.infra_pista_pouso_a ALTER COLUMN simb_ponto SET DEFAULT 9999;
+
 CREATE TABLE edgv.infra_pista_pouso_l(
 	 id uuid NOT NULL DEFAULT uuid_generate_v4(),
 	 nome varchar(255),
@@ -3562,6 +3570,7 @@ CREATE TABLE edgv.infra_pista_pouso_l(
 	 label_x real,
 	 label_y real,
 	 justificativa_txt smallint NOT NULL,
+	 simb_ponto smallint NOT NULL,
 	 observacao varchar(255),
 	 geom geometry(MultiLinestring, 4674),
 	 CONSTRAINT infra_pista_pouso_l_pk PRIMARY KEY (id)
@@ -3620,6 +3629,13 @@ ALTER TABLE edgv.infra_pista_pouso_l
 	 ON UPDATE NO ACTION ON DELETE NO ACTION;
 
 ALTER TABLE edgv.infra_pista_pouso_l ALTER COLUMN justificativa_txt SET DEFAULT 9999;
+
+ALTER TABLE edgv.infra_pista_pouso_l
+	 ADD CONSTRAINT infra_pista_pouso_l_simb_ponto_fk FOREIGN KEY (simb_ponto)
+	 REFERENCES dominios.booleano (code) MATCH FULL
+	 ON UPDATE NO ACTION ON DELETE NO ACTION;
+
+ALTER TABLE edgv.infra_pista_pouso_l ALTER COLUMN simb_ponto SET DEFAULT 9999;
 
 CREATE TABLE edgv.infra_pista_pouso_p(
 	 id uuid NOT NULL DEFAULT uuid_generate_v4(),
@@ -3989,7 +4005,7 @@ ALTER TABLE edgv.infra_via_deslocamento_l
 	 ON UPDATE NO ACTION ON DELETE NO ACTION;
 
 ALTER TABLE edgv.infra_via_deslocamento_l
-	 ADD CONSTRAINT infra_via_deslocamento_l_material_construcao_elemento_viario_check 
+	 ADD CONSTRAINT infra_via_deslocamento_l_material_construcao_ele_f3bda3e2_check 
 	 CHECK (material_construcao_elemento_viario = ANY(ARRAY[0 :: SMALLINT, 1 :: SMALLINT, 2 :: SMALLINT, 3 :: SMALLINT, 4 :: SMALLINT, 5 :: SMALLINT, 97 :: SMALLINT, 98 :: SMALLINT, 9999 :: SMALLINT])); 
 
 ALTER TABLE edgv.infra_via_deslocamento_l ALTER COLUMN material_construcao_elemento_viario SET DEFAULT 9999;

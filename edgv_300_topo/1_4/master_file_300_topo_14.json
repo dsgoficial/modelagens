@@ -5680,6 +5680,13 @@
           "tipo": "real",
           "cardinalidade": "0..1",
           "primitivas": ["MultiPoint"]
+        },
+        {
+          "nome": "simb_ponto",
+          "tipo": "smallint",
+          "cardinalidade": "1..1",
+          "mapa_valor": "booleano",
+          "primitivas": ["MultiLinestring", "MultiPolygon"]
         }
       ]
     },
