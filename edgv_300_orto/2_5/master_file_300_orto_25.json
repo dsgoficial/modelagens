@@ -1,6 +1,6 @@
 {
   "modelo": "EDGV 3.0 Orto",
-  "versao": "2.5.2",
+  "versao": "2.5.3",
   "schema_dados": "edgv",
   "schema_dominios": "dominios",
   "a_ser_preenchido": {
@@ -2637,7 +2637,7 @@
     {
       "nome": "localidade",
       "categoria": "llp",
-      "primitivas": ["MultiPoint"],
+      "primitivas": ["MultiPoint", "MultiPolygon"],
       "atributos": [
         {
           "nome": "nome",
