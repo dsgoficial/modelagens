@@ -1,6 +1,6 @@
 {
   "modelo": "EDGV 3.0 Topo",
-  "versao": "1.4.4",
+  "versao": "1.4.5",
   "schema_dados": "edgv",
   "schema_dominios": "dominios",
   "a_ser_preenchido": {
@@ -2579,11 +2579,11 @@
       "valores": [
         {
           "code": 1,
-          "value": "Poço dágua"
+          "value": "Poço dágua - permanente"
         },
         {
           "code": 2,
-          "value": "Poço artesiano"
+          "value": "Poço artesiano - permanente"
         },
         {
           "code": 3,
@@ -2640,6 +2640,14 @@
         {
           "code": 19,
           "value": "Recife afastado"
+        },
+        {
+          "code": 20,
+          "value": "Poço dágua - temporário"
+        },
+        {
+          "code": 21,
+          "value": "Poço artesiano - temporário"
         }
       ]
     },

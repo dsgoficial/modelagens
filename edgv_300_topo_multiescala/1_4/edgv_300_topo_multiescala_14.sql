@@ -7,10 +7,10 @@ SET search_path TO pg_catalog,public,edgv,dominios;
 
 CREATE TABLE public.db_metadata(
 	 edgvversion varchar(50) NOT NULL DEFAULT 'EDGV 3.0 Topo Multiescala',
-	 dbimplversion varchar(50) NOT NULL DEFAULT '1.4.4',
+	 dbimplversion varchar(50) NOT NULL DEFAULT '1.4.5',
 	 CONSTRAINT edgvversioncheck CHECK (edgvversion = 'EDGV 3.0 Topo Multiescala')
 );
-INSERT INTO public.db_metadata (edgvversion, dbimplversion) VALUES ('EDGV 3.0 Topo Multiescala','1.4.4');
+INSERT INTO public.db_metadata (edgvversion, dbimplversion) VALUES ('EDGV 3.0 Topo Multiescala','1.4.5');
 
 CREATE TABLE dominios.sigla_uf (
 	 code smallint NOT NULL,
@@ -943,8 +943,8 @@ CREATE TABLE dominios.tipo_elemento_hidrografico (
 	 CONSTRAINT tipo_elemento_hidrografico_pk PRIMARY KEY (code)
 );
 
-INSERT INTO dominios.tipo_elemento_hidrografico (code,code_name) VALUES (1,'Poço dágua (1)');
-INSERT INTO dominios.tipo_elemento_hidrografico (code,code_name) VALUES (2,'Poço artesiano (2)');
+INSERT INTO dominios.tipo_elemento_hidrografico (code,code_name) VALUES (1,'Poço dágua - permanente (1)');
+INSERT INTO dominios.tipo_elemento_hidrografico (code,code_name) VALUES (2,'Poço artesiano - permanente (2)');
 INSERT INTO dominios.tipo_elemento_hidrografico (code,code_name) VALUES (3,'Olho dágua - permanente (3)');
 INSERT INTO dominios.tipo_elemento_hidrografico (code,code_name) VALUES (4,'Olho dágua - intermitente (4)');
 INSERT INTO dominios.tipo_elemento_hidrografico (code,code_name) VALUES (6,'Foz marítima (6)');
@@ -959,6 +959,8 @@ INSERT INTO dominios.tipo_elemento_hidrografico (code,code_name) VALUES (16,'Ban
 INSERT INTO dominios.tipo_elemento_hidrografico (code,code_name) VALUES (17,'Banco de areia cordão arenoso (17)');
 INSERT INTO dominios.tipo_elemento_hidrografico (code,code_name) VALUES (18,'Recife contiguo (18)');
 INSERT INTO dominios.tipo_elemento_hidrografico (code,code_name) VALUES (19,'Recife afastado (19)');
+INSERT INTO dominios.tipo_elemento_hidrografico (code,code_name) VALUES (20,'Poço dágua - temporário (20)');
+INSERT INTO dominios.tipo_elemento_hidrografico (code,code_name) VALUES (21,'Poço artesiano - temporário (21)');
 INSERT INTO dominios.tipo_elemento_hidrografico (code,code_name) VALUES (9999,'A SER PREENCHIDO (9999)');
 
 ALTER TABLE dominios.tipo_elemento_hidrografico OWNER TO postgres;
@@ -17118,6 +17120,8 @@ CREATE TABLE edgv.infra_pista_pouso_1m_a(
 	 label_y real,
 	 justificativa_txt_code smallint,
 	 justificativa_txt_value varchar(255),
+	 simb_ponto_code smallint,
+	 simb_ponto_value varchar(255),
 	 observacao varchar(255),
 	 geom geometry(MultiPolygon, 4674),
 	 CONSTRAINT infra_pista_pouso_1m_a_pk PRIMARY KEY (id)
@@ -17177,6 +17181,13 @@ ALTER TABLE edgv.infra_pista_pouso_1m_a
 
 ALTER TABLE edgv.infra_pista_pouso_1m_a ALTER COLUMN justificativa_txt_code SET DEFAULT 9999;
 
+ALTER TABLE edgv.infra_pista_pouso_1m_a
+	 ADD CONSTRAINT infra_pista_pouso_1m_a_simb_ponto_fk FOREIGN KEY (simb_ponto_code)
+	 REFERENCES dominios.booleano (code) MATCH FULL
+	 ON UPDATE NO ACTION ON DELETE NO ACTION;
+
+ALTER TABLE edgv.infra_pista_pouso_1m_a ALTER COLUMN simb_ponto_code SET DEFAULT 9999;
+
 CREATE TABLE edgv.infra_pista_pouso_500k_a(
 	 id uuid NOT NULL DEFAULT uuid_generate_v4(),
 	 nome varchar(255),
@@ -17196,6 +17207,8 @@ CREATE TABLE edgv.infra_pista_pouso_500k_a(
 	 label_y real,
 	 justificativa_txt_code smallint,
 	 justificativa_txt_value varchar(255),
+	 simb_ponto_code smallint,
+	 simb_ponto_value varchar(255),
 	 observacao varchar(255),
 	 geom geometry(MultiPolygon, 4674),
 	 CONSTRAINT infra_pista_pouso_500k_a_pk PRIMARY KEY (id)
@@ -17255,6 +17268,13 @@ ALTER TABLE edgv.infra_pista_pouso_500k_a
 
 ALTER TABLE edgv.infra_pista_pouso_500k_a ALTER COLUMN justificativa_txt_code SET DEFAULT 9999;
 
+ALTER TABLE edgv.infra_pista_pouso_500k_a
+	 ADD CONSTRAINT infra_pista_pouso_500k_a_simb_ponto_fk FOREIGN KEY (simb_ponto_code)
+	 REFERENCES dominios.booleano (code) MATCH FULL
+	 ON UPDATE NO ACTION ON DELETE NO ACTION;
+
+ALTER TABLE edgv.infra_pista_pouso_500k_a ALTER COLUMN simb_ponto_code SET DEFAULT 9999;
+
 CREATE TABLE edgv.infra_pista_pouso_250k_a(
 	 id uuid NOT NULL DEFAULT uuid_generate_v4(),
 	 nome varchar(255),
@@ -17274,6 +17294,8 @@ CREATE TABLE edgv.infra_pista_pouso_250k_a(
 	 label_y real,
 	 justificativa_txt_code smallint,
 	 justificativa_txt_value varchar(255),
+	 simb_ponto_code smallint,
+	 simb_ponto_value varchar(255),
 	 observacao varchar(255),
 	 geom geometry(MultiPolygon, 4674),
 	 CONSTRAINT infra_pista_pouso_250k_a_pk PRIMARY KEY (id)
@@ -17333,6 +17355,13 @@ ALTER TABLE edgv.infra_pista_pouso_250k_a
 
 ALTER TABLE edgv.infra_pista_pouso_250k_a ALTER COLUMN justificativa_txt_code SET DEFAULT 9999;
 
+ALTER TABLE edgv.infra_pista_pouso_250k_a
+	 ADD CONSTRAINT infra_pista_pouso_250k_a_simb_ponto_fk FOREIGN KEY (simb_ponto_code)
+	 REFERENCES dominios.booleano (code) MATCH FULL
+	 ON UPDATE NO ACTION ON DELETE NO ACTION;
+
+ALTER TABLE edgv.infra_pista_pouso_250k_a ALTER COLUMN simb_ponto_code SET DEFAULT 9999;
+
 CREATE TABLE edgv.infra_pista_pouso_100k_a(
 	 id uuid NOT NULL DEFAULT uuid_generate_v4(),
 	 nome varchar(255),
@@ -17352,6 +17381,8 @@ CREATE TABLE edgv.infra_pista_pouso_100k_a(
 	 label_y real,
 	 justificativa_txt_code smallint,
 	 justificativa_txt_value varchar(255),
+	 simb_ponto_code smallint,
+	 simb_ponto_value varchar(255),
 	 observacao varchar(255),
 	 geom geometry(MultiPolygon, 4674),
 	 CONSTRAINT infra_pista_pouso_100k_a_pk PRIMARY KEY (id)
@@ -17411,6 +17442,13 @@ ALTER TABLE edgv.infra_pista_pouso_100k_a
 
 ALTER TABLE edgv.infra_pista_pouso_100k_a ALTER COLUMN justificativa_txt_code SET DEFAULT 9999;
 
+ALTER TABLE edgv.infra_pista_pouso_100k_a
+	 ADD CONSTRAINT infra_pista_pouso_100k_a_simb_ponto_fk FOREIGN KEY (simb_ponto_code)
+	 REFERENCES dominios.booleano (code) MATCH FULL
+	 ON UPDATE NO ACTION ON DELETE NO ACTION;
+
+ALTER TABLE edgv.infra_pista_pouso_100k_a ALTER COLUMN simb_ponto_code SET DEFAULT 9999;
+
 CREATE TABLE edgv.infra_pista_pouso_50k_a(
 	 id uuid NOT NULL DEFAULT uuid_generate_v4(),
 	 nome varchar(255),
@@ -17430,6 +17468,8 @@ CREATE TABLE edgv.infra_pista_pouso_50k_a(
 	 label_y real,
 	 justificativa_txt_code smallint,
 	 justificativa_txt_value varchar(255),
+	 simb_ponto_code smallint,
+	 simb_ponto_value varchar(255),
 	 observacao varchar(255),
 	 geom geometry(MultiPolygon, 4674),
 	 CONSTRAINT infra_pista_pouso_50k_a_pk PRIMARY KEY (id)
@@ -17489,6 +17529,13 @@ ALTER TABLE edgv.infra_pista_pouso_50k_a
 
 ALTER TABLE edgv.infra_pista_pouso_50k_a ALTER COLUMN justificativa_txt_code SET DEFAULT 9999;
 
+ALTER TABLE edgv.infra_pista_pouso_50k_a
+	 ADD CONSTRAINT infra_pista_pouso_50k_a_simb_ponto_fk FOREIGN KEY (simb_ponto_code)
+	 REFERENCES dominios.booleano (code) MATCH FULL
+	 ON UPDATE NO ACTION ON DELETE NO ACTION;
+
+ALTER TABLE edgv.infra_pista_pouso_50k_a ALTER COLUMN simb_ponto_code SET DEFAULT 9999;
+
 CREATE TABLE edgv.infra_pista_pouso_25k_a(
 	 id uuid NOT NULL DEFAULT uuid_generate_v4(),
 	 nome varchar(255),
@@ -17508,6 +17555,8 @@ CREATE TABLE edgv.infra_pista_pouso_25k_a(
 	 label_y real,
 	 justificativa_txt_code smallint,
 	 justificativa_txt_value varchar(255),
+	 simb_ponto_code smallint,
+	 simb_ponto_value varchar(255),
 	 observacao varchar(255),
 	 geom geometry(MultiPolygon, 4674),
 	 CONSTRAINT infra_pista_pouso_25k_a_pk PRIMARY KEY (id)
@@ -17567,6 +17616,13 @@ ALTER TABLE edgv.infra_pista_pouso_25k_a
 
 ALTER TABLE edgv.infra_pista_pouso_25k_a ALTER COLUMN justificativa_txt_code SET DEFAULT 9999;
 
+ALTER TABLE edgv.infra_pista_pouso_25k_a
+	 ADD CONSTRAINT infra_pista_pouso_25k_a_simb_ponto_fk FOREIGN KEY (simb_ponto_code)
+	 REFERENCES dominios.booleano (code) MATCH FULL
+	 ON UPDATE NO ACTION ON DELETE NO ACTION;
+
+ALTER TABLE edgv.infra_pista_pouso_25k_a ALTER COLUMN simb_ponto_code SET DEFAULT 9999;
+
 CREATE TABLE edgv.infra_pista_pouso_10k_a(
 	 id uuid NOT NULL DEFAULT uuid_generate_v4(),
 	 nome varchar(255),
@@ -17586,6 +17642,8 @@ CREATE TABLE edgv.infra_pista_pouso_10k_a(
 	 label_y real,
 	 justificativa_txt_code smallint,
 	 justificativa_txt_value varchar(255),
+	 simb_ponto_code smallint,
+	 simb_ponto_value varchar(255),
 	 observacao varchar(255),
 	 geom geometry(MultiPolygon, 4674),
 	 CONSTRAINT infra_pista_pouso_10k_a_pk PRIMARY KEY (id)
@@ -17645,6 +17703,13 @@ ALTER TABLE edgv.infra_pista_pouso_10k_a
 
 ALTER TABLE edgv.infra_pista_pouso_10k_a ALTER COLUMN justificativa_txt_code SET DEFAULT 9999;
 
+ALTER TABLE edgv.infra_pista_pouso_10k_a
+	 ADD CONSTRAINT infra_pista_pouso_10k_a_simb_ponto_fk FOREIGN KEY (simb_ponto_code)
+	 REFERENCES dominios.booleano (code) MATCH FULL
+	 ON UPDATE NO ACTION ON DELETE NO ACTION;
+
+ALTER TABLE edgv.infra_pista_pouso_10k_a ALTER COLUMN simb_ponto_code SET DEFAULT 9999;
+
 CREATE TABLE edgv.infra_pista_pouso_1m_l(
 	 id uuid NOT NULL DEFAULT uuid_generate_v4(),
 	 nome varchar(255),
@@ -17664,6 +17729,8 @@ CREATE TABLE edgv.infra_pista_pouso_1m_l(
 	 label_y real,
 	 justificativa_txt_code smallint,
 	 justificativa_txt_value varchar(255),
+	 simb_ponto_code smallint,
+	 simb_ponto_value varchar(255),
 	 observacao varchar(255),
 	 geom geometry(MultiLinestring, 4674),
 	 CONSTRAINT infra_pista_pouso_1m_l_pk PRIMARY KEY (id)
@@ -17723,6 +17790,13 @@ ALTER TABLE edgv.infra_pista_pouso_1m_l
 
 ALTER TABLE edgv.infra_pista_pouso_1m_l ALTER COLUMN justificativa_txt_code SET DEFAULT 9999;
 
+ALTER TABLE edgv.infra_pista_pouso_1m_l
+	 ADD CONSTRAINT infra_pista_pouso_1m_l_simb_ponto_fk FOREIGN KEY (simb_ponto_code)
+	 REFERENCES dominios.booleano (code) MATCH FULL
+	 ON UPDATE NO ACTION ON DELETE NO ACTION;
+
+ALTER TABLE edgv.infra_pista_pouso_1m_l ALTER COLUMN simb_ponto_code SET DEFAULT 9999;
+
 CREATE TABLE edgv.infra_pista_pouso_500k_l(
 	 id uuid NOT NULL DEFAULT uuid_generate_v4(),
 	 nome varchar(255),
@@ -17742,6 +17816,8 @@ CREATE TABLE edgv.infra_pista_pouso_500k_l(
 	 label_y real,
 	 justificativa_txt_code smallint,
 	 justificativa_txt_value varchar(255),
+	 simb_ponto_code smallint,
+	 simb_ponto_value varchar(255),
 	 observacao varchar(255),
 	 geom geometry(MultiLinestring, 4674),
 	 CONSTRAINT infra_pista_pouso_500k_l_pk PRIMARY KEY (id)
@@ -17801,6 +17877,13 @@ ALTER TABLE edgv.infra_pista_pouso_500k_l
 
 ALTER TABLE edgv.infra_pista_pouso_500k_l ALTER COLUMN justificativa_txt_code SET DEFAULT 9999;
 
+ALTER TABLE edgv.infra_pista_pouso_500k_l
+	 ADD CONSTRAINT infra_pista_pouso_500k_l_simb_ponto_fk FOREIGN KEY (simb_ponto_code)
+	 REFERENCES dominios.booleano (code) MATCH FULL
+	 ON UPDATE NO ACTION ON DELETE NO ACTION;
+
+ALTER TABLE edgv.infra_pista_pouso_500k_l ALTER COLUMN simb_ponto_code SET DEFAULT 9999;
+
 CREATE TABLE edgv.infra_pista_pouso_250k_l(
 	 id uuid NOT NULL DEFAULT uuid_generate_v4(),
 	 nome varchar(255),
@@ -17820,6 +17903,8 @@ CREATE TABLE edgv.infra_pista_pouso_250k_l(
 	 label_y real,
 	 justificativa_txt_code smallint,
 	 justificativa_txt_value varchar(255),
+	 simb_ponto_code smallint,
+	 simb_ponto_value varchar(255),
 	 observacao varchar(255),
 	 geom geometry(MultiLinestring, 4674),
 	 CONSTRAINT infra_pista_pouso_250k_l_pk PRIMARY KEY (id)
@@ -17879,6 +17964,13 @@ ALTER TABLE edgv.infra_pista_pouso_250k_l
 
 ALTER TABLE edgv.infra_pista_pouso_250k_l ALTER COLUMN justificativa_txt_code SET DEFAULT 9999;
 
+ALTER TABLE edgv.infra_pista_pouso_250k_l
+	 ADD CONSTRAINT infra_pista_pouso_250k_l_simb_ponto_fk FOREIGN KEY (simb_ponto_code)
+	 REFERENCES dominios.booleano (code) MATCH FULL
+	 ON UPDATE NO ACTION ON DELETE NO ACTION;
+
+ALTER TABLE edgv.infra_pista_pouso_250k_l ALTER COLUMN simb_ponto_code SET DEFAULT 9999;
+
 CREATE TABLE edgv.infra_pista_pouso_100k_l(
 	 id uuid NOT NULL DEFAULT uuid_generate_v4(),
 	 nome varchar(255),
@@ -17898,6 +17990,8 @@ CREATE TABLE edgv.infra_pista_pouso_100k_l(
 	 label_y real,
 	 justificativa_txt_code smallint,
 	 justificativa_txt_value varchar(255),
+	 simb_ponto_code smallint,
+	 simb_ponto_value varchar(255),
 	 observacao varchar(255),
 	 geom geometry(MultiLinestring, 4674),
 	 CONSTRAINT infra_pista_pouso_100k_l_pk PRIMARY KEY (id)
@@ -17957,6 +18051,13 @@ ALTER TABLE edgv.infra_pista_pouso_100k_l
 
 ALTER TABLE edgv.infra_pista_pouso_100k_l ALTER COLUMN justificativa_txt_code SET DEFAULT 9999;
 
+ALTER TABLE edgv.infra_pista_pouso_100k_l
+	 ADD CONSTRAINT infra_pista_pouso_100k_l_simb_ponto_fk FOREIGN KEY (simb_ponto_code)
+	 REFERENCES dominios.booleano (code) MATCH FULL
+	 ON UPDATE NO ACTION ON DELETE NO ACTION;
+
+ALTER TABLE edgv.infra_pista_pouso_100k_l ALTER COLUMN simb_ponto_code SET DEFAULT 9999;
+
 CREATE TABLE edgv.infra_pista_pouso_50k_l(
 	 id uuid NOT NULL DEFAULT uuid_generate_v4(),
 	 nome varchar(255),
@@ -17976,6 +18077,8 @@ CREATE TABLE edgv.infra_pista_pouso_50k_l(
 	 label_y real,
 	 justificativa_txt_code smallint,
 	 justificativa_txt_value varchar(255),
+	 simb_ponto_code smallint,
+	 simb_ponto_value varchar(255),
 	 observacao varchar(255),
 	 geom geometry(MultiLinestring, 4674),
 	 CONSTRAINT infra_pista_pouso_50k_l_pk PRIMARY KEY (id)
@@ -18035,6 +18138,13 @@ ALTER TABLE edgv.infra_pista_pouso_50k_l
 
 ALTER TABLE edgv.infra_pista_pouso_50k_l ALTER COLUMN justificativa_txt_code SET DEFAULT 9999;
 
+ALTER TABLE edgv.infra_pista_pouso_50k_l
+	 ADD CONSTRAINT infra_pista_pouso_50k_l_simb_ponto_fk FOREIGN KEY (simb_ponto_code)
+	 REFERENCES dominios.booleano (code) MATCH FULL
+	 ON UPDATE NO ACTION ON DELETE NO ACTION;
+
+ALTER TABLE edgv.infra_pista_pouso_50k_l ALTER COLUMN simb_ponto_code SET DEFAULT 9999;
+
 CREATE TABLE edgv.infra_pista_pouso_25k_l(
 	 id uuid NOT NULL DEFAULT uuid_generate_v4(),
 	 nome varchar(255),
@@ -18054,6 +18164,8 @@ CREATE TABLE edgv.infra_pista_pouso_25k_l(
 	 label_y real,
 	 justificativa_txt_code smallint,
 	 justificativa_txt_value varchar(255),
+	 simb_ponto_code smallint,
+	 simb_ponto_value varchar(255),
 	 observacao varchar(255),
 	 geom geometry(MultiLinestring, 4674),
 	 CONSTRAINT infra_pista_pouso_25k_l_pk PRIMARY KEY (id)
@@ -18113,6 +18225,13 @@ ALTER TABLE edgv.infra_pista_pouso_25k_l
 
 ALTER TABLE edgv.infra_pista_pouso_25k_l ALTER COLUMN justificativa_txt_code SET DEFAULT 9999;
 
+ALTER TABLE edgv.infra_pista_pouso_25k_l
+	 ADD CONSTRAINT infra_pista_pouso_25k_l_simb_ponto_fk FOREIGN KEY (simb_ponto_code)
+	 REFERENCES dominios.booleano (code) MATCH FULL
+	 ON UPDATE NO ACTION ON DELETE NO ACTION;
+
+ALTER TABLE edgv.infra_pista_pouso_25k_l ALTER COLUMN simb_ponto_code SET DEFAULT 9999;
+
 CREATE TABLE edgv.infra_pista_pouso_10k_l(
 	 id uuid NOT NULL DEFAULT uuid_generate_v4(),
 	 nome varchar(255),
@@ -18132,6 +18251,8 @@ CREATE TABLE edgv.infra_pista_pouso_10k_l(
 	 label_y real,
 	 justificativa_txt_code smallint,
 	 justificativa_txt_value varchar(255),
+	 simb_ponto_code smallint,
+	 simb_ponto_value varchar(255),
 	 observacao varchar(255),
 	 geom geometry(MultiLinestring, 4674),
 	 CONSTRAINT infra_pista_pouso_10k_l_pk PRIMARY KEY (id)
@@ -18190,6 +18311,13 @@ ALTER TABLE edgv.infra_pista_pouso_10k_l
 	 ON UPDATE NO ACTION ON DELETE NO ACTION;
 
 ALTER TABLE edgv.infra_pista_pouso_10k_l ALTER COLUMN justificativa_txt_code SET DEFAULT 9999;
+
+ALTER TABLE edgv.infra_pista_pouso_10k_l
+	 ADD CONSTRAINT infra_pista_pouso_10k_l_simb_ponto_fk FOREIGN KEY (simb_ponto_code)
+	 REFERENCES dominios.booleano (code) MATCH FULL
+	 ON UPDATE NO ACTION ON DELETE NO ACTION;
+
+ALTER TABLE edgv.infra_pista_pouso_10k_l ALTER COLUMN simb_ponto_code SET DEFAULT 9999;
 
 CREATE TABLE edgv.infra_pista_pouso_1m_p(
 	 id uuid NOT NULL DEFAULT uuid_generate_v4(),
