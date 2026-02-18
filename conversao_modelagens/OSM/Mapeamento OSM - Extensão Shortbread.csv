@@ -1,0 +1,218 @@
+categoria,tag_osm,classe_edgv,codigo_tipo_edgv,nome_tipo_edgv,tipo_geometria,observacoes,zoom_minimo_shortbread,escala_minima
+Limites - Indígenas,boundary=aboriginal_lands,llp_limite_especial_a,2,Terra indígena,Polígono,Terras indígenas demarcadas,8,1:100.000
+Limites - Indígenas,boundary=protected_area + protect_class=24,llp_limite_especial_a,2,Terra indígena,Polígono,Terras indígenas (como área protegida),8,1:100.000
+Limites - Proteção,boundary=national_park,llp_limite_especial_a,32,Parque – PAR,Polígono,Parques nacionais,8,1:100.000
+Energia - Linhas,power=line,infra_elemento_energia_l,303,Linha de transmissão de energia,Linha,Linhas de transmissão de alta tensão,9,1:100.000
+Energia - Geração,power=plant + plant:source=hydro,infra_elemento_energia_a,408,Estação geradora – Hidrelétrica,Polígono,Usinas hidrelétricas,9,1:100.000
+Energia - Geração,power=generator + generator:source=hydro,infra_elemento_energia_a,408,Estação geradora – Hidrelétrica,Polígono,Geradores hidrelétricos,9,1:100.000
+Energia - Geração,power=plant + plant:source=nuclear,infra_elemento_energia_a,409,Estação geradora – Termelétrica,Polígono,Usinas nucleares (termelétrica nuclear),9,1:100.000
+Dutovias,man_made=pipeline + substance=oil,infra_trecho_duto_l,302,Duto – Óleo,Linha,Oleodutos,9,1:100.000
+Dutovias,man_made=pipeline + substance=crude_oil,infra_trecho_duto_l,306,Duto – Petróleo,Linha,Dutos de petróleo bruto,9,1:100.000
+Dutovias,man_made=pipeline + substance=gas,infra_trecho_duto_l,308,Duto – Gás,Linha,Gasodutos,9,1:100.000
+Dutovias,man_made=pipeline + substance=natural_gas,infra_trecho_duto_l,308,Duto – Gás,Linha,Gasodutos de gás natural,9,1:100.000
+Dutovias,man_made=pipeline + substance=gasoline,infra_trecho_duto_l,303,Duto – Gasolina,Linha,Dutos de gasolina,9,1:100.000
+Militar - Instalações,landuse=military,llp_limite_especial_a,36,Área militar,Polígono,Áreas militares,9,1:100.000
+Militar - Instalações,military=training_area,llp_limite_especial_a,36,Área militar,Polígono,Áreas de treinamento militar,9,1:100.000
+Vegetação - Mangue,natural=wetland + wetland=mangrove,cobter_vegetacao_a,201,Mangue,Polígono,Manguezais,9,1:100.000
+Vegetação - Restinga,landuse=conservation + plant_community=restinga,cobter_vegetacao_a,701,Cerrado/Cerradão,Polígono,Restinga (vegetação costeira),9,1:100.000
+Limites - Proteção,boundary=protected_area,llp_limite_especial_a,5,Unidade de Conservação,Polígono,Unidades de conservação genéricas,9,1:100.000
+Limites - Proteção,leisure=nature_reserve,llp_limite_especial_a,5,Unidade de Conservação,Polígono,Reservas naturais,9,1:100.000
+Limites - Proteção,boundary=protected_area + protect_class=1a,llp_limite_especial_a,31,Estação Ecológica – ESEC,Polígono,Estação Ecológica,9,1:100.000
+Limites - Proteção,boundary=protected_area + protect_class=1b,llp_limite_especial_a,34,Reserva Biológica – REBIO,Polígono,Reserva Biológica,9,1:100.000
+Limites - Proteção,boundary=protected_area + protect_class=3,llp_limite_especial_a,33,Monumento Natural – MONA,Polígono,Monumento Natural,9,1:100.000
+Limites - Proteção,boundary=protected_area + protect_class=4,llp_limite_especial_a,29,Reserva de Fauna – REFAU,Polígono,Reserva de Fauna,9,1:100.000
+Limites - Proteção,boundary=protected_area + protect_class=5,llp_limite_especial_a,24,Área de Proteção Ambiental – APA,Polígono,APA,9,1:100.000
+Limites - Proteção,boundary=protected_area + protect_class=6,llp_limite_especial_a,25,Área de Relevante Interesse Ecológico – ARIE,Polígono,ARIE,9,1:100.000
+Toponímia,natural=cape,elemnat_toponimo_fisiografico_natural_p,11,Cabo,Ponto,Cabos e promontórios,9,1:100.000
+Toponímia,natural=bay,elemnat_toponimo_fisiografico_natural_p,12,Praia,Ponto,Baías,9,1:100.000
+Toponímia,natural=peninsula,elemnat_toponimo_fisiografico_natural_p,9,Península,Ponto,Penínsulas,9,1:100.000
+Energia - Geração,power=plant + plant:source=gas,infra_elemento_energia_a,409,Estação geradora – Termelétrica,Polígono,Termelétricas a gás,10,1:100.000
+Energia - Geração,power=plant + plant:source=coal,infra_elemento_energia_a,409,Estação geradora – Termelétrica,Polígono,Termelétricas a carvão,10,1:100.000
+Energia - Geração,power=plant + plant:source=biomass,infra_elemento_energia_a,409,Estação geradora – Termelétrica,Polígono,Termelétricas a biomassa,10,1:100.000
+Transporte Marítimo,landuse=port,infra_elemento_infraestrutura_a,1938,Atrac - Cais,Polígono,Áreas portuárias comerciais,10,1:100.000
+Transporte Marítimo,landuse=harbour,infra_elemento_infraestrutura_a,1938,Atrac - Cais,Polígono,Portos e marinas,10,1:100.000
+Dutovias,man_made=pipeline + substance=water,infra_trecho_duto_l,301,Duto – Água,Linha,Adutoras,10,1:100.000
+Dutovias,man_made=pipeline + substance=sewage,infra_trecho_duto_l,310,Duto – Esgoto,Linha,Emissários de esgoto,10,1:100.000
+Militar - Instalações,military=airfield,infra_pista_pouso_a,9,Pista de pouso,Polígono,Aeródromos militares,10,1:100.000
+Militar - Instalações,military=naval_base,constr_area_uso_especifico_a,16,Área relacionada a instalação de estrutura de transporte,Polígono,Bases navais,10,1:100.000
+Industrial,industrial=refinery,constr_edificacao_a,1023,Ind - Fabricação de coque - refino de petróleo - elaboração de combustíveis nucleares e produção de álcool,Polígono,Refinarias,10,1:100.000
+Energia - Estruturas,power=substation,infra_elemento_energia_a,1801,Subestação de transmissão de energia elétrica,Polígono,Subestações elétricas,11,1:50.000
+Energia - Geração,power=plant + plant:source=solar,infra_elemento_energia_a,406,Estação geradora – Solar,Polígono,Usinas solares fotovoltaicas,11,1:50.000
+Energia - Geração,power=generator + generator:source=solar,infra_elemento_energia_a,406,Estação geradora – Solar,Polígono,Geradores solares,11,1:50.000
+Energia - Geração,power=plant + plant:source=wind,infra_elemento_energia_a,405,Estação geradora – Eólica,Polígono,Parques eólicos (área),11,1:50.000
+Energia - Geração,power=plant + plant:source=oil,infra_elemento_energia_a,409,Estação geradora – Termelétrica,Polígono,Termelétricas a óleo,11,1:50.000
+Energia - Geração,power=plant + plant:source=diesel,infra_elemento_energia_a,409,Estação geradora – Termelétrica,Polígono,Termelétricas a diesel,11,1:50.000
+Energia - Geração,power=plant + plant:source=wave,infra_elemento_energia_a,407,Estação geradora – Maré-motriz,Polígono,Usinas de energia das ondas,11,1:50.000
+Energia - Geração,power=plant + plant:source=tidal,infra_elemento_energia_a,407,Estação geradora – Maré-motriz,Polígono,Usinas de energia das marés,11,1:50.000
+Energia - Geração,power=plant,infra_elemento_energia_a,498,Estação geradora – Outras,Polígono,Usinas geradoras outras,11,1:50.000
+Energia - Estruturas,building=power_substation,constr_edificacao_a,201,Edificação de energia,Polígono,Edificação de subestação elétrica,11,1:50.000
+Energia - Estruturas,man_made=substation_transformer,infra_elemento_energia_p,1801,Subestação de transmissão de energia elétrica,Ponto,Transformador de subestação,11,1:50.000
+Transporte Marítimo,seamark:type=anchorage,infra_elemento_infraestrutura_a,1801,Fundeadouro,Polígono,Área de fundeio,11,1:50.000
+Dutovias,man_made=pipeline + substance=slurry,infra_trecho_duto_l,398,Duto – Outros,Linha,Minerodutos (polpa mineral),11,1:50.000
+Dutovias,man_made=pipeline + substance=ethanol,infra_trecho_duto_l,304,Duto – Álcool,Linha,Alcooldutos (etanol),11,1:50.000
+Dutovias,man_made=pipeline + substance=lpg,infra_trecho_duto_l,308,Duto – Gás,Linha,Dutos de GLP,11,1:50.000
+Dutovias,man_made=pipeline + substance=diesel,infra_trecho_duto_l,398,Duto – Outros,Linha,Dutos de diesel,11,1:50.000
+Dutovias,man_made=pipeline + substance=jet_fuel,infra_trecho_duto_l,305,Duto – Querosene,Linha,Dutos de querosene de aviação,11,1:50.000
+Dutovias,man_made=pipeline + substance=kerosene,infra_trecho_duto_l,305,Duto – Querosene,Linha,Dutos de querosene,11,1:50.000
+Dutovias,man_made=pipeline + substance=naphtha,infra_trecho_duto_l,307,Duto – Nafta,Linha,Dutos de nafta,11,1:50.000
+Dutovias,man_made=pipeline + substance=ammonia,infra_trecho_duto_l,398,Duto – Outros,Linha,Dutos de amônia,11,1:50.000
+Dutovias,man_made=pipeline + substance=hydrogen,infra_trecho_duto_l,398,Duto – Outros,Linha,Dutos de hidrogênio,11,1:50.000
+Dutovias,man_made=pipeline + substance=steam,infra_trecho_duto_l,398,Duto – Outros,Linha,Dutos de vapor,11,1:50.000
+Dutovias,man_made=pipeline + location=underground,infra_trecho_duto_l,300,Duto – Desconhecido,Linha,Dutos subterrâneos genéricos,11,1:50.000
+Telecomunicações,man_made=mast + tower:type=communication,infra_elemento_infraestrutura_p,1201,Torre de comunicação,Ponto,Mastros de comunicação,11,1:50.000
+Telecomunicações,man_made=mast,infra_elemento_infraestrutura_p,1201,Torre de comunicação,Ponto,Mastros genéricos,11,1:50.000
+Telecomunicações,man_made=communications_tower,infra_elemento_infraestrutura_p,1201,Torre de comunicação,Ponto,Torre de comunicações,11,1:50.000
+Saneamento,amenity=waste_disposal,constr_deposito_a,305,San - Aterro sanitário,Polígono,Áreas de disposição de resíduos,11,1:50.000
+Vias - Estruturas,highway=rest_area,constr_area_uso_especifico_a,16,Área relacionada a instalação de estrutura de transporte,Polígono,Áreas de descanso em rodovias,11,1:50.000
+Vegetação - Culturas,landuse=farmland + crop=sugarcane,cobter_vegetacao_a,107,Cult - Cana-de-açúcar,Polígono,Cultivo de cana-de-açúcar,11,1:50.000
+Vegetação - Culturas,landuse=farmland + crop=rice + irrigation=yes,cobter_vegetacao_a,196,Cult - Anual irrigado,Polígono,Cultivo de arroz irrigado,11,1:50.000
+Vegetação - Culturas,landuse=farmland + crop=coffee,cobter_vegetacao_a,194,Cult - Perene,Polígono,Cultivo de café,11,1:50.000
+Vegetação - Culturas,landuse=farmland + crop=soy,cobter_vegetacao_a,197,Cult - Anual não irrigado,Polígono,Cultivo de soja,11,1:50.000
+Vegetação - Culturas,landuse=farmland + crop=corn,cobter_vegetacao_a,197,Cult - Anual não irrigado,Polígono,Cultivo de milho,11,1:50.000
+Vegetação - Culturas,landuse=farmland + crop=wheat,cobter_vegetacao_a,197,Cult - Anual não irrigado,Polígono,Cultivo de trigo,11,1:50.000
+Vegetação - Culturas,landuse=farmland + crop=cotton,cobter_vegetacao_a,197,Cult - Anual não irrigado,Polígono,Cultivo de algodão,11,1:50.000
+Pontos de Referência,man_made=beacon,infra_elemento_infraestrutura_p,1201,Torre de comunicação,Ponto,Balizas e faróis,11,1:50.000
+Pontes,bridge:structure=viaduct,infra_elemento_infraestrutura_l,608,Pedestre - Passarela,Linha,Viadutos,11,1:50.000
+Túneis,man_made=tunnel,infra_elemento_infraestrutura_l,607,Pedestre - Passagem subterrânea,Linha,Túneis como estrutura separada,11,1:50.000
+Energia - Linhas,power=minor_line,infra_elemento_energia_l,303,Linha de transmissão de energia,Linha,Linhas de distribuição,12,1:50.000
+Transporte Marítimo,man_made=quay,infra_elemento_infraestrutura_l,1938,Atrac - Cais,Linha,Cais de atracação (linha),12,1:50.000
+Transporte Marítimo,waterway=turning_basin,infra_elemento_infraestrutura_a,1938,Atrac - Cais,Polígono,Bacia de evolução (manobras),12,1:50.000
+Transporte Aéreo,aeroway=apron,infra_elemento_infraestrutura_a,1938,Atrac - Cais,Polígono,Pátio de aeronaves (estacionamento),12,1:50.000
+Transporte Aéreo,aeroway=navigationaid,infra_elemento_infraestrutura_p,1201,Torre de comunicação,Ponto,Auxílios à navegação aérea,12,1:50.000
+Saneamento,man_made=reservoir_covered,infra_elemento_infraestrutura_a,1801,Fundeadouro,Polígono,Reservatórios cobertos de água,12,1:50.000
+Saneamento,man_made=storage_tank + content=water,constr_deposito_a,113,Geral - Reservatório,Polígono,Tanques de armazenamento de água,12,1:50.000
+Vegetação - Aquicultura,landuse=aquaculture,constr_area_uso_especifico_a,4,Área relacionada a edificação agropecuária,Polígono,Criação de organismos aquáticos,12,1:50.000
+Pontos de Referência,man_made=chimney,constr_edificacao_p,1046,Ind - Chaminé,Ponto,Chaminés industriais (pontos de referência),12,1:50.000
+Industrial,industrial=factory,constr_area_uso_especifico_a,8,Área relacionada a edificação industrial,Polígono,Fábricas,12,1:50.000
+Industrial,industrial=manufacturing,constr_area_uso_especifico_a,8,Área relacionada a edificação industrial,Polígono,Instalações de manufatura,12,1:50.000
+Industrial,man_made=works,constr_area_uso_especifico_a,8,Área relacionada a edificação industrial,Polígono,Instalações industriais genéricas,12,1:50.000
+Energia - Estruturas,power=tower,infra_elemento_energia_p,1401,Torre de energia,Ponto,Torres de transmissão,13,1:50.000
+Energia - Estruturas,building=power_plant,constr_edificacao_a,201,Edificação de energia,Polígono,Edificação de usina geradora,13,1:50.000
+Transporte Marítimo,leisure=slipway,infra_elemento_infraestrutura_l,1944,Atrac - Desembarcadouro,Linha,Rampas de acesso à água para embarcações,13,1:50.000
+Transporte Aéreo,building=hangar,constr_edificacao_a,2429,Aero - Hangar,Polígono,Hangar de aeronaves,13,1:50.000
+Transporte Aéreo,aeroway=hangar,constr_edificacao_a,2429,Aero - Hangar,Polígono,Hangar de aeronaves (tag aeroway),13,1:50.000
+Transporte Aéreo,building=terminal + aeroway=terminal,constr_edificacao_a,2426,Aero - Terminal de passageiros,Polígono,Terminal aeroportuário de passageiros,13,1:50.000
+Transporte Aéreo,aeroway=terminal,constr_edificacao_a,2426,Aero - Terminal de passageiros,Polígono,Terminal aeroportuário de passageiros,13,1:50.000
+Transporte Aéreo,aeroway=control_tower,constr_edificacao_p,2428,Aero - Torre de controle,Ponto,Torre de controle de tráfego aéreo,13,1:50.000
+Telecomunicações,man_made=antenna,infra_elemento_infraestrutura_p,1301,Antena de comunicação,Ponto,Antenas de comunicação,13,1:50.000
+Telecomunicações,building=communication,constr_edificacao_a,101,Com - Centro de operações de comunicação,Polígono,Edificação de comunicações,13,1:50.000
+Militar - Instalações,building=military,constr_edificacao_a,3098,Seg – Outras,Polígono,Edificação militar,13,1:50.000
+Militar - Instalações,military=barracks,constr_edificacao_a,3098,Seg – Outras,Polígono,Quartéis militares,13,1:50.000
+Militar - Instalações,military=bunker,constr_edificacao_a,3098,Seg - Outros,Polígono,Bunkers militares,13,1:50.000
+Militar - Instalações,military=checkpoint,infra_elemento_infraestrutura_p,1201,Torre de comunicação,Ponto,Postos de controle militar,13,1:50.000
+Saneamento,amenity=waste_transfer_station,constr_edificacao_a,406,Saneam - Usina de reciclagem,Polígono,Estações de transferência de resíduos,13,1:50.000
+Ferrovias - Estruturas,building=train_station,constr_edificacao_a,2316,Ferrov - Estação ferroviária de passageiros,Polígono,Edificação de estação ferroviária,13,1:50.000
+Ferrovias - Estruturas,railway=turntable,infra_elemento_infraestrutura_a,1701,Girador Ferroviário,Polígono,Plataformas giratórias,13,1:50.000
+Ferrovias - Estruturas,railway=roundhouse,constr_edificacao_a,2398,Ferrov - Outros,Polígono,Rotundas ferroviárias,13,1:50.000
+Ferrovias - Estruturas,railway=workshop,constr_edificacao_a,2398,Ferrov - Outros,Polígono,Oficinas ferroviárias,13,1:50.000
+Vias - Estruturas,amenity=weighbridge,infra_elemento_infraestrutura_p,1201,Torre de comunicação,Ponto,Balanças rodoviárias,13,1:50.000
+Vias - Estruturas,highway=toll_gantry,infra_elemento_infraestrutura_p,1201,Torre de comunicação,Ponto,Pórticos de pedágio,13,1:50.000
+Depósitos,man_made=silo,constr_deposito_p,109,Geral - Silo,Ponto,Silos de armazenagem,13,1:50.000
+Depósitos,man_made=storage_tank,constr_deposito_a,113,Geral - Reservatório,Polígono,Tanques de armazenamento,13,1:50.000
+Depósitos,man_made=gasometer,constr_deposito_a,113,Geral - Reservatório,Polígono,Gasômetros (armazenamento de gás),13,1:50.000
+Pontos de Referência,man_made=monitoring_station,constr_edificacao_p,1501,Edificação de medição de fenômenos,Ponto,Estações de monitoramento ambiental,13,1:50.000
+Industrial,industrial=brewery,constr_edificacao_a,1015,Ind - Fabricação alimentícia e bebidas,Polígono,Cervejarias,13,1:50.000
+Industrial,industrial=sawmill,constr_edificacao_a,1020,Ind - Fabricação de produtos de madeira e celulose,Polígono,Serrarias,13,1:50.000
+Pontes,bridge:movable=swing,infra_elemento_infraestrutura_p,1201,Torre de comunicação,Ponto,Pontes giratórias,13,1:50.000
+Pontes,bridge:movable=bascule,infra_elemento_infraestrutura_p,1201,Torre de comunicação,Ponto,Pontes elevadiças,13,1:50.000
+Pontes,bridge:movable=lift,infra_elemento_infraestrutura_p,1201,Torre de comunicação,Ponto,Pontes elevadiças,13,1:50.000
+Energia - Estruturas,power=pole,infra_elemento_energia_p,1401,Torre de energia,Ponto,Postes de energia,14,1:25.000
+Energia - Geração,power=generator + generator:source=wind,infra_elemento_energia_p,1701,Aerogerador,Ponto,Aerogeradores individuais,14,1:25.000
+Energia - Geração,power=generator + generator:source=wind + generator:method=wind_turbine,infra_elemento_energia_p,1701,Aerogerador,Ponto,Turbinas eólicas individuais,14,1:25.000
+Transporte Marítimo,seamark:type=berth,infra_elemento_infraestrutura_p,1938,Atrac - Cais,Ponto,Berço de atracação,14,1:25.000
+Transporte Aéreo,aeroway=gate,infra_elemento_infraestrutura_p,1938,Atrac - Cais,Ponto,Portão de embarque,14,1:25.000
+Transporte Aéreo,aeroway=windsock,infra_elemento_infraestrutura_p,1301,Antena de comunicação,Ponto,Biruta indicadora de vento,14,1:25.000
+Dutovias,man_made=pipeline_marker,infra_elemento_infraestrutura_p,1201,Torre de comunicação,Ponto,Marco indicador de duto,14,1:25.000
+Ferrovias - Estruturas,railway=platform,infra_elemento_infraestrutura_a,1938,Atrac - Cais,Polígono,Plataformas ferroviárias,14,1:25.000
+Vias - Estruturas,amenity=fuel,constr_edificacao_a,998,Comerc - Outros,Polígono,Postos de combustível,14,1:25.000
+Vias - Estruturas,amenity=charging_station,infra_elemento_infraestrutura_p,1201,Torre de comunicação,Ponto,Estações de recarga elétrica,14,1:25.000
+Vias - Estruturas,amenity=parking + parking=underground,constr_edificacao_a,998,Comerc - Outros,Polígono,Estacionamento subterrâneo,14,1:25.000
+Vias - Estruturas,amenity=motorcycle_parking,constr_area_uso_especifico_a,16,Área relacionada a instalação de estrutura de transporte,Polígono,Estacionamento de motocicletas,14,1:25.000
+Depósitos,building=warehouse,constr_deposito_a,132,Geral - Armazém,Polígono,Armazéns,14,1:25.000
+Depósitos,building=barn,constr_deposito_a,108,Geral - Galpão,Polígono,Celeiros agrícolas,14,1:25.000
+Edifícios - Segurança,building=fire_station,constr_edificacao_a,3007,Seg - Bombeiros Militar,Polígono,Corpo de bombeiros (building tag),14,1:25.000
+Edifícios - Públicos,building=government,constr_edificacao_a,1304,Pub Civ - Gestão pública,Polígono,Edificações governamentais,14,1:25.000
+Edifícios - Saúde,building=hospital,constr_edificacao_a,2025,Sau - Atendimento hospitalar,Polígono,Edificação hospitalar,14,1:25.000
+Edifícios - Religiosos,building=church,constr_edificacao_a,601,Rel - Igreja cristã,Polígono,Igrejas cristãs,14,1:25.000
+Edifícios - Religiosos,building=mosque,constr_edificacao_a,606,Rel - Mesquita,Polígono,Mesquitas,14,1:25.000
+Edifícios - Religiosos,building=synagogue,constr_edificacao_a,607,Rel - Sinagoga,Polígono,Sinagogas,14,1:25.000
+Edifícios - Religiosos,building=temple,constr_edificacao_a,602,Rel - Templo,Polígono,Templos não cristãos,14,1:25.000
+Edifícios - Religiosos,building=cathedral,constr_edificacao_a,601,Rel - Igreja cristã,Polígono,Catedrais,14,1:25.000
+Edifícios - Religiosos,building=chapel,constr_edificacao_a,601,Rel - Igreja cristã,Polígono,Capelas,14,1:25.000
+Edifícios - Religiosos,building=monastery,constr_edificacao_a,604,Rel - Mosteiro,Polígono,Mosteiros,14,1:25.000
+Edifícios - Religiosos,building=shrine,constr_edificacao_a,698,Rel - Outros,Polígono,Santuários,14,1:25.000
+Industrial,building=industrial,constr_edificacao_a,1098,Ind - Outros,Polígono,Edificações industriais genéricas,14,1:25.000
+Energia - Geração,power=plant + plant:source=waste,infra_elemento_energia_a,409,Estação geradora – Termelétrica,Polígono,Termelétricas a resíduos,10,1:100.000
+Energia - Geração,power=plant + plant:source=biofuel,infra_elemento_energia_a,409,Estação geradora – Termelétrica,Polígono,Termelétricas a biocombustível,10,1:100.000
+Energia - Geração,power=plant + plant:source=biogas,infra_elemento_energia_a,409,Estação geradora – Termelétrica,Polígono,Termelétricas a biogás,10,1:100.000
+Energia - Geração,power=plant + plant:source=cogeneration,infra_elemento_energia_a,409,Estação geradora – Termelétrica,Polígono,Termelétricas de cogeração,10,1:100.000
+Energia - Geração,power=plant + plant:source=bagasse,infra_elemento_energia_a,409,Estação geradora – Termelétrica,Polígono,Termelétricas a bagaço,10,1:100.000
+Energia - Geração,power=plant + plant:source=wood,infra_elemento_energia_a,409,Estação geradora – Termelétrica,Polígono,Termelétricas a lenha,10,1:100.000
+Energia - Geração,power=plant + plant:source=peat,infra_elemento_energia_a,409,Estação geradora – Termelétrica,Polígono,Termelétricas a turfa,10,1:100.000
+Energia - Geração,power=generator + generator:source=gas,infra_elemento_energia_p,409,Estação geradora – Termelétrica,Ponto,Gerador a gás,12,1:50.000
+Energia - Geração,power=generator + generator:source=coal,infra_elemento_energia_p,409,Estação geradora – Termelétrica,Ponto,Gerador a carvão,12,1:50.000
+Energia - Geração,power=generator + generator:source=oil,infra_elemento_energia_p,409,Estação geradora – Termelétrica,Ponto,Gerador a óleo,12,1:50.000
+Energia - Geração,power=generator + generator:source=biomass,infra_elemento_energia_p,409,Estação geradora – Termelétrica,Ponto,Gerador a biomassa,12,1:50.000
+Energia - Geração,power=generator + generator:source=diesel,infra_elemento_energia_p,409,Estação geradora – Termelétrica,Ponto,Gerador a diesel,12,1:50.000
+Energia - Geração,power=generator + generator:source=waste,infra_elemento_energia_p,409,Estação geradora – Termelétrica,Ponto,Gerador a resíduos,12,1:50.000
+Energia - Geração,power=generator + generator:source=biofuel,infra_elemento_energia_p,409,Estação geradora – Termelétrica,Ponto,Gerador a biocombustível,12,1:50.000
+Energia - Geração,power=generator + generator:source=biogas,infra_elemento_energia_p,409,Estação geradora – Termelétrica,Ponto,Gerador a biogás,12,1:50.000
+Energia - Geração,power=generator + generator:source=nuclear,infra_elemento_energia_p,409,Estação geradora – Termelétrica,Ponto,Gerador nuclear,12,1:50.000
+Energia - Geração,power=plant + plant:source=water,infra_elemento_energia_a,408,Estação geradora – Hidrelétrica,Polígono,Usinas hidrelétricas (tag water),9,1:100.000
+Energia - Geração,power=generator + generator:source=water,infra_elemento_energia_p,408,Estação geradora – Hidrelétrica,Ponto,Gerador hidrelétrico (tag water),12,1:50.000
+Energia - Geração,man_made=wind_turbine,infra_elemento_energia_p,1701,Aerogerador,Ponto,Turbina eólica individual,14,1:25.000
+Energia - Geração,generator:method=photovoltaic,infra_elemento_energia_a,406,Estação geradora – Solar,Polígono,Gerador fotovoltaico,11,1:50.000
+Energia - Geração,man_made=solar_panel,infra_elemento_energia_p,406,Estação geradora – Solar,Ponto,Painel solar individual,14,1:25.000
+Energia - Geração,power=plant + plant:source=geothermal,infra_elemento_energia_a,498,Estação geradora – Outras,Polígono,Usinas geotérmicas,11,1:50.000
+Energia - Geração,power=generator + generator:source=geothermal,infra_elemento_energia_p,498,Estação geradora – Outras,Ponto,Gerador geotérmico,12,1:50.000
+Energia - Geração,power=plant + plant:source=osmotic,infra_elemento_energia_a,407,Estação geradora – Maré-motriz,Polígono,Usinas de energia osmótica,11,1:50.000
+Energia - Geração,power=generator + generator:source=tidal,infra_elemento_energia_p,407,Estação geradora – Maré-motriz,Ponto,Gerador maremotriz,12,1:50.000
+Energia - Geração,power=generator + generator:source=wave,infra_elemento_energia_p,407,Estação geradora – Maré-motriz,Ponto,Gerador de ondas,12,1:50.000
+Energia - Geração,power=generator + generator:source=hydrogen,infra_elemento_energia_p,498,Estação geradora – Outras,Ponto,Gerador a hidrogênio,12,1:50.000
+Energia - Geração,power=generator + generator:method=fuel_cell,infra_elemento_energia_p,498,Estação geradora – Outras,Ponto,Célula de combustível,12,1:50.000
+Energia - Estruturas,power=switching_station,infra_elemento_energia_a,1801,Subestação de transmissão de energia elétrica,Polígono,Estação de chaveamento,11,1:50.000
+Energia - Estruturas,power=converter,infra_elemento_energia_a,1801,Subestação de transmissão de energia elétrica,Polígono,Conversor de energia (AC/DC),11,1:50.000
+Energia - Estruturas,power=compensator,infra_elemento_energia_a,1801,Subestação de transmissão de energia elétrica,Polígono,Compensador de energia reativa,11,1:50.000
+Energia - Estruturas,substation=distribution,infra_elemento_energia_a,1802,Subestação de distribuição de energia elétrica,Polígono,Subestação de distribuição,12,1:50.000
+Energia - Estruturas,substation=transmission,infra_elemento_energia_a,1801,Subestação de transmissão de energia elétrica,Polígono,Subestação de transmissão,11,1:50.000
+Energia - Linhas,power=cable,infra_elemento_energia_l,303,Linha de transmissão de energia,Linha,Cabos de energia (subterrâneos/submarinos),12,1:50.000
+Energia - Linhas,power=busbar,infra_elemento_energia_l,303,Linha de transmissão de energia,Linha,Barramentos elétricos,13,1:50.000
+Extração Mineral,landuse=mining,constr_extracao_mineral_a,4,Mina / Pedreira,Polígono,Áreas de mineração,10,1:100.000
+Extração Mineral,industrial=mine,constr_extracao_mineral_a,4,Mina / Pedreira,Polígono,Minas industriais,10,1:100.000
+Extração Mineral,industrial=mining,constr_extracao_mineral_a,4,Mina / Pedreira,Polígono,Instalações de mineração,10,1:100.000
+Extração Mineral,man_made=mineshaft,constr_extracao_mineral_p,4,Mina / Pedreira,Ponto,Poços de mina,12,1:50.000
+Extração Mineral,man_made=adit,constr_extracao_mineral_p,4,Mina / Pedreira,Ponto,Galerias de mina (entrada horizontal),12,1:50.000
+Extração Mineral,man_made=mine,constr_extracao_mineral_a,4,Mina / Pedreira,Polígono,Minas (estrutura),10,1:100.000
+Extração Mineral,industrial=quarry,constr_extracao_mineral_a,4,Mina / Pedreira,Polígono,Pedreiras industriais,10,1:100.000
+Extração Mineral,man_made=petroleum_well,constr_extracao_mineral_p,8,Poço - petróleo,Ponto,Poços de petróleo,11,1:50.000
+Extração Mineral,man_made=oil_well,constr_extracao_mineral_p,8,Poço - petróleo,Ponto,Poços de óleo,11,1:50.000
+Extração Mineral,man_made=gas_well,constr_extracao_mineral_p,8,Poço - petróleo,Ponto,Poços de gás natural,11,1:50.000
+Extração Mineral,industrial=oil,constr_extracao_mineral_a,8,Poço - petróleo,Polígono,Instalações de extração de óleo,10,1:100.000
+Extração Mineral,industrial=gas,constr_extracao_mineral_a,8,Poço - petróleo,Polígono,Instalações de extração de gás,10,1:100.000
+Extração Mineral,man_made=offshore_platform,constr_extracao_mineral_p,8,Poço - petróleo,Ponto,Plataformas offshore,10,1:100.000
+Extração Mineral,man_made=oil_platform,constr_extracao_mineral_p,8,Poço - petróleo,Ponto,Plataformas de petróleo,10,1:100.000
+Extração Mineral,landuse=salt_pond,constr_extracao_mineral_a,6,Salina,Polígono,Salinas (tanques de evaporação),10,1:100.000
+Extração Mineral,industrial=salt,constr_extracao_mineral_a,6,Salina,Polígono,Instalações de produção de sal,10,1:100.000
+Extração Mineral,man_made=salt_pond,constr_extracao_mineral_a,6,Salina,Polígono,Tanques de sal,10,1:100.000
+Extração Mineral,landuse=peat_cutting,constr_extracao_mineral_a,4,Mina / Pedreira,Polígono,Extração de turfa,10,1:100.000
+Industrial,industrial=oil_refinery,constr_edificacao_a,1023,Ind - Fabricação de coque - refino de petróleo - elaboração de combustíveis nucleares e produção de álcool,Polígono,Refinarias de petróleo,10,1:100.000
+Industrial,industrial=gas_processing,constr_edificacao_a,1023,Ind - Fabricação de coque - refino de petróleo - elaboração de combustíveis nucleares e produção de álcool,Polígono,Plantas de processamento de gás,10,1:100.000
+Industrial,man_made=refinery,constr_edificacao_a,1023,Ind - Fabricação de coque - refino de petróleo - elaboração de combustíveis nucleares e produção de álcool,Polígono,Refinarias (tag man_made),10,1:100.000
+Transporte Marítimo,harbour=yes,infra_elemento_infraestrutura_a,1938,Atrac - Cais,Polígono,Portos genéricos,10,1:100.000
+Transporte Marítimo,waterway=river_port,infra_elemento_infraestrutura_a,1938,Atrac - Cais,Polígono,Portos fluviais,10,1:100.000
+Transporte Marítimo,harbour=river,infra_elemento_infraestrutura_a,1938,Atrac - Cais,Polígono,Portos fluviais (tag alternativa),10,1:100.000
+Transporte Marítimo,mooring=yes,infra_elemento_infraestrutura_p,1938,Atrac - Cais,Ponto,Pontos de amarração,13,1:50.000
+Transporte Marítimo,waterway=slipway,infra_elemento_infraestrutura_l,1944,Atrac - Desembarcadouro,Linha,Rampas de acesso (waterway),13,1:50.000
+Transporte Marítimo,man_made=boat_ramp,infra_elemento_infraestrutura_l,1944,Atrac - Desembarcadouro,Linha,Rampas para barcos,13,1:50.000
+Transporte Marítimo,industrial=shipyard,constr_area_uso_especifico_a,8,Área relacionada a edificação industrial,Polígono,Estaleiros,11,1:50.000
+Transporte Marítimo,building=boathouse,constr_edificacao_a,2501,Port - Edificação portuária,Polígono,Garagem de barcos,14,1:25.000
+Transporte Marítimo,leisure=marina,infra_elemento_infraestrutura_a,1938,Atrac - Cais,Polígono,Marinas,11,1:50.000
+Transporte Aéreo,aeroway=airport,constr_edificacao_p,2426,Aero - Terminal de passageiros,Ponto,Aeroportos (sinônimo aerodrome),11,1:50.000
+Transporte Aéreo,building=airport,constr_edificacao_a,2426,Aero - Terminal de passageiros,Polígono,Edificação aeroportuária,13,1:50.000
+Transporte Aéreo,building=terminal,constr_edificacao_a,2426,Aero - Terminal de passageiros,Polígono,Terminal (genérico),13,1:50.000
+Transporte Aéreo,aeroway=airstrip,infra_pista_pouso_l,9,pista de pouso,Linha,Pistas de pouso não pavimentadas,12,1:50.000
+Transporte Aéreo,building=heliport,constr_edificacao_a,2426,Aero - Terminal de passageiros,Polígono,Edificação de heliporto,13,1:50.000
+Transporte Aéreo,aeroway=seaplane,infra_pista_pouso_p,12,Hidrobase,Ponto,Base de hidroaviões,12,1:50.000
+Transporte Aéreo,aeroway=seaplane_terminal,constr_edificacao_p,2426,Aero - Terminal de passageiros,Ponto,Terminal de hidroaviões,12,1:50.000
+Transporte Aéreo,waterway=seaplane_landing,infra_pista_pouso_a,12,Hidrobase,Polígono,Área de pouso de hidroaviões,12,1:50.000
+Sondagem,man_made=borehole,constr_extracao_mineral_p,1,Poço - água subterrânea,Ponto,Furos de sondagem,13,1:50.000
