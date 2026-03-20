@@ -187,6 +187,10 @@
       "description": "Nome do modelo de dados",
       "type": "string"
     },
+    "comentario": {
+      "description": "Comentário sobre o modelo de dados",
+      "type": "string"
+    },
     "versao": {
       "description": "Versão do modelo, utilizando Semantic Versioning (https://semver.org/)",
       "type": "string"

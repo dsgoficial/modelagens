@@ -1,0 +1,33 @@
+{
+  "connection": {
+    "host": "localhost",
+    "port": 5432,
+    "user": "postgres",
+    "password": "postgres"
+  },
+  "databases": [
+    {
+      "name": "pit2026_1q_palmas_pr_25k_31982_edgvorto25_edicao",
+      "model": "edgv_300_orto_25",
+      "srid": 31982
+    },
+    {
+      "name": "pit2026_1r_caxias_do_sul_rs_25k_4674_edgvorto25",
+      "model": "edgv_300_orto_25",
+      "srid": 4674
+    },
+    {
+      "name": "pit2026_1k_sao_luiz_pr_25k_4674_edgvtopo14",
+      "model": "edgv_300_topo_14",
+      "srid": 4674
+    },
+    {
+      "name": "pit2026_1f_santiago_50k_4674_edgv30",
+      "model": "edgv_300",
+      "srid": 4674
+    }
+  ],
+  "options": {
+    "overwrite": false
+  }
+}

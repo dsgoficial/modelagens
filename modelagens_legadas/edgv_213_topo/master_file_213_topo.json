@@ -3950,7 +3950,9 @@
       "nome": "area_edificada",
       "categoria": "cobter",
       "descricao": "-",
-      "primitivas": ["MultiPolygon"],
+      "primitivas": [
+        "MultiPolygon"
+      ],
       "atributos": [
         {
           "nome": "nome",
@@ -3964,7 +3966,9 @@
       "nome": "corpo_dagua",
       "categoria": "cobter",
       "descricao": "Corpo d’água representado por polígono, que possuem ou não fluxo d'água",
-      "primitivas": ["MultiPolygon"],
+      "primitivas": [
+        "MultiPolygon"
+      ],
       "atributos": [
         {
           "nome": "nome",
@@ -3983,31 +3987,25 @@
               "code": 1
             },
             {
-              "code": 2,
-              "restricao_atributo_incomum": []
+              "code": 2
             },
             {
-              "code": 3,
-              "restricao_atributo_incomum": []
+              "code": 3
             },
             {
-              "code": 4,
-              "restricao_atributo_incomum": []
+              "code": 4
             },
             {
-              "code": 5,
-              "restricao_atributo_incomum": []
+              "code": 5
             },
             {
-              "code": 6,
-              "restricao_atributo_incomum": []
+              "code": 6
             },
             {
               "code": 7
             },
             {
-              "code": 9,
-              "restricao_atributo_incomum": []
+              "code": 9
             },
             {
               "code": 10
@@ -4028,24 +4026,10 @@
               "code": 1
             },
             {
-              "code": 3,
-              "restricao_atributo_incomum": [],
-              "restricao": [
-                {
-                  "atributo": "tipo",
-                  "valores": [1, 2, 6, 7, 10, 11]
-                }
-              ]
+              "code": 3
             },
             {
-              "code": 5,
-              "restricao_atributo_incomum": [],
-              "restricao": [
-                {
-                  "atributo": "tipo",
-                  "valores": [1, 2, 6, 7, 10, 11]
-                }
-              ]
+              "code": 5
             }
           ]
         }
@@ -4055,14 +4039,15 @@
       "nome": "vegetacao",
       "categoria": "cobter",
       "descricao": "-",
-      "primitivas": ["MultiPolygon"],
+      "primitivas": [
+        "MultiPolygon"
+      ],
       "atributos": [
         {
           "nome": "nome",
           "tipo": "varchar(255)",
           "descricao": "Nome completo da instância",
-          "cardinalidade": "0..1",
-          "restricao_atributo_incomum": []
+          "cardinalidade": "0..1"
         },
         {
           "nome": "tipo",
@@ -4078,36 +4063,28 @@
               "code": 302
             },
             {
-              "code": 201,
-              "restricao_atributo_incomum": []
+              "code": 201
             },
             {
-              "code": 202,
-              "restricao_atributo_incomum": []
+              "code": 202
             },
             {
-              "code": 801,
-              "restricao_atributo_incomum": []
+              "code": 801
             },
             {
-              "code": 501,
-              "restricao_atributo_incomum": []
+              "code": 501
             },
             {
-              "code": 701,
-              "restricao_atributo_incomum": []
+              "code": 701
             },
             {
-              "code": 702,
-              "restricao_atributo_incomum": []
+              "code": 702
             },
             {
-              "code": 401,
-              "restricao_atributo_incomum": []
+              "code": 401
             },
             {
-              "code": 1101,
-              "restricao_atributo_incomum": []
+              "code": 1101
             },
             {
               "code": 901
@@ -4125,67 +4102,52 @@
               "code": 150
             },
             {
-              "code": 118,
-              "restricao_atributo_incomum": []
+              "code": 118
             },
             {
-              "code": 102,
-              "restricao_atributo_incomum": []
+              "code": 102
             },
             {
-              "code": 115,
-              "restricao_atributo_incomum": []
+              "code": 115
             },
             {
-              "code": 114,
-              "restricao_atributo_incomum": []
+              "code": 114
             },
             {
-              "code": 116,
-              "restricao_atributo_incomum": []
+              "code": 116
             },
             {
-              "code": 103,
-              "restricao_atributo_incomum": []
+              "code": 103
             },
             {
-              "code": 151,
-              "restricao_atributo_incomum": []
+              "code": 151
             },
             {
-              "code": 117,
-              "restricao_atributo_incomum": []
+              "code": 117
             },
             {
-              "code": 153,
-              "restricao_atributo_incomum": []
+              "code": 153
             },
             {
-              "code": 152,
-              "restricao_atributo_incomum": []
+              "code": 152
             },
             {
-              "code": 119,
-              "restricao_atributo_incomum": []
+              "code": 119
             },
             {
-              "code": 142,
-              "restricao_atributo_incomum": []
+              "code": 142
             },
             {
-              "code": 107,
-              "restricao_atributo_incomum": []
+              "code": 107
             },
             {
               "code": 124
             },
             {
-              "code": 198,
-              "restricao_atributo_incomum": []
+              "code": 198
             },
             {
-              "code": 195,
-              "restricao_atributo_incomum": []
+              "code": 195
             },
             {
               "code": 1296
@@ -4204,7 +4166,10 @@
       "nome": "deposito",
       "categoria": "constr",
       "descricao": "-",
-      "primitivas": ["MultiPolygon", "MultiPoint"],
+      "primitivas": [
+        "MultiPolygon",
+        "MultiPoint"
+      ],
       "atributos": [
         {
           "nome": "nome",
@@ -4476,7 +4441,10 @@
       "nome": "edificacao",
       "categoria": "constr",
       "descricao": "-",
-      "primitivas": ["MultiPolygon", "MultiPoint"],
+      "primitivas": [
+        "MultiPolygon",
+        "MultiPoint"
+      ],
       "atributos": [
         {
           "nome": "nome",
@@ -4820,51 +4788,75 @@
             },
             {
               "code": 1601,
-              "primitivas": ["MultiPoint"]
+              "primitivas": [
+                "MultiPoint"
+              ]
             },
             {
               "code": 1602,
-              "primitivas": ["MultiPoint"]
+              "primitivas": [
+                "MultiPoint"
+              ]
             },
             {
               "code": 1603,
-              "primitivas": ["MultiPoint"]
+              "primitivas": [
+                "MultiPoint"
+              ]
             },
             {
               "code": 1604,
-              "primitivas": ["MultiPoint"]
+              "primitivas": [
+                "MultiPoint"
+              ]
             },
             {
               "code": 1605,
-              "primitivas": ["MultiPoint"]
+              "primitivas": [
+                "MultiPoint"
+              ]
             },
             {
               "code": 1606,
-              "primitivas": ["MultiPoint"]
+              "primitivas": [
+                "MultiPoint"
+              ]
             },
             {
               "code": 1607,
-              "primitivas": ["MultiPoint"]
+              "primitivas": [
+                "MultiPoint"
+              ]
             },
             {
               "code": 1608,
-              "primitivas": ["MultiPoint"]
+              "primitivas": [
+                "MultiPoint"
+              ]
             },
             {
               "code": 1609,
-              "primitivas": ["MultiPoint"]
+              "primitivas": [
+                "MultiPoint"
+              ]
             },
             {
               "code": 1610,
-              "primitivas": ["MultiPoint"]
+              "primitivas": [
+                "MultiPoint"
+              ]
             },
             {
               "code": 1611,
-              "primitivas": ["MultiPoint"]
+              "primitivas": [
+                "MultiPoint"
+              ]
             },
             {
               "code": 1612,
-              "primitivas": ["MultiPoint"]
+              "primitivas": [
+                "MultiPoint"
+              ]
             },
             {
               "code": 1712
@@ -5048,7 +5040,10 @@
       "nome": "extracao_mineral",
       "categoria": "constr",
       "descricao": "-",
-      "primitivas": ["MultiPolygon", "MultiPoint"],
+      "primitivas": [
+        "MultiPolygon",
+        "MultiPoint"
+      ],
       "atributos": [
         {
           "nome": "nome",
@@ -5080,7 +5075,9 @@
             },
             {
               "code": 8,
-              "primitivas": ["MultiPoint"]
+              "primitivas": [
+                "MultiPoint"
+              ]
             }
           ]
         },
@@ -5198,7 +5195,11 @@
       "nome": "ocupacao_solo",
       "categoria": "constr",
       "descricao": "-",
-      "primitivas": ["MultiPolygon", "MultiLinestring", "MultiPoint"],
+      "primitivas": [
+        "MultiPolygon",
+        "MultiLinestring",
+        "MultiPoint"
+      ],
       "atributos": [
         {
           "nome": "nome",
@@ -5215,119 +5216,191 @@
           "valores": [
             {
               "code": 101,
-              "primitivas": ["MultiPolygon", "MultiPoint"]
+              "primitivas": [
+                "MultiPolygon",
+                "MultiPoint"
+              ]
             },
             {
               "code": 102,
-              "primitivas": ["MultiPolygon", "MultiPoint"]
+              "primitivas": [
+                "MultiPolygon",
+                "MultiPoint"
+              ]
             },
             {
               "code": 103,
-              "primitivas": ["MultiPolygon", "MultiPoint"]
+              "primitivas": [
+                "MultiPolygon",
+                "MultiPoint"
+              ]
             },
             {
               "code": 104,
-              "primitivas": ["MultiPolygon", "MultiPoint"]
+              "primitivas": [
+                "MultiPolygon",
+                "MultiPoint"
+              ]
             },
             {
               "code": 105,
-              "primitivas": ["MultiPolygon", "MultiPoint"]
+              "primitivas": [
+                "MultiPolygon",
+                "MultiPoint"
+              ]
             },
             {
               "code": 201,
-              "primitivas": ["MultiPolygon", "MultiPoint"]
+              "primitivas": [
+                "MultiPolygon",
+                "MultiPoint"
+              ]
             },
             {
               "code": 202,
-              "primitivas": ["MultiPolygon", "MultiPoint"]
+              "primitivas": [
+                "MultiPolygon",
+                "MultiPoint"
+              ]
             },
             {
               "code": 203,
-              "primitivas": ["MultiPolygon", "MultiPoint"]
+              "primitivas": [
+                "MultiPolygon",
+                "MultiPoint"
+              ]
             },
             {
               "code": 204,
-              "primitivas": ["MultiPolygon", "MultiPoint"]
+              "primitivas": [
+                "MultiPolygon",
+                "MultiPoint"
+              ]
             },
             {
               "code": 205,
-              "primitivas": ["MultiPolygon", "MultiPoint"]
+              "primitivas": [
+                "MultiPolygon",
+                "MultiPoint"
+              ]
             },
             {
               "code": 206,
-              "primitivas": ["MultiPolygon", "MultiPoint"]
+              "primitivas": [
+                "MultiPolygon",
+                "MultiPoint"
+              ]
             },
             {
               "code": 207,
-              "primitivas": ["MultiPolygon", "MultiPoint"]
+              "primitivas": [
+                "MultiPolygon",
+                "MultiPoint"
+              ]
             },
             {
               "code": 298,
-              "primitivas": ["MultiPolygon", "MultiPoint"]
+              "primitivas": [
+                "MultiPolygon",
+                "MultiPoint"
+              ]
             },
             {
               "code": 301,
-              "primitivas": ["MultiLinestring"]
+              "primitivas": [
+                "MultiLinestring"
+              ]
             },
             {
               "code": 302,
-              "primitivas": ["MultiLinestring"]
+              "primitivas": [
+                "MultiLinestring"
+              ]
             },
             {
               "code": 303,
-              "primitivas": ["MultiLinestring"]
+              "primitivas": [
+                "MultiLinestring"
+              ]
             },
             {
               "code": 304,
-              "primitivas": ["MultiLinestring"]
+              "primitivas": [
+                "MultiLinestring"
+              ]
             },
             {
               "code": 305,
-              "primitivas": ["MultiLinestring"]
+              "primitivas": [
+                "MultiLinestring"
+              ]
             },
             {
               "code": 398,
-              "primitivas": ["MultiLinestring"]
+              "primitivas": [
+                "MultiLinestring"
+              ]
             },
             {
               "code": 404,
-              "primitivas": ["MultiPolygon"]
+              "primitivas": [
+                "MultiPolygon"
+              ]
             },
             {
               "code": 405,
-              "primitivas": ["MultiPolygon"]
+              "primitivas": [
+                "MultiPolygon"
+              ]
             },
             {
               "code": 406,
-              "primitivas": ["MultiPolygon"]
+              "primitivas": [
+                "MultiPolygon"
+              ]
             },
             {
               "code": 409,
-              "primitivas": ["MultiPolygon"]
+              "primitivas": [
+                "MultiPolygon"
+              ]
             },
             {
               "code": 414,
-              "primitivas": ["MultiPolygon"]
+              "primitivas": [
+                "MultiPolygon"
+              ]
             },
             {
               "code": 495,
-              "primitivas": ["MultiPolygon"]
+              "primitivas": [
+                "MultiPolygon"
+              ]
             },
             {
               "code": 501,
-              "primitivas": ["MultiPolygon"]
+              "primitivas": [
+                "MultiPolygon"
+              ]
             },
             {
               "code": 601,
-              "primitivas": ["MultiPolygon"]
+              "primitivas": [
+                "MultiPolygon"
+              ]
             },
             {
               "code": 701,
-              "primitivas": ["MultiPolygon", "MultiPoint"]
+              "primitivas": [
+                "MultiPolygon",
+                "MultiPoint"
+              ]
             },
             {
               "code": 801,
-              "primitivas": ["MultiPolygon"]
+              "primitivas": [
+                "MultiPolygon"
+              ]
             }
           ]
         },
@@ -5358,7 +5431,9 @@
       "nome": "curva_nivel",
       "categoria": "elemnat",
       "descricao": "-",
-      "primitivas": ["MultiLinestring"],
+      "primitivas": [
+        "MultiLinestring"
+      ],
       "atributos": [
         {
           "nome": "cota",
@@ -5405,7 +5480,11 @@
       "nome": "elemento_fisiografico",
       "categoria": "elemnat",
       "descricao": "-",
-      "primitivas": ["MultiPolygon", "MultiLinestring", "MultiPoint"],
+      "primitivas": [
+        "MultiPolygon",
+        "MultiLinestring",
+        "MultiPoint"
+      ],
       "atributos": [
         {
           "nome": "nome",
@@ -5422,130 +5501,198 @@
           "valores": [
             {
               "code": 1,
-              "primitivas": ["MultiLinestring"]
+              "primitivas": [
+                "MultiLinestring"
+              ]
             },
             {
               "code": 2,
-              "primitivas": ["MultiPoint"]
+              "primitivas": [
+                "MultiPoint"
+              ]
             },
             {
               "code": 3,
-              "primitivas": ["MultiPoint"]
+              "primitivas": [
+                "MultiPoint"
+              ]
             },
             {
               "code": 4,
-              "primitivas": ["MultiPoint"]
+              "primitivas": [
+                "MultiPoint"
+              ]
             },
             {
               "code": 5,
-              "primitivas": ["MultiPoint"]
+              "primitivas": [
+                "MultiPoint"
+              ]
             },
             {
               "code": 6,
-              "primitivas": ["MultiPoint"]
+              "primitivas": [
+                "MultiPoint"
+              ]
             },
             {
               "code": 7,
-              "primitivas": ["MultiPoint"]
+              "primitivas": [
+                "MultiPoint"
+              ]
             },
             {
               "code": 8,
-              "primitivas": ["MultiLinestring"]
+              "primitivas": [
+                "MultiLinestring"
+              ]
             },
             {
               "code": 9,
-              "primitivas": ["MultiPoint"]
+              "primitivas": [
+                "MultiPoint"
+              ]
             },
             {
               "code": 10,
-              "primitivas": ["MultiPoint"]
+              "primitivas": [
+                "MultiPoint"
+              ]
             },
             {
               "code": 11,
-              "primitivas": ["MultiPoint"]
+              "primitivas": [
+                "MultiPoint"
+              ]
             },
             {
               "code": 12
             },
             {
               "code": 13,
-              "primitivas": ["MultiLinestring"]
+              "primitivas": [
+                "MultiLinestring"
+              ]
             },
             {
               "code": 14,
-              "primitivas": ["MultiLinestring"]
+              "primitivas": [
+                "MultiLinestring"
+              ]
             },
             {
               "code": 15,
-              "primitivas": ["MultiPolygon"]
+              "primitivas": [
+                "MultiPolygon"
+              ]
             },
             {
               "code": 16,
-              "primitivas": ["MultiPolygon"]
+              "primitivas": [
+                "MultiPolygon"
+              ]
             },
             {
               "code": 17,
-              "primitivas": ["MultiPoint"]
+              "primitivas": [
+                "MultiPoint"
+              ]
             },
             {
               "code": 19,
-              "primitivas": ["MultiPoint"]
+              "primitivas": [
+                "MultiPoint"
+              ]
             },
             {
               "code": 20,
-              "primitivas": ["MultiPoint"]
+              "primitivas": [
+                "MultiPoint"
+              ]
             },
             {
               "code": 21,
-              "primitivas": ["MultiPolygon", "MultiPoint"]
+              "primitivas": [
+                "MultiPolygon",
+                "MultiPoint"
+              ]
             },
             {
               "code": 22,
-              "primitivas": ["MultiPolygon", "MultiPoint"]
+              "primitivas": [
+                "MultiPolygon",
+                "MultiPoint"
+              ]
             },
             {
               "code": 23,
-              "primitivas": ["MultiPolygon"]
+              "primitivas": [
+                "MultiPolygon"
+              ]
             },
             {
               "code": 24,
-              "primitivas": ["MultiPolygon"]
+              "primitivas": [
+                "MultiPolygon"
+              ]
             },
             {
               "code": 25,
-              "primitivas": ["MultiPolygon"]
+              "primitivas": [
+                "MultiPolygon"
+              ]
             },
             {
               "code": 26,
-              "primitivas": ["MultiLinestring"]
+              "primitivas": [
+                "MultiLinestring"
+              ]
             },
             {
               "code": 27,
-              "primitivas": ["MultiLinestring"]
+              "primitivas": [
+                "MultiLinestring"
+              ]
             },
             {
               "code": 28,
-              "primitivas": ["MultiPolygon"]
+              "primitivas": [
+                "MultiPolygon"
+              ]
             },
             {
               "code": 29,
-              "primitivas": ["MultiPolygon"]
+              "primitivas": [
+                "MultiPolygon"
+              ]
             },
             {
               "code": 30,
-              "primitivas": ["MultiPolygon", "MultiPoint"]
+              "primitivas": [
+                "MultiPolygon",
+                "MultiPoint"
+              ]
             },
             {
               "code": 31,
-              "primitivas": ["MultiPolygon", "MultiPoint"]
+              "primitivas": [
+                "MultiPolygon",
+                "MultiPoint"
+              ]
             },
             {
               "code": 32,
-              "primitivas": ["MultiPolygon", "MultiPoint"]
+              "primitivas": [
+                "MultiPolygon",
+                "MultiPoint"
+              ]
             },
             {
               "code": 33,
-              "primitivas": ["MultiPolygon", "MultiPoint"]
+              "primitivas": [
+                "MultiPolygon",
+                "MultiPoint"
+              ]
             }
           ]
         }
@@ -5555,7 +5702,11 @@
       "nome": "elemento_hidrografico",
       "categoria": "elemnat",
       "descricao": "-",
-      "primitivas": ["MultiPolygon", "MultiLinestring", "MultiPoint"],
+      "primitivas": [
+        "MultiPolygon",
+        "MultiLinestring",
+        "MultiPoint"
+      ],
       "atributos": [
         {
           "nome": "nome",
@@ -5572,69 +5723,103 @@
           "valores": [
             {
               "code": 1,
-              "primitivas": ["MultiPoint"]
+              "primitivas": [
+                "MultiPoint"
+              ]
             },
             {
               "code": 2,
-              "primitivas": ["MultiPoint"]
+              "primitivas": [
+                "MultiPoint"
+              ]
             },
             {
               "code": 3,
-              "primitivas": ["MultiPoint"]
+              "primitivas": [
+                "MultiPoint"
+              ]
             },
             {
               "code": 4,
-              "primitivas": ["MultiPoint"]
+              "primitivas": [
+                "MultiPoint"
+              ]
             },
             {
               "code": 5,
-              "primitivas": ["MultiPoint"]
+              "primitivas": [
+                "MultiPoint"
+              ]
             },
             {
               "code": 6,
-              "primitivas": ["MultiPolygon", "MultiPoint"]
+              "primitivas": [
+                "MultiPolygon",
+                "MultiPoint"
+              ]
             },
             {
               "code": 7,
-              "primitivas": ["MultiPoint"]
+              "primitivas": [
+                "MultiPoint"
+              ]
             },
             {
               "code": 8
             },
             {
               "code": 9,
-              "primitivas": ["MultiLinestring", "MultiPoint"]
+              "primitivas": [
+                "MultiLinestring",
+                "MultiPoint"
+              ]
             },
             {
               "code": 10,
-              "primitivas": ["MultiLinestring", "MultiPoint"]
+              "primitivas": [
+                "MultiLinestring",
+                "MultiPoint"
+              ]
             },
             {
               "code": 11,
-              "primitivas": ["MultiLinestring", "MultiPoint"]
+              "primitivas": [
+                "MultiLinestring",
+                "MultiPoint"
+              ]
             },
             {
               "code": 12
             },
             {
               "code": 13,
-              "primitivas": ["MultiPolygon"]
+              "primitivas": [
+                "MultiPolygon"
+              ]
             },
             {
               "code": 14,
-              "primitivas": ["MultiPolygon"]
+              "primitivas": [
+                "MultiPolygon"
+              ]
             },
             {
               "code": 15,
-              "primitivas": ["MultiPolygon"]
+              "primitivas": [
+                "MultiPolygon"
+              ]
             },
             {
               "code": 16,
-              "primitivas": ["MultiPolygon"]
+              "primitivas": [
+                "MultiPolygon"
+              ]
             },
             {
               "code": 17,
-              "primitivas": ["MultiPolygon"]
+              "primitivas": [
+                "MultiPolygon"
+              ]
             },
             {
               "code": 18
@@ -5650,7 +5835,9 @@
       "nome": "ponto_cotado",
       "categoria": "elemnat",
       "descricao": "-",
-      "primitivas": ["MultiPoint"],
+      "primitivas": [
+        "MultiPoint"
+      ],
       "atributos": [
         {
           "nome": "cota",
@@ -5679,7 +5866,9 @@
       "nome": "trecho_drenagem",
       "categoria": "elemnat",
       "descricao": "-",
-      "primitivas": ["MultiLinestring"],
+      "primitivas": [
+        "MultiLinestring"
+      ],
       "atributos": [
         {
           "nome": "nome",
@@ -5732,7 +5921,11 @@
       "nome": "elemento_infraestrutura",
       "categoria": "infra",
       "descricao": "-",
-      "primitivas": ["MultiPolygon", "MultiLinestring", "MultiPoint"],
+      "primitivas": [
+        "MultiPolygon",
+        "MultiLinestring",
+        "MultiPoint"
+      ],
       "atributos": [
         {
           "nome": "nome",
@@ -5749,19 +5942,27 @@
           "valores": [
             {
               "code": 201,
-              "primitivas": ["MultiLinestring"]
+              "primitivas": [
+                "MultiLinestring"
+              ]
             },
             {
               "code": 202,
-              "primitivas": ["MultiLinestring"]
+              "primitivas": [
+                "MultiLinestring"
+              ]
             },
             {
               "code": 302,
-              "primitivas": ["MultiLinestring"]
+              "primitivas": [
+                "MultiLinestring"
+              ]
             },
             {
               "code": 303,
-              "primitivas": ["MultiLinestring"]
+              "primitivas": [
+                "MultiLinestring"
+              ]
             },
             {
               "code": 405
@@ -5795,114 +5996,174 @@
             },
             {
               "code": 601,
-              "primitivas": ["MultiPolygon", "MultiPoint"]
+              "primitivas": [
+                "MultiPolygon",
+                "MultiPoint"
+              ]
             },
             {
               "code": 701,
-              "primitivas": ["MultiPolygon", "MultiLinestring"]
+              "primitivas": [
+                "MultiPolygon",
+                "MultiLinestring"
+              ]
             },
             {
               "code": 801,
-              "primitivas": ["MultiPolygon", "MultiLinestring"]
+              "primitivas": [
+                "MultiPolygon",
+                "MultiLinestring"
+              ]
             },
             {
               "code": 901,
-              "primitivas": ["MultiLinestring", "MultiPoint"]
+              "primitivas": [
+                "MultiLinestring",
+                "MultiPoint"
+              ]
             },
             {
               "code": 1001
             },
             {
               "code": 1101,
-              "primitivas": ["MultiPolygon", "MultiLinestring"]
+              "primitivas": [
+                "MultiPolygon",
+                "MultiLinestring"
+              ]
             },
             {
               "code": 1201,
-              "primitivas": ["MultiPoint"]
+              "primitivas": [
+                "MultiPoint"
+              ]
             },
             {
               "code": 1301,
-              "primitivas": ["MultiPoint"]
+              "primitivas": [
+                "MultiPoint"
+              ]
             },
             {
               "code": 1401,
-              "primitivas": ["MultiPoint"]
+              "primitivas": [
+                "MultiPoint"
+              ]
             },
             {
               "code": 1501,
-              "primitivas": ["MultiLinestring", "MultiPoint"]
+              "primitivas": [
+                "MultiLinestring",
+                "MultiPoint"
+              ]
             },
             {
               "code": 1601,
-              "primitivas": ["MultiPoint"]
+              "primitivas": [
+                "MultiPoint"
+              ]
             },
             {
               "code": 1698,
-              "primitivas": ["MultiPoint"]
+              "primitivas": [
+                "MultiPoint"
+              ]
             },
             {
               "code": 1700,
-              "primitivas": ["MultiLinestring"]
+              "primitivas": [
+                "MultiLinestring"
+              ]
             },
             {
               "code": 1701,
-              "primitivas": ["MultiLinestring"]
+              "primitivas": [
+                "MultiLinestring"
+              ]
             },
             {
               "code": 1702,
-              "primitivas": ["MultiLinestring"]
+              "primitivas": [
+                "MultiLinestring"
+              ]
             },
             {
               "code": 1703,
-              "primitivas": ["MultiLinestring"]
+              "primitivas": [
+                "MultiLinestring"
+              ]
             },
             {
               "code": 1704,
-              "primitivas": ["MultiLinestring"]
+              "primitivas": [
+                "MultiLinestring"
+              ]
             },
             {
               "code": 1705,
-              "primitivas": ["MultiLinestring"]
+              "primitivas": [
+                "MultiLinestring"
+              ]
             },
             {
               "code": 1706,
-              "primitivas": ["MultiLinestring"]
+              "primitivas": [
+                "MultiLinestring"
+              ]
             },
             {
               "code": 1707,
-              "primitivas": ["MultiLinestring"]
+              "primitivas": [
+                "MultiLinestring"
+              ]
             },
             {
               "code": 1708,
-              "primitivas": ["MultiLinestring"]
+              "primitivas": [
+                "MultiLinestring"
+              ]
             },
             {
               "code": 1709,
-              "primitivas": ["MultiLinestring"]
+              "primitivas": [
+                "MultiLinestring"
+              ]
             },
             {
               "code": 1710,
-              "primitivas": ["MultiLinestring"]
+              "primitivas": [
+                "MultiLinestring"
+              ]
             },
             {
               "code": 1798,
-              "primitivas": ["MultiLinestring"]
+              "primitivas": [
+                "MultiLinestring"
+              ]
             },
             {
               "code": 1801,
-              "primitivas": ["MultiLinestring"]
+              "primitivas": [
+                "MultiLinestring"
+              ]
             },
             {
               "code": 1901,
-              "primitivas": ["MultiLinestring"]
+              "primitivas": [
+                "MultiLinestring"
+              ]
             },
             {
               "code": 1902,
-              "primitivas": ["MultiLinestring"]
+              "primitivas": [
+                "MultiLinestring"
+              ]
             },
             {
               "code": 1998,
-              "primitivas": ["MultiLinestring"]
+              "primitivas": [
+                "MultiLinestring"
+              ]
             }
           ]
         },
@@ -6008,7 +6269,11 @@
       "nome": "elemento_transportes",
       "categoria": "infra",
       "descricao": "-",
-      "primitivas": ["MultiPolygon", "MultiLinestring", "MultiPoint"],
+      "primitivas": [
+        "MultiPolygon",
+        "MultiLinestring",
+        "MultiPoint"
+      ],
       "atributos": [
         {
           "nome": "nome",
@@ -6025,7 +6290,9 @@
           "valores": [
             {
               "code": 101,
-              "primitivas": ["MultiPoint"]
+              "primitivas": [
+                "MultiPoint"
+              ]
             },
             {
               "code": 238
@@ -6050,55 +6317,86 @@
             },
             {
               "code": 302,
-              "primitivas": ["MultiLinestring"]
+              "primitivas": [
+                "MultiLinestring"
+              ]
             },
             {
               "code": 303,
-              "primitivas": ["MultiLinestring"]
+              "primitivas": [
+                "MultiLinestring"
+              ]
             },
             {
               "code": 304,
-              "primitivas": ["MultiLinestring"]
+              "primitivas": [
+                "MultiLinestring"
+              ]
             },
             {
               "code": 404,
-              "primitivas": ["MultiPoint"]
+              "primitivas": [
+                "MultiPoint"
+              ]
             },
             {
               "code": 501,
-              "primitivas": ["MultiLinestring"]
+              "primitivas": [
+                "MultiLinestring"
+              ]
             },
             {
               "code": 607,
-              "primitivas": ["MultiLinestring", "MultiPoint"]
+              "primitivas": [
+                "MultiLinestring",
+                "MultiPoint"
+              ]
             },
             {
               "code": 608,
-              "primitivas": ["MultiLinestring", "MultiPoint"]
+              "primitivas": [
+                "MultiLinestring",
+                "MultiPoint"
+              ]
             },
             {
               "code": 609,
-              "primitivas": ["MultiLinestring", "MultiPoint"]
+              "primitivas": [
+                "MultiLinestring",
+                "MultiPoint"
+              ]
             },
             {
               "code": 701,
-              "primitivas": ["MultiPoint"]
+              "primitivas": [
+                "MultiPoint"
+              ]
             },
             {
               "code": 801,
-              "primitivas": ["MultiLinestring"]
+              "primitivas": [
+                "MultiLinestring"
+              ]
             },
             {
               "code": 898,
-              "primitivas": ["MultiLinestring"]
+              "primitivas": [
+                "MultiLinestring"
+              ]
             },
             {
               "code": 901,
-              "primitivas": ["MultiLinestring", "MultiPoint"]
+              "primitivas": [
+                "MultiLinestring",
+                "MultiPoint"
+              ]
             },
             {
               "code": 1001,
-              "primitivas": ["MultiLinestring", "MultiPoint"]
+              "primitivas": [
+                "MultiLinestring",
+                "MultiPoint"
+              ]
             },
             {
               "code": 1101
@@ -6108,23 +6406,37 @@
             },
             {
               "code": 1300,
-              "primitivas": ["MultiPolygon", "MultiPoint"]
+              "primitivas": [
+                "MultiPolygon",
+                "MultiPoint"
+              ]
             },
             {
               "code": 1301,
-              "primitivas": ["MultiPolygon", "MultiPoint"]
+              "primitivas": [
+                "MultiPolygon",
+                "MultiPoint"
+              ]
             },
             {
               "code": 1302,
-              "primitivas": ["MultiPolygon", "MultiPoint"]
+              "primitivas": [
+                "MultiPolygon",
+                "MultiPoint"
+              ]
             },
             {
               "code": 1395,
-              "primitivas": ["MultiPolygon", "MultiPoint"]
+              "primitivas": [
+                "MultiPolygon",
+                "MultiPoint"
+              ]
             },
             {
               "code": 1401,
-              "primitivas": ["MultiLinestring"]
+              "primitivas": [
+                "MultiLinestring"
+              ]
             }
           ]
         },
@@ -6158,7 +6470,10 @@
       "nome": "elemento_viario",
       "categoria": "infra",
       "descricao": "-",
-      "primitivas": ["MultiLinestring", "MultiPoint"],
+      "primitivas": [
+        "MultiLinestring",
+        "MultiPoint"
+      ],
       "atributos": [
         {
           "nome": "nome",
@@ -6337,7 +6652,9 @@
       "nome": "ferrovia",
       "categoria": "infra",
       "descricao": "-",
-      "primitivas": ["MultiLinestring"],
+      "primitivas": [
+        "MultiLinestring"
+      ],
       "atributos": [
         {
           "nome": "nome",
@@ -6507,7 +6824,11 @@
       "nome": "pista_pouso",
       "categoria": "infra",
       "descricao": "-",
-      "primitivas": ["MultiPolygon", "MultiLinestring", "MultiPoint"],
+      "primitivas": [
+        "MultiPolygon",
+        "MultiLinestring",
+        "MultiPoint"
+      ],
       "atributos": [
         {
           "nome": "nome",
@@ -6638,7 +6959,9 @@
       "nome": "via_deslocamento",
       "categoria": "infra",
       "descricao": "-",
-      "primitivas": ["MultiLinestring"],
+      "primitivas": [
+        "MultiLinestring"
+      ],
       "atributos": [
         {
           "nome": "nome",
@@ -6678,13 +7001,7 @@
           "mapa_valor": "revestimento",
           "valores": [
             {
-              "code": 1,
-              "restricao": [
-                {
-                  "atributo": "tipo",
-                  "valores": [2, 3, 6]
-                }
-              ]
+              "code": 1
             },
             {
               "code": 2
@@ -6817,7 +7134,9 @@
       "nome": "delimitacao_fisica",
       "categoria": "llp",
       "descricao": "-",
-      "primitivas": ["MultiLinestring"],
+      "primitivas": [
+        "MultiLinestring"
+      ],
       "atributos": [
         {
           "nome": "tipo",
@@ -6870,7 +7189,10 @@
       "nome": "limite_especial",
       "categoria": "llp",
       "descricao": "-",
-      "primitivas": ["MultiPolygon", "MultiLinestring"],
+      "primitivas": [
+        "MultiPolygon",
+        "MultiLinestring"
+      ],
       "atributos": [
         {
           "nome": "nome",
@@ -7025,7 +7347,10 @@
       "nome": "limite_legal",
       "categoria": "llp",
       "descricao": "-",
-      "primitivas": ["MultiPolygon", "MultiLinestring"],
+      "primitivas": [
+        "MultiPolygon",
+        "MultiLinestring"
+      ],
       "atributos": [
         {
           "nome": "nome",
@@ -7042,43 +7367,63 @@
           "valores": [
             {
               "code": 1,
-              "primitivas": ["MultiLinestring"]
+              "primitivas": [
+                "MultiLinestring"
+              ]
             },
             {
               "code": 2,
-              "primitivas": ["MultiLinestring"]
+              "primitivas": [
+                "MultiLinestring"
+              ]
             },
             {
               "code": 3,
-              "primitivas": ["MultiLinestring"]
+              "primitivas": [
+                "MultiLinestring"
+              ]
             },
             {
               "code": 4,
-              "primitivas": ["MultiPolygon"]
+              "primitivas": [
+                "MultiPolygon"
+              ]
             },
             {
               "code": 5,
-              "primitivas": ["MultiPolygon"]
+              "primitivas": [
+                "MultiPolygon"
+              ]
             },
             {
               "code": 6,
-              "primitivas": ["MultiPolygon"]
+              "primitivas": [
+                "MultiPolygon"
+              ]
             },
             {
               "code": 7,
-              "primitivas": ["MultiPolygon"]
+              "primitivas": [
+                "MultiPolygon"
+              ]
             },
             {
               "code": 8,
-              "primitivas": ["MultiPolygon"]
+              "primitivas": [
+                "MultiPolygon"
+              ]
             },
             {
               "code": 9,
-              "primitivas": ["MultiPolygon"]
+              "primitivas": [
+                "MultiPolygon"
+              ]
             },
             {
               "code": 10,
-              "primitivas": ["MultiPolygon"]
+              "primitivas": [
+                "MultiPolygon"
+              ]
             }
           ]
         },
@@ -7142,7 +7487,9 @@
       "nome": "localidade",
       "categoria": "llp",
       "descricao": "-",
-      "primitivas": ["MultiPoint"],
+      "primitivas": [
+        "MultiPoint"
+      ],
       "atributos": [
         {
           "nome": "nome",
@@ -7207,7 +7554,9 @@
       "nome": "ponto_controle",
       "categoria": "llp",
       "descricao": "-",
-      "primitivas": ["MultiPoint"],
+      "primitivas": [
+        "MultiPoint"
+      ],
       "atributos": [
         {
           "nome": "cod_ponto",
@@ -7421,7 +7770,11 @@
       "nome": "objeto_desconhecido",
       "categoria": "aux",
       "descricao": "-",
-      "primitivas": ["MultiPolygon", "MultiLinestring", "MultiPoint"],
+      "primitivas": [
+        "MultiPolygon",
+        "MultiLinestring",
+        "MultiPoint"
+      ],
       "atributos": [
         {
           "nome": "obs",
@@ -7435,7 +7788,11 @@
       "nome": "transportes",
       "categoria": "val",
       "descricao": "-",
-      "primitivas": ["MultiPolygon", "MultiLinestring", "MultiPoint"],
+      "primitivas": [
+        "MultiPolygon",
+        "MultiLinestring",
+        "MultiPoint"
+      ],
       "atributos": [
         {
           "nome": "obs",
@@ -7449,7 +7806,11 @@
       "nome": "edificacao",
       "categoria": "val",
       "descricao": "-",
-      "primitivas": ["MultiPolygon", "MultiLinestring", "MultiPoint"],
+      "primitivas": [
+        "MultiPolygon",
+        "MultiLinestring",
+        "MultiPoint"
+      ],
       "atributos": [
         {
           "nome": "obs",
@@ -7463,7 +7824,11 @@
       "nome": "vegetacao",
       "categoria": "val",
       "descricao": "-",
-      "primitivas": ["MultiPolygon", "MultiLinestring", "MultiPoint"],
+      "primitivas": [
+        "MultiPolygon",
+        "MultiLinestring",
+        "MultiPoint"
+      ],
       "atributos": [
         {
           "nome": "obs",
@@ -7477,7 +7842,11 @@
       "nome": "hidrografia",
       "categoria": "val",
       "descricao": "-",
-      "primitivas": ["MultiPolygon", "MultiLinestring", "MultiPoint"],
+      "primitivas": [
+        "MultiPolygon",
+        "MultiLinestring",
+        "MultiPoint"
+      ],
       "atributos": [
         {
           "nome": "obs",
@@ -7491,7 +7860,11 @@
       "nome": "vegetacao",
       "categoria": "rev",
       "descricao": "-",
-      "primitivas": ["MultiPolygon", "MultiLinestring", "MultiPoint"],
+      "primitivas": [
+        "MultiPolygon",
+        "MultiLinestring",
+        "MultiPoint"
+      ],
       "atributos": [
         {
           "nome": "obs",
@@ -7526,7 +7899,11 @@
       "nome": "edificacao",
       "categoria": "rev",
       "descricao": "-",
-      "primitivas": ["MultiPolygon", "MultiLinestring", "MultiPoint"],
+      "primitivas": [
+        "MultiPolygon",
+        "MultiLinestring",
+        "MultiPoint"
+      ],
       "atributos": [
         {
           "nome": "obs",
@@ -7561,7 +7938,11 @@
       "nome": "transportes",
       "categoria": "rev",
       "descricao": "-",
-      "primitivas": ["MultiPolygon", "MultiLinestring", "MultiPoint"],
+      "primitivas": [
+        "MultiPolygon",
+        "MultiLinestring",
+        "MultiPoint"
+      ],
       "atributos": [
         {
           "nome": "obs",
@@ -7596,7 +7977,11 @@
       "nome": "hidrografia",
       "categoria": "rev",
       "descricao": "-",
-      "primitivas": ["MultiPolygon", "MultiLinestring", "MultiPoint"],
+      "primitivas": [
+        "MultiPolygon",
+        "MultiLinestring",
+        "MultiPoint"
+      ],
       "atributos": [
         {
           "nome": "obs",
@@ -7631,7 +8016,11 @@
       "nome": "reambulacao",
       "categoria": "rev",
       "descricao": "-",
-      "primitivas": ["MultiPolygon", "MultiLinestring", "MultiPoint"],
+      "primitivas": [
+        "MultiPolygon",
+        "MultiLinestring",
+        "MultiPoint"
+      ],
       "atributos": [
         {
           "nome": "obs",
@@ -7666,7 +8055,11 @@
       "nome": "insumo_externo",
       "categoria": "aux",
       "descricao": "-",
-      "primitivas": ["MultiPolygon", "MultiLinestring", "MultiPoint"],
+      "primitivas": [
+        "MultiPolygon",
+        "MultiLinestring",
+        "MultiPoint"
+      ],
       "atributos": [
         {
           "nome": "nome",
@@ -7686,7 +8079,11 @@
       "nome": "revisao",
       "categoria": "rev",
       "descricao": "-",
-      "primitivas": ["MultiPolygon", "MultiLinestring", "MultiPoint"],
+      "primitivas": [
+        "MultiPolygon",
+        "MultiLinestring",
+        "MultiPoint"
+      ],
       "atributos": [
         {
           "nome": "obs",
@@ -7721,7 +8118,9 @@
       "nome": "moldura",
       "categoria": "aux",
       "descricao": "-",
-      "primitivas": ["MultiPolygon"],
+      "primitivas": [
+        "MultiPolygon"
+      ],
       "atributos": [
         {
           "nome": "nome",
@@ -7741,7 +8140,9 @@
       "nome": "moldura_area_continua",
       "categoria": "aux",
       "descricao": "-",
-      "primitivas": ["MultiPolygon"],
+      "primitivas": [
+        "MultiPolygon"
+      ],
       "atributos": [
         {
           "nome": "nome",
@@ -7755,35 +8156,46 @@
       "nome": "rascunho",
       "categoria": "aux",
       "descricao": "-",
-      "primitivas": ["MultiLinestring", "MultiPolygon"],
+      "primitivas": [
+        "MultiLinestring",
+        "MultiPolygon"
+      ],
       "atributos": []
     },
     {
       "nome": "limite_vegetacao",
       "categoria": "aquisicao",
       "descricao": "-",
-      "primitivas": ["MultiLinestring"],
+      "primitivas": [
+        "MultiLinestring"
+      ],
       "atributos": []
     },
     {
       "nome": "limite_massa_dagua",
       "categoria": "aquisicao",
       "descricao": "-",
-      "primitivas": ["MultiLinestring"],
+      "primitivas": [
+        "MultiLinestring"
+      ],
       "atributos": []
     },
     {
       "nome": "limite_area_edificada",
       "categoria": "aquisicao",
       "descricao": "-",
-      "primitivas": ["MultiLinestring"],
+      "primitivas": [
+        "MultiLinestring"
+      ],
       "atributos": []
     },
     {
       "nome": "centroide_vegetacao",
       "categoria": "aquisicao",
       "descricao": "-",
-      "primitivas": ["MultiPoint"],
+      "primitivas": [
+        "MultiPoint"
+      ],
       "atributos": [
         {
           "nome": "tipo",
@@ -7799,36 +8211,28 @@
               "code": 302
             },
             {
-              "code": 201,
-              "restricao_atributo_incomum": []
+              "code": 201
             },
             {
-              "code": 202,
-              "restricao_atributo_incomum": []
+              "code": 202
             },
             {
-              "code": 801,
-              "restricao_atributo_incomum": []
+              "code": 801
             },
             {
-              "code": 501,
-              "restricao_atributo_incomum": []
+              "code": 501
             },
             {
-              "code": 701,
-              "restricao_atributo_incomum": []
+              "code": 701
             },
             {
-              "code": 702,
-              "restricao_atributo_incomum": []
+              "code": 702
             },
             {
-              "code": 401,
-              "restricao_atributo_incomum": []
+              "code": 401
             },
             {
-              "code": 1101,
-              "restricao_atributo_incomum": []
+              "code": 1101
             },
             {
               "code": 901
@@ -7846,67 +8250,52 @@
               "code": 150
             },
             {
-              "code": 118,
-              "restricao_atributo_incomum": []
+              "code": 118
             },
             {
-              "code": 102,
-              "restricao_atributo_incomum": []
+              "code": 102
             },
             {
-              "code": 115,
-              "restricao_atributo_incomum": []
+              "code": 115
             },
             {
-              "code": 114,
-              "restricao_atributo_incomum": []
+              "code": 114
             },
             {
-              "code": 116,
-              "restricao_atributo_incomum": []
+              "code": 116
             },
             {
-              "code": 103,
-              "restricao_atributo_incomum": []
+              "code": 103
             },
             {
-              "code": 151,
-              "restricao_atributo_incomum": []
+              "code": 151
             },
             {
-              "code": 117,
-              "restricao_atributo_incomum": []
+              "code": 117
             },
             {
-              "code": 153,
-              "restricao_atributo_incomum": []
+              "code": 153
             },
             {
-              "code": 152,
-              "restricao_atributo_incomum": []
+              "code": 152
             },
             {
-              "code": 119,
-              "restricao_atributo_incomum": []
+              "code": 119
             },
             {
-              "code": 142,
-              "restricao_atributo_incomum": []
+              "code": 142
             },
             {
-              "code": 107,
-              "restricao_atributo_incomum": []
+              "code": 107
             },
             {
               "code": 124
             },
             {
-              "code": 198,
-              "restricao_atributo_incomum": []
+              "code": 198
             },
             {
-              "code": 195,
-              "restricao_atributo_incomum": []
+              "code": 195
             },
             {
               "code": 1296
@@ -7929,7 +8318,9 @@
       "nome": "centroide_corpo_dagua",
       "categoria": "aquisicao",
       "descricao": "",
-      "primitivas": ["MultiPoint"],
+      "primitivas": [
+        "MultiPoint"
+      ],
       "atributos": [
         {
           "nome": "nome",
@@ -7948,31 +8339,25 @@
               "code": 1
             },
             {
-              "code": 2,
-              "restricao_atributo_incomum": []
+              "code": 2
             },
             {
-              "code": 3,
-              "restricao_atributo_incomum": []
+              "code": 3
             },
             {
-              "code": 4,
-              "restricao_atributo_incomum": []
+              "code": 4
             },
             {
-              "code": 5,
-              "restricao_atributo_incomum": []
+              "code": 5
             },
             {
-              "code": 6,
-              "restricao_atributo_incomum": []
+              "code": 6
             },
             {
               "code": 7
             },
             {
-              "code": 9,
-              "restricao_atributo_incomum": []
+              "code": 9
             },
             {
               "code": 10
@@ -7993,24 +8378,10 @@
               "code": 1
             },
             {
-              "code": 3,
-              "restricao_atributo_incomum": [],
-              "restricao": [
-                {
-                  "atributo": "tipo",
-                  "valores": [1, 2, 6, 7, 10, 11]
-                }
-              ]
+              "code": 3
             },
             {
-              "code": 5,
-              "restricao_atributo_incomum": [],
-              "restricao": [
-                {
-                  "atributo": "tipo",
-                  "valores": [1, 2, 6, 7, 10, 11]
-                }
-              ]
+              "code": 5
             }
           ]
         }
@@ -8020,7 +8391,9 @@
       "nome": "centroide_area_edificada",
       "categoria": "aquisicao",
       "descricao": "-",
-      "primitivas": ["MultiPoint"],
+      "primitivas": [
+        "MultiPoint"
+      ],
       "atributos": [
         {
           "nome": "nome",

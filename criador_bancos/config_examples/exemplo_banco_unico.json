@@ -1,0 +1,15 @@
+{
+  "connection": {
+    "host": "localhost",
+    "port": 5432,
+    "user": "postgres",
+    "password": "postgres"
+  },
+  "databases": [
+    {
+      "name": "pit2026_1f_santiago_50k_4674_edgv30",
+      "model": "edgv_300",
+      "srid": 4674
+    }
+  ]
+}
