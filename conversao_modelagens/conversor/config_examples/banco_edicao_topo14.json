@@ -1,0 +1,42 @@
+{
+  "__comment": "Banco de edição Topo 1.4: segmenta por moldura + reprojeta para UTM",
+  "mapping_file": null,
+  "direction": "A=>B",
+  "source": {
+    "type": "postgis",
+    "host": "localhost",
+    "port": 5432,
+    "database": "pit2025_1j_ct_100k_4674_edgvtopo14",
+    "user": "postgres",
+    "password": "postgres",
+    "schema": "edgv",
+    "srid": 4674,
+    "tables": []
+  },
+  "destination": {
+    "type": "postgis",
+    "host": "localhost",
+    "port": 5432,
+    "database": "pit2025_1j_ct_100k_31982_edgvtopo14_edicao",
+    "user": "postgres",
+    "password": "postgres",
+    "schema": "edgv",
+    "srid": 4674
+  },
+  "segment_clip": {
+    "type": "postgis",
+    "host": "localhost",
+    "port": 5432,
+    "database": "pit2025_1j_ct_100k_4674_edgvtopo14",
+    "user": "postgres",
+    "password": "postgres",
+    "schema": "edgv",
+    "table": "aux_moldura_a",
+    "geom_column": "geom"
+  },
+  "options": {
+    "reproject_to": 31982,
+    "log_file": "logs/banco_edicao_topo14.log",
+    "error_action": "skip"
+  }
+}

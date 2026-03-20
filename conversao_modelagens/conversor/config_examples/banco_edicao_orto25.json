@@ -1,0 +1,42 @@
+{
+  "__comment": "Banco de edição Orto 2.5: segmenta por moldura + reprojeta para UTM",
+  "mapping_file": null,
+  "direction": "A=>B",
+  "source": {
+    "type": "postgis",
+    "host": "localhost",
+    "port": 5432,
+    "database": "pit2025_orto25_4674",
+    "user": "postgres",
+    "password": "postgres",
+    "schema": "edgv",
+    "srid": 4674,
+    "tables": []
+  },
+  "destination": {
+    "type": "postgis",
+    "host": "localhost",
+    "port": 5432,
+    "database": "pit2025_orto25_31982_edicao",
+    "user": "postgres",
+    "password": "postgres",
+    "schema": "edgv",
+    "srid": 4674
+  },
+  "segment_clip": {
+    "type": "postgis",
+    "host": "localhost",
+    "port": 5432,
+    "database": "pit2025_orto25_4674",
+    "user": "postgres",
+    "password": "postgres",
+    "schema": "edgv",
+    "table": "aux_moldura_a",
+    "geom_column": "geom"
+  },
+  "options": {
+    "reproject_to": 31982,
+    "log_file": "logs/banco_edicao_orto25.log",
+    "error_action": "skip"
+  }
+}

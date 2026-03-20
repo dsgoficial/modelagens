@@ -262,6 +262,21 @@
             {
               "valor_A": 3,
               "valor_B": 16
+            },
+            {
+              "valor_A": 24,
+              "valor_B": 9999,
+              "sentido": "A=>B"
+            },
+            {
+              "valor_A": 25,
+              "valor_B": 9999,
+              "sentido": "A=>B"
+            },
+            {
+              "valor_A": 99,
+              "valor_B": 9999,
+              "sentido": "A=>B"
             }
           ]
         }
@@ -1020,25 +1035,82 @@
       "classe_B": "constr_edificacao",
       "filtro_B": {
         "$or": [
-          { "nome_atributo": "tipo", "valor": 801 },
-          { "nome_atributo": "tipo", "valor": 802 },
-          { "nome_atributo": "tipo", "valor": 803 },
-          { "nome_atributo": "tipo", "valor": 804 },
-          { "nome_atributo": "tipo", "valor": 805 },
-          { "nome_atributo": "tipo", "valor": 806 },
-          { "nome_atributo": "tipo", "valor": 807 },
-          { "nome_atributo": "tipo", "valor": 808 },
-          { "nome_atributo": "tipo", "valor": 809 },
-          { "nome_atributo": "tipo", "valor": 810 },
-          { "nome_atributo": "tipo", "valor": 811 },
-          { "nome_atributo": "tipo", "valor": 812 },
-          { "nome_atributo": "tipo", "valor": 813 },
-          { "nome_atributo": "tipo", "valor": 814 },
-          { "nome_atributo": "tipo", "valor": 815 },
-          { "nome_atributo": "tipo", "valor": 817 },
-          { "nome_atributo": "tipo", "valor": 818 },
-          { "nome_atributo": "tipo", "valor": 819 },
-          { "nome_atributo": "tipo", "valor": 898 }
+          {
+            "nome_atributo": "tipo",
+            "valor": 801
+          },
+          {
+            "nome_atributo": "tipo",
+            "valor": 802
+          },
+          {
+            "nome_atributo": "tipo",
+            "valor": 803
+          },
+          {
+            "nome_atributo": "tipo",
+            "valor": 804
+          },
+          {
+            "nome_atributo": "tipo",
+            "valor": 805
+          },
+          {
+            "nome_atributo": "tipo",
+            "valor": 806
+          },
+          {
+            "nome_atributo": "tipo",
+            "valor": 807
+          },
+          {
+            "nome_atributo": "tipo",
+            "valor": 808
+          },
+          {
+            "nome_atributo": "tipo",
+            "valor": 809
+          },
+          {
+            "nome_atributo": "tipo",
+            "valor": 810
+          },
+          {
+            "nome_atributo": "tipo",
+            "valor": 811
+          },
+          {
+            "nome_atributo": "tipo",
+            "valor": 812
+          },
+          {
+            "nome_atributo": "tipo",
+            "valor": 813
+          },
+          {
+            "nome_atributo": "tipo",
+            "valor": 814
+          },
+          {
+            "nome_atributo": "tipo",
+            "valor": 815
+          },
+          {
+            "nome_atributo": "tipo",
+            "valor": 817
+          },
+          {
+            "nome_atributo": "tipo",
+            "valor": 818
+          },
+          {
+            "nome_atributo": "tipo",
+            "valor": 819
+          },
+          {
+            "nome_atributo": "tipo",
+            "valor": 898
+          }
         ]
       },
       "atributos_default_A": [
@@ -2736,6 +2808,28 @@
               "valor_B": 9999
             }
           ]
+        },
+        {
+          "attr_A": "matconstr",
+          "attr_B": "material_construcao",
+          "traducao": [
+            {
+              "valor_A": 4,
+              "valor_B": 98
+            },
+            {
+              "valor_A": 8,
+              "valor_B": 98
+            },
+            {
+              "valor_A": 99,
+              "valor_B": 98
+            },
+            {
+              "valor_A": 23,
+              "valor_B": 98
+            }
+          ]
         }
       ]
     },
@@ -2842,6 +2936,28 @@
         {
           "attr_A": "finalidadedep",
           "attr_B": "finalidade"
+        },
+        {
+          "attr_A": "matconstr",
+          "attr_B": "material_construcao",
+          "traducao": [
+            {
+              "valor_A": 4,
+              "valor_B": 98
+            },
+            {
+              "valor_A": 8,
+              "valor_B": 98
+            },
+            {
+              "valor_A": 99,
+              "valor_B": 98
+            },
+            {
+              "valor_A": 23,
+              "valor_B": 98
+            }
+          ]
         }
       ]
     },
@@ -5320,6 +5436,11 @@
             {
               "valor_A": 4,
               "valor_B": 1
+            },
+            {
+              "valor_A": 0,
+              "valor_B": 9999,
+              "sentido": "A=>B"
             }
           ]
         }
@@ -5358,6 +5479,26 @@
           "nome_atributo": "usoprincipal",
           "valor": 0
         }
+      ],
+      "mapeamento_atributos": [
+        {
+          "attr_A": "matconstr",
+          "attr_B": "material_construcao",
+          "traducao": [
+            {
+              "valor_A": 8,
+              "valor_B": 0
+            },
+            {
+              "valor_A": 99,
+              "valor_B": 0
+            },
+            {
+              "valor_A": 97,
+              "valor_B": 0
+            }
+          ]
+        }
       ]
     },
     {
@@ -5373,7 +5514,27 @@
       "filtro_B": {
         "nome_atributo": "tipo",
         "valor": 2
-      }
+      },
+      "mapeamento_atributos": [
+        {
+          "attr_A": "matconstr",
+          "attr_B": "material_construcao",
+          "traducao": [
+            {
+              "valor_A": 8,
+              "valor_B": 0
+            },
+            {
+              "valor_A": 99,
+              "valor_B": 0
+            },
+            {
+              "valor_A": 97,
+              "valor_B": 0
+            }
+          ]
+        }
+      ]
     },
     {
       "__comment": "hid_trecho_drenagem <-> elemnat_trecho_drenagem",
@@ -5704,6 +5865,10 @@
               "valor_A": 0,
               "valor_B": 9999,
               "sentido": "A=>B"
+            },
+            {
+              "valor_A": 7,
+              "valor_B": 2
             }
           ]
         },
@@ -5715,6 +5880,50 @@
               "valor_A": 0,
               "valor_B": 9999,
               "sentido": "A=>B"
+            },
+            {
+              "valor_A": 4,
+              "valor_B": 9999
+            },
+            {
+              "valor_A": 99,
+              "valor_B": 9999
+            }
+          ]
+        },
+        {
+          "attr_A": "administracao",
+          "attr_B": "administracao",
+          "traducao": [
+            {
+              "valor_A": 3,
+              "valor_B": 0
+            },
+            {
+              "valor_A": 15,
+              "valor_B": 0
+            },
+            {
+              "valor_A": 97,
+              "valor_B": 0
+            }
+          ]
+        },
+        {
+          "attr_A": "jurisdicao",
+          "attr_B": "jurisdicao",
+          "traducao": [
+            {
+              "valor_A": 3,
+              "valor_B": 0
+            },
+            {
+              "valor_A": 4,
+              "valor_B": 0
+            },
+            {
+              "valor_A": 8,
+              "valor_B": 0
             }
           ]
         }
@@ -5813,6 +6022,50 @@
               "valor_A": 0,
               "valor_B": 9999,
               "sentido": "A=>B"
+            },
+            {
+              "valor_A": 4,
+              "valor_B": 9999
+            },
+            {
+              "valor_A": 99,
+              "valor_B": 9999
+            }
+          ]
+        },
+        {
+          "attr_A": "administracao",
+          "attr_B": "administracao",
+          "traducao": [
+            {
+              "valor_A": 3,
+              "valor_B": 0
+            },
+            {
+              "valor_A": 15,
+              "valor_B": 0
+            },
+            {
+              "valor_A": 97,
+              "valor_B": 0
+            }
+          ]
+        },
+        {
+          "attr_A": "jurisdicao",
+          "attr_B": "jurisdicao",
+          "traducao": [
+            {
+              "valor_A": 3,
+              "valor_B": 0
+            },
+            {
+              "valor_A": 4,
+              "valor_B": 0
+            },
+            {
+              "valor_A": 8,
+              "valor_B": 0
             }
           ]
         }
@@ -6176,6 +6429,10 @@
               "valor_A": 0,
               "valor_B": 9999,
               "sentido": "A=>B"
+            },
+            {
+              "valor_A": 99,
+              "valor_B": 97
             }
           ]
         },
@@ -6462,11 +6719,11 @@
               "valor_B": 28
             },
             {
-              "valor_A": 5,
+              "valor_A": 6,
               "valor_B": 29
             },
             {
-              "valor_A": 5,
+              "valor_A": 7,
               "valor_B": 30
             }
           ]
@@ -7363,6 +7620,41 @@
             {
               "valor_A": 22,
               "valor_B": 17
+            },
+            {
+              "valor_A": 1,
+              "valor_B": 9999,
+              "sentido": "A=>B"
+            },
+            {
+              "valor_A": 8,
+              "valor_B": 9999,
+              "sentido": "A=>B"
+            },
+            {
+              "valor_A": 13,
+              "valor_B": 9999,
+              "sentido": "A=>B"
+            },
+            {
+              "valor_A": 14,
+              "valor_B": 9999,
+              "sentido": "A=>B"
+            },
+            {
+              "valor_A": 18,
+              "valor_B": 9999,
+              "sentido": "A=>B"
+            },
+            {
+              "valor_A": 19,
+              "valor_B": 9999,
+              "sentido": "A=>B"
+            },
+            {
+              "valor_A": 99,
+              "valor_B": 9999,
+              "sentido": "A=>B"
             }
           ]
         }
@@ -8378,7 +8670,7 @@
         }
       ]
     },
-        {
+    {
       "__comment": "hdv_obstaculo_navegacao <-> constr_ocupacao_solo | obstáculo de navegação",
       "classe_A": "hdv_obstaculo_navegacao",
       "classe_B": "constr_ocupacao_solo",
@@ -10182,10 +10474,14 @@
       "traducao": [
         {
           "valor_A": 8,
-          "valor_B": 9
+          "valor_B": 98
         },
         {
           "valor_A": 99,
+          "valor_B": 98
+        },
+        {
+          "valor_A": 23,
           "valor_B": 98
         }
       ]

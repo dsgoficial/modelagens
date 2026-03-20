@@ -1,0 +1,29 @@
+{
+  "mapping_file": "../arquivos_mapeamento/conversao_pg-edgv-300_shp-edgv-300.json",
+  "direction": "A=>B",
+  "source": {
+    "type": "postgis",
+    "host": "localhost",
+    "port": 5432,
+    "database": "edgv300",
+    "user": "postgres",
+    "password": "postgres",
+    "schema": "edgv",
+    "srid": 4674,
+    "tables": []
+  },
+  "destination": {
+    "type": "shapefile",
+    "path": "D:/output/shp_edgv300/",
+    "srid": 4674,
+    "encoding": "UTF-8"
+  },
+  "options": {
+    "clip_geometry": null,
+    "clip_file": null,
+    "reproject_to": null,
+    "log_file": "logs/postgis300_shp300.log",
+    "error_action": "skip",
+    "batch_size": 10000
+  }
+}

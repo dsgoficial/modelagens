@@ -1,0 +1,33 @@
+{
+  "mapping_file": "../arquivos_mapeamento/conversao_pg-edgv300topo13_pg-edgv-300topo14.json",
+  "direction": "A=>B",
+  "source": {
+    "type": "postgis",
+    "host": "localhost",
+    "port": 5432,
+    "database": "edgv300topo13",
+    "user": "postgres",
+    "password": "postgres",
+    "schema": "edgv",
+    "srid": 4674,
+    "tables": []
+  },
+  "destination": {
+    "type": "postgis",
+    "host": "localhost",
+    "port": 5432,
+    "database": "edgv300topo14",
+    "user": "postgres",
+    "password": "postgres",
+    "schema": "edgv",
+    "srid": 4674
+  },
+  "options": {
+    "clip_geometry": null,
+    "clip_file": null,
+    "reproject_to": null,
+    "log_file": "logs/postgis300topo13_postgis300topo14.log",
+    "error_action": "skip",
+    "batch_size": 10000
+  }
+}

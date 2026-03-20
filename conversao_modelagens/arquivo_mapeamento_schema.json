@@ -21,6 +21,7 @@
     "valores_concatenar": {
       "type": "object",
       "properties": {
+        "__comment": { "type": "string" },
         "nome_atributo": { "type": "string" },
         "concatenar": { "type": "boolean" },
         "valor": {
@@ -130,8 +131,7 @@
         },
         "mapeamento_atributos": {
           "type": "array",
-          "items": { "$ref": "#/definitions/mapeamento_atributos" },
-          "minItems": 1
+          "items": { "$ref": "#/definitions/mapeamento_atributos" }
         },
         "filtro_A": {
           "$ref": "#/definitions/filtro"
@@ -204,7 +204,7 @@
       "properties": {
           "versao_arquivo": {"type": "string"},
           "modelo_A": {"type": "string"},
-          "versao_modeloA": {"type": "string"},
+          "versao_modelo_A": {"type": "string"},
           "modelo_B": {"type": "string"},
           "versao_modelo_B": {"type": "string"}
       },
@@ -212,6 +212,34 @@
     },
     "afixo_geom_B": {
       "$ref": "#/definitions/afixo"
+    },
+    "mapeamento_multiplo": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "__comment": {
+            "type": "string"
+          },
+          "tupla_A": {
+            "type": "array",
+            "items": { "$ref": "#/definitions/valores_concatenar" },
+            "minItems": 1
+          },
+          "tupla_B": {
+            "type": "array",
+            "items": { "$ref": "#/definitions/valores_concatenar" },
+            "minItems": 1
+          },
+          "sentido": {
+            "type": "string",
+            "enum": ["A=>B", "B=>A"]
+          }
+        },
+        "required": ["tupla_A", "tupla_B"],
+        "additionalProperties": false
+      },
+      "minItems": 1
     },
     "__comment": {
       "type": "string"
