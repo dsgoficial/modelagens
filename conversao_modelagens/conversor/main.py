@@ -5,6 +5,7 @@ Uso:
     python -m conversor.main config.json
 """
 import argparse
+import json
 import logging
 import os
 import sys
@@ -81,6 +82,7 @@ def _convert_source_data(
     converter: FeatureConverter,
     report: ConversionReport,
     error_action: str,
+    quality_meta: dict | None = None,
 ) -> list[dict]:
     """Converte todas as feições fonte, retornando lista de feições convertidas
     com geometria original preservada (sem clip)."""
@@ -88,11 +90,12 @@ def _convert_source_data(
 
     for table_name, gdf in source_data.items():
         logger.info("Processando %s (%d feições)...", table_name, len(gdf))
-        attr_columns = [col for col in gdf.columns if col != "geometry"]
+        geom_col = gdf.geometry.name  # "geom" or "geometry"
+        attr_columns = [col for col in gdf.columns if col != geom_col]
 
         for idx, row in gdf.iterrows():
             report.total_features += 1
-            geom = row.geometry
+            geom = row[geom_col]
             simple_geoms = split_multi(geom)
 
             for simple_geom in simple_geoms:
@@ -133,6 +136,10 @@ def _convert_source_data(
                     k: v for k, v in mapped.items() if k not in _INTERNAL_KEYS
                 }
 
+                # Inject quality metadata for EDGV Topo 2.0
+                if quality_meta:
+                    output_attrs.update(quality_meta)
+
                 converted.append({
                     "dest_type": dest_type,
                     "attrs": output_attrs,
@@ -154,11 +161,12 @@ def _passthrough_source_data(
 
     for table_name, gdf in source_data.items():
         logger.info("Passthrough %s (%d feições)...", table_name, len(gdf))
-        attr_columns = [col for col in gdf.columns if col != "geometry"]
+        geom_col = gdf.geometry.name
+        attr_columns = [col for col in gdf.columns if col != geom_col]
 
         for idx, row in gdf.iterrows():
             report.total_features += 1
-            geom = row.geometry
+            geom = row[geom_col]
             simple_geoms = split_multi(geom)
 
             for simple_geom in simple_geoms:
@@ -401,7 +409,31 @@ def run(config_path: str):
         mapping_dict = load_mapping(config["mapping_file"])
         logger.info("Mapeamento carregado: %s", config["mapping_file"])
         converter = FeatureConverter(mapping_dict, config["direction"])
-        converted = _convert_source_data(source_data, converter, report, error_action)
+
+        # Build quality metadata from config (if present)
+        qm_config = config.get("quality_metadata")
+        quality_meta = None
+        if qm_config:
+            fonte_entry = {
+                "fonte": qm_config.get("fonte", "Desconhecida"),
+                "metodo_aquisicao": qm_config.get("metodo_aquisicao", 9999),
+                "data_aquisicao": qm_config.get("data_aquisicao"),
+                "escala_fonte": qm_config.get("escala_fonte"),
+                "acuracia_planimetrica": qm_config.get("acuracia_planimetrica"),
+                "observacao": qm_config.get("observacao"),
+            }
+            # acuracia_planimetrica appears both inside fontes (per-source)
+            # and as a top-level column (feature-level, used for confiabilidade)
+            quality_meta = {
+                "fontes": json.dumps([fonte_entry], ensure_ascii=False),
+                "status_ciclo_vida": qm_config.get("status_ciclo_vida", 1),
+                "validacao": qm_config.get("validacao", 1),
+                "confirmacao_geometria": qm_config.get("confirmacao_geometria", 1),
+                "confirmacao_atributos": qm_config.get("confirmacao_atributos", 1),
+                "acuracia_planimetrica": qm_config.get("acuracia_planimetrica"),
+            }
+
+        converted = _convert_source_data(source_data, converter, report, error_action, quality_meta)
 
     logger.info("Processadas %d feições", len(converted))
 
