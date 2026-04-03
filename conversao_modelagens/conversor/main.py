@@ -74,6 +74,9 @@ def _normalize_value(val):
             return None
     except (ValueError, TypeError):
         pass
+    # MUVD/MGCP sentinel: -999999 means "No Information"
+    if isinstance(val, (int, float)) and val == -999999:
+        return None
     return val
 
 
