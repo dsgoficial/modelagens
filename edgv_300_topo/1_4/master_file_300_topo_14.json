@@ -1,6 +1,6 @@
 {
   "modelo": "EDGV 3.0 Topo",
-  "versao": "1.4.5",
+  "versao": "1.4.6",
   "schema_dados": "edgv",
   "schema_dominios": "dominios",
   "a_ser_preenchido": {
@@ -6038,7 +6038,7 @@
     {
       "nome": "localidade",
       "categoria": "llp",
-      "primitivas": ["MultiPoint"],
+      "primitivas": ["MultiPoint", "MultiPolygon"],
       "atributos": [
         {
           "nome": "nome",

@@ -7,10 +7,10 @@ SET search_path TO pg_catalog,public,edgv,dominios;
 
 CREATE TABLE public.db_metadata(
 	 edgvversion varchar(50) NOT NULL DEFAULT 'EDGV 3.0 Topo',
-	 dbimplversion varchar(50) NOT NULL DEFAULT '1.4.5',
+	 dbimplversion varchar(50) NOT NULL DEFAULT '1.4.6',
 	 CONSTRAINT edgvversioncheck CHECK (edgvversion = 'EDGV 3.0 Topo')
 );
-INSERT INTO public.db_metadata (edgvversion, dbimplversion) VALUES ('EDGV 3.0 Topo','1.4.5');
+INSERT INTO public.db_metadata (edgvversion, dbimplversion) VALUES ('EDGV 3.0 Topo','1.4.6');
 
 CREATE TABLE dominios.sigla_uf (
 	 code smallint NOT NULL,
@@ -4134,6 +4134,50 @@ ALTER TABLE edgv.llp_localidade_p
 	 ON UPDATE NO ACTION ON DELETE NO ACTION;
 
 ALTER TABLE edgv.llp_localidade_p ALTER COLUMN visivel SET DEFAULT 9999;
+
+CREATE TABLE edgv.llp_localidade_a(
+	 id uuid NOT NULL DEFAULT uuid_generate_v4(),
+	 nome varchar(255),
+	 tipo smallint NOT NULL,
+	 populacao integer,
+	 texto_edicao varchar(255),
+	 label_x real,
+	 label_y real,
+	 justificativa_txt smallint NOT NULL,
+	 visivel smallint NOT NULL,
+	 observacao varchar(255),
+	 geom geometry(MultiPolygon, 4674),
+	 CONSTRAINT llp_localidade_a_pk PRIMARY KEY (id)
+	 WITH (FILLFACTOR = 80)
+);
+CREATE INDEX llp_localidade_a_geom ON edgv.llp_localidade_a USING gist (geom);
+
+ALTER TABLE edgv.llp_localidade_a OWNER TO postgres;
+
+ALTER TABLE edgv.llp_localidade_a
+	 ADD CONSTRAINT llp_localidade_a_tipo_fk FOREIGN KEY (tipo)
+	 REFERENCES dominios.tipo_localidade (code) MATCH FULL
+	 ON UPDATE NO ACTION ON DELETE NO ACTION;
+
+ALTER TABLE edgv.llp_localidade_a
+	 ADD CONSTRAINT llp_localidade_a_tipo_check 
+	 CHECK (tipo = ANY(ARRAY[1 :: SMALLINT, 2 :: SMALLINT, 3 :: SMALLINT, 4 :: SMALLINT, 9999 :: SMALLINT, 9999 :: SMALLINT])); 
+
+ALTER TABLE edgv.llp_localidade_a ALTER COLUMN tipo SET DEFAULT 9999;
+
+ALTER TABLE edgv.llp_localidade_a
+	 ADD CONSTRAINT llp_localidade_a_justificativa_txt_fk FOREIGN KEY (justificativa_txt)
+	 REFERENCES dominios.justificativa (code) MATCH FULL
+	 ON UPDATE NO ACTION ON DELETE NO ACTION;
+
+ALTER TABLE edgv.llp_localidade_a ALTER COLUMN justificativa_txt SET DEFAULT 9999;
+
+ALTER TABLE edgv.llp_localidade_a
+	 ADD CONSTRAINT llp_localidade_a_visivel_fk FOREIGN KEY (visivel)
+	 REFERENCES dominios.booleano (code) MATCH FULL
+	 ON UPDATE NO ACTION ON DELETE NO ACTION;
+
+ALTER TABLE edgv.llp_localidade_a ALTER COLUMN visivel SET DEFAULT 9999;
 
 CREATE TABLE edgv.llp_ponto_controle_p(
 	 id uuid NOT NULL DEFAULT uuid_generate_v4(),
