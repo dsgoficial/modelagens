@@ -1,0 +1,1250 @@
+{
+  "metadata": {
+    "version": "1.1",
+    "date": "2026-03-29",
+    "source": "Natural Earth v5.1",
+    "target": "EDGV Topo 2.0 v0.9.0",
+    "description": "Mapeamento Natural Earth para EDGV Topo 2.0. Dados mundiais z0-z7 com overzoom MapLibre z8+. Consumido por ne_to_edgv.py. Usa datasets 10m (que ja incluem min_zoom/scalerank para filtragem multi-escala), exceto ne_50m_urban_areas (unico 50m, sem equivalente 10m).",
+    "total_rules": 36,
+    "active_rules": 31,
+    "skipped_rules": 5,
+    "match_strategy": "first_match_wins",
+    "ne_datasets": [
+      "ne_10m_admin_0_countries",
+      "ne_10m_admin_0_boundary_lines_land",
+      "ne_10m_admin_1_states_provinces",
+      "ne_10m_populated_places_simple",
+      "ne_10m_ocean",
+      "ne_10m_lakes",
+      "ne_10m_rivers_lake_centerlines",
+      "ne_10m_roads",
+      "ne_10m_railroads",
+      "ne_10m_airports",
+      "ne_10m_land",
+      "ne_10m_coastline",
+      "ne_50m_urban_areas",
+      "ne_10m_geography_regions_elevation_points",
+      "ne_10m_glaciated_areas",
+      "ne_10m_bathymetry_L_0",
+      "ne_10m_bathymetry_A_10000",
+      "ne_10m_bathymetry_B_9000",
+      "ne_10m_bathymetry_C_8000",
+      "ne_10m_bathymetry_D_7000",
+      "ne_10m_bathymetry_E_6000",
+      "ne_10m_bathymetry_F_5000",
+      "ne_10m_bathymetry_G_4000",
+      "ne_10m_bathymetry_H_3000",
+      "ne_10m_bathymetry_I_2000",
+      "ne_10m_bathymetry_J_1000",
+      "ne_10m_bathymetry_K_200",
+      "ne_10m_ports",
+      "ne_10m_parks_and_protected_lands_area",
+      "ne_10m_reefs",
+      "ne_10m_minor_islands",
+      "ne_10m_geography_marine_polys"
+    ]
+  },
+  "rules": [
+    {
+      "_comment": "=== ADMIN 0 COUNTRIES → llp_pais_a ==="
+    },
+    {
+      "id": "admin0_country",
+      "ne_filter": {
+        "dataset": "ne_10m_admin_0_countries",
+        "geometry": [
+          "polygon"
+        ]
+      },
+      "edgv_target": null,
+      "confidence": "skip",
+      "note": "SKIP — poligonos de paises virao do banco IBGE/GADM, nao do NE."
+    },
+    {
+      "_comment": "=== ADMIN 0 BOUNDARY LINES → llp_limite_legal_l ==="
+    },
+    {
+      "id": "admin0_boundary_international",
+      "ne_filter": {
+        "dataset": "ne_10m_admin_0_boundary_lines_land",
+        "geometry": [
+          "line"
+        ]
+      },
+      "edgv_target": null,
+      "confidence": "skip",
+      "note": "SKIP — fronteiras internacionais virao do banco IBGE/GADM, nao do NE."
+    },
+    {
+      "_comment": "=== ADMIN 1 STATES/PROVINCES → llp_unidade_federacao_a ==="
+    },
+    {
+      "id": "admin1_states",
+      "ne_filter": {
+        "dataset": "ne_10m_admin_1_states_provinces",
+        "geometry": [
+          "polygon"
+        ]
+      },
+      "edgv_target": null,
+      "confidence": "skip",
+      "note": "SKIP — limites estaduais/provinciais virao do banco IBGE/GADM, nao do NE."
+    },
+    {
+      "_comment": "=== POPULATED PLACES → llp_localidade_p ==="
+    },
+    {
+      "id": "place_capital_country",
+      "ne_filter": {
+        "dataset": "ne_10m_populated_places_simple",
+        "featurecla": [
+          "Admin-0 capital",
+          "Admin-0 capital alt",
+          "Admin-0 region capital"
+        ],
+        "geometry": [
+          "point"
+        ]
+      },
+      "edgv_target": {
+        "table": "llp_localidade_p",
+        "attributes": {
+          "tipo": 3
+        }
+      },
+      "ne_attribute_mapping": {
+        "name": "nome",
+        "pop_max": "populacao",
+        "nameascii": "texto_edicao"
+      },
+      "ne_extra_properties": {
+        "adm0_a3": "pais_iso3",
+        "adm0name": "pais_nome",
+        "adm1name": "uf_nome",
+        "scalerank": "scalerank",
+        "labelrank": "labelrank",
+        "min_zoom": "min_zoom",
+        "worldcity": "worldcity",
+        "megacity": "megacity",
+        "meganame": "meganame",
+        "latitude": "label_y",
+        "longitude": "label_x",
+        "iso_a2": "pais_iso2",
+        "natscale": "natscale",
+        "rank_max": "rank_max",
+        "rank_min": "rank_min",
+        "pop_min": "pop_min",
+        "pop_other": "pop_other"
+      },
+      "confidence": "high",
+      "note": "Capitais nacionais. tipo=3 (capital federal). 215 features. nameascii->texto_edicao (rotulo ASCII-safe). rank_max/natscale/pop_min para filtragem por importancia em tiles."
+    },
+    {
+      "id": "place_capital_state",
+      "ne_filter": {
+        "dataset": "ne_10m_populated_places_simple",
+        "featurecla": [
+          "Admin-1 capital",
+          "Admin-1 region capital"
+        ],
+        "geometry": [
+          "point"
+        ]
+      },
+      "edgv_target": {
+        "table": "llp_localidade_p",
+        "attributes": {
+          "tipo": 2
+        }
+      },
+      "ne_attribute_mapping": {
+        "name": "nome",
+        "pop_max": "populacao",
+        "nameascii": "texto_edicao"
+      },
+      "ne_extra_properties": {
+        "adm0_a3": "pais_iso3",
+        "adm0name": "pais_nome",
+        "adm1name": "uf_nome",
+        "scalerank": "scalerank",
+        "labelrank": "labelrank",
+        "min_zoom": "min_zoom",
+        "worldcity": "worldcity",
+        "megacity": "megacity",
+        "latitude": "label_y",
+        "longitude": "label_x",
+        "iso_a2": "pais_iso2",
+        "natscale": "natscale",
+        "rank_max": "rank_max",
+        "rank_min": "rank_min",
+        "pop_min": "pop_min",
+        "pop_other": "pop_other"
+      },
+      "confidence": "high",
+      "note": "Capitais estaduais/provinciais. tipo=2 (capital estadual). 2330 features. nameascii->texto_edicao. rank_max/natscale/pop_min para filtragem."
+    },
+    {
+      "id": "place_city",
+      "ne_filter": {
+        "dataset": "ne_10m_populated_places_simple",
+        "featurecla": [
+          "Populated place",
+          "Populated Place"
+        ],
+        "geometry": [
+          "point"
+        ]
+      },
+      "edgv_target": {
+        "table": "llp_localidade_p",
+        "attributes": {
+          "tipo": 1
+        }
+      },
+      "ne_attribute_mapping": {
+        "name": "nome",
+        "pop_max": "populacao",
+        "nameascii": "texto_edicao"
+      },
+      "ne_extra_properties": {
+        "adm0_a3": "pais_iso3",
+        "adm0name": "pais_nome",
+        "adm1name": "uf_nome",
+        "scalerank": "scalerank",
+        "labelrank": "labelrank",
+        "min_zoom": "min_zoom",
+        "worldcity": "worldcity",
+        "megacity": "megacity",
+        "latitude": "label_y",
+        "longitude": "label_x",
+        "iso_a2": "pais_iso2",
+        "natscale": "natscale",
+        "rank_max": "rank_max",
+        "rank_min": "rank_min",
+        "pop_min": "pop_min",
+        "pop_other": "pop_other"
+      },
+      "confidence": "high",
+      "note": "Cidades/vilas. tipo=1 (cidade). 4722 features. nameascii->texto_edicao. rank_max/natscale/pop_min para filtragem."
+    },
+    {
+      "id": "place_scientific_station",
+      "ne_filter": {
+        "dataset": "ne_10m_populated_places_simple",
+        "featurecla": [
+          "Scientific station",
+          "Meteorological Station"
+        ],
+        "geometry": [
+          "point"
+        ]
+      },
+      "edgv_target": {
+        "table": "llp_localidade_p",
+        "attributes": {
+          "tipo": 8
+        }
+      },
+      "ne_attribute_mapping": {
+        "name": "nome",
+        "pop_max": "populacao",
+        "nameascii": "texto_edicao"
+      },
+      "ne_extra_properties": {
+        "adm0_a3": "pais_iso3",
+        "adm0name": "pais_nome",
+        "scalerank": "scalerank",
+        "min_zoom": "min_zoom",
+        "natscale": "natscale"
+      },
+      "confidence": "medium",
+      "note": "Estacoes cientificas/meteorologicas. tipo=8 (nome local). 41 features. nameascii->texto_edicao."
+    },
+    {
+      "id": "place_historic",
+      "ne_filter": {
+        "dataset": "ne_10m_populated_places_simple",
+        "featurecla": [
+          "Historic place"
+        ],
+        "geometry": [
+          "point"
+        ]
+      },
+      "edgv_target": {
+        "table": "llp_localidade_p",
+        "attributes": {
+          "tipo": 8
+        }
+      },
+      "ne_attribute_mapping": {
+        "name": "nome",
+        "nameascii": "texto_edicao"
+      },
+      "ne_extra_properties": {
+        "adm0_a3": "pais_iso3",
+        "scalerank": "scalerank",
+        "min_zoom": "min_zoom",
+        "natscale": "natscale"
+      },
+      "confidence": "low",
+      "note": "Locais historicos. tipo=8 (nome local). 6 features. nameascii->texto_edicao."
+    },
+    {
+      "_comment": "=== OCEAN → cobter_massa_dagua_a ==="
+    },
+    {
+      "id": "ocean",
+      "ne_filter": {
+        "dataset": "ne_10m_ocean",
+        "geometry": [
+          "polygon"
+        ]
+      },
+      "edgv_target": null,
+      "confidence": "skip",
+      "note": "SKIP — oceanos/mares virao do banco IHO, nao do NE."
+    },
+    {
+      "_comment": "=== LAKES → cobter_massa_dagua_a ==="
+    },
+    {
+      "id": "lake_reservoir",
+      "ne_filter": {
+        "dataset": "ne_10m_lakes",
+        "featurecla": [
+          "Reservoir"
+        ],
+        "geometry": [
+          "polygon"
+        ]
+      },
+      "edgv_target": {
+        "table": "cobter_massa_dagua_a",
+        "attributes": {
+          "tipo": 11,
+          "regime": 1
+        }
+      },
+      "ne_attribute_mapping": {
+        "name": {
+          "column": "nome",
+          "condition": "fallback_if_empty"
+        },
+        "name_pt": {
+          "column": "nome",
+          "condition": "fallback_if_empty"
+        }
+      },
+      "ne_extra_properties": {
+        "scalerank": "scalerank",
+        "min_zoom": "min_zoom",
+        "min_label": "min_label",
+        "admin": "admin",
+        "dam_name": "nome_barragem",
+        "name_alt": "nome_alternativo",
+        "label": "label"
+      },
+      "confidence": "high",
+      "note": "Represas. tipo=11 (represa/acude sem fluxo). 230 features. name_pt preferido sobre name para nome em portugues (745/1355 non-null no dataset). dam_name (116 non-null) como extra."
+    },
+    {
+      "id": "lake_natural",
+      "ne_filter": {
+        "dataset": "ne_10m_lakes",
+        "featurecla": [
+          "Lake",
+          "Alkaline Lake"
+        ],
+        "geometry": [
+          "polygon"
+        ]
+      },
+      "edgv_target": {
+        "table": "cobter_massa_dagua_a",
+        "attributes": {
+          "tipo": 7,
+          "regime": 1
+        }
+      },
+      "ne_attribute_mapping": {
+        "name": {
+          "column": "nome",
+          "condition": "fallback_if_empty"
+        },
+        "name_pt": {
+          "column": "nome",
+          "condition": "fallback_if_empty"
+        }
+      },
+      "ne_extra_properties": {
+        "scalerank": "scalerank",
+        "min_zoom": "min_zoom",
+        "min_label": "min_label",
+        "admin": "admin",
+        "name_alt": "nome_alternativo",
+        "label": "label"
+      },
+      "confidence": "high",
+      "note": "Lagos e lagoas naturais. tipo=7 (lago ou lagoa). 1125 features. name_pt preferido para nome em portugues."
+    },
+    {
+      "_comment": "=== RIVERS → elemnat_trecho_drenagem_l ==="
+    },
+    {
+      "id": "river",
+      "ne_filter": {
+        "dataset": "ne_10m_rivers_lake_centerlines",
+        "featurecla": [
+          "River"
+        ],
+        "geometry": [
+          "line"
+        ]
+      },
+      "edgv_target": {
+        "table": "elemnat_trecho_drenagem_l",
+        "attributes": {
+          "tipo": 1,
+          "regime": 1
+        }
+      },
+      "ne_attribute_mapping": {
+        "name": "nome"
+      },
+      "ne_extra_properties": {
+        "scalerank": "scalerank",
+        "min_zoom": "min_zoom",
+        "min_label": "min_label",
+        "name_alt": "nome_alternativo",
+        "name_en": "nome_en",
+        "rivernum": "rivernum"
+      },
+      "confidence": "high",
+      "note": "Rios. tipo=1 (rio). 1202 features. scalerank 0-10. name_alt/name_en como extras para referencia cruzada."
+    },
+    {
+      "id": "lake_centerline",
+      "ne_filter": {
+        "dataset": "ne_10m_rivers_lake_centerlines",
+        "featurecla": [
+          "Lake Centerline"
+        ],
+        "geometry": [
+          "line"
+        ]
+      },
+      "edgv_target": null,
+      "confidence": "skip",
+      "note": "Eixos de lagos descartados — ja temos poligonos dos lagos. 253 features."
+    },
+    {
+      "_comment": "=== ROADS → infra_via_deslocamento_l ==="
+    },
+    {
+      "id": "road_major_highway",
+      "ne_filter": {
+        "dataset": "ne_10m_roads",
+        "type": [
+          "Major Highway"
+        ],
+        "featurecla": [
+          "Road"
+        ],
+        "geometry": [
+          "line"
+        ]
+      },
+      "edgv_target": {
+        "table": "infra_via_deslocamento_l",
+        "attributes": {
+          "tipo": 4,
+          "revestimento": 3,
+          "situacao_fisica": 3
+        }
+      },
+      "ne_attribute_mapping": {
+        "name": "nome",
+        "label": "sigla",
+        "level": {
+          "column": "jurisdicao",
+          "map": {
+            "Federal": 1,
+            "Interstate": 1,
+            "E": 1,
+            "State": 2,
+            "Other": 3,
+            "U/C": 0
+          },
+          "default": 0
+        }
+      },
+      "ne_extra_properties": {
+        "scalerank": "scalerank",
+        "min_zoom": "min_zoom",
+        "min_label": "min_label",
+        "label": "sigla_rodovia",
+        "continent": "continente",
+        "expressway": "expressway",
+        "length_km": "comprimento_km",
+        "toll": "pedagio",
+        "label2": "sigla_rodovia_2",
+        "prefix": "prefixo_rodovia",
+        "sov_a3": "pais_iso3"
+      },
+      "confidence": "high",
+      "note": "Autoestradas/highways. tipo=4 (auto-estrada). revestimento=3 (pavimentado). 9752 features. label->sigla (coluna EDGV). toll/label2/prefix como extras para tiles."
+    },
+    {
+      "id": "road_secondary_highway",
+      "ne_filter": {
+        "dataset": "ne_10m_roads",
+        "type": [
+          "Secondary Highway"
+        ],
+        "featurecla": [
+          "Road"
+        ],
+        "geometry": [
+          "line"
+        ]
+      },
+      "edgv_target": {
+        "table": "infra_via_deslocamento_l",
+        "attributes": {
+          "tipo": 2,
+          "revestimento": 3,
+          "situacao_fisica": 3
+        }
+      },
+      "ne_attribute_mapping": {
+        "name": "nome",
+        "label": "sigla",
+        "level": {
+          "column": "jurisdicao",
+          "map": {
+            "Federal": 1,
+            "Interstate": 1,
+            "E": 1,
+            "State": 2,
+            "Other": 3,
+            "U/C": 0
+          },
+          "default": 0
+        }
+      },
+      "ne_extra_properties": {
+        "scalerank": "scalerank",
+        "min_zoom": "min_zoom",
+        "min_label": "min_label",
+        "label": "sigla_rodovia",
+        "continent": "continente",
+        "length_km": "comprimento_km",
+        "toll": "pedagio",
+        "label2": "sigla_rodovia_2",
+        "prefix": "prefixo_rodovia",
+        "sov_a3": "pais_iso3"
+      },
+      "confidence": "high",
+      "note": "Rodovias secundarias. tipo=2 (estrada/rodovia). 9025 features. label->sigla (coluna EDGV). toll/label2/prefix como extras para tiles."
+    },
+    {
+      "id": "road_regular",
+      "ne_filter": {
+        "dataset": "ne_10m_roads",
+        "type": [
+          "Road",
+          "Unknown"
+        ],
+        "featurecla": [
+          "Road"
+        ],
+        "geometry": [
+          "line"
+        ]
+      },
+      "edgv_target": {
+        "table": "infra_via_deslocamento_l",
+        "attributes": {
+          "tipo": 2,
+          "revestimento": 9999,
+          "situacao_fisica": 3
+        }
+      },
+      "ne_attribute_mapping": {
+        "name": "nome",
+        "label": "sigla",
+        "level": {
+          "column": "jurisdicao",
+          "map": {
+            "Federal": 1,
+            "Interstate": 1,
+            "E": 1,
+            "State": 2,
+            "Other": 3,
+            "U/C": 0
+          },
+          "default": 0
+        }
+      },
+      "ne_extra_properties": {
+        "scalerank": "scalerank",
+        "min_zoom": "min_zoom",
+        "continent": "continente",
+        "length_km": "comprimento_km",
+        "toll": "pedagio",
+        "label2": "sigla_rodovia_2",
+        "prefix": "prefixo_rodovia",
+        "sov_a3": "pais_iso3",
+        "min_label": "min_label"
+      },
+      "confidence": "medium",
+      "note": "Estradas gerais. tipo=2 (estrada/rodovia). revestimento=9999 (desconhecido). 37297 features. label->sigla (coluna EDGV)."
+    },
+    {
+      "id": "road_beltway",
+      "ne_filter": {
+        "dataset": "ne_10m_roads",
+        "type": [
+          "Beltway",
+          "Bypass"
+        ],
+        "featurecla": [
+          "Road"
+        ],
+        "geometry": [
+          "line"
+        ]
+      },
+      "edgv_target": {
+        "table": "infra_via_deslocamento_l",
+        "attributes": {
+          "tipo": 4,
+          "revestimento": 3,
+          "situacao_fisica": 3
+        }
+      },
+      "ne_attribute_mapping": {
+        "name": "nome",
+        "label": "sigla",
+        "level": {
+          "column": "jurisdicao",
+          "map": {
+            "Federal": 1,
+            "Interstate": 1,
+            "E": 1,
+            "State": 2,
+            "Other": 3,
+            "U/C": 0
+          },
+          "default": 0
+        }
+      },
+      "ne_extra_properties": {
+        "scalerank": "scalerank",
+        "min_zoom": "min_zoom",
+        "continent": "continente",
+        "length_km": "comprimento_km",
+        "expressway": "expressway",
+        "sov_a3": "pais_iso3"
+      },
+      "confidence": "medium",
+      "note": "Aneis viarios/contornos. tipo=4 (auto-estrada). 173 features. Adicionado level->jurisdicao, label->sigla e extras comprimento/expressway."
+    },
+    {
+      "id": "road_track",
+      "ne_filter": {
+        "dataset": "ne_10m_roads",
+        "type": [
+          "Track"
+        ],
+        "featurecla": [
+          "Road"
+        ],
+        "geometry": [
+          "line"
+        ]
+      },
+      "edgv_target": {
+        "table": "infra_via_deslocamento_l",
+        "attributes": {
+          "tipo": 3,
+          "revestimento": 1,
+          "situacao_fisica": 3
+        }
+      },
+      "ne_attribute_mapping": {
+        "name": "nome"
+      },
+      "ne_extra_properties": {
+        "scalerank": "scalerank",
+        "min_zoom": "min_zoom",
+        "continent": "continente",
+        "length_km": "comprimento_km"
+      },
+      "confidence": "medium",
+      "note": "Caminhos/trilhas. tipo=3 (caminho carrocavel). revestimento=1 (leito natural). 39 features."
+    },
+    {
+      "id": "road_ferry",
+      "ne_filter": {
+        "dataset": "ne_10m_roads",
+        "type": [
+          "Ferry Route",
+          "Ferry, seasonal"
+        ],
+        "geometry": [
+          "line"
+        ]
+      },
+      "edgv_target": {
+        "table": "infra_trecho_hidroviario_l",
+        "attributes": {
+          "situacao_fisica": 3
+        }
+      },
+      "ne_attribute_mapping": {
+        "name": "nome"
+      },
+      "ne_extra_properties": {
+        "scalerank": "scalerank",
+        "min_zoom": "min_zoom",
+        "continent": "continente",
+        "length_km": "comprimento_km"
+      },
+      "confidence": "medium",
+      "note": "Travessias/balsas. Mapeado para trecho_hidroviario. situacao_fisica=3 (construida). 288 features."
+    },
+    {
+      "_comment": "=== RAILROADS → infra_ferrovia_l ==="
+    },
+    {
+      "id": "railroad",
+      "ne_filter": {
+        "dataset": "ne_10m_railroads",
+        "geometry": [
+          "line"
+        ]
+      },
+      "edgv_target": {
+        "table": "infra_ferrovia_l",
+        "attributes": {
+          "tipo": 7,
+          "situacao_fisica": 3
+        }
+      },
+      "ne_attribute_mapping": {
+        "electric": {
+          "column": "eletrificada",
+          "map": {
+            "0": 0,
+            "1": 1,
+            "2": 2
+          },
+          "default": 0
+        },
+        "mult_track": {
+          "column": "nr_linhas",
+          "map": {
+            "0": 0,
+            "1": 1,
+            "2": 3
+          },
+          "default": 0
+        }
+      },
+      "ne_extra_properties": {
+        "scalerank": "scalerank",
+        "min_zoom": "min_zoom",
+        "continent": "continente",
+        "category": "categoria_ne",
+        "natlscale": "natlscale",
+        "other_code": "other_code"
+      },
+      "confidence": "medium",
+      "note": "Ferrovias. tipo=7 (trem). situacao_fisica=3 (construida). 25413 features. NE nao tem nome. electric->eletrificada (0=desc,1=sim,2=nao match direto dominio auxiliar). mult_track->nr_linhas (0->0 desc, 1->1 simples, 2->3 multipla). category/natlscale para filtragem de tiles."
+    },
+    {
+      "_comment": "=== AIRPORTS → infra_pista_pouso_p ==="
+    },
+    {
+      "id": "airport",
+      "ne_filter": {
+        "dataset": "ne_10m_airports",
+        "geometry": [
+          "point"
+        ]
+      },
+      "edgv_target": {
+        "table": "infra_pista_pouso_p",
+        "attributes": {
+          "tipo": 11,
+          "situacao_fisica": 3
+        }
+      },
+      "ne_attribute_mapping": {
+        "name": "nome",
+        "type": {
+          "column": "uso_pista",
+          "map": {
+            "major": 11,
+            "major and military": 13,
+            "mid": 11,
+            "mid and military": 13,
+            "small": 11,
+            "military": 12,
+            "military mid": 12,
+            "military small": 12,
+            "spaceport": 11
+          },
+          "default": 0
+        },
+        "abbrev": "texto_edicao"
+      },
+      "ne_extra_properties": {
+        "scalerank": "scalerank",
+        "type": "ne_type",
+        "location": "location",
+        "iata_code": "codigo_iata",
+        "gps_code": "codigo_icao",
+        "natlscale": "natlscale",
+        "wikipedia": "wikipedia_url",
+        "name_pt": "nome_pt"
+      },
+      "confidence": "high",
+      "note": "Aeroportos. tipo=11 (heliponto no schema ponto -- unica opcao para _p). 893 features. type->uso_pista (major/mid/small=11 publico, military=12, mixed=13 pub/mil). abbrev->texto_edicao. name_pt (538/893 non-null) e natlscale para filtragem."
+    },
+    {
+      "_comment": "=== URBAN AREAS → cobter_area_edificada_a ==="
+    },
+    {
+      "id": "urban_area",
+      "ne_filter": {
+        "dataset": "ne_50m_urban_areas",
+        "geometry": [
+          "polygon"
+        ]
+      },
+      "edgv_target": {
+        "table": "cobter_area_edificada_a",
+        "attributes": {
+          "assentamento_precario": 2
+        }
+      },
+      "ne_attribute_mapping": {},
+      "ne_extra_properties": {
+        "scalerank": "scalerank",
+        "min_zoom": "min_zoom",
+        "area_sqkm": "area_sqkm"
+      },
+      "confidence": "high",
+      "note": "Manchas urbanas. assentamento_precario=2 (nao). 2143 features. Sem nome no NE."
+    },
+    {
+      "_comment": "=== LAND → llp_pais_a (auxilliar para fundo de mapa) ==="
+    },
+    {
+      "id": "land",
+      "ne_filter": {
+        "dataset": "ne_10m_land",
+        "geometry": [
+          "polygon"
+        ]
+      },
+      "edgv_target": {
+        "table": "__tile_only_land",
+        "attributes": {}
+      },
+      "ne_attribute_mapping": {},
+      "ne_extra_properties": {
+        "scalerank": "scalerank",
+        "min_zoom": "min_zoom"
+      },
+      "confidence": "high",
+      "note": "Poligonos de terra. Nao mapeiam para tabela EDGV — vao diretamente ao tile como layer 'land' para fundo do mapa mundial. __tile_only_ indica layer exclusivo de tile."
+    },
+    {
+      "_comment": "=== COASTLINE → elemnat_elemento_hidrografico_l (auxiliar) ==="
+    },
+    {
+      "id": "coastline",
+      "ne_filter": {
+        "dataset": "ne_10m_coastline",
+        "geometry": [
+          "line"
+        ]
+      },
+      "edgv_target": {
+        "table": "__tile_only_coastline",
+        "attributes": {}
+      },
+      "ne_attribute_mapping": {},
+      "ne_extra_properties": {
+        "scalerank": "scalerank",
+        "min_zoom": "min_zoom"
+      },
+      "confidence": "high",
+      "note": "Linha de costa. Nao tem equivalente direto na EDGV para linhas (tipo 6=foz maritima nao se aplica). Layer exclusivo de tile para contorno costeiro."
+    },
+    {
+      "_comment": "=== ELEVATION POINTS → elemnat_ponto_cotado_p ==="
+    },
+    {
+      "id": "elevation_mountain",
+      "ne_filter": {
+        "dataset": "ne_10m_geography_regions_elevation_points",
+        "featurecla": [
+          "mountain"
+        ],
+        "geometry": [
+          "point"
+        ]
+      },
+      "edgv_target": {
+        "table": "elemnat_ponto_cotado_p",
+        "attributes": {
+          "cota_comprovada": 2,
+          "cota_mais_alta": 2
+        }
+      },
+      "ne_attribute_mapping": {
+        "elevation": "cota"
+      },
+      "ne_extra_properties": {
+        "min_zoom": "min_zoom",
+        "featurecla": "subtipo",
+        "label": "label",
+        "name": "nome",
+        "name_pt": "nome_pt",
+        "name_alt": "nome_alternativo",
+        "lat_y": "label_y",
+        "long_x": "label_x",
+        "scalerank": "scalerank",
+        "region": "regiao",
+        "nation1": "pais"
+      },
+      "confidence": "high",
+      "note": "Montanhas/picos. 633 features. cota_comprovada=2 (nao), cota_mais_alta=2 (nao). name_pt (644/711 non-null) como extra. lat_y/long_x para posicao de rotulo. region/nation1 para contexto."
+    },
+    {
+      "id": "elevation_spot",
+      "ne_filter": {
+        "dataset": "ne_10m_geography_regions_elevation_points",
+        "featurecla": [
+          "spot elevation"
+        ],
+        "geometry": [
+          "point"
+        ]
+      },
+      "edgv_target": {
+        "table": "elemnat_ponto_cotado_p",
+        "attributes": {
+          "cota_comprovada": 2,
+          "cota_mais_alta": 2
+        }
+      },
+      "ne_attribute_mapping": {
+        "elevation": "cota"
+      },
+      "ne_extra_properties": {
+        "min_zoom": "min_zoom",
+        "featurecla": "subtipo",
+        "name": "nome",
+        "name_pt": "nome_pt",
+        "lat_y": "label_y",
+        "long_x": "label_x",
+        "scalerank": "scalerank"
+      },
+      "confidence": "medium",
+      "note": "Pontos de elevacao. 61 features. name_pt como extra. lat_y/long_x para posicao de rotulo."
+    },
+    {
+      "id": "elevation_depression",
+      "ne_filter": {
+        "dataset": "ne_10m_geography_regions_elevation_points",
+        "featurecla": [
+          "depression"
+        ],
+        "geometry": [
+          "point"
+        ]
+      },
+      "edgv_target": {
+        "table": "elemnat_ponto_cotado_p",
+        "attributes": {
+          "cota_comprovada": 2,
+          "cota_mais_alta": 2
+        }
+      },
+      "ne_attribute_mapping": {
+        "elevation": "cota"
+      },
+      "ne_extra_properties": {
+        "min_zoom": "min_zoom",
+        "featurecla": "subtipo",
+        "name": "nome",
+        "name_pt": "nome_pt",
+        "lat_y": "label_y",
+        "long_x": "label_x",
+        "scalerank": "scalerank"
+      },
+      "confidence": "medium",
+      "note": "Depressoes. 9 features. Elevacao sera negativa. name_pt/lat_y/long_x adicionados."
+    },
+    {
+      "id": "elevation_other",
+      "ne_filter": {
+        "dataset": "ne_10m_geography_regions_elevation_points",
+        "featurecla": [
+          "plateau",
+          "pass",
+          "cape"
+        ],
+        "geometry": [
+          "point"
+        ]
+      },
+      "edgv_target": {
+        "table": "elemnat_ponto_cotado_p",
+        "attributes": {
+          "cota_comprovada": 2,
+          "cota_mais_alta": 2
+        }
+      },
+      "ne_attribute_mapping": {
+        "elevation": "cota"
+      },
+      "ne_extra_properties": {
+        "min_zoom": "min_zoom",
+        "featurecla": "subtipo",
+        "name": "nome",
+        "name_pt": "nome_pt",
+        "lat_y": "label_y",
+        "long_x": "label_x",
+        "scalerank": "scalerank"
+      },
+      "confidence": "low",
+      "note": "Planaltos, passagens, cabos. 8 features. name_pt/lat_y/long_x/scalerank adicionados."
+    },
+    {
+      "_comment": "=== GLACIATED AREAS → cobter_vegetacao_a ==="
+    },
+    {
+      "id": "glaciated",
+      "ne_filter": {
+        "dataset": "ne_10m_glaciated_areas",
+        "geometry": [
+          "polygon"
+        ]
+      },
+      "edgv_target": {
+        "table": "__tile_only_glaciated",
+        "attributes": {}
+      },
+      "ne_attribute_mapping": {
+        "name": "nome"
+      },
+      "ne_extra_properties": {
+        "scalerank": "scalerank",
+        "min_zoom": "min_zoom"
+      },
+      "confidence": "medium",
+      "note": "Areas glaciais. 1886 features. Nao tem tipo correspondente na cobter_vegetacao_a. Layer exclusivo de tile."
+    },
+    {
+      "_comment": "=== BATHYMETRY → __tile_only ==="
+    },
+    {
+      "id": "bathymetry",
+      "ne_filter": {
+        "dataset": "ne_10m_bathymetry_L_0",
+        "geometry": [
+          "polygon"
+        ]
+      },
+      "edgv_target": {
+        "table": "__tile_only_bathymetry",
+        "attributes": {}
+      },
+      "ne_attribute_mapping": {},
+      "ne_extra_properties": {
+        "depth": "depth",
+        "scalerank": "scalerank"
+      },
+      "confidence": "medium",
+      "note": "Batimetria rasa (profundidade 0m, contorno costeiro submerso). 22 features. Layer decorativo de tile."
+    },
+    {
+      "_comment": "=== BATHYMETRY DEEP (A-K) → __tile_only ==="
+    },
+    {
+      "id": "bathymetry_deep",
+      "ne_filter": {
+        "dataset": "ne_10m_bathymetry_all",
+        "dataset_pattern": "ne_10m_bathymetry_[A-K]_*",
+        "geometry": [
+          "polygon"
+        ]
+      },
+      "edgv_target": {
+        "table": "__tile_only_bathymetry",
+        "attributes": {}
+      },
+      "ne_attribute_mapping": {},
+      "ne_extra_properties": {
+        "depth": "depth",
+        "scalerank": "scalerank"
+      },
+      "confidence": "medium",
+      "note": "Batimetria profunda (200m a 10000m). 11 niveis: A=10000, B=9000, C=8000, D=7000, E=6000, F=5000, G=4000, H=3000, I=2000, J=1000, K=200. ~200 features total. Faixas batimetricas como poligonos — nao mapeiam para elemnat_curva_batimetrica_l (que sao isolinhas). Layer decorativo de tile com atributo depth para coloracao gradiente."
+    },
+    {
+      "_comment": "=== PORTS → infra_elemento_infraestrutura_p ==="
+    },
+    {
+      "id": "port",
+      "ne_filter": {
+        "dataset": "ne_10m_ports",
+        "geometry": [
+          "point"
+        ]
+      },
+      "edgv_target": {
+        "table": "infra_elemento_infraestrutura_p",
+        "attributes": {
+          "tipo": 1938,
+          "situacao_fisica": 3
+        }
+      },
+      "ne_attribute_mapping": {
+        "name": "nome"
+      },
+      "ne_extra_properties": {
+        "scalerank": "scalerank",
+        "min_zoom": "min_zoom",
+        "natlscale": "natlscale",
+        "website": "website"
+      },
+      "confidence": "medium",
+      "note": "Portos mundiais. tipo=1938 (Atracadouro - Cais) como tipo generico para portos. Dominio infra_elemento_infraestrutura inclui 1801 (Fundeadouro), 1938-1944 (tipos de atracadouro). ~250 features."
+    },
+    {
+      "_comment": "=== PARKS AND PROTECTED LANDS → llp_limite_especial_a ==="
+    },
+    {
+      "id": "park_protected",
+      "ne_filter": {
+        "dataset": "ne_10m_parks_and_protected_lands_area",
+        "geometry": [
+          "polygon"
+        ]
+      },
+      "edgv_target": {
+        "table": "llp_limite_especial_a",
+        "attributes": {
+          "tipo": 5,
+          "geometria_aproximada": 1
+        }
+      },
+      "ne_attribute_mapping": {
+        "name": "nome"
+      },
+      "ne_extra_properties": {
+        "scalerank": "scalerank",
+        "min_zoom": "min_zoom",
+        "natlscale": "natlscale",
+        "iucn_cat": "iucn_cat",
+        "marine": "marine"
+      },
+      "confidence": "medium",
+      "note": "Areas protegidas mundiais. tipo=5 (Unidade de Conservacao). geometria_aproximada=1 (sim). Dominio tipo_limite_especial inclui 5 (UC generica), 24-35 (tipos especificos de UC), 32 (Parque). ~398 features."
+    },
+    {
+      "_comment": "=== REEFS → elemnat_elemento_hidrografico_l (NE reefs are LineStrings) ==="
+    },
+    {
+      "id": "reef",
+      "ne_filter": {
+        "dataset": "ne_10m_reefs",
+        "geometry": [
+          "line"
+        ]
+      },
+      "edgv_target": {
+        "table": "elemnat_elemento_hidrografico_l",
+        "attributes": {
+          "tipo": 18
+        }
+      },
+      "ne_attribute_mapping": {
+        "name": "nome"
+      },
+      "ne_extra_properties": {
+        "scalerank": "scalerank",
+        "min_zoom": "min_zoom"
+      },
+      "confidence": "high",
+      "note": "Recifes de coral. tipo=18 (Recife). NE source is LineString, mapped to _l. ~1043 features."
+    },
+    {
+      "_comment": "=== MINOR ISLANDS → elemnat_ilha_a ==="
+    },
+    {
+      "id": "minor_island",
+      "ne_filter": {
+        "dataset": "ne_10m_minor_islands",
+        "geometry": [
+          "polygon"
+        ]
+      },
+      "edgv_target": {
+        "table": "elemnat_ilha_a",
+        "attributes": {
+          "tipo": 2
+        }
+      },
+      "ne_attribute_mapping": {
+        "name": "nome"
+      },
+      "ne_extra_properties": {
+        "scalerank": "scalerank",
+        "min_zoom": "min_zoom"
+      },
+      "confidence": "medium",
+      "note": "Ilhas menores. tipo=2 (Maritima). Geometria tambem presente em ne_10m_land, mas mapeamento para elemnat_ilha_a preserva identidade semantica da feicao. ~1000 features."
+    },
+    {
+      "_comment": "=== MARINE AREAS → cobter_massa_dagua_a ==="
+    },
+    {
+      "id": "marine_area",
+      "ne_filter": {
+        "dataset": "ne_10m_geography_marine_polys",
+        "geometry": [
+          "polygon"
+        ]
+      },
+      "edgv_target": {
+        "table": "cobter_massa_dagua_a",
+        "attributes": {
+          "tipo": 3,
+          "regime": 9999
+        }
+      },
+      "ne_attribute_mapping": {
+        "name": "nome"
+      },
+      "ne_extra_properties": {
+        "scalerank": "scalerank",
+        "min_zoom": "min_zoom",
+        "min_label": "min_label",
+        "featurecla": "subtipo_ne",
+        "label": "label",
+        "name_pt": "nome_pt"
+      },
+      "confidence": "medium",
+      "note": "Areas marinhas nomeadas (oceanos, mares, golfos, estreitos). tipo=3 (Oceano). Util para rotulos de oceanos/mares em zooms baixos. name_pt para rotulo em portugues. Dominio tipo_massa_dagua inclui 3 (Oceano), 4 (Baia), 5 (Enseada). ~100 features."
+    }
+  ]
+}

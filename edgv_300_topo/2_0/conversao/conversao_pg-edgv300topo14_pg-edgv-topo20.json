@@ -1,0 +1,312 @@
+{
+  "metadados": {
+    "versao_arquivo": "0.8",
+    "modelo_A": "EDGV 3.0 Topo",
+    "versao_modelo_A": "1.4.0",
+    "modelo_B": "EDGV Topo 2.0",
+    "versao_modelo_B": "0.8.0"
+  },
+  "__comment": "UTF-8. Conversao Topo 1.4 para Topo 2.0 v0.8. 68 classes 1:1.",
+  "schema_A": "edgv",
+  "schema_B": "edgv",
+  "afixo_geom_A": {
+    "tipo": "sufixo",
+    "POINT": "_p",
+    "LINESTRING": "_l",
+    "POLYGON": "_a"
+  },
+  "afixo_geom_B": {
+    "tipo": "sufixo",
+    "POINT": "_p",
+    "LINESTRING": "_l",
+    "POLYGON": "_a"
+  },
+  "agregar_geom_A": true,
+  "agregar_geom_B": true,
+  "mapeamento_classes": [
+    {
+      "__comment": "cobter - cobertura terrestre (3 classes, 3 tabelas, sem alteracao na 2.0)",
+      "classe_A": "cobter_area_edificada",
+      "classe_B": "cobter_area_edificada"
+    },
+    {
+      "classe_A": "cobter_massa_dagua",
+      "classe_B": "cobter_massa_dagua"
+    },
+    {
+      "classe_A": "cobter_vegetacao",
+      "classe_B": "cobter_vegetacao"
+    },
+    {
+      "__comment": "constr - construcoes (5 classes, 10 tabelas, sem alteracao na 2.0)",
+      "classe_A": "constr_area_uso_especifico",
+      "classe_B": "constr_area_uso_especifico"
+    },
+    {
+      "classe_A": "constr_deposito",
+      "classe_B": "constr_deposito"
+    },
+    {
+      "classe_A": "constr_edificacao",
+      "classe_B": "constr_edificacao"
+    },
+    {
+      "classe_A": "constr_extracao_mineral",
+      "classe_B": "constr_extracao_mineral"
+    },
+    {
+      "classe_A": "constr_ocupacao_solo",
+      "classe_B": "constr_ocupacao_solo"
+    },
+    {
+      "__comment": "elemnat - elementos naturais (9 classes, 15 tabelas na 1.4; +2 tabelas novas na 2.0: curva_batimetrica_l, ponto_cotado_batimetrico_p)",
+      "classe_A": "elemnat_curva_nivel",
+      "classe_B": "elemnat_curva_nivel"
+    },
+    {
+      "classe_A": "elemnat_elemento_fisiografico",
+      "classe_B": "elemnat_elemento_fisiografico"
+    },
+    {
+      "classe_A": "elemnat_elemento_hidrografico",
+      "classe_B": "elemnat_elemento_hidrografico"
+    },
+    {
+      "classe_A": "elemnat_ilha",
+      "classe_B": "elemnat_ilha"
+    },
+    {
+      "classe_A": "elemnat_ponto_cotado",
+      "classe_B": "elemnat_ponto_cotado"
+    },
+    {
+      "classe_A": "elemnat_terreno_sujeito_inundacao",
+      "classe_B": "elemnat_terreno_sujeito_inundacao"
+    },
+    {
+      "classe_A": "elemnat_toponimo_fisiografico_natural",
+      "classe_B": "elemnat_toponimo_fisiografico_natural"
+    },
+    {
+      "classe_A": "elemnat_trecho_drenagem",
+      "classe_B": "elemnat_trecho_drenagem"
+    },
+    {
+      "classe_A": "elemnat_sumidouro_vertedouro",
+      "classe_B": "elemnat_sumidouro_vertedouro"
+    },
+    {
+      "__comment": "infra - infraestrutura (14 classes, 22 tabelas na 1.4; +3 tabelas novas na 2.0: obstaculo_terrestre_p/l/a — sem mapeamento da 1.4)",
+      "classe_A": "infra_alteracao_fisiografica_antropica",
+      "classe_B": "infra_alteracao_fisiografica_antropica"
+    },
+    {
+      "classe_A": "infra_barragem",
+      "classe_B": "infra_barragem"
+    },
+    {
+      "classe_A": "infra_elemento_energia",
+      "classe_B": "infra_elemento_energia"
+    },
+    {
+      "classe_A": "infra_elemento_infraestrutura",
+      "classe_B": "infra_elemento_infraestrutura"
+    },
+    {
+      "classe_A": "infra_elemento_viario",
+      "classe_B": "infra_elemento_viario"
+    },
+    {
+      "classe_A": "infra_ferrovia",
+      "classe_B": "infra_ferrovia"
+    },
+    {
+      "classe_A": "infra_mobilidade_urbana",
+      "classe_B": "infra_mobilidade_urbana"
+    },
+    {
+      "classe_A": "infra_obstaculo_vertical",
+      "classe_B": "infra_obstaculo_vertical"
+    },
+    {
+      "classe_A": "infra_pista_pouso",
+      "classe_B": "infra_pista_pouso"
+    },
+    {
+      "classe_A": "infra_travessia_hidroviaria",
+      "classe_B": "infra_travessia_hidroviaria"
+    },
+    {
+      "classe_A": "infra_trecho_duto",
+      "classe_B": "infra_trecho_duto"
+    },
+    {
+      "classe_A": "infra_trecho_hidroviario",
+      "classe_B": "infra_trecho_hidroviario"
+    },
+    {
+      "classe_A": "infra_vala",
+      "classe_B": "infra_vala"
+    },
+    {
+      "classe_A": "infra_via_deslocamento",
+      "classe_B": "infra_via_deslocamento"
+    },
+    {
+      "__comment": "llp - limites, localidades e pontos de controle (7 classes, 7 tabelas na 1.4; +3 tabelas novas na 2.0: localidade_a, delimitacao_fisica_l, limite_legal_a — sem mapeamento da 1.4)",
+      "classe_A": "llp_limite_legal",
+      "classe_B": "llp_limite_legal"
+    },
+    {
+      "classe_A": "llp_limite_especial",
+      "classe_B": "llp_limite_especial"
+    },
+    {
+      "classe_A": "llp_unidade_federacao",
+      "classe_B": "llp_unidade_federacao"
+    },
+    {
+      "classe_A": "llp_localidade",
+      "classe_B": "llp_localidade"
+    },
+    {
+      "classe_A": "llp_ponto_controle",
+      "classe_B": "llp_ponto_controle"
+    },
+    {
+      "classe_A": "llp_pais",
+      "classe_B": "llp_pais"
+    },
+    {
+      "classe_A": "llp_area_sem_dados",
+      "classe_B": "llp_area_sem_dados"
+    },
+    {
+      "__comment": "edicao - tabelas de edicao cartografica (12 classes, 13 tabelas)",
+      "classe_A": "edicao_limite_especial",
+      "classe_B": "edicao_limite_especial"
+    },
+    {
+      "classe_A": "edicao_texto_generico",
+      "classe_B": "edicao_texto_generico"
+    },
+    {
+      "classe_A": "edicao_simb_cota_mestra",
+      "classe_B": "edicao_simb_cota_mestra"
+    },
+    {
+      "classe_A": "edicao_simb_torre_energia",
+      "classe_B": "edicao_simb_torre_energia"
+    },
+    {
+      "classe_A": "edicao_identificador_trecho_rod",
+      "classe_B": "edicao_identificador_trecho_rod"
+    },
+    {
+      "classe_A": "edicao_simb_vegetacao",
+      "classe_B": "edicao_simb_vegetacao"
+    },
+    {
+      "classe_A": "edicao_simb_direcao_corrente",
+      "classe_B": "edicao_simb_direcao_corrente"
+    },
+    {
+      "classe_A": "edicao_simb_area",
+      "classe_B": "edicao_simb_area"
+    },
+    {
+      "classe_A": "edicao_borda_elemento_hidrografico",
+      "classe_B": "edicao_borda_elemento_hidrografico"
+    },
+    {
+      "classe_A": "edicao_ponto_mudanca",
+      "classe_B": "edicao_ponto_mudanca"
+    },
+    {
+      "classe_A": "edicao_grid_edicao",
+      "classe_B": "edicao_grid_edicao"
+    },
+    {
+      "classe_A": "edicao_grid_numerico",
+      "classe_B": "edicao_grid_numerico"
+    },
+    {
+      "__comment": "centroide - centroides topologicos (7 classes, 7 tabelas)",
+      "classe_A": "centroide_area_sem_dados",
+      "classe_B": "centroide_area_sem_dados"
+    },
+    {
+      "classe_A": "centroide_vegetacao",
+      "classe_B": "centroide_vegetacao"
+    },
+    {
+      "classe_A": "centroide_massa_dagua",
+      "classe_B": "centroide_massa_dagua"
+    },
+    {
+      "classe_A": "centroide_area_edificada",
+      "classe_B": "centroide_area_edificada"
+    },
+    {
+      "classe_A": "centroide_ilha",
+      "classe_B": "centroide_ilha"
+    },
+    {
+      "classe_A": "centroide_elemento_hidrografico",
+      "classe_B": "centroide_elemento_hidrografico"
+    },
+    {
+      "classe_A": "centroide_limite_especial",
+      "classe_B": "centroide_limite_especial"
+    },
+    {
+      "__comment": "delimitador - delimitadores topologicos (6 classes, 6 tabelas)",
+      "classe_A": "delimitador_area_sem_dados",
+      "classe_B": "delimitador_area_sem_dados"
+    },
+    {
+      "classe_A": "delimitador_vegetacao",
+      "classe_B": "delimitador_vegetacao"
+    },
+    {
+      "classe_A": "delimitador_massa_dagua",
+      "classe_B": "delimitador_massa_dagua"
+    },
+    {
+      "classe_A": "delimitador_area_edificada",
+      "classe_B": "delimitador_area_edificada"
+    },
+    {
+      "classe_A": "delimitador_elemento_hidrografico",
+      "classe_B": "delimitador_elemento_hidrografico"
+    },
+    {
+      "classe_A": "delimitador_limite_especial",
+      "classe_B": "delimitador_limite_especial"
+    },
+    {
+      "__comment": "aux - auxiliares de producao (5 classes, 11 tabelas)",
+      "classe_A": "aux_observacao",
+      "classe_B": "aux_observacao"
+    },
+    {
+      "classe_A": "aux_revisao",
+      "classe_B": "aux_revisao"
+    },
+    {
+      "classe_A": "aux_reambulacao",
+      "classe_B": "aux_reambulacao"
+    },
+    {
+      "classe_A": "aux_moldura",
+      "classe_B": "aux_moldura"
+    },
+    {
+      "classe_A": "aux_moldura_area_continua",
+      "classe_B": "aux_moldura_area_continua"
+    }
+  ],
+  "mapeamento_atributos": [],
+  "atributos_default_B": [],
+  "atributos_default_A": []
+}

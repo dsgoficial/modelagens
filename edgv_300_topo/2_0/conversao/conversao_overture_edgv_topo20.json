@@ -1,0 +1,3641 @@
+{
+  "metadata": {
+    "version": "1.0",
+    "date": "2026-03-28",
+    "source": "Overture Maps Foundation",
+    "target": "EDGV Topo 2.0 v0.8",
+    "description": "Mapeamento Overture Maps para EDGV Topo 2.0. Consumido por overture_to_edgv.py.",
+    "total_rules": 106,
+    "match_strategy": "first_match_wins"
+  },
+  "rules": [
+    {
+      "_comment": "=== BUILDINGS → constr_edificacao_a ==="
+    },
+    {
+      "id": "bldg_hospital",
+      "overture_filter": {
+        "theme": "buildings",
+        "type": "building",
+        "class": [
+          "hospital"
+        ],
+        "geometry": [
+          "polygon"
+        ]
+      },
+      "edgv_target": {
+        "table": "constr_edificacao_a",
+        "attributes": {
+          "tipo": 2025
+        }
+      },
+      "overture_attribute_mapping": {
+        "names.primary": "nome",
+        "height": "altura",
+        "num_floors": "pavimentos",
+        "facade_material": {
+          "column": "material_construcao",
+          "map": {
+            "brick": 1,
+            "concrete": 2,
+            "metal": 3,
+            "stone": 4,
+            "wood": 5,
+            "glass": 98,
+            "plaster": 98
+          }
+        }
+      },
+      "confidence": "high",
+      "note": "Hospital"
+    },
+    {
+      "id": "bldg_medical",
+      "overture_filter": {
+        "theme": "buildings",
+        "type": "building",
+        "class": null,
+        "geometry": [
+          "polygon"
+        ],
+        "subtype": "medical"
+      },
+      "edgv_target": {
+        "table": "constr_edificacao_a",
+        "attributes": {
+          "tipo": 2028
+        }
+      },
+      "overture_attribute_mapping": {
+        "names.primary": "nome",
+        "height": "altura",
+        "num_floors": "pavimentos",
+        "facade_material": {
+          "column": "material_construcao",
+          "map": {
+            "brick": 1,
+            "concrete": 2,
+            "metal": 3,
+            "stone": 4,
+            "wood": 5,
+            "glass": 98,
+            "plaster": 98
+          }
+        }
+      },
+      "confidence": "medium",
+      "note": "Edificacao medica (subtype=medical, class vario)"
+    },
+    {
+      "id": "bldg_school",
+      "overture_filter": {
+        "theme": "buildings",
+        "type": "building",
+        "class": [
+          "school"
+        ],
+        "geometry": [
+          "polygon"
+        ]
+      },
+      "edgv_target": {
+        "table": "constr_edificacao_a",
+        "attributes": {
+          "tipo": 518
+        }
+      },
+      "overture_attribute_mapping": {
+        "names.primary": "nome",
+        "height": "altura",
+        "num_floors": "pavimentos",
+        "facade_material": {
+          "column": "material_construcao",
+          "map": {
+            "brick": 1,
+            "concrete": 2,
+            "metal": 3,
+            "stone": 4,
+            "wood": 5,
+            "glass": 98,
+            "plaster": 98
+          }
+        }
+      },
+      "confidence": "high",
+      "note": "Escola (ensino fundamental)"
+    },
+    {
+      "id": "bldg_kindergarten",
+      "overture_filter": {
+        "theme": "buildings",
+        "type": "building",
+        "class": [
+          "kindergarten"
+        ],
+        "geometry": [
+          "polygon"
+        ]
+      },
+      "edgv_target": {
+        "table": "constr_edificacao_a",
+        "attributes": {
+          "tipo": 516
+        }
+      },
+      "overture_attribute_mapping": {
+        "names.primary": "nome",
+        "height": "altura",
+        "num_floors": "pavimentos",
+        "facade_material": {
+          "column": "material_construcao",
+          "map": {
+            "brick": 1,
+            "concrete": 2,
+            "metal": 3,
+            "stone": 4,
+            "wood": 5,
+            "glass": 98,
+            "plaster": 98
+          }
+        }
+      },
+      "confidence": "high",
+      "note": "Creche/pré-escola"
+    },
+    {
+      "id": "bldg_university",
+      "overture_filter": {
+        "theme": "buildings",
+        "type": "building",
+        "class": [
+          "university"
+        ],
+        "geometry": [
+          "polygon"
+        ]
+      },
+      "edgv_target": {
+        "table": "constr_edificacao_a",
+        "attributes": {
+          "tipo": 521
+        }
+      },
+      "overture_attribute_mapping": {
+        "names.primary": "nome",
+        "height": "altura",
+        "num_floors": "pavimentos",
+        "facade_material": {
+          "column": "material_construcao",
+          "map": {
+            "brick": 1,
+            "concrete": 2,
+            "metal": 3,
+            "stone": 4,
+            "wood": 5,
+            "glass": 98,
+            "plaster": 98
+          }
+        }
+      },
+      "confidence": "high",
+      "note": "Universidade"
+    },
+    {
+      "id": "bldg_college",
+      "overture_filter": {
+        "theme": "buildings",
+        "type": "building",
+        "class": [
+          "college"
+        ],
+        "geometry": [
+          "polygon"
+        ]
+      },
+      "edgv_target": {
+        "table": "constr_edificacao_a",
+        "attributes": {
+          "tipo": 520
+        }
+      },
+      "overture_attribute_mapping": {
+        "names.primary": "nome",
+        "height": "altura",
+        "num_floors": "pavimentos",
+        "facade_material": {
+          "column": "material_construcao",
+          "map": {
+            "brick": 1,
+            "concrete": 2,
+            "metal": 3,
+            "stone": 4,
+            "wood": 5,
+            "glass": 98,
+            "plaster": 98
+          }
+        }
+      },
+      "confidence": "high",
+      "note": "Faculdade"
+    },
+    {
+      "id": "bldg_church",
+      "overture_filter": {
+        "theme": "buildings",
+        "type": "building",
+        "class": [
+          "church"
+        ],
+        "geometry": [
+          "polygon"
+        ]
+      },
+      "edgv_target": {
+        "table": "constr_edificacao_a",
+        "attributes": {
+          "tipo": 601
+        }
+      },
+      "overture_attribute_mapping": {
+        "names.primary": "nome",
+        "height": "altura",
+        "num_floors": "pavimentos",
+        "facade_material": {
+          "column": "material_construcao",
+          "map": {
+            "brick": 1,
+            "concrete": 2,
+            "metal": 3,
+            "stone": 4,
+            "wood": 5,
+            "glass": 98,
+            "plaster": 98
+          }
+        }
+      },
+      "confidence": "high",
+      "note": "Igreja cristã"
+    },
+    {
+      "id": "bldg_cathedral",
+      "overture_filter": {
+        "theme": "buildings",
+        "type": "building",
+        "class": [
+          "cathedral"
+        ],
+        "geometry": [
+          "polygon"
+        ]
+      },
+      "edgv_target": {
+        "table": "constr_edificacao_a",
+        "attributes": {
+          "tipo": 601
+        }
+      },
+      "overture_attribute_mapping": {
+        "names.primary": "nome",
+        "height": "altura",
+        "num_floors": "pavimentos",
+        "facade_material": {
+          "column": "material_construcao",
+          "map": {
+            "brick": 1,
+            "concrete": 2,
+            "metal": 3,
+            "stone": 4,
+            "wood": 5,
+            "glass": 98,
+            "plaster": 98
+          }
+        }
+      },
+      "confidence": "high",
+      "note": "Catedral"
+    },
+    {
+      "id": "bldg_chapel",
+      "overture_filter": {
+        "theme": "buildings",
+        "type": "building",
+        "class": [
+          "chapel"
+        ],
+        "geometry": [
+          "polygon"
+        ]
+      },
+      "edgv_target": {
+        "table": "constr_edificacao_a",
+        "attributes": {
+          "tipo": 601
+        }
+      },
+      "overture_attribute_mapping": {
+        "names.primary": "nome",
+        "height": "altura",
+        "num_floors": "pavimentos",
+        "facade_material": {
+          "column": "material_construcao",
+          "map": {
+            "brick": 1,
+            "concrete": 2,
+            "metal": 3,
+            "stone": 4,
+            "wood": 5,
+            "glass": 98,
+            "plaster": 98
+          }
+        }
+      },
+      "confidence": "high",
+      "note": "Capela"
+    },
+    {
+      "id": "bldg_mosque",
+      "overture_filter": {
+        "theme": "buildings",
+        "type": "building",
+        "class": [
+          "mosque"
+        ],
+        "geometry": [
+          "polygon"
+        ]
+      },
+      "edgv_target": {
+        "table": "constr_edificacao_a",
+        "attributes": {
+          "tipo": 606
+        }
+      },
+      "overture_attribute_mapping": {
+        "names.primary": "nome",
+        "height": "altura",
+        "num_floors": "pavimentos",
+        "facade_material": {
+          "column": "material_construcao",
+          "map": {
+            "brick": 1,
+            "concrete": 2,
+            "metal": 3,
+            "stone": 4,
+            "wood": 5,
+            "glass": 98,
+            "plaster": 98
+          }
+        }
+      },
+      "confidence": "high",
+      "note": "Mesquita"
+    },
+    {
+      "id": "bldg_synagogue",
+      "overture_filter": {
+        "theme": "buildings",
+        "type": "building",
+        "class": [
+          "synagogue"
+        ],
+        "geometry": [
+          "polygon"
+        ]
+      },
+      "edgv_target": {
+        "table": "constr_edificacao_a",
+        "attributes": {
+          "tipo": 607
+        }
+      },
+      "overture_attribute_mapping": {
+        "names.primary": "nome",
+        "height": "altura",
+        "num_floors": "pavimentos",
+        "facade_material": {
+          "column": "material_construcao",
+          "map": {
+            "brick": 1,
+            "concrete": 2,
+            "metal": 3,
+            "stone": 4,
+            "wood": 5,
+            "glass": 98,
+            "plaster": 98
+          }
+        }
+      },
+      "confidence": "high",
+      "note": "Sinagoga"
+    },
+    {
+      "id": "bldg_temple",
+      "overture_filter": {
+        "theme": "buildings",
+        "type": "building",
+        "class": [
+          "temple"
+        ],
+        "geometry": [
+          "polygon"
+        ]
+      },
+      "edgv_target": {
+        "table": "constr_edificacao_a",
+        "attributes": {
+          "tipo": 602
+        }
+      },
+      "overture_attribute_mapping": {
+        "names.primary": "nome",
+        "height": "altura",
+        "num_floors": "pavimentos",
+        "facade_material": {
+          "column": "material_construcao",
+          "map": {
+            "brick": 1,
+            "concrete": 2,
+            "metal": 3,
+            "stone": 4,
+            "wood": 5,
+            "glass": 98,
+            "plaster": 98
+          }
+        }
+      },
+      "confidence": "high",
+      "note": "Templo"
+    },
+    {
+      "id": "bldg_shrine",
+      "overture_filter": {
+        "theme": "buildings",
+        "type": "building",
+        "class": [
+          "shrine",
+          "wayside_shrine"
+        ],
+        "geometry": [
+          "polygon"
+        ]
+      },
+      "edgv_target": {
+        "table": "constr_edificacao_a",
+        "attributes": {
+          "tipo": 602
+        }
+      },
+      "overture_attribute_mapping": {
+        "names.primary": "nome",
+        "height": "altura",
+        "num_floors": "pavimentos",
+        "facade_material": {
+          "column": "material_construcao",
+          "map": {
+            "brick": 1,
+            "concrete": 2,
+            "metal": 3,
+            "stone": 4,
+            "wood": 5,
+            "glass": 98,
+            "plaster": 98
+          }
+        }
+      },
+      "confidence": "high",
+      "note": "Santuário/templo"
+    },
+    {
+      "id": "bldg_monastery",
+      "overture_filter": {
+        "theme": "buildings",
+        "type": "building",
+        "class": [
+          "monastery"
+        ],
+        "geometry": [
+          "polygon"
+        ]
+      },
+      "edgv_target": {
+        "table": "constr_edificacao_a",
+        "attributes": {
+          "tipo": 604
+        }
+      },
+      "overture_attribute_mapping": {
+        "names.primary": "nome",
+        "height": "altura",
+        "num_floors": "pavimentos",
+        "facade_material": {
+          "column": "material_construcao",
+          "map": {
+            "brick": 1,
+            "concrete": 2,
+            "metal": 3,
+            "stone": 4,
+            "wood": 5,
+            "glass": 98,
+            "plaster": 98
+          }
+        }
+      },
+      "confidence": "high",
+      "note": "Mosteiro"
+    },
+    {
+      "id": "bldg_train_station",
+      "overture_filter": {
+        "theme": "buildings",
+        "type": "building",
+        "class": [
+          "train_station"
+        ],
+        "geometry": [
+          "polygon"
+        ]
+      },
+      "edgv_target": {
+        "table": "constr_edificacao_a",
+        "attributes": {
+          "tipo": 2316
+        }
+      },
+      "overture_attribute_mapping": {
+        "names.primary": "nome",
+        "height": "altura",
+        "num_floors": "pavimentos",
+        "facade_material": {
+          "column": "material_construcao",
+          "map": {
+            "brick": 1,
+            "concrete": 2,
+            "metal": 3,
+            "stone": 4,
+            "wood": 5,
+            "glass": 98,
+            "plaster": 98
+          }
+        }
+      },
+      "confidence": "high",
+      "note": "Estação ferroviária"
+    },
+    {
+      "id": "bldg_hangar",
+      "overture_filter": {
+        "theme": "buildings",
+        "type": "building",
+        "class": [
+          "hangar"
+        ],
+        "geometry": [
+          "polygon"
+        ]
+      },
+      "edgv_target": {
+        "table": "constr_edificacao_a",
+        "attributes": {
+          "tipo": 2429
+        }
+      },
+      "overture_attribute_mapping": {
+        "names.primary": "nome",
+        "height": "altura",
+        "num_floors": "pavimentos",
+        "facade_material": {
+          "column": "material_construcao",
+          "map": {
+            "brick": 1,
+            "concrete": 2,
+            "metal": 3,
+            "stone": 4,
+            "wood": 5,
+            "glass": 98,
+            "plaster": 98
+          }
+        }
+      },
+      "confidence": "high",
+      "note": "Hangar"
+    },
+    {
+      "id": "bldg_fire_station",
+      "overture_filter": {
+        "theme": "buildings",
+        "type": "building",
+        "class": [
+          "fire_station"
+        ],
+        "geometry": [
+          "polygon"
+        ]
+      },
+      "edgv_target": {
+        "table": "constr_edificacao_a",
+        "attributes": {
+          "tipo": 3007
+        }
+      },
+      "overture_attribute_mapping": {
+        "names.primary": "nome",
+        "height": "altura",
+        "num_floors": "pavimentos",
+        "facade_material": {
+          "column": "material_construcao",
+          "map": {
+            "brick": 1,
+            "concrete": 2,
+            "metal": 3,
+            "stone": 4,
+            "wood": 5,
+            "glass": 98,
+            "plaster": 98
+          }
+        }
+      },
+      "confidence": "high",
+      "note": "Corpo de bombeiros"
+    },
+    {
+      "id": "bldg_military",
+      "overture_filter": {
+        "theme": "buildings",
+        "type": "building",
+        "class": [
+          "military"
+        ],
+        "geometry": [
+          "polygon"
+        ]
+      },
+      "edgv_target": {
+        "table": "constr_edificacao_a",
+        "attributes": {
+          "tipo": 1712
+        }
+      },
+      "overture_attribute_mapping": {
+        "names.primary": "nome",
+        "height": "altura",
+        "num_floors": "pavimentos",
+        "facade_material": {
+          "column": "material_construcao",
+          "map": {
+            "brick": 1,
+            "concrete": 2,
+            "metal": 3,
+            "stone": 4,
+            "wood": 5,
+            "glass": 98,
+            "plaster": 98
+          }
+        }
+      },
+      "confidence": "high",
+      "note": "Edificação militar"
+    },
+    {
+      "id": "bldg_bunker",
+      "overture_filter": {
+        "theme": "buildings",
+        "type": "building",
+        "class": [
+          "bunker"
+        ],
+        "geometry": [
+          "polygon"
+        ]
+      },
+      "edgv_target": {
+        "table": "constr_edificacao_a",
+        "attributes": {
+          "tipo": 1712
+        }
+      },
+      "overture_attribute_mapping": {
+        "names.primary": "nome",
+        "height": "altura",
+        "num_floors": "pavimentos",
+        "facade_material": {
+          "column": "material_construcao",
+          "map": {
+            "brick": 1,
+            "concrete": 2,
+            "metal": 3,
+            "stone": 4,
+            "wood": 5,
+            "glass": 98,
+            "plaster": 98
+          }
+        }
+      },
+      "confidence": "medium",
+      "note": "Bunker militar"
+    },
+    {
+      "id": "bldg_government",
+      "overture_filter": {
+        "theme": "buildings",
+        "type": "building",
+        "class": [
+          "government"
+        ],
+        "geometry": [
+          "polygon"
+        ]
+      },
+      "edgv_target": {
+        "table": "constr_edificacao_a",
+        "attributes": {
+          "tipo": 1304
+        }
+      },
+      "overture_attribute_mapping": {
+        "names.primary": "nome",
+        "height": "altura",
+        "num_floors": "pavimentos",
+        "facade_material": {
+          "column": "material_construcao",
+          "map": {
+            "brick": 1,
+            "concrete": 2,
+            "metal": 3,
+            "stone": 4,
+            "wood": 5,
+            "glass": 98,
+            "plaster": 98
+          }
+        }
+      },
+      "confidence": "high",
+      "note": "Edificação pública/governo"
+    },
+    {
+      "id": "bldg_public",
+      "overture_filter": {
+        "theme": "buildings",
+        "type": "building",
+        "class": [
+          "public"
+        ],
+        "geometry": [
+          "polygon"
+        ]
+      },
+      "edgv_target": {
+        "table": "constr_edificacao_a",
+        "attributes": {
+          "tipo": 1304
+        }
+      },
+      "overture_attribute_mapping": {
+        "names.primary": "nome",
+        "height": "altura",
+        "num_floors": "pavimentos",
+        "facade_material": {
+          "column": "material_construcao",
+          "map": {
+            "brick": 1,
+            "concrete": 2,
+            "metal": 3,
+            "stone": 4,
+            "wood": 5,
+            "glass": 98,
+            "plaster": 98
+          }
+        }
+      },
+      "confidence": "high",
+      "note": "Edificação pública"
+    },
+    {
+      "id": "bldg_library",
+      "overture_filter": {
+        "theme": "buildings",
+        "type": "building",
+        "class": [
+          "library"
+        ],
+        "geometry": [
+          "polygon"
+        ]
+      },
+      "edgv_target": {
+        "table": "constr_edificacao_a",
+        "attributes": {
+          "tipo": 810
+        }
+      },
+      "overture_attribute_mapping": {
+        "names.primary": "nome",
+        "height": "altura",
+        "num_floors": "pavimentos",
+        "facade_material": {
+          "column": "material_construcao",
+          "map": {
+            "brick": 1,
+            "concrete": 2,
+            "metal": 3,
+            "stone": 4,
+            "wood": 5,
+            "glass": 98,
+            "plaster": 98
+          }
+        }
+      },
+      "confidence": "high",
+      "note": "Biblioteca"
+    },
+    {
+      "id": "bldg_post_office",
+      "overture_filter": {
+        "theme": "buildings",
+        "type": "building",
+        "class": [
+          "post_office"
+        ],
+        "geometry": [
+          "polygon"
+        ]
+      },
+      "edgv_target": {
+        "table": "constr_edificacao_a",
+        "attributes": {
+          "tipo": 1398
+        }
+      },
+      "overture_attribute_mapping": {
+        "names.primary": "nome",
+        "height": "altura",
+        "num_floors": "pavimentos",
+        "facade_material": {
+          "column": "material_construcao",
+          "map": {
+            "brick": 1,
+            "concrete": 2,
+            "metal": 3,
+            "stone": 4,
+            "wood": 5,
+            "glass": 98,
+            "plaster": 98
+          }
+        }
+      },
+      "confidence": "high",
+      "note": "Correios"
+    },
+    {
+      "id": "bldg_hotel",
+      "overture_filter": {
+        "theme": "buildings",
+        "type": "building",
+        "class": [
+          "hotel"
+        ],
+        "geometry": [
+          "polygon"
+        ]
+      },
+      "edgv_target": {
+        "table": "constr_edificacao_a",
+        "attributes": {
+          "tipo": 907
+        }
+      },
+      "overture_attribute_mapping": {
+        "names.primary": "nome",
+        "height": "altura",
+        "num_floors": "pavimentos",
+        "facade_material": {
+          "column": "material_construcao",
+          "map": {
+            "brick": 1,
+            "concrete": 2,
+            "metal": 3,
+            "stone": 4,
+            "wood": 5,
+            "glass": 98,
+            "plaster": 98
+          }
+        }
+      },
+      "confidence": "high",
+      "note": "Hotel"
+    },
+    {
+      "id": "bldg_supermarket",
+      "overture_filter": {
+        "theme": "buildings",
+        "type": "building",
+        "class": [
+          "supermarket"
+        ],
+        "geometry": [
+          "polygon"
+        ]
+      },
+      "edgv_target": {
+        "table": "constr_edificacao_a",
+        "attributes": {
+          "tipo": 904
+        }
+      },
+      "overture_attribute_mapping": {
+        "names.primary": "nome",
+        "height": "altura",
+        "num_floors": "pavimentos",
+        "facade_material": {
+          "column": "material_construcao",
+          "map": {
+            "brick": 1,
+            "concrete": 2,
+            "metal": 3,
+            "stone": 4,
+            "wood": 5,
+            "glass": 98,
+            "plaster": 98
+          }
+        }
+      },
+      "confidence": "high",
+      "note": "Supermercado"
+    },
+    {
+      "id": "bldg_retail",
+      "overture_filter": {
+        "theme": "buildings",
+        "type": "building",
+        "class": [
+          "retail"
+        ],
+        "geometry": [
+          "polygon"
+        ]
+      },
+      "edgv_target": {
+        "table": "constr_edificacao_a",
+        "attributes": {
+          "tipo": 903
+        }
+      },
+      "overture_attribute_mapping": {
+        "names.primary": "nome",
+        "height": "altura",
+        "num_floors": "pavimentos",
+        "facade_material": {
+          "column": "material_construcao",
+          "map": {
+            "brick": 1,
+            "concrete": 2,
+            "metal": 3,
+            "stone": 4,
+            "wood": 5,
+            "glass": 98,
+            "plaster": 98
+          }
+        }
+      },
+      "confidence": "high",
+      "note": "Comércio"
+    },
+    {
+      "id": "bldg_commercial",
+      "overture_filter": {
+        "theme": "buildings",
+        "type": "building",
+        "class": [
+          "commercial"
+        ],
+        "geometry": [
+          "polygon"
+        ]
+      },
+      "edgv_target": {
+        "table": "constr_edificacao_a",
+        "attributes": {
+          "tipo": 903
+        }
+      },
+      "overture_attribute_mapping": {
+        "names.primary": "nome",
+        "height": "altura",
+        "num_floors": "pavimentos",
+        "facade_material": {
+          "column": "material_construcao",
+          "map": {
+            "brick": 1,
+            "concrete": 2,
+            "metal": 3,
+            "stone": 4,
+            "wood": 5,
+            "glass": 98,
+            "plaster": 98
+          }
+        }
+      },
+      "confidence": "high",
+      "note": "Edificação comercial"
+    },
+    {
+      "id": "bldg_office",
+      "overture_filter": {
+        "theme": "buildings",
+        "type": "building",
+        "class": [
+          "office"
+        ],
+        "geometry": [
+          "polygon"
+        ]
+      },
+      "edgv_target": {
+        "table": "constr_edificacao_a",
+        "attributes": {
+          "tipo": 903
+        }
+      },
+      "overture_attribute_mapping": {
+        "names.primary": "nome",
+        "height": "altura",
+        "num_floors": "pavimentos",
+        "facade_material": {
+          "column": "material_construcao",
+          "map": {
+            "brick": 1,
+            "concrete": 2,
+            "metal": 3,
+            "stone": 4,
+            "wood": 5,
+            "glass": 98,
+            "plaster": 98
+          }
+        }
+      },
+      "confidence": "high",
+      "note": "Escritório"
+    },
+    {
+      "id": "bldg_kiosk",
+      "overture_filter": {
+        "theme": "buildings",
+        "type": "building",
+        "class": [
+          "kiosk"
+        ],
+        "geometry": [
+          "polygon"
+        ]
+      },
+      "edgv_target": {
+        "table": "constr_edificacao_a",
+        "attributes": {
+          "tipo": 903
+        }
+      },
+      "overture_attribute_mapping": {
+        "names.primary": "nome",
+        "height": "altura",
+        "num_floors": "pavimentos",
+        "facade_material": {
+          "column": "material_construcao",
+          "map": {
+            "brick": 1,
+            "concrete": 2,
+            "metal": 3,
+            "stone": 4,
+            "wood": 5,
+            "glass": 98,
+            "plaster": 98
+          }
+        }
+      },
+      "confidence": "high",
+      "note": "Quiosque"
+    },
+    {
+      "id": "bldg_stadium",
+      "overture_filter": {
+        "theme": "buildings",
+        "type": "building",
+        "class": [
+          "stadium"
+        ],
+        "geometry": [
+          "polygon"
+        ]
+      },
+      "edgv_target": {
+        "table": "constr_edificacao_a",
+        "attributes": {
+          "tipo": 801
+        }
+      },
+      "overture_attribute_mapping": {
+        "names.primary": "nome",
+        "height": "altura",
+        "num_floors": "pavimentos",
+        "facade_material": {
+          "column": "material_construcao",
+          "map": {
+            "brick": 1,
+            "concrete": 2,
+            "metal": 3,
+            "stone": 4,
+            "wood": 5,
+            "glass": 98,
+            "plaster": 98
+          }
+        }
+      },
+      "confidence": "high",
+      "note": "Estádio"
+    },
+    {
+      "id": "bldg_sports_centre",
+      "overture_filter": {
+        "theme": "buildings",
+        "type": "building",
+        "class": [
+          "sports_centre"
+        ],
+        "geometry": [
+          "polygon"
+        ]
+      },
+      "edgv_target": {
+        "table": "constr_edificacao_a",
+        "attributes": {
+          "tipo": 802
+        }
+      },
+      "overture_attribute_mapping": {
+        "names.primary": "nome",
+        "height": "altura",
+        "num_floors": "pavimentos",
+        "facade_material": {
+          "column": "material_construcao",
+          "map": {
+            "brick": 1,
+            "concrete": 2,
+            "metal": 3,
+            "stone": 4,
+            "wood": 5,
+            "glass": 98,
+            "plaster": 98
+          }
+        }
+      },
+      "confidence": "high",
+      "note": "Centro esportivo"
+    },
+    {
+      "id": "bldg_sports_hall",
+      "overture_filter": {
+        "theme": "buildings",
+        "type": "building",
+        "class": [
+          "sports_hall"
+        ],
+        "geometry": [
+          "polygon"
+        ]
+      },
+      "edgv_target": {
+        "table": "constr_edificacao_a",
+        "attributes": {
+          "tipo": 802
+        }
+      },
+      "overture_attribute_mapping": {
+        "names.primary": "nome",
+        "height": "altura",
+        "num_floors": "pavimentos",
+        "facade_material": {
+          "column": "material_construcao",
+          "map": {
+            "brick": 1,
+            "concrete": 2,
+            "metal": 3,
+            "stone": 4,
+            "wood": 5,
+            "glass": 98,
+            "plaster": 98
+          }
+        }
+      },
+      "confidence": "high",
+      "note": "Ginásio"
+    },
+    {
+      "id": "bldg_grandstand",
+      "overture_filter": {
+        "theme": "buildings",
+        "type": "building",
+        "class": [
+          "grandstand"
+        ],
+        "geometry": [
+          "polygon"
+        ]
+      },
+      "edgv_target": {
+        "table": "constr_edificacao_a",
+        "attributes": {
+          "tipo": 801
+        }
+      },
+      "overture_attribute_mapping": {
+        "names.primary": "nome",
+        "height": "altura",
+        "num_floors": "pavimentos",
+        "facade_material": {
+          "column": "material_construcao",
+          "map": {
+            "brick": 1,
+            "concrete": 2,
+            "metal": 3,
+            "stone": 4,
+            "wood": 5,
+            "glass": 98,
+            "plaster": 98
+          }
+        }
+      },
+      "confidence": "high",
+      "note": "Arquibancada"
+    },
+    {
+      "id": "bldg_pavilion",
+      "overture_filter": {
+        "theme": "buildings",
+        "type": "building",
+        "class": [
+          "pavilion"
+        ],
+        "geometry": [
+          "polygon"
+        ]
+      },
+      "edgv_target": {
+        "table": "constr_edificacao_a",
+        "attributes": {
+          "tipo": 818
+        }
+      },
+      "overture_attribute_mapping": {
+        "names.primary": "nome",
+        "height": "altura",
+        "num_floors": "pavimentos",
+        "facade_material": {
+          "column": "material_construcao",
+          "map": {
+            "brick": 1,
+            "concrete": 2,
+            "metal": 3,
+            "stone": 4,
+            "wood": 5,
+            "glass": 98,
+            "plaster": 98
+          }
+        }
+      },
+      "confidence": "high",
+      "note": "Pavilhão"
+    },
+    {
+      "id": "bldg_factory",
+      "overture_filter": {
+        "theme": "buildings",
+        "type": "building",
+        "class": [
+          "factory"
+        ],
+        "geometry": [
+          "polygon"
+        ]
+      },
+      "edgv_target": {
+        "table": "constr_edificacao_a",
+        "attributes": {
+          "tipo": 1098
+        }
+      },
+      "overture_attribute_mapping": {
+        "names.primary": "nome",
+        "height": "altura",
+        "num_floors": "pavimentos",
+        "facade_material": {
+          "column": "material_construcao",
+          "map": {
+            "brick": 1,
+            "concrete": 2,
+            "metal": 3,
+            "stone": 4,
+            "wood": 5,
+            "glass": 98,
+            "plaster": 98
+          }
+        }
+      },
+      "confidence": "high",
+      "note": "Fábrica"
+    },
+    {
+      "id": "bldg_manufacture",
+      "overture_filter": {
+        "theme": "buildings",
+        "type": "building",
+        "class": [
+          "manufacture"
+        ],
+        "geometry": [
+          "polygon"
+        ]
+      },
+      "edgv_target": {
+        "table": "constr_edificacao_a",
+        "attributes": {
+          "tipo": 1098
+        }
+      },
+      "overture_attribute_mapping": {
+        "names.primary": "nome",
+        "height": "altura",
+        "num_floors": "pavimentos",
+        "facade_material": {
+          "column": "material_construcao",
+          "map": {
+            "brick": 1,
+            "concrete": 2,
+            "metal": 3,
+            "stone": 4,
+            "wood": 5,
+            "glass": 98,
+            "plaster": 98
+          }
+        }
+      },
+      "confidence": "high",
+      "note": "Manufatura"
+    },
+    {
+      "id": "bldg_industrial",
+      "overture_filter": {
+        "theme": "buildings",
+        "type": "building",
+        "class": [
+          "industrial"
+        ],
+        "geometry": [
+          "polygon"
+        ]
+      },
+      "edgv_target": {
+        "table": "constr_edificacao_a",
+        "attributes": {
+          "tipo": 1098
+        }
+      },
+      "overture_attribute_mapping": {
+        "names.primary": "nome",
+        "height": "altura",
+        "num_floors": "pavimentos",
+        "facade_material": {
+          "column": "material_construcao",
+          "map": {
+            "brick": 1,
+            "concrete": 2,
+            "metal": 3,
+            "stone": 4,
+            "wood": 5,
+            "glass": 98,
+            "plaster": 98
+          }
+        }
+      },
+      "confidence": "high",
+      "note": "Edificação industrial"
+    },
+    {
+      "id": "bldg_barn",
+      "overture_filter": {
+        "theme": "buildings",
+        "type": "building",
+        "class": [
+          "barn"
+        ],
+        "geometry": [
+          "polygon"
+        ]
+      },
+      "edgv_target": {
+        "table": "constr_edificacao_a",
+        "attributes": {
+          "tipo": 1218
+        }
+      },
+      "overture_attribute_mapping": {
+        "names.primary": "nome",
+        "height": "altura",
+        "num_floors": "pavimentos",
+        "facade_material": {
+          "column": "material_construcao",
+          "map": {
+            "brick": 1,
+            "concrete": 2,
+            "metal": 3,
+            "stone": 4,
+            "wood": 5,
+            "glass": 98,
+            "plaster": 98
+          }
+        }
+      },
+      "confidence": "high",
+      "note": "Celeiro/galpão rural"
+    },
+    {
+      "id": "bldg_farm",
+      "overture_filter": {
+        "theme": "buildings",
+        "type": "building",
+        "class": [
+          "farm"
+        ],
+        "geometry": [
+          "polygon"
+        ]
+      },
+      "edgv_target": {
+        "table": "constr_edificacao_a",
+        "attributes": {
+          "tipo": 1212
+        }
+      },
+      "overture_attribute_mapping": {
+        "names.primary": "nome",
+        "height": "altura",
+        "num_floors": "pavimentos",
+        "facade_material": {
+          "column": "material_construcao",
+          "map": {
+            "brick": 1,
+            "concrete": 2,
+            "metal": 3,
+            "stone": 4,
+            "wood": 5,
+            "glass": 98,
+            "plaster": 98
+          }
+        }
+      },
+      "confidence": "high",
+      "note": "Sede de fazenda"
+    },
+    {
+      "id": "bldg_farm_auxiliary",
+      "overture_filter": {
+        "theme": "buildings",
+        "type": "building",
+        "class": [
+          "farm_auxiliary"
+        ],
+        "geometry": [
+          "polygon"
+        ]
+      },
+      "edgv_target": {
+        "table": "constr_edificacao_a",
+        "attributes": {
+          "tipo": 1298
+        }
+      },
+      "overture_attribute_mapping": {
+        "names.primary": "nome",
+        "height": "altura",
+        "num_floors": "pavimentos",
+        "facade_material": {
+          "column": "material_construcao",
+          "map": {
+            "brick": 1,
+            "concrete": 2,
+            "metal": 3,
+            "stone": 4,
+            "wood": 5,
+            "glass": 98,
+            "plaster": 98
+          }
+        }
+      },
+      "confidence": "high",
+      "note": "Edificação rural auxiliar"
+    },
+    {
+      "id": "bldg_stable",
+      "overture_filter": {
+        "theme": "buildings",
+        "type": "building",
+        "class": [
+          "stable"
+        ],
+        "geometry": [
+          "polygon"
+        ]
+      },
+      "edgv_target": {
+        "table": "constr_edificacao_a",
+        "attributes": {
+          "tipo": 1218
+        }
+      },
+      "overture_attribute_mapping": {
+        "names.primary": "nome",
+        "height": "altura",
+        "num_floors": "pavimentos",
+        "facade_material": {
+          "column": "material_construcao",
+          "map": {
+            "brick": 1,
+            "concrete": 2,
+            "metal": 3,
+            "stone": 4,
+            "wood": 5,
+            "glass": 98,
+            "plaster": 98
+          }
+        }
+      },
+      "confidence": "high",
+      "note": "Estábulo"
+    },
+    {
+      "id": "bldg_cowshed",
+      "overture_filter": {
+        "theme": "buildings",
+        "type": "building",
+        "class": [
+          "cowshed"
+        ],
+        "geometry": [
+          "polygon"
+        ]
+      },
+      "edgv_target": {
+        "table": "constr_edificacao_a",
+        "attributes": {
+          "tipo": 1218
+        }
+      },
+      "overture_attribute_mapping": {
+        "names.primary": "nome",
+        "height": "altura",
+        "num_floors": "pavimentos",
+        "facade_material": {
+          "column": "material_construcao",
+          "map": {
+            "brick": 1,
+            "concrete": 2,
+            "metal": 3,
+            "stone": 4,
+            "wood": 5,
+            "glass": 98,
+            "plaster": 98
+          }
+        }
+      },
+      "confidence": "high",
+      "note": "Curral"
+    },
+    {
+      "id": "bldg_sty",
+      "overture_filter": {
+        "theme": "buildings",
+        "type": "building",
+        "class": [
+          "sty"
+        ],
+        "geometry": [
+          "polygon"
+        ]
+      },
+      "edgv_target": {
+        "table": "constr_edificacao_a",
+        "attributes": {
+          "tipo": 1217
+        }
+      },
+      "overture_attribute_mapping": {
+        "names.primary": "nome",
+        "height": "altura",
+        "num_floors": "pavimentos",
+        "facade_material": {
+          "column": "material_construcao",
+          "map": {
+            "brick": 1,
+            "concrete": 2,
+            "metal": 3,
+            "stone": 4,
+            "wood": 5,
+            "glass": 98,
+            "plaster": 98
+          }
+        }
+      },
+      "confidence": "high",
+      "note": "Pocilga"
+    },
+    {
+      "id": "bldg_greenhouse",
+      "overture_filter": {
+        "theme": "buildings",
+        "type": "building",
+        "class": [
+          "greenhouse",
+          "glasshouse"
+        ],
+        "geometry": [
+          "polygon"
+        ]
+      },
+      "edgv_target": {
+        "table": "constr_edificacao_a",
+        "attributes": {
+          "tipo": 1215
+        }
+      },
+      "overture_attribute_mapping": {
+        "names.primary": "nome",
+        "height": "altura",
+        "num_floors": "pavimentos",
+        "facade_material": {
+          "column": "material_construcao",
+          "map": {
+            "brick": 1,
+            "concrete": 2,
+            "metal": 3,
+            "stone": 4,
+            "wood": 5,
+            "glass": 98,
+            "plaster": 98
+          }
+        }
+      },
+      "confidence": "high",
+      "note": "Estufa/viveiro"
+    },
+    {
+      "id": "bldg_transformer",
+      "overture_filter": {
+        "theme": "buildings",
+        "type": "building",
+        "class": [
+          "transformer_tower"
+        ],
+        "geometry": [
+          "polygon"
+        ]
+      },
+      "edgv_target": {
+        "table": "constr_edificacao_a",
+        "attributes": {
+          "tipo": 201
+        }
+      },
+      "overture_attribute_mapping": {
+        "names.primary": "nome",
+        "height": "altura",
+        "num_floors": "pavimentos",
+        "facade_material": {
+          "column": "material_construcao",
+          "map": {
+            "brick": 1,
+            "concrete": 2,
+            "metal": 3,
+            "stone": 4,
+            "wood": 5,
+            "glass": 98,
+            "plaster": 98
+          }
+        }
+      },
+      "confidence": "high",
+      "note": "Edificação de energia"
+    },
+    {
+      "id": "bldg_apartments",
+      "overture_filter": {
+        "theme": "buildings",
+        "type": "building",
+        "class": [
+          "apartments"
+        ],
+        "geometry": [
+          "polygon"
+        ]
+      },
+      "edgv_target": {
+        "table": "constr_edificacao_a",
+        "attributes": {
+          "tipo": 0
+        }
+      },
+      "overture_attribute_mapping": {
+        "names.primary": "nome",
+        "height": "altura",
+        "num_floors": "pavimentos",
+        "facade_material": {
+          "column": "material_construcao",
+          "map": {
+            "brick": 1,
+            "concrete": 2,
+            "metal": 3,
+            "stone": 4,
+            "wood": 5,
+            "glass": 98,
+            "plaster": 98
+          }
+        }
+      },
+      "confidence": "high",
+      "note": "Apartamentos"
+    },
+    {
+      "id": "bldg_house",
+      "overture_filter": {
+        "theme": "buildings",
+        "type": "building",
+        "class": [
+          "house",
+          "detached",
+          "semi",
+          "semidetached_house",
+          "terrace",
+          "dwelling_house",
+          "bungalow"
+        ],
+        "geometry": [
+          "polygon"
+        ]
+      },
+      "edgv_target": {
+        "table": "constr_edificacao_a",
+        "attributes": {
+          "tipo": 0
+        }
+      },
+      "overture_attribute_mapping": {
+        "names.primary": "nome",
+        "height": "altura",
+        "num_floors": "pavimentos",
+        "facade_material": {
+          "column": "material_construcao",
+          "map": {
+            "brick": 1,
+            "concrete": 2,
+            "metal": 3,
+            "stone": 4,
+            "wood": 5,
+            "glass": 98,
+            "plaster": 98
+          }
+        }
+      },
+      "confidence": "high",
+      "note": "Residência"
+    },
+    {
+      "id": "bldg_residential",
+      "overture_filter": {
+        "theme": "buildings",
+        "type": "building",
+        "class": [
+          "residential"
+        ],
+        "geometry": [
+          "polygon"
+        ]
+      },
+      "edgv_target": {
+        "table": "constr_edificacao_a",
+        "attributes": {
+          "tipo": 0
+        }
+      },
+      "overture_attribute_mapping": {
+        "names.primary": "nome",
+        "height": "altura",
+        "num_floors": "pavimentos",
+        "facade_material": {
+          "column": "material_construcao",
+          "map": {
+            "brick": 1,
+            "concrete": 2,
+            "metal": 3,
+            "stone": 4,
+            "wood": 5,
+            "glass": 98,
+            "plaster": 98
+          }
+        }
+      },
+      "confidence": "high",
+      "note": "Edificação residencial"
+    },
+    {
+      "id": "bldg_cabin",
+      "overture_filter": {
+        "theme": "buildings",
+        "type": "building",
+        "class": [
+          "cabin"
+        ],
+        "geometry": [
+          "polygon"
+        ]
+      },
+      "edgv_target": {
+        "table": "constr_edificacao_a",
+        "attributes": {
+          "tipo": 0
+        }
+      },
+      "overture_attribute_mapping": {
+        "names.primary": "nome",
+        "height": "altura",
+        "num_floors": "pavimentos",
+        "facade_material": {
+          "column": "material_construcao",
+          "map": {
+            "brick": 1,
+            "concrete": 2,
+            "metal": 3,
+            "stone": 4,
+            "wood": 5,
+            "glass": 98,
+            "plaster": 98
+          }
+        }
+      },
+      "confidence": "high",
+      "note": "Cabana"
+    },
+    {
+      "id": "bldg_hut",
+      "overture_filter": {
+        "theme": "buildings",
+        "type": "building",
+        "class": [
+          "hut"
+        ],
+        "geometry": [
+          "polygon"
+        ]
+      },
+      "edgv_target": {
+        "table": "constr_edificacao_a",
+        "attributes": {
+          "tipo": 0
+        }
+      },
+      "overture_attribute_mapping": {
+        "names.primary": "nome",
+        "height": "altura",
+        "num_floors": "pavimentos",
+        "facade_material": {
+          "column": "material_construcao",
+          "map": {
+            "brick": 1,
+            "concrete": 2,
+            "metal": 3,
+            "stone": 4,
+            "wood": 5,
+            "glass": 98,
+            "plaster": 98
+          }
+        }
+      },
+      "confidence": "medium",
+      "note": "Habitação precária"
+    },
+    {
+      "id": "bldg_houseboat",
+      "overture_filter": {
+        "theme": "buildings",
+        "type": "building",
+        "class": [
+          "houseboat"
+        ],
+        "geometry": [
+          "polygon"
+        ]
+      },
+      "edgv_target": {
+        "table": "constr_edificacao_a",
+        "attributes": {
+          "tipo": 3
+        }
+      },
+      "overture_attribute_mapping": {
+        "names.primary": "nome",
+        "height": "altura",
+        "num_floors": "pavimentos",
+        "facade_material": {
+          "column": "material_construcao",
+          "map": {
+            "brick": 1,
+            "concrete": 2,
+            "metal": 3,
+            "stone": 4,
+            "wood": 5,
+            "glass": 98,
+            "plaster": 98
+          }
+        }
+      },
+      "confidence": "high",
+      "note": "Flutuante/palafita"
+    },
+    {
+      "id": "bldg_stilt_house",
+      "overture_filter": {
+        "theme": "buildings",
+        "type": "building",
+        "class": [
+          "stilt_house"
+        ],
+        "geometry": [
+          "polygon"
+        ]
+      },
+      "edgv_target": {
+        "table": "constr_edificacao_a",
+        "attributes": {
+          "tipo": 3
+        }
+      },
+      "overture_attribute_mapping": {
+        "names.primary": "nome",
+        "height": "altura",
+        "num_floors": "pavimentos",
+        "facade_material": {
+          "column": "material_construcao",
+          "map": {
+            "brick": 1,
+            "concrete": 2,
+            "metal": 3,
+            "stone": 4,
+            "wood": 5,
+            "glass": 98,
+            "plaster": 98
+          }
+        }
+      },
+      "confidence": "high",
+      "note": "Palafita"
+    },
+    {
+      "id": "bldg_static_caravan",
+      "overture_filter": {
+        "theme": "buildings",
+        "type": "building",
+        "class": [
+          "static_caravan"
+        ],
+        "geometry": [
+          "polygon"
+        ]
+      },
+      "edgv_target": {
+        "table": "constr_edificacao_a",
+        "attributes": {
+          "tipo": 0
+        }
+      },
+      "overture_attribute_mapping": {
+        "names.primary": "nome",
+        "height": "altura",
+        "num_floors": "pavimentos",
+        "facade_material": {
+          "column": "material_construcao",
+          "map": {
+            "brick": 1,
+            "concrete": 2,
+            "metal": 3,
+            "stone": 4,
+            "wood": 5,
+            "glass": 98,
+            "plaster": 98
+          }
+        }
+      },
+      "confidence": "medium",
+      "note": "Trailer fixo"
+    },
+    {
+      "id": "bldg_garage",
+      "overture_filter": {
+        "theme": "buildings",
+        "type": "building",
+        "class": [
+          "garage",
+          "garages",
+          "carport"
+        ],
+        "geometry": [
+          "polygon"
+        ]
+      },
+      "edgv_target": {
+        "table": "constr_edificacao_a",
+        "attributes": {
+          "tipo": 0
+        }
+      },
+      "overture_attribute_mapping": {
+        "names.primary": "nome",
+        "height": "altura",
+        "num_floors": "pavimentos",
+        "facade_material": {
+          "column": "material_construcao",
+          "map": {
+            "brick": 1,
+            "concrete": 2,
+            "metal": 3,
+            "stone": 4,
+            "wood": 5,
+            "glass": 98,
+            "plaster": 98
+          }
+        }
+      },
+      "confidence": "medium",
+      "note": "Garagem/abrigo veículo"
+    },
+    {
+      "id": "bldg_shed",
+      "overture_filter": {
+        "theme": "buildings",
+        "type": "building",
+        "class": [
+          "shed"
+        ],
+        "geometry": [
+          "polygon"
+        ]
+      },
+      "edgv_target": {
+        "table": "constr_edificacao_a",
+        "attributes": {
+          "tipo": 0
+        }
+      },
+      "overture_attribute_mapping": {
+        "names.primary": "nome",
+        "height": "altura",
+        "num_floors": "pavimentos",
+        "facade_material": {
+          "column": "material_construcao",
+          "map": {
+            "brick": 1,
+            "concrete": 2,
+            "metal": 3,
+            "stone": 4,
+            "wood": 5,
+            "glass": 98,
+            "plaster": 98
+          }
+        }
+      },
+      "confidence": "medium",
+      "note": "Galpão/telheiro"
+    },
+    {
+      "id": "bldg_roof",
+      "overture_filter": {
+        "theme": "buildings",
+        "type": "building",
+        "class": [
+          "roof"
+        ],
+        "geometry": [
+          "polygon"
+        ]
+      },
+      "edgv_target": {
+        "table": "constr_edificacao_a",
+        "attributes": {
+          "tipo": 0
+        }
+      },
+      "overture_attribute_mapping": {
+        "names.primary": "nome",
+        "height": "altura",
+        "num_floors": "pavimentos",
+        "facade_material": {
+          "column": "material_construcao",
+          "map": {
+            "brick": 1,
+            "concrete": 2,
+            "metal": 3,
+            "stone": 4,
+            "wood": 5,
+            "glass": 98,
+            "plaster": 98
+          }
+        }
+      },
+      "confidence": "medium",
+      "note": "Cobertura/telheiro"
+    },
+    {
+      "id": "bldg_toilets",
+      "overture_filter": {
+        "theme": "buildings",
+        "type": "building",
+        "class": [
+          "toilets"
+        ],
+        "geometry": [
+          "polygon"
+        ]
+      },
+      "edgv_target": {
+        "table": "constr_edificacao_a",
+        "attributes": {
+          "tipo": 0
+        }
+      },
+      "overture_attribute_mapping": {
+        "names.primary": "nome",
+        "height": "altura",
+        "num_floors": "pavimentos",
+        "facade_material": {
+          "column": "material_construcao",
+          "map": {
+            "brick": 1,
+            "concrete": 2,
+            "metal": 3,
+            "stone": 4,
+            "wood": 5,
+            "glass": 98,
+            "plaster": 98
+          }
+        }
+      },
+      "confidence": "medium",
+      "note": "Sanitário"
+    },
+    {
+      "id": "bldg_guardhouse",
+      "overture_filter": {
+        "theme": "buildings",
+        "type": "building",
+        "class": [
+          "guardhouse"
+        ],
+        "geometry": [
+          "polygon"
+        ]
+      },
+      "edgv_target": {
+        "table": "constr_edificacao_a",
+        "attributes": {
+          "tipo": 3002
+        }
+      },
+      "overture_attribute_mapping": {
+        "names.primary": "nome",
+        "height": "altura",
+        "num_floors": "pavimentos",
+        "facade_material": {
+          "column": "material_construcao",
+          "map": {
+            "brick": 1,
+            "concrete": 2,
+            "metal": 3,
+            "stone": 4,
+            "wood": 5,
+            "glass": 98,
+            "plaster": 98
+          }
+        }
+      },
+      "confidence": "high",
+      "note": "Guarita"
+    },
+    {
+      "id": "bldg_generic",
+      "overture_filter": {
+        "theme": "buildings",
+        "type": "building",
+        "class": null,
+        "geometry": [
+          "polygon"
+        ]
+      },
+      "edgv_target": {
+        "table": "constr_edificacao_a",
+        "attributes": {
+          "tipo": 0
+        }
+      },
+      "overture_attribute_mapping": {
+        "names.primary": "nome",
+        "height": "altura",
+        "num_floors": "pavimentos",
+        "facade_material": {
+          "column": "material_construcao",
+          "map": {
+            "brick": 1,
+            "concrete": 2,
+            "metal": 3,
+            "stone": 4,
+            "wood": 5,
+            "glass": 98,
+            "plaster": 98
+          }
+        }
+      },
+      "confidence": "high",
+      "note": "Edificação genérica (fallback — class vazio ou desconhecido)"
+    },
+    {
+      "_comment": "=== BUILDINGS → constr_deposito_a ==="
+    },
+    {
+      "id": "bldg_silo",
+      "overture_filter": {
+        "theme": "buildings",
+        "type": "building",
+        "class": [
+          "silo"
+        ],
+        "geometry": [
+          "polygon"
+        ]
+      },
+      "edgv_target": {
+        "table": "constr_deposito_a",
+        "attributes": {
+          "tipo": 109
+        }
+      },
+      "overture_attribute_mapping": {
+        "names.primary": "nome",
+        "height": "altura",
+        "num_floors": "pavimentos",
+        "facade_material": {
+          "column": "material_construcao",
+          "map": {
+            "brick": 1,
+            "concrete": 2,
+            "metal": 3,
+            "stone": 4,
+            "wood": 5,
+            "glass": 98,
+            "plaster": 98
+          }
+        }
+      },
+      "confidence": "high",
+      "note": "Silo"
+    },
+    {
+      "id": "bldg_storage_tank",
+      "overture_filter": {
+        "theme": "buildings",
+        "type": "building",
+        "class": [
+          "storage_tank",
+          "slurry_tank"
+        ],
+        "geometry": [
+          "polygon"
+        ]
+      },
+      "edgv_target": {
+        "table": "constr_deposito_a",
+        "attributes": {
+          "tipo": 201
+        }
+      },
+      "overture_attribute_mapping": {
+        "names.primary": "nome",
+        "height": "altura",
+        "num_floors": "pavimentos",
+        "facade_material": {
+          "column": "material_construcao",
+          "map": {
+            "brick": 1,
+            "concrete": 2,
+            "metal": 3,
+            "stone": 4,
+            "wood": 5,
+            "glass": 98,
+            "plaster": 98
+          }
+        }
+      },
+      "confidence": "high",
+      "note": "Tanque de armazenamento"
+    },
+    {
+      "id": "bldg_warehouse",
+      "overture_filter": {
+        "theme": "buildings",
+        "type": "building",
+        "class": [
+          "warehouse"
+        ],
+        "geometry": [
+          "polygon"
+        ]
+      },
+      "edgv_target": {
+        "table": "constr_deposito_a",
+        "attributes": {
+          "tipo": 132
+        }
+      },
+      "overture_attribute_mapping": {
+        "names.primary": "nome",
+        "height": "altura",
+        "num_floors": "pavimentos",
+        "facade_material": {
+          "column": "material_construcao",
+          "map": {
+            "brick": 1,
+            "concrete": 2,
+            "metal": 3,
+            "stone": 4,
+            "wood": 5,
+            "glass": 98,
+            "plaster": 98
+          }
+        }
+      },
+      "confidence": "high",
+      "note": "Armazém"
+    },
+    {
+      "id": "bldg_digester",
+      "overture_filter": {
+        "theme": "buildings",
+        "type": "building",
+        "class": [
+          "digester"
+        ],
+        "geometry": [
+          "polygon"
+        ]
+      },
+      "edgv_target": {
+        "table": "constr_deposito_a",
+        "attributes": {
+          "tipo": 198
+        }
+      },
+      "overture_attribute_mapping": {
+        "names.primary": "nome",
+        "height": "altura",
+        "num_floors": "pavimentos",
+        "facade_material": {
+          "column": "material_construcao",
+          "map": {
+            "brick": 1,
+            "concrete": 2,
+            "metal": 3,
+            "stone": 4,
+            "wood": 5,
+            "glass": 98,
+            "plaster": 98
+          }
+        }
+      },
+      "confidence": "medium",
+      "note": "Digestor/biodigestor"
+    },
+    {
+      "_comment": "=== TRANSPORTATION (road) → infra_via_deslocamento_l ==="
+    },
+    {
+      "id": "road_motorway",
+      "overture_filter": {
+        "theme": "transportation",
+        "type": "segment",
+        "subtype": "road",
+        "class": [
+          "motorway"
+        ],
+        "geometry": [
+          "line"
+        ]
+      },
+      "edgv_target": {
+        "table": "infra_via_deslocamento_l",
+        "attributes": {
+          "tipo": 4,
+          "situacao_fisica": 3,
+          "jurisdicao": 1,
+          "revestimento": 3
+        }
+      },
+      "overture_attribute_mapping": {
+        "names.primary": "nome",
+        "road_surface": {
+          "column": "revestimento",
+          "map": {
+            "paved": 3,
+            "asphalt": 3,
+            "concrete": 3,
+            "compacted": 2,
+            "gravel": 2,
+            "fine_gravel": 2,
+            "unpaved": 1,
+            "ground": 1,
+            "dirt": 1,
+            "sand": 1,
+            "cobblestone": 4,
+            "sett": 4
+          }
+        }
+      },
+      "confidence": "high",
+      "note": "Autoestrada"
+    },
+    {
+      "id": "road_trunk",
+      "overture_filter": {
+        "theme": "transportation",
+        "type": "segment",
+        "subtype": "road",
+        "class": [
+          "trunk"
+        ],
+        "geometry": [
+          "line"
+        ]
+      },
+      "edgv_target": {
+        "table": "infra_via_deslocamento_l",
+        "attributes": {
+          "tipo": 2,
+          "situacao_fisica": 3,
+          "revestimento": 3
+        }
+      },
+      "overture_attribute_mapping": {
+        "names.primary": "nome",
+        "road_surface": {
+          "column": "revestimento",
+          "map": {
+            "paved": 3,
+            "asphalt": 3,
+            "concrete": 3,
+            "compacted": 2,
+            "gravel": 2,
+            "fine_gravel": 2,
+            "unpaved": 1,
+            "ground": 1,
+            "dirt": 1,
+            "sand": 1,
+            "cobblestone": 4,
+            "sett": 4
+          }
+        }
+      },
+      "confidence": "high",
+      "note": "Rodovia principal (trunk)"
+    },
+    {
+      "id": "road_primary",
+      "overture_filter": {
+        "theme": "transportation",
+        "type": "segment",
+        "subtype": "road",
+        "class": [
+          "primary"
+        ],
+        "geometry": [
+          "line"
+        ]
+      },
+      "edgv_target": {
+        "table": "infra_via_deslocamento_l",
+        "attributes": {
+          "tipo": 2,
+          "situacao_fisica": 3,
+          "revestimento": 3
+        }
+      },
+      "overture_attribute_mapping": {
+        "names.primary": "nome",
+        "road_surface": {
+          "column": "revestimento",
+          "map": {
+            "paved": 3,
+            "asphalt": 3,
+            "concrete": 3,
+            "compacted": 2,
+            "gravel": 2,
+            "fine_gravel": 2,
+            "unpaved": 1,
+            "ground": 1,
+            "dirt": 1,
+            "sand": 1,
+            "cobblestone": 4,
+            "sett": 4
+          }
+        }
+      },
+      "confidence": "high",
+      "note": "Rodovia primária"
+    },
+    {
+      "id": "road_secondary",
+      "overture_filter": {
+        "theme": "transportation",
+        "type": "segment",
+        "subtype": "road",
+        "class": [
+          "secondary"
+        ],
+        "geometry": [
+          "line"
+        ]
+      },
+      "edgv_target": {
+        "table": "infra_via_deslocamento_l",
+        "attributes": {
+          "tipo": 2,
+          "situacao_fisica": 3
+        }
+      },
+      "overture_attribute_mapping": {
+        "names.primary": "nome",
+        "road_surface": {
+          "column": "revestimento",
+          "map": {
+            "paved": 3,
+            "asphalt": 3,
+            "concrete": 3,
+            "compacted": 2,
+            "gravel": 2,
+            "fine_gravel": 2,
+            "unpaved": 1,
+            "ground": 1,
+            "dirt": 1,
+            "sand": 1,
+            "cobblestone": 4,
+            "sett": 4
+          }
+        }
+      },
+      "confidence": "high",
+      "note": "Rodovia secundária"
+    },
+    {
+      "id": "road_tertiary",
+      "overture_filter": {
+        "theme": "transportation",
+        "type": "segment",
+        "subtype": "road",
+        "class": [
+          "tertiary"
+        ],
+        "geometry": [
+          "line"
+        ]
+      },
+      "edgv_target": {
+        "table": "infra_via_deslocamento_l",
+        "attributes": {
+          "tipo": 2,
+          "situacao_fisica": 3
+        }
+      },
+      "overture_attribute_mapping": {
+        "names.primary": "nome",
+        "road_surface": {
+          "column": "revestimento",
+          "map": {
+            "paved": 3,
+            "asphalt": 3,
+            "concrete": 3,
+            "compacted": 2,
+            "gravel": 2,
+            "fine_gravel": 2,
+            "unpaved": 1,
+            "ground": 1,
+            "dirt": 1,
+            "sand": 1,
+            "cobblestone": 4,
+            "sett": 4
+          }
+        }
+      },
+      "confidence": "high",
+      "note": "Rodovia terciária"
+    },
+    {
+      "id": "road_residential",
+      "overture_filter": {
+        "theme": "transportation",
+        "type": "segment",
+        "subtype": "road",
+        "class": [
+          "residential"
+        ],
+        "geometry": [
+          "line"
+        ]
+      },
+      "edgv_target": {
+        "table": "infra_via_deslocamento_l",
+        "attributes": {
+          "tipo": 5,
+          "situacao_fisica": 3
+        }
+      },
+      "overture_attribute_mapping": {
+        "names.primary": "nome",
+        "road_surface": {
+          "column": "revestimento",
+          "map": {
+            "paved": 3,
+            "asphalt": 3,
+            "concrete": 3,
+            "compacted": 2,
+            "gravel": 2,
+            "fine_gravel": 2,
+            "unpaved": 1,
+            "ground": 1,
+            "dirt": 1,
+            "sand": 1,
+            "cobblestone": 4,
+            "sett": 4
+          }
+        }
+      },
+      "confidence": "high",
+      "note": "Arruamento residencial"
+    },
+    {
+      "id": "road_unclassified",
+      "overture_filter": {
+        "theme": "transportation",
+        "type": "segment",
+        "subtype": "road",
+        "class": [
+          "unclassified"
+        ],
+        "geometry": [
+          "line"
+        ]
+      },
+      "edgv_target": {
+        "table": "infra_via_deslocamento_l",
+        "attributes": {
+          "tipo": 2,
+          "situacao_fisica": 3
+        }
+      },
+      "overture_attribute_mapping": {
+        "names.primary": "nome",
+        "road_surface": {
+          "column": "revestimento",
+          "map": {
+            "paved": 3,
+            "asphalt": 3,
+            "concrete": 3,
+            "compacted": 2,
+            "gravel": 2,
+            "fine_gravel": 2,
+            "unpaved": 1,
+            "ground": 1,
+            "dirt": 1,
+            "sand": 1,
+            "cobblestone": 4,
+            "sett": 4
+          }
+        }
+      },
+      "confidence": "medium",
+      "note": "Via não classificada"
+    },
+    {
+      "id": "road_living_street",
+      "overture_filter": {
+        "theme": "transportation",
+        "type": "segment",
+        "subtype": "road",
+        "class": [
+          "living_street"
+        ],
+        "geometry": [
+          "line"
+        ]
+      },
+      "edgv_target": {
+        "table": "infra_via_deslocamento_l",
+        "attributes": {
+          "tipo": 5,
+          "situacao_fisica": 3
+        }
+      },
+      "overture_attribute_mapping": {
+        "names.primary": "nome"
+      },
+      "confidence": "high",
+      "note": "Rua de convivencia"
+    },
+    {
+      "id": "road_service",
+      "overture_filter": {
+        "theme": "transportation",
+        "type": "segment",
+        "subtype": "road",
+        "class": [
+          "service"
+        ],
+        "geometry": [
+          "line"
+        ]
+      },
+      "edgv_target": {
+        "table": "infra_via_deslocamento_l",
+        "attributes": {
+          "tipo": 5,
+          "situacao_fisica": 3
+        }
+      },
+      "overture_attribute_mapping": {
+        "names.primary": "nome"
+      },
+      "confidence": "medium",
+      "note": "Via de servico"
+    },
+    {
+      "id": "road_pedestrian",
+      "overture_filter": {
+        "theme": "transportation",
+        "type": "segment",
+        "subtype": "road",
+        "class": [
+          "pedestrian"
+        ],
+        "geometry": [
+          "line"
+        ]
+      },
+      "edgv_target": {
+        "table": "infra_via_deslocamento_l",
+        "attributes": {
+          "tipo": 5,
+          "situacao_fisica": 3
+        }
+      },
+      "overture_attribute_mapping": {
+        "names.primary": "nome"
+      },
+      "confidence": "high",
+      "note": "Via de pedestres"
+    },
+    {
+      "id": "road_track",
+      "overture_filter": {
+        "theme": "transportation",
+        "type": "segment",
+        "subtype": "road",
+        "class": [
+          "track"
+        ],
+        "geometry": [
+          "line"
+        ]
+      },
+      "edgv_target": {
+        "table": "infra_via_deslocamento_l",
+        "attributes": {
+          "tipo": 3,
+          "situacao_fisica": 3
+        }
+      },
+      "overture_attribute_mapping": {
+        "names.primary": "nome"
+      },
+      "confidence": "high",
+      "note": "Caminho carrocavel"
+    },
+    {
+      "id": "road_path",
+      "overture_filter": {
+        "theme": "transportation",
+        "type": "segment",
+        "subtype": "road",
+        "class": [
+          "path"
+        ],
+        "geometry": [
+          "line"
+        ]
+      },
+      "edgv_target": {
+        "table": "infra_via_deslocamento_l",
+        "attributes": {
+          "tipo": 6,
+          "situacao_fisica": 3
+        }
+      },
+      "overture_attribute_mapping": {
+        "names.primary": "nome"
+      },
+      "confidence": "high",
+      "note": "Trilha/picada"
+    },
+    {
+      "id": "road_footway",
+      "overture_filter": {
+        "theme": "transportation",
+        "type": "segment",
+        "subtype": "road",
+        "class": [
+          "footway"
+        ],
+        "geometry": [
+          "line"
+        ]
+      },
+      "edgv_target": {
+        "table": "infra_via_deslocamento_l",
+        "attributes": {
+          "tipo": 6,
+          "situacao_fisica": 3
+        }
+      },
+      "overture_attribute_mapping": {
+        "names.primary": "nome"
+      },
+      "confidence": "medium",
+      "note": "Caminho de pedestres"
+    },
+    {
+      "id": "road_cycleway",
+      "overture_filter": {
+        "theme": "transportation",
+        "type": "segment",
+        "subtype": "road",
+        "class": [
+          "cycleway"
+        ],
+        "geometry": [
+          "line"
+        ]
+      },
+      "edgv_target": {
+        "table": "infra_via_deslocamento_l",
+        "attributes": {
+          "tipo": 5,
+          "situacao_fisica": 3
+        }
+      },
+      "overture_attribute_mapping": {
+        "names.primary": "nome"
+      },
+      "confidence": "medium",
+      "note": "Ciclovia"
+    },
+    {
+      "id": "road_steps",
+      "overture_filter": {
+        "theme": "transportation",
+        "type": "segment",
+        "subtype": "road",
+        "class": [
+          "steps"
+        ],
+        "geometry": [
+          "line"
+        ]
+      },
+      "edgv_target": {
+        "table": "infra_via_deslocamento_l",
+        "attributes": {
+          "tipo": 6,
+          "situacao_fisica": 3
+        }
+      },
+      "overture_attribute_mapping": {
+        "names.primary": "nome"
+      },
+      "confidence": "low",
+      "note": "Escadaria"
+    },
+    {
+      "_comment": "=== TRANSPORTATION (rail) → infra_ferrovia_l ==="
+    },
+    {
+      "id": "rail_train",
+      "overture_filter": {
+        "theme": "transportation",
+        "type": "segment",
+        "subtype": "rail",
+        "geometry": [
+          "line"
+        ]
+      },
+      "edgv_target": {
+        "table": "infra_ferrovia_l",
+        "attributes": {
+          "tipo": 7,
+          "situacao_fisica": 3
+        }
+      },
+      "overture_attribute_mapping": {
+        "names.primary": "nome"
+      },
+      "confidence": "high",
+      "note": "Ferrovia (rail segment)"
+    },
+    {
+      "_comment": "=== PLACES → constr_edificacao_p ==="
+    },
+    {
+      "id": "place_hospital",
+      "overture_filter": {
+        "theme": "places",
+        "type": "place",
+        "category": [
+          "hospital"
+        ],
+        "geometry": [
+          "point"
+        ],
+        "min_confidence": 0.5
+      },
+      "edgv_target": {
+        "table": "constr_edificacao_p",
+        "attributes": {
+          "tipo": 2025
+        }
+      },
+      "overture_attribute_mapping": {
+        "names.primary": "nome",
+        "address": "endereco"
+      },
+      "confidence": "high",
+      "note": "Hospital (POI)"
+    },
+    {
+      "id": "place_school",
+      "overture_filter": {
+        "theme": "places",
+        "type": "place",
+        "category": [
+          "school",
+          "education"
+        ],
+        "geometry": [
+          "point"
+        ],
+        "min_confidence": 0.5
+      },
+      "edgv_target": {
+        "table": "constr_edificacao_p",
+        "attributes": {
+          "tipo": 518
+        }
+      },
+      "overture_attribute_mapping": {
+        "names.primary": "nome",
+        "address": "endereco"
+      },
+      "confidence": "high",
+      "note": "Escola (POI)"
+    },
+    {
+      "id": "place_university",
+      "overture_filter": {
+        "theme": "places",
+        "type": "place",
+        "category": [
+          "university"
+        ],
+        "geometry": [
+          "point"
+        ],
+        "min_confidence": 0.5
+      },
+      "edgv_target": {
+        "table": "constr_edificacao_p",
+        "attributes": {
+          "tipo": 521
+        }
+      },
+      "overture_attribute_mapping": {
+        "names.primary": "nome",
+        "address": "endereco"
+      },
+      "confidence": "high",
+      "note": "Universidade (POI)"
+    },
+    {
+      "id": "place_church",
+      "overture_filter": {
+        "theme": "places",
+        "type": "place",
+        "category": [
+          "church",
+          "place_of_worship"
+        ],
+        "geometry": [
+          "point"
+        ],
+        "min_confidence": 0.5
+      },
+      "edgv_target": {
+        "table": "constr_edificacao_p",
+        "attributes": {
+          "tipo": 601
+        }
+      },
+      "overture_attribute_mapping": {
+        "names.primary": "nome",
+        "address": "endereco"
+      },
+      "confidence": "high",
+      "note": "Igreja/templo (POI)"
+    },
+    {
+      "id": "place_police",
+      "overture_filter": {
+        "theme": "places",
+        "type": "place",
+        "category": [
+          "police_station"
+        ],
+        "geometry": [
+          "point"
+        ],
+        "min_confidence": 0.5
+      },
+      "edgv_target": {
+        "table": "constr_edificacao_p",
+        "attributes": {
+          "tipo": 3001
+        }
+      },
+      "overture_attribute_mapping": {
+        "names.primary": "nome",
+        "address": "endereco"
+      },
+      "confidence": "high",
+      "note": "Delegacia (POI)"
+    },
+    {
+      "id": "place_fire_station",
+      "overture_filter": {
+        "theme": "places",
+        "type": "place",
+        "category": [
+          "fire_station"
+        ],
+        "geometry": [
+          "point"
+        ],
+        "min_confidence": 0.5
+      },
+      "edgv_target": {
+        "table": "constr_edificacao_p",
+        "attributes": {
+          "tipo": 3007
+        }
+      },
+      "overture_attribute_mapping": {
+        "names.primary": "nome",
+        "address": "endereco"
+      },
+      "confidence": "high",
+      "note": "Bombeiros (POI)"
+    },
+    {
+      "id": "place_bank",
+      "overture_filter": {
+        "theme": "places",
+        "type": "place",
+        "category": [
+          "bank"
+        ],
+        "geometry": [
+          "point"
+        ],
+        "min_confidence": 0.5
+      },
+      "edgv_target": {
+        "table": "constr_edificacao_p",
+        "attributes": {
+          "tipo": 908
+        }
+      },
+      "overture_attribute_mapping": {
+        "names.primary": "nome",
+        "address": "endereco"
+      },
+      "confidence": "high",
+      "note": "Banco (POI)"
+    },
+    {
+      "id": "place_hotel",
+      "overture_filter": {
+        "theme": "places",
+        "type": "place",
+        "category": [
+          "hotel",
+          "motel",
+          "hostel"
+        ],
+        "geometry": [
+          "point"
+        ],
+        "min_confidence": 0.5
+      },
+      "edgv_target": {
+        "table": "constr_edificacao_p",
+        "attributes": {
+          "tipo": 907
+        }
+      },
+      "overture_attribute_mapping": {
+        "names.primary": "nome",
+        "address": "endereco"
+      },
+      "confidence": "high",
+      "note": "Hotel (POI)"
+    },
+    {
+      "id": "place_gas_station",
+      "overture_filter": {
+        "theme": "places",
+        "type": "place",
+        "category": [
+          "gas_station"
+        ],
+        "geometry": [
+          "point"
+        ],
+        "min_confidence": 0.5
+      },
+      "edgv_target": {
+        "table": "constr_edificacao_p",
+        "attributes": {
+          "tipo": 2601
+        }
+      },
+      "overture_attribute_mapping": {
+        "names.primary": "nome",
+        "address": "endereco"
+      },
+      "confidence": "high",
+      "note": "Posto de combustível (POI)"
+    },
+    {
+      "id": "place_supermarket",
+      "overture_filter": {
+        "theme": "places",
+        "type": "place",
+        "category": [
+          "supermarket",
+          "grocery"
+        ],
+        "geometry": [
+          "point"
+        ],
+        "min_confidence": 0.5
+      },
+      "edgv_target": {
+        "table": "constr_edificacao_p",
+        "attributes": {
+          "tipo": 904
+        }
+      },
+      "overture_attribute_mapping": {
+        "names.primary": "nome",
+        "address": "endereco"
+      },
+      "confidence": "high",
+      "note": "Supermercado (POI)"
+    },
+    {
+      "id": "place_shopping",
+      "overture_filter": {
+        "theme": "places",
+        "type": "place",
+        "category": [
+          "shopping_mall",
+          "department_store"
+        ],
+        "geometry": [
+          "point"
+        ],
+        "min_confidence": 0.5
+      },
+      "edgv_target": {
+        "table": "constr_edificacao_p",
+        "attributes": {
+          "tipo": 903
+        }
+      },
+      "overture_attribute_mapping": {
+        "names.primary": "nome",
+        "address": "endereco"
+      },
+      "confidence": "high",
+      "note": "Shopping/loja (POI)"
+    },
+    {
+      "id": "place_restaurant",
+      "overture_filter": {
+        "theme": "places",
+        "type": "place",
+        "category": [
+          "restaurant",
+          "fast_food",
+          "cafe",
+          "bar"
+        ],
+        "geometry": [
+          "point"
+        ],
+        "min_confidence": 0.5
+      },
+      "edgv_target": {
+        "table": "constr_edificacao_p",
+        "attributes": {
+          "tipo": 903
+        }
+      },
+      "overture_attribute_mapping": {
+        "names.primary": "nome",
+        "address": "endereco"
+      },
+      "confidence": "medium",
+      "note": "Restaurante/bar (POI)"
+    },
+    {
+      "id": "place_museum",
+      "overture_filter": {
+        "theme": "places",
+        "type": "place",
+        "category": [
+          "museum"
+        ],
+        "geometry": [
+          "point"
+        ],
+        "min_confidence": 0.5
+      },
+      "edgv_target": {
+        "table": "constr_edificacao_p",
+        "attributes": {
+          "tipo": 803
+        }
+      },
+      "overture_attribute_mapping": {
+        "names.primary": "nome",
+        "address": "endereco"
+      },
+      "confidence": "high",
+      "note": "Museu (POI)"
+    },
+    {
+      "id": "place_library",
+      "overture_filter": {
+        "theme": "places",
+        "type": "place",
+        "category": [
+          "library"
+        ],
+        "geometry": [
+          "point"
+        ],
+        "min_confidence": 0.5
+      },
+      "edgv_target": {
+        "table": "constr_edificacao_p",
+        "attributes": {
+          "tipo": 810
+        }
+      },
+      "overture_attribute_mapping": {
+        "names.primary": "nome",
+        "address": "endereco"
+      },
+      "confidence": "high",
+      "note": "Biblioteca (POI)"
+    },
+    {
+      "id": "place_stadium",
+      "overture_filter": {
+        "theme": "places",
+        "type": "place",
+        "category": [
+          "stadium",
+          "sports_centre"
+        ],
+        "geometry": [
+          "point"
+        ],
+        "min_confidence": 0.5
+      },
+      "edgv_target": {
+        "table": "constr_edificacao_p",
+        "attributes": {
+          "tipo": 801
+        }
+      },
+      "overture_attribute_mapping": {
+        "names.primary": "nome",
+        "address": "endereco"
+      },
+      "confidence": "high",
+      "note": "Estádio/centro esportivo (POI)"
+    },
+    {
+      "id": "place_embassy",
+      "overture_filter": {
+        "theme": "places",
+        "type": "place",
+        "category": [
+          "embassy"
+        ],
+        "geometry": [
+          "point"
+        ],
+        "min_confidence": 0.5
+      },
+      "edgv_target": {
+        "table": "constr_edificacao_p",
+        "attributes": {
+          "tipo": 2902
+        }
+      },
+      "overture_attribute_mapping": {
+        "names.primary": "nome",
+        "address": "endereco"
+      },
+      "confidence": "high",
+      "note": "Embaixada (POI)"
+    },
+    {
+      "_comment": "=== BASE water → hidrografia ==="
+    },
+    {
+      "id": "water_lake",
+      "overture_filter": {
+        "theme": "base",
+        "type": "water",
+        "class": [
+          "lake",
+          "pond"
+        ],
+        "geometry": [
+          "polygon"
+        ]
+      },
+      "edgv_target": {
+        "table": "cobter_massa_dagua_a",
+        "attributes": {
+          "tipo": 7
+        }
+      },
+      "overture_attribute_mapping": {
+        "names.primary": "nome"
+      },
+      "confidence": "high",
+      "note": "Lago/lagoa"
+    },
+    {
+      "id": "water_reservoir",
+      "overture_filter": {
+        "theme": "base",
+        "type": "water",
+        "class": [
+          "reservoir"
+        ],
+        "geometry": [
+          "polygon"
+        ]
+      },
+      "edgv_target": {
+        "table": "cobter_massa_dagua_a",
+        "attributes": {
+          "tipo": 11
+        }
+      },
+      "overture_attribute_mapping": {
+        "names.primary": "nome"
+      },
+      "confidence": "high",
+      "note": "Represa/açude"
+    },
+    {
+      "id": "water_river_area",
+      "overture_filter": {
+        "theme": "base",
+        "type": "water",
+        "class": [
+          "river"
+        ],
+        "geometry": [
+          "polygon"
+        ]
+      },
+      "edgv_target": {
+        "table": "cobter_massa_dagua_a",
+        "attributes": {
+          "tipo": 1
+        }
+      },
+      "overture_attribute_mapping": {
+        "names.primary": "nome"
+      },
+      "confidence": "high",
+      "note": "Rio (polígono de calha)"
+    },
+    {
+      "id": "water_ocean",
+      "overture_filter": {
+        "theme": "base",
+        "type": "water",
+        "class": [
+          "ocean"
+        ],
+        "geometry": [
+          "polygon"
+        ]
+      },
+      "edgv_target": {
+        "table": "cobter_massa_dagua_a",
+        "attributes": {
+          "tipo": 3
+        }
+      },
+      "overture_attribute_mapping": {
+        "names.primary": "nome"
+      },
+      "confidence": "high",
+      "note": "Oceano"
+    },
+    {
+      "id": "water_stream_line",
+      "overture_filter": {
+        "theme": "base",
+        "type": "water",
+        "class": [
+          "stream",
+          "river"
+        ],
+        "geometry": [
+          "line"
+        ]
+      },
+      "edgv_target": {
+        "table": "elemnat_trecho_drenagem_l",
+        "attributes": {
+          "tipo": 1,
+          "regime": 1
+        }
+      },
+      "overture_attribute_mapping": {
+        "names.primary": "nome"
+      },
+      "confidence": "high",
+      "note": "Rio/córrego (linha)"
+    },
+    {
+      "id": "water_canal_line",
+      "overture_filter": {
+        "theme": "base",
+        "type": "water",
+        "class": [
+          "canal"
+        ],
+        "geometry": [
+          "line"
+        ]
+      },
+      "edgv_target": {
+        "table": "elemnat_trecho_drenagem_l",
+        "attributes": {
+          "tipo": 2,
+          "regime": 1
+        }
+      },
+      "overture_attribute_mapping": {
+        "names.primary": "nome"
+      },
+      "confidence": "high",
+      "note": "Canal (linha)"
+    },
+    {
+      "id": "water_lagoon",
+      "overture_filter": {
+        "theme": "base",
+        "type": "water",
+        "class": [
+          "lagoon"
+        ],
+        "geometry": [
+          "polygon"
+        ]
+      },
+      "edgv_target": {
+        "table": "cobter_massa_dagua_a",
+        "attributes": {
+          "tipo": 9
+        }
+      },
+      "overture_attribute_mapping": {
+        "names.primary": "nome"
+      },
+      "confidence": "high",
+      "note": "Laguna"
+    },
+    {
+      "id": "water_spring",
+      "overture_filter": {
+        "theme": "base",
+        "type": "water",
+        "class": [
+          "spring"
+        ],
+        "geometry": [
+          "point"
+        ]
+      },
+      "edgv_target": {
+        "table": "elemnat_elemento_hidrografico_p",
+        "attributes": {
+          "tipo": 3
+        }
+      },
+      "overture_attribute_mapping": {
+        "names.primary": "nome"
+      },
+      "confidence": "high",
+      "note": "Nascente/olho dagua"
+    },
+    {
+      "id": "water_waterfall",
+      "overture_filter": {
+        "theme": "base",
+        "type": "water",
+        "class": [
+          "waterfall"
+        ],
+        "geometry": [
+          "point"
+        ]
+      },
+      "edgv_target": {
+        "table": "elemnat_elemento_hidrografico_p",
+        "attributes": {
+          "tipo": 9
+        }
+      },
+      "overture_attribute_mapping": {
+        "names.primary": "nome"
+      },
+      "confidence": "high",
+      "note": "Cachoeira"
+    },
+    {
+      "id": "water_ditch",
+      "overture_filter": {
+        "theme": "base",
+        "type": "water",
+        "class": [
+          "ditch",
+          "drain"
+        ],
+        "geometry": [
+          "line"
+        ]
+      },
+      "edgv_target": {
+        "table": "elemnat_trecho_drenagem_l",
+        "attributes": {
+          "tipo": 3,
+          "regime": 1
+        }
+      },
+      "overture_attribute_mapping": {
+        "names.primary": "nome"
+      },
+      "confidence": "high",
+      "note": "Vala/dreno"
+    }
+  ]
+}

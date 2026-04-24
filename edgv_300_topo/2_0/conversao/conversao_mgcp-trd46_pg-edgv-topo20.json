@@ -1,0 +1,5920 @@
+{
+  "metadados": {
+    "versao_arquivo": "1.5",
+    "modelo_A": "MGCP TRD4",
+    "versao_modelo_A": "4.6",
+    "modelo_B": "EDGV Topo 2.0",
+    "versao_modelo_B": "0.8.0"
+  },
+  "__comment": "UTF-8. Conversão MGCP TRD4 v4.6 → EDGV Topo 2.0 v0.8. Direção A=>B. Nomes baseados no alias DSGTools oficial. Scores: [5/5]=BOM (correspondência direta), [4/5]=ACEITÁVEL (aproximação razoável), [3/5]=FORÇADO (encaixe semântico pobre), [2/5]=INEXISTENTE_BR (feição inexistente no Brasil).",
+  "schema_A": "mgcp",
+  "schema_B": "edgv",
+  "afixo_geom_A": {
+    "tipo": "sufixo",
+    "POINT": "_p",
+    "LINESTRING": "_l",
+    "POLYGON": "_a"
+  },
+  "afixo_geom_B": {
+    "tipo": "sufixo",
+    "POINT": "_p",
+    "LINESTRING": "_l",
+    "POLYGON": "_a"
+  },
+  "agregar_geom_A": true,
+  "agregar_geom_B": true,
+  "mapeamento_classes": [
+    {
+      "classe_A": "ap030",
+      "classe_B": "infra_via_deslocamento",
+      "__comment": "[5/5] AP030 Road → Via de deslocamento",
+      "mapeamento_atributos": [
+        {
+          "attr_A": "nam",
+          "attr_B": "nome"
+        },
+        {
+          "attr_A": "txt",
+          "attr_B": "observacao"
+        },
+        {
+          "attr_A": "wd1",
+          "attr_B": "largura"
+        },
+        {
+          "attr_A": "fun",
+          "attr_B": "situacao_fisica",
+          "traducao": [
+            {
+              "valor_A": 0,
+              "valor_B": 9999
+            },
+            {
+              "valor_A": 1,
+              "valor_B": 4
+            },
+            {
+              "valor_A": 2,
+              "valor_B": 1
+            },
+            {
+              "valor_A": 3,
+              "valor_B": 2
+            },
+            {
+              "valor_A": 4,
+              "valor_B": 2
+            },
+            {
+              "valor_A": 6,
+              "valor_B": 3
+            },
+            {
+              "valor_A": 13,
+              "valor_B": 3
+            },
+            {
+              "valor_A": 9999,
+              "valor_B": 9999
+            }
+          ]
+        },
+        {
+          "attr_A": "hct",
+          "attr_B": "tipo",
+          "traducao": [
+            {
+              "valor_A": 0,
+              "valor_B": 9999
+            },
+            {
+              "valor_A": 1,
+              "valor_B": 2
+            },
+            {
+              "valor_A": 2,
+              "valor_B": 2
+            },
+            {
+              "valor_A": 3,
+              "valor_B": 4
+            },
+            {
+              "valor_A": 4,
+              "valor_B": 5
+            },
+            {
+              "valor_A": 9999,
+              "valor_B": 9999
+            }
+          ]
+        },
+        {
+          "attr_A": "rst",
+          "attr_B": "revestimento",
+          "traducao": [
+            {
+              "valor_A": 0,
+              "valor_B": 9999
+            },
+            {
+              "valor_A": 1,
+              "valor_B": 3
+            },
+            {
+              "valor_A": 2,
+              "valor_B": 2
+            },
+            {
+              "valor_A": 5,
+              "valor_B": 1
+            },
+            {
+              "valor_A": 6,
+              "valor_B": 1
+            },
+            {
+              "valor_A": 9999,
+              "valor_B": 9999
+            }
+          ]
+        },
+        {
+          "attr_A": "sep",
+          "attr_B": "canteiro_divisorio",
+          "traducao": [
+            {
+              "valor_A": 0,
+              "valor_B": 9999
+            },
+            {
+              "valor_A": 1000,
+              "valor_B": 2
+            },
+            {
+              "valor_A": 1001,
+              "valor_B": 1
+            },
+            {
+              "valor_A": 9999,
+              "valor_B": 9999
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "classe_A": "ap010",
+      "classe_B": "infra_via_deslocamento",
+      "__comment": "[5/5] AP010 Cart Track → Via de deslocamento tipo=3 (Caminho carroçável)",
+      "atributos_default_B": [
+        {
+          "nome_atributo": "tipo",
+          "valor": 3
+        },
+        {
+          "nome_atributo": "revestimento",
+          "valor": 1
+        },
+        {
+          "nome_atributo": "canteiro_divisorio",
+          "valor": 2
+        },
+        {
+          "nome_atributo": "situacao_fisica",
+          "valor": 3
+        }
+      ],
+      "mapeamento_atributos": [
+        {
+          "attr_A": "nam",
+          "attr_B": "nome"
+        },
+        {
+          "attr_A": "txt",
+          "attr_B": "observacao"
+        },
+        {
+          "attr_A": "wd1",
+          "attr_B": "largura"
+        }
+      ]
+    },
+    {
+      "classe_A": "ap050",
+      "classe_B": "infra_via_deslocamento",
+      "__comment": "[5/5] AP050 Trail → Via de deslocamento tipo=6 (Trilha ou Picada)",
+      "atributos_default_B": [
+        {
+          "nome_atributo": "tipo",
+          "valor": 6
+        },
+        {
+          "nome_atributo": "revestimento",
+          "valor": 1
+        },
+        {
+          "nome_atributo": "canteiro_divisorio",
+          "valor": 2
+        },
+        {
+          "nome_atributo": "situacao_fisica",
+          "valor": 3
+        }
+      ],
+      "mapeamento_atributos": [
+        {
+          "attr_A": "nam",
+          "attr_B": "nome"
+        },
+        {
+          "attr_A": "txt",
+          "attr_B": "observacao"
+        }
+      ]
+    },
+    {
+      "classe_A": "an010",
+      "classe_B": "infra_ferrovia",
+      "__comment": "[5/5] AN010 Railway → Ferrovia",
+      "atributos_default_B": [
+        {
+          "nome_atributo": "tipo",
+          "valor": 7
+        },
+        {
+          "nome_atributo": "eletrificada",
+          "valor": 9999
+        },
+        {
+          "nome_atributo": "bitola",
+          "valor": 9999
+        },
+        {
+          "nome_atributo": "nr_linhas",
+          "valor": 9999
+        }
+      ],
+      "mapeamento_atributos": [
+        {
+          "attr_A": "nam",
+          "attr_B": "nome"
+        },
+        {
+          "attr_A": "txt",
+          "attr_B": "observacao"
+        },
+        {
+          "attr_A": "fun",
+          "attr_B": "situacao_fisica",
+          "traducao": [
+            {
+              "valor_A": 0,
+              "valor_B": 9999
+            },
+            {
+              "valor_A": 1,
+              "valor_B": 4
+            },
+            {
+              "valor_A": 2,
+              "valor_B": 1
+            },
+            {
+              "valor_A": 3,
+              "valor_B": 2
+            },
+            {
+              "valor_A": 4,
+              "valor_B": 2
+            },
+            {
+              "valor_A": 6,
+              "valor_B": 3
+            },
+            {
+              "valor_A": 13,
+              "valor_B": 3
+            },
+            {
+              "valor_A": 9999,
+              "valor_B": 9999
+            }
+          ]
+        },
+        {
+          "attr_A": "loc",
+          "attr_B": "posicao_relativa",
+          "traducao": [
+            {
+              "valor_A": 0,
+              "valor_B": 9999
+            },
+            {
+              "valor_A": 40,
+              "valor_B": 6
+            },
+            {
+              "valor_A": 44,
+              "valor_B": 2
+            },
+            {
+              "valor_A": 45,
+              "valor_B": 3
+            },
+            {
+              "valor_A": 9999,
+              "valor_B": 9999
+            }
+          ]
+        },
+        {
+          "attr_A": "gaw",
+          "attr_B": "largura"
+        },
+        {
+          "attr_A": "rgc",
+          "attr_B": "bitola",
+          "traducao": [
+            {
+              "valor_A": 0,
+              "valor_B": 9999
+            },
+            {
+              "valor_A": 1,
+              "valor_B": 3
+            },
+            {
+              "valor_A": 2,
+              "valor_B": 1
+            },
+            {
+              "valor_A": 3,
+              "valor_B": 2
+            },
+            {
+              "valor_A": 9999,
+              "valor_B": 9999
+            }
+          ]
+        },
+        {
+          "attr_A": "rta",
+          "attr_B": "nr_linhas",
+          "traducao": [
+            {
+              "valor_A": 0,
+              "valor_B": 9999
+            },
+            {
+              "valor_A": 1,
+              "valor_B": 1
+            },
+            {
+              "valor_A": 2,
+              "valor_B": 2
+            },
+            {
+              "valor_A": 9999,
+              "valor_B": 9999
+            }
+          ]
+        },
+        {
+          "attr_A": "rra",
+          "attr_B": "eletrificada",
+          "traducao": [
+            {
+              "valor_A": 0,
+              "valor_B": 9999
+            },
+            {
+              "valor_A": 1,
+              "valor_B": 1
+            },
+            {
+              "valor_A": 3,
+              "valor_B": 1
+            },
+            {
+              "valor_A": 4,
+              "valor_B": 2
+            },
+            {
+              "valor_A": 9999,
+              "valor_B": 9999
+            }
+          ]
+        },
+        {
+          "attr_A": "rir",
+          "attr_B": "em_arruamento",
+          "traducao": [
+            {
+              "valor_A": 0,
+              "valor_B": 9999
+            },
+            {
+              "valor_A": 1000,
+              "valor_B": 2
+            },
+            {
+              "valor_A": 1001,
+              "valor_B": 1
+            },
+            {
+              "valor_A": 9999,
+              "valor_B": 9999
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "classe_A": "an050",
+      "classe_B": "infra_ferrovia",
+      "__comment": "[5/5] AN050 Railway Sidetrack → Ferrovia (ramal/desvio)",
+      "atributos_default_B": [
+        {
+          "nome_atributo": "tipo",
+          "valor": 7
+        },
+        {
+          "nome_atributo": "nr_linhas",
+          "valor": 9999
+        },
+        {
+          "nome_atributo": "eletrificada",
+          "valor": 9999
+        },
+        {
+          "nome_atributo": "bitola",
+          "valor": 9999
+        },
+        {
+          "nome_atributo": "posicao_relativa",
+          "valor": 2
+        },
+        {
+          "nome_atributo": "em_arruamento",
+          "valor": 9999
+        }
+      ],
+      "mapeamento_atributos": [
+        {
+          "attr_A": "fun",
+          "attr_B": "situacao_fisica",
+          "traducao": [
+            {
+              "valor_A": 0,
+              "valor_B": 9999
+            },
+            {
+              "valor_A": 1,
+              "valor_B": 4
+            },
+            {
+              "valor_A": 2,
+              "valor_B": 1
+            },
+            {
+              "valor_A": 3,
+              "valor_B": 2
+            },
+            {
+              "valor_A": 4,
+              "valor_B": 2
+            },
+            {
+              "valor_A": 6,
+              "valor_B": 3
+            },
+            {
+              "valor_A": 13,
+              "valor_B": 3
+            },
+            {
+              "valor_A": 9999,
+              "valor_B": 9999
+            }
+          ]
+        },
+        {
+          "attr_A": "gaw",
+          "attr_B": "largura"
+        }
+      ]
+    },
+    {
+      "classe_A": "an060",
+      "classe_B": "constr_area_uso_especifico",
+      "__comment": "[5/5] AN060 Railway Yard → Área uso específico tipo=16 (transporte)",
+      "atributos_default_B": [
+        {
+          "nome_atributo": "tipo",
+          "valor": 16
+        }
+      ],
+      "mapeamento_atributos": [
+        {
+          "attr_A": "nam",
+          "attr_B": "nome"
+        },
+        {
+          "attr_A": "txt",
+          "attr_B": "observacao"
+        }
+      ]
+    },
+    {
+      "classe_A": "an075",
+      "classe_B": "infra_elemento_infraestrutura",
+      "__comment": "[5/5] AN075 Railway Turntable → Elemento de infraestrutura tipo=1701 (Girador Ferroviário)",
+      "atributos_default_B": [
+        {
+          "nome_atributo": "tipo",
+          "valor": 1701
+        }
+      ],
+      "mapeamento_atributos": [
+        {
+          "attr_A": "fun",
+          "attr_B": "situacao_fisica",
+          "traducao": [
+            {
+              "valor_A": 0,
+              "valor_B": 9999
+            },
+            {
+              "valor_A": 1,
+              "valor_B": 4
+            },
+            {
+              "valor_A": 2,
+              "valor_B": 1
+            },
+            {
+              "valor_A": 3,
+              "valor_B": 2
+            },
+            {
+              "valor_A": 4,
+              "valor_B": 2
+            },
+            {
+              "valor_A": 6,
+              "valor_B": 3
+            },
+            {
+              "valor_A": 13,
+              "valor_B": 3
+            },
+            {
+              "valor_A": 9999,
+              "valor_B": 9999
+            }
+          ]
+        }
+      ],
+      "filtro_A": {
+        "$not": {
+          "nome_atributo": "$GEOM_TYPE",
+          "valor": "POLYGON"
+        }
+      }
+    },
+    {
+      "classe_A": "an076",
+      "classe_B": "constr_edificacao",
+      "__comment": "[4/5] AN076 Roundhouse → Edificação (rotunda ferroviária)",
+      "atributos_default_B": [
+        {
+          "nome_atributo": "tipo",
+          "valor": 0
+        },
+        {
+          "nome_atributo": "situacao_fisica",
+          "valor": 3
+        }
+      ]
+    },
+    {
+      "classe_A": "aq040",
+      "classe_B": "infra_elemento_viario",
+      "__comment": "[5/5] AQ040 Bridge → Elemento viário (ponte)",
+      "mapeamento_atributos": [
+        {
+          "attr_A": "nam",
+          "attr_B": "nome"
+        },
+        {
+          "attr_A": "txt",
+          "attr_B": "observacao"
+        },
+        {
+          "attr_A": "fun",
+          "attr_B": "situacao_fisica",
+          "traducao": [
+            {
+              "valor_A": 0,
+              "valor_B": 9999
+            },
+            {
+              "valor_A": 1,
+              "valor_B": 4
+            },
+            {
+              "valor_A": 2,
+              "valor_B": 1
+            },
+            {
+              "valor_A": 3,
+              "valor_B": 2
+            },
+            {
+              "valor_A": 4,
+              "valor_B": 2
+            },
+            {
+              "valor_A": 6,
+              "valor_B": 3
+            },
+            {
+              "valor_A": 13,
+              "valor_B": 3
+            },
+            {
+              "valor_A": 9999,
+              "valor_B": 9999
+            }
+          ]
+        },
+        {
+          "attr_A": "wid",
+          "attr_B": "largura"
+        },
+        {
+          "attr_A": "ohb",
+          "attr_B": "gabarito_vertical"
+        },
+        {
+          "attr_A": "wd1",
+          "attr_B": "vao_livre"
+        },
+        {
+          "attr_A": "bsc",
+          "attr_B": "tipo",
+          "traducao": [
+            {
+              "valor_A": 0,
+              "valor_B": 9999
+            },
+            {
+              "valor_A": 1,
+              "valor_B": 203
+            },
+            {
+              "valor_A": 2,
+              "valor_B": 203
+            },
+            {
+              "valor_A": 3,
+              "valor_B": 203
+            },
+            {
+              "valor_A": 5,
+              "valor_B": 205
+            },
+            {
+              "valor_A": 6,
+              "valor_B": 203
+            },
+            {
+              "valor_A": 7,
+              "valor_B": 202
+            },
+            {
+              "valor_A": 8,
+              "valor_B": 203
+            },
+            {
+              "valor_A": 9,
+              "valor_B": 202
+            },
+            {
+              "valor_A": 12,
+              "valor_B": 203
+            },
+            {
+              "valor_A": 15,
+              "valor_B": 203
+            },
+            {
+              "valor_A": 16,
+              "valor_B": 203
+            },
+            {
+              "valor_A": 19,
+              "valor_B": 203
+            },
+            {
+              "valor_A": 26,
+              "valor_B": 203
+            },
+            {
+              "valor_A": 27,
+              "valor_B": 204
+            },
+            {
+              "valor_A": 999,
+              "valor_B": 9999
+            },
+            {
+              "valor_A": 9999,
+              "valor_B": 9999
+            }
+          ]
+        },
+        {
+          "attr_A": "mcc",
+          "attr_B": "material_construcao",
+          "traducao": [
+            {
+              "valor_A": 0,
+              "valor_B": 9999
+            },
+            {
+              "valor_A": 9,
+              "valor_B": 1
+            },
+            {
+              "valor_A": 21,
+              "valor_B": 2
+            },
+            {
+              "valor_A": 62,
+              "valor_B": 1
+            },
+            {
+              "valor_A": 64,
+              "valor_B": 3
+            },
+            {
+              "valor_A": 77,
+              "valor_B": 2
+            },
+            {
+              "valor_A": 83,
+              "valor_B": 2
+            },
+            {
+              "valor_A": 84,
+              "valor_B": 4
+            },
+            {
+              "valor_A": 108,
+              "valor_B": 4
+            },
+            {
+              "valor_A": 117,
+              "valor_B": 5
+            },
+            {
+              "valor_A": 999,
+              "valor_B": 98
+            },
+            {
+              "valor_A": 9999,
+              "valor_B": 9999
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "classe_A": "aq063",
+      "classe_B": "infra_elemento_viario",
+      "__comment": "[5/5] AQ063 Causeway Structure → Elemento viário (passagem molhada)",
+      "mapeamento_atributos": [
+        {
+          "attr_A": "txt",
+          "attr_B": "observacao"
+        }
+      ]
+    },
+    {
+      "classe_A": "aq130",
+      "classe_B": "infra_elemento_viario",
+      "__comment": "[5/5] AQ130 Tunnel → Elemento viário (túnel)",
+      "mapeamento_atributos": [
+        {
+          "attr_A": "nam",
+          "attr_B": "nome"
+        },
+        {
+          "attr_A": "txt",
+          "attr_B": "observacao"
+        },
+        {
+          "attr_A": "fun",
+          "attr_B": "situacao_fisica",
+          "traducao": [
+            {
+              "valor_A": 0,
+              "valor_B": 9999
+            },
+            {
+              "valor_A": 1,
+              "valor_B": 4
+            },
+            {
+              "valor_A": 2,
+              "valor_B": 1
+            },
+            {
+              "valor_A": 3,
+              "valor_B": 2
+            },
+            {
+              "valor_A": 4,
+              "valor_B": 2
+            },
+            {
+              "valor_A": 6,
+              "valor_B": 3
+            },
+            {
+              "valor_A": 13,
+              "valor_B": 3
+            },
+            {
+              "valor_A": 9999,
+              "valor_B": 9999
+            }
+          ]
+        },
+        {
+          "attr_A": "wid",
+          "attr_B": "largura"
+        }
+      ]
+    },
+    {
+      "classe_A": "aq070",
+      "classe_B": "infra_travessia_hidroviaria",
+      "__comment": "[5/5] AQ070 Ferry Crossing → Travessia hidroviária",
+      "mapeamento_atributos": [
+        {
+          "attr_A": "nam",
+          "attr_B": "nome"
+        },
+        {
+          "attr_A": "txt",
+          "attr_B": "observacao"
+        }
+      ]
+    },
+    {
+      "classe_A": "aq065",
+      "classe_B": "infra_elemento_infraestrutura",
+      "__comment": "[4/5] AQ065 Culvert → Elemento de infraestrutura (bueiro)",
+      "mapeamento_atributos": [
+        {
+          "attr_A": "txt",
+          "attr_B": "observacao"
+        }
+      ]
+    },
+    {
+      "classe_A": "aq113",
+      "classe_B": "infra_trecho_duto",
+      "__comment": "[5/5] AQ113 Pipeline → Trecho de duto",
+      "mapeamento_atributos": [
+        {
+          "attr_A": "fun",
+          "attr_B": "situacao_fisica",
+          "traducao": [
+            {
+              "valor_A": 0,
+              "valor_B": 9999
+            },
+            {
+              "valor_A": 1,
+              "valor_B": 4
+            },
+            {
+              "valor_A": 2,
+              "valor_B": 1
+            },
+            {
+              "valor_A": 3,
+              "valor_B": 2
+            },
+            {
+              "valor_A": 4,
+              "valor_B": 2
+            },
+            {
+              "valor_A": 6,
+              "valor_B": 3
+            },
+            {
+              "valor_A": 13,
+              "valor_B": 3
+            },
+            {
+              "valor_A": 9999,
+              "valor_B": 9999
+            }
+          ]
+        },
+        {
+          "attr_A": "loc",
+          "attr_B": "posicao_relativa",
+          "traducao": [
+            {
+              "valor_A": 0,
+              "valor_B": 9999
+            },
+            {
+              "valor_A": 40,
+              "valor_B": 6
+            },
+            {
+              "valor_A": 44,
+              "valor_B": 2
+            },
+            {
+              "valor_A": 45,
+              "valor_B": 3
+            },
+            {
+              "valor_A": 9999,
+              "valor_B": 9999
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "classe_A": "aq116",
+      "classe_B": "infra_elemento_infraestrutura",
+      "__comment": "[4/5] AQ116 Pumping Station → Elemento de infraestrutura (estação de bombeamento)",
+      "mapeamento_atributos": [
+        {
+          "attr_A": "fun",
+          "attr_B": "situacao_fisica",
+          "traducao": [
+            {
+              "valor_A": 0,
+              "valor_B": 9999
+            },
+            {
+              "valor_A": 1,
+              "valor_B": 4
+            },
+            {
+              "valor_A": 2,
+              "valor_B": 1
+            },
+            {
+              "valor_A": 3,
+              "valor_B": 2
+            },
+            {
+              "valor_A": 4,
+              "valor_B": 2
+            },
+            {
+              "valor_A": 6,
+              "valor_B": 3
+            },
+            {
+              "valor_A": 13,
+              "valor_B": 3
+            },
+            {
+              "valor_A": 9999,
+              "valor_B": 9999
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "classe_A": "aq125",
+      "classe_B": "constr_area_uso_especifico",
+      "__comment": "[4/5] AQ125 Transportation Station → Área uso específico tipo=16 (transporte)",
+      "atributos_default_B": [
+        {
+          "nome_atributo": "tipo",
+          "valor": 16
+        }
+      ],
+      "mapeamento_atributos": [
+        {
+          "attr_A": "nam",
+          "attr_B": "nome"
+        },
+        {
+          "attr_A": "txt",
+          "attr_B": "observacao"
+        }
+      ]
+    },
+    {
+      "classe_A": "aq135",
+      "classe_B": "constr_area_uso_especifico",
+      "__comment": "[4/5] AQ135 Roadside Rest Area → Área uso específico tipo=16 (transporte/descanso)",
+      "atributos_default_B": [
+        {
+          "nome_atributo": "tipo",
+          "valor": 16
+        }
+      ],
+      "mapeamento_atributos": [
+        {
+          "attr_A": "nam",
+          "attr_B": "nome"
+        },
+        {
+          "attr_A": "txt",
+          "attr_B": "observacao"
+        }
+      ]
+    },
+    {
+      "classe_A": "aq140",
+      "classe_B": "constr_area_uso_especifico",
+      "__comment": "[4/5] AQ140 Vehicle Lot → Área uso específico tipo=16 (transporte/estacionamento)",
+      "atributos_default_B": [
+        {
+          "nome_atributo": "tipo",
+          "valor": 16
+        }
+      ]
+    },
+    {
+      "classe_A": "at010",
+      "classe_B": "infra_elemento_infraestrutura",
+      "__comment": "[5/5] AT010 Dish Aerial → Elemento de infraestrutura tipo=1301 (Antena de comunicação)",
+      "atributos_default_B": [
+        {
+          "nome_atributo": "tipo",
+          "valor": 1301
+        }
+      ],
+      "filtro_A": {
+        "$not": {
+          "nome_atributo": "$GEOM_TYPE",
+          "valor": "POLYGON"
+        }
+      }
+    },
+    {
+      "classe_A": "at030",
+      "classe_B": "infra_elemento_energia",
+      "__comment": "[4/5] AT030 Power Line → Elemento de energia (linha de transmissão)",
+      "mapeamento_atributos": [
+        {
+          "attr_A": "fun",
+          "attr_B": "situacao_fisica",
+          "traducao": [
+            {
+              "valor_A": 0,
+              "valor_B": 9999
+            },
+            {
+              "valor_A": 1,
+              "valor_B": 4
+            },
+            {
+              "valor_A": 2,
+              "valor_B": 1
+            },
+            {
+              "valor_A": 3,
+              "valor_B": 2
+            },
+            {
+              "valor_A": 4,
+              "valor_B": 2
+            },
+            {
+              "valor_A": 6,
+              "valor_B": 3
+            },
+            {
+              "valor_A": 13,
+              "valor_B": 3
+            },
+            {
+              "valor_A": 9999,
+              "valor_B": 9999
+            }
+          ]
+        },
+        {
+          "attr_A": "hgt",
+          "attr_B": "altura"
+        }
+      ],
+      "atributos_default_B": [
+        {
+          "nome_atributo": "tipo",
+          "valor": 303
+        }
+      ]
+    },
+    {
+      "classe_A": "at041",
+      "classe_B": "infra_elemento_infraestrutura",
+      "__comment": "[5/5] AT041 Cableway → Elemento de infraestrutura tipo=2001 (Teleférico)",
+      "atributos_default_B": [
+        {
+          "nome_atributo": "tipo",
+          "valor": 2001
+        }
+      ],
+      "mapeamento_atributos": [
+        {
+          "attr_A": "nam",
+          "attr_B": "nome"
+        }
+      ],
+      "filtro_A": {
+        "$not": {
+          "nome_atributo": "$GEOM_TYPE",
+          "valor": "POLYGON"
+        }
+      }
+    },
+    {
+      "classe_A": "at042",
+      "classe_B": "infra_elemento_energia",
+      "__comment": "[4/5] AT042 Pylon → Elemento de energia (torre/poste de LT)",
+      "mapeamento_atributos": [
+        {
+          "attr_A": "hgt",
+          "attr_B": "altura"
+        }
+      ],
+      "atributos_default_B": [
+        {
+          "nome_atributo": "tipo",
+          "valor": 1401
+        },
+        {
+          "nome_atributo": "situacao_fisica",
+          "valor": 3
+        }
+      ]
+    },
+    {
+      "classe_A": "at045",
+      "classe_B": "infra_elemento_infraestrutura",
+      "__comment": "[4/5] AT045 Radar Station → Elemento de infraestrutura (estação radar)",
+      "mapeamento_atributos": [
+        {
+          "attr_A": "nam",
+          "attr_B": "nome"
+        },
+        {
+          "attr_A": "fun",
+          "attr_B": "situacao_fisica",
+          "traducao": [
+            {
+              "valor_A": 0,
+              "valor_B": 9999
+            },
+            {
+              "valor_A": 1,
+              "valor_B": 4
+            },
+            {
+              "valor_A": 2,
+              "valor_B": 1
+            },
+            {
+              "valor_A": 3,
+              "valor_B": 2
+            },
+            {
+              "valor_A": 4,
+              "valor_B": 2
+            },
+            {
+              "valor_A": 6,
+              "valor_B": 3
+            },
+            {
+              "valor_A": 13,
+              "valor_B": 3
+            },
+            {
+              "valor_A": 9999,
+              "valor_B": 9999
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "classe_A": "at050",
+      "classe_B": "infra_elemento_infraestrutura",
+      "__comment": "[5/5] AT050 Communication Station → Elemento de infraestrutura tipo=1201 (Torre de comunicação)",
+      "atributos_default_B": [
+        {
+          "nome_atributo": "tipo",
+          "valor": 1201
+        }
+      ],
+      "mapeamento_atributos": [
+        {
+          "attr_A": "nam",
+          "attr_B": "nome"
+        },
+        {
+          "attr_A": "fun",
+          "attr_B": "situacao_fisica",
+          "traducao": [
+            {
+              "valor_A": 0,
+              "valor_B": 9999
+            },
+            {
+              "valor_A": 1,
+              "valor_B": 4
+            },
+            {
+              "valor_A": 2,
+              "valor_B": 1
+            },
+            {
+              "valor_A": 3,
+              "valor_B": 2
+            },
+            {
+              "valor_A": 4,
+              "valor_B": 2
+            },
+            {
+              "valor_A": 6,
+              "valor_B": 3
+            },
+            {
+              "valor_A": 13,
+              "valor_B": 3
+            },
+            {
+              "valor_A": 9999,
+              "valor_B": 9999
+            }
+          ]
+        }
+      ],
+      "filtro_A": {
+        "$not": {
+          "nome_atributo": "$GEOM_TYPE",
+          "valor": "POLYGON"
+        }
+      }
+    },
+    {
+      "classe_A": "at060",
+      "classe_B": "infra_elemento_infraestrutura",
+      "__comment": "[4/5] AT060 Communication Line → Elemento de infraestrutura tipo=1101 (Trecho de comunicação)",
+      "atributos_default_B": [
+        {
+          "nome_atributo": "tipo",
+          "valor": 1101
+        }
+      ],
+      "filtro_A": {
+        "$not": {
+          "nome_atributo": "$GEOM_TYPE",
+          "valor": "POLYGON"
+        }
+      }
+    },
+    {
+      "classe_A": "ad010",
+      "classe_B": "infra_elemento_energia",
+      "__comment": "[5/5] AD010 Electric Power Station → Elemento de energia (usina elétrica)",
+      "mapeamento_atributos": [
+        {
+          "attr_A": "nam",
+          "attr_B": "nome"
+        },
+        {
+          "attr_A": "txt",
+          "attr_B": "observacao"
+        },
+        {
+          "attr_A": "fun",
+          "attr_B": "situacao_fisica",
+          "traducao": [
+            {
+              "valor_A": 0,
+              "valor_B": 9999
+            },
+            {
+              "valor_A": 1,
+              "valor_B": 4
+            },
+            {
+              "valor_A": 2,
+              "valor_B": 1
+            },
+            {
+              "valor_A": 3,
+              "valor_B": 2
+            },
+            {
+              "valor_A": 4,
+              "valor_B": 2
+            },
+            {
+              "valor_A": 6,
+              "valor_B": 3
+            },
+            {
+              "valor_A": 13,
+              "valor_B": 3
+            },
+            {
+              "valor_A": 9999,
+              "valor_B": 9999
+            }
+          ]
+        },
+        {
+          "attr_A": "hgt",
+          "attr_B": "altura"
+        }
+      ],
+      "atributos_default_B": []
+    },
+    {
+      "classe_A": "ad020",
+      "classe_B": "infra_elemento_energia",
+      "__comment": "[5/5] AD020 Solar Panel → Elemento de energia (painel solar)",
+      "mapeamento_atributos": [
+        {
+          "attr_A": "fun",
+          "attr_B": "situacao_fisica",
+          "traducao": [
+            {
+              "valor_A": 0,
+              "valor_B": 9999
+            },
+            {
+              "valor_A": 1,
+              "valor_B": 4
+            },
+            {
+              "valor_A": 2,
+              "valor_B": 1
+            },
+            {
+              "valor_A": 3,
+              "valor_B": 2
+            },
+            {
+              "valor_A": 4,
+              "valor_B": 2
+            },
+            {
+              "valor_A": 6,
+              "valor_B": 3
+            },
+            {
+              "valor_A": 13,
+              "valor_B": 3
+            },
+            {
+              "valor_A": 9999,
+              "valor_B": 9999
+            }
+          ]
+        }
+      ],
+      "atributos_default_B": []
+    },
+    {
+      "classe_A": "ad030",
+      "classe_B": "infra_elemento_energia",
+      "__comment": "[5/5] AD030 Power Substation → Elemento de energia (subestação)",
+      "mapeamento_atributos": [
+        {
+          "attr_A": "nam",
+          "attr_B": "nome"
+        },
+        {
+          "attr_A": "txt",
+          "attr_B": "observacao"
+        },
+        {
+          "attr_A": "fun",
+          "attr_B": "situacao_fisica",
+          "traducao": [
+            {
+              "valor_A": 0,
+              "valor_B": 9999
+            },
+            {
+              "valor_A": 1,
+              "valor_B": 4
+            },
+            {
+              "valor_A": 2,
+              "valor_B": 1
+            },
+            {
+              "valor_A": 3,
+              "valor_B": 2
+            },
+            {
+              "valor_A": 4,
+              "valor_B": 2
+            },
+            {
+              "valor_A": 6,
+              "valor_B": 3
+            },
+            {
+              "valor_A": 13,
+              "valor_B": 3
+            },
+            {
+              "valor_A": 9999,
+              "valor_B": 9999
+            }
+          ]
+        }
+      ],
+      "atributos_default_B": []
+    },
+    {
+      "classe_A": "ad050",
+      "classe_B": "infra_elemento_energia",
+      "__comment": "[4/5] AD050 Heating Facility → Elemento de energia (instalação de aquecimento)",
+      "mapeamento_atributos": [
+        {
+          "attr_A": "nam",
+          "attr_B": "nome"
+        },
+        {
+          "attr_A": "txt",
+          "attr_B": "observacao"
+        },
+        {
+          "attr_A": "fun",
+          "attr_B": "situacao_fisica",
+          "traducao": [
+            {
+              "valor_A": 0,
+              "valor_B": 9999
+            },
+            {
+              "valor_A": 1,
+              "valor_B": 4
+            },
+            {
+              "valor_A": 2,
+              "valor_B": 1
+            },
+            {
+              "valor_A": 3,
+              "valor_B": 2
+            },
+            {
+              "valor_A": 4,
+              "valor_B": 2
+            },
+            {
+              "valor_A": 6,
+              "valor_B": 3
+            },
+            {
+              "valor_A": 13,
+              "valor_B": 3
+            },
+            {
+              "valor_A": 9999,
+              "valor_B": 9999
+            }
+          ]
+        }
+      ],
+      "atributos_default_B": []
+    },
+    {
+      "classe_A": "af010",
+      "classe_B": "infra_elemento_energia",
+      "__comment": "[4/5] AF010 Smokestack → Elemento de energia (chaminé industrial)",
+      "mapeamento_atributos": [
+        {
+          "attr_A": "fun",
+          "attr_B": "situacao_fisica",
+          "traducao": [
+            {
+              "valor_A": 0,
+              "valor_B": 9999
+            },
+            {
+              "valor_A": 1,
+              "valor_B": 4
+            },
+            {
+              "valor_A": 2,
+              "valor_B": 1
+            },
+            {
+              "valor_A": 3,
+              "valor_B": 2
+            },
+            {
+              "valor_A": 4,
+              "valor_B": 2
+            },
+            {
+              "valor_A": 6,
+              "valor_B": 3
+            },
+            {
+              "valor_A": 13,
+              "valor_B": 3
+            },
+            {
+              "valor_A": 9999,
+              "valor_B": 9999
+            }
+          ]
+        },
+        {
+          "attr_A": "hgt",
+          "attr_B": "altura"
+        }
+      ],
+      "atributos_default_B": []
+    },
+    {
+      "classe_A": "af020",
+      "classe_B": "infra_elemento_infraestrutura",
+      "__comment": "[4/5] AF020 Conveyor → Elemento de infraestrutura (correia transportadora)",
+      "mapeamento_atributos": [
+        {
+          "attr_A": "fun",
+          "attr_B": "situacao_fisica",
+          "traducao": [
+            {
+              "valor_A": 0,
+              "valor_B": 9999
+            },
+            {
+              "valor_A": 1,
+              "valor_B": 4
+            },
+            {
+              "valor_A": 2,
+              "valor_B": 1
+            },
+            {
+              "valor_A": 3,
+              "valor_B": 2
+            },
+            {
+              "valor_A": 4,
+              "valor_B": 2
+            },
+            {
+              "valor_A": 6,
+              "valor_B": 3
+            },
+            {
+              "valor_A": 13,
+              "valor_B": 3
+            },
+            {
+              "valor_A": 9999,
+              "valor_B": 9999
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "classe_A": "af040",
+      "classe_B": "infra_elemento_infraestrutura",
+      "__comment": "[4/5] AF040 Crane → Elemento de infraestrutura (guindaste)"
+    },
+    {
+      "classe_A": "af070",
+      "classe_B": "infra_elemento_energia",
+      "__comment": "[4/5] AF070 Flare Pipe → Elemento de energia (queimador de gás)",
+      "mapeamento_atributos": [
+        {
+          "attr_A": "fun",
+          "attr_B": "situacao_fisica",
+          "traducao": [
+            {
+              "valor_A": 0,
+              "valor_B": 9999
+            },
+            {
+              "valor_A": 1,
+              "valor_B": 4
+            },
+            {
+              "valor_A": 2,
+              "valor_B": 1
+            },
+            {
+              "valor_A": 3,
+              "valor_B": 2
+            },
+            {
+              "valor_A": 4,
+              "valor_B": 2
+            },
+            {
+              "valor_A": 6,
+              "valor_B": 3
+            },
+            {
+              "valor_A": 13,
+              "valor_B": 3
+            },
+            {
+              "valor_A": 9999,
+              "valor_B": 9999
+            }
+          ]
+        },
+        {
+          "attr_A": "hgt",
+          "attr_B": "altura"
+        }
+      ],
+      "atributos_default_B": []
+    },
+    {
+      "classe_A": "al241",
+      "classe_B": "infra_elemento_energia",
+      "__comment": "[5/5] AL241 Tower → Elemento de energia (torre de transmissão/comunicação)",
+      "mapeamento_atributos": [
+        {
+          "attr_A": "nam",
+          "attr_B": "nome"
+        },
+        {
+          "attr_A": "txt",
+          "attr_B": "observacao"
+        },
+        {
+          "attr_A": "fun",
+          "attr_B": "situacao_fisica",
+          "traducao": [
+            {
+              "valor_A": 0,
+              "valor_B": 9999
+            },
+            {
+              "valor_A": 1,
+              "valor_B": 4
+            },
+            {
+              "valor_A": 2,
+              "valor_B": 1
+            },
+            {
+              "valor_A": 3,
+              "valor_B": 2
+            },
+            {
+              "valor_A": 4,
+              "valor_B": 2
+            },
+            {
+              "valor_A": 6,
+              "valor_B": 3
+            },
+            {
+              "valor_A": 13,
+              "valor_B": 3
+            },
+            {
+              "valor_A": 9999,
+              "valor_B": 9999
+            }
+          ]
+        },
+        {
+          "attr_A": "hgt",
+          "attr_B": "altura"
+        }
+      ],
+      "atributos_default_B": [
+        {
+          "nome_atributo": "tipo",
+          "valor": 1401
+        }
+      ]
+    },
+    {
+      "classe_A": "am010",
+      "classe_B": "constr_deposito",
+      "__comment": "[5/5] AM010 Storage Depot → Depósito (armazém)",
+      "mapeamento_atributos": [
+        {
+          "attr_A": "nam",
+          "attr_B": "nome"
+        }
+      ]
+    },
+    {
+      "classe_A": "am020",
+      "classe_B": "constr_deposito",
+      "__comment": "[5/5] AM020 Grain Storage Structure → Depósito (silo de grãos)",
+      "mapeamento_atributos": [
+        {
+          "attr_A": "fun",
+          "attr_B": "situacao_fisica",
+          "traducao": [
+            {
+              "valor_A": 0,
+              "valor_B": 9999
+            },
+            {
+              "valor_A": 1,
+              "valor_B": 4
+            },
+            {
+              "valor_A": 2,
+              "valor_B": 1
+            },
+            {
+              "valor_A": 3,
+              "valor_B": 2
+            },
+            {
+              "valor_A": 4,
+              "valor_B": 2
+            },
+            {
+              "valor_A": 6,
+              "valor_B": 3
+            },
+            {
+              "valor_A": 13,
+              "valor_B": 3
+            },
+            {
+              "valor_A": 9999,
+              "valor_B": 9999
+            }
+          ]
+        },
+        {
+          "attr_A": "hgt",
+          "attr_B": "altura"
+        }
+      ],
+      "atributos_default_B": [
+        {
+          "nome_atributo": "tipo",
+          "valor": 109
+        }
+      ]
+    },
+    {
+      "classe_A": "am030",
+      "classe_B": "constr_deposito",
+      "__comment": "[5/5] AM030 Grain Elevator → Depósito (elevador de grãos)",
+      "mapeamento_atributos": [
+        {
+          "attr_A": "fun",
+          "attr_B": "situacao_fisica",
+          "traducao": [
+            {
+              "valor_A": 0,
+              "valor_B": 9999
+            },
+            {
+              "valor_A": 1,
+              "valor_B": 4
+            },
+            {
+              "valor_A": 2,
+              "valor_B": 1
+            },
+            {
+              "valor_A": 3,
+              "valor_B": 2
+            },
+            {
+              "valor_A": 4,
+              "valor_B": 2
+            },
+            {
+              "valor_A": 6,
+              "valor_B": 3
+            },
+            {
+              "valor_A": 13,
+              "valor_B": 3
+            },
+            {
+              "valor_A": 9999,
+              "valor_B": 9999
+            }
+          ]
+        },
+        {
+          "attr_A": "hgt",
+          "attr_B": "altura"
+        }
+      ],
+      "atributos_default_B": [
+        {
+          "nome_atributo": "tipo",
+          "valor": 109
+        }
+      ]
+    },
+    {
+      "classe_A": "am040",
+      "classe_B": "constr_deposito",
+      "__comment": "[5/5] AM040 Mineral Pile → Depósito (pilha de minério)",
+      "mapeamento_atributos": [
+        {
+          "attr_A": "hgt",
+          "attr_B": "altura"
+        }
+      ]
+    },
+    {
+      "classe_A": "am060",
+      "classe_B": "constr_deposito",
+      "__comment": "[4/5] AM060 Surface Bunker → Depósito (bunker de superfície)"
+    },
+    {
+      "classe_A": "am070",
+      "classe_B": "constr_deposito",
+      "__comment": "[5/5] AM070 Storage Tank → Depósito (tanque de armazenamento)",
+      "mapeamento_atributos": [
+        {
+          "attr_A": "fun",
+          "attr_B": "situacao_fisica",
+          "traducao": [
+            {
+              "valor_A": 0,
+              "valor_B": 9999
+            },
+            {
+              "valor_A": 1,
+              "valor_B": 4
+            },
+            {
+              "valor_A": 2,
+              "valor_B": 1
+            },
+            {
+              "valor_A": 3,
+              "valor_B": 2
+            },
+            {
+              "valor_A": 4,
+              "valor_B": 2
+            },
+            {
+              "valor_A": 6,
+              "valor_B": 3
+            },
+            {
+              "valor_A": 13,
+              "valor_B": 3
+            },
+            {
+              "valor_A": 9999,
+              "valor_B": 9999
+            }
+          ]
+        },
+        {
+          "attr_A": "hgt",
+          "attr_B": "altura"
+        }
+      ],
+      "atributos_default_B": [
+        {
+          "nome_atributo": "tipo",
+          "valor": 113
+        }
+      ]
+    },
+    {
+      "classe_A": "gb005",
+      "classe_B": "infra_pista_pouso",
+      "__comment": "[5/5] GB005 Land Aerodrome → infra_pista_pouso",
+      "atributos_default_B": [
+        {
+          "nome_atributo": "tipo",
+          "valor": 9
+        }
+      ],
+      "mapeamento_atributos": [
+        {
+          "attr_A": "nam",
+          "attr_B": "nome"
+        },
+        {
+          "attr_A": "fun",
+          "attr_B": "situacao_fisica",
+          "traducao": [
+            {
+              "valor_A": 0,
+              "valor_B": 9999
+            },
+            {
+              "valor_A": 1,
+              "valor_B": 4
+            },
+            {
+              "valor_A": 2,
+              "valor_B": 1
+            },
+            {
+              "valor_A": 3,
+              "valor_B": 2
+            },
+            {
+              "valor_A": 4,
+              "valor_B": 2
+            },
+            {
+              "valor_A": 6,
+              "valor_B": 3
+            },
+            {
+              "valor_A": 13,
+              "valor_B": 3
+            },
+            {
+              "valor_A": 9999,
+              "valor_B": 9999
+            }
+          ]
+        },
+        {
+          "attr_A": "txt",
+          "attr_B": "observacao"
+        }
+      ],
+      "filtro_A": {
+        "$not": {
+          "nome_atributo": "$GEOM_TYPE",
+          "valor": "POINT"
+        }
+      }
+    },
+    {
+      "classe_A": "gb015",
+      "classe_B": "infra_pista_pouso",
+      "__comment": "[5/5] GB015 Apron → infra_pista_pouso",
+      "atributos_default_B": [
+        {
+          "nome_atributo": "tipo",
+          "valor": 10
+        }
+      ],
+      "mapeamento_atributos": [
+        {
+          "attr_A": "fun",
+          "attr_B": "situacao_fisica",
+          "traducao": [
+            {
+              "valor_A": 0,
+              "valor_B": 9999
+            },
+            {
+              "valor_A": 1,
+              "valor_B": 4
+            },
+            {
+              "valor_A": 2,
+              "valor_B": 1
+            },
+            {
+              "valor_A": 3,
+              "valor_B": 2
+            },
+            {
+              "valor_A": 4,
+              "valor_B": 2
+            },
+            {
+              "valor_A": 6,
+              "valor_B": 3
+            },
+            {
+              "valor_A": 13,
+              "valor_B": 3
+            },
+            {
+              "valor_A": 9999,
+              "valor_B": 9999
+            }
+          ]
+        },
+        {
+          "attr_A": "txt",
+          "attr_B": "observacao"
+        }
+      ],
+      "filtro_A": {
+        "$not": {
+          "nome_atributo": "$GEOM_TYPE",
+          "valor": "POINT"
+        }
+      }
+    },
+    {
+      "classe_A": "gb030",
+      "classe_B": "infra_pista_pouso",
+      "__comment": "[5/5] GB030 Helipad → infra_pista_pouso",
+      "atributos_default_B": [
+        {
+          "nome_atributo": "tipo",
+          "valor": 11
+        }
+      ],
+      "mapeamento_atributos": [
+        {
+          "attr_A": "fun",
+          "attr_B": "situacao_fisica",
+          "traducao": [
+            {
+              "valor_A": 0,
+              "valor_B": 9999
+            },
+            {
+              "valor_A": 1,
+              "valor_B": 4
+            },
+            {
+              "valor_A": 2,
+              "valor_B": 1
+            },
+            {
+              "valor_A": 3,
+              "valor_B": 2
+            },
+            {
+              "valor_A": 4,
+              "valor_B": 2
+            },
+            {
+              "valor_A": 6,
+              "valor_B": 3
+            },
+            {
+              "valor_A": 13,
+              "valor_B": 3
+            },
+            {
+              "valor_A": 9999,
+              "valor_B": 9999
+            }
+          ]
+        },
+        {
+          "attr_A": "txt",
+          "attr_B": "observacao"
+        }
+      ],
+      "filtro_A": {
+        "nome_atributo": "$GEOM_TYPE",
+        "valor": "POINT"
+      }
+    },
+    {
+      "classe_A": "gb035",
+      "classe_B": "infra_pista_pouso",
+      "__comment": "[5/5] GB035 Heliport → infra_pista_pouso",
+      "atributos_default_B": [
+        {
+          "nome_atributo": "tipo",
+          "valor": 11
+        }
+      ],
+      "mapeamento_atributos": [
+        {
+          "attr_A": "nam",
+          "attr_B": "nome"
+        },
+        {
+          "attr_A": "fun",
+          "attr_B": "situacao_fisica",
+          "traducao": [
+            {
+              "valor_A": 0,
+              "valor_B": 9999
+            },
+            {
+              "valor_A": 1,
+              "valor_B": 4
+            },
+            {
+              "valor_A": 2,
+              "valor_B": 1
+            },
+            {
+              "valor_A": 3,
+              "valor_B": 2
+            },
+            {
+              "valor_A": 4,
+              "valor_B": 2
+            },
+            {
+              "valor_A": 6,
+              "valor_B": 3
+            },
+            {
+              "valor_A": 13,
+              "valor_B": 3
+            },
+            {
+              "valor_A": 9999,
+              "valor_B": 9999
+            }
+          ]
+        },
+        {
+          "attr_A": "txt",
+          "attr_B": "observacao"
+        }
+      ],
+      "filtro_A": {
+        "nome_atributo": "$GEOM_TYPE",
+        "valor": "POINT"
+      }
+    },
+    {
+      "classe_A": "gb045",
+      "classe_B": "infra_pista_pouso",
+      "__comment": "[4/5] GB045 Stopway → infra_pista_pouso",
+      "atributos_default_B": [
+        {
+          "nome_atributo": "tipo",
+          "valor": 9
+        }
+      ],
+      "mapeamento_atributos": [
+        {
+          "attr_A": "fun",
+          "attr_B": "situacao_fisica",
+          "traducao": [
+            {
+              "valor_A": 0,
+              "valor_B": 9999
+            },
+            {
+              "valor_A": 1,
+              "valor_B": 4
+            },
+            {
+              "valor_A": 2,
+              "valor_B": 1
+            },
+            {
+              "valor_A": 3,
+              "valor_B": 2
+            },
+            {
+              "valor_A": 4,
+              "valor_B": 2
+            },
+            {
+              "valor_A": 6,
+              "valor_B": 3
+            },
+            {
+              "valor_A": 13,
+              "valor_B": 3
+            },
+            {
+              "valor_A": 9999,
+              "valor_B": 9999
+            }
+          ]
+        },
+        {
+          "attr_A": "txt",
+          "attr_B": "observacao"
+        }
+      ],
+      "filtro_A": {
+        "$not": {
+          "nome_atributo": "$GEOM_TYPE",
+          "valor": "POINT"
+        }
+      }
+    },
+    {
+      "classe_A": "gb055",
+      "classe_B": "infra_pista_pouso",
+      "__comment": "[5/5] GB055 Runway → infra_pista_pouso",
+      "atributos_default_B": [
+        {
+          "nome_atributo": "tipo",
+          "valor": 9
+        }
+      ],
+      "mapeamento_atributos": [
+        {
+          "attr_A": "nam",
+          "attr_B": "nome"
+        },
+        {
+          "attr_A": "fun",
+          "attr_B": "situacao_fisica",
+          "traducao": [
+            {
+              "valor_A": 0,
+              "valor_B": 9999
+            },
+            {
+              "valor_A": 1,
+              "valor_B": 4
+            },
+            {
+              "valor_A": 2,
+              "valor_B": 1
+            },
+            {
+              "valor_A": 3,
+              "valor_B": 2
+            },
+            {
+              "valor_A": 4,
+              "valor_B": 2
+            },
+            {
+              "valor_A": 6,
+              "valor_B": 3
+            },
+            {
+              "valor_A": 13,
+              "valor_B": 3
+            },
+            {
+              "valor_A": 9999,
+              "valor_B": 9999
+            }
+          ]
+        },
+        {
+          "attr_A": "txt",
+          "attr_B": "observacao"
+        }
+      ],
+      "filtro_A": {
+        "$not": {
+          "nome_atributo": "$GEOM_TYPE",
+          "valor": "POINT"
+        }
+      }
+    },
+    {
+      "classe_A": "gb065",
+      "classe_B": "infra_pista_pouso",
+      "__comment": "[5/5] GB065 Water Aerodrome → infra_pista_pouso",
+      "atributos_default_B": [
+        {
+          "nome_atributo": "tipo",
+          "valor": 9
+        }
+      ],
+      "mapeamento_atributos": [
+        {
+          "attr_A": "nam",
+          "attr_B": "nome"
+        },
+        {
+          "attr_A": "fun",
+          "attr_B": "situacao_fisica",
+          "traducao": [
+            {
+              "valor_A": 0,
+              "valor_B": 9999
+            },
+            {
+              "valor_A": 1,
+              "valor_B": 4
+            },
+            {
+              "valor_A": 2,
+              "valor_B": 1
+            },
+            {
+              "valor_A": 3,
+              "valor_B": 2
+            },
+            {
+              "valor_A": 4,
+              "valor_B": 2
+            },
+            {
+              "valor_A": 6,
+              "valor_B": 3
+            },
+            {
+              "valor_A": 13,
+              "valor_B": 3
+            },
+            {
+              "valor_A": 9999,
+              "valor_B": 9999
+            }
+          ]
+        },
+        {
+          "attr_A": "txt",
+          "attr_B": "observacao"
+        }
+      ],
+      "filtro_A": {
+        "$not": {
+          "nome_atributo": "$GEOM_TYPE",
+          "valor": "POINT"
+        }
+      }
+    },
+    {
+      "classe_A": "gb075",
+      "classe_B": "infra_pista_pouso",
+      "__comment": "[5/5] GB075 Taxiway → infra_pista_pouso",
+      "atributos_default_B": [
+        {
+          "nome_atributo": "tipo",
+          "valor": 10
+        }
+      ],
+      "mapeamento_atributos": [
+        {
+          "attr_A": "fun",
+          "attr_B": "situacao_fisica",
+          "traducao": [
+            {
+              "valor_A": 0,
+              "valor_B": 9999
+            },
+            {
+              "valor_A": 1,
+              "valor_B": 4
+            },
+            {
+              "valor_A": 2,
+              "valor_B": 1
+            },
+            {
+              "valor_A": 3,
+              "valor_B": 2
+            },
+            {
+              "valor_A": 4,
+              "valor_B": 2
+            },
+            {
+              "valor_A": 6,
+              "valor_B": 3
+            },
+            {
+              "valor_A": 13,
+              "valor_B": 3
+            },
+            {
+              "valor_A": 9999,
+              "valor_B": 9999
+            }
+          ]
+        },
+        {
+          "attr_A": "txt",
+          "attr_B": "observacao"
+        }
+      ],
+      "filtro_A": {
+        "$not": {
+          "nome_atributo": "$GEOM_TYPE",
+          "valor": "POINT"
+        }
+      }
+    },
+    {
+      "classe_A": "gb220",
+      "classe_B": "infra_obstaculo_vertical",
+      "__comment": "[5/5] GB220 Aeronautical Obstacle → infra_obstaculo_vertical",
+      "mapeamento_atributos": [
+        {
+          "attr_A": "txt",
+          "attr_B": "observacao"
+        }
+      ]
+    },
+    {
+      "classe_A": "gb230",
+      "classe_B": "constr_edificacao",
+      "__comment": "[5/5] GB230 Aircraft Hangar → constr_edificacao",
+      "mapeamento_atributos": [
+        {
+          "attr_A": "fun",
+          "attr_B": "situacao_fisica",
+          "traducao": [
+            {
+              "valor_A": 0,
+              "valor_B": 9999
+            },
+            {
+              "valor_A": 1,
+              "valor_B": 4
+            },
+            {
+              "valor_A": 2,
+              "valor_B": 1
+            },
+            {
+              "valor_A": 3,
+              "valor_B": 2
+            },
+            {
+              "valor_A": 4,
+              "valor_B": 2
+            },
+            {
+              "valor_A": 6,
+              "valor_B": 3
+            },
+            {
+              "valor_A": 13,
+              "valor_B": 3
+            },
+            {
+              "valor_A": 9999,
+              "valor_B": 9999
+            }
+          ]
+        },
+        {
+          "attr_A": "txt",
+          "attr_B": "observacao"
+        }
+      ],
+      "atributos_default_B": [
+        {
+          "nome_atributo": "tipo",
+          "valor": 2429
+        },
+        {
+          "nome_atributo": "situacao_fisica",
+          "valor": 3
+        }
+      ]
+    },
+    {
+      "classe_A": "gb485",
+      "classe_B": "infra_elemento_energia",
+      "__comment": "[4/5] GB485 Approach Lighting System → infra_elemento_energia",
+      "mapeamento_atributos": [
+        {
+          "attr_A": "txt",
+          "attr_B": "observacao"
+        }
+      ]
+    },
+    {
+      "classe_A": "ga034",
+      "classe_B": "infra_elemento_infraestrutura",
+      "__comment": "[4/5] GA034 Aeronautical Radio Navigation Service → Elemento de infraestrutura tipo=1201 (Torre de comunicação)",
+      "atributos_default_B": [
+        {
+          "nome_atributo": "tipo",
+          "valor": 1201
+        }
+      ],
+      "filtro_A": {
+        "$not": {
+          "nome_atributo": "$GEOM_TYPE",
+          "valor": "POLYGON"
+        }
+      }
+    },
+    {
+      "classe_A": "bh020",
+      "classe_B": "elemnat_trecho_drenagem",
+      "__comment": "[5/5] BH020 Canal → Trecho de drenagem tipo=2 (Canal)",
+      "atributos_default_B": [
+        {
+          "nome_atributo": "tipo",
+          "valor": 2
+        }
+      ],
+      "mapeamento_atributos": [
+        {
+          "attr_A": "nam",
+          "attr_B": "nome"
+        },
+        {
+          "attr_A": "txt",
+          "attr_B": "observacao"
+        },
+        {
+          "attr_A": "hyp",
+          "attr_B": "regime",
+          "traducao": [
+            {
+              "valor_A": 0,
+              "valor_B": 0
+            },
+            {
+              "valor_A": 1,
+              "valor_B": 1
+            },
+            {
+              "valor_A": 2,
+              "valor_B": 3
+            },
+            {
+              "valor_A": 4,
+              "valor_B": 5
+            },
+            {
+              "valor_A": 9999,
+              "valor_B": 9999
+            }
+          ]
+        },
+        {
+          "attr_A": "wid",
+          "attr_B": "largura"
+        }
+      ]
+    },
+    {
+      "classe_A": "bh030",
+      "classe_B": "elemnat_trecho_drenagem",
+      "__comment": "[5/5] BH030 Ditch → Trecho de drenagem tipo=3 (Trecho pluvial/vala)",
+      "atributos_default_B": [
+        {
+          "nome_atributo": "tipo",
+          "valor": 3
+        }
+      ],
+      "mapeamento_atributos": [
+        {
+          "attr_A": "nam",
+          "attr_B": "nome"
+        },
+        {
+          "attr_A": "txt",
+          "attr_B": "observacao"
+        },
+        {
+          "attr_A": "hyp",
+          "attr_B": "regime",
+          "traducao": [
+            {
+              "valor_A": 0,
+              "valor_B": 0
+            },
+            {
+              "valor_A": 1,
+              "valor_B": 1
+            },
+            {
+              "valor_A": 2,
+              "valor_B": 3
+            },
+            {
+              "valor_A": 4,
+              "valor_B": 5
+            },
+            {
+              "valor_A": 9999,
+              "valor_B": 9999
+            }
+          ]
+        },
+        {
+          "attr_A": "wid",
+          "attr_B": "largura"
+        }
+      ]
+    },
+    {
+      "classe_A": "bh010",
+      "classe_B": "infra_trecho_duto",
+      "__comment": "[4/5] BH010 Aqueduct → Trecho de duto (aqueduto)",
+      "mapeamento_atributos": [
+        {
+          "attr_A": "nam",
+          "attr_B": "nome"
+        },
+        {
+          "attr_A": "txt",
+          "attr_B": "observacao"
+        },
+        {
+          "attr_A": "loc",
+          "attr_B": "posicao_relativa",
+          "traducao": [
+            {
+              "valor_A": 0,
+              "valor_B": 9999
+            },
+            {
+              "valor_A": 40,
+              "valor_B": 6
+            },
+            {
+              "valor_A": 44,
+              "valor_B": 2
+            },
+            {
+              "valor_A": 45,
+              "valor_B": 3
+            },
+            {
+              "valor_A": 9999,
+              "valor_B": 9999
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "classe_A": "bh080",
+      "classe_B": "cobter_massa_dagua",
+      "__comment": "[5/5] BH080 Lake → Massa d'água tipo=7 (Lago ou Lagoa)",
+      "atributos_default_B": [
+        {
+          "nome_atributo": "tipo",
+          "valor": 7
+        }
+      ],
+      "mapeamento_atributos": [
+        {
+          "attr_A": "nam",
+          "attr_B": "nome"
+        },
+        {
+          "attr_A": "txt",
+          "attr_B": "observacao"
+        },
+        {
+          "attr_A": "hyp",
+          "attr_B": "regime",
+          "traducao": [
+            {
+              "valor_A": 0,
+              "valor_B": 0
+            },
+            {
+              "valor_A": 1,
+              "valor_B": 1
+            },
+            {
+              "valor_A": 2,
+              "valor_B": 3
+            },
+            {
+              "valor_A": 4,
+              "valor_B": 5
+            },
+            {
+              "valor_A": 9999,
+              "valor_B": 9999
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "classe_A": "bh090",
+      "classe_B": "elemnat_terreno_sujeito_inundacao",
+      "__comment": "[5/5] BH090 Land Subject to Inundation → Terreno sujeito a inundação"
+    },
+    {
+      "classe_A": "bh130",
+      "classe_B": "cobter_massa_dagua",
+      "__comment": "[5/5] BH130 Reservoir → Massa d'água tipo=10 (Represa/açude)",
+      "atributos_default_B": [
+        {
+          "nome_atributo": "tipo",
+          "valor": 10
+        }
+      ],
+      "mapeamento_atributos": [
+        {
+          "attr_A": "nam",
+          "attr_B": "nome"
+        },
+        {
+          "attr_A": "txt",
+          "attr_B": "observacao"
+        },
+        {
+          "attr_A": "hyp",
+          "attr_B": "regime",
+          "traducao": [
+            {
+              "valor_A": 0,
+              "valor_B": 0
+            },
+            {
+              "valor_A": 1,
+              "valor_B": 1
+            },
+            {
+              "valor_A": 2,
+              "valor_B": 3
+            },
+            {
+              "valor_A": 4,
+              "valor_B": 5
+            },
+            {
+              "valor_A": 9999,
+              "valor_B": 9999
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "classe_A": "bh140",
+      "classe_B": "cobter_massa_dagua",
+      "__comment": "[5/5] BH140 River → Massa d'água tipo=1 (Rio, polígono de calha)",
+      "atributos_default_B": [
+        {
+          "nome_atributo": "tipo",
+          "valor": 1
+        }
+      ],
+      "mapeamento_atributos": [
+        {
+          "attr_A": "nam",
+          "attr_B": "nome"
+        },
+        {
+          "attr_A": "txt",
+          "attr_B": "observacao"
+        },
+        {
+          "attr_A": "hyp",
+          "attr_B": "regime",
+          "traducao": [
+            {
+              "valor_A": 0,
+              "valor_B": 0
+            },
+            {
+              "valor_A": 1,
+              "valor_B": 1
+            },
+            {
+              "valor_A": 2,
+              "valor_B": 3
+            },
+            {
+              "valor_A": 4,
+              "valor_B": 5
+            },
+            {
+              "valor_A": 9999,
+              "valor_B": 9999
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "classe_A": "bh120",
+      "classe_B": "elemnat_elemento_hidrografico",
+      "__comment": "[5/5] BH120 Rapids → Elemento hidrográfico tipo=12 (Corredeira)",
+      "atributos_default_B": [
+        {
+          "nome_atributo": "tipo",
+          "valor": 12
+        }
+      ],
+      "mapeamento_atributos": [
+        {
+          "attr_A": "nam",
+          "attr_B": "nome"
+        },
+        {
+          "attr_A": "txt",
+          "attr_B": "observacao"
+        }
+      ]
+    },
+    {
+      "classe_A": "bh145",
+      "classe_B": "elemnat_sumidouro_vertedouro",
+      "__comment": "[5/5] BH145 Vanishing Point → Sumidouro/Vertedouro"
+    },
+    {
+      "classe_A": "bh170",
+      "classe_B": "elemnat_elemento_hidrografico",
+      "__comment": "[5/5] BH170 Natural Pool → Elemento hidrográfico tipo=3 (Olho d'água)",
+      "atributos_default_B": [
+        {
+          "nome_atributo": "tipo",
+          "valor": 3
+        }
+      ],
+      "mapeamento_atributos": [
+        {
+          "attr_A": "nam",
+          "attr_B": "nome"
+        },
+        {
+          "attr_A": "txt",
+          "attr_B": "observacao"
+        }
+      ]
+    },
+    {
+      "classe_A": "bh180",
+      "classe_B": "elemnat_elemento_hidrografico",
+      "__comment": "[5/5] BH180 Waterfall → Elemento hidrográfico tipo=9 (Cachoeira)",
+      "atributos_default_B": [
+        {
+          "nome_atributo": "tipo",
+          "valor": 9
+        }
+      ],
+      "mapeamento_atributos": [
+        {
+          "attr_A": "nam",
+          "attr_B": "nome"
+        },
+        {
+          "attr_A": "txt",
+          "attr_B": "observacao"
+        }
+      ]
+    },
+    {
+      "classe_A": "bh040",
+      "classe_B": "constr_area_uso_especifico",
+      "__comment": "[4/5] BH040 Water Treatment Bed → Área uso específico tipo=14 (abastecimento água)",
+      "atributos_default_B": [
+        {
+          "nome_atributo": "tipo",
+          "valor": 14
+        }
+      ],
+      "mapeamento_atributos": [
+        {
+          "attr_A": "nam",
+          "attr_B": "nome"
+        },
+        {
+          "attr_A": "txt",
+          "attr_B": "observacao"
+        }
+      ]
+    },
+    {
+      "classe_A": "bh050",
+      "classe_B": "constr_area_uso_especifico",
+      "__comment": "[5/5] BH050 Mariculture Site → Área uso específico tipo=4 (agropec./pesca)",
+      "atributos_default_B": [
+        {
+          "nome_atributo": "tipo",
+          "valor": 4
+        }
+      ],
+      "mapeamento_atributos": [
+        {
+          "attr_A": "nam",
+          "attr_B": "nome"
+        },
+        {
+          "attr_A": "txt",
+          "attr_B": "observacao"
+        }
+      ]
+    },
+    {
+      "classe_A": "bh051",
+      "classe_B": "constr_area_uso_especifico",
+      "__comment": "[5/5] BH051 Fish Farm Facility → Área uso específico tipo=4 (agropec./pesca)",
+      "atributos_default_B": [
+        {
+          "nome_atributo": "tipo",
+          "valor": 4
+        }
+      ],
+      "mapeamento_atributos": [
+        {
+          "attr_A": "nam",
+          "attr_B": "nome"
+        },
+        {
+          "attr_A": "txt",
+          "attr_B": "observacao"
+        }
+      ]
+    },
+    {
+      "classe_A": "bh060",
+      "classe_B": "infra_trecho_duto",
+      "__comment": "[4/5] BH060 Flume → Trecho de duto (calha/aqueduto elevado)",
+      "mapeamento_atributos": [
+        {
+          "attr_A": "fun",
+          "attr_B": "situacao_fisica",
+          "traducao": [
+            {
+              "valor_A": 0,
+              "valor_B": 9999
+            },
+            {
+              "valor_A": 1,
+              "valor_B": 4
+            },
+            {
+              "valor_A": 2,
+              "valor_B": 1
+            },
+            {
+              "valor_A": 3,
+              "valor_B": 2
+            },
+            {
+              "valor_A": 4,
+              "valor_B": 2
+            },
+            {
+              "valor_A": 6,
+              "valor_B": 3
+            },
+            {
+              "valor_A": 13,
+              "valor_B": 3
+            },
+            {
+              "valor_A": 9999,
+              "valor_B": 9999
+            }
+          ]
+        },
+        {
+          "attr_A": "loc",
+          "attr_B": "posicao_relativa",
+          "traducao": [
+            {
+              "valor_A": 0,
+              "valor_B": 9999
+            },
+            {
+              "valor_A": 40,
+              "valor_B": 6
+            },
+            {
+              "valor_A": 44,
+              "valor_B": 2
+            },
+            {
+              "valor_A": 45,
+              "valor_B": 3
+            },
+            {
+              "valor_A": 9999,
+              "valor_B": 9999
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "classe_A": "bh070",
+      "classe_B": "infra_travessia_hidroviaria",
+      "__comment": "[5/5] BH070 Ford → Travessia hidroviária (vau)",
+      "mapeamento_atributos": [
+        {
+          "attr_A": "nam",
+          "attr_B": "nome"
+        },
+        {
+          "attr_A": "txt",
+          "attr_B": "observacao"
+        }
+      ]
+    },
+    {
+      "classe_A": "bh110",
+      "classe_B": "infra_trecho_duto",
+      "__comment": "[5/5] BH110 Penstock → Trecho de duto (conduto forçado)",
+      "mapeamento_atributos": [
+        {
+          "attr_A": "loc",
+          "attr_B": "posicao_relativa",
+          "traducao": [
+            {
+              "valor_A": 0,
+              "valor_B": 9999
+            },
+            {
+              "valor_A": 40,
+              "valor_B": 6
+            },
+            {
+              "valor_A": 44,
+              "valor_B": 2
+            },
+            {
+              "valor_A": 45,
+              "valor_B": 3
+            },
+            {
+              "valor_A": 9999,
+              "valor_B": 9999
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "classe_A": "bh135",
+      "classe_B": "cobter_vegetacao",
+      "__comment": "[4/5] BH135 Rice Field → Vegetação (arrozal/cultura irrigada)"
+    },
+    {
+      "classe_A": "bh150",
+      "classe_B": "elemnat_elemento_fisiografico",
+      "__comment": "[4/5] BH150 Salt Flat → Elemento fisiográfico (planície salina)",
+      "mapeamento_atributos": [
+        {
+          "attr_A": "nam",
+          "attr_B": "nome"
+        },
+        {
+          "attr_A": "txt",
+          "attr_B": "observacao"
+        }
+      ]
+    },
+    {
+      "classe_A": "bh155",
+      "classe_B": "constr_extracao_mineral",
+      "__comment": "[5/5] BH155 Salt Evaporator → Extração mineral tipo=6 (Salina)",
+      "atributos_default_B": [
+        {
+          "nome_atributo": "tipo",
+          "valor": 6
+        }
+      ]
+    },
+    {
+      "classe_A": "bh165",
+      "classe_B": "infra_elemento_infraestrutura",
+      "__comment": "[4/5] BH165 Spillway → Elemento de infraestrutura (vertedouro de barragem)"
+    },
+    {
+      "classe_A": "bh015",
+      "classe_B": "cobter_vegetacao",
+      "__comment": "[4/5] BH015 Bog → Vegetação (brejo/turfeira)",
+      "mapeamento_atributos": [
+        {
+          "attr_A": "txt",
+          "attr_B": "observacao"
+        }
+      ]
+    },
+    {
+      "classe_A": "bi010",
+      "classe_B": "constr_deposito",
+      "__comment": "[5/5] BI010 Cistern → Depósito tipo=101 (Cisterna)",
+      "atributos_default_B": [
+        {
+          "nome_atributo": "tipo",
+          "valor": 101
+        }
+      ],
+      "mapeamento_atributos": [
+        {
+          "attr_A": "txt",
+          "attr_B": "observacao"
+        }
+      ]
+    },
+    {
+      "classe_A": "bi020",
+      "classe_B": "infra_barragem",
+      "__comment": "[5/5] BI020 Dam → Barragem tipo=1",
+      "atributos_default_B": [
+        {
+          "nome_atributo": "tipo",
+          "valor": 1
+        }
+      ],
+      "mapeamento_atributos": [
+        {
+          "attr_A": "nam",
+          "attr_B": "nome"
+        },
+        {
+          "attr_A": "txt",
+          "attr_B": "observacao"
+        }
+      ]
+    },
+    {
+      "classe_A": "bi030",
+      "classe_B": "infra_elemento_infraestrutura",
+      "__comment": "[5/5] BI030 Lock → Elemento de infraestrutura tipo=1001 (Eclusa)",
+      "atributos_default_B": [
+        {
+          "nome_atributo": "tipo",
+          "valor": 1001
+        }
+      ],
+      "mapeamento_atributos": [
+        {
+          "attr_A": "nam",
+          "attr_B": "nome"
+        },
+        {
+          "attr_A": "txt",
+          "attr_B": "observacao"
+        },
+        {
+          "attr_A": "fun",
+          "attr_B": "situacao_fisica",
+          "traducao": [
+            {
+              "valor_A": 0,
+              "valor_B": 9999
+            },
+            {
+              "valor_A": 1,
+              "valor_B": 4
+            },
+            {
+              "valor_A": 2,
+              "valor_B": 1
+            },
+            {
+              "valor_A": 3,
+              "valor_B": 2
+            },
+            {
+              "valor_A": 4,
+              "valor_B": 2
+            },
+            {
+              "valor_A": 6,
+              "valor_B": 3
+            },
+            {
+              "valor_A": 13,
+              "valor_B": 3
+            },
+            {
+              "valor_A": 9999,
+              "valor_B": 9999
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "classe_A": "bi040",
+      "classe_B": "infra_elemento_infraestrutura",
+      "__comment": "[5/5] BI040 Sluice Gate → Elemento de infraestrutura tipo=901 (Comporta)",
+      "atributos_default_B": [
+        {
+          "nome_atributo": "tipo",
+          "valor": 901
+        }
+      ],
+      "mapeamento_atributos": [
+        {
+          "attr_A": "fun",
+          "attr_B": "situacao_fisica",
+          "traducao": [
+            {
+              "valor_A": 0,
+              "valor_B": 9999
+            },
+            {
+              "valor_A": 1,
+              "valor_B": 4
+            },
+            {
+              "valor_A": 2,
+              "valor_B": 1
+            },
+            {
+              "valor_A": 3,
+              "valor_B": 2
+            },
+            {
+              "valor_A": 4,
+              "valor_B": 2
+            },
+            {
+              "valor_A": 6,
+              "valor_B": 3
+            },
+            {
+              "valor_A": 13,
+              "valor_B": 3
+            },
+            {
+              "valor_A": 9999,
+              "valor_B": 9999
+            }
+          ]
+        }
+      ],
+      "filtro_A": {
+        "$not": {
+          "nome_atributo": "$GEOM_TYPE",
+          "valor": "POLYGON"
+        }
+      }
+    },
+    {
+      "classe_A": "bi041",
+      "classe_B": "infra_elemento_infraestrutura",
+      "__comment": "[5/5] BI041 Water Gate → Elemento de infraestrutura tipo=901 (Comporta)",
+      "atributos_default_B": [
+        {
+          "nome_atributo": "tipo",
+          "valor": 901
+        }
+      ],
+      "mapeamento_atributos": [
+        {
+          "attr_A": "fun",
+          "attr_B": "situacao_fisica",
+          "traducao": [
+            {
+              "valor_A": 0,
+              "valor_B": 9999
+            },
+            {
+              "valor_A": 1,
+              "valor_B": 4
+            },
+            {
+              "valor_A": 2,
+              "valor_B": 1
+            },
+            {
+              "valor_A": 3,
+              "valor_B": 2
+            },
+            {
+              "valor_A": 4,
+              "valor_B": 2
+            },
+            {
+              "valor_A": 6,
+              "valor_B": 3
+            },
+            {
+              "valor_A": 13,
+              "valor_B": 3
+            },
+            {
+              "valor_A": 9999,
+              "valor_B": 9999
+            }
+          ]
+        }
+      ],
+      "filtro_A": {
+        "$not": {
+          "nome_atributo": "$GEOM_TYPE",
+          "valor": "POLYGON"
+        }
+      }
+    },
+    {
+      "classe_A": "bi050",
+      "classe_B": "infra_elemento_infraestrutura",
+      "__comment": "[4/5] BI050 Water Intake Tower → Elemento de infraestrutura (torre de captação de água)"
+    },
+    {
+      "classe_A": "ea010",
+      "classe_B": "cobter_vegetacao",
+      "__comment": "[5/5] EA010 Crop Land → Vegetação"
+    },
+    {
+      "classe_A": "ea040",
+      "classe_B": "cobter_vegetacao",
+      "__comment": "[5/5] EA040 Orchard → Vegetação",
+      "mapeamento_atributos": [
+        {
+          "attr_A": "txt",
+          "attr_B": "observacao"
+        }
+      ]
+    },
+    {
+      "classe_A": "ea050",
+      "classe_B": "cobter_vegetacao",
+      "__comment": "[5/5] EA050 Vineyard → Vegetação",
+      "mapeamento_atributos": [
+        {
+          "attr_A": "txt",
+          "attr_B": "observacao"
+        }
+      ]
+    },
+    {
+      "classe_A": "eb010",
+      "classe_B": "cobter_vegetacao",
+      "__comment": "[5/5] EB010 Grassland → Vegetação",
+      "mapeamento_atributos": [
+        {
+          "attr_A": "txt",
+          "attr_B": "observacao"
+        }
+      ]
+    },
+    {
+      "classe_A": "eb020",
+      "classe_B": "cobter_vegetacao",
+      "__comment": "[5/5] EB020 Thicket → Vegetação"
+    },
+    {
+      "classe_A": "ec010",
+      "classe_B": "cobter_vegetacao",
+      "__comment": "[5/5] EC010 Cane → Vegetação"
+    },
+    {
+      "classe_A": "ec030",
+      "classe_B": "cobter_vegetacao",
+      "__comment": "[5/5] EC030 Wood → Vegetação",
+      "mapeamento_atributos": [
+        {
+          "attr_A": "txt",
+          "attr_B": "observacao"
+        }
+      ]
+    },
+    {
+      "classe_A": "ec040",
+      "classe_B": "cobter_vegetacao",
+      "__comment": "[4/5] EC040 Cleared Way → Vegetação"
+    },
+    {
+      "classe_A": "ec060",
+      "classe_B": "cobter_vegetacao",
+      "__comment": "[4/5] EC060 Forest Clearing → Vegetação"
+    },
+    {
+      "classe_A": "ed010",
+      "classe_B": "cobter_vegetacao",
+      "__comment": "[4/5] ED010 Marsh → Vegetação",
+      "mapeamento_atributos": [
+        {
+          "attr_A": "txt",
+          "attr_B": "observacao"
+        }
+      ]
+    },
+    {
+      "classe_A": "ed020",
+      "classe_B": "cobter_vegetacao",
+      "__comment": "[4/5] ED020 Swamp → Vegetação",
+      "mapeamento_atributos": [
+        {
+          "attr_A": "txt",
+          "attr_B": "observacao"
+        }
+      ]
+    },
+    {
+      "classe_A": "ed030",
+      "classe_B": "cobter_vegetacao",
+      "__comment": "[5/5] ED030 Mangrove Swamp → Vegetação",
+      "mapeamento_atributos": [
+        {
+          "attr_A": "txt",
+          "attr_B": "observacao"
+        }
+      ]
+    },
+    {
+      "classe_A": "da010",
+      "classe_B": "elemnat_elemento_fisiografico",
+      "__comment": "[4/5] DA010 Soil Surface Region → Elemento fisiográfico (solo exposto)",
+      "atributos_default_B": [
+        {
+          "nome_atributo": "tipo",
+          "valor": 22
+        }
+      ],
+      "filtro_A": {
+        "$not": {
+          "nome_atributo": "$GEOM_TYPE",
+          "valor": "LINESTRING"
+        }
+      }
+    },
+    {
+      "classe_A": "db010",
+      "classe_B": "elemnat_elemento_fisiografico",
+      "__comment": "[5/5] DB010 Steep Terrain Face → elemnat_elemento_fisiografico",
+      "atributos_default_B": [
+        {
+          "nome_atributo": "tipo",
+          "valor": 8
+        }
+      ],
+      "mapeamento_atributos": [
+        {
+          "attr_A": "nam",
+          "attr_B": "nome"
+        },
+        {
+          "attr_A": "txt",
+          "attr_B": "observacao"
+        }
+      ],
+      "filtro_A": {
+        "$not": {
+          "$or": [
+            {
+              "nome_atributo": "$GEOM_TYPE",
+              "valor": "POINT"
+            },
+            {
+              "nome_atributo": "$GEOM_TYPE",
+              "valor": "POLYGON"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "classe_A": "db029",
+      "classe_B": "elemnat_elemento_fisiografico",
+      "__comment": "[5/5] DB029 Cave Mouth → elemnat_elemento_fisiografico",
+      "atributos_default_B": [
+        {
+          "nome_atributo": "tipo",
+          "valor": 19
+        }
+      ],
+      "mapeamento_atributos": [
+        {
+          "attr_A": "nam",
+          "attr_B": "nome"
+        },
+        {
+          "attr_A": "txt",
+          "attr_B": "observacao"
+        }
+      ],
+      "filtro_A": {
+        "$not": {
+          "$or": [
+            {
+              "nome_atributo": "$GEOM_TYPE",
+              "valor": "LINESTRING"
+            },
+            {
+              "nome_atributo": "$GEOM_TYPE",
+              "valor": "POLYGON"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "classe_A": "db061",
+      "classe_B": "elemnat_elemento_fisiografico",
+      "__comment": "[4/5] DB061 Crevice → elemnat_elemento_fisiografico",
+      "mapeamento_atributos": [
+        {
+          "attr_A": "txt",
+          "attr_B": "observacao"
+        }
+      ]
+    },
+    {
+      "classe_A": "db070",
+      "classe_B": "infra_alteracao_fisiografica_antropica",
+      "__comment": "[5/5] DB070 Cut → infra_alteracao_fisiografica_antropica",
+      "mapeamento_atributos": [
+        {
+          "attr_A": "txt",
+          "attr_B": "observacao"
+        }
+      ]
+    },
+    {
+      "classe_A": "db071",
+      "classe_B": "infra_alteracao_fisiografica_antropica",
+      "__comment": "[5/5] DB071 Cut Line → infra_alteracao_fisiografica_antropica"
+    },
+    {
+      "classe_A": "db090",
+      "classe_B": "infra_alteracao_fisiografica_antropica",
+      "__comment": "[5/5] DB090 Embankment → infra_alteracao_fisiografica_antropica",
+      "mapeamento_atributos": [
+        {
+          "attr_A": "txt",
+          "attr_B": "observacao"
+        }
+      ]
+    },
+    {
+      "classe_A": "db110",
+      "classe_B": "elemnat_elemento_fisiografico",
+      "__comment": "[5/5] DB110 Geologic Fault → elemnat_elemento_fisiografico",
+      "atributos_default_B": [
+        {
+          "nome_atributo": "tipo",
+          "valor": 18
+        }
+      ],
+      "mapeamento_atributos": [
+        {
+          "attr_A": "nam",
+          "attr_B": "nome"
+        },
+        {
+          "attr_A": "txt",
+          "attr_B": "observacao"
+        }
+      ],
+      "filtro_A": {
+        "$not": {
+          "$or": [
+            {
+              "nome_atributo": "$GEOM_TYPE",
+              "valor": "POINT"
+            },
+            {
+              "nome_atributo": "$GEOM_TYPE",
+              "valor": "POLYGON"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "classe_A": "db115",
+      "classe_B": "elemnat_elemento_fisiografico",
+      "__comment": "[4/5] DB115 Geothermal Outlet → elemnat_elemento_fisiografico",
+      "mapeamento_atributos": [
+        {
+          "attr_A": "nam",
+          "attr_B": "nome"
+        },
+        {
+          "attr_A": "txt",
+          "attr_B": "observacao"
+        }
+      ]
+    },
+    {
+      "classe_A": "db150",
+      "classe_B": "elemnat_elemento_fisiografico",
+      "__comment": "[4/5] DB150 Mountain Pass → elemnat_elemento_fisiografico",
+      "mapeamento_atributos": [
+        {
+          "attr_A": "nam",
+          "attr_B": "nome"
+        },
+        {
+          "attr_A": "txt",
+          "attr_B": "observacao"
+        }
+      ]
+    },
+    {
+      "classe_A": "db160",
+      "classe_B": "elemnat_elemento_fisiografico",
+      "__comment": "[5/5] DB160 Rock Formation → elemnat_elemento_fisiografico",
+      "atributos_default_B": [
+        {
+          "nome_atributo": "tipo",
+          "valor": 21
+        }
+      ],
+      "mapeamento_atributos": [
+        {
+          "attr_A": "nam",
+          "attr_B": "nome"
+        },
+        {
+          "attr_A": "txt",
+          "attr_B": "observacao"
+        }
+      ],
+      "filtro_A": {
+        "$not": {
+          "nome_atributo": "$GEOM_TYPE",
+          "valor": "LINESTRING"
+        }
+      }
+    },
+    {
+      "classe_A": "db170",
+      "classe_B": "elemnat_elemento_fisiografico",
+      "__comment": "[5/5] DB170 Sand Dunes → elemnat_elemento_fisiografico",
+      "atributos_default_B": [
+        {
+          "nome_atributo": "tipo",
+          "valor": 16
+        }
+      ],
+      "mapeamento_atributos": [
+        {
+          "attr_A": "nam",
+          "attr_B": "nome"
+        },
+        {
+          "attr_A": "txt",
+          "attr_B": "observacao"
+        }
+      ],
+      "filtro_A": {
+        "$not": {
+          "nome_atributo": "$GEOM_TYPE",
+          "valor": "LINESTRING"
+        }
+      }
+    },
+    {
+      "classe_A": "db200",
+      "classe_B": "elemnat_elemento_fisiografico",
+      "__comment": "[5/5] DB200 Gully → elemnat_elemento_fisiografico",
+      "mapeamento_atributos": [
+        {
+          "attr_A": "nam",
+          "attr_B": "nome"
+        },
+        {
+          "attr_A": "txt",
+          "attr_B": "observacao"
+        }
+      ]
+    },
+    {
+      "classe_A": "ah025",
+      "classe_B": "elemnat_elemento_fisiografico",
+      "__comment": "[5/5] AH025 Engineered Earthwork → Elemento fisiográfico tipo=14 (Talude)",
+      "atributos_default_B": [
+        {
+          "nome_atributo": "tipo",
+          "valor": 14
+        }
+      ],
+      "filtro_A": {
+        "$not": {
+          "$or": [
+            {
+              "nome_atributo": "$GEOM_TYPE",
+              "valor": "POINT"
+            },
+            {
+              "nome_atributo": "$GEOM_TYPE",
+              "valor": "POLYGON"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "classe_A": "aj110",
+      "classe_B": "constr_edificacao",
+      "__comment": "[4/5] AJ110 Greenhouse → Edificação (estufa)",
+      "mapeamento_atributos": [
+        {
+          "attr_A": "fun",
+          "attr_B": "situacao_fisica",
+          "traducao": [
+            {
+              "valor_A": 0,
+              "valor_B": 9999
+            },
+            {
+              "valor_A": 1,
+              "valor_B": 4
+            },
+            {
+              "valor_A": 2,
+              "valor_B": 1
+            },
+            {
+              "valor_A": 3,
+              "valor_B": 2
+            },
+            {
+              "valor_A": 4,
+              "valor_B": 2
+            },
+            {
+              "valor_A": 6,
+              "valor_B": 3
+            },
+            {
+              "valor_A": 13,
+              "valor_B": 3
+            },
+            {
+              "valor_A": 9999,
+              "valor_B": 9999
+            }
+          ]
+        }
+      ],
+      "atributos_default_B": [
+        {
+          "nome_atributo": "tipo",
+          "valor": 1215
+        },
+        {
+          "nome_atributo": "situacao_fisica",
+          "valor": 3
+        }
+      ]
+    },
+    {
+      "classe_A": "aj030",
+      "classe_B": "constr_edificacao",
+      "__comment": "[4/5] AJ030 Holding Pen → Edificação tipo=1218 (Agro - Curral)",
+      "atributos_default_B": [
+        {
+          "nome_atributo": "tipo",
+          "valor": 1218
+        },
+        {
+          "nome_atributo": "situacao_fisica",
+          "valor": 3
+        }
+      ],
+      "mapeamento_atributos": [
+        {
+          "attr_A": "txt",
+          "attr_B": "observacao"
+        }
+      ]
+    },
+    {
+      "classe_A": "aj010",
+      "classe_B": "constr_ocupacao_solo",
+      "__comment": "[5/5] AJ010 Circular Irrigation System → Ocupação do solo tipo=806 (Pivô central)",
+      "atributos_default_B": [
+        {
+          "nome_atributo": "tipo",
+          "valor": 806
+        }
+      ],
+      "mapeamento_atributos": [
+        {
+          "attr_A": "txt",
+          "attr_B": "observacao"
+        }
+      ]
+    },
+    {
+      "classe_A": "aj050",
+      "classe_B": "constr_edificacao",
+      "__comment": "[4/5] AJ050 Windmill → Edificação (moinho de vento)",
+      "mapeamento_atributos": [
+        {
+          "attr_A": "fun",
+          "attr_B": "situacao_fisica",
+          "traducao": [
+            {
+              "valor_A": 0,
+              "valor_B": 9999
+            },
+            {
+              "valor_A": 1,
+              "valor_B": 4
+            },
+            {
+              "valor_A": 2,
+              "valor_B": 1
+            },
+            {
+              "valor_A": 3,
+              "valor_B": 2
+            },
+            {
+              "valor_A": 4,
+              "valor_B": 2
+            },
+            {
+              "valor_A": 6,
+              "valor_B": 3
+            },
+            {
+              "valor_A": 13,
+              "valor_B": 3
+            },
+            {
+              "valor_A": 9999,
+              "valor_B": 9999
+            }
+          ]
+        },
+        {
+          "attr_A": "hgt",
+          "attr_B": "altura"
+        }
+      ],
+      "atributos_default_B": [
+        {
+          "nome_atributo": "tipo",
+          "valor": 0
+        },
+        {
+          "nome_atributo": "situacao_fisica",
+          "valor": 3
+        }
+      ]
+    },
+    {
+      "classe_A": "aj051",
+      "classe_B": "infra_elemento_energia",
+      "__comment": "[5/5] AJ051 Wind Turbine → Elemento de energia (turbina eólica)",
+      "mapeamento_atributos": [
+        {
+          "attr_A": "fun",
+          "attr_B": "situacao_fisica",
+          "traducao": [
+            {
+              "valor_A": 0,
+              "valor_B": 9999
+            },
+            {
+              "valor_A": 1,
+              "valor_B": 4
+            },
+            {
+              "valor_A": 2,
+              "valor_B": 1
+            },
+            {
+              "valor_A": 3,
+              "valor_B": 2
+            },
+            {
+              "valor_A": 4,
+              "valor_B": 2
+            },
+            {
+              "valor_A": 6,
+              "valor_B": 3
+            },
+            {
+              "valor_A": 13,
+              "valor_B": 3
+            },
+            {
+              "valor_A": 9999,
+              "valor_B": 9999
+            }
+          ]
+        },
+        {
+          "attr_A": "hgt",
+          "attr_B": "altura"
+        }
+      ]
+    },
+    {
+      "classe_A": "al015",
+      "classe_B": "constr_edificacao",
+      "__comment": "[5/5] AL015 General Building → Edificação (edifício genérico)",
+      "mapeamento_atributos": [
+        {
+          "attr_A": "nam",
+          "attr_B": "nome"
+        },
+        {
+          "attr_A": "txt",
+          "attr_B": "observacao"
+        },
+        {
+          "attr_A": "fun",
+          "attr_B": "situacao_fisica",
+          "traducao": [
+            {
+              "valor_A": 0,
+              "valor_B": 9999
+            },
+            {
+              "valor_A": 1,
+              "valor_B": 4
+            },
+            {
+              "valor_A": 2,
+              "valor_B": 1
+            },
+            {
+              "valor_A": 3,
+              "valor_B": 2
+            },
+            {
+              "valor_A": 4,
+              "valor_B": 2
+            },
+            {
+              "valor_A": 6,
+              "valor_B": 3
+            },
+            {
+              "valor_A": 13,
+              "valor_B": 3
+            },
+            {
+              "valor_A": 9999,
+              "valor_B": 9999
+            }
+          ]
+        },
+        {
+          "attr_A": "hgt",
+          "attr_B": "altura"
+        }
+      ],
+      "atributos_default_B": [
+        {
+          "nome_atributo": "tipo",
+          "valor": 0
+        }
+      ]
+    },
+    {
+      "classe_A": "al010",
+      "classe_B": "constr_area_uso_especifico",
+      "__comment": "[4/5] AL010 Facility → Área uso específico",
+      "mapeamento_atributos": [
+        {
+          "attr_A": "nam",
+          "attr_B": "nome"
+        },
+        {
+          "attr_A": "txt",
+          "attr_B": "observacao"
+        }
+      ]
+    },
+    {
+      "classe_A": "al012",
+      "classe_B": "constr_area_uso_especifico",
+      "__comment": "[4/5] AL012 Archeological Site → Área uso específico tipo=19 (ruínas valor histórico)",
+      "atributos_default_B": [
+        {
+          "nome_atributo": "tipo",
+          "valor": 19
+        }
+      ],
+      "mapeamento_atributos": [
+        {
+          "attr_A": "nam",
+          "attr_B": "nome"
+        },
+        {
+          "attr_A": "txt",
+          "attr_B": "observacao"
+        }
+      ]
+    },
+    {
+      "classe_A": "al019",
+      "classe_B": "constr_area_uso_especifico",
+      "__comment": "[4/5] AL019 Shed → Área uso específico tipo=8 (industrial)",
+      "atributos_default_B": [
+        {
+          "nome_atributo": "tipo",
+          "valor": 8
+        }
+      ]
+    },
+    {
+      "classe_A": "al030",
+      "classe_B": "constr_area_uso_especifico",
+      "__comment": "[4/5] AL030 Cemetery → Área uso específico tipo=11 (equipamentos sociais/cemitério)",
+      "atributos_default_B": [
+        {
+          "nome_atributo": "tipo",
+          "valor": 11
+        }
+      ],
+      "mapeamento_atributos": [
+        {
+          "attr_A": "nam",
+          "attr_B": "nome"
+        },
+        {
+          "attr_A": "txt",
+          "attr_B": "observacao"
+        }
+      ]
+    },
+    {
+      "classe_A": "al070",
+      "classe_B": "llp_delimitacao_fisica",
+      "__comment": "[5/5] AL070 Fence → Delimitação física tipo=1 (Cerca)",
+      "atributos_default_B": [
+        {
+          "nome_atributo": "tipo",
+          "valor": 1
+        }
+      ]
+    },
+    {
+      "classe_A": "al099",
+      "classe_B": "constr_edificacao",
+      "__comment": "[5/5] AL099 Hut → Edificação (choça/barraca)",
+      "atributos_default_B": [
+        {
+          "nome_atributo": "situacao_fisica",
+          "valor": 3
+        },
+        {
+          "nome_atributo": "tipo",
+          "valor": 0
+        }
+      ]
+    },
+    {
+      "classe_A": "al130",
+      "classe_B": "constr_ocupacao_solo",
+      "__comment": "[4/5] AL130 Memorial Monument → Ocupação do solo (monumento memorial)",
+      "mapeamento_atributos": [
+        {
+          "attr_A": "nam",
+          "attr_B": "nome"
+        },
+        {
+          "attr_A": "txt",
+          "attr_B": "observacao"
+        }
+      ],
+      "atributos_default_B": [
+        {
+          "nome_atributo": "situacao_fisica",
+          "valor": 3
+        }
+      ]
+    },
+    {
+      "classe_A": "al170",
+      "classe_B": "constr_area_uso_especifico",
+      "__comment": "[4/5] AL170 Public Square → Área uso específico tipo=18 (lazer)",
+      "atributos_default_B": [
+        {
+          "nome_atributo": "tipo",
+          "valor": 18
+        }
+      ],
+      "mapeamento_atributos": [
+        {
+          "attr_A": "nam",
+          "attr_B": "nome"
+        },
+        {
+          "attr_A": "txt",
+          "attr_B": "observacao"
+        }
+      ]
+    },
+    {
+      "classe_A": "al200",
+      "classe_B": "constr_edificacao",
+      "__comment": "[5/5] AL200 Ruins → Edificação (ruínas, situacao_fisica=2)",
+      "atributos_default_B": [
+        {
+          "nome_atributo": "situacao_fisica",
+          "valor": 2
+        }
+      ],
+      "mapeamento_atributos": [
+        {
+          "attr_A": "nam",
+          "attr_B": "nome"
+        },
+        {
+          "attr_A": "txt",
+          "attr_B": "observacao"
+        }
+      ]
+    },
+    {
+      "classe_A": "al208",
+      "classe_B": "cobter_area_edificada",
+      "__comment": "[5/5] AL208 Shanty Town → Área edificada (assentamento precário)",
+      "atributos_default_B": [
+        {
+          "nome_atributo": "assentamento_precario",
+          "valor": 1
+        }
+      ],
+      "mapeamento_atributos": [
+        {
+          "attr_A": "nam",
+          "attr_B": "nome"
+        },
+        {
+          "attr_A": "txt",
+          "attr_B": "observacao"
+        }
+      ]
+    },
+    {
+      "classe_A": "al210",
+      "classe_B": "constr_edificacao",
+      "__comment": "[4/5] AL210 Protection Shed → Edificação (abrigo/proteção)",
+      "atributos_default_B": [
+        {
+          "nome_atributo": "situacao_fisica",
+          "valor": 3
+        }
+      ]
+    },
+    {
+      "classe_A": "al260",
+      "classe_B": "llp_delimitacao_fisica",
+      "__comment": "[5/5] AL260 Wall → Delimitação física tipo=2 (Muro)",
+      "atributos_default_B": [
+        {
+          "nome_atributo": "tipo",
+          "valor": 2
+        }
+      ]
+    },
+    {
+      "classe_A": "ah050",
+      "classe_B": "constr_edificacao",
+      "__comment": "[4/5] AH050 Fortification → Edificação (fortificação)",
+      "mapeamento_atributos": [
+        {
+          "attr_A": "nam",
+          "attr_B": "nome"
+        },
+        {
+          "attr_A": "txt",
+          "attr_B": "observacao"
+        },
+        {
+          "attr_A": "fun",
+          "attr_B": "situacao_fisica",
+          "traducao": [
+            {
+              "valor_A": 0,
+              "valor_B": 9999
+            },
+            {
+              "valor_A": 1,
+              "valor_B": 4
+            },
+            {
+              "valor_A": 2,
+              "valor_B": 1
+            },
+            {
+              "valor_A": 3,
+              "valor_B": 2
+            },
+            {
+              "valor_A": 4,
+              "valor_B": 2
+            },
+            {
+              "valor_A": 6,
+              "valor_B": 3
+            },
+            {
+              "valor_A": 13,
+              "valor_B": 3
+            },
+            {
+              "valor_A": 9999,
+              "valor_B": 9999
+            }
+          ]
+        },
+        {
+          "attr_A": "hgt",
+          "attr_B": "altura"
+        }
+      ],
+      "atributos_default_B": []
+    },
+    {
+      "classe_A": "ah070",
+      "classe_B": "constr_edificacao",
+      "__comment": "[4/5] AH070 Checkpoint → Edificação (posto de controle)",
+      "mapeamento_atributos": [
+        {
+          "attr_A": "nam",
+          "attr_B": "nome"
+        },
+        {
+          "attr_A": "txt",
+          "attr_B": "observacao"
+        }
+      ],
+      "atributos_default_B": [
+        {
+          "nome_atributo": "situacao_fisica",
+          "valor": 3
+        }
+      ]
+    },
+    {
+      "classe_A": "ac000",
+      "classe_B": "constr_edificacao",
+      "__comment": "[5/5] AC000 Processing Facility → Edificação (fábrica/usina de processamento)",
+      "mapeamento_atributos": [
+        {
+          "attr_A": "nam",
+          "attr_B": "nome"
+        },
+        {
+          "attr_A": "txt",
+          "attr_B": "observacao"
+        },
+        {
+          "attr_A": "fun",
+          "attr_B": "situacao_fisica",
+          "traducao": [
+            {
+              "valor_A": 0,
+              "valor_B": 9999
+            },
+            {
+              "valor_A": 1,
+              "valor_B": 4
+            },
+            {
+              "valor_A": 2,
+              "valor_B": 1
+            },
+            {
+              "valor_A": 3,
+              "valor_B": 2
+            },
+            {
+              "valor_A": 4,
+              "valor_B": 2
+            },
+            {
+              "valor_A": 6,
+              "valor_B": 3
+            },
+            {
+              "valor_A": 13,
+              "valor_B": 3
+            },
+            {
+              "valor_A": 9999,
+              "valor_B": 9999
+            }
+          ]
+        },
+        {
+          "attr_A": "hgt",
+          "attr_B": "altura"
+        }
+      ],
+      "atributos_default_B": []
+    },
+    {
+      "classe_A": "ac020",
+      "classe_B": "constr_edificacao",
+      "__comment": "[4/5] AC020 Catalytic Cracker → Edificação (craqueador catalítico/refinaria)",
+      "mapeamento_atributos": [
+        {
+          "attr_A": "fun",
+          "attr_B": "situacao_fisica",
+          "traducao": [
+            {
+              "valor_A": 0,
+              "valor_B": 9999
+            },
+            {
+              "valor_A": 1,
+              "valor_B": 4
+            },
+            {
+              "valor_A": 2,
+              "valor_B": 1
+            },
+            {
+              "valor_A": 3,
+              "valor_B": 2
+            },
+            {
+              "valor_A": 4,
+              "valor_B": 2
+            },
+            {
+              "valor_A": 6,
+              "valor_B": 3
+            },
+            {
+              "valor_A": 13,
+              "valor_B": 3
+            },
+            {
+              "valor_A": 9999,
+              "valor_B": 9999
+            }
+          ]
+        },
+        {
+          "attr_A": "hgt",
+          "attr_B": "altura"
+        }
+      ],
+      "atributos_default_B": []
+    },
+    {
+      "classe_A": "ac030",
+      "classe_B": "constr_area_uso_especifico",
+      "__comment": "[4/5] AC030 Settling Pond → Área uso específico (tanque de decantação)",
+      "mapeamento_atributos": [
+        {
+          "attr_A": "txt",
+          "attr_B": "observacao"
+        }
+      ]
+    },
+    {
+      "classe_A": "aa010",
+      "classe_B": "constr_extracao_mineral",
+      "__comment": "[5/5] AA010 Extraction Mine → Extração mineral tipo=4 (Mina/Pedreira)",
+      "atributos_default_B": [
+        {
+          "nome_atributo": "tipo",
+          "valor": 4
+        }
+      ],
+      "mapeamento_atributos": [
+        {
+          "attr_A": "nam",
+          "attr_B": "nome"
+        },
+        {
+          "attr_A": "txt",
+          "attr_B": "observacao"
+        },
+        {
+          "attr_A": "fun",
+          "attr_B": "situacao_fisica",
+          "traducao": [
+            {
+              "valor_A": 0,
+              "valor_B": 9999
+            },
+            {
+              "valor_A": 1,
+              "valor_B": 4
+            },
+            {
+              "valor_A": 2,
+              "valor_B": 1
+            },
+            {
+              "valor_A": 3,
+              "valor_B": 2
+            },
+            {
+              "valor_A": 4,
+              "valor_B": 2
+            },
+            {
+              "valor_A": 6,
+              "valor_B": 3
+            },
+            {
+              "valor_A": 13,
+              "valor_B": 3
+            },
+            {
+              "valor_A": 9999,
+              "valor_B": 9999
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "classe_A": "aa012",
+      "classe_B": "constr_extracao_mineral",
+      "__comment": "[5/5] AA012 Quarry → Extração mineral tipo=4 (Pedreira)",
+      "atributos_default_B": [
+        {
+          "nome_atributo": "tipo",
+          "valor": 4
+        }
+      ],
+      "mapeamento_atributos": [
+        {
+          "attr_A": "nam",
+          "attr_B": "nome"
+        },
+        {
+          "attr_A": "txt",
+          "attr_B": "observacao"
+        },
+        {
+          "attr_A": "fun",
+          "attr_B": "situacao_fisica",
+          "traducao": [
+            {
+              "valor_A": 0,
+              "valor_B": 9999
+            },
+            {
+              "valor_A": 1,
+              "valor_B": 4
+            },
+            {
+              "valor_A": 2,
+              "valor_B": 1
+            },
+            {
+              "valor_A": 3,
+              "valor_B": 2
+            },
+            {
+              "valor_A": 4,
+              "valor_B": 2
+            },
+            {
+              "valor_A": 6,
+              "valor_B": 3
+            },
+            {
+              "valor_A": 13,
+              "valor_B": 3
+            },
+            {
+              "valor_A": 9999,
+              "valor_B": 9999
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "classe_A": "aa040",
+      "classe_B": "constr_extracao_mineral",
+      "__comment": "[5/5] AA040 Rig → Extração mineral (torre de sondagem/perfuração)",
+      "mapeamento_atributos": [
+        {
+          "attr_A": "nam",
+          "attr_B": "nome"
+        },
+        {
+          "attr_A": "txt",
+          "attr_B": "observacao"
+        },
+        {
+          "attr_A": "fun",
+          "attr_B": "situacao_fisica",
+          "traducao": [
+            {
+              "valor_A": 0,
+              "valor_B": 9999
+            },
+            {
+              "valor_A": 1,
+              "valor_B": 4
+            },
+            {
+              "valor_A": 2,
+              "valor_B": 1
+            },
+            {
+              "valor_A": 3,
+              "valor_B": 2
+            },
+            {
+              "valor_A": 4,
+              "valor_B": 2
+            },
+            {
+              "valor_A": 6,
+              "valor_B": 3
+            },
+            {
+              "valor_A": 13,
+              "valor_B": 3
+            },
+            {
+              "valor_A": 9999,
+              "valor_B": 9999
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "classe_A": "aa050",
+      "classe_B": "constr_extracao_mineral",
+      "__comment": "[5/5] AA050 Well → Extração mineral (poço)",
+      "mapeamento_atributos": [
+        {
+          "attr_A": "nam",
+          "attr_B": "nome"
+        },
+        {
+          "attr_A": "txt",
+          "attr_B": "observacao"
+        },
+        {
+          "attr_A": "fun",
+          "attr_B": "situacao_fisica",
+          "traducao": [
+            {
+              "valor_A": 0,
+              "valor_B": 9999
+            },
+            {
+              "valor_A": 1,
+              "valor_B": 4
+            },
+            {
+              "valor_A": 2,
+              "valor_B": 1
+            },
+            {
+              "valor_A": 3,
+              "valor_B": 2
+            },
+            {
+              "valor_A": 4,
+              "valor_B": 2
+            },
+            {
+              "valor_A": 6,
+              "valor_B": 3
+            },
+            {
+              "valor_A": 13,
+              "valor_B": 3
+            },
+            {
+              "valor_A": 9999,
+              "valor_B": 9999
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "classe_A": "aa052",
+      "classe_B": "constr_extracao_mineral",
+      "__comment": "[5/5] AA052 Hydrocarbons Field → Extração mineral tipo=8 (campo petrolífero)",
+      "atributos_default_B": [
+        {
+          "nome_atributo": "tipo",
+          "valor": 8
+        }
+      ],
+      "mapeamento_atributos": [
+        {
+          "attr_A": "nam",
+          "attr_B": "nome"
+        },
+        {
+          "attr_A": "txt",
+          "attr_B": "observacao"
+        }
+      ]
+    },
+    {
+      "classe_A": "ab000",
+      "classe_B": "constr_deposito",
+      "__comment": "[5/5] AB000 Disposal Site → Depósito (aterro/lixão)",
+      "mapeamento_atributos": [
+        {
+          "attr_A": "nam",
+          "attr_B": "nome"
+        },
+        {
+          "attr_A": "txt",
+          "attr_B": "observacao"
+        },
+        {
+          "attr_A": "fun",
+          "attr_B": "situacao_fisica",
+          "traducao": [
+            {
+              "valor_A": 0,
+              "valor_B": 9999
+            },
+            {
+              "valor_A": 1,
+              "valor_B": 4
+            },
+            {
+              "valor_A": 2,
+              "valor_B": 1
+            },
+            {
+              "valor_A": 3,
+              "valor_B": 2
+            },
+            {
+              "valor_A": 4,
+              "valor_B": 2
+            },
+            {
+              "valor_A": 6,
+              "valor_B": 3
+            },
+            {
+              "valor_A": 13,
+              "valor_B": 3
+            },
+            {
+              "valor_A": 9999,
+              "valor_B": 9999
+            }
+          ]
+        },
+        {
+          "attr_A": "hgt",
+          "attr_B": "altura"
+        }
+      ],
+      "atributos_default_B": [
+        {
+          "nome_atributo": "tipo",
+          "valor": 305
+        }
+      ]
+    },
+    {
+      "classe_A": "ab010",
+      "classe_B": "constr_deposito",
+      "__comment": "[4/5] AB010 Recycling Site → Depósito (reciclagem)",
+      "mapeamento_atributos": [
+        {
+          "attr_A": "nam",
+          "attr_B": "nome"
+        },
+        {
+          "attr_A": "txt",
+          "attr_B": "observacao"
+        },
+        {
+          "attr_A": "fun",
+          "attr_B": "situacao_fisica",
+          "traducao": [
+            {
+              "valor_A": 0,
+              "valor_B": 9999
+            },
+            {
+              "valor_A": 1,
+              "valor_B": 4
+            },
+            {
+              "valor_A": 2,
+              "valor_B": 1
+            },
+            {
+              "valor_A": 3,
+              "valor_B": 2
+            },
+            {
+              "valor_A": 4,
+              "valor_B": 2
+            },
+            {
+              "valor_A": 6,
+              "valor_B": 3
+            },
+            {
+              "valor_A": 13,
+              "valor_B": 3
+            },
+            {
+              "valor_A": 9999,
+              "valor_B": 9999
+            }
+          ]
+        }
+      ],
+      "atributos_default_B": [
+        {
+          "nome_atributo": "tipo",
+          "valor": 398
+        }
+      ]
+    },
+    {
+      "classe_A": "ak030",
+      "classe_B": "constr_area_uso_especifico",
+      "__comment": "[5/5] AK030 Amusement Park → Área uso específico tipo=18 (lazer)",
+      "atributos_default_B": [
+        {
+          "nome_atributo": "tipo",
+          "valor": 18
+        }
+      ],
+      "mapeamento_atributos": [
+        {
+          "attr_A": "nam",
+          "attr_B": "nome"
+        },
+        {
+          "attr_A": "txt",
+          "attr_B": "observacao"
+        }
+      ]
+    },
+    {
+      "classe_A": "ak040",
+      "classe_B": "constr_area_uso_especifico",
+      "__comment": "[5/5] AK040 Sports Ground → Área uso específico tipo=18 (lazer)",
+      "atributos_default_B": [
+        {
+          "nome_atributo": "tipo",
+          "valor": 18
+        }
+      ],
+      "mapeamento_atributos": [
+        {
+          "attr_A": "nam",
+          "attr_B": "nome"
+        },
+        {
+          "attr_A": "txt",
+          "attr_B": "observacao"
+        }
+      ]
+    },
+    {
+      "classe_A": "ak060",
+      "classe_B": "constr_area_uso_especifico",
+      "__comment": "[4/5] AK060 Camp-site → Área uso específico tipo=18 (lazer)",
+      "atributos_default_B": [
+        {
+          "nome_atributo": "tipo",
+          "valor": 18
+        }
+      ],
+      "mapeamento_atributos": [
+        {
+          "attr_A": "nam",
+          "attr_B": "nome"
+        },
+        {
+          "attr_A": "txt",
+          "attr_B": "observacao"
+        }
+      ]
+    },
+    {
+      "classe_A": "ak090",
+      "classe_B": "constr_area_uso_especifico",
+      "__comment": "[5/5] AK090 Fairground → Área uso específico tipo=18 (lazer)",
+      "atributos_default_B": [
+        {
+          "nome_atributo": "tipo",
+          "valor": 18
+        }
+      ],
+      "mapeamento_atributos": [
+        {
+          "attr_A": "nam",
+          "attr_B": "nome"
+        },
+        {
+          "attr_A": "txt",
+          "attr_B": "observacao"
+        }
+      ]
+    },
+    {
+      "classe_A": "ak100",
+      "classe_B": "constr_area_uso_especifico",
+      "__comment": "[5/5] AK100 Golf Course → Área uso específico tipo=18 (lazer)",
+      "atributos_default_B": [
+        {
+          "nome_atributo": "tipo",
+          "valor": 18
+        }
+      ],
+      "mapeamento_atributos": [
+        {
+          "attr_A": "nam",
+          "attr_B": "nome"
+        },
+        {
+          "attr_A": "txt",
+          "attr_B": "observacao"
+        }
+      ]
+    },
+    {
+      "classe_A": "ak120",
+      "classe_B": "constr_area_uso_especifico",
+      "__comment": "[5/5] AK120 Park → Área uso específico tipo=18 (lazer)",
+      "atributos_default_B": [
+        {
+          "nome_atributo": "tipo",
+          "valor": 18
+        }
+      ],
+      "mapeamento_atributos": [
+        {
+          "attr_A": "nam",
+          "attr_B": "nome"
+        },
+        {
+          "attr_A": "txt",
+          "attr_B": "observacao"
+        }
+      ]
+    },
+    {
+      "classe_A": "ak170",
+      "classe_B": "constr_area_uso_especifico",
+      "__comment": "[5/5] AK170 Swimming Pool → Área uso específico tipo=18 (lazer)",
+      "atributos_default_B": [
+        {
+          "nome_atributo": "tipo",
+          "valor": 18
+        }
+      ],
+      "mapeamento_atributos": [
+        {
+          "attr_A": "txt",
+          "attr_B": "observacao"
+        }
+      ]
+    },
+    {
+      "classe_A": "ak180",
+      "classe_B": "constr_area_uso_especifico",
+      "__comment": "[5/5] AK180 Zoo → Área uso específico tipo=18 (lazer)",
+      "atributos_default_B": [
+        {
+          "nome_atributo": "tipo",
+          "valor": 18
+        }
+      ],
+      "mapeamento_atributos": [
+        {
+          "attr_A": "nam",
+          "attr_B": "nome"
+        },
+        {
+          "attr_A": "txt",
+          "attr_B": "observacao"
+        }
+      ]
+    },
+    {
+      "classe_A": "ak160",
+      "classe_B": "constr_edificacao",
+      "__comment": "[5/5] AK160 Stadium → Edificação (estádio)",
+      "mapeamento_atributos": [
+        {
+          "attr_A": "nam",
+          "attr_B": "nome"
+        },
+        {
+          "attr_A": "txt",
+          "attr_B": "observacao"
+        },
+        {
+          "attr_A": "fun",
+          "attr_B": "situacao_fisica",
+          "traducao": [
+            {
+              "valor_A": 0,
+              "valor_B": 9999
+            },
+            {
+              "valor_A": 1,
+              "valor_B": 4
+            },
+            {
+              "valor_A": 2,
+              "valor_B": 1
+            },
+            {
+              "valor_A": 3,
+              "valor_B": 2
+            },
+            {
+              "valor_A": 4,
+              "valor_B": 2
+            },
+            {
+              "valor_A": 6,
+              "valor_B": 3
+            },
+            {
+              "valor_A": 13,
+              "valor_B": 3
+            },
+            {
+              "valor_A": 9999,
+              "valor_B": 9999
+            }
+          ]
+        },
+        {
+          "attr_A": "hgt",
+          "attr_B": "altura"
+        }
+      ],
+      "atributos_default_B": [
+        {
+          "nome_atributo": "tipo",
+          "valor": 815
+        },
+        {
+          "nome_atributo": "situacao_fisica",
+          "valor": 3
+        }
+      ]
+    },
+    {
+      "classe_A": "ak190",
+      "classe_B": "infra_elemento_infraestrutura",
+      "__comment": "[4/5] AK190 Recreational Pier → Elemento de infraestrutura tipo=1942 (Pier)",
+      "atributos_default_B": [
+        {
+          "nome_atributo": "tipo",
+          "valor": 1942
+        }
+      ],
+      "mapeamento_atributos": [
+        {
+          "attr_A": "nam",
+          "attr_B": "nome"
+        },
+        {
+          "attr_A": "txt",
+          "attr_B": "observacao"
+        },
+        {
+          "attr_A": "fun",
+          "attr_B": "situacao_fisica",
+          "traducao": [
+            {
+              "valor_A": 0,
+              "valor_B": 9999
+            },
+            {
+              "valor_A": 1,
+              "valor_B": 4
+            },
+            {
+              "valor_A": 2,
+              "valor_B": 1
+            },
+            {
+              "valor_A": 3,
+              "valor_B": 2
+            },
+            {
+              "valor_A": 4,
+              "valor_B": 2
+            },
+            {
+              "valor_A": 6,
+              "valor_B": 3
+            },
+            {
+              "valor_A": 13,
+              "valor_B": 3
+            },
+            {
+              "valor_A": 9999,
+              "valor_B": 9999
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "classe_A": "ai030",
+      "classe_B": "constr_area_uso_especifico",
+      "__comment": "[4/5] AI030 Camp → Área uso específico (acampamento)",
+      "mapeamento_atributos": [
+        {
+          "attr_A": "nam",
+          "attr_B": "nome"
+        },
+        {
+          "attr_A": "txt",
+          "attr_B": "observacao"
+        }
+      ]
+    },
+    {
+      "classe_A": "al105",
+      "classe_B": "llp_localidade",
+      "__comment": "[5/5] AL105 Settlement → Localidade",
+      "mapeamento_atributos": [
+        {
+          "attr_A": "nam",
+          "attr_B": "nome"
+        },
+        {
+          "attr_A": "txt",
+          "attr_B": "observacao"
+        }
+      ]
+    },
+    {
+      "classe_A": "al020",
+      "classe_B": "cobter_area_edificada",
+      "__comment": "[5/5] AL020 Built-Up Area (Polygon) → Área edificada",
+      "mapeamento_atributos": [
+        {
+          "attr_A": "nam",
+          "attr_B": "nome"
+        },
+        {
+          "attr_A": "txt",
+          "attr_B": "observacao"
+        }
+      ],
+      "geom_B": [
+        "POLYGON"
+      ]
+    },
+    {
+      "classe_A": "al020",
+      "classe_B": "llp_localidade",
+      "__comment": "[5/5] AL020 Built-Up Area (Point) → Localidade",
+      "mapeamento_atributos": [
+        {
+          "attr_A": "nam",
+          "attr_B": "nome"
+        },
+        {
+          "attr_A": "txt",
+          "attr_B": "observacao"
+        }
+      ],
+      "geom_B": [
+        "POINT"
+      ]
+    },
+    {
+      "classe_A": "bd110",
+      "classe_B": "infra_elemento_infraestrutura",
+      "__comment": "[5/5] BD110 Offshore Platform → Elemento de infraestrutura tipo=1401 (Plataforma - Petróleo)",
+      "atributos_default_B": [
+        {
+          "nome_atributo": "tipo",
+          "valor": 1401
+        }
+      ],
+      "mapeamento_atributos": [
+        {
+          "attr_A": "nam",
+          "attr_B": "nome"
+        },
+        {
+          "attr_A": "txt",
+          "attr_B": "observacao"
+        },
+        {
+          "attr_A": "fun",
+          "attr_B": "situacao_fisica",
+          "traducao": [
+            {
+              "valor_A": 0,
+              "valor_B": 9999
+            },
+            {
+              "valor_A": 1,
+              "valor_B": 4
+            },
+            {
+              "valor_A": 2,
+              "valor_B": 1
+            },
+            {
+              "valor_A": 3,
+              "valor_B": 2
+            },
+            {
+              "valor_A": 4,
+              "valor_B": 2
+            },
+            {
+              "valor_A": 6,
+              "valor_B": 3
+            },
+            {
+              "valor_A": 13,
+              "valor_B": 3
+            },
+            {
+              "valor_A": 9999,
+              "valor_B": 9999
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "classe_A": "bd120",
+      "classe_B": "elemnat_elemento_hidrografico",
+      "__comment": "[5/5] BD120 Reef → Elemento hidrográfico tipo=18 (Recife contiguo)",
+      "atributos_default_B": [
+        {
+          "nome_atributo": "tipo",
+          "valor": 18
+        }
+      ],
+      "mapeamento_atributos": [
+        {
+          "attr_A": "nam",
+          "attr_B": "nome"
+        },
+        {
+          "attr_A": "txt",
+          "attr_B": "observacao"
+        }
+      ]
+    },
+    {
+      "classe_A": "bd130",
+      "classe_B": "elemnat_elemento_hidrografico",
+      "__comment": "[5/5] BD130 Hazardous Rock → Elemento hidrográfico tipo=8 (Rocha em água)",
+      "atributos_default_B": [
+        {
+          "nome_atributo": "tipo",
+          "valor": 8
+        }
+      ],
+      "mapeamento_atributos": [
+        {
+          "attr_A": "nam",
+          "attr_B": "nome"
+        },
+        {
+          "attr_A": "txt",
+          "attr_B": "observacao"
+        }
+      ]
+    },
+    {
+      "classe_A": "fa015",
+      "classe_B": "llp_limite_especial",
+      "__comment": "[5/5] FA015 Firing Range → Limite especial tipo=36 (Área militar)",
+      "atributos_default_B": [
+        {
+          "nome_atributo": "tipo",
+          "valor": 36
+        }
+      ],
+      "mapeamento_atributos": [
+        {
+          "attr_A": "nam",
+          "attr_B": "nome"
+        },
+        {
+          "attr_A": "txt",
+          "attr_B": "observacao"
+        }
+      ]
+    },
+    {
+      "classe_A": "fa100",
+      "classe_B": "llp_limite_especial",
+      "__comment": "[4/5] FA100 Test Site → Limite especial (área de teste)",
+      "mapeamento_atributos": [
+        {
+          "attr_A": "nam",
+          "attr_B": "nome"
+        },
+        {
+          "attr_A": "txt",
+          "attr_B": "observacao"
+        }
+      ]
+    },
+    {
+      "classe_A": "su001",
+      "classe_B": "llp_limite_especial",
+      "__comment": "[5/5] SU001 Military Installation → Limite especial tipo=36 (Área militar)",
+      "atributos_default_B": [
+        {
+          "nome_atributo": "tipo",
+          "valor": 36
+        }
+      ],
+      "mapeamento_atributos": [
+        {
+          "attr_A": "nam",
+          "attr_B": "nome"
+        },
+        {
+          "attr_A": "txt",
+          "attr_B": "observacao"
+        }
+      ]
+    },
+    {
+      "classe_A": "al060",
+      "classe_B": "infra_obstaculo_terrestre",
+      "__comment": "[5/5] AL060 Dragon's Teeth → Obstáculo terrestre tipo=1 (Antitanque)",
+      "atributos_default_B": [
+        {
+          "nome_atributo": "tipo",
+          "valor": 1
+        }
+      ],
+      "mapeamento_atributos": [
+        {
+          "attr_A": "nam",
+          "attr_B": "nome"
+        },
+        {
+          "attr_A": "txt",
+          "attr_B": "observacao"
+        }
+      ]
+    },
+    {
+      "classe_A": "zd020",
+      "classe_B": "llp_area_sem_dados",
+      "__comment": "[5/5] ZD020 Void Collection Area → Área sem dados"
+    },
+    {
+      "classe_A": "zd040",
+      "classe_B": "elemnat_toponimo_fisiografico_natural",
+      "__comment": "[4/5] ZD040 Named Location → Topônimo fisiográfico natural",
+      "mapeamento_atributos": [
+        {
+          "attr_A": "nam",
+          "attr_B": "nome"
+        },
+        {
+          "attr_A": "txt",
+          "attr_B": "observacao"
+        }
+      ]
+    },
+    {
+      "classe_A": "ba010",
+      "classe_B": "elemnat_elemento_hidrografico",
+      "__comment": "[4/5] BA010 Land Water Boundary → Elemento hidrográfico (limite terra-água)"
+    },
+    {
+      "classe_A": "ba030",
+      "classe_B": "elemnat_ilha",
+      "__comment": "[5/5] BA030 Island → Ilha",
+      "mapeamento_atributos": [
+        {
+          "attr_A": "nam",
+          "attr_B": "nome"
+        },
+        {
+          "attr_A": "txt",
+          "attr_B": "observacao"
+        }
+      ]
+    },
+    {
+      "classe_A": "ba040",
+      "classe_B": "cobter_massa_dagua",
+      "__comment": "[5/5] BA040 Tidal Water → Massa d'água tipo=3 (Oceano)",
+      "atributos_default_B": [
+        {
+          "nome_atributo": "tipo",
+          "valor": 3
+        }
+      ],
+      "mapeamento_atributos": [
+        {
+          "attr_A": "nam",
+          "attr_B": "nome"
+        },
+        {
+          "attr_A": "txt",
+          "attr_B": "observacao"
+        }
+      ]
+    },
+    {
+      "classe_A": "ba050",
+      "classe_B": "elemnat_elemento_fisiografico",
+      "__comment": "[4/5] BA050 Beach → Elemento fisiográfico (praia)",
+      "mapeamento_atributos": [
+        {
+          "attr_A": "nam",
+          "attr_B": "nome"
+        },
+        {
+          "attr_A": "txt",
+          "attr_B": "observacao"
+        }
+      ]
+    },
+    {
+      "classe_A": "bb005",
+      "classe_B": "infra_elemento_infraestrutura",
+      "__comment": "[4/5] BB005 Harbour → Elemento de infraestrutura tipo=1801 (Fundeadouro)",
+      "atributos_default_B": [
+        {
+          "nome_atributo": "tipo",
+          "valor": 1801
+        }
+      ],
+      "mapeamento_atributos": [
+        {
+          "attr_A": "nam",
+          "attr_B": "nome"
+        },
+        {
+          "attr_A": "txt",
+          "attr_B": "observacao"
+        },
+        {
+          "attr_A": "fun",
+          "attr_B": "situacao_fisica",
+          "traducao": [
+            {
+              "valor_A": 0,
+              "valor_B": 9999
+            },
+            {
+              "valor_A": 1,
+              "valor_B": 4
+            },
+            {
+              "valor_A": 2,
+              "valor_B": 1
+            },
+            {
+              "valor_A": 3,
+              "valor_B": 2
+            },
+            {
+              "valor_A": 4,
+              "valor_B": 2
+            },
+            {
+              "valor_A": 6,
+              "valor_B": 3
+            },
+            {
+              "valor_A": 13,
+              "valor_B": 3
+            },
+            {
+              "valor_A": 9999,
+              "valor_B": 9999
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "classe_A": "bb041",
+      "classe_B": "infra_elemento_infraestrutura",
+      "__comment": "[5/5] BB041 Breakwater → Elemento de infraestrutura tipo=701 (Quebramar)",
+      "atributos_default_B": [
+        {
+          "nome_atributo": "tipo",
+          "valor": 701
+        }
+      ],
+      "mapeamento_atributos": [
+        {
+          "attr_A": "fun",
+          "attr_B": "situacao_fisica",
+          "traducao": [
+            {
+              "valor_A": 0,
+              "valor_B": 9999
+            },
+            {
+              "valor_A": 1,
+              "valor_B": 4
+            },
+            {
+              "valor_A": 2,
+              "valor_B": 1
+            },
+            {
+              "valor_A": 3,
+              "valor_B": 2
+            },
+            {
+              "valor_A": 4,
+              "valor_B": 2
+            },
+            {
+              "valor_A": 6,
+              "valor_B": 3
+            },
+            {
+              "valor_A": 13,
+              "valor_B": 3
+            },
+            {
+              "valor_A": 9999,
+              "valor_B": 9999
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "classe_A": "bb043",
+      "classe_B": "infra_elemento_infraestrutura",
+      "__comment": "[5/5] BB043 Groin → Elemento de infraestrutura tipo=801 (Molhe)",
+      "atributos_default_B": [
+        {
+          "nome_atributo": "tipo",
+          "valor": 801
+        }
+      ],
+      "mapeamento_atributos": [
+        {
+          "attr_A": "fun",
+          "attr_B": "situacao_fisica",
+          "traducao": [
+            {
+              "valor_A": 0,
+              "valor_B": 9999
+            },
+            {
+              "valor_A": 1,
+              "valor_B": 4
+            },
+            {
+              "valor_A": 2,
+              "valor_B": 1
+            },
+            {
+              "valor_A": 3,
+              "valor_B": 2
+            },
+            {
+              "valor_A": 4,
+              "valor_B": 2
+            },
+            {
+              "valor_A": 6,
+              "valor_B": 3
+            },
+            {
+              "valor_A": 13,
+              "valor_B": 3
+            },
+            {
+              "valor_A": 9999,
+              "valor_B": 9999
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "classe_A": "bb090",
+      "classe_B": "infra_elemento_infraestrutura",
+      "__comment": "[4/5] BB090 Dry Dock → Elemento de infraestrutura (dique seco)",
+      "mapeamento_atributos": [
+        {
+          "attr_A": "fun",
+          "attr_B": "situacao_fisica",
+          "traducao": [
+            {
+              "valor_A": 0,
+              "valor_B": 9999
+            },
+            {
+              "valor_A": 1,
+              "valor_B": 4
+            },
+            {
+              "valor_A": 2,
+              "valor_B": 1
+            },
+            {
+              "valor_A": 3,
+              "valor_B": 2
+            },
+            {
+              "valor_A": 4,
+              "valor_B": 2
+            },
+            {
+              "valor_A": 6,
+              "valor_B": 3
+            },
+            {
+              "valor_A": 13,
+              "valor_B": 3
+            },
+            {
+              "valor_A": 9999,
+              "valor_B": 9999
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "classe_A": "bb140",
+      "classe_B": "infra_elemento_infraestrutura",
+      "__comment": "[4/5] BB140 Training Wall → Elemento de infraestrutura tipo=801 (Molhe)",
+      "atributos_default_B": [
+        {
+          "nome_atributo": "tipo",
+          "valor": 801
+        }
+      ],
+      "mapeamento_atributos": [
+        {
+          "attr_A": "fun",
+          "attr_B": "situacao_fisica",
+          "traducao": [
+            {
+              "valor_A": 0,
+              "valor_B": 9999
+            },
+            {
+              "valor_A": 1,
+              "valor_B": 4
+            },
+            {
+              "valor_A": 2,
+              "valor_B": 1
+            },
+            {
+              "valor_A": 3,
+              "valor_B": 2
+            },
+            {
+              "valor_A": 4,
+              "valor_B": 2
+            },
+            {
+              "valor_A": 6,
+              "valor_B": 3
+            },
+            {
+              "valor_A": 13,
+              "valor_B": 3
+            },
+            {
+              "valor_A": 9999,
+              "valor_B": 9999
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "classe_A": "bb155",
+      "classe_B": "constr_ocupacao_solo",
+      "__comment": "[5/5] BB155 Maritime Signal Station → Ocupação do solo tipo=1101 (Farol ou farolete)",
+      "atributos_default_B": [
+        {
+          "nome_atributo": "tipo",
+          "valor": 1101
+        }
+      ],
+      "mapeamento_atributos": [
+        {
+          "attr_A": "nam",
+          "attr_B": "nome"
+        },
+        {
+          "attr_A": "txt",
+          "attr_B": "observacao"
+        }
+      ]
+    },
+    {
+      "classe_A": "bb190",
+      "classe_B": "infra_elemento_infraestrutura",
+      "__comment": "[4/5] BB190 Berthing Structure → Elemento de infraestrutura tipo=1942 (Pier)",
+      "atributos_default_B": [
+        {
+          "nome_atributo": "tipo",
+          "valor": 1942
+        }
+      ],
+      "mapeamento_atributos": [
+        {
+          "attr_A": "fun",
+          "attr_B": "situacao_fisica",
+          "traducao": [
+            {
+              "valor_A": 0,
+              "valor_B": 9999
+            },
+            {
+              "valor_A": 1,
+              "valor_B": 4
+            },
+            {
+              "valor_A": 2,
+              "valor_B": 1
+            },
+            {
+              "valor_A": 3,
+              "valor_B": 2
+            },
+            {
+              "valor_A": 4,
+              "valor_B": 2
+            },
+            {
+              "valor_A": 6,
+              "valor_B": 3
+            },
+            {
+              "valor_A": 13,
+              "valor_B": 3
+            },
+            {
+              "valor_A": 9999,
+              "valor_B": 9999
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "classe_A": "bb230",
+      "classe_B": "constr_ocupacao_solo",
+      "__comment": "[4/5] BB230 Seawall → Ocupação do solo (paredão/muralha marítima)",
+      "mapeamento_atributos": [
+        {
+          "attr_A": "fun",
+          "attr_B": "situacao_fisica",
+          "traducao": [
+            {
+              "valor_A": 0,
+              "valor_B": 9999
+            },
+            {
+              "valor_A": 1,
+              "valor_B": 4
+            },
+            {
+              "valor_A": 2,
+              "valor_B": 1
+            },
+            {
+              "valor_A": 3,
+              "valor_B": 2
+            },
+            {
+              "valor_A": 4,
+              "valor_B": 2
+            },
+            {
+              "valor_A": 6,
+              "valor_B": 3
+            },
+            {
+              "valor_A": 13,
+              "valor_B": 3
+            },
+            {
+              "valor_A": 9999,
+              "valor_B": 9999
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "classe_A": "bb240",
+      "classe_B": "infra_elemento_infraestrutura",
+      "__comment": "[4/5] BB240 Slipway → Elemento de infraestrutura (rampa de embarcações)",
+      "mapeamento_atributos": [
+        {
+          "attr_A": "fun",
+          "attr_B": "situacao_fisica",
+          "traducao": [
+            {
+              "valor_A": 0,
+              "valor_B": 9999
+            },
+            {
+              "valor_A": 1,
+              "valor_B": 4
+            },
+            {
+              "valor_A": 2,
+              "valor_B": 1
+            },
+            {
+              "valor_A": 3,
+              "valor_B": 2
+            },
+            {
+              "valor_A": 4,
+              "valor_B": 2
+            },
+            {
+              "valor_A": 6,
+              "valor_B": 3
+            },
+            {
+              "valor_A": 13,
+              "valor_B": 3
+            },
+            {
+              "valor_A": 9999,
+              "valor_B": 9999
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "classe_A": "gb040",
+      "classe_B": "constr_edificacao",
+      "__comment": "[4/5] GB040 Launch Pad → Edificação tipo=2498 (Aero - Outros)",
+      "atributos_default_B": [
+        {
+          "nome_atributo": "tipo",
+          "valor": 2498
+        }
+      ],
+      "mapeamento_atributos": [
+        {
+          "attr_A": "txt",
+          "attr_B": "observacao"
+        },
+        {
+          "attr_A": "fun",
+          "attr_B": "situacao_fisica",
+          "traducao": [
+            {
+              "valor_A": 0,
+              "valor_B": 9999
+            },
+            {
+              "valor_A": 1,
+              "valor_B": 4
+            },
+            {
+              "valor_A": 2,
+              "valor_B": 1
+            },
+            {
+              "valor_A": 3,
+              "valor_B": 2
+            },
+            {
+              "valor_A": 4,
+              "valor_B": 2
+            },
+            {
+              "valor_A": 6,
+              "valor_B": 3
+            },
+            {
+              "valor_A": 13,
+              "valor_B": 3
+            },
+            {
+              "valor_A": 9999,
+              "valor_B": 9999
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "classe_A": "gb050",
+      "classe_B": "constr_edificacao",
+      "__comment": "[3/5] GB050 Aircraft Revetment → Edificação tipo=2498 (Aero - Outros)",
+      "atributos_default_B": [
+        {
+          "nome_atributo": "tipo",
+          "valor": 2498
+        }
+      ],
+      "mapeamento_atributos": [
+        {
+          "attr_A": "txt",
+          "attr_B": "observacao"
+        }
+      ]
+    },
+    {
+      "classe_A": "al025",
+      "classe_B": "constr_edificacao",
+      "__comment": "[3/5] AL025 Cairn → Edificação tipo=712 (Monumento)",
+      "atributos_default_B": [
+        {
+          "nome_atributo": "tipo",
+          "valor": 712
+        }
+      ],
+      "mapeamento_atributos": [
+        {
+          "attr_A": "nam",
+          "attr_B": "nome"
+        },
+        {
+          "attr_A": "txt",
+          "attr_B": "observacao"
+        }
+      ]
+    },
+    {
+      "__comment": "curva_nivel (tabela brasileira customizada) -> elemnat_curva_nivel",
+      "classe_A": "curva_nivel",
+      "classe_B": "elemnat_curva_nivel",
+      "com_afixo_geom_A": true,
+      "mapeamento_atributos": [
+        {
+          "attr_A": "cota",
+          "attr_B": "cota"
+        }
+      ],
+      "atributos_default_B": [
+        {
+          "nome_atributo": "tipo",
+          "valor": 1
+        },
+        {
+          "nome_atributo": "indice",
+          "valor": 1
+        }
+      ]
+    }
+  ],
+  "atributos_default_B": [
+    {
+      "nome_atributo": "tipo",
+      "valor": 9999
+    },
+    {
+      "nome_atributo": "situacao_fisica",
+      "valor": 3
+    },
+    {
+      "nome_atributo": "material_construcao",
+      "valor": 9999
+    },
+    {
+      "nome_atributo": "regime",
+      "valor": 9999
+    },
+    {
+      "nome_atributo": "posicao_relativa",
+      "valor": 2
+    },
+    {
+      "nome_atributo": "assentamento_precario",
+      "valor": 9999
+    },
+    {
+      "nome_atributo": "revestimento",
+      "valor": 9999
+    },
+    {
+      "nome_atributo": "visivel",
+      "valor": 1
+    },
+    {
+      "nome_atributo": "justificativa_txt",
+      "valor": 1
+    },
+    {
+      "nome_atributo": "exibir_linha_rotulo",
+      "valor": 2
+    }
+  ]
+}

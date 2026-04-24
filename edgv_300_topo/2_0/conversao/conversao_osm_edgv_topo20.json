@@ -1,0 +1,6774 @@
+{
+  "metadata": {
+    "version": "1.0",
+    "date": "2026-03-27",
+    "source": "OpenStreetMap",
+    "target": "EDGV Topo 2.0 v0.9.1",
+    "description": "Mapeamento de tags OSM para tabelas e atributos EDGV Topo 2.0. Consumido pelo PythonCaller no FME Workbench.",
+    "total_rules": 269,
+    "match_strategy": "first_match_wins"
+  },
+  "rules": [
+    {
+      "_comment": "=== LLP — LIMITES E LOCALIDADES ==="
+    },
+    {
+      "id": "localidade_capital_federal",
+      "osm_filter": {
+        "tags": {
+          "place": [
+            "city",
+            "town"
+          ],
+          "capital": "yes"
+        },
+        "geometry": [
+          "point"
+        ]
+      },
+      "edgv_target": {
+        "table": "llp_localidade_p",
+        "attributes": {
+          "tipo": 3
+        }
+      },
+      "osm_attribute_mapping": {
+        "name": "nome",
+        "population": "populacao"
+      },
+      "confidence": "high",
+      "note": "Capital federal (capital=yes)"
+    },
+    {
+      "id": "localidade_capital_estadual",
+      "osm_filter": {
+        "tags": {
+          "place": [
+            "city",
+            "town"
+          ],
+          "capital": "4"
+        },
+        "geometry": [
+          "point"
+        ]
+      },
+      "edgv_target": {
+        "table": "llp_localidade_p",
+        "attributes": {
+          "tipo": 2
+        }
+      },
+      "osm_attribute_mapping": {
+        "name": "nome",
+        "population": "populacao"
+      },
+      "confidence": "high",
+      "note": "Capital estadual (capital=4 no Brasil)"
+    },
+    {
+      "id": "localidade_cidade",
+      "osm_filter": {
+        "tags": {
+          "place": "city"
+        },
+        "geometry": [
+          "point"
+        ]
+      },
+      "edgv_target": {
+        "table": "llp_localidade_p",
+        "attributes": {
+          "tipo": 1
+        }
+      },
+      "osm_attribute_mapping": {
+        "name": "nome",
+        "population": "populacao"
+      },
+      "confidence": "high",
+      "note": "Cidade"
+    },
+    {
+      "id": "localidade_town",
+      "osm_filter": {
+        "tags": {
+          "place": "town"
+        },
+        "geometry": [
+          "point"
+        ]
+      },
+      "edgv_target": {
+        "table": "llp_localidade_p",
+        "attributes": {
+          "tipo": 1
+        }
+      },
+      "osm_attribute_mapping": {
+        "name": "nome",
+        "population": "populacao"
+      },
+      "confidence": "high",
+      "note": "OSM town → EDGV Cidade"
+    },
+    {
+      "id": "localidade_vila",
+      "osm_filter": {
+        "tags": {
+          "place": "village"
+        },
+        "geometry": [
+          "point"
+        ]
+      },
+      "edgv_target": {
+        "table": "llp_localidade_p",
+        "attributes": {
+          "tipo": 4
+        }
+      },
+      "osm_attribute_mapping": {
+        "name": "nome",
+        "population": "populacao"
+      },
+      "confidence": "high",
+      "note": "Vila"
+    },
+    {
+      "id": "localidade_lugarejo",
+      "osm_filter": {
+        "tags": {
+          "place": "hamlet"
+        },
+        "geometry": [
+          "point"
+        ]
+      },
+      "edgv_target": {
+        "table": "llp_localidade_p",
+        "attributes": {
+          "tipo": 7
+        }
+      },
+      "osm_attribute_mapping": {
+        "name": "nome",
+        "population": "populacao"
+      },
+      "confidence": "high",
+      "note": "Povoado"
+    },
+    {
+      "id": "localidade_habitacao_isolada",
+      "osm_filter": {
+        "tags": {
+          "place": "isolated_dwelling"
+        },
+        "geometry": [
+          "point"
+        ]
+      },
+      "edgv_target": {
+        "table": "llp_localidade_p",
+        "attributes": {
+          "tipo": 7
+        }
+      },
+      "osm_attribute_mapping": {
+        "name": "nome"
+      },
+      "confidence": "high",
+      "note": "Lugarejo / habitação isolada"
+    },
+    {
+      "id": "localidade_nome_local",
+      "osm_filter": {
+        "tags": {
+          "place": "locality"
+        },
+        "geometry": [
+          "point"
+        ]
+      },
+      "edgv_target": {
+        "table": "llp_localidade_p",
+        "attributes": {
+          "tipo": 8
+        }
+      },
+      "osm_attribute_mapping": {
+        "name": "nome"
+      },
+      "confidence": "high",
+      "note": "Nome local (desabitado)"
+    },
+    {
+      "id": "localidade_fazenda",
+      "osm_filter": {
+        "tags": {
+          "place": "farm"
+        },
+        "geometry": [
+          "point"
+        ]
+      },
+      "edgv_target": {
+        "table": "constr_edificacao_p",
+        "attributes": {
+          "tipo": 1212
+        }
+      },
+      "osm_attribute_mapping": {
+        "name": "nome",
+        "height": "altura",
+        "building:levels": "pavimentos",
+        "addr:street": {
+          "column": "endereco",
+          "concat_with": "addr:housenumber",
+          "separator": ", "
+        }
+      },
+      "confidence": "high",
+      "note": "Sede de fazenda"
+    },
+    {
+      "id": "limite_esp_terra_indigena",
+      "osm_filter": {
+        "tags": {
+          "boundary": "aboriginal_lands"
+        },
+        "geometry": [
+          "polygon"
+        ]
+      },
+      "edgv_target": {
+        "table": "llp_limite_especial_a",
+        "attributes": {
+          "tipo": 2
+        }
+      },
+      "osm_attribute_mapping": {
+        "name": "nome"
+      },
+      "confidence": "high",
+      "note": "Terra indígena"
+    },
+    {
+      "id": "limite_esp_terra_indigena_prot",
+      "osm_filter": {
+        "tags": {
+          "boundary": "protected_area",
+          "protect_class": "24"
+        },
+        "geometry": [
+          "polygon"
+        ]
+      },
+      "edgv_target": {
+        "table": "llp_limite_especial_a",
+        "attributes": {
+          "tipo": 2
+        }
+      },
+      "osm_attribute_mapping": {
+        "name": "nome"
+      },
+      "confidence": "high",
+      "note": "Terra indígena via protect_class=24"
+    },
+    {
+      "id": "limite_esp_area_militar",
+      "osm_filter": {
+        "tags": {
+          "landuse": "military"
+        },
+        "geometry": [
+          "polygon"
+        ]
+      },
+      "edgv_target": {
+        "table": "llp_limite_especial_a",
+        "attributes": {
+          "tipo": 36
+        }
+      },
+      "osm_attribute_mapping": {
+        "name": "nome"
+      },
+      "confidence": "high",
+      "note": "Área militar"
+    },
+    {
+      "id": "limite_esp_area_militar_danger",
+      "osm_filter": {
+        "tags": {
+          "military": "danger_area"
+        },
+        "geometry": [
+          "polygon"
+        ]
+      },
+      "edgv_target": {
+        "table": "llp_limite_especial_a",
+        "attributes": {
+          "tipo": 36
+        }
+      },
+      "osm_attribute_mapping": {
+        "name": "nome"
+      },
+      "confidence": "high",
+      "note": "Área de perigo militar"
+    },
+    {
+      "id": "limite_esp_area_militar_training",
+      "osm_filter": {
+        "tags": {
+          "military": "training_area"
+        },
+        "geometry": [
+          "polygon"
+        ]
+      },
+      "edgv_target": {
+        "table": "llp_limite_especial_a",
+        "attributes": {
+          "tipo": 36
+        }
+      },
+      "osm_attribute_mapping": {
+        "name": "nome"
+      },
+      "confidence": "high",
+      "note": "Área de treinamento militar"
+    },
+    {
+      "id": "edif_quartel_a",
+      "osm_filter": {
+        "tags": {
+          "military": "barracks"
+        },
+        "geometry": [
+          "polygon"
+        ]
+      },
+      "edgv_target": {
+        "table": "constr_edificacao_a",
+        "attributes": {
+          "tipo": 3098
+        }
+      },
+      "osm_attribute_mapping": {
+        "name": "nome",
+        "height": "altura",
+        "building:levels": "pavimentos",
+        "addr:street": {
+          "column": "endereco",
+          "concat_with": "addr:housenumber",
+          "separator": ", "
+        }
+      },
+      "confidence": "high",
+      "note": "Quartel militar"
+    },
+    {
+      "id": "pista_militar_airfield",
+      "osm_filter": {
+        "tags": {
+          "military": "airfield"
+        },
+        "geometry": [
+          "polygon"
+        ]
+      },
+      "edgv_target": {
+        "table": "infra_pista_pouso_a",
+        "attributes": {
+          "tipo": 9
+        }
+      },
+      "osm_attribute_mapping": {
+        "name": "nome"
+      },
+      "confidence": "high",
+      "note": "Aeródromo militar"
+    },
+    {
+      "id": "limite_esp_esec",
+      "osm_filter": {
+        "tags": {
+          "boundary": "protected_area",
+          "protect_class": "1a"
+        },
+        "geometry": [
+          "polygon"
+        ]
+      },
+      "edgv_target": {
+        "table": "llp_limite_especial_a",
+        "attributes": {
+          "tipo": 31
+        }
+      },
+      "osm_attribute_mapping": {
+        "name": "nome"
+      },
+      "confidence": "high",
+      "note": "Estação Ecológica – ESEC"
+    },
+    {
+      "id": "limite_esp_rebio",
+      "osm_filter": {
+        "tags": {
+          "boundary": "protected_area",
+          "protect_class": "1b"
+        },
+        "geometry": [
+          "polygon"
+        ]
+      },
+      "edgv_target": {
+        "table": "llp_limite_especial_a",
+        "attributes": {
+          "tipo": 34
+        }
+      },
+      "osm_attribute_mapping": {
+        "name": "nome"
+      },
+      "confidence": "high",
+      "note": "Reserva Biológica – REBIO"
+    },
+    {
+      "id": "limite_esp_parque",
+      "osm_filter": {
+        "tags": {
+          "boundary": "national_park"
+        },
+        "geometry": [
+          "polygon"
+        ]
+      },
+      "edgv_target": {
+        "table": "llp_limite_especial_a",
+        "attributes": {
+          "tipo": 32
+        }
+      },
+      "osm_attribute_mapping": {
+        "name": "nome"
+      },
+      "confidence": "high",
+      "note": "Parque Nacional"
+    },
+    {
+      "id": "limite_esp_parque_prot",
+      "osm_filter": {
+        "tags": {
+          "boundary": "protected_area",
+          "protect_class": "2"
+        },
+        "geometry": [
+          "polygon"
+        ]
+      },
+      "edgv_target": {
+        "table": "llp_limite_especial_a",
+        "attributes": {
+          "tipo": 32
+        }
+      },
+      "osm_attribute_mapping": {
+        "name": "nome"
+      },
+      "confidence": "high",
+      "note": "Parque via protect_class=2"
+    },
+    {
+      "id": "limite_esp_mona",
+      "osm_filter": {
+        "tags": {
+          "boundary": "protected_area",
+          "protect_class": "3"
+        },
+        "geometry": [
+          "polygon"
+        ]
+      },
+      "edgv_target": {
+        "table": "llp_limite_especial_a",
+        "attributes": {
+          "tipo": 33
+        }
+      },
+      "osm_attribute_mapping": {
+        "name": "nome"
+      },
+      "confidence": "high",
+      "note": "Monumento Natural – MONA"
+    },
+    {
+      "id": "limite_esp_refau",
+      "osm_filter": {
+        "tags": {
+          "boundary": "protected_area",
+          "protect_class": "4"
+        },
+        "geometry": [
+          "polygon"
+        ]
+      },
+      "edgv_target": {
+        "table": "llp_limite_especial_a",
+        "attributes": {
+          "tipo": 29
+        }
+      },
+      "osm_attribute_mapping": {
+        "name": "nome"
+      },
+      "confidence": "high",
+      "note": "Reserva de Fauna – REFAU"
+    },
+    {
+      "id": "limite_esp_apa",
+      "osm_filter": {
+        "tags": {
+          "boundary": "protected_area",
+          "protect_class": "5"
+        },
+        "geometry": [
+          "polygon"
+        ]
+      },
+      "edgv_target": {
+        "table": "llp_limite_especial_a",
+        "attributes": {
+          "tipo": 24
+        }
+      },
+      "osm_attribute_mapping": {
+        "name": "nome"
+      },
+      "confidence": "high",
+      "note": "Área de Proteção Ambiental – APA"
+    },
+    {
+      "id": "limite_esp_arie",
+      "osm_filter": {
+        "tags": {
+          "boundary": "protected_area",
+          "protect_class": "6"
+        },
+        "geometry": [
+          "polygon"
+        ]
+      },
+      "edgv_target": {
+        "table": "llp_limite_especial_a",
+        "attributes": {
+          "tipo": 25
+        }
+      },
+      "osm_attribute_mapping": {
+        "name": "nome"
+      },
+      "confidence": "medium",
+      "note": "ARIE — protect_class=6 pode ser FLONA ou ARIE"
+    },
+    {
+      "id": "limite_esp_uc_generica",
+      "osm_filter": {
+        "tags": {
+          "boundary": "protected_area"
+        },
+        "geometry": [
+          "polygon"
+        ]
+      },
+      "edgv_target": {
+        "table": "llp_limite_especial_a",
+        "attributes": {
+          "tipo": 5
+        }
+      },
+      "osm_attribute_mapping": {
+        "name": "nome"
+      },
+      "confidence": "medium",
+      "note": "UC genérica (fallback)"
+    },
+    {
+      "id": "limite_esp_nature_reserve",
+      "osm_filter": {
+        "tags": {
+          "leisure": "nature_reserve"
+        },
+        "geometry": [
+          "polygon"
+        ]
+      },
+      "edgv_target": {
+        "table": "llp_limite_especial_a",
+        "attributes": {
+          "tipo": 5
+        }
+      },
+      "osm_attribute_mapping": {
+        "name": "nome"
+      },
+      "confidence": "medium",
+      "note": "Reserva natural genérica"
+    },
+    {
+      "id": "delimitacao_fisica_cerca",
+      "osm_filter": {
+        "tags": {
+          "barrier": "fence"
+        },
+        "geometry": [
+          "line"
+        ]
+      },
+      "edgv_target": {
+        "table": "llp_delimitacao_fisica_l",
+        "attributes": {
+          "tipo": 1
+        }
+      },
+      "osm_attribute_mapping": {},
+      "confidence": "high",
+      "note": "Cerca"
+    },
+    {
+      "id": "delimitacao_fisica_muro",
+      "osm_filter": {
+        "tags": {
+          "barrier": "wall"
+        },
+        "geometry": [
+          "line"
+        ]
+      },
+      "edgv_target": {
+        "table": "llp_delimitacao_fisica_l",
+        "attributes": {
+          "tipo": 2
+        }
+      },
+      "osm_attribute_mapping": {},
+      "confidence": "high",
+      "note": "Muro"
+    },
+    {
+      "id": "delimitacao_fisica_hedge",
+      "osm_filter": {
+        "tags": {
+          "barrier": "hedge"
+        },
+        "geometry": [
+          "line"
+        ]
+      },
+      "edgv_target": {
+        "table": "llp_delimitacao_fisica_l",
+        "attributes": {
+          "tipo": 1
+        }
+      },
+      "osm_attribute_mapping": {},
+      "confidence": "medium",
+      "note": "Sebe → aproximado para Cerca"
+    },
+    {
+      "_comment": "=== COBTER — COBERTURA TERRESTRE ==="
+    },
+    {
+      "id": "oceano",
+      "osm_filter": {
+        "tags": {
+          "natural": "coastline"
+        },
+        "geometry": [
+          "polygon"
+        ]
+      },
+      "edgv_target": {
+        "table": "cobter_massa_dagua_a",
+        "attributes": {
+          "tipo": 3
+        }
+      },
+      "osm_attribute_mapping": {
+        "name": "nome"
+      },
+      "confidence": "high",
+      "note": "Oceano (polígono derivado de coastline)"
+    },
+    {
+      "id": "massa_dagua_rio",
+      "osm_filter": {
+        "tags": {
+          "natural": "water",
+          "water": "river"
+        },
+        "geometry": [
+          "polygon"
+        ]
+      },
+      "edgv_target": {
+        "table": "cobter_massa_dagua_a",
+        "attributes": {
+          "tipo": 1
+        }
+      },
+      "osm_attribute_mapping": {
+        "name": "nome"
+      },
+      "confidence": "high",
+      "note": "Rio como polígono"
+    },
+    {
+      "id": "massa_dagua_riverbank",
+      "osm_filter": {
+        "tags": {
+          "waterway": "riverbank"
+        },
+        "geometry": [
+          "polygon"
+        ]
+      },
+      "edgv_target": {
+        "table": "cobter_massa_dagua_a",
+        "attributes": {
+          "tipo": 1
+        }
+      },
+      "osm_attribute_mapping": {
+        "name": "nome"
+      },
+      "confidence": "high",
+      "note": "Rio como polígono (riverbank)"
+    },
+    {
+      "id": "massa_dagua_lago",
+      "osm_filter": {
+        "tags": {
+          "natural": "water"
+        },
+        "tags_absent": [
+          "water"
+        ],
+        "geometry": [
+          "polygon"
+        ]
+      },
+      "edgv_target": {
+        "table": "cobter_massa_dagua_a",
+        "attributes": {
+          "tipo": 7
+        }
+      },
+      "osm_attribute_mapping": {
+        "name": "nome"
+      },
+      "confidence": "high",
+      "note": "Lago/lagoa (natural=water sem water=*)"
+    },
+    {
+      "id": "massa_dagua_lago_explicit",
+      "osm_filter": {
+        "tags": {
+          "natural": "water",
+          "water": "lake"
+        },
+        "geometry": [
+          "polygon"
+        ]
+      },
+      "edgv_target": {
+        "table": "cobter_massa_dagua_a",
+        "attributes": {
+          "tipo": 7
+        }
+      },
+      "osm_attribute_mapping": {
+        "name": "nome"
+      },
+      "confidence": "high",
+      "note": "Lago"
+    },
+    {
+      "id": "massa_dagua_laguna",
+      "osm_filter": {
+        "tags": {
+          "natural": "water",
+          "water": "lagoon"
+        },
+        "geometry": [
+          "polygon"
+        ]
+      },
+      "edgv_target": {
+        "table": "cobter_massa_dagua_a",
+        "attributes": {
+          "tipo": 9
+        }
+      },
+      "osm_attribute_mapping": {
+        "name": "nome"
+      },
+      "confidence": "high",
+      "note": "Laguna"
+    },
+    {
+      "id": "massa_dagua_represa",
+      "osm_filter": {
+        "tags": {
+          "natural": "water",
+          "water": "reservoir"
+        },
+        "geometry": [
+          "polygon"
+        ]
+      },
+      "edgv_target": {
+        "table": "cobter_massa_dagua_a",
+        "attributes": {
+          "tipo": 11
+        }
+      },
+      "osm_attribute_mapping": {
+        "name": "nome"
+      },
+      "confidence": "high",
+      "note": "Represa/açude"
+    },
+    {
+      "id": "massa_dagua_represa_landuse",
+      "osm_filter": {
+        "tags": {
+          "landuse": "reservoir"
+        },
+        "geometry": [
+          "polygon"
+        ]
+      },
+      "edgv_target": {
+        "table": "cobter_massa_dagua_a",
+        "attributes": {
+          "tipo": 11
+        }
+      },
+      "osm_attribute_mapping": {
+        "name": "nome"
+      },
+      "confidence": "high",
+      "note": "Represa via landuse"
+    },
+    {
+      "id": "massa_dagua_basin",
+      "osm_filter": {
+        "tags": {
+          "landuse": "basin"
+        },
+        "geometry": [
+          "polygon"
+        ]
+      },
+      "edgv_target": {
+        "table": "cobter_massa_dagua_a",
+        "attributes": {
+          "tipo": 11
+        }
+      },
+      "osm_attribute_mapping": {
+        "name": "nome"
+      },
+      "confidence": "medium",
+      "note": "Bacia → aproximado para represa"
+    },
+    {
+      "id": "massa_dagua_canal",
+      "osm_filter": {
+        "tags": {
+          "waterway": "canal"
+        },
+        "geometry": [
+          "polygon"
+        ]
+      },
+      "edgv_target": {
+        "table": "cobter_massa_dagua_a",
+        "attributes": {
+          "tipo": 2
+        }
+      },
+      "osm_attribute_mapping": {
+        "name": "nome"
+      },
+      "confidence": "high",
+      "note": "Canal como polígono"
+    },
+    {
+      "id": "massa_dagua_baia",
+      "osm_filter": {
+        "tags": {
+          "natural": "bay"
+        },
+        "geometry": [
+          "polygon"
+        ]
+      },
+      "edgv_target": {
+        "table": "cobter_massa_dagua_a",
+        "attributes": {
+          "tipo": 4
+        }
+      },
+      "osm_attribute_mapping": {
+        "name": "nome"
+      },
+      "confidence": "high",
+      "note": "Baía"
+    },
+    {
+      "id": "infra_dock",
+      "osm_filter": {
+        "tags": {
+          "waterway": "dock"
+        },
+        "geometry": [
+          "polygon"
+        ]
+      },
+      "edgv_target": {
+        "table": "infra_elemento_infraestrutura_a",
+        "attributes": {
+          "tipo": 1938
+        }
+      },
+      "osm_attribute_mapping": {
+        "name": "nome"
+      },
+      "confidence": "high",
+      "note": "Doca/cais (infraestrutura portuária)"
+    },
+    {
+      "id": "veg_floresta",
+      "osm_filter": {
+        "tags": {
+          "natural": "wood"
+        },
+        "geometry": [
+          "polygon"
+        ]
+      },
+      "edgv_target": {
+        "table": "cobter_vegetacao_a",
+        "attributes": {
+          "tipo": 601
+        }
+      },
+      "osm_attribute_mapping": {},
+      "confidence": "high",
+      "note": "Floresta densa"
+    },
+    {
+      "id": "veg_reflorestamento",
+      "osm_filter": {
+        "tags": {
+          "landuse": "forest",
+          "leaf_type": "needleleaved"
+        },
+        "geometry": [
+          "polygon"
+        ]
+      },
+      "edgv_target": {
+        "table": "cobter_vegetacao_a",
+        "attributes": {
+          "tipo": 1296
+        }
+      },
+      "osm_attribute_mapping": {},
+      "confidence": "medium",
+      "note": "Reflorestamento (coníferas)"
+    },
+    {
+      "id": "veg_floresta_landuse",
+      "osm_filter": {
+        "tags": {
+          "landuse": "forest"
+        },
+        "geometry": [
+          "polygon"
+        ]
+      },
+      "edgv_target": {
+        "table": "cobter_vegetacao_a",
+        "attributes": {
+          "tipo": 601
+        }
+      },
+      "osm_attribute_mapping": {},
+      "confidence": "high",
+      "note": "Floresta densa"
+    },
+    {
+      "id": "veg_mangue",
+      "osm_filter": {
+        "tags": {
+          "natural": "wetland",
+          "wetland": "mangrove"
+        },
+        "geometry": [
+          "polygon"
+        ]
+      },
+      "edgv_target": {
+        "table": "cobter_vegetacao_a",
+        "attributes": {
+          "tipo": 201
+        }
+      },
+      "osm_attribute_mapping": {},
+      "confidence": "high",
+      "note": "Mangue"
+    },
+    {
+      "id": "veg_brejo_swamp",
+      "osm_filter": {
+        "tags": {
+          "natural": "wetland",
+          "wetland": "swamp"
+        },
+        "geometry": [
+          "polygon"
+        ]
+      },
+      "edgv_target": {
+        "table": "cobter_vegetacao_a",
+        "attributes": {
+          "tipo": 301
+        }
+      },
+      "osm_attribute_mapping": {},
+      "confidence": "high",
+      "note": "Brejo/pântano"
+    },
+    {
+      "id": "veg_brejo_bog",
+      "osm_filter": {
+        "tags": {
+          "natural": "wetland",
+          "wetland": "bog"
+        },
+        "geometry": [
+          "polygon"
+        ]
+      },
+      "edgv_target": {
+        "table": "cobter_vegetacao_a",
+        "attributes": {
+          "tipo": 301
+        }
+      },
+      "osm_attribute_mapping": {},
+      "confidence": "high",
+      "note": "Brejo (turfeira)"
+    },
+    {
+      "id": "veg_brejo_marsh",
+      "osm_filter": {
+        "tags": {
+          "natural": "wetland",
+          "wetland": "marsh"
+        },
+        "geometry": [
+          "polygon"
+        ]
+      },
+      "edgv_target": {
+        "table": "cobter_vegetacao_a",
+        "attributes": {
+          "tipo": 301
+        }
+      },
+      "osm_attribute_mapping": {},
+      "confidence": "high",
+      "note": "Brejo (charco)"
+    },
+    {
+      "id": "veg_brejo_wet_meadow",
+      "osm_filter": {
+        "tags": {
+          "natural": "wetland",
+          "wetland": "wet_meadow"
+        },
+        "geometry": [
+          "polygon"
+        ]
+      },
+      "edgv_target": {
+        "table": "cobter_vegetacao_a",
+        "attributes": {
+          "tipo": 301
+        }
+      },
+      "osm_attribute_mapping": {},
+      "confidence": "high",
+      "note": "Brejo (prado úmido)"
+    },
+    {
+      "id": "veg_brejo_generic",
+      "osm_filter": {
+        "tags": {
+          "natural": "wetland"
+        },
+        "geometry": [
+          "polygon"
+        ]
+      },
+      "edgv_target": {
+        "table": "cobter_vegetacao_a",
+        "attributes": {
+          "tipo": 301
+        }
+      },
+      "osm_attribute_mapping": {},
+      "confidence": "medium",
+      "note": "Brejo/pântano genérico (fallback wetland)"
+    },
+    {
+      "id": "veg_campo",
+      "osm_filter": {
+        "tags": {
+          "natural": "grassland"
+        },
+        "geometry": [
+          "polygon"
+        ]
+      },
+      "edgv_target": {
+        "table": "cobter_vegetacao_a",
+        "attributes": {
+          "tipo": 901
+        }
+      },
+      "osm_attribute_mapping": {},
+      "confidence": "high",
+      "note": "Campo"
+    },
+    {
+      "id": "veg_campo_grass",
+      "osm_filter": {
+        "tags": {
+          "landuse": "grass"
+        },
+        "geometry": [
+          "polygon"
+        ]
+      },
+      "edgv_target": {
+        "table": "cobter_vegetacao_a",
+        "attributes": {
+          "tipo": 901
+        }
+      },
+      "osm_attribute_mapping": {},
+      "confidence": "high",
+      "note": "Campo (grama)"
+    },
+    {
+      "id": "veg_campo_meadow",
+      "osm_filter": {
+        "tags": {
+          "landuse": "meadow"
+        },
+        "geometry": [
+          "polygon"
+        ]
+      },
+      "edgv_target": {
+        "table": "cobter_vegetacao_a",
+        "attributes": {
+          "tipo": 901
+        }
+      },
+      "osm_attribute_mapping": {},
+      "confidence": "high",
+      "note": "Campo (prado)"
+    },
+    {
+      "id": "veg_scrub",
+      "osm_filter": {
+        "tags": {
+          "natural": "scrub"
+        },
+        "geometry": [
+          "polygon"
+        ]
+      },
+      "edgv_target": {
+        "table": "cobter_vegetacao_a",
+        "attributes": {
+          "tipo": 901
+        }
+      },
+      "osm_attribute_mapping": {},
+      "confidence": "medium",
+      "note": "Vegetacao arbustiva generica (scrub -> Campo)"
+    },
+    {
+      "id": "veg_heath",
+      "osm_filter": {
+        "tags": {
+          "natural": "heath"
+        },
+        "geometry": [
+          "polygon"
+        ]
+      },
+      "edgv_target": {
+        "table": "cobter_vegetacao_a",
+        "attributes": {
+          "tipo": 901
+        }
+      },
+      "osm_attribute_mapping": {},
+      "confidence": "low",
+      "note": "CORRIGIDO: heath → Campo (901), não Caatinga. Heath é charneca, não caatinga."
+    },
+    {
+      "id": "veg_areia",
+      "osm_filter": {
+        "tags": {
+          "natural": "sand"
+        },
+        "geometry": [
+          "polygon"
+        ]
+      },
+      "edgv_target": {
+        "table": "cobter_vegetacao_a",
+        "attributes": {
+          "tipo": 1002
+        }
+      },
+      "osm_attribute_mapping": {},
+      "confidence": "high",
+      "note": "Terreno exposto - areia"
+    },
+    {
+      "id": "veg_praia",
+      "osm_filter": {
+        "tags": {
+          "natural": "beach"
+        },
+        "geometry": [
+          "polygon"
+        ]
+      },
+      "edgv_target": {
+        "table": "cobter_vegetacao_a",
+        "attributes": {
+          "tipo": 1002
+        }
+      },
+      "osm_attribute_mapping": {},
+      "confidence": "high",
+      "note": "Praia → areia"
+    },
+    {
+      "id": "veg_bare_rock",
+      "osm_filter": {
+        "tags": {
+          "natural": "bare_rock"
+        },
+        "geometry": [
+          "polygon"
+        ]
+      },
+      "edgv_target": {
+        "table": "cobter_vegetacao_a",
+        "attributes": {
+          "tipo": 1003
+        }
+      },
+      "osm_attribute_mapping": {},
+      "confidence": "high",
+      "note": "Rocha exposta"
+    },
+    {
+      "id": "veg_scree",
+      "osm_filter": {
+        "tags": {
+          "natural": "scree"
+        },
+        "geometry": [
+          "polygon"
+        ]
+      },
+      "edgv_target": {
+        "table": "cobter_vegetacao_a",
+        "attributes": {
+          "tipo": 1001
+        }
+      },
+      "osm_attribute_mapping": {},
+      "confidence": "high",
+      "note": "Cascalho"
+    },
+    {
+      "id": "veg_shingle",
+      "osm_filter": {
+        "tags": {
+          "natural": "shingle"
+        },
+        "geometry": [
+          "polygon"
+        ]
+      },
+      "edgv_target": {
+        "table": "cobter_vegetacao_a",
+        "attributes": {
+          "tipo": 1001
+        }
+      },
+      "osm_attribute_mapping": {},
+      "confidence": "high",
+      "note": "Seixos"
+    },
+    {
+      "id": "veg_farmland",
+      "osm_filter": {
+        "tags": {
+          "landuse": "farmland"
+        },
+        "geometry": [
+          "polygon"
+        ]
+      },
+      "edgv_target": {
+        "table": "cobter_vegetacao_a",
+        "attributes": {
+          "tipo": 197
+        }
+      },
+      "osm_attribute_mapping": {
+        "crop": {
+          "column": "tipo",
+          "map": {
+            "sugarcane": 107,
+            "rice": 150,
+            "coffee": 194,
+            "cocoa": 194,
+            "rubber": 194,
+            "orange": 194,
+            "soy": 197,
+            "corn": 197,
+            "wheat": 197,
+            "cotton": 197,
+            "beans": 197
+          }
+        }
+      },
+      "confidence": "high",
+      "note": "Agricultura. crop=* refina o tipo"
+    },
+    {
+      "id": "veg_vineyard",
+      "osm_filter": {
+        "tags": {
+          "landuse": "vineyard"
+        },
+        "geometry": [
+          "polygon"
+        ]
+      },
+      "edgv_target": {
+        "table": "cobter_vegetacao_a",
+        "attributes": {
+          "tipo": 142
+        }
+      },
+      "osm_attribute_mapping": {},
+      "confidence": "high",
+      "note": "Videira"
+    },
+    {
+      "id": "veg_orchard",
+      "osm_filter": {
+        "tags": {
+          "landuse": "orchard"
+        },
+        "geometry": [
+          "polygon"
+        ]
+      },
+      "edgv_target": {
+        "table": "cobter_vegetacao_a",
+        "attributes": {
+          "tipo": 194
+        }
+      },
+      "osm_attribute_mapping": {},
+      "confidence": "high",
+      "note": "Pomar → cultura perene"
+    },
+    {
+      "id": "veg_allotments",
+      "osm_filter": {
+        "tags": {
+          "landuse": "allotments"
+        },
+        "geometry": [
+          "polygon"
+        ]
+      },
+      "edgv_target": {
+        "table": "cobter_vegetacao_a",
+        "attributes": {
+          "tipo": 197
+        }
+      },
+      "osm_attribute_mapping": {},
+      "confidence": "medium",
+      "note": "Hortas comunitárias → anual não irrigado"
+    },
+    {
+      "id": "area_edificada_residencial",
+      "osm_filter": {
+        "tags": {
+          "landuse": "residential"
+        },
+        "geometry": [
+          "polygon"
+        ]
+      },
+      "edgv_target": {
+        "table": "cobter_area_edificada_a",
+        "attributes": {}
+      },
+      "osm_attribute_mapping": {
+        "name": "nome"
+      },
+      "confidence": "high",
+      "note": "Área edificada residencial"
+    },
+    {
+      "_comment": "=== INFRA — VIAS DE DESLOCAMENTO ==="
+    },
+    {
+      "id": "via_motorway",
+      "osm_filter": {
+        "tags": {
+          "highway": "motorway"
+        },
+        "geometry": [
+          "line"
+        ]
+      },
+      "edgv_target": {
+        "table": "infra_via_deslocamento_l",
+        "attributes": {
+          "tipo": 4,
+          "revestimento": 3,
+          "jurisdicao": 1,
+          "canteiro_divisorio": 1,
+          "situacao_fisica": 3,
+          "trafego": 1
+        }
+      },
+      "osm_attribute_mapping": {
+        "name": "nome",
+        "ref": "sigla",
+        "lanes": "nr_faixas",
+        "surface": {
+          "column": "revestimento",
+          "map": {
+            "paved": 3,
+            "asphalt": 3,
+            "concrete": 3,
+            "cobblestone": 4,
+            "unpaved": 1,
+            "gravel": 2,
+            "ground": 1
+          }
+        }
+      },
+      "confidence": "high",
+      "note": "Auto-estrada"
+    },
+    {
+      "id": "via_motorway_link",
+      "osm_filter": {
+        "tags": {
+          "highway": "motorway_link"
+        },
+        "geometry": [
+          "line"
+        ]
+      },
+      "edgv_target": {
+        "table": "infra_via_deslocamento_l",
+        "attributes": {
+          "tipo": 7,
+          "revestimento": 3,
+          "jurisdicao": 1,
+          "situacao_fisica": 3
+        }
+      },
+      "osm_attribute_mapping": {
+        "name": "nome",
+        "ref": "sigla",
+        "lanes": "nr_faixas"
+      },
+      "confidence": "high",
+      "note": "Alça de auto-estrada (tipo 7 novo na Topo 2.0)"
+    },
+    {
+      "id": "via_trunk",
+      "osm_filter": {
+        "tags": {
+          "highway": "trunk"
+        },
+        "geometry": [
+          "line"
+        ]
+      },
+      "edgv_target": {
+        "table": "infra_via_deslocamento_l",
+        "attributes": {
+          "tipo": 2,
+          "revestimento": 3,
+          "situacao_fisica": 3,
+          "trafego": 1
+        }
+      },
+      "osm_attribute_mapping": {
+        "name": "nome",
+        "ref": "sigla",
+        "lanes": "nr_faixas",
+        "surface": {
+          "column": "revestimento",
+          "map": {
+            "paved": 3,
+            "asphalt": 3,
+            "concrete": 3,
+            "unpaved": 1,
+            "gravel": 2
+          }
+        },
+        "dual_carriageway": {
+          "column": "canteiro_divisorio",
+          "map": {
+            "yes": 1,
+            "no": 2
+          }
+        }
+      },
+      "confidence": "high",
+      "note": "Via expressa / rodovia principal. jurisdicao inferida de ref"
+    },
+    {
+      "id": "via_trunk_link",
+      "osm_filter": {
+        "tags": {
+          "highway": "trunk_link"
+        },
+        "geometry": [
+          "line"
+        ]
+      },
+      "edgv_target": {
+        "table": "infra_via_deslocamento_l",
+        "attributes": {
+          "tipo": 7,
+          "revestimento": 3,
+          "situacao_fisica": 3
+        }
+      },
+      "osm_attribute_mapping": {
+        "name": "nome",
+        "ref": "sigla"
+      },
+      "confidence": "high",
+      "note": "Alça de via expressa"
+    },
+    {
+      "id": "via_primary",
+      "osm_filter": {
+        "tags": {
+          "highway": "primary"
+        },
+        "geometry": [
+          "line"
+        ]
+      },
+      "edgv_target": {
+        "table": "infra_via_deslocamento_l",
+        "attributes": {
+          "tipo": 2,
+          "revestimento": 3,
+          "situacao_fisica": 3
+        }
+      },
+      "osm_attribute_mapping": {
+        "name": "nome",
+        "ref": "sigla",
+        "lanes": "nr_faixas",
+        "surface": {
+          "column": "revestimento",
+          "map": {
+            "paved": 3,
+            "asphalt": 3,
+            "concrete": 3,
+            "unpaved": 1,
+            "gravel": 2
+          }
+        },
+        "dual_carriageway": {
+          "column": "canteiro_divisorio",
+          "map": {
+            "yes": 1,
+            "no": 2
+          }
+        }
+      },
+      "confidence": "high",
+      "note": "Rodovia primária. jurisdicao de ref"
+    },
+    {
+      "id": "via_primary_link",
+      "osm_filter": {
+        "tags": {
+          "highway": "primary_link"
+        },
+        "geometry": [
+          "line"
+        ]
+      },
+      "edgv_target": {
+        "table": "infra_via_deslocamento_l",
+        "attributes": {
+          "tipo": 7,
+          "revestimento": 3,
+          "situacao_fisica": 3
+        }
+      },
+      "osm_attribute_mapping": {
+        "name": "nome",
+        "ref": "sigla"
+      },
+      "confidence": "high",
+      "note": "Alça de primária"
+    },
+    {
+      "id": "via_secondary",
+      "osm_filter": {
+        "tags": {
+          "highway": "secondary"
+        },
+        "geometry": [
+          "line"
+        ]
+      },
+      "edgv_target": {
+        "table": "infra_via_deslocamento_l",
+        "attributes": {
+          "tipo": 2,
+          "revestimento": 3,
+          "jurisdicao": 2,
+          "situacao_fisica": 3
+        }
+      },
+      "osm_attribute_mapping": {
+        "name": "nome",
+        "ref": "sigla",
+        "lanes": "nr_faixas",
+        "surface": {
+          "column": "revestimento",
+          "map": {
+            "paved": 3,
+            "asphalt": 3,
+            "concrete": 3,
+            "unpaved": 1,
+            "gravel": 2
+          }
+        },
+        "dual_carriageway": {
+          "column": "canteiro_divisorio",
+          "map": {
+            "yes": 1,
+            "no": 2
+          }
+        }
+      },
+      "confidence": "high",
+      "note": "Rodovia secundária (default estadual)"
+    },
+    {
+      "id": "via_secondary_link",
+      "osm_filter": {
+        "tags": {
+          "highway": "secondary_link"
+        },
+        "geometry": [
+          "line"
+        ]
+      },
+      "edgv_target": {
+        "table": "infra_via_deslocamento_l",
+        "attributes": {
+          "tipo": 7,
+          "revestimento": 3,
+          "jurisdicao": 2,
+          "situacao_fisica": 3
+        }
+      },
+      "osm_attribute_mapping": {
+        "name": "nome",
+        "ref": "sigla"
+      },
+      "confidence": "high",
+      "note": "Alça de secundária"
+    },
+    {
+      "id": "via_tertiary",
+      "osm_filter": {
+        "tags": {
+          "highway": "tertiary"
+        },
+        "geometry": [
+          "line"
+        ]
+      },
+      "edgv_target": {
+        "table": "infra_via_deslocamento_l",
+        "attributes": {
+          "tipo": 2,
+          "revestimento": 3,
+          "jurisdicao": 3,
+          "situacao_fisica": 3
+        }
+      },
+      "osm_attribute_mapping": {
+        "name": "nome",
+        "ref": "sigla",
+        "lanes": "nr_faixas",
+        "surface": {
+          "column": "revestimento",
+          "map": {
+            "paved": 3,
+            "asphalt": 3,
+            "unpaved": 1,
+            "gravel": 2
+          }
+        }
+      },
+      "confidence": "high",
+      "note": "Rodovia terciária (default municipal)"
+    },
+    {
+      "id": "via_tertiary_link",
+      "osm_filter": {
+        "tags": {
+          "highway": "tertiary_link"
+        },
+        "geometry": [
+          "line"
+        ]
+      },
+      "edgv_target": {
+        "table": "infra_via_deslocamento_l",
+        "attributes": {
+          "tipo": 7,
+          "revestimento": 3,
+          "jurisdicao": 3,
+          "situacao_fisica": 3
+        }
+      },
+      "osm_attribute_mapping": {
+        "name": "nome",
+        "ref": "sigla"
+      },
+      "confidence": "high",
+      "note": "Alça de terciária"
+    },
+    {
+      "id": "via_unclassified",
+      "osm_filter": {
+        "tags": {
+          "highway": "unclassified"
+        },
+        "geometry": [
+          "line"
+        ]
+      },
+      "edgv_target": {
+        "table": "infra_via_deslocamento_l",
+        "attributes": {
+          "tipo": 2,
+          "jurisdicao": 3,
+          "situacao_fisica": 3
+        }
+      },
+      "osm_attribute_mapping": {
+        "name": "nome",
+        "ref": "sigla",
+        "surface": {
+          "column": "revestimento",
+          "map": {
+            "paved": 3,
+            "asphalt": 3,
+            "concrete": 3,
+            "unpaved": 1,
+            "gravel": 2,
+            "ground": 1
+          }
+        }
+      },
+      "confidence": "high",
+      "note": "Via não classificada (municipal)"
+    },
+    {
+      "id": "via_residential",
+      "osm_filter": {
+        "tags": {
+          "highway": "residential"
+        },
+        "geometry": [
+          "line"
+        ]
+      },
+      "edgv_target": {
+        "table": "infra_via_deslocamento_l",
+        "attributes": {
+          "tipo": 5,
+          "revestimento": 3,
+          "situacao_fisica": 3
+        }
+      },
+      "osm_attribute_mapping": {
+        "name": "nome",
+        "lanes": "nr_faixas",
+        "surface": {
+          "column": "revestimento",
+          "map": {
+            "paved": 3,
+            "asphalt": 3,
+            "unpaved": 1,
+            "gravel": 2,
+            "ground": 1
+          }
+        }
+      },
+      "confidence": "high",
+      "note": "Arruamento residencial"
+    },
+    {
+      "id": "via_service",
+      "osm_filter": {
+        "tags": {
+          "highway": "service"
+        },
+        "geometry": [
+          "line"
+        ]
+      },
+      "edgv_target": {
+        "table": "infra_via_deslocamento_l",
+        "attributes": {
+          "tipo": 5,
+          "revestimento": 3,
+          "situacao_fisica": 3
+        }
+      },
+      "osm_attribute_mapping": {
+        "name": "nome",
+        "surface": {
+          "column": "revestimento",
+          "map": {
+            "paved": 3,
+            "asphalt": 3,
+            "unpaved": 1,
+            "gravel": 2,
+            "ground": 1
+          }
+        }
+      },
+      "confidence": "high",
+      "note": "Via de serviço"
+    },
+    {
+      "id": "via_living_street",
+      "osm_filter": {
+        "tags": {
+          "highway": "living_street"
+        },
+        "geometry": [
+          "line"
+        ]
+      },
+      "edgv_target": {
+        "table": "infra_via_deslocamento_l",
+        "attributes": {
+          "tipo": 5,
+          "revestimento": 3,
+          "situacao_fisica": 3
+        }
+      },
+      "osm_attribute_mapping": {
+        "name": "nome"
+      },
+      "confidence": "high",
+      "note": "Rua compartilhada"
+    },
+    {
+      "id": "via_pedestrian",
+      "osm_filter": {
+        "tags": {
+          "highway": "pedestrian"
+        },
+        "geometry": [
+          "line"
+        ]
+      },
+      "edgv_target": {
+        "table": "infra_via_deslocamento_l",
+        "attributes": {
+          "tipo": 5,
+          "revestimento": 4,
+          "situacao_fisica": 3
+        }
+      },
+      "osm_attribute_mapping": {
+        "name": "nome"
+      },
+      "confidence": "high",
+      "note": "Via de pedestre (calçado)"
+    },
+    {
+      "id": "via_busway",
+      "osm_filter": {
+        "tags": {
+          "highway": "busway"
+        },
+        "geometry": [
+          "line"
+        ]
+      },
+      "edgv_target": {
+        "table": "infra_via_deslocamento_l",
+        "attributes": {
+          "tipo": 5,
+          "revestimento": 3,
+          "situacao_fisica": 3
+        }
+      },
+      "osm_attribute_mapping": {
+        "name": "nome"
+      },
+      "confidence": "high",
+      "note": "Via exclusiva de ônibus"
+    },
+    {
+      "id": "via_bus_guideway",
+      "osm_filter": {
+        "tags": {
+          "highway": "bus_guideway"
+        },
+        "geometry": [
+          "line"
+        ]
+      },
+      "edgv_target": {
+        "table": "infra_via_deslocamento_l",
+        "attributes": {
+          "tipo": 5,
+          "revestimento": 3,
+          "situacao_fisica": 3
+        }
+      },
+      "osm_attribute_mapping": {
+        "name": "nome"
+      },
+      "confidence": "high",
+      "note": "Via guiada de ônibus (BRT)"
+    },
+    {
+      "id": "via_track",
+      "osm_filter": {
+        "tags": {
+          "highway": "track"
+        },
+        "geometry": [
+          "line"
+        ]
+      },
+      "edgv_target": {
+        "table": "infra_via_deslocamento_l",
+        "attributes": {
+          "tipo": 3,
+          "revestimento": 1,
+          "situacao_fisica": 3
+        }
+      },
+      "osm_attribute_mapping": {
+        "name": "nome",
+        "surface": {
+          "column": "revestimento",
+          "map": {
+            "paved": 3,
+            "asphalt": 3,
+            "gravel": 2,
+            "compacted": 2,
+            "ground": 1,
+            "dirt": 1,
+            "mud": 1,
+            "sand": 1
+          }
+        }
+      },
+      "confidence": "high",
+      "note": "Caminho carroçável"
+    },
+    {
+      "id": "via_path",
+      "osm_filter": {
+        "tags": {
+          "highway": "path"
+        },
+        "geometry": [
+          "line"
+        ]
+      },
+      "edgv_target": {
+        "table": "infra_via_deslocamento_l",
+        "attributes": {
+          "tipo": 6,
+          "revestimento": 1,
+          "situacao_fisica": 3
+        }
+      },
+      "osm_attribute_mapping": {
+        "name": "nome"
+      },
+      "confidence": "high",
+      "note": "Trilha"
+    },
+    {
+      "id": "via_footway",
+      "osm_filter": {
+        "tags": {
+          "highway": "footway"
+        },
+        "geometry": [
+          "line"
+        ]
+      },
+      "edgv_target": {
+        "table": "infra_via_deslocamento_l",
+        "attributes": {
+          "tipo": 6,
+          "revestimento": 1,
+          "situacao_fisica": 3
+        }
+      },
+      "osm_attribute_mapping": {
+        "name": "nome"
+      },
+      "confidence": "high",
+      "note": "Caminho de pedestre"
+    },
+    {
+      "id": "via_steps",
+      "osm_filter": {
+        "tags": {
+          "highway": "steps"
+        },
+        "geometry": [
+          "line"
+        ]
+      },
+      "edgv_target": {
+        "table": "infra_via_deslocamento_l",
+        "attributes": {
+          "tipo": 6,
+          "revestimento": 4,
+          "situacao_fisica": 3
+        }
+      },
+      "osm_attribute_mapping": {
+        "name": "nome"
+      },
+      "confidence": "high",
+      "note": "Escadas"
+    },
+    {
+      "_comment": "=== INFRA — FERROVIAS ==="
+    },
+    {
+      "id": "ferrovia_rail",
+      "osm_filter": {
+        "tags": {
+          "railway": "rail"
+        },
+        "geometry": [
+          "line"
+        ]
+      },
+      "edgv_target": {
+        "table": "infra_ferrovia_l",
+        "attributes": {
+          "tipo": 7,
+          "situacao_fisica": 3
+        }
+      },
+      "osm_attribute_mapping": {
+        "name": "nome",
+        "gauge": {
+          "column": "bitola",
+          "map": {
+            "1000": 1,
+            "1435": 2,
+            "1600": 3
+          }
+        },
+        "electrified": {
+          "column": "eletrificada",
+          "map": {
+            "yes": 1,
+            "contact_line": 1,
+            "rail": 1,
+            "no": 2
+          }
+        }
+      },
+      "confidence": "high",
+      "note": "Ferrovia (trem)"
+    },
+    {
+      "id": "ferrovia_narrow_gauge",
+      "osm_filter": {
+        "tags": {
+          "railway": "narrow_gauge"
+        },
+        "geometry": [
+          "line"
+        ]
+      },
+      "edgv_target": {
+        "table": "infra_ferrovia_l",
+        "attributes": {
+          "tipo": 7,
+          "bitola": 1,
+          "situacao_fisica": 3
+        }
+      },
+      "osm_attribute_mapping": {
+        "name": "nome"
+      },
+      "confidence": "high",
+      "note": "Ferrovia bitola estreita → métrica"
+    },
+    {
+      "id": "ferrovia_subway",
+      "osm_filter": {
+        "tags": {
+          "railway": "subway"
+        },
+        "geometry": [
+          "line"
+        ]
+      },
+      "edgv_target": {
+        "table": "infra_ferrovia_l",
+        "attributes": {
+          "tipo": 8,
+          "situacao_fisica": 3
+        }
+      },
+      "osm_attribute_mapping": {
+        "name": "nome"
+      },
+      "confidence": "high",
+      "note": "Metrô"
+    },
+    {
+      "id": "ferrovia_tram",
+      "osm_filter": {
+        "tags": {
+          "railway": "tram"
+        },
+        "geometry": [
+          "line"
+        ]
+      },
+      "edgv_target": {
+        "table": "infra_ferrovia_l",
+        "attributes": {
+          "tipo": 5,
+          "situacao_fisica": 3
+        }
+      },
+      "osm_attribute_mapping": {
+        "name": "nome"
+      },
+      "confidence": "high",
+      "note": "Bonde/VLT"
+    },
+    {
+      "id": "ferrovia_light_rail",
+      "osm_filter": {
+        "tags": {
+          "railway": "light_rail"
+        },
+        "geometry": [
+          "line"
+        ]
+      },
+      "edgv_target": {
+        "table": "infra_ferrovia_l",
+        "attributes": {
+          "tipo": 5,
+          "situacao_fisica": 3
+        }
+      },
+      "osm_attribute_mapping": {
+        "name": "nome"
+      },
+      "confidence": "high",
+      "note": "VLT → bonde"
+    },
+    {
+      "id": "ferrovia_monorail",
+      "osm_filter": {
+        "tags": {
+          "railway": "monorail"
+        },
+        "geometry": [
+          "line"
+        ]
+      },
+      "edgv_target": {
+        "table": "infra_ferrovia_l",
+        "attributes": {
+          "tipo": 5,
+          "situacao_fisica": 3
+        }
+      },
+      "osm_attribute_mapping": {
+        "name": "nome"
+      },
+      "confidence": "medium",
+      "note": "Monotrilho → aproximado para bonde"
+    },
+    {
+      "id": "ferrovia_funicular",
+      "osm_filter": {
+        "tags": {
+          "railway": "funicular"
+        },
+        "geometry": [
+          "line"
+        ]
+      },
+      "edgv_target": {
+        "table": "infra_elemento_infraestrutura_l",
+        "attributes": {
+          "tipo": 1501
+        }
+      },
+      "osm_attribute_mapping": {
+        "name": "nome"
+      },
+      "confidence": "high",
+      "note": "Funicular"
+    },
+    {
+      "_comment": "=== INFRA — ENERGIA ==="
+    },
+    {
+      "id": "energia_lt",
+      "osm_filter": {
+        "tags": {
+          "power": "line"
+        },
+        "geometry": [
+          "line"
+        ]
+      },
+      "edgv_target": {
+        "table": "infra_elemento_energia_l",
+        "attributes": {
+          "tipo": 303,
+          "situacao_fisica": 3
+        }
+      },
+      "osm_attribute_mapping": {
+        "name": "nome"
+      },
+      "confidence": "high",
+      "note": "Linha de transmissão"
+    },
+    {
+      "id": "energia_lt_minor",
+      "osm_filter": {
+        "tags": {
+          "power": "minor_line"
+        },
+        "geometry": [
+          "line"
+        ]
+      },
+      "edgv_target": {
+        "table": "infra_elemento_energia_l",
+        "attributes": {
+          "tipo": 303,
+          "situacao_fisica": 3
+        }
+      },
+      "osm_attribute_mapping": {
+        "name": "nome"
+      },
+      "confidence": "high",
+      "note": "Linha de distribuição"
+    },
+    {
+      "id": "energia_cable",
+      "osm_filter": {
+        "tags": {
+          "power": "cable"
+        },
+        "geometry": [
+          "line"
+        ]
+      },
+      "edgv_target": {
+        "table": "infra_elemento_energia_l",
+        "attributes": {
+          "tipo": 303,
+          "situacao_fisica": 3
+        }
+      },
+      "osm_attribute_mapping": {
+        "name": "nome"
+      },
+      "confidence": "high",
+      "note": "Cabo de energia (subterrâneo/submarino)"
+    },
+    {
+      "id": "energia_hidro",
+      "osm_filter": {
+        "tags": {
+          "power": "plant",
+          "plant:source": "hydro"
+        },
+        "geometry": [
+          "polygon"
+        ]
+      },
+      "edgv_target": {
+        "table": "infra_elemento_energia_a",
+        "attributes": {
+          "tipo": 408,
+          "situacao_fisica": 3
+        }
+      },
+      "osm_attribute_mapping": {
+        "name": "nome"
+      },
+      "confidence": "high",
+      "note": "Usina hidrelétrica"
+    },
+    {
+      "id": "energia_solar",
+      "osm_filter": {
+        "tags": {
+          "power": "plant",
+          "plant:source": "solar"
+        },
+        "geometry": [
+          "polygon"
+        ]
+      },
+      "edgv_target": {
+        "table": "infra_elemento_energia_a",
+        "attributes": {
+          "tipo": 406,
+          "situacao_fisica": 3
+        }
+      },
+      "osm_attribute_mapping": {
+        "name": "nome"
+      },
+      "confidence": "high",
+      "note": "Usina solar"
+    },
+    {
+      "id": "energia_eolica",
+      "osm_filter": {
+        "tags": {
+          "power": "plant",
+          "plant:source": "wind"
+        },
+        "geometry": [
+          "polygon"
+        ]
+      },
+      "edgv_target": {
+        "table": "infra_elemento_energia_a",
+        "attributes": {
+          "tipo": 405,
+          "situacao_fisica": 3
+        }
+      },
+      "osm_attribute_mapping": {
+        "name": "nome"
+      },
+      "confidence": "high",
+      "note": "Parque eólico"
+    },
+    {
+      "id": "energia_nuclear",
+      "osm_filter": {
+        "tags": {
+          "power": "plant",
+          "plant:source": "nuclear"
+        },
+        "geometry": [
+          "polygon"
+        ]
+      },
+      "edgv_target": {
+        "table": "infra_elemento_energia_a",
+        "attributes": {
+          "tipo": 410,
+          "situacao_fisica": 3
+        }
+      },
+      "osm_attribute_mapping": {
+        "name": "nome"
+      },
+      "confidence": "high",
+      "note": "Usina nuclear"
+    },
+    {
+      "id": "energia_biomassa",
+      "osm_filter": {
+        "tags": {
+          "power": "plant",
+          "plant:source": [
+            "biomass",
+            "biofuel",
+            "biogas",
+            "wood",
+            "peat",
+            "bagasse"
+          ]
+        },
+        "geometry": [
+          "polygon"
+        ]
+      },
+      "edgv_target": {
+        "table": "infra_elemento_energia_a",
+        "attributes": {
+          "tipo": 411,
+          "situacao_fisica": 3
+        }
+      },
+      "osm_attribute_mapping": {
+        "name": "nome"
+      },
+      "confidence": "high",
+      "note": "Usina a biomassa"
+    },
+    {
+      "id": "energia_termica",
+      "osm_filter": {
+        "tags": {
+          "power": "plant",
+          "plant:source": [
+            "gas",
+            "coal",
+            "oil",
+            "diesel",
+            "waste",
+            "cogeneration"
+          ]
+        },
+        "geometry": [
+          "polygon"
+        ]
+      },
+      "edgv_target": {
+        "table": "infra_elemento_energia_a",
+        "attributes": {
+          "tipo": 409,
+          "situacao_fisica": 3
+        }
+      },
+      "osm_attribute_mapping": {
+        "name": "nome"
+      },
+      "confidence": "high",
+      "note": "Termelétrica (fóssil e resíduos)"
+    },
+    {
+      "id": "energia_mare",
+      "osm_filter": {
+        "tags": {
+          "power": "plant",
+          "plant:source": [
+            "tidal",
+            "wave"
+          ]
+        },
+        "geometry": [
+          "polygon"
+        ]
+      },
+      "edgv_target": {
+        "table": "infra_elemento_energia_a",
+        "attributes": {
+          "tipo": 407,
+          "situacao_fisica": 3
+        }
+      },
+      "osm_attribute_mapping": {
+        "name": "nome"
+      },
+      "confidence": "high",
+      "note": "Maré-motriz"
+    },
+    {
+      "id": "energia_usina_generica",
+      "osm_filter": {
+        "tags": {
+          "power": "plant"
+        },
+        "geometry": [
+          "polygon"
+        ]
+      },
+      "edgv_target": {
+        "table": "infra_elemento_energia_a",
+        "attributes": {
+          "tipo": 498,
+          "situacao_fisica": 3
+        }
+      },
+      "osm_attribute_mapping": {
+        "name": "nome"
+      },
+      "confidence": "medium",
+      "note": "Usina genérica (fallback)"
+    },
+    {
+      "id": "energia_torre",
+      "osm_filter": {
+        "tags": {
+          "power": "tower"
+        },
+        "geometry": [
+          "point"
+        ]
+      },
+      "edgv_target": {
+        "table": "infra_elemento_energia_p",
+        "attributes": {
+          "tipo": 1401
+        }
+      },
+      "osm_attribute_mapping": {
+        "name": "nome"
+      },
+      "confidence": "high",
+      "note": "Torre de energia"
+    },
+    {
+      "id": "energia_poste",
+      "osm_filter": {
+        "tags": {
+          "power": "pole"
+        },
+        "geometry": [
+          "point"
+        ]
+      },
+      "edgv_target": {
+        "table": "infra_elemento_energia_p",
+        "attributes": {
+          "tipo": 1401
+        }
+      },
+      "osm_attribute_mapping": {
+        "name": "nome"
+      },
+      "confidence": "high",
+      "note": "Poste de energia → torre"
+    },
+    {
+      "id": "energia_subestacao_tx",
+      "osm_filter": {
+        "tags": {
+          "power": "substation"
+        },
+        "geometry": [
+          "polygon"
+        ]
+      },
+      "edgv_target": {
+        "table": "infra_elemento_energia_a",
+        "attributes": {
+          "tipo": 1801,
+          "situacao_fisica": 3
+        }
+      },
+      "osm_attribute_mapping": {
+        "name": "nome"
+      },
+      "confidence": "high",
+      "note": "Subestação de transmissão"
+    },
+    {
+      "id": "energia_aerogerador",
+      "osm_filter": {
+        "tags": {
+          "power": "generator",
+          "generator:source": "wind"
+        },
+        "geometry": [
+          "point"
+        ]
+      },
+      "edgv_target": {
+        "table": "infra_elemento_energia_p",
+        "attributes": {
+          "tipo": 1701
+        }
+      },
+      "osm_attribute_mapping": {
+        "name": "nome"
+      },
+      "confidence": "high",
+      "note": "Aerogerador individual"
+    },
+    {
+      "id": "energia_solar_gen",
+      "osm_filter": {
+        "tags": {
+          "power": "generator",
+          "generator:source": "solar"
+        },
+        "geometry": [
+          "point"
+        ]
+      },
+      "edgv_target": {
+        "table": "infra_elemento_energia_p",
+        "attributes": {
+          "tipo": 406
+        }
+      },
+      "osm_attribute_mapping": {
+        "name": "nome"
+      },
+      "confidence": "high",
+      "note": "Estacao geradora solar"
+    },
+    {
+      "id": "energia_solar_gen_a",
+      "osm_filter": {
+        "tags": {
+          "power": "generator",
+          "generator:source": "solar"
+        },
+        "geometry": [
+          "polygon"
+        ]
+      },
+      "edgv_target": {
+        "table": "infra_elemento_energia_a",
+        "attributes": {
+          "tipo": 406
+        }
+      },
+      "osm_attribute_mapping": {
+        "name": "nome"
+      },
+      "confidence": "high",
+      "note": "Estacao geradora solar (area)"
+    },
+    {
+      "id": "energia_wind_turbine",
+      "osm_filter": {
+        "tags": {
+          "man_made": "wind_turbine"
+        },
+        "geometry": [
+          "point"
+        ]
+      },
+      "edgv_target": {
+        "table": "infra_elemento_energia_p",
+        "attributes": {
+          "tipo": 1701
+        }
+      },
+      "osm_attribute_mapping": {
+        "name": "nome"
+      },
+      "confidence": "high",
+      "note": "Turbina eólica individual"
+    },
+    {
+      "_comment": "=== INFRA — DUTOS ==="
+    },
+    {
+      "id": "duto_oleo",
+      "osm_filter": {
+        "tags": {
+          "man_made": "pipeline",
+          "substance": "oil"
+        },
+        "geometry": [
+          "line"
+        ]
+      },
+      "edgv_target": {
+        "table": "infra_trecho_duto_l",
+        "attributes": {
+          "tipo": 302,
+          "situacao_fisica": 3
+        }
+      },
+      "osm_attribute_mapping": {
+        "name": "nome"
+      },
+      "confidence": "high",
+      "note": "Oleoduto"
+    },
+    {
+      "id": "duto_petroleo",
+      "osm_filter": {
+        "tags": {
+          "man_made": "pipeline",
+          "substance": "crude_oil"
+        },
+        "geometry": [
+          "line"
+        ]
+      },
+      "edgv_target": {
+        "table": "infra_trecho_duto_l",
+        "attributes": {
+          "tipo": 306,
+          "situacao_fisica": 3
+        }
+      },
+      "osm_attribute_mapping": {
+        "name": "nome"
+      },
+      "confidence": "high",
+      "note": "Duto de petróleo"
+    },
+    {
+      "id": "duto_gas",
+      "osm_filter": {
+        "tags": {
+          "man_made": "pipeline",
+          "substance": [
+            "gas",
+            "natural_gas",
+            "lpg"
+          ]
+        },
+        "geometry": [
+          "line"
+        ]
+      },
+      "edgv_target": {
+        "table": "infra_trecho_duto_l",
+        "attributes": {
+          "tipo": 308,
+          "situacao_fisica": 3
+        }
+      },
+      "osm_attribute_mapping": {
+        "name": "nome"
+      },
+      "confidence": "high",
+      "note": "Gasoduto"
+    },
+    {
+      "id": "duto_agua",
+      "osm_filter": {
+        "tags": {
+          "man_made": "pipeline",
+          "substance": "water"
+        },
+        "geometry": [
+          "line"
+        ]
+      },
+      "edgv_target": {
+        "table": "infra_trecho_duto_l",
+        "attributes": {
+          "tipo": 301,
+          "situacao_fisica": 3
+        }
+      },
+      "osm_attribute_mapping": {
+        "name": "nome"
+      },
+      "confidence": "high",
+      "note": "Adutora"
+    },
+    {
+      "id": "duto_esgoto",
+      "osm_filter": {
+        "tags": {
+          "man_made": "pipeline",
+          "substance": "sewage"
+        },
+        "geometry": [
+          "line"
+        ]
+      },
+      "edgv_target": {
+        "table": "infra_trecho_duto_l",
+        "attributes": {
+          "tipo": 310,
+          "situacao_fisica": 3
+        }
+      },
+      "osm_attribute_mapping": {
+        "name": "nome"
+      },
+      "confidence": "high",
+      "note": "Emissário de esgoto"
+    },
+    {
+      "id": "duto_gasolina",
+      "osm_filter": {
+        "tags": {
+          "man_made": "pipeline",
+          "substance": "gasoline"
+        },
+        "geometry": [
+          "line"
+        ]
+      },
+      "edgv_target": {
+        "table": "infra_trecho_duto_l",
+        "attributes": {
+          "tipo": 303,
+          "situacao_fisica": 3
+        }
+      },
+      "osm_attribute_mapping": {
+        "name": "nome"
+      },
+      "confidence": "high",
+      "note": "Duto de gasolina"
+    },
+    {
+      "id": "duto_alcool",
+      "osm_filter": {
+        "tags": {
+          "man_made": "pipeline",
+          "substance": "ethanol"
+        },
+        "geometry": [
+          "line"
+        ]
+      },
+      "edgv_target": {
+        "table": "infra_trecho_duto_l",
+        "attributes": {
+          "tipo": 304,
+          "situacao_fisica": 3
+        }
+      },
+      "osm_attribute_mapping": {
+        "name": "nome"
+      },
+      "confidence": "high",
+      "note": "Alcoolduto"
+    },
+    {
+      "id": "duto_querosene",
+      "osm_filter": {
+        "tags": {
+          "man_made": "pipeline",
+          "substance": [
+            "jet_fuel",
+            "kerosene"
+          ]
+        },
+        "geometry": [
+          "line"
+        ]
+      },
+      "edgv_target": {
+        "table": "infra_trecho_duto_l",
+        "attributes": {
+          "tipo": 305,
+          "situacao_fisica": 3
+        }
+      },
+      "osm_attribute_mapping": {
+        "name": "nome"
+      },
+      "confidence": "high",
+      "note": "Duto de querosene"
+    },
+    {
+      "id": "duto_nafta",
+      "osm_filter": {
+        "tags": {
+          "man_made": "pipeline",
+          "substance": "naphtha"
+        },
+        "geometry": [
+          "line"
+        ]
+      },
+      "edgv_target": {
+        "table": "infra_trecho_duto_l",
+        "attributes": {
+          "tipo": 307,
+          "situacao_fisica": 3
+        }
+      },
+      "osm_attribute_mapping": {
+        "name": "nome"
+      },
+      "confidence": "high",
+      "note": "Duto de nafta"
+    },
+    {
+      "id": "duto_generico",
+      "osm_filter": {
+        "tags": {
+          "man_made": "pipeline"
+        },
+        "geometry": [
+          "line"
+        ]
+      },
+      "edgv_target": {
+        "table": "infra_trecho_duto_l",
+        "attributes": {
+          "tipo": 300,
+          "situacao_fisica": 3
+        }
+      },
+      "osm_attribute_mapping": {
+        "name": "nome"
+      },
+      "confidence": "medium",
+      "note": "Duto genérico (fallback)"
+    },
+    {
+      "_comment": "=== INFRA — OUTROS ==="
+    },
+    {
+      "id": "barragem_l",
+      "osm_filter": {
+        "tags": {
+          "waterway": "dam"
+        },
+        "geometry": [
+          "line"
+        ]
+      },
+      "edgv_target": {
+        "table": "infra_barragem_l",
+        "attributes": {
+          "tipo": 1
+        }
+      },
+      "osm_attribute_mapping": {
+        "name": "nome"
+      },
+      "confidence": "high",
+      "note": "Barragem como linha"
+    },
+    {
+      "id": "barragem_a",
+      "osm_filter": {
+        "tags": {
+          "waterway": "dam"
+        },
+        "geometry": [
+          "polygon"
+        ]
+      },
+      "edgv_target": {
+        "table": "infra_barragem_a",
+        "attributes": {
+          "tipo": 1
+        }
+      },
+      "osm_attribute_mapping": {
+        "name": "nome"
+      },
+      "confidence": "high",
+      "note": "Barragem como polígono"
+    },
+    {
+      "id": "barragem_dique",
+      "osm_filter": {
+        "tags": {
+          "man_made": "dyke"
+        },
+        "geometry": [
+          "line"
+        ]
+      },
+      "edgv_target": {
+        "table": "infra_barragem_l",
+        "attributes": {
+          "tipo": 2
+        }
+      },
+      "osm_attribute_mapping": {
+        "name": "nome"
+      },
+      "confidence": "high",
+      "note": "Dique"
+    },
+    {
+      "id": "pista_pouso_runway_l",
+      "osm_filter": {
+        "tags": {
+          "aeroway": "runway"
+        },
+        "geometry": [
+          "line"
+        ]
+      },
+      "edgv_target": {
+        "table": "infra_pista_pouso_l",
+        "attributes": {
+          "tipo": 9
+        }
+      },
+      "osm_attribute_mapping": {
+        "name": "nome"
+      },
+      "confidence": "high",
+      "note": "Pista de pouso (linha)"
+    },
+    {
+      "id": "pista_pouso_runway_a",
+      "osm_filter": {
+        "tags": {
+          "aeroway": "runway"
+        },
+        "geometry": [
+          "polygon"
+        ]
+      },
+      "edgv_target": {
+        "table": "infra_pista_pouso_a",
+        "attributes": {
+          "tipo": 9
+        }
+      },
+      "osm_attribute_mapping": {
+        "name": "nome"
+      },
+      "confidence": "high",
+      "note": "Pista de pouso (polígono)"
+    },
+    {
+      "id": "pista_taxi_l",
+      "osm_filter": {
+        "tags": {
+          "aeroway": "taxiway"
+        },
+        "geometry": [
+          "line"
+        ]
+      },
+      "edgv_target": {
+        "table": "infra_pista_pouso_l",
+        "attributes": {
+          "tipo": 10
+        }
+      },
+      "osm_attribute_mapping": {
+        "name": "nome"
+      },
+      "confidence": "high",
+      "note": "Pista de táxi (linha)"
+    },
+    {
+      "id": "pista_taxi_a",
+      "osm_filter": {
+        "tags": {
+          "aeroway": "taxiway"
+        },
+        "geometry": [
+          "polygon"
+        ]
+      },
+      "edgv_target": {
+        "table": "infra_pista_pouso_a",
+        "attributes": {
+          "tipo": 10
+        }
+      },
+      "osm_attribute_mapping": {
+        "name": "nome"
+      },
+      "confidence": "high",
+      "note": "Pista de táxi (polígono)"
+    },
+    {
+      "id": "edif_terminal_aeroporto_a",
+      "osm_filter": {
+        "tags": {
+          "aeroway": "terminal"
+        },
+        "geometry": [
+          "polygon"
+        ]
+      },
+      "edgv_target": {
+        "table": "constr_edificacao_a",
+        "attributes": {
+          "tipo": 2426
+        }
+      },
+      "osm_attribute_mapping": {
+        "name": "nome",
+        "height": "altura",
+        "building:levels": "pavimentos",
+        "addr:street": {
+          "column": "endereco",
+          "concat_with": "addr:housenumber",
+          "separator": ", "
+        }
+      },
+      "confidence": "high",
+      "note": "Terminal aeroportuário (polígono)"
+    },
+    {
+      "id": "edif_hangar_a",
+      "osm_filter": {
+        "tags": {
+          "aeroway": "hangar"
+        },
+        "geometry": [
+          "polygon"
+        ]
+      },
+      "edgv_target": {
+        "table": "constr_edificacao_a",
+        "attributes": {
+          "tipo": 2429
+        }
+      },
+      "osm_attribute_mapping": {
+        "name": "nome",
+        "height": "altura",
+        "building:levels": "pavimentos",
+        "addr:street": {
+          "column": "endereco",
+          "concat_with": "addr:housenumber",
+          "separator": ", "
+        }
+      },
+      "confidence": "high",
+      "note": "Hangar de aeronaves"
+    },
+    {
+      "id": "heliponto",
+      "osm_filter": {
+        "tags": {
+          "aeroway": "helipad"
+        },
+        "geometry": [
+          "point"
+        ]
+      },
+      "edgv_target": {
+        "table": "infra_pista_pouso_p",
+        "attributes": {
+          "tipo": 11
+        }
+      },
+      "osm_attribute_mapping": {
+        "name": "nome"
+      },
+      "confidence": "high",
+      "note": "Heliponto"
+    },
+    {
+      "id": "travessia_balsa",
+      "osm_filter": {
+        "tags": {
+          "route": "ferry"
+        },
+        "geometry": [
+          "line"
+        ]
+      },
+      "edgv_target": {
+        "table": "infra_travessia_hidroviaria_l",
+        "attributes": {
+          "tipo": 1
+        }
+      },
+      "osm_attribute_mapping": {
+        "name": "nome"
+      },
+      "confidence": "high",
+      "note": "Rota de balsa"
+    },
+    {
+      "id": "infra_quebramar_l",
+      "osm_filter": {
+        "tags": {
+          "man_made": "breakwater"
+        },
+        "geometry": [
+          "line"
+        ]
+      },
+      "edgv_target": {
+        "table": "infra_elemento_infraestrutura_l",
+        "attributes": {
+          "tipo": 701
+        }
+      },
+      "osm_attribute_mapping": {
+        "name": "nome"
+      },
+      "confidence": "high",
+      "note": "Quebramar (linha)"
+    },
+    {
+      "id": "infra_quebramar_a",
+      "osm_filter": {
+        "tags": {
+          "man_made": "breakwater"
+        },
+        "geometry": [
+          "polygon"
+        ]
+      },
+      "edgv_target": {
+        "table": "infra_elemento_infraestrutura_a",
+        "attributes": {
+          "tipo": 701
+        }
+      },
+      "osm_attribute_mapping": {
+        "name": "nome"
+      },
+      "confidence": "high",
+      "note": "Quebramar (polígono)"
+    },
+    {
+      "id": "infra_molhe_l",
+      "osm_filter": {
+        "tags": {
+          "man_made": "groyne"
+        },
+        "geometry": [
+          "line"
+        ]
+      },
+      "edgv_target": {
+        "table": "infra_elemento_infraestrutura_l",
+        "attributes": {
+          "tipo": 801
+        }
+      },
+      "osm_attribute_mapping": {
+        "name": "nome"
+      },
+      "confidence": "high",
+      "note": "Molhe (linha)"
+    },
+    {
+      "id": "infra_pier_l",
+      "osm_filter": {
+        "tags": {
+          "man_made": "pier"
+        },
+        "geometry": [
+          "line"
+        ]
+      },
+      "edgv_target": {
+        "table": "infra_elemento_infraestrutura_l",
+        "attributes": {
+          "tipo": 1942
+        }
+      },
+      "osm_attribute_mapping": {
+        "name": "nome"
+      },
+      "confidence": "high",
+      "note": "Pier (linha)"
+    },
+    {
+      "id": "infra_pier_a",
+      "osm_filter": {
+        "tags": {
+          "man_made": "pier"
+        },
+        "geometry": [
+          "polygon"
+        ]
+      },
+      "edgv_target": {
+        "table": "infra_elemento_infraestrutura_a",
+        "attributes": {
+          "tipo": 1942
+        }
+      },
+      "osm_attribute_mapping": {
+        "name": "nome"
+      },
+      "confidence": "high",
+      "note": "Pier (polígono)"
+    },
+    {
+      "id": "infra_cais_quay",
+      "osm_filter": {
+        "tags": {
+          "man_made": "quay"
+        },
+        "geometry": [
+          "line"
+        ]
+      },
+      "edgv_target": {
+        "table": "infra_elemento_infraestrutura_l",
+        "attributes": {
+          "tipo": 1938
+        }
+      },
+      "osm_attribute_mapping": {
+        "name": "nome"
+      },
+      "confidence": "high",
+      "note": "Cais de atracação"
+    },
+    {
+      "id": "infra_area_portuaria",
+      "osm_filter": {
+        "tags": {
+          "landuse": "port"
+        },
+        "geometry": [
+          "polygon"
+        ]
+      },
+      "edgv_target": {
+        "table": "constr_area_uso_especifico_a",
+        "attributes": {
+          "tipo": 16
+        }
+      },
+      "osm_attribute_mapping": {
+        "name": "nome"
+      },
+      "confidence": "high",
+      "note": "Área portuária"
+    },
+    {
+      "id": "infra_torre_comunicacao",
+      "osm_filter": {
+        "tags": {
+          "man_made": "communications_tower"
+        },
+        "geometry": [
+          "point"
+        ]
+      },
+      "edgv_target": {
+        "table": "infra_elemento_infraestrutura_p",
+        "attributes": {
+          "tipo": 1201
+        }
+      },
+      "osm_attribute_mapping": {
+        "name": "nome"
+      },
+      "confidence": "high",
+      "note": "Torre de comunicação"
+    },
+    {
+      "id": "infra_torre_comunicacao_mast",
+      "osm_filter": {
+        "tags": {
+          "man_made": "mast",
+          "tower:type": "communication"
+        },
+        "geometry": [
+          "point"
+        ]
+      },
+      "edgv_target": {
+        "table": "infra_elemento_infraestrutura_p",
+        "attributes": {
+          "tipo": 1201
+        }
+      },
+      "osm_attribute_mapping": {
+        "name": "nome"
+      },
+      "confidence": "high",
+      "note": "Mastro de comunicação"
+    },
+    {
+      "id": "infra_antena",
+      "osm_filter": {
+        "tags": {
+          "man_made": "antenna"
+        },
+        "geometry": [
+          "point"
+        ]
+      },
+      "edgv_target": {
+        "table": "infra_elemento_infraestrutura_p",
+        "attributes": {
+          "tipo": 1301
+        }
+      },
+      "osm_attribute_mapping": {
+        "name": "nome"
+      },
+      "confidence": "high",
+      "note": "Antena de comunicação"
+    },
+    {
+      "id": "infra_eclusa",
+      "osm_filter": {
+        "tags": {
+          "waterway": "lock_gate"
+        },
+        "geometry": [
+          "point"
+        ]
+      },
+      "edgv_target": {
+        "table": "infra_elemento_infraestrutura_p",
+        "attributes": {
+          "tipo": 1001
+        }
+      },
+      "osm_attribute_mapping": {
+        "name": "nome"
+      },
+      "confidence": "high",
+      "note": "Eclusa (waterway=lock_gate)"
+    },
+    {
+      "id": "infra_comporta",
+      "osm_filter": {
+        "tags": {
+          "waterway": "weir"
+        },
+        "geometry": [
+          "line"
+        ]
+      },
+      "edgv_target": {
+        "table": "infra_elemento_infraestrutura_l",
+        "attributes": {
+          "tipo": 901
+        }
+      },
+      "osm_attribute_mapping": {
+        "name": "nome"
+      },
+      "confidence": "high",
+      "note": "Comporta (waterway=weir)"
+    },
+    {
+      "id": "infra_teleferico",
+      "osm_filter": {
+        "tags": {
+          "aerialway": "cable_car"
+        },
+        "geometry": [
+          "line"
+        ]
+      },
+      "edgv_target": {
+        "table": "infra_elemento_infraestrutura_l",
+        "attributes": {
+          "tipo": 2001
+        }
+      },
+      "osm_attribute_mapping": {
+        "name": "nome"
+      },
+      "confidence": "high",
+      "note": "Teleférico"
+    },
+    {
+      "id": "infra_gondola",
+      "osm_filter": {
+        "tags": {
+          "aerialway": "gondola"
+        },
+        "geometry": [
+          "line"
+        ]
+      },
+      "edgv_target": {
+        "table": "infra_elemento_infraestrutura_l",
+        "attributes": {
+          "tipo": 2001
+        }
+      },
+      "osm_attribute_mapping": {
+        "name": "nome"
+      },
+      "confidence": "high",
+      "note": "Gôndola → teleférico"
+    },
+    {
+      "id": "infra_aerialway_goods",
+      "osm_filter": {
+        "tags": {
+          "aerialway": "goods"
+        },
+        "geometry": [
+          "line"
+        ]
+      },
+      "edgv_target": {
+        "table": "infra_elemento_infraestrutura_l",
+        "attributes": {
+          "tipo": 2001
+        }
+      },
+      "osm_attribute_mapping": {
+        "name": "nome"
+      },
+      "confidence": "high",
+      "note": "Caminho aéreo de carga"
+    },
+    {
+      "id": "infra_aerialway_other",
+      "osm_filter": {
+        "tags": {
+          "aerialway": [
+            "chair_lift",
+            "drag_lift",
+            "t-bar",
+            "j-bar",
+            "platter",
+            "rope_tow"
+          ]
+        },
+        "geometry": [
+          "line"
+        ]
+      },
+      "edgv_target": {
+        "table": "infra_elemento_infraestrutura_l",
+        "attributes": {
+          "tipo": 2098
+        }
+      },
+      "osm_attribute_mapping": {
+        "name": "nome"
+      },
+      "confidence": "high",
+      "note": "Caminho aéreo — outros"
+    },
+    {
+      "id": "vala",
+      "osm_filter": {
+        "tags": {
+          "waterway": "ditch"
+        },
+        "geometry": [
+          "line"
+        ]
+      },
+      "edgv_target": {
+        "table": "infra_vala_l",
+        "attributes": {}
+      },
+      "osm_attribute_mapping": {},
+      "confidence": "high",
+      "note": "Vala (ditch)"
+    },
+    {
+      "id": "alteracao_fisio_corte",
+      "osm_filter": {
+        "tags": {
+          "man_made": "embankment"
+        },
+        "geometry": [
+          "line"
+        ]
+      },
+      "edgv_target": {
+        "table": "infra_alteracao_fisiografica_antropica_l",
+        "attributes": {
+          "tipo": 27
+        }
+      },
+      "osm_attribute_mapping": {
+        "name": "nome"
+      },
+      "confidence": "medium",
+      "note": "Aterro (embankment)"
+    },
+    {
+      "id": "alteracao_fisio_cutline",
+      "osm_filter": {
+        "tags": {
+          "man_made": "cutline"
+        },
+        "geometry": [
+          "line"
+        ]
+      },
+      "edgv_target": {
+        "table": "infra_alteracao_fisiografica_antropica_l",
+        "attributes": {
+          "tipo": 26
+        }
+      },
+      "osm_attribute_mapping": {
+        "name": "nome"
+      },
+      "confidence": "medium",
+      "note": "Corte (picadão/cutline)"
+    },
+    {
+      "_comment": "=== ELEMNAT — DRENAGEM ==="
+    },
+    {
+      "id": "drenagem_rio",
+      "osm_filter": {
+        "tags": {
+          "waterway": "river"
+        },
+        "geometry": [
+          "line"
+        ]
+      },
+      "edgv_target": {
+        "table": "elemnat_trecho_drenagem_l",
+        "attributes": {
+          "tipo": 1,
+          "regime": 1
+        }
+      },
+      "osm_attribute_mapping": {
+        "name": "nome",
+        "intermittent": {
+          "column": "regime",
+          "map": {
+            "yes": 3,
+            "no": 1
+          }
+        }
+      },
+      "confidence": "high",
+      "note": "Rio"
+    },
+    {
+      "id": "drenagem_stream",
+      "osm_filter": {
+        "tags": {
+          "waterway": "stream"
+        },
+        "geometry": [
+          "line"
+        ]
+      },
+      "edgv_target": {
+        "table": "elemnat_trecho_drenagem_l",
+        "attributes": {
+          "tipo": 1,
+          "regime": 1
+        }
+      },
+      "osm_attribute_mapping": {
+        "name": "nome",
+        "intermittent": {
+          "column": "regime",
+          "map": {
+            "yes": 3,
+            "no": 1
+          }
+        }
+      },
+      "confidence": "high",
+      "note": "Riacho → tipo Rio"
+    },
+    {
+      "id": "drenagem_canal",
+      "osm_filter": {
+        "tags": {
+          "waterway": "canal"
+        },
+        "geometry": [
+          "line"
+        ]
+      },
+      "edgv_target": {
+        "table": "elemnat_trecho_drenagem_l",
+        "attributes": {
+          "tipo": 2,
+          "regime": 1
+        }
+      },
+      "osm_attribute_mapping": {
+        "name": "nome"
+      },
+      "confidence": "high",
+      "note": "Canal"
+    },
+    {
+      "id": "drenagem_drain",
+      "osm_filter": {
+        "tags": {
+          "waterway": "drain"
+        },
+        "geometry": [
+          "line"
+        ]
+      },
+      "edgv_target": {
+        "table": "elemnat_trecho_drenagem_l",
+        "attributes": {
+          "tipo": 3,
+          "regime": 1
+        }
+      },
+      "osm_attribute_mapping": {
+        "name": "nome"
+      },
+      "confidence": "high",
+      "note": "Trecho pluvial"
+    },
+    {
+      "_comment": "=== ELEMNAT — HIDROGRAFIA ==="
+    },
+    {
+      "id": "hidro_cachoeira",
+      "osm_filter": {
+        "tags": {
+          "waterway": "waterfall"
+        },
+        "geometry": [
+          "point"
+        ]
+      },
+      "edgv_target": {
+        "table": "elemnat_elemento_hidrografico_p",
+        "attributes": {
+          "tipo": 9
+        }
+      },
+      "osm_attribute_mapping": {
+        "name": "nome"
+      },
+      "confidence": "high",
+      "note": "Cachoeira"
+    },
+    {
+      "id": "hidro_corredeira",
+      "osm_filter": {
+        "tags": {
+          "waterway": "rapids"
+        },
+        "geometry": [
+          "point"
+        ]
+      },
+      "edgv_target": {
+        "table": "elemnat_elemento_hidrografico_p",
+        "attributes": {
+          "tipo": 12
+        }
+      },
+      "osm_attribute_mapping": {
+        "name": "nome"
+      },
+      "confidence": "high",
+      "note": "Corredeira"
+    },
+    {
+      "id": "hidro_nascente",
+      "osm_filter": {
+        "tags": {
+          "natural": "spring"
+        },
+        "geometry": [
+          "point"
+        ]
+      },
+      "edgv_target": {
+        "table": "elemnat_elemento_hidrografico_p",
+        "attributes": {
+          "tipo": 3
+        }
+      },
+      "osm_attribute_mapping": {
+        "name": "nome"
+      },
+      "confidence": "high",
+      "note": "Olho d'água permanente"
+    },
+    {
+      "id": "hidro_hot_spring",
+      "osm_filter": {
+        "tags": {
+          "natural": "hot_spring"
+        },
+        "geometry": [
+          "point"
+        ]
+      },
+      "edgv_target": {
+        "table": "elemnat_elemento_hidrografico_p",
+        "attributes": {
+          "tipo": 3
+        }
+      },
+      "osm_attribute_mapping": {
+        "name": "nome"
+      },
+      "confidence": "high",
+      "note": "Fonte termal → olho d'água"
+    },
+    {
+      "id": "hidro_poco_dagua",
+      "osm_filter": {
+        "tags": {
+          "man_made": "water_well"
+        },
+        "geometry": [
+          "point"
+        ]
+      },
+      "edgv_target": {
+        "table": "elemnat_elemento_hidrografico_p",
+        "attributes": {
+          "tipo": 1
+        }
+      },
+      "osm_attribute_mapping": {
+        "name": "nome"
+      },
+      "confidence": "high",
+      "note": "Poço d'água"
+    },
+    {
+      "id": "hidro_recife",
+      "osm_filter": {
+        "tags": {
+          "natural": "reef"
+        },
+        "geometry": [
+          "polygon"
+        ]
+      },
+      "edgv_target": {
+        "table": "elemnat_elemento_hidrografico_a",
+        "attributes": {
+          "tipo": 18
+        }
+      },
+      "osm_attribute_mapping": {
+        "name": "nome"
+      },
+      "confidence": "high",
+      "note": "Recife"
+    },
+    {
+      "id": "hidro_banco_areia",
+      "osm_filter": {
+        "tags": {
+          "natural": "shoal"
+        },
+        "geometry": [
+          "polygon"
+        ]
+      },
+      "edgv_target": {
+        "table": "elemnat_elemento_hidrografico_a",
+        "attributes": {
+          "tipo": 15
+        }
+      },
+      "osm_attribute_mapping": {
+        "name": "nome"
+      },
+      "confidence": "medium",
+      "note": "Banco de areia"
+    },
+    {
+      "id": "ilha_p",
+      "osm_filter": {
+        "tags": {
+          "place": "island"
+        },
+        "geometry": [
+          "point"
+        ]
+      },
+      "edgv_target": {
+        "table": "elemnat_ilha_p",
+        "attributes": {
+          "tipo": 2
+        }
+      },
+      "osm_attribute_mapping": {
+        "name": "nome"
+      },
+      "confidence": "high",
+      "note": "Ilha (ponto). tipo=2 (Marítima) como default — pós-processamento pode reclassificar fluvial/lacustre via análise espacial"
+    },
+    {
+      "id": "ilha_a",
+      "osm_filter": {
+        "tags": {
+          "place": "island"
+        },
+        "geometry": [
+          "polygon"
+        ]
+      },
+      "edgv_target": {
+        "table": "elemnat_ilha_a",
+        "attributes": {
+          "tipo": 2
+        }
+      },
+      "osm_attribute_mapping": {
+        "name": "nome"
+      },
+      "confidence": "high",
+      "note": "Ilha (polígono). tipo=2 (Marítima) como default — pós-processamento pode reclassificar fluvial/lacustre via análise espacial"
+    },
+    {
+      "id": "ilha_islet_p",
+      "osm_filter": {
+        "tags": {
+          "place": "islet"
+        },
+        "geometry": [
+          "point"
+        ]
+      },
+      "edgv_target": {
+        "table": "elemnat_ilha_p",
+        "attributes": {
+          "tipo": 2
+        }
+      },
+      "osm_attribute_mapping": {
+        "name": "nome"
+      },
+      "confidence": "high",
+      "note": "Ilhota (ponto). tipo=2 (Marítima) como default — pós-processamento pode reclassificar fluvial/lacustre via análise espacial"
+    },
+    {
+      "id": "terreno_inundacao",
+      "osm_filter": {
+        "tags": {
+          "natural": "floodplain"
+        },
+        "geometry": [
+          "polygon"
+        ]
+      },
+      "edgv_target": {
+        "table": "elemnat_terreno_sujeito_inundacao_a",
+        "attributes": {}
+      },
+      "osm_attribute_mapping": {},
+      "confidence": "high",
+      "note": "Terreno sujeito a inundação"
+    },
+    {
+      "id": "sumidouro",
+      "osm_filter": {
+        "tags": {
+          "natural": "sinkhole"
+        },
+        "geometry": [
+          "point"
+        ]
+      },
+      "edgv_target": {
+        "table": "elemnat_sumidouro_vertedouro_p",
+        "attributes": {
+          "tipo": 4
+        }
+      },
+      "osm_attribute_mapping": {},
+      "confidence": "medium",
+      "note": "Sumidouro / dolina"
+    },
+    {
+      "_comment": "=== ELEMNAT — FISIOGRAFIA E TOPÔNIMOS ==="
+    },
+    {
+      "id": "fisio_duna",
+      "osm_filter": {
+        "tags": {
+          "natural": "dune"
+        },
+        "geometry": [
+          "polygon"
+        ]
+      },
+      "edgv_target": {
+        "table": "elemnat_elemento_fisiografico_a",
+        "attributes": {
+          "tipo": 16
+        }
+      },
+      "osm_attribute_mapping": {
+        "name": "nome"
+      },
+      "confidence": "high",
+      "note": "Duna"
+    },
+    {
+      "id": "fisio_falesia",
+      "osm_filter": {
+        "tags": {
+          "natural": "cliff"
+        },
+        "geometry": [
+          "line"
+        ]
+      },
+      "edgv_target": {
+        "table": "elemnat_elemento_fisiografico_l",
+        "attributes": {
+          "tipo": 13
+        }
+      },
+      "osm_attribute_mapping": {
+        "name": "nome"
+      },
+      "confidence": "high",
+      "note": "Falésia"
+    },
+    {
+      "id": "fisio_caverna",
+      "osm_filter": {
+        "tags": {
+          "natural": "cave_entrance"
+        },
+        "geometry": [
+          "point"
+        ]
+      },
+      "edgv_target": {
+        "table": "elemnat_elemento_fisiografico_p",
+        "attributes": {
+          "tipo": 20
+        }
+      },
+      "osm_attribute_mapping": {
+        "name": "nome"
+      },
+      "confidence": "high",
+      "note": "Caverna (entrada)"
+    },
+    {
+      "id": "fisio_escarpa",
+      "osm_filter": {
+        "tags": {
+          "natural": "ridge"
+        },
+        "geometry": [
+          "line"
+        ]
+      },
+      "edgv_target": {
+        "table": "elemnat_elemento_fisiografico_l",
+        "attributes": {
+          "tipo": 8
+        }
+      },
+      "osm_attribute_mapping": {
+        "name": "nome"
+      },
+      "confidence": "medium",
+      "note": "Escarpa / ridge"
+    },
+    {
+      "id": "fisio_rocha",
+      "osm_filter": {
+        "tags": {
+          "natural": "rock"
+        },
+        "geometry": [
+          "point"
+        ]
+      },
+      "edgv_target": {
+        "table": "elemnat_elemento_fisiografico_p",
+        "attributes": {
+          "tipo": 21
+        }
+      },
+      "osm_attribute_mapping": {
+        "name": "nome"
+      },
+      "confidence": "high",
+      "note": "Matacão/pedra"
+    },
+    {
+      "id": "fisio_falha",
+      "osm_filter": {
+        "tags": {
+          "geological": "fault"
+        },
+        "geometry": [
+          "line"
+        ]
+      },
+      "edgv_target": {
+        "table": "elemnat_elemento_fisiografico_l",
+        "attributes": {
+          "tipo": 18
+        }
+      },
+      "osm_attribute_mapping": {
+        "name": "nome"
+      },
+      "confidence": "high",
+      "note": "Falha geologica"
+    },
+    {
+      "id": "ponto_cotado_peak",
+      "osm_filter": {
+        "tags": {
+          "natural": "peak",
+          "ele": "*"
+        },
+        "geometry": [
+          "point"
+        ]
+      },
+      "edgv_target": {
+        "table": "elemnat_ponto_cotado_p",
+        "attributes": {}
+      },
+      "osm_attribute_mapping": {
+        "ele": "cota"
+      },
+      "confidence": "high",
+      "note": "Ponto cotado de pico (se tem ele=*)"
+    },
+    {
+      "id": "topn_pico",
+      "osm_filter": {
+        "tags": {
+          "natural": "peak"
+        },
+        "geometry": [
+          "point"
+        ]
+      },
+      "edgv_target": {
+        "table": "elemnat_toponimo_fisiografico_natural_p",
+        "attributes": {
+          "tipo": 3
+        }
+      },
+      "osm_attribute_mapping": {
+        "name": "nome"
+      },
+      "confidence": "high",
+      "note": "Montanha/pico"
+    },
+    {
+      "id": "topn_cabo",
+      "osm_filter": {
+        "tags": {
+          "natural": "cape"
+        },
+        "geometry": [
+          "point"
+        ]
+      },
+      "edgv_target": {
+        "table": "elemnat_toponimo_fisiografico_natural_p",
+        "attributes": {
+          "tipo": 11
+        }
+      },
+      "osm_attribute_mapping": {
+        "name": "nome"
+      },
+      "confidence": "high",
+      "note": "Cabo"
+    },
+    {
+      "id": "topn_peninsula",
+      "osm_filter": {
+        "tags": {
+          "natural": "peninsula"
+        },
+        "geometry": [
+          "point"
+        ]
+      },
+      "edgv_target": {
+        "table": "elemnat_toponimo_fisiografico_natural_p",
+        "attributes": {
+          "tipo": 9
+        }
+      },
+      "osm_attribute_mapping": {
+        "name": "nome"
+      },
+      "confidence": "high",
+      "note": "Península"
+    },
+    {
+      "id": "topn_volcano",
+      "osm_filter": {
+        "tags": {
+          "natural": "volcano"
+        },
+        "geometry": [
+          "point"
+        ]
+      },
+      "edgv_target": {
+        "table": "elemnat_toponimo_fisiografico_natural_p",
+        "attributes": {
+          "tipo": 3
+        }
+      },
+      "osm_attribute_mapping": {
+        "name": "nome"
+      },
+      "confidence": "high",
+      "note": "Vulcão → Montanha"
+    },
+    {
+      "id": "topn_morro",
+      "osm_filter": {
+        "tags": {
+          "natural": "hill"
+        },
+        "geometry": [
+          "point"
+        ]
+      },
+      "edgv_target": {
+        "table": "elemnat_toponimo_fisiografico_natural_p",
+        "attributes": {
+          "tipo": 2
+        }
+      },
+      "osm_attribute_mapping": {
+        "name": "nome"
+      },
+      "confidence": "medium",
+      "note": "Morro (natural=hill, 63k usos globais)"
+    },
+    {
+      "_comment": "=== CONSTR — EDIFICAÇÕES ==="
+    },
+    {
+      "id": "edif_hospital",
+      "osm_filter": {
+        "tags": {
+          "amenity": "hospital"
+        },
+        "geometry": [
+          "point"
+        ]
+      },
+      "edgv_target": {
+        "table": "constr_edificacao_p",
+        "attributes": {
+          "tipo": 2025
+        }
+      },
+      "osm_attribute_mapping": {
+        "name": "nome",
+        "height": "altura",
+        "building:levels": "pavimentos",
+        "addr:street": {
+          "column": "endereco",
+          "concat_with": "addr:housenumber",
+          "separator": ", "
+        }
+      },
+      "confidence": "high",
+      "note": "Hospital"
+    },
+    {
+      "id": "edif_hospital_a",
+      "osm_filter": {
+        "tags": {
+          "building": "hospital"
+        },
+        "geometry": [
+          "polygon"
+        ]
+      },
+      "edgv_target": {
+        "table": "constr_edificacao_a",
+        "attributes": {
+          "tipo": 2025
+        }
+      },
+      "osm_attribute_mapping": {
+        "name": "nome",
+        "height": "altura",
+        "building:levels": "pavimentos",
+        "addr:street": {
+          "column": "endereco",
+          "concat_with": "addr:housenumber",
+          "separator": ", "
+        }
+      },
+      "confidence": "high",
+      "note": "Hospital (polígono)"
+    },
+    {
+      "id": "edif_escola",
+      "osm_filter": {
+        "tags": {
+          "amenity": "school"
+        },
+        "geometry": [
+          "point"
+        ]
+      },
+      "edgv_target": {
+        "table": "constr_edificacao_p",
+        "attributes": {
+          "tipo": 518
+        }
+      },
+      "osm_attribute_mapping": {
+        "name": "nome",
+        "height": "altura",
+        "building:levels": "pavimentos",
+        "addr:street": {
+          "column": "endereco",
+          "concat_with": "addr:housenumber",
+          "separator": ", "
+        }
+      },
+      "confidence": "high",
+      "note": "Escola"
+    },
+    {
+      "id": "area_escola",
+      "osm_filter": {
+        "tags": {
+          "amenity": "school"
+        },
+        "geometry": [
+          "polygon"
+        ]
+      },
+      "edgv_target": {
+        "table": "constr_area_uso_especifico_a",
+        "attributes": {
+          "tipo": 6
+        }
+      },
+      "osm_attribute_mapping": {
+        "name": "nome"
+      },
+      "confidence": "high",
+      "note": "Escola (polígono → área de ensino)"
+    },
+    {
+      "id": "edif_universidade",
+      "osm_filter": {
+        "tags": {
+          "amenity": "university"
+        },
+        "geometry": [
+          "point"
+        ]
+      },
+      "edgv_target": {
+        "table": "constr_edificacao_p",
+        "attributes": {
+          "tipo": 521
+        }
+      },
+      "osm_attribute_mapping": {
+        "name": "nome",
+        "height": "altura",
+        "building:levels": "pavimentos",
+        "addr:street": {
+          "column": "endereco",
+          "concat_with": "addr:housenumber",
+          "separator": ", "
+        }
+      },
+      "confidence": "high",
+      "note": "Universidade"
+    },
+    {
+      "id": "area_universidade",
+      "osm_filter": {
+        "tags": {
+          "amenity": "university"
+        },
+        "geometry": [
+          "polygon"
+        ]
+      },
+      "edgv_target": {
+        "table": "constr_area_uso_especifico_a",
+        "attributes": {
+          "tipo": 6
+        }
+      },
+      "osm_attribute_mapping": {
+        "name": "nome"
+      },
+      "confidence": "high",
+      "note": "Universidade (polígono → área de ensino)"
+    },
+    {
+      "id": "edif_faculdade",
+      "osm_filter": {
+        "tags": {
+          "amenity": "college"
+        },
+        "geometry": [
+          "point"
+        ]
+      },
+      "edgv_target": {
+        "table": "constr_edificacao_p",
+        "attributes": {
+          "tipo": 520
+        }
+      },
+      "osm_attribute_mapping": {
+        "name": "nome",
+        "height": "altura",
+        "building:levels": "pavimentos",
+        "addr:street": {
+          "column": "endereco",
+          "concat_with": "addr:housenumber",
+          "separator": ", "
+        }
+      },
+      "confidence": "high",
+      "note": "Faculdade"
+    },
+    {
+      "id": "area_faculdade",
+      "osm_filter": {
+        "tags": {
+          "amenity": "college"
+        },
+        "geometry": [
+          "polygon"
+        ]
+      },
+      "edgv_target": {
+        "table": "constr_area_uso_especifico_a",
+        "attributes": {
+          "tipo": 6
+        }
+      },
+      "osm_attribute_mapping": {
+        "name": "nome"
+      },
+      "confidence": "high",
+      "note": "Faculdade (polígono → área de ensino)"
+    },
+    {
+      "id": "edif_igreja",
+      "osm_filter": {
+        "tags": {
+          "amenity": "place_of_worship"
+        },
+        "geometry": [
+          "point"
+        ]
+      },
+      "edgv_target": {
+        "table": "constr_edificacao_p",
+        "attributes": {
+          "tipo": 602
+        }
+      },
+      "osm_attribute_mapping": {
+        "name": "nome",
+        "height": "altura",
+        "building:levels": "pavimentos",
+        "addr:street": {
+          "column": "endereco",
+          "concat_with": "addr:housenumber",
+          "separator": ", "
+        }
+      },
+      "confidence": "high",
+      "note": "Local de culto → Templo (genérico)"
+    },
+    {
+      "id": "edif_igreja_crista_a",
+      "osm_filter": {
+        "tags": {
+          "building": "church"
+        },
+        "geometry": [
+          "polygon"
+        ]
+      },
+      "edgv_target": {
+        "table": "constr_edificacao_a",
+        "attributes": {
+          "tipo": 601
+        }
+      },
+      "osm_attribute_mapping": {
+        "name": "nome",
+        "height": "altura",
+        "building:levels": "pavimentos",
+        "addr:street": {
+          "column": "endereco",
+          "concat_with": "addr:housenumber",
+          "separator": ", "
+        }
+      },
+      "confidence": "high",
+      "note": "Igreja cristã"
+    },
+    {
+      "id": "edif_mesquita_a",
+      "osm_filter": {
+        "tags": {
+          "building": "mosque"
+        },
+        "geometry": [
+          "polygon"
+        ]
+      },
+      "edgv_target": {
+        "table": "constr_edificacao_a",
+        "attributes": {
+          "tipo": 606
+        }
+      },
+      "osm_attribute_mapping": {
+        "name": "nome",
+        "height": "altura",
+        "building:levels": "pavimentos",
+        "addr:street": {
+          "column": "endereco",
+          "concat_with": "addr:housenumber",
+          "separator": ", "
+        }
+      },
+      "confidence": "high",
+      "note": "Mesquita"
+    },
+    {
+      "id": "edif_sinagoga_a",
+      "osm_filter": {
+        "tags": {
+          "building": "synagogue"
+        },
+        "geometry": [
+          "polygon"
+        ]
+      },
+      "edgv_target": {
+        "table": "constr_edificacao_a",
+        "attributes": {
+          "tipo": 607
+        }
+      },
+      "osm_attribute_mapping": {
+        "name": "nome",
+        "height": "altura",
+        "building:levels": "pavimentos",
+        "addr:street": {
+          "column": "endereco",
+          "concat_with": "addr:housenumber",
+          "separator": ", "
+        }
+      },
+      "confidence": "high",
+      "note": "Sinagoga"
+    },
+    {
+      "id": "edif_policia_federal",
+      "osm_filter": {
+        "tags": {
+          "amenity": "police",
+          "operator:type": "federal"
+        },
+        "geometry": [
+          "point"
+        ]
+      },
+      "edgv_target": {
+        "table": "constr_edificacao_p",
+        "attributes": {
+          "tipo": 3009
+        }
+      },
+      "osm_attribute_mapping": {
+        "name": "nome",
+        "height": "altura",
+        "building:levels": "pavimentos",
+        "addr:street": {
+          "column": "endereco",
+          "concat_with": "addr:housenumber",
+          "separator": ", "
+        }
+      },
+      "confidence": "high",
+      "note": "Polícia Federal (first-match antes de edif_policia genérico)"
+    },
+    {
+      "id": "edif_policia",
+      "osm_filter": {
+        "tags": {
+          "amenity": "police"
+        },
+        "geometry": [
+          "point"
+        ]
+      },
+      "edgv_target": {
+        "table": "constr_edificacao_p",
+        "attributes": {
+          "tipo": 3001
+        }
+      },
+      "osm_attribute_mapping": {
+        "name": "nome",
+        "height": "altura",
+        "building:levels": "pavimentos",
+        "addr:street": {
+          "column": "endereco",
+          "concat_with": "addr:housenumber",
+          "separator": ", "
+        }
+      },
+      "confidence": "high",
+      "note": "Delegacia"
+    },
+    {
+      "id": "edif_bombeiros",
+      "osm_filter": {
+        "tags": {
+          "amenity": "fire_station"
+        },
+        "geometry": [
+          "point"
+        ]
+      },
+      "edgv_target": {
+        "table": "constr_edificacao_p",
+        "attributes": {
+          "tipo": 3007
+        }
+      },
+      "osm_attribute_mapping": {
+        "name": "nome",
+        "height": "altura",
+        "building:levels": "pavimentos",
+        "addr:street": {
+          "column": "endereco",
+          "concat_with": "addr:housenumber",
+          "separator": ", "
+        }
+      },
+      "confidence": "high",
+      "note": "Corpo de bombeiros"
+    },
+    {
+      "id": "edif_prisao",
+      "osm_filter": {
+        "tags": {
+          "amenity": "prison"
+        },
+        "geometry": [
+          "point"
+        ]
+      },
+      "edgv_target": {
+        "table": "constr_edificacao_p",
+        "attributes": {
+          "tipo": 3006
+        }
+      },
+      "osm_attribute_mapping": {
+        "name": "nome",
+        "height": "altura",
+        "building:levels": "pavimentos",
+        "addr:street": {
+          "column": "endereco",
+          "concat_with": "addr:housenumber",
+          "separator": ", "
+        }
+      },
+      "confidence": "high",
+      "note": "Prisão"
+    },
+    {
+      "id": "edif_prisao_a",
+      "osm_filter": {
+        "tags": {
+          "amenity": "prison"
+        },
+        "geometry": [
+          "polygon"
+        ]
+      },
+      "edgv_target": {
+        "table": "constr_edificacao_a",
+        "attributes": {
+          "tipo": 3006
+        }
+      },
+      "osm_attribute_mapping": {
+        "name": "nome",
+        "height": "altura",
+        "building:levels": "pavimentos",
+        "addr:street": {
+          "column": "endereco",
+          "concat_with": "addr:housenumber",
+          "separator": ", "
+        }
+      },
+      "confidence": "high",
+      "note": "Prisão (polígono)"
+    },
+    {
+      "id": "edif_prefeitura",
+      "osm_filter": {
+        "tags": {
+          "amenity": "townhall"
+        },
+        "geometry": [
+          "point"
+        ]
+      },
+      "edgv_target": {
+        "table": "constr_edificacao_p",
+        "attributes": {
+          "tipo": 1322
+        }
+      },
+      "osm_attribute_mapping": {
+        "name": "nome",
+        "height": "altura",
+        "building:levels": "pavimentos",
+        "addr:street": {
+          "column": "endereco",
+          "concat_with": "addr:housenumber",
+          "separator": ", "
+        }
+      },
+      "confidence": "high",
+      "note": "Prefeitura"
+    },
+    {
+      "id": "edif_tribunal",
+      "osm_filter": {
+        "tags": {
+          "amenity": "courthouse"
+        },
+        "geometry": [
+          "point"
+        ]
+      },
+      "edgv_target": {
+        "table": "constr_edificacao_p",
+        "attributes": {
+          "tipo": 1313
+        }
+      },
+      "osm_attribute_mapping": {
+        "name": "nome",
+        "height": "altura",
+        "building:levels": "pavimentos",
+        "addr:street": {
+          "column": "endereco",
+          "concat_with": "addr:housenumber",
+          "separator": ", "
+        }
+      },
+      "confidence": "high",
+      "note": "Fórum"
+    },
+    {
+      "id": "edif_banco",
+      "osm_filter": {
+        "tags": {
+          "amenity": "bank"
+        },
+        "geometry": [
+          "point"
+        ]
+      },
+      "edgv_target": {
+        "table": "constr_edificacao_p",
+        "attributes": {
+          "tipo": 908
+        }
+      },
+      "osm_attribute_mapping": {
+        "name": "nome",
+        "height": "altura",
+        "building:levels": "pavimentos",
+        "addr:street": {
+          "column": "endereco",
+          "concat_with": "addr:housenumber",
+          "separator": ", "
+        }
+      },
+      "confidence": "high",
+      "note": "Banco"
+    },
+    {
+      "id": "edif_supermercado",
+      "osm_filter": {
+        "tags": {
+          "shop": "supermarket"
+        },
+        "geometry": [
+          "point"
+        ]
+      },
+      "edgv_target": {
+        "table": "constr_edificacao_p",
+        "attributes": {
+          "tipo": 904
+        }
+      },
+      "osm_attribute_mapping": {
+        "name": "nome",
+        "height": "altura",
+        "building:levels": "pavimentos",
+        "addr:street": {
+          "column": "endereco",
+          "concat_with": "addr:housenumber",
+          "separator": ", "
+        }
+      },
+      "confidence": "high",
+      "note": "Mercado"
+    },
+    {
+      "id": "edif_shopping",
+      "osm_filter": {
+        "tags": {
+          "shop": "mall"
+        },
+        "geometry": [
+          "point"
+        ]
+      },
+      "edgv_target": {
+        "table": "constr_edificacao_p",
+        "attributes": {
+          "tipo": 903
+        }
+      },
+      "osm_attribute_mapping": {
+        "name": "nome",
+        "height": "altura",
+        "building:levels": "pavimentos",
+        "addr:street": {
+          "column": "endereco",
+          "concat_with": "addr:housenumber",
+          "separator": ", "
+        }
+      },
+      "confidence": "high",
+      "note": "Centro comercial"
+    },
+    {
+      "id": "edif_hotel",
+      "osm_filter": {
+        "tags": {
+          "tourism": [
+            "hotel",
+            "motel",
+            "hostel",
+            "guest_house",
+            "bed_and_breakfast",
+            "chalet",
+            "alpine_hut"
+          ]
+        },
+        "geometry": [
+          "point"
+        ]
+      },
+      "edgv_target": {
+        "table": "constr_edificacao_p",
+        "attributes": {
+          "tipo": 907
+        }
+      },
+      "osm_attribute_mapping": {
+        "name": "nome",
+        "height": "altura",
+        "building:levels": "pavimentos",
+        "addr:street": {
+          "column": "endereco",
+          "concat_with": "addr:housenumber",
+          "separator": ", "
+        }
+      },
+      "confidence": "high",
+      "note": "Hotel/motel/pousada"
+    },
+    {
+      "id": "edif_teatro",
+      "osm_filter": {
+        "tags": {
+          "amenity": "theatre"
+        },
+        "geometry": [
+          "point"
+        ]
+      },
+      "edgv_target": {
+        "table": "constr_edificacao_p",
+        "attributes": {
+          "tipo": 804
+        }
+      },
+      "osm_attribute_mapping": {
+        "name": "nome",
+        "height": "altura",
+        "building:levels": "pavimentos",
+        "addr:street": {
+          "column": "endereco",
+          "concat_with": "addr:housenumber",
+          "separator": ", "
+        }
+      },
+      "confidence": "high",
+      "note": "Teatro"
+    },
+    {
+      "id": "edif_cinema",
+      "osm_filter": {
+        "tags": {
+          "amenity": "cinema"
+        },
+        "geometry": [
+          "point"
+        ]
+      },
+      "edgv_target": {
+        "table": "constr_edificacao_p",
+        "attributes": {
+          "tipo": 806
+        }
+      },
+      "osm_attribute_mapping": {
+        "name": "nome",
+        "height": "altura",
+        "building:levels": "pavimentos",
+        "addr:street": {
+          "column": "endereco",
+          "concat_with": "addr:housenumber",
+          "separator": ", "
+        }
+      },
+      "confidence": "high",
+      "note": "Cinema"
+    },
+    {
+      "id": "edif_biblioteca",
+      "osm_filter": {
+        "tags": {
+          "amenity": "library"
+        },
+        "geometry": [
+          "point"
+        ]
+      },
+      "edgv_target": {
+        "table": "constr_edificacao_p",
+        "attributes": {
+          "tipo": 810
+        }
+      },
+      "osm_attribute_mapping": {
+        "name": "nome",
+        "height": "altura",
+        "building:levels": "pavimentos",
+        "addr:street": {
+          "column": "endereco",
+          "concat_with": "addr:housenumber",
+          "separator": ", "
+        }
+      },
+      "confidence": "high",
+      "note": "Biblioteca"
+    },
+    {
+      "id": "edif_estadio",
+      "osm_filter": {
+        "tags": {
+          "leisure": "stadium"
+        },
+        "geometry": [
+          "point"
+        ]
+      },
+      "edgv_target": {
+        "table": "constr_edificacao_p",
+        "attributes": {
+          "tipo": 801
+        }
+      },
+      "osm_attribute_mapping": {
+        "name": "nome",
+        "height": "altura",
+        "building:levels": "pavimentos",
+        "addr:street": {
+          "column": "endereco",
+          "concat_with": "addr:housenumber",
+          "separator": ", "
+        }
+      },
+      "confidence": "high",
+      "note": "Estádio"
+    },
+    {
+      "id": "edif_ginasio",
+      "osm_filter": {
+        "tags": {
+          "leisure": "sports_centre"
+        },
+        "geometry": [
+          "point"
+        ]
+      },
+      "edgv_target": {
+        "table": "constr_edificacao_p",
+        "attributes": {
+          "tipo": 802
+        }
+      },
+      "osm_attribute_mapping": {
+        "name": "nome",
+        "height": "altura",
+        "building:levels": "pavimentos",
+        "addr:street": {
+          "column": "endereco",
+          "concat_with": "addr:housenumber",
+          "separator": ", "
+        }
+      },
+      "confidence": "high",
+      "note": "Ginásio"
+    },
+    {
+      "id": "edif_embaixada",
+      "osm_filter": {
+        "tags": {
+          "amenity": "embassy"
+        },
+        "geometry": [
+          "point"
+        ]
+      },
+      "edgv_target": {
+        "table": "constr_edificacao_p",
+        "attributes": {
+          "tipo": 2902
+        }
+      },
+      "osm_attribute_mapping": {
+        "name": "nome",
+        "height": "altura",
+        "building:levels": "pavimentos",
+        "addr:street": {
+          "column": "endereco",
+          "concat_with": "addr:housenumber",
+          "separator": ", "
+        }
+      },
+      "confidence": "high",
+      "note": "Embaixada"
+    },
+    {
+      "id": "edif_consulado",
+      "osm_filter": {
+        "tags": {
+          "office": "diplomatic"
+        },
+        "geometry": [
+          "point"
+        ]
+      },
+      "edgv_target": {
+        "table": "constr_edificacao_p",
+        "attributes": {
+          "tipo": 2901
+        }
+      },
+      "osm_attribute_mapping": {
+        "name": "nome",
+        "height": "altura",
+        "building:levels": "pavimentos",
+        "addr:street": {
+          "column": "endereco",
+          "concat_with": "addr:housenumber",
+          "separator": ", "
+        }
+      },
+      "confidence": "high",
+      "note": "Consulado"
+    },
+    {
+      "id": "edif_estacao_ferroviaria",
+      "osm_filter": {
+        "tags": {
+          "railway": "station"
+        },
+        "geometry": [
+          "point"
+        ]
+      },
+      "edgv_target": {
+        "table": "constr_edificacao_p",
+        "attributes": {
+          "tipo": 2316
+        }
+      },
+      "osm_attribute_mapping": {
+        "name": "nome",
+        "height": "altura",
+        "building:levels": "pavimentos",
+        "addr:street": {
+          "column": "endereco",
+          "concat_with": "addr:housenumber",
+          "separator": ", "
+        }
+      },
+      "confidence": "high",
+      "note": "Estação ferroviária"
+    },
+    {
+      "id": "ferrovia_halt",
+      "osm_filter": {
+        "tags": {
+          "railway": "halt"
+        },
+        "geometry": [
+          "point"
+        ]
+      },
+      "edgv_target": {
+        "table": "constr_edificacao_p",
+        "attributes": {
+          "tipo": 2316
+        }
+      },
+      "osm_attribute_mapping": {
+        "name": "nome",
+        "height": "altura",
+        "building:levels": "pavimentos",
+        "addr:street": {
+          "column": "endereco",
+          "concat_with": "addr:housenumber",
+          "separator": ", "
+        }
+      },
+      "confidence": "high",
+      "note": "Parada ferroviária"
+    },
+    {
+      "id": "edif_terminal_onibus",
+      "osm_filter": {
+        "tags": {
+          "amenity": "bus_station"
+        },
+        "geometry": [
+          "point"
+        ]
+      },
+      "edgv_target": {
+        "table": "constr_edificacao_p",
+        "attributes": {
+          "tipo": 2209
+        }
+      },
+      "osm_attribute_mapping": {
+        "name": "nome",
+        "height": "altura",
+        "building:levels": "pavimentos",
+        "addr:street": {
+          "column": "endereco",
+          "concat_with": "addr:housenumber",
+          "separator": ", "
+        }
+      },
+      "confidence": "high",
+      "note": "Terminal de ônibus"
+    },
+    {
+      "id": "edif_aeroporto",
+      "osm_filter": {
+        "tags": {
+          "aeroway": "aerodrome"
+        },
+        "geometry": [
+          "point"
+        ]
+      },
+      "edgv_target": {
+        "table": "constr_edificacao_p",
+        "attributes": {
+          "tipo": 2426
+        }
+      },
+      "osm_attribute_mapping": {
+        "name": "nome",
+        "height": "altura",
+        "building:levels": "pavimentos",
+        "addr:street": {
+          "column": "endereco",
+          "concat_with": "addr:housenumber",
+          "separator": ", "
+        }
+      },
+      "confidence": "high",
+      "note": "Terminal aeroportuário"
+    },
+    {
+      "id": "edif_torre_controle",
+      "osm_filter": {
+        "tags": {
+          "aeroway": "control_tower"
+        },
+        "geometry": [
+          "point"
+        ]
+      },
+      "edgv_target": {
+        "table": "constr_edificacao_p",
+        "attributes": {
+          "tipo": 2428
+        }
+      },
+      "osm_attribute_mapping": {
+        "name": "nome",
+        "height": "altura",
+        "building:levels": "pavimentos",
+        "addr:street": {
+          "column": "endereco",
+          "concat_with": "addr:housenumber",
+          "separator": ", "
+        }
+      },
+      "confidence": "high",
+      "note": "Torre de controle de tráfego aéreo"
+    },
+    {
+      "id": "edif_terminal_balsa",
+      "osm_filter": {
+        "tags": {
+          "amenity": "ferry_terminal"
+        },
+        "geometry": [
+          "point"
+        ]
+      },
+      "edgv_target": {
+        "table": "constr_edificacao_p",
+        "attributes": {
+          "tipo": 2501
+        }
+      },
+      "osm_attribute_mapping": {
+        "name": "nome",
+        "height": "altura",
+        "building:levels": "pavimentos",
+        "addr:street": {
+          "column": "endereco",
+          "concat_with": "addr:housenumber",
+          "separator": ", "
+        }
+      },
+      "confidence": "high",
+      "note": "Edificação portuária"
+    },
+    {
+      "id": "edif_mirante",
+      "osm_filter": {
+        "tags": {
+          "tourism": "viewpoint"
+        },
+        "geometry": [
+          "point"
+        ]
+      },
+      "edgv_target": {
+        "table": "constr_edificacao_p",
+        "attributes": {
+          "tipo": 711
+        }
+      },
+      "osm_attribute_mapping": {
+        "name": "nome",
+        "height": "altura",
+        "building:levels": "pavimentos",
+        "addr:street": {
+          "column": "endereco",
+          "concat_with": "addr:housenumber",
+          "separator": ", "
+        }
+      },
+      "confidence": "high",
+      "note": "Mirante"
+    },
+    {
+      "id": "edif_monumento",
+      "osm_filter": {
+        "tags": {
+          "historic": [
+            "monument",
+            "memorial"
+          ]
+        },
+        "geometry": [
+          "point"
+        ]
+      },
+      "edgv_target": {
+        "table": "constr_edificacao_p",
+        "attributes": {
+          "tipo": 712
+        }
+      },
+      "osm_attribute_mapping": {
+        "name": "nome",
+        "height": "altura",
+        "building:levels": "pavimentos",
+        "addr:street": {
+          "column": "endereco",
+          "concat_with": "addr:housenumber",
+          "separator": ", "
+        }
+      },
+      "confidence": "high",
+      "note": "Monumento"
+    },
+    {
+      "id": "edif_fuel",
+      "osm_filter": {
+        "tags": {
+          "amenity": "fuel"
+        },
+        "geometry": [
+          "point"
+        ]
+      },
+      "edgv_target": {
+        "table": "constr_edificacao_p",
+        "attributes": {
+          "tipo": 2601
+        }
+      },
+      "osm_attribute_mapping": {
+        "name": "nome",
+        "height": "altura",
+        "building:levels": "pavimentos",
+        "addr:street": {
+          "column": "endereco",
+          "concat_with": "addr:housenumber",
+          "separator": ", "
+        }
+      },
+      "confidence": "high",
+      "note": "Posto de combustivel"
+    },
+    {
+      "id": "edif_museu",
+      "osm_filter": {
+        "tags": {
+          "tourism": "museum"
+        },
+        "geometry": [
+          "point"
+        ]
+      },
+      "edgv_target": {
+        "table": "constr_edificacao_p",
+        "attributes": {
+          "tipo": 803
+        }
+      },
+      "osm_attribute_mapping": {
+        "name": "nome",
+        "height": "altura",
+        "building:levels": "pavimentos",
+        "addr:street": {
+          "column": "endereco",
+          "concat_with": "addr:housenumber",
+          "separator": ", "
+        }
+      },
+      "confidence": "high",
+      "note": "Museu"
+    },
+    {
+      "id": "edif_governo",
+      "osm_filter": {
+        "tags": {
+          "office": "government"
+        },
+        "geometry": [
+          "point"
+        ]
+      },
+      "edgv_target": {
+        "table": "constr_edificacao_p",
+        "attributes": {
+          "tipo": 1304
+        }
+      },
+      "osm_attribute_mapping": {
+        "name": "nome",
+        "height": "altura",
+        "building:levels": "pavimentos",
+        "addr:street": {
+          "column": "endereco",
+          "concat_with": "addr:housenumber",
+          "separator": ", "
+        }
+      },
+      "confidence": "high",
+      "note": "Gestao publica (office=government)"
+    },
+    {
+      "id": "edif_militar_building_a",
+      "osm_filter": {
+        "tags": {
+          "building": "military"
+        },
+        "geometry": [
+          "polygon"
+        ]
+      },
+      "edgv_target": {
+        "table": "constr_edificacao_a",
+        "attributes": {
+          "tipo": 3098
+        }
+      },
+      "osm_attribute_mapping": {
+        "name": "nome",
+        "height": "altura",
+        "building:levels": "pavimentos",
+        "addr:street": {
+          "column": "endereco",
+          "concat_with": "addr:housenumber",
+          "separator": ", "
+        }
+      },
+      "confidence": "high",
+      "note": "Edificação militar"
+    },
+    {
+      "id": "edif_governo_building_a",
+      "osm_filter": {
+        "tags": {
+          "building": "government"
+        },
+        "geometry": [
+          "polygon"
+        ]
+      },
+      "edgv_target": {
+        "table": "constr_edificacao_a",
+        "attributes": {
+          "tipo": 1304
+        }
+      },
+      "osm_attribute_mapping": {
+        "name": "nome",
+        "height": "altura",
+        "building:levels": "pavimentos",
+        "addr:street": {
+          "column": "endereco",
+          "concat_with": "addr:housenumber",
+          "separator": ", "
+        }
+      },
+      "confidence": "high",
+      "note": "Edificação governamental"
+    },
+    {
+      "id": "edif_industrial_building_a",
+      "osm_filter": {
+        "tags": {
+          "building": "industrial"
+        },
+        "geometry": [
+          "polygon"
+        ]
+      },
+      "edgv_target": {
+        "table": "constr_edificacao_a",
+        "attributes": {
+          "tipo": 1098
+        }
+      },
+      "osm_attribute_mapping": {
+        "name": "nome",
+        "height": "altura",
+        "building:levels": "pavimentos",
+        "addr:street": {
+          "column": "endereco",
+          "concat_with": "addr:housenumber",
+          "separator": ", "
+        }
+      },
+      "confidence": "high",
+      "note": "Edificação industrial"
+    },
+    {
+      "id": "edif_train_station_building_a",
+      "osm_filter": {
+        "tags": {
+          "building": "train_station"
+        },
+        "geometry": [
+          "polygon"
+        ]
+      },
+      "edgv_target": {
+        "table": "constr_edificacao_a",
+        "attributes": {
+          "tipo": 2316
+        }
+      },
+      "osm_attribute_mapping": {
+        "name": "nome",
+        "height": "altura",
+        "building:levels": "pavimentos",
+        "addr:street": {
+          "column": "endereco",
+          "concat_with": "addr:housenumber",
+          "separator": ", "
+        }
+      },
+      "confidence": "high",
+      "note": "Edificação de estação ferroviária"
+    },
+    {
+      "id": "edif_hangar_building_a",
+      "osm_filter": {
+        "tags": {
+          "building": "hangar"
+        },
+        "geometry": [
+          "polygon"
+        ]
+      },
+      "edgv_target": {
+        "table": "constr_edificacao_a",
+        "attributes": {
+          "tipo": 2429
+        }
+      },
+      "osm_attribute_mapping": {
+        "name": "nome",
+        "height": "altura",
+        "building:levels": "pavimentos",
+        "addr:street": {
+          "column": "endereco",
+          "concat_with": "addr:housenumber",
+          "separator": ", "
+        }
+      },
+      "confidence": "high",
+      "note": "Hangar de aeronaves (building tag)"
+    },
+    {
+      "id": "edif_catedral_building_a",
+      "osm_filter": {
+        "tags": {
+          "building": "cathedral"
+        },
+        "geometry": [
+          "polygon"
+        ]
+      },
+      "edgv_target": {
+        "table": "constr_edificacao_a",
+        "attributes": {
+          "tipo": 601
+        }
+      },
+      "osm_attribute_mapping": {
+        "name": "nome",
+        "height": "altura",
+        "building:levels": "pavimentos",
+        "addr:street": {
+          "column": "endereco",
+          "concat_with": "addr:housenumber",
+          "separator": ", "
+        }
+      },
+      "confidence": "high",
+      "note": "Catedral"
+    },
+    {
+      "id": "edif_capela_building_a",
+      "osm_filter": {
+        "tags": {
+          "building": "chapel"
+        },
+        "geometry": [
+          "polygon"
+        ]
+      },
+      "edgv_target": {
+        "table": "constr_edificacao_a",
+        "attributes": {
+          "tipo": 601
+        }
+      },
+      "osm_attribute_mapping": {
+        "name": "nome",
+        "height": "altura",
+        "building:levels": "pavimentos",
+        "addr:street": {
+          "column": "endereco",
+          "concat_with": "addr:housenumber",
+          "separator": ", "
+        }
+      },
+      "confidence": "high",
+      "note": "Capela"
+    },
+    {
+      "id": "edif_mosteiro_building_a",
+      "osm_filter": {
+        "tags": {
+          "building": "monastery"
+        },
+        "geometry": [
+          "polygon"
+        ]
+      },
+      "edgv_target": {
+        "table": "constr_edificacao_a",
+        "attributes": {
+          "tipo": 604
+        }
+      },
+      "osm_attribute_mapping": {
+        "name": "nome",
+        "height": "altura",
+        "building:levels": "pavimentos",
+        "addr:street": {
+          "column": "endereco",
+          "concat_with": "addr:housenumber",
+          "separator": ", "
+        }
+      },
+      "confidence": "high",
+      "note": "Mosteiro"
+    },
+    {
+      "id": "edif_usina_building",
+      "osm_filter": {
+        "tags": {
+          "building": "power_plant"
+        },
+        "geometry": [
+          "polygon"
+        ]
+      },
+      "edgv_target": {
+        "table": "constr_edificacao_a",
+        "attributes": {
+          "tipo": 201
+        }
+      },
+      "osm_attribute_mapping": {
+        "name": "nome",
+        "height": "altura",
+        "building:levels": "pavimentos",
+        "addr:street": {
+          "column": "endereco",
+          "concat_with": "addr:housenumber",
+          "separator": ", "
+        }
+      },
+      "confidence": "high",
+      "note": "Usina/central elétrica (building=power_plant)"
+    },
+    {
+      "id": "edif_comunicacao_building",
+      "osm_filter": {
+        "tags": {
+          "building": "communication"
+        },
+        "geometry": [
+          "polygon"
+        ]
+      },
+      "edgv_target": {
+        "table": "constr_edificacao_a",
+        "attributes": {
+          "tipo": 101
+        }
+      },
+      "osm_attribute_mapping": {
+        "name": "nome",
+        "height": "altura",
+        "building:levels": "pavimentos",
+        "addr:street": {
+          "column": "endereco",
+          "concat_with": "addr:housenumber",
+          "separator": ", "
+        }
+      },
+      "confidence": "high",
+      "note": "Centro de comunicações (building=communication)"
+    },
+    {
+      "id": "edif_bombeiro_building",
+      "osm_filter": {
+        "tags": {
+          "building": "fire_station"
+        },
+        "geometry": [
+          "polygon"
+        ]
+      },
+      "edgv_target": {
+        "table": "constr_edificacao_a",
+        "attributes": {
+          "tipo": 3007
+        }
+      },
+      "osm_attribute_mapping": {
+        "name": "nome",
+        "height": "altura",
+        "building:levels": "pavimentos",
+        "addr:street": {
+          "column": "endereco",
+          "concat_with": "addr:housenumber",
+          "separator": ", "
+        }
+      },
+      "confidence": "high",
+      "note": "Corpo de bombeiros (building=fire_station)"
+    },
+    {
+      "id": "edif_templo_building",
+      "osm_filter": {
+        "tags": {
+          "building": "temple"
+        },
+        "geometry": [
+          "polygon"
+        ]
+      },
+      "edgv_target": {
+        "table": "constr_edificacao_a",
+        "attributes": {
+          "tipo": 602
+        }
+      },
+      "osm_attribute_mapping": {
+        "name": "nome",
+        "height": "altura",
+        "building:levels": "pavimentos",
+        "addr:street": {
+          "column": "endereco",
+          "concat_with": "addr:housenumber",
+          "separator": ", "
+        }
+      },
+      "confidence": "high",
+      "note": "Templo (building=temple)"
+    },
+    {
+      "id": "edif_santuario_building",
+      "osm_filter": {
+        "tags": {
+          "building": "shrine"
+        },
+        "geometry": [
+          "polygon"
+        ]
+      },
+      "edgv_target": {
+        "table": "constr_edificacao_a",
+        "attributes": {
+          "tipo": 698
+        }
+      },
+      "osm_attribute_mapping": {
+        "name": "nome",
+        "height": "altura",
+        "building:levels": "pavimentos",
+        "addr:street": {
+          "column": "endereco",
+          "concat_with": "addr:housenumber",
+          "separator": ", "
+        }
+      },
+      "confidence": "high",
+      "note": "Santuário (building=shrine)"
+    },
+    {
+      "id": "edif_garagem_barcos_building",
+      "osm_filter": {
+        "tags": {
+          "building": "boathouse"
+        },
+        "geometry": [
+          "polygon"
+        ]
+      },
+      "edgv_target": {
+        "table": "constr_edificacao_a",
+        "attributes": {
+          "tipo": 2501
+        }
+      },
+      "osm_attribute_mapping": {
+        "name": "nome",
+        "height": "altura",
+        "building:levels": "pavimentos",
+        "addr:street": {
+          "column": "endereco",
+          "concat_with": "addr:housenumber",
+          "separator": ", "
+        }
+      },
+      "confidence": "high",
+      "note": "Garagem de embarcações (building=boathouse)"
+    },
+    {
+      "id": "edif_aeroporto_building",
+      "osm_filter": {
+        "tags": {
+          "building": "airport"
+        },
+        "geometry": [
+          "polygon"
+        ]
+      },
+      "edgv_target": {
+        "table": "constr_edificacao_a",
+        "attributes": {
+          "tipo": 2426
+        }
+      },
+      "osm_attribute_mapping": {
+        "name": "nome",
+        "height": "altura",
+        "building:levels": "pavimentos",
+        "addr:street": {
+          "column": "endereco",
+          "concat_with": "addr:housenumber",
+          "separator": ", "
+        }
+      },
+      "confidence": "high",
+      "note": "Terminal aeroportuário (building=airport)"
+    },
+    {
+      "id": "edif_terminal_building",
+      "osm_filter": {
+        "tags": {
+          "building": "terminal"
+        },
+        "geometry": [
+          "polygon"
+        ]
+      },
+      "edgv_target": {
+        "table": "constr_edificacao_a",
+        "attributes": {
+          "tipo": 2426
+        }
+      },
+      "osm_attribute_mapping": {
+        "name": "nome",
+        "height": "altura",
+        "building:levels": "pavimentos",
+        "addr:street": {
+          "column": "endereco",
+          "concat_with": "addr:housenumber",
+          "separator": ", "
+        }
+      },
+      "confidence": "high",
+      "note": "Terminal de transporte (building=terminal)"
+    },
+    {
+      "id": "edif_heliporto_building",
+      "osm_filter": {
+        "tags": {
+          "building": "heliport"
+        },
+        "geometry": [
+          "polygon"
+        ]
+      },
+      "edgv_target": {
+        "table": "constr_edificacao_a",
+        "attributes": {
+          "tipo": 2426
+        }
+      },
+      "osm_attribute_mapping": {
+        "name": "nome",
+        "height": "altura",
+        "building:levels": "pavimentos",
+        "addr:street": {
+          "column": "endereco",
+          "concat_with": "addr:housenumber",
+          "separator": ", "
+        }
+      },
+      "confidence": "high",
+      "note": "Heliporto (building=heliport)"
+    },
+    {
+      "id": "deposito_armazem",
+      "osm_filter": {
+        "tags": {
+          "building": "warehouse"
+        },
+        "geometry": [
+          "polygon"
+        ]
+      },
+      "edgv_target": {
+        "table": "constr_deposito_a",
+        "attributes": {
+          "tipo": 132
+        }
+      },
+      "osm_attribute_mapping": {
+        "name": "nome",
+        "height": "altura",
+        "building:levels": "pavimentos",
+        "addr:street": {
+          "column": "endereco",
+          "concat_with": "addr:housenumber",
+          "separator": ", "
+        }
+      },
+      "confidence": "high",
+      "note": "Armazém"
+    },
+    {
+      "id": "edif_subestacao_building",
+      "osm_filter": {
+        "tags": {
+          "building": "power_substation"
+        },
+        "geometry": [
+          "polygon"
+        ]
+      },
+      "edgv_target": {
+        "table": "constr_edificacao_a",
+        "attributes": {
+          "tipo": 201
+        }
+      },
+      "osm_attribute_mapping": {
+        "name": "nome",
+        "height": "altura",
+        "building:levels": "pavimentos",
+        "addr:street": {
+          "column": "endereco",
+          "concat_with": "addr:housenumber",
+          "separator": ", "
+        }
+      },
+      "confidence": "high",
+      "note": "Subestação elétrica (building=power_substation)"
+    },
+    {
+      "id": "deposito_galpao",
+      "osm_filter": {
+        "tags": {
+          "building": "barn"
+        },
+        "geometry": [
+          "polygon"
+        ]
+      },
+      "edgv_target": {
+        "table": "constr_deposito_a",
+        "attributes": {
+          "tipo": 108
+        }
+      },
+      "osm_attribute_mapping": {
+        "name": "nome",
+        "height": "altura",
+        "building:levels": "pavimentos",
+        "addr:street": {
+          "column": "endereco",
+          "concat_with": "addr:housenumber",
+          "separator": ", "
+        }
+      },
+      "confidence": "high",
+      "note": "Galpão/celeiro"
+    },
+    {
+      "id": "edif_building_generico",
+      "osm_filter": {
+        "tags": {
+          "building": "*"
+        },
+        "geometry": [
+          "polygon"
+        ]
+      },
+      "edgv_target": {
+        "table": "constr_edificacao_a",
+        "attributes": {
+          "tipo": 0
+        }
+      },
+      "osm_attribute_mapping": {
+        "name": "nome",
+        "height": "altura",
+        "building:levels": "pavimentos",
+        "addr:street": {
+          "column": "endereco",
+          "concat_with": "addr:housenumber",
+          "separator": ", "
+        }
+      },
+      "confidence": "high",
+      "note": "Edificação genérica (fallback building=*)"
+    },
+    {
+      "_comment": "=== CONSTR — OCUPAÇÃO DO SOLO ==="
+    },
+    {
+      "id": "ocup_cemiterio",
+      "osm_filter": {
+        "tags": {
+          "landuse": "cemetery"
+        },
+        "geometry": [
+          "polygon"
+        ]
+      },
+      "edgv_target": {
+        "table": "constr_ocupacao_solo_a",
+        "attributes": {
+          "tipo": 104
+        }
+      },
+      "osm_attribute_mapping": {
+        "name": "nome"
+      },
+      "confidence": "high",
+      "note": "Cemitério"
+    },
+    {
+      "id": "ocup_cemiterio_amenity",
+      "osm_filter": {
+        "tags": {
+          "amenity": "grave_yard"
+        },
+        "geometry": [
+          "polygon"
+        ]
+      },
+      "edgv_target": {
+        "table": "constr_ocupacao_solo_a",
+        "attributes": {
+          "tipo": 104
+        }
+      },
+      "osm_attribute_mapping": {
+        "name": "nome"
+      },
+      "confidence": "high",
+      "note": "Cemitério (amenity)"
+    },
+    {
+      "id": "ocup_estacionamento",
+      "osm_filter": {
+        "tags": {
+          "amenity": "parking"
+        },
+        "geometry": [
+          "polygon"
+        ]
+      },
+      "edgv_target": {
+        "table": "constr_ocupacao_solo_a",
+        "attributes": {
+          "tipo": 901
+        }
+      },
+      "osm_attribute_mapping": {
+        "name": "nome"
+      },
+      "confidence": "high",
+      "note": "Estacionamento"
+    },
+    {
+      "id": "ocup_sitio_arqueologico",
+      "osm_filter": {
+        "tags": {
+          "historic": "archaeological_site"
+        },
+        "geometry": [
+          "polygon"
+        ]
+      },
+      "edgv_target": {
+        "table": "constr_ocupacao_solo_a",
+        "attributes": {
+          "tipo": 601
+        }
+      },
+      "osm_attribute_mapping": {
+        "name": "nome"
+      },
+      "confidence": "high",
+      "note": "Sítio arqueológico"
+    },
+    {
+      "id": "ocup_ruinas",
+      "osm_filter": {
+        "tags": {
+          "historic": "ruins"
+        },
+        "geometry": [
+          "polygon"
+        ]
+      },
+      "edgv_target": {
+        "table": "constr_ocupacao_solo_a",
+        "attributes": {
+          "tipo": 701
+        }
+      },
+      "osm_attribute_mapping": {
+        "name": "nome"
+      },
+      "confidence": "high",
+      "note": "Ruínas"
+    },
+    {
+      "id": "ocup_campo_esportivo",
+      "osm_filter": {
+        "tags": {
+          "leisure": "pitch"
+        },
+        "geometry": [
+          "polygon"
+        ]
+      },
+      "edgv_target": {
+        "table": "constr_ocupacao_solo_a",
+        "attributes": {
+          "tipo": 206
+        }
+      },
+      "osm_attribute_mapping": {
+        "name": "nome"
+      },
+      "confidence": "high",
+      "note": "Campo/quadra poliesportiva"
+    },
+    {
+      "id": "ocup_farol",
+      "osm_filter": {
+        "tags": {
+          "man_made": "lighthouse"
+        },
+        "geometry": [
+          "point"
+        ]
+      },
+      "edgv_target": {
+        "table": "constr_ocupacao_solo_p",
+        "attributes": {
+          "tipo": 1101
+        }
+      },
+      "osm_attribute_mapping": {
+        "name": "nome"
+      },
+      "confidence": "high",
+      "note": "Farol"
+    },
+    {
+      "id": "ocup_moinho",
+      "osm_filter": {
+        "tags": {
+          "man_made": [
+            "watermill",
+            "windmill"
+          ]
+        },
+        "geometry": [
+          "point"
+        ]
+      },
+      "edgv_target": {
+        "table": "constr_ocupacao_solo_p",
+        "attributes": {
+          "tipo": 802
+        }
+      },
+      "osm_attribute_mapping": {
+        "name": "nome"
+      },
+      "confidence": "high",
+      "note": "Moinho"
+    },
+    {
+      "_comment": "=== CONSTR — ÁREA DE USO ESPECÍFICO ==="
+    },
+    {
+      "id": "area_uso_lazer",
+      "osm_filter": {
+        "tags": {
+          "leisure": [
+            "park",
+            "garden",
+            "golf_course",
+            "playground",
+            "miniature_golf",
+            "water_park"
+          ]
+        },
+        "geometry": [
+          "polygon"
+        ]
+      },
+      "edgv_target": {
+        "table": "constr_area_uso_especifico_a",
+        "attributes": {
+          "tipo": 18
+        }
+      },
+      "osm_attribute_mapping": {
+        "name": "nome"
+      },
+      "confidence": "high",
+      "note": "Área de lazer"
+    },
+    {
+      "id": "area_uso_recreacao",
+      "osm_filter": {
+        "tags": {
+          "landuse": "recreation_ground"
+        },
+        "geometry": [
+          "polygon"
+        ]
+      },
+      "edgv_target": {
+        "table": "constr_area_uso_especifico_a",
+        "attributes": {
+          "tipo": 18
+        }
+      },
+      "osm_attribute_mapping": {
+        "name": "nome"
+      },
+      "confidence": "high",
+      "note": "Área de recreação"
+    },
+    {
+      "id": "area_uso_industrial",
+      "osm_filter": {
+        "tags": {
+          "landuse": "industrial"
+        },
+        "geometry": [
+          "polygon"
+        ]
+      },
+      "edgv_target": {
+        "table": "constr_area_uso_especifico_a",
+        "attributes": {
+          "tipo": 8
+        }
+      },
+      "osm_attribute_mapping": {
+        "name": "nome"
+      },
+      "confidence": "high",
+      "note": "Área industrial"
+    },
+    {
+      "id": "area_uso_comercial",
+      "osm_filter": {
+        "tags": {
+          "landuse": "commercial"
+        },
+        "geometry": [
+          "polygon"
+        ]
+      },
+      "edgv_target": {
+        "table": "constr_area_uso_especifico_a",
+        "attributes": {
+          "tipo": 5
+        }
+      },
+      "osm_attribute_mapping": {
+        "name": "nome"
+      },
+      "confidence": "high",
+      "note": "Área comercial"
+    },
+    {
+      "id": "area_uso_transporte",
+      "osm_filter": {
+        "tags": {
+          "landuse": "railway"
+        },
+        "geometry": [
+          "polygon"
+        ]
+      },
+      "edgv_target": {
+        "table": "constr_area_uso_especifico_a",
+        "attributes": {
+          "tipo": 16
+        }
+      },
+      "osm_attribute_mapping": {
+        "name": "nome"
+      },
+      "confidence": "high",
+      "note": "Área de transporte ferroviário"
+    },
+    {
+      "id": "area_uso_ensino",
+      "osm_filter": {
+        "tags": {
+          "amenity": [
+            "university",
+            "college",
+            "school"
+          ]
+        },
+        "geometry": [
+          "polygon"
+        ]
+      },
+      "edgv_target": {
+        "table": "constr_area_uso_especifico_a",
+        "attributes": {
+          "tipo": 6
+        }
+      },
+      "osm_attribute_mapping": {
+        "name": "nome"
+      },
+      "confidence": "high",
+      "note": "Área de ensino"
+    },
+    {
+      "id": "area_uso_saude",
+      "osm_filter": {
+        "tags": {
+          "amenity": "hospital"
+        },
+        "geometry": [
+          "polygon"
+        ]
+      },
+      "edgv_target": {
+        "table": "constr_area_uso_especifico_a",
+        "attributes": {
+          "tipo": 7
+        }
+      },
+      "osm_attribute_mapping": {
+        "name": "nome"
+      },
+      "confidence": "high",
+      "note": "Área de saúde"
+    },
+    {
+      "id": "area_uso_esporte",
+      "osm_filter": {
+        "tags": {
+          "leisure": "sports_centre"
+        },
+        "geometry": [
+          "polygon"
+        ]
+      },
+      "edgv_target": {
+        "table": "constr_area_uso_especifico_a",
+        "attributes": {
+          "tipo": 18
+        }
+      },
+      "osm_attribute_mapping": {
+        "name": "nome"
+      },
+      "confidence": "high",
+      "note": "Centro esportivo"
+    },
+    {
+      "id": "area_uso_agropecuaria",
+      "osm_filter": {
+        "tags": {
+          "landuse": [
+            "farmyard",
+            "greenhouse_horticulture",
+            "plant_nursery"
+          ]
+        },
+        "geometry": [
+          "polygon"
+        ]
+      },
+      "edgv_target": {
+        "table": "constr_area_uso_especifico_a",
+        "attributes": {
+          "tipo": 4
+        }
+      },
+      "osm_attribute_mapping": {
+        "name": "nome"
+      },
+      "confidence": "high",
+      "note": "Área agropecuária"
+    },
+    {
+      "id": "area_uso_aquicultura",
+      "osm_filter": {
+        "tags": {
+          "landuse": "aquaculture"
+        },
+        "geometry": [
+          "polygon"
+        ]
+      },
+      "edgv_target": {
+        "table": "constr_area_uso_especifico_a",
+        "attributes": {
+          "tipo": 4
+        }
+      },
+      "osm_attribute_mapping": {
+        "name": "nome"
+      },
+      "confidence": "medium",
+      "note": "Aquicultura → agropecuária"
+    },
+    {
+      "_comment": "=== CONSTR — DEPÓSITO ==="
+    },
+    {
+      "id": "deposito_aterro",
+      "osm_filter": {
+        "tags": {
+          "landuse": "landfill"
+        },
+        "geometry": [
+          "polygon"
+        ]
+      },
+      "edgv_target": {
+        "table": "constr_deposito_a",
+        "attributes": {
+          "tipo": 305
+        }
+      },
+      "osm_attribute_mapping": {
+        "name": "nome",
+        "height": "altura",
+        "building:levels": "pavimentos",
+        "addr:street": {
+          "column": "endereco",
+          "concat_with": "addr:housenumber",
+          "separator": ", "
+        }
+      },
+      "confidence": "high",
+      "note": "Aterro sanitário"
+    },
+    {
+      "id": "deposito_silo",
+      "osm_filter": {
+        "tags": {
+          "man_made": "silo"
+        },
+        "geometry": [
+          "point"
+        ]
+      },
+      "edgv_target": {
+        "table": "constr_deposito_p",
+        "attributes": {
+          "tipo": 109
+        }
+      },
+      "osm_attribute_mapping": {
+        "name": "nome",
+        "height": "altura",
+        "building:levels": "pavimentos",
+        "addr:street": {
+          "column": "endereco",
+          "concat_with": "addr:housenumber",
+          "separator": ", "
+        }
+      },
+      "confidence": "high",
+      "note": "Silo"
+    },
+    {
+      "id": "deposito_tanque",
+      "osm_filter": {
+        "tags": {
+          "man_made": "storage_tank"
+        },
+        "geometry": [
+          "polygon"
+        ]
+      },
+      "edgv_target": {
+        "table": "constr_deposito_a",
+        "attributes": {
+          "tipo": 113
+        }
+      },
+      "osm_attribute_mapping": {
+        "name": "nome",
+        "height": "altura",
+        "building:levels": "pavimentos",
+        "addr:street": {
+          "column": "endereco",
+          "concat_with": "addr:housenumber",
+          "separator": ", "
+        }
+      },
+      "confidence": "high",
+      "note": "Tanque/reservatório"
+    },
+    {
+      "id": "deposito_saneamento",
+      "osm_filter": {
+        "tags": {
+          "man_made": "wastewater_plant"
+        },
+        "geometry": [
+          "polygon"
+        ]
+      },
+      "edgv_target": {
+        "table": "constr_deposito_a",
+        "attributes": {
+          "tipo": 301
+        }
+      },
+      "osm_attribute_mapping": {
+        "name": "nome",
+        "height": "altura",
+        "building:levels": "pavimentos",
+        "addr:street": {
+          "column": "endereco",
+          "concat_with": "addr:housenumber",
+          "separator": ", "
+        }
+      },
+      "confidence": "medium",
+      "note": "Tanque de saneamento (ETE/ETA)"
+    },
+    {
+      "_comment": "=== CONSTR — EXTRAÇÃO MINERAL ==="
+    },
+    {
+      "id": "extracao_pedreira",
+      "osm_filter": {
+        "tags": {
+          "landuse": "quarry"
+        },
+        "geometry": [
+          "polygon"
+        ]
+      },
+      "edgv_target": {
+        "table": "constr_extracao_mineral_a",
+        "attributes": {
+          "tipo": 4
+        }
+      },
+      "osm_attribute_mapping": {
+        "name": "nome"
+      },
+      "confidence": "high",
+      "note": "Pedreira / mina"
+    },
+    {
+      "id": "extracao_mineracao",
+      "osm_filter": {
+        "tags": {
+          "landuse": "mining"
+        },
+        "geometry": [
+          "polygon"
+        ]
+      },
+      "edgv_target": {
+        "table": "constr_extracao_mineral_a",
+        "attributes": {
+          "tipo": 4
+        }
+      },
+      "osm_attribute_mapping": {
+        "name": "nome"
+      },
+      "confidence": "high",
+      "note": "Mineração"
+    },
+    {
+      "id": "extracao_salina",
+      "osm_filter": {
+        "tags": {
+          "landuse": "salt_pond"
+        },
+        "geometry": [
+          "polygon"
+        ]
+      },
+      "edgv_target": {
+        "table": "constr_extracao_mineral_a",
+        "attributes": {
+          "tipo": 6
+        }
+      },
+      "osm_attribute_mapping": {
+        "name": "nome"
+      },
+      "confidence": "high",
+      "note": "Salina"
+    },
+    {
+      "id": "extracao_petroleo_p",
+      "osm_filter": {
+        "tags": {
+          "man_made": [
+            "petroleum_well",
+            "oil_well"
+          ]
+        },
+        "geometry": [
+          "point"
+        ]
+      },
+      "edgv_target": {
+        "table": "constr_extracao_mineral_p",
+        "attributes": {
+          "tipo": 8
+        }
+      },
+      "osm_attribute_mapping": {
+        "name": "nome"
+      },
+      "confidence": "high",
+      "note": "Poço de petróleo"
+    },
+    {
+      "id": "extracao_plataforma",
+      "osm_filter": {
+        "tags": {
+          "man_made": [
+            "offshore_platform",
+            "oil_platform"
+          ]
+        },
+        "geometry": [
+          "point"
+        ]
+      },
+      "edgv_target": {
+        "table": "constr_extracao_mineral_p",
+        "attributes": {
+          "tipo": 8
+        }
+      },
+      "osm_attribute_mapping": {
+        "name": "nome"
+      },
+      "confidence": "high",
+      "note": "Plataforma offshore"
+    },
+    {
+      "id": "extracao_mina_p",
+      "osm_filter": {
+        "tags": {
+          "man_made": [
+            "mineshaft",
+            "adit"
+          ]
+        },
+        "geometry": [
+          "point"
+        ]
+      },
+      "edgv_target": {
+        "table": "constr_extracao_mineral_p",
+        "attributes": {
+          "tipo": 4
+        }
+      },
+      "osm_attribute_mapping": {
+        "name": "nome"
+      },
+      "confidence": "high",
+      "note": "Poço/galeria de mina"
+    },
+    {
+      "_comment": "=== INFRA — MOBILIDADE URBANA ==="
+    }
+  ]
+}
