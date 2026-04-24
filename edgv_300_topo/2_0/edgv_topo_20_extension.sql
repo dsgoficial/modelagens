@@ -194,13 +194,15 @@ ON CONFLICT DO NOTHING;
 
 --########################################################
 -- 3. Colunas de qualidade e linhagem
---    Adicionadas a todas as tabelas edgv com geometria
+--    Adicionadas a todas as tabelas edgv com geometria,
+--    exceto classes de edição (prefixo 'edicao_').
 --########################################################
 
 DO $$DECLARE r record; t text;
 BEGIN
     FOR r in select f_table_name from public.geometry_columns
               WHERE f_table_schema = 'edgv'
+                AND f_table_name NOT LIKE 'edicao\_%' ESCAPE '\'
     LOOP
         t := r.f_table_name;
         -- Colunas (IF NOT EXISTS para idempotência)
@@ -243,10 +245,13 @@ BEGIN
 END$$;
 
 --########################################################
--- 5. Trigger preenche_metadado()
---    Preenche operador/data de criação e atualização
---    Preserva geocodigo em UPDATE (impede alteração acidental)
---    Garante geocodigo em INSERT (fallback para DEFAULT)
+-- 5. Triggers preenche_metadado() e preserva_geocodigo()
+--    preenche_metadado: operador/data de criação e atualização
+--                       (aplicada a todas as tabelas edgv)
+--    preserva_geocodigo: preserva geocodigo em UPDATE e garante
+--                        valor em INSERT (fallback para DEFAULT).
+--                        Aplicada só nas tabelas edgv que possuem
+--                        a coluna geocodigo (não-edição).
 --########################################################
 
 CREATE OR REPLACE FUNCTION public.preenche_metadado()
@@ -259,8 +264,6 @@ $BODY$
 			NEW.data_atualizacao = CURRENT_TIMESTAMP;
 			NEW.operador_criacao = OLD.operador_criacao;
 			NEW.data_criacao = OLD.data_criacao;
-			-- Preserva geocodigo: impede alteração acidental
-			NEW.geocodigo = OLD.geocodigo;
 		ELSIF TG_OP = 'INSERT' THEN
 			-- Só preenche se não vier valor (permite preservar dados de migração)
 			IF NEW.operador_criacao IS NULL THEN
@@ -268,10 +271,6 @@ $BODY$
 			END IF;
 			IF NEW.data_criacao IS NULL THEN
 				NEW.data_criacao = CURRENT_TIMESTAMP;
-			END IF;
-			-- Garante geocodigo se NULL (fallback para o DEFAULT)
-			IF NEW.geocodigo IS NULL THEN
-				NEW.geocodigo = uuid_generate_v4();
 			END IF;
 		END IF;
 
@@ -285,7 +284,33 @@ ALTER FUNCTION public.preenche_metadado()
 
 GRANT EXECUTE ON FUNCTION public.preenche_metadado() TO PUBLIC;
 
--- Cria trigger de metadados em todas as tabelas edgv
+CREATE OR REPLACE FUNCTION public.preserva_geocodigo()
+  RETURNS trigger AS
+$BODY$
+    BEGIN
+
+		IF TG_OP = 'UPDATE' THEN
+			-- Preserva geocodigo: impede alteração acidental
+			NEW.geocodigo = OLD.geocodigo;
+		ELSIF TG_OP = 'INSERT' THEN
+			-- Garante geocodigo se NULL (fallback para o DEFAULT)
+			IF NEW.geocodigo IS NULL THEN
+				NEW.geocodigo = uuid_generate_v4();
+			END IF;
+		END IF;
+
+		RETURN NEW;
+	END;
+$BODY$
+  LANGUAGE plpgsql VOLATILE
+  COST 100;
+ALTER FUNCTION public.preserva_geocodigo()
+  OWNER TO postgres;
+
+GRANT EXECUTE ON FUNCTION public.preserva_geocodigo() TO PUBLIC;
+
+-- Cria triggers em todas as tabelas edgv.
+-- preenche_metadado em todas; preserva_geocodigo só nas não-edição.
 
 DO $$DECLARE r record;
 BEGIN
@@ -294,6 +319,11 @@ BEGIN
 	IF r.f_table_schema = 'edgv' THEN
 		EXECUTE 'DROP TRIGGER IF EXISTS b_preenche_metadado ON edgv.' || quote_ident(r.f_table_name);
 		EXECUTE 'CREATE TRIGGER b_preenche_metadado BEFORE INSERT OR UPDATE ON edgv.' || quote_ident(r.f_table_name) || ' FOR EACH ROW EXECUTE PROCEDURE public.preenche_metadado()';
+
+		EXECUTE 'DROP TRIGGER IF EXISTS c_preserva_geocodigo ON edgv.' || quote_ident(r.f_table_name);
+		IF r.f_table_name NOT LIKE 'edicao\_%' ESCAPE '\' THEN
+			EXECUTE 'CREATE TRIGGER c_preserva_geocodigo BEFORE INSERT OR UPDATE ON edgv.' || quote_ident(r.f_table_name) || ' FOR EACH ROW EXECUTE PROCEDURE public.preserva_geocodigo()';
+		END IF;
 	END IF;
     END LOOP;
 END$$;
