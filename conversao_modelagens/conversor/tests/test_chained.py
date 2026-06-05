@@ -21,6 +21,8 @@ import math
 import os
 import tempfile
 
+import glob
+
 import geopandas as gpd
 from shapely.geometry import Point
 
@@ -316,6 +318,40 @@ def test_chained_example_config_loads():
     assert cfg["stages"][1]["direction"] == "A=>B"
 
 
+def test_all_example_configs_load():
+    """Guarda contra o path relativo errado nos exemplos: todo `mapping_file`
+    deve apontar para `../../arquivos_mapeamento/` (nunca o `../` isolado, que
+    nao resolve a partir de conversor/config_examples/). Para os exemplos cujos
+    mapeamentos existem no repo, valida que load_config carrega e normaliza
+    para 'stages'. Exemplos que referenciam mapeamento ausente (ex.: multiescala,
+    que e SQL-only) so passam pela guarda textual."""
+    examples_dir = os.path.normpath(os.path.join(
+        os.path.dirname(__file__), "..", "config_examples",
+    ))
+    examples = sorted(glob.glob(os.path.join(examples_dir, "*.json")))
+    assert examples, "nenhum config de exemplo encontrado"
+    for path in examples:
+        with open(path, encoding="utf-8") as f:
+            raw = json.load(f)
+        mfs = [raw["mapping_file"]] if raw.get("mapping_file") else []
+        mfs += [s["mapping_file"] for s in raw.get("stages", []) if s.get("mapping_file")]
+
+        for mf in mfs:
+            assert not mf.startswith("../arquivos_mapeamento/"), \
+                f"{os.path.basename(path)}: path relativo errado ({mf})"
+            assert mf.startswith("../../arquivos_mapeamento/"), \
+                f"{os.path.basename(path)}: esperava ../../arquivos_mapeamento/ ({mf})"
+
+        all_exist = all(
+            os.path.isfile(os.path.normpath(os.path.join(examples_dir, mf)))
+            for mf in mfs
+        )
+        if all_exist:
+            cfg = load_config(path)
+            assert isinstance(cfg.get("stages"), list) and cfg["stages"], \
+                f"{os.path.basename(path)} nao normalizou para 'stages'"
+
+
 def _main():
     tests = [
         test_chained_equals_two_step,
@@ -323,6 +359,7 @@ def _main():
         test_config_validation_rejects_bad_chains,
         test_legacy_config_normalizes_to_stages,
         test_chained_example_config_loads,
+        test_all_example_configs_load,
     ]
     failures = 0
     for t in tests:

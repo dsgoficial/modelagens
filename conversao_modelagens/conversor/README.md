@@ -20,6 +20,8 @@ pip install -r conversor/requirements.txt
 python -m conversor.main meu_config.json
 ```
 
+> Os caminhos de `mapping_file` sao relativos a pasta do arquivo de config. Os exemplos ficam em `conversor/config_examples/`, por isso apontam para `../../arquivos_mapeamento/`. Se voce mover o config para outra pasta, ajuste esse caminho (ou use um caminho absoluto).
+
 ## Casos de uso
 
 ### 1. EDGV 3.0 para EDGV Topo 1.4
@@ -30,7 +32,7 @@ Copie `config_examples/postgis300_postgis300topo14.json` e edite:
 
 ```json
 {
-  "mapping_file": "../arquivos_mapeamento/conversao_pg-edgv-300_pg-edgv-300topo14.json",
+  "mapping_file": "../../arquivos_mapeamento/conversao_pg-edgv-300_pg-edgv-300topo14.json",
   "direction": "A=>B",
   "source": {
     "type": "postgis",
@@ -64,7 +66,7 @@ Copie `config_examples/postgis300_postgis300topo14.json` e troque:
 
 ```json
 {
-  "mapping_file": "../arquivos_mapeamento/conversao_pg-edgv-300_pg-edgv-300topo14.json",
+  "mapping_file": "../../arquivos_mapeamento/conversao_pg-edgv-300_pg-edgv-300topo14.json",
   "direction": "B=>A",
   "source": {
     "type": "postgis",
@@ -93,7 +95,7 @@ Copie `config_examples/postgis300_shp300.json` e edite:
 
 ```json
 {
-  "mapping_file": "../arquivos_mapeamento/conversao_pg-edgv-300_shp-edgv-300.json",
+  "mapping_file": "../../arquivos_mapeamento/conversao_pg-edgv-300_shp-edgv-300.json",
   "direction": "A=>B",
   "source": {
     "type": "postgis",
@@ -121,7 +123,7 @@ Copie `config_examples/postgis300_shp300_batch.json` e edite:
 
 ```json
 {
-  "mapping_file": "../arquivos_mapeamento/conversao_pg-edgv-300_shp-edgv-300.json",
+  "mapping_file": "../../arquivos_mapeamento/conversao_pg-edgv-300_shp-edgv-300.json",
   "direction": "A=>B",
   "source": {
     "type": "postgis",
@@ -170,7 +172,7 @@ Usa o mesmo mapeamento do caso 3, na direcao inversa.
 
 ```json
 {
-  "mapping_file": "../arquivos_mapeamento/conversao_pg-edgv-300_shp-edgv-300.json",
+  "mapping_file": "../../arquivos_mapeamento/conversao_pg-edgv-300_shp-edgv-300.json",
   "direction": "B=>A",
   "source": {
     "type": "shapefile",

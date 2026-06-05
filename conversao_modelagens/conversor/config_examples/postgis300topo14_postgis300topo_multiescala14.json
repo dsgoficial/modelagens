@@ -1,5 +1,5 @@
 {
-  "mapping_file": "../arquivos_mapeamento/conversao_pg-edgv-300topo14_pg-edgv-300topo-multiescala14.json",
+  "mapping_file": "../../arquivos_mapeamento/conversao_pg-edgv-300topo14_pg-edgv-300topo-multiescala14.json",
   "direction": "A=>B",
   "source": {
     "type": "postgis",

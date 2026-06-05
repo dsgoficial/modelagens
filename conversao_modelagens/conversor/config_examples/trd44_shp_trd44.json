@@ -1,5 +1,5 @@
 {
-  "mapping_file": "../arquivos_mapeamento/conversao_pg-trd-44_shp-trd-44.json",
+  "mapping_file": "../../arquivos_mapeamento/conversao_pg-trd-44_shp-trd-44.json",
   "direction": "A=>B",
   "source": {
     "type": "postgis",
