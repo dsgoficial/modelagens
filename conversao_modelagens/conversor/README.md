@@ -245,6 +245,72 @@ Identico ao caso 6, apenas troque os nomes dos bancos.
 
 Copie `config_examples/banco_edicao_orto25.json` e edite os campos `database` no `source`, `destination` e `segment_clip`.
 
+### 8. Pipeline encadeado (varios mapeamentos num unico passo)
+
+Em vez de `mapping_file` + `direction` no topo, use um array `stages`. Cada
+estagio aplica um mapeamento, na ordem, alimentando o proximo em memoria, sem
+banco intermediario. So o ultimo estagio escreve no `destination` (e respeita
+`batch_clip`/`segment_clip`/`reproject_to`); os intermediarios so transformam.
+
+Caso classico: banco de producao **EDGV 3.0 Topo 1.4 -> EDGV 3.0 pura -> Shapefile
+por folha** numa execucao so. Copie `config_examples/postgis300topo14_shp300_batch_chained.json`:
+
+```json
+{
+  "source": {
+    "type": "postgis",
+    "host": "localhost",
+    "database": "NOME_DO_SEU_BANCO_TOPO14",
+    "user": "postgres",
+    "password": "postgres",
+    "schema": "edgv",
+    "srid": 4674
+  },
+  "stages": [
+    {
+      "mapping_file": "../../arquivos_mapeamento/conversao_pg-edgv-300_pg-edgv-300topo14.json",
+      "direction": "B=>A"
+    },
+    {
+      "mapping_file": "../../arquivos_mapeamento/conversao_pg-edgv-300_shp-edgv-300.json",
+      "direction": "A=>B"
+    }
+  ],
+  "destination": {
+    "type": "shapefile",
+    "path": "D:/output/cdgv_folhas/",
+    "srid": 4674,
+    "encoding": "UTF-8",
+    "zip": true
+  },
+  "batch_clip": {
+    "type": "postgis",
+    "host": "localhost",
+    "database": "NOME_DO_SEU_BANCO_TOPO14",
+    "user": "postgres",
+    "password": "postgres",
+    "schema": "edgv",
+    "table": "aux_moldura_a",
+    "geom_column": "geom",
+    "folder_attribute": "inom"
+  }
+}
+```
+
+Resultado: um `.zip` de shapefiles EDGV 3.0 por moldura, pronto para o BDGEx,
+identico ao que sairia rodando os dois mapeamentos em sequencia manual.
+
+Notas:
+- Os `mapping_file` sao relativos a pasta do arquivo de config (no exemplo, em
+  `conversor/config_examples/`, o caminho ate `arquivos_mapeamento/` e `../../`).
+- Os mapeamentos encadeados precisam ser compativeis: o modelo de saida de um
+  estagio (classe, schema, afixo de geometria) tem que casar com a entrada do
+  proximo. Um estagio que converte 0 feicoes emite um aviso no log.
+- `reproject_to` e os modos de recorte valem so na escrita final; nao ha
+  reprojecao entre estagios.
+- O formato antigo (`mapping_file` + `direction` no topo) continua valendo e
+  equivale a um pipeline de um unico estagio.
+
 ## O que editar nos configs
 
 Na maioria dos casos voce so precisa trocar:

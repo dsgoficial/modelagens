@@ -385,58 +385,102 @@ def _export_report(report: ConversionReport, config: dict, suffix: str = ""):
         logger.info("Relatório exportado para: %s", report_json_path)
 
 
+def _build_quality_meta(qm_config: dict | None) -> dict | None:
+    """Monta o dicionário de metadados de qualidade injetado nas feições
+    (EDGV Topo 2.0). Retorna None se o estágio não declara quality_metadata."""
+    if not qm_config:
+        return None
+    fonte_entry = {
+        "fonte": qm_config.get("fonte", "Desconhecida"),
+        "metodo_aquisicao": qm_config.get("metodo_aquisicao", 9999),
+        "data_aquisicao": qm_config.get("data_aquisicao"),
+        "escala_fonte": qm_config.get("escala_fonte"),
+        "acuracia_planimetrica": qm_config.get("acuracia_planimetrica"),
+        "observacao": qm_config.get("observacao"),
+    }
+    # acuracia_planimetrica appears both inside fontes (per-source)
+    # and as a top-level column (feature-level, used for confiabilidade)
+    return {
+        "fontes": json.dumps([fonte_entry], ensure_ascii=False),
+        "status_ciclo_vida": qm_config.get("status_ciclo_vida", 1),
+        "validacao": qm_config.get("validacao", 1),
+        "confirmacao_geometria": qm_config.get("confirmacao_geometria", 1),
+        "confirmacao_atributos": qm_config.get("confirmacao_atributos", 1),
+        "acuracia_planimetrica": qm_config.get("acuracia_planimetrica"),
+    }
+
+
+def _stage_label(stage: dict) -> str:
+    if stage.get("mapping_file"):
+        return f"{os.path.basename(stage['mapping_file'])} ({stage.get('direction')})"
+    return "passthrough"
+
+
+def _run_stage_transform(
+    stage: dict,
+    data: dict[str, gpd.GeoDataFrame],
+    report: ConversionReport,
+    error_action: str,
+) -> list[dict]:
+    """Aplica um único estágio (mapeamento ou passthrough) sobre `data`,
+    retornando a lista de feições convertidas (sem clip/reproject)."""
+    if not stage.get("mapping_file"):
+        logger.info("Modo passthrough (sem mapeamento de classes/atributos)")
+        return _passthrough_source_data(data, report)
+
+    mapping_dict = load_mapping(stage["mapping_file"])
+    logger.info("Mapeamento carregado: %s", stage["mapping_file"])
+    converter = FeatureConverter(mapping_dict, stage["direction"])
+    quality_meta = _build_quality_meta(stage.get("quality_metadata"))
+    return _convert_source_data(data, converter, report, error_action, quality_meta)
+
+
 def run(config_path: str):
     config = load_config(config_path)
     _setup_logging(config)
 
-    logger.info("Carregando configuração de: %s", config_path)
-    logger.info("Direção: %s", config["direction"])
-
-    is_passthrough = not config.get("mapping_file")
+    stages = config["stages"]
     error_action = config["options"].get("error_action", "skip")
     target_srid = config["options"].get("reproject_to")
     source_srid = config["source"].get("srid", 4326)
+
+    logger.info("Carregando configuração de: %s", config_path)
+    logger.info("Pipeline com %d estágio(s)", len(stages))
 
     # Read source data (uma única vez)
     logger.info("Lendo dados de origem...")
     source_data = _read_source(config)
     logger.info("Lidas %d tabelas/layers", len(source_data))
 
-    # Convert or passthrough
+    # Estágios intermediários: transformam em memória (sem clip/reproject/escrita).
+    # A saída de cada estágio é materializada como dict[classe -> GeoDataFrame],
+    # exatamente a forma que o estágio seguinte consome como origem.
+    data = source_data
+    for i, stage in enumerate(stages[:-1]):
+        logger.info(
+            "=== Estágio %d/%d: %s ===", i + 1, len(stages), _stage_label(stage)
+        )
+        stage_report = ConversionReport()
+        converted = _run_stage_transform(stage, data, stage_report, error_action)
+        data = _clip_and_build_gdfs(converted, None, source_srid, None)
+        logger.info(
+            "Estágio %d: %d feições -> %d classes intermediárias",
+            i + 1, stage_report.converted_features, len(data),
+        )
+        if stage_report.converted_features == 0:
+            logger.warning(
+                "Estágio %d converteu 0 feições — verifique a compatibilidade de "
+                "schema/afixo entre os mapeamentos encadeados", i + 1,
+            )
+
+    # Estágio final: produz `converted` e despacha para segment/batch/single.
+    final_stage = stages[-1]
+    logger.info(
+        "=== Estágio %d/%d (final): %s ===",
+        len(stages), len(stages), _stage_label(final_stage),
+    )
     report = ConversionReport()
-
-    if is_passthrough:
-        logger.info("Modo passthrough (sem mapeamento de classes/atributos)")
-        converted = _passthrough_source_data(source_data, report)
-    else:
-        mapping_dict = load_mapping(config["mapping_file"])
-        logger.info("Mapeamento carregado: %s", config["mapping_file"])
-        converter = FeatureConverter(mapping_dict, config["direction"])
-
-        # Build quality metadata from config (if present)
-        qm_config = config.get("quality_metadata")
-        quality_meta = None
-        if qm_config:
-            fonte_entry = {
-                "fonte": qm_config.get("fonte", "Desconhecida"),
-                "metodo_aquisicao": qm_config.get("metodo_aquisicao", 9999),
-                "data_aquisicao": qm_config.get("data_aquisicao"),
-                "escala_fonte": qm_config.get("escala_fonte"),
-                "acuracia_planimetrica": qm_config.get("acuracia_planimetrica"),
-                "observacao": qm_config.get("observacao"),
-            }
-            # acuracia_planimetrica appears both inside fontes (per-source)
-            # and as a top-level column (feature-level, used for confiabilidade)
-            quality_meta = {
-                "fontes": json.dumps([fonte_entry], ensure_ascii=False),
-                "status_ciclo_vida": qm_config.get("status_ciclo_vida", 1),
-                "validacao": qm_config.get("validacao", 1),
-                "confirmacao_geometria": qm_config.get("confirmacao_geometria", 1),
-                "confirmacao_atributos": qm_config.get("confirmacao_atributos", 1),
-                "acuracia_planimetrica": qm_config.get("acuracia_planimetrica"),
-            }
-
-        converted = _convert_source_data(source_data, converter, report, error_action, quality_meta)
+    converted = _run_stage_transform(final_stage, data, report, error_action)
 
     logger.info("Processadas %d feições", len(converted))
 

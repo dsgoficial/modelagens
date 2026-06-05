@@ -33,14 +33,9 @@ def load_config(config_path: str) -> dict:
 
 
 def _validate_config(config: dict, config_dir: str):
-    for key in ("direction", "source", "destination"):
+    for key in ("source", "destination"):
         if key not in config:
             raise ValueError(f"Campo obrigatório ausente no config: '{key}'")
-
-    if config["direction"] not in VALID_DIRECTIONS:
-        raise ValueError(
-            f"Direção inválida: '{config['direction']}'. Valores válidos: {VALID_DIRECTIONS}"
-        )
 
     for endpoint_key in ("source", "destination"):
         endpoint = config[endpoint_key]
@@ -52,17 +47,8 @@ def _validate_config(config: dict, config_dir: str):
                 f"Valores válidos: {VALID_SOURCE_TYPES}"
             )
 
-    # mapping_file é obrigatório exceto no modo passthrough (segment_clip sem mapping)
-    if config.get("mapping_file"):
-        mapping_path = config["mapping_file"]
-        if not os.path.isabs(mapping_path):
-            mapping_path = os.path.join(config_dir, mapping_path)
-        if not os.path.isfile(mapping_path):
-            raise FileNotFoundError(f"Arquivo de mapeamento não encontrado: {mapping_path}")
-    elif "segment_clip" not in config:
-        raise ValueError(
-            "Campo 'mapping_file' é obrigatório (exceto no modo segment_clip sem mapeamento)"
-        )
+    stages = _normalize_stages(config)
+    _validate_stages(stages, config, config_dir)
 
     for clip_key in ("batch_clip", "segment_clip"):
         if clip_key in config:
@@ -70,6 +56,71 @@ def _validate_config(config: dict, config_dir: str):
 
     if "batch_clip" in config and "folder_attribute" not in config["batch_clip"]:
         raise ValueError("Campo 'folder_attribute' ausente em 'batch_clip'")
+
+
+def _normalize_stages(config: dict) -> list:
+    """Normaliza a config para sempre expor uma lista `stages`.
+
+    Aceita dois formatos:
+    - Encadeado: `stages: [{mapping_file, direction, quality_metadata?}, ...]`.
+    - Legado (um estágio): `mapping_file` + `direction` no topo, que vira
+      `stages` de um item. Mantém retrocompatibilidade total.
+
+    Em qualquer caso, `source` é a entrada do pipeline e `destination`,
+    `batch_clip`/`segment_clip` e `options.reproject_to` valem só na escrita
+    final (último estágio). Estágios intermediários transformam em memória.
+    """
+    if "stages" in config:
+        if config.get("mapping_file") is not None or config.get("direction") is not None:
+            raise ValueError(
+                "Use 'stages' OU 'mapping_file'+'direction' no topo, não os dois"
+            )
+        stages = config["stages"]
+        if not isinstance(stages, list) or not stages:
+            raise ValueError("'stages' deve ser uma lista não vazia")
+    else:
+        stages = [{
+            "mapping_file": config.get("mapping_file"),
+            "direction": config.get("direction"),
+            "quality_metadata": config.get("quality_metadata"),
+        }]
+
+    config["stages"] = stages
+    return stages
+
+
+def _validate_stages(stages: list, config: dict, config_dir: str):
+    for i, stage in enumerate(stages):
+        if not isinstance(stage, dict):
+            raise ValueError(f"Estágio {i} deve ser um objeto JSON")
+
+        mapping_file = stage.get("mapping_file")
+        if mapping_file:
+            mapping_path = mapping_file
+            if not os.path.isabs(mapping_path):
+                mapping_path = os.path.join(config_dir, mapping_path)
+            if not os.path.isfile(mapping_path):
+                raise FileNotFoundError(
+                    f"Arquivo de mapeamento não encontrado (estágio {i}): {mapping_path}"
+                )
+            if stage.get("direction") not in VALID_DIRECTIONS:
+                raise ValueError(
+                    f"Direção inválida no estágio {i}: '{stage.get('direction')}'. "
+                    f"Valores válidos: {VALID_DIRECTIONS}"
+                )
+        else:
+            # Passthrough (sem mapeamento) só faz sentido como estágio único
+            # no modo segment_clip — preserva o comportamento legado.
+            if len(stages) > 1:
+                raise ValueError(
+                    f"Estágio {i} sem 'mapping_file': passthrough só é permitido "
+                    "com um único estágio"
+                )
+            if "segment_clip" not in config:
+                raise ValueError(
+                    "Campo 'mapping_file' é obrigatório (exceto no modo segment_clip "
+                    "sem mapeamento)"
+                )
 
 
 def _validate_clip_source(clip_cfg: dict, section_name: str):
@@ -96,8 +147,9 @@ def _resolve_relative(path: str, base_dir: str) -> str:
 
 
 def _resolve_paths(config: dict, config_dir: str):
-    if config.get("mapping_file"):
-        config["mapping_file"] = _resolve_relative(config["mapping_file"], config_dir)
+    for stage in config.get("stages", []):
+        if stage.get("mapping_file"):
+            stage["mapping_file"] = _resolve_relative(stage["mapping_file"], config_dir)
 
     for endpoint_key in ("source", "destination"):
         endpoint = config[endpoint_key]

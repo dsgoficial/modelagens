@@ -48,6 +48,8 @@ JSON files defining attribute-level mappings between model variants. Schema: `ar
 
 **Conversion pipeline flow**: config → reader → FeatureConverter (attribute mapping) → geometry ops (clip/reproject/split) → writer → report
 
+**Chained conversions** (`stages`): instead of a single top-level `mapping_file` + `direction`, a config may declare `stages: [{mapping_file, direction, quality_metadata?}, ...]`. Each stage applies its mapping in order, feeding the next in memory (no intermediate store). Only the final stage writes to `destination` and honors `batch_clip`/`segment_clip`/`reproject_to`; intermediate stages just transform. The legacy single-mapping form is normalized internally to a one-element `stages` list, so it keeps working unchanged. Example: `config_examples/postgis300topo14_shp300_batch_chained.json` (Topo 1.4 → EDGV 3.0 → Shapefile per frame in one run). Smoke test: `python -m conversor.tests.test_chained`.
+
 ### Batch and Segmentation Modes
 - `batch_clip`: Clips output by map frames (`aux_moldura_a`) and optionally zips each into separate folders (for BDGEx upload)
 - `segment_clip`: Segments features by map frame boundaries and reprojects to UTM (creates editing databases)

@@ -1,0 +1,51 @@
+{
+  "__comment": "Pipeline encadeado: banco de producao EDGV 3.0 Topo 1.4 (PostGIS) -> EDGV 3.0 pura (em memoria) -> Shapefile EDGV 3.0 recortado por folha (batch_clip). Equivale a rodar conversao_pg-edgv-300_pg-edgv-300topo14.json (B=>A) seguido de conversao_pg-edgv-300_shp-edgv-300.json (A=>B), sem banco intermediario.",
+  "source": {
+    "type": "postgis",
+    "host": "localhost",
+    "port": 5432,
+    "database": "edgv300topo14",
+    "user": "postgres",
+    "password": "postgres",
+    "schema": "edgv",
+    "srid": 4674,
+    "tables": []
+  },
+  "stages": [
+    {
+      "__comment": "Topo 1.4 -> EDGV 3.0 pura (remodelagem semantica). modelo_A=EDGV 3.0, modelo_B=EDGV 3.0 Topo, logo Topo->3.0 e B=>A.",
+      "mapping_file": "../../arquivos_mapeamento/conversao_pg-edgv-300_pg-edgv-300topo14.json",
+      "direction": "B=>A"
+    },
+    {
+      "__comment": "EDGV 3.0 PostGIS -> Shapefile EDGV 3.0 (CamelCase, afixos _P/_L/_A, agregacao).",
+      "mapping_file": "../../arquivos_mapeamento/conversao_pg-edgv-300_shp-edgv-300.json",
+      "direction": "A=>B"
+    }
+  ],
+  "destination": {
+    "type": "shapefile",
+    "path": "D:/output/cdgv_folhas/",
+    "srid": 4674,
+    "encoding": "UTF-8",
+    "zip": true
+  },
+  "batch_clip": {
+    "type": "postgis",
+    "host": "localhost",
+    "port": 5432,
+    "database": "edgv300topo14",
+    "user": "postgres",
+    "password": "postgres",
+    "schema": "edgv",
+    "table": "aux_moldura_a",
+    "geom_column": "geom",
+    "folder_attribute": "inom"
+  },
+  "options": {
+    "reproject_to": null,
+    "log_file": "logs/postgis300topo14_shp300_batch_chained.log",
+    "error_action": "skip",
+    "batch_size": 10000
+  }
+}
