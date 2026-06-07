@@ -16,6 +16,11 @@ MODELS = {
         "extension": os.path.join(_BASE, "edgv_300_topo", "1_4", "edgv_300_topo_extension_14.sql"),
         "default_srid": 4674,
     },
+    "edgv_300_topo_20": {
+        "sql": os.path.join(_BASE, "edgv_300_topo", "2_0", "edgv_topo_20.sql"),
+        "extension": os.path.join(_BASE, "edgv_300_topo", "2_0", "edgv_topo_20_extension.sql"),
+        "default_srid": 4674,
+    },
     "edgv_300_orto_25": {
         "sql": os.path.join(_BASE, "edgv_300_orto", "2_5", "edgv_300_orto_25.sql"),
         "extension": os.path.join(_BASE, "edgv_300_orto", "2_5", "edgv_300_orto_extension_25.sql"),
