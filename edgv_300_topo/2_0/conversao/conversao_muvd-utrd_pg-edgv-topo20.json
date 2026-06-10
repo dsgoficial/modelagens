@@ -2211,6 +2211,9 @@
           "attr_B": "nome"
         }
       ],
+      "geom_A": [
+        "LINESTRING"
+      ],
       "atributos_default_B": []
     },
     {

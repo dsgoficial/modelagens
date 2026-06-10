@@ -3838,45 +3838,6 @@ ALTER TABLE edgv.infra_travessia_hidroviaria_l
 
 ALTER TABLE edgv.infra_travessia_hidroviaria_l ALTER COLUMN visivel SET DEFAULT 9999;
 
-CREATE TABLE edgv.infra_travessia_hidroviaria_p(
-	 id uuid NOT NULL DEFAULT uuid_generate_v4(),
-	 nome varchar(255),
-	 tipo smallint NOT NULL,
-	 texto_edicao varchar(255),
-	 label_x real,
-	 label_y real,
-	 justificativa_txt smallint NOT NULL,
-	 visivel smallint NOT NULL,
-	 observacao varchar(255),
-	 geom geometry(MultiPoint, 4674),
-	 CONSTRAINT infra_travessia_hidroviaria_p_pk PRIMARY KEY (id)
-	 WITH (FILLFACTOR = 80)
-);
-CREATE INDEX infra_travessia_hidroviaria_p_geom ON edgv.infra_travessia_hidroviaria_p USING gist (geom);
-
-ALTER TABLE edgv.infra_travessia_hidroviaria_p OWNER TO postgres;
-
-ALTER TABLE edgv.infra_travessia_hidroviaria_p
-	 ADD CONSTRAINT infra_travessia_hidroviaria_p_tipo_fk FOREIGN KEY (tipo)
-	 REFERENCES dominios.tipo_travessia (code) MATCH FULL
-	 ON UPDATE NO ACTION ON DELETE NO ACTION;
-
-ALTER TABLE edgv.infra_travessia_hidroviaria_p ALTER COLUMN tipo SET DEFAULT 9999;
-
-ALTER TABLE edgv.infra_travessia_hidroviaria_p
-	 ADD CONSTRAINT infra_travessia_hidroviaria_p_justificativa_txt_fk FOREIGN KEY (justificativa_txt)
-	 REFERENCES dominios.justificativa (code) MATCH FULL
-	 ON UPDATE NO ACTION ON DELETE NO ACTION;
-
-ALTER TABLE edgv.infra_travessia_hidroviaria_p ALTER COLUMN justificativa_txt SET DEFAULT 9999;
-
-ALTER TABLE edgv.infra_travessia_hidroviaria_p
-	 ADD CONSTRAINT infra_travessia_hidroviaria_p_visivel_fk FOREIGN KEY (visivel)
-	 REFERENCES dominios.booleano (code) MATCH FULL
-	 ON UPDATE NO ACTION ON DELETE NO ACTION;
-
-ALTER TABLE edgv.infra_travessia_hidroviaria_p ALTER COLUMN visivel SET DEFAULT 9999;
-
 CREATE TABLE edgv.infra_trecho_duto_l(
 	 id uuid NOT NULL DEFAULT uuid_generate_v4(),
 	 nome varchar(255),

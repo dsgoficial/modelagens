@@ -169,7 +169,19 @@ Obstáculos terrestres de interesse militar. Três geometrias (ponto, linha, pol
 
 ---
 
-## 3. Novos domínios
+## 3. Tabelas removidas
+
+### `infra_travessia_hidroviaria_p`
+
+A travessia hidroviária passa a ser **linha-only** no Topo 2.0: a travessia é o percurso entre as margens, não um ponto. O domínio `tipo_travessia` (Balsa=1, Bote transportador=2) permanece inalterado, em `infra_travessia_hidroviaria_l`.
+
+| Tabela | Motivo | Migração |
+|--------|--------|----------|
+| `infra_travessia_hidroviaria_p` | Classe linha-only — percurso margem a margem | Redigitalizar os pontos como linhas em `infra_travessia_hidroviaria_l` (mesmos atributos) antes do DROP |
+
+---
+
+## 4. Novos domínios
 
 ### `dominios.tipo_delimitacao_fisica`
 
@@ -191,7 +203,7 @@ Obstáculos terrestres de interesse militar. Três geometrias (ponto, linha, pol
 
 ---
 
-## 4. Novos valores em domínios existentes
+## 5. Novos valores em domínios existentes
 
 ### `dominios.tipo_limite_legal` (+2)
 
@@ -287,9 +299,9 @@ Adicionado para permitir preenchimento neutro quando fonte externa (OSM, Overtur
 
 ---
 
-## 5. CHECK constraints alterados
+## 6. CHECK constraints alterados
 
-### 5.1 Expandidos
+### 6.1 Expandidos
 
 | Tabela | Coluna | Valores adicionados |
 |--------|--------|---------------------|
@@ -303,14 +315,14 @@ Adicionado para permitir preenchimento neutro quando fonte externa (OSM, Overtur
 | `infra_ferrovia_l` | `posicao_relativa` | 0 (Desconhecido) |
 | `infra_via_deslocamento_l` | `administracao` | 3 (Municipal), 6 (Particular) — exclusão acidental no CHECK original; rodovias municipais e vicinais particulares agora permitidas |
 
-### 5.2 Removidos
+### 6.2 Removidos
 
 | Tabela | Coluna | Motivo |
 |--------|--------|--------|
 | `constr_deposito_a` / `_p` | `material_construcao` | CHECK removido — FK para domínio já garante integridade |
 | `infra_via_deslocamento_l` | `jurisdicao` | CHECK removido — FK para domínio já garante integridade |
 
-### 5.3 Correções de CHECKs com valores duplicados
+### 6.3 Correções de CHECKs com valores duplicados
 
 Bug originado em `mastergen.py` (já corrigido): o gerador anexava `9999` aos valores do CHECK sem verificar se já estava presente, produzindo duplicatas. Impacto funcional zero (ANY em array), mas inconsistência na DDL.
 
@@ -321,7 +333,7 @@ Bug originado em `mastergen.py` (já corrigido): o gerador anexava `9999` aos va
 | `infra_pista_pouso_l` | `revestimento` | `9999` duplicado | dedup |
 | `infra_pista_pouso_p` | `revestimento` | `9999` triplicado | dedup |
 
-### 5.4 FKs alteradas
+### 6.4 FKs alteradas
 
 | Tabela | Coluna | FK antes | FK depois | Motivo |
 |--------|--------|----------|-----------|--------|
@@ -329,7 +341,7 @@ Bug originado em `mastergen.py` (já corrigido): o gerador anexava `9999` aos va
 
 ---
 
-## 6. Metadados
+## 7. Metadados
 
 | Campo | 1.4 | 2.0 |
 |-------|-----|-----|
@@ -338,7 +350,7 @@ Bug originado em `mastergen.py` (já corrigido): o gerador anexava `9999` aos va
 
 ---
 
-## 7. DDL de migração (1.4 → 2.0)
+## 8. DDL de migração (1.4 → 2.0)
 
 ```sql
 -- ===========================================
@@ -760,6 +772,17 @@ ALTER TABLE edgv.infra_barragem_a
 UPDATE dominios.tipo_area_uso_especifico
     SET code_name = 'Área relacionada a edificação de ensino (6)'
     WHERE code = 6;
+
+-- ===========================================
+-- Tabelas removidas
+-- ===========================================
+
+-- infra_travessia_hidroviaria_p: classe passa a ser linha-only no Topo 2.0.
+-- Travessias ponto devem ser redigitalizadas como linha (margem a margem)
+-- em infra_travessia_hidroviaria_l ANTES do DROP. Backup opcional:
+-- CREATE TABLE backup.infra_travessia_hidroviaria_p AS
+--     SELECT * FROM edgv.infra_travessia_hidroviaria_p;
+DROP TABLE IF EXISTS edgv.infra_travessia_hidroviaria_p;
 
 -- ===========================================
 -- Versão

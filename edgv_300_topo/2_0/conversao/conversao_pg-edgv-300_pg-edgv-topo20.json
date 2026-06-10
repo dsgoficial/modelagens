@@ -5772,9 +5772,15 @@
       "atributos_default_B": []
     },
     {
-      "__comment": "tra_travessia <-> infra_elemento_viario | vau",
+      "__comment": "tra_travessia <-> infra_elemento_viario | vau. EDGV 3.0 tem _l/_p; infra_elemento_viario só tem _l — pontos (tra_travessia_p) sem correspondência",
       "classe_A": "tra_travessia",
       "classe_B": "infra_elemento_viario",
+      "geom_A": [
+        "LINESTRING"
+      ],
+      "geom_B": [
+        "LINESTRING"
+      ],
       "filtro_A": {
         "$and": [
           {
@@ -5893,9 +5899,15 @@
       ]
     },
     {
-      "__comment": "tra_travessia <-> infra_travessia_hidroviaria | balsa e bote transportador",
+      "__comment": "tra_travessia <-> infra_travessia_hidroviaria | balsa e bote transportador. EDGV 3.0 tem _l/_p; Topo 2.0 só tem _l — pontos (tra_travessia_p) sem correspondência",
       "classe_A": "tra_travessia",
       "classe_B": "infra_travessia_hidroviaria",
+      "geom_A": [
+        "LINESTRING"
+      ],
+      "geom_B": [
+        "LINESTRING"
+      ],
       "filtro_A": {
         "$or": [
           {

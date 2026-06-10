@@ -1,11 +1,11 @@
 {
   "metadata": {
-    "version": "1.0",
-    "date": "2026-03-27",
+    "version": "1.1",
+    "date": "2026-06-10",
     "source": "OpenStreetMap",
     "target": "EDGV Topo 2.0 v0.9.1",
     "description": "Mapeamento de tags OSM para tabelas e atributos EDGV Topo 2.0. Consumido pelo PythonCaller no FME Workbench.",
-    "total_rules": 269,
+    "total_rules": 273,
     "match_strategy": "first_match_wins"
   },
   "rules": [
@@ -619,6 +619,100 @@
       },
       "confidence": "medium",
       "note": "Reserva natural genérica"
+    },
+    {
+      "_comment": "=== CONSTR — OCUPAÇÃO DO SOLO: ÁREA VERDE PÚBLICA (posicionadas antes das regras de cobertura para vencer landuse=grass/meadow em feições com dupla marcação; first_match_wins) ==="
+    },
+    {
+      "id": "ocup_area_verde_praca",
+      "osm_filter": {
+        "tags": {
+          "leisure": [
+            "park",
+            "common"
+          ]
+        },
+        "geometry": [
+          "polygon"
+        ]
+      },
+      "edgv_target": {
+        "table": "constr_ocupacao_solo_a",
+        "attributes": {
+          "tipo": 1401
+        }
+      },
+      "osm_attribute_mapping": {
+        "name": "nome"
+      },
+      "confidence": "high",
+      "note": "Área verde pública — no Brasil leisure=park é majoritariamente praça; tipo refinado para Largo (1402)/Jardim público (1403)/Parque urbano (1404) pelo prefixo do nome em compute_derived_attributes"
+    },
+    {
+      "id": "ocup_area_verde_square",
+      "osm_filter": {
+        "tags": {
+          "place": "square"
+        },
+        "geometry": [
+          "polygon"
+        ]
+      },
+      "edgv_target": {
+        "table": "constr_ocupacao_solo_a",
+        "attributes": {
+          "tipo": 1401
+        }
+      },
+      "osm_attribute_mapping": {
+        "name": "nome"
+      },
+      "confidence": "high",
+      "note": "Praça/largo (place=square) — tipo refinado pelo prefixo do nome em compute_derived_attributes"
+    },
+    {
+      "id": "ocup_area_verde_village_green",
+      "osm_filter": {
+        "tags": {
+          "landuse": "village_green"
+        },
+        "geometry": [
+          "polygon"
+        ]
+      },
+      "edgv_target": {
+        "table": "constr_ocupacao_solo_a",
+        "attributes": {
+          "tipo": 1401
+        }
+      },
+      "osm_attribute_mapping": {
+        "name": "nome"
+      },
+      "confidence": "medium",
+      "note": "Área verde pública (landuse=village_green) — tipo refinado pelo prefixo do nome em compute_derived_attributes"
+    },
+    {
+      "id": "ocup_area_verde_jardim",
+      "osm_filter": {
+        "tags": {
+          "leisure": "garden"
+        },
+        "geometry": [
+          "polygon"
+        ]
+      },
+      "edgv_target": {
+        "table": "constr_ocupacao_solo_a",
+        "attributes": {
+          "tipo": 1403
+        }
+      },
+      "osm_attribute_mapping": {
+        "name": "nome"
+      },
+      "confidence": "high",
+      "note": "Jardim público"
     },
     {
       "id": "delimitacao_fisica_cerca",
@@ -6274,8 +6368,6 @@
       "osm_filter": {
         "tags": {
           "leisure": [
-            "park",
-            "garden",
             "golf_course",
             "playground",
             "miniature_golf",
@@ -6296,7 +6388,7 @@
         "name": "nome"
       },
       "confidence": "high",
-      "note": "Área de lazer"
+      "note": "Área de lazer (praça/parque/jardim vão para constr_ocupacao_solo_a — área verde pública, regras ocup_area_verde_*)"
     },
     {
       "id": "area_uso_recreacao",

@@ -133,8 +133,15 @@
       "classe_B": "infra_pista_pouso"
     },
     {
+      "__comment": "Topo 1.4 tem _l/_p; Topo 2.0 só tem _l — travessias ponto exigem migração manual (ver changelog)",
       "classe_A": "infra_travessia_hidroviaria",
-      "classe_B": "infra_travessia_hidroviaria"
+      "classe_B": "infra_travessia_hidroviaria",
+      "geom_A": [
+        "LINESTRING"
+      ],
+      "geom_B": [
+        "LINESTRING"
+      ]
     },
     {
       "classe_A": "infra_trecho_duto",

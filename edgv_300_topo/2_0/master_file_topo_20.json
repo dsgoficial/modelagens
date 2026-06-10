@@ -6534,8 +6534,7 @@
       "nome": "travessia_hidroviaria",
       "categoria": "infra",
       "primitivas": [
-        "MultiLinestring",
-        "MultiPoint"
+        "MultiLinestring"
       ],
       "atributos": [
         {
