@@ -1,0 +1,336 @@
+{
+  "metadados": {
+    "versao_arquivo": "1.1",
+    "modelo_A": "EDGV Topo 2.0",
+    "versao_modelo_A": "0.9.0",
+    "modelo_B": "EDGV Orto 3.0",
+    "versao_modelo_B": "3.0.0"
+  },
+  "__comment": "UTF-8. Topo 2.0 <-> Orto 3.0. Comuns: 1:1 por nome. As areas especiais e localidades, unificadas no Topo 2.0 (limite_especial/localidade), sao classes SEPARADAS no Orto e mapeadas por filtro sobre 'tipo'. Atributos auxiliares proprios do orto (edicao_articulacao_imagem, edicao das areas especiais) nao tem fonte no Topo 2.0 — ver orto30_topo20_sem_correspondencia.md.",
+  "schema_A": "edgv",
+  "schema_B": "edgv",
+  "afixo_geom_A": {
+    "tipo": "sufixo",
+    "POINT": "_p",
+    "LINESTRING": "_l",
+    "POLYGON": "_a"
+  },
+  "afixo_geom_B": {
+    "tipo": "sufixo",
+    "POINT": "_p",
+    "LINESTRING": "_l",
+    "POLYGON": "_a"
+  },
+  "agregar_geom_A": true,
+  "agregar_geom_B": true,
+  "mapeamento_classes": [
+    {
+      "classe_A": "cobter_massa_dagua",
+      "classe_B": "cobter_massa_dagua",
+      "__comment": "classes tematicas (1:1, atributos integrais do Topo 2.0)."
+    },
+    {
+      "classe_A": "constr_extracao_mineral",
+      "classe_B": "constr_extracao_mineral"
+    },
+    {
+      "classe_A": "elemnat_curva_nivel",
+      "classe_B": "elemnat_curva_nivel"
+    },
+    {
+      "classe_A": "elemnat_elemento_hidrografico",
+      "classe_B": "elemnat_elemento_hidrografico"
+    },
+    {
+      "classe_A": "elemnat_ilha",
+      "classe_B": "elemnat_ilha"
+    },
+    {
+      "classe_A": "elemnat_ponto_cotado",
+      "classe_B": "elemnat_ponto_cotado"
+    },
+    {
+      "classe_A": "elemnat_terreno_sujeito_inundacao",
+      "classe_B": "elemnat_terreno_sujeito_inundacao"
+    },
+    {
+      "classe_A": "elemnat_toponimo_fisiografico_natural",
+      "classe_B": "elemnat_toponimo_fisiografico_natural"
+    },
+    {
+      "classe_A": "elemnat_trecho_drenagem",
+      "classe_B": "elemnat_trecho_drenagem"
+    },
+    {
+      "classe_A": "infra_barragem",
+      "classe_B": "infra_barragem"
+    },
+    {
+      "classe_A": "infra_elemento_energia",
+      "classe_B": "infra_elemento_energia"
+    },
+    {
+      "classe_A": "infra_elemento_infraestrutura",
+      "classe_B": "infra_elemento_infraestrutura"
+    },
+    {
+      "classe_A": "infra_ferrovia",
+      "classe_B": "infra_ferrovia"
+    },
+    {
+      "classe_A": "infra_pista_pouso",
+      "classe_B": "infra_pista_pouso"
+    },
+    {
+      "classe_A": "infra_via_deslocamento",
+      "classe_B": "infra_via_deslocamento"
+    },
+    {
+      "classe_A": "llp_localidade",
+      "classe_B": "llp_aglomerado_rural",
+      "filtro_A": {
+        "$or": [
+          {
+            "nome_atributo": "tipo",
+            "valor": 5
+          },
+          {
+            "nome_atributo": "tipo",
+            "valor": 6
+          },
+          {
+            "nome_atributo": "tipo",
+            "valor": 7
+          }
+        ]
+      },
+      "__comment": "split por tipo de llp_localidade (codigos [5, 6, 7])."
+    },
+    {
+      "classe_A": "llp_limite_especial",
+      "classe_B": "llp_area_pub_militar",
+      "filtro_A": {
+        "nome_atributo": "tipo",
+        "valor": 36
+      },
+      "__comment": "split por tipo de llp_limite_especial (codigos [36])."
+    },
+    {
+      "classe_A": "llp_localidade",
+      "classe_B": "llp_localidade",
+      "filtro_A": {
+        "$or": [
+          {
+            "nome_atributo": "tipo",
+            "valor": 1
+          },
+          {
+            "nome_atributo": "tipo",
+            "valor": 2
+          },
+          {
+            "nome_atributo": "tipo",
+            "valor": 3
+          },
+          {
+            "nome_atributo": "tipo",
+            "valor": 4
+          },
+          {
+            "nome_atributo": "tipo",
+            "valor": 9
+          },
+          {
+            "nome_atributo": "tipo",
+            "valor": 10
+          }
+        ]
+      },
+      "__comment": "llp_localidade restrito aos tipos [1, 2, 3, 4, 9, 10] (demais tipos viram classes separadas)."
+    },
+    {
+      "classe_A": "llp_localidade",
+      "classe_B": "llp_nome_local",
+      "filtro_A": {
+        "nome_atributo": "tipo",
+        "valor": 8
+      },
+      "__comment": "split por tipo de llp_localidade (codigos [8])."
+    },
+    {
+      "classe_A": "llp_limite_especial",
+      "classe_B": "llp_terra_indigena",
+      "filtro_A": {
+        "nome_atributo": "tipo",
+        "valor": 2
+      },
+      "__comment": "split por tipo de llp_limite_especial (codigos [2])."
+    },
+    {
+      "classe_A": "llp_limite_especial",
+      "classe_B": "llp_unidade_conservacao",
+      "filtro_A": {
+        "$or": [
+          {
+            "nome_atributo": "tipo",
+            "valor": 5
+          },
+          {
+            "nome_atributo": "tipo",
+            "valor": 24
+          },
+          {
+            "nome_atributo": "tipo",
+            "valor": 25
+          },
+          {
+            "nome_atributo": "tipo",
+            "valor": 26
+          },
+          {
+            "nome_atributo": "tipo",
+            "valor": 27
+          },
+          {
+            "nome_atributo": "tipo",
+            "valor": 28
+          },
+          {
+            "nome_atributo": "tipo",
+            "valor": 29
+          },
+          {
+            "nome_atributo": "tipo",
+            "valor": 30
+          },
+          {
+            "nome_atributo": "tipo",
+            "valor": 31
+          },
+          {
+            "nome_atributo": "tipo",
+            "valor": 32
+          },
+          {
+            "nome_atributo": "tipo",
+            "valor": 33
+          },
+          {
+            "nome_atributo": "tipo",
+            "valor": 34
+          },
+          {
+            "nome_atributo": "tipo",
+            "valor": 35
+          }
+        ]
+      },
+      "__comment": "split por tipo de llp_limite_especial (codigos [5, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35])."
+    },
+    {
+      "classe_A": "llp_unidade_federacao",
+      "classe_B": "llp_unidade_federacao"
+    },
+    {
+      "classe_A": "llp_pais",
+      "classe_B": "llp_pais"
+    },
+    {
+      "classe_A": "llp_area_sem_dados",
+      "classe_B": "llp_area_sem_dados"
+    },
+    {
+      "classe_A": "llp_limite_legal",
+      "classe_B": "llp_limite_legal"
+    },
+    {
+      "classe_A": "elemnat_sumidouro_vertedouro",
+      "classe_B": "elemnat_sumidouro_vertedouro"
+    },
+    {
+      "classe_A": "infra_obstaculo_vertical",
+      "classe_B": "infra_obstaculo_vertical"
+    },
+    {
+      "classe_A": "edicao_grid_edicao",
+      "classe_B": "edicao_grid_edicao",
+      "__comment": "classes auxiliares (1:1, integras do Topo 2.0)."
+    },
+    {
+      "classe_A": "edicao_grid_numerico",
+      "classe_B": "edicao_grid_numerico"
+    },
+    {
+      "classe_A": "delimitador_area_sem_dados",
+      "classe_B": "delimitador_area_sem_dados"
+    },
+    {
+      "classe_A": "aux_observacao",
+      "classe_B": "aux_observacao"
+    },
+    {
+      "classe_A": "aux_revisao",
+      "classe_B": "aux_revisao"
+    },
+    {
+      "classe_A": "aux_moldura",
+      "classe_B": "aux_moldura"
+    },
+    {
+      "classe_A": "aux_moldura_area_continua",
+      "classe_B": "aux_moldura_area_continua"
+    },
+    {
+      "classe_A": "delimitador_massa_dagua",
+      "classe_B": "delimitador_massa_dagua"
+    },
+    {
+      "classe_A": "delimitador_elemento_hidrografico",
+      "classe_B": "delimitador_elemento_hidrografico"
+    },
+    {
+      "classe_A": "centroide_massa_dagua",
+      "classe_B": "centroide_massa_dagua"
+    },
+    {
+      "classe_A": "centroide_ilha",
+      "classe_B": "centroide_ilha"
+    },
+    {
+      "classe_A": "centroide_elemento_hidrografico",
+      "classe_B": "centroide_elemento_hidrografico"
+    },
+    {
+      "classe_A": "edicao_identificador_trecho_rod",
+      "classe_B": "edicao_identificador_trecho_rod"
+    },
+    {
+      "classe_A": "edicao_simb_torre_energia",
+      "classe_B": "edicao_simb_torre_energia"
+    },
+    {
+      "classe_A": "edicao_simb_cota_mestra",
+      "classe_B": "edicao_simb_cota_mestra"
+    },
+    {
+      "classe_A": "edicao_texto_generico",
+      "classe_B": "edicao_texto_generico"
+    },
+    {
+      "classe_A": "delimitador_limite_especial",
+      "classe_B": "delimitador_limite_especial"
+    },
+    {
+      "classe_A": "centroide_area_sem_dados",
+      "classe_B": "centroide_area_sem_dados"
+    },
+    {
+      "classe_A": "centroide_limite_especial",
+      "classe_B": "centroide_limite_especial"
+    },
+    {
+      "classe_A": "edicao_simb_area",
+      "classe_B": "edicao_simb_area"
+    }
+  ]
+}

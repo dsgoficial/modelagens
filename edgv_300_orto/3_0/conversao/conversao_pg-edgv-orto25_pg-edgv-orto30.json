@@ -1,0 +1,236 @@
+{
+  "metadados": {
+    "versao_arquivo": "1.0",
+    "modelo_A": "EDGV 3.0 Orto",
+    "versao_modelo_A": "2.5.4",
+    "modelo_B": "EDGV Orto 3.0",
+    "versao_modelo_B": "3.0.0"
+  },
+  "__comment": "UTF-8. Orto 2.5 -> Orto 3.0. Conjuntos de classes espelhados (1:1 por nome). Atributos alinham por nome; o 3.0 herda os dominios/definicoes do Topo 2.0 (codigos de dominio sao identicos, sem traducao de valores). 4 atributos do 2.5 sem destino no 3.0 (sem equivalente no Topo 2.0) estao anotados por classe nos respectivos __comment. O 3.0 ganha atributos do Topo 2.0 ausentes no 2.5 (preenchidos como NULL/9999 na conversao A=>B).",
+  "schema_A": "edgv",
+  "schema_B": "edgv",
+  "afixo_geom_A": {
+    "tipo": "sufixo",
+    "POINT": "_p",
+    "LINESTRING": "_l",
+    "POLYGON": "_a"
+  },
+  "afixo_geom_B": {
+    "tipo": "sufixo",
+    "POINT": "_p",
+    "LINESTRING": "_l",
+    "POLYGON": "_a"
+  },
+  "agregar_geom_A": true,
+  "agregar_geom_B": true,
+  "mapeamento_classes": [
+    {
+      "classe_A": "cobter_massa_dagua",
+      "classe_B": "cobter_massa_dagua",
+      "__comment": "classes tematicas (1:1). Orto 3.0 herda os atributos integrais do Topo 2.0. Sem destino no Orto 3.0 (atributo do 2.5 ausente no Topo 2.0): apresentar_simbologia."
+    },
+    {
+      "classe_A": "constr_extracao_mineral",
+      "classe_B": "constr_extracao_mineral"
+    },
+    {
+      "classe_A": "elemnat_curva_nivel",
+      "classe_B": "elemnat_curva_nivel"
+    },
+    {
+      "classe_A": "elemnat_elemento_hidrografico",
+      "classe_B": "elemnat_elemento_hidrografico"
+    },
+    {
+      "classe_A": "elemnat_ilha",
+      "classe_B": "elemnat_ilha"
+    },
+    {
+      "classe_A": "elemnat_ponto_cotado",
+      "classe_B": "elemnat_ponto_cotado"
+    },
+    {
+      "classe_A": "elemnat_terreno_sujeito_inundacao",
+      "classe_B": "elemnat_terreno_sujeito_inundacao"
+    },
+    {
+      "classe_A": "elemnat_toponimo_fisiografico_natural",
+      "classe_B": "elemnat_toponimo_fisiografico_natural"
+    },
+    {
+      "classe_A": "elemnat_trecho_drenagem",
+      "classe_B": "elemnat_trecho_drenagem"
+    },
+    {
+      "classe_A": "infra_barragem",
+      "classe_B": "infra_barragem"
+    },
+    {
+      "classe_A": "infra_elemento_energia",
+      "classe_B": "infra_elemento_energia"
+    },
+    {
+      "classe_A": "infra_elemento_infraestrutura",
+      "classe_B": "infra_elemento_infraestrutura"
+    },
+    {
+      "classe_A": "infra_ferrovia",
+      "classe_B": "infra_ferrovia"
+    },
+    {
+      "classe_A": "infra_pista_pouso",
+      "classe_B": "infra_pista_pouso"
+    },
+    {
+      "classe_A": "infra_via_deslocamento",
+      "classe_B": "infra_via_deslocamento"
+    },
+    {
+      "classe_A": "llp_aglomerado_rural",
+      "classe_B": "llp_aglomerado_rural"
+    },
+    {
+      "classe_A": "llp_area_pub_militar",
+      "classe_B": "llp_area_pub_militar"
+    },
+    {
+      "classe_A": "llp_localidade",
+      "classe_B": "llp_localidade"
+    },
+    {
+      "classe_A": "llp_nome_local",
+      "classe_B": "llp_nome_local"
+    },
+    {
+      "classe_A": "llp_terra_indigena",
+      "classe_B": "llp_terra_indigena"
+    },
+    {
+      "classe_A": "llp_unidade_conservacao",
+      "classe_B": "llp_unidade_conservacao"
+    },
+    {
+      "classe_A": "llp_unidade_federacao",
+      "classe_B": "llp_unidade_federacao"
+    },
+    {
+      "classe_A": "llp_pais",
+      "classe_B": "llp_pais"
+    },
+    {
+      "classe_A": "llp_area_sem_dados",
+      "classe_B": "llp_area_sem_dados"
+    },
+    {
+      "classe_A": "llp_limite_legal",
+      "classe_B": "llp_limite_legal",
+      "__comment": "Sem destino no Orto 3.0 (atributo do 2.5 ausente no Topo 2.0): visivel."
+    },
+    {
+      "classe_A": "elemnat_sumidouro_vertedouro",
+      "classe_B": "elemnat_sumidouro_vertedouro"
+    },
+    {
+      "classe_A": "infra_obstaculo_vertical",
+      "classe_B": "infra_obstaculo_vertical"
+    },
+    {
+      "classe_A": "edicao_area_pub_militar",
+      "classe_B": "edicao_area_pub_militar",
+      "__comment": "classes auxiliares (1:1)."
+    },
+    {
+      "classe_A": "edicao_unidade_conservacao",
+      "classe_B": "edicao_unidade_conservacao"
+    },
+    {
+      "classe_A": "edicao_terra_indigena",
+      "classe_B": "edicao_terra_indigena"
+    },
+    {
+      "classe_A": "edicao_grid_edicao",
+      "classe_B": "edicao_grid_edicao"
+    },
+    {
+      "classe_A": "edicao_grid_numerico",
+      "classe_B": "edicao_grid_numerico"
+    },
+    {
+      "classe_A": "edicao_articulacao_imagem",
+      "classe_B": "edicao_articulacao_imagem"
+    },
+    {
+      "classe_A": "delimitador_area_sem_dados",
+      "classe_B": "delimitador_area_sem_dados"
+    },
+    {
+      "classe_A": "aux_observacao",
+      "classe_B": "aux_observacao"
+    },
+    {
+      "classe_A": "aux_revisao",
+      "classe_B": "aux_revisao"
+    },
+    {
+      "classe_A": "aux_moldura",
+      "classe_B": "aux_moldura"
+    },
+    {
+      "classe_A": "aux_moldura_area_continua",
+      "classe_B": "aux_moldura_area_continua"
+    },
+    {
+      "classe_A": "delimitador_massa_dagua",
+      "classe_B": "delimitador_massa_dagua"
+    },
+    {
+      "classe_A": "delimitador_elemento_hidrografico",
+      "classe_B": "delimitador_elemento_hidrografico"
+    },
+    {
+      "classe_A": "centroide_massa_dagua",
+      "classe_B": "centroide_massa_dagua"
+    },
+    {
+      "classe_A": "centroide_ilha",
+      "classe_B": "centroide_ilha"
+    },
+    {
+      "classe_A": "centroide_elemento_hidrografico",
+      "classe_B": "centroide_elemento_hidrografico"
+    },
+    {
+      "classe_A": "edicao_identificador_trecho_rod",
+      "classe_B": "edicao_identificador_trecho_rod"
+    },
+    {
+      "classe_A": "edicao_simb_torre_energia",
+      "classe_B": "edicao_simb_torre_energia"
+    },
+    {
+      "classe_A": "edicao_simb_cota_mestra",
+      "classe_B": "edicao_simb_cota_mestra"
+    },
+    {
+      "classe_A": "edicao_texto_generico",
+      "classe_B": "edicao_texto_generico",
+      "__comment": "Sem destino no Orto 3.0 (atributo do 2.5 ausente no Topo 2.0): cor_buffer, tamanho_buffer."
+    },
+    {
+      "classe_A": "delimitador_limite_especial",
+      "classe_B": "delimitador_limite_especial"
+    },
+    {
+      "classe_A": "centroide_area_sem_dados",
+      "classe_B": "centroide_area_sem_dados"
+    },
+    {
+      "classe_A": "centroide_limite_especial",
+      "classe_B": "centroide_limite_especial"
+    },
+    {
+      "classe_A": "edicao_simb_area",
+      "classe_B": "edicao_simb_area"
+    }
+  ]
+}
