@@ -65,6 +65,13 @@ Mudanças no schema de dados entre EDGV Topo 1.4 e EDGV Topo 2.0. Apenas modelag
 | `pavimentos` | smallint | Número de pavimentos |
 | `endereco` | varchar(255) | Endereço textual livre |
 
+#### `edicao_texto_generico_p`, `_l` (+2 colunas cada)
+
+| Coluna | Tipo | Descrição |
+|--------|------|-----------|
+| `id_feicao_origem` | uuid | `id` da feição que originou o texto. Referência polimórfica (sem FK, nullable): a feição pode estar em qualquer tabela `edgv` e o texto livre pode não apontar para nenhuma |
+| `classe_feicao_origem` | varchar(255) | Classe (tabela) da feição de origem; junto com `id_feicao_origem`, rastreia o texto genérico de volta à feição que o originou |
+
 ### 1.3 Atributos removidos
 
 #### `elemnat_toponimo_fisiografico_natural_l` (−2 colunas)
@@ -407,6 +414,12 @@ ALTER TABLE edgv.constr_deposito_a ADD COLUMN endereco varchar(255);
 ALTER TABLE edgv.constr_deposito_p ADD COLUMN altura real;
 ALTER TABLE edgv.constr_deposito_p ADD COLUMN pavimentos smallint;
 ALTER TABLE edgv.constr_deposito_p ADD COLUMN endereco varchar(255);
+
+-- edicao_texto_generico_p/_l: id_feicao_origem, classe_feicao_origem (referência polimórfica à feição de origem)
+ALTER TABLE edgv.edicao_texto_generico_p ADD COLUMN id_feicao_origem uuid;
+ALTER TABLE edgv.edicao_texto_generico_p ADD COLUMN classe_feicao_origem varchar(255);
+ALTER TABLE edgv.edicao_texto_generico_l ADD COLUMN id_feicao_origem uuid;
+ALTER TABLE edgv.edicao_texto_generico_l ADD COLUMN classe_feicao_origem varchar(255);
 
 -- elemnat_toponimo_fisiografico_natural_l: remover label_x, label_y
 ALTER TABLE edgv.elemnat_toponimo_fisiografico_natural_l DROP COLUMN label_x;

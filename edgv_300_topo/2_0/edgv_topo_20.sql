@@ -5142,6 +5142,8 @@ CREATE TABLE edgv.edicao_texto_generico_p(
 	 justificativa_txt smallint NOT NULL,
 	 espacamento real,
 	 cor varchar(255),
+	 id_feicao_origem uuid,
+	 classe_feicao_origem varchar(255),
 	 observacao varchar(255),
 	 geom geometry(MultiPoint, 4674),
 	 CONSTRAINT edicao_texto_generico_p_pk PRIMARY KEY (id)
@@ -5165,6 +5167,8 @@ CREATE TABLE edgv.edicao_texto_generico_l(
 	 tamanho_txt real,
 	 espacamento real,
 	 cor varchar(255),
+	 id_feicao_origem uuid,
+	 classe_feicao_origem varchar(255),
 	 observacao varchar(255),
 	 geom geometry(MultiLinestring, 4674),
 	 CONSTRAINT edicao_texto_generico_l_pk PRIMARY KEY (id)

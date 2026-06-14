@@ -7882,6 +7882,16 @@
           "nome": "cor",
           "tipo": "varchar(255)",
           "cardinalidade": "0..1"
+        },
+        {
+          "nome": "id_feicao_origem",
+          "tipo": "uuid",
+          "cardinalidade": "0..1"
+        },
+        {
+          "nome": "classe_feicao_origem",
+          "tipo": "varchar(255)",
+          "cardinalidade": "0..1"
         }
       ]
     },
