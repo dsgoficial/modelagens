@@ -26,4 +26,9 @@ MODELS = {
         "extension": os.path.join(_BASE, "edgv_300_orto", "2_5", "edgv_300_orto_extension_25.sql"),
         "default_srid": 4674,
     },
+    "edgv_300_orto_30": {
+        "sql": os.path.join(_BASE, "edgv_300_orto", "3_0", "edgv_orto_30.sql"),
+        "extension": os.path.join(_BASE, "edgv_300_orto", "3_0", "edgv_orto_30_extension.sql"),
+        "default_srid": 4674,
+    },
 }
