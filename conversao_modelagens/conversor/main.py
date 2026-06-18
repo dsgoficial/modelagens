@@ -351,13 +351,14 @@ def _load_batch_clips(config: dict) -> list[dict]:
         )
 
     clips = []
+    geom_col = gdf.geometry.name
     for _, row in gdf.iterrows():
         folder_name = str(row[folder_attr]).strip()
         if not folder_name:
             logger.warning("Moldura com '%s' vazio, ignorando", folder_attr)
             continue
         clips.append({
-            "geometry": row.geometry,
+            "geometry": row[geom_col],
             "folder_name": folder_name,
         })
 
@@ -368,7 +369,8 @@ def _load_batch_clips(config: dict) -> list[dict]:
 def _load_segment_clips(config: dict) -> list:
     """Carrega molduras para segmentação. Retorna lista de geometrias."""
     gdf = _load_clip_source(config["segment_clip"])
-    geometries = [row.geometry for _, row in gdf.iterrows() if row.geometry and not row.geometry.is_empty]
+    geom_col = gdf.geometry.name
+    geometries = [row[geom_col] for _, row in gdf.iterrows() if row[geom_col] is not None and not row[geom_col].is_empty]
     logger.info("Carregadas %d molduras para segmentação", len(geometries))
     return geometries
 
