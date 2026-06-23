@@ -9,6 +9,7 @@ import json
 import logging
 import os
 import sys
+import uuid
 
 import geopandas as gpd
 import pandas as pd
@@ -279,10 +280,24 @@ def _build_output_gdfs(
                 row_attrs["geometry"] = agg_geom
                 rows.append(row_attrs)
         else:
-            rows = [
-                {**f["attrs"], "geometry": f["geometry"]}
-                for f in features
-            ]
+            # Cada pedaco de uma feicao segmentada por moldura (ou explodida de
+            # multiparte por split_multi) carrega o mesmo attrs da origem, incl.
+            # o id. Num destino com PK em id, os pedacos repetidos colidem e sao
+            # descartados no COPY (perda de geometria nas linhas que cruzam folha).
+            # Mantem o id original no primeiro pedaco (rastreabilidade) e gera um
+            # uuid novo para os demais, pois cada pedaco e uma feicao distinta no
+            # banco de edicao.
+            seen_ids: set = set()
+            rows = []
+            for f in features:
+                attrs = f["attrs"]
+                fid = attrs.get("id")
+                if fid is not None:
+                    if fid in seen_ids:
+                        attrs = {**attrs, "id": str(uuid.uuid4())}
+                    else:
+                        seen_ids.add(fid)
+                rows.append({**attrs, "geometry": f["geometry"]})
 
         gdf = gpd.GeoDataFrame(rows, geometry="geometry")
         gdf = gdf.set_crs(f"EPSG:{dest_srid}", allow_override=True)
