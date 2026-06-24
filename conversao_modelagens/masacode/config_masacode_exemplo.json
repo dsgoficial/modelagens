@@ -1,0 +1,12 @@
+{
+  "connection": {
+    "host": "localhost",
+    "port": 5432,
+    "database": "ia2026_sul_cobter_50k_4674_edgvtopo14",
+    "user": "postgres",
+    "password": "postgres",
+    "schema": "edgv"
+  },
+  "output_folder": "saida_masacode",
+  "keep_attributes": false
+}
