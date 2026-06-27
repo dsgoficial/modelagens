@@ -3201,6 +3201,31 @@
       ]
     },
     {
+      "nome": "tipo_limite_legal",
+      "valores": [
+        {
+          "code": 1,
+          "value": "Limite Internacional",
+          "descricao": "-"
+        },
+        {
+          "code": 2,
+          "value": "Limite Estadual",
+          "descricao": "-"
+        },
+        {
+          "code": 3,
+          "value": "Limite Municipal",
+          "descricao": "-"
+        },
+        {
+          "code": 4,
+          "value": "Limite Distrital",
+          "descricao": "-"
+        }
+      ]
+    },
+    {
       "nome": "tipo_banco",
       "valores": [
         {
@@ -14665,6 +14690,33 @@
           "tipo": "integer",
           "descricao": "-",
           "cardinalidade": "0..1"
+        }
+      ]
+    },
+    {
+      "nome": "limite_legal",
+      "categoria": "lml",
+      "descricao": "Linha de limite legal politico-administrativo (internacional, estadual, municipal ou distrital), capturada como feicao linear.",
+      "primitivas": ["MultiLinestring"],
+      "atributos": [
+        {
+          "nome": "nome",
+          "tipo": "varchar(255)",
+          "descricao": "-",
+          "cardinalidade": "0..1"
+        },
+        {
+          "nome": "tipo",
+          "tipo": "smallint",
+          "descricao": "Tipo de limite legal.",
+          "cardinalidade": "1..1",
+          "mapa_valor": "tipo_limite_legal"
+        },
+        {
+          "nome": "geometriaaproximada",
+          "tipo": "boolean",
+          "descricao": "-",
+          "cardinalidade": "1..1"
         }
       ]
     },

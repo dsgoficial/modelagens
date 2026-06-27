@@ -6,7 +6,7 @@
     "modelo_B": "EDGV Topo 2.0",
     "versao_modelo_B": "0.8.0"
   },
-  "__comment": "UTF-8. Conversao EDGV 3.0 completa para EDGV Topo 2.0 v0.8. 166 mapeamentos (155 herdados da 3.0→Topo 1.4 + 11 novos Topo 2.0).",
+  "__comment": "UTF-8. Conversao EDGV 3.0 completa para EDGV Topo 2.0 v0.8. 167 mapeamentos (155 herdados da 3.0→Topo 1.4 + 11 novos Topo 2.0 + 1 lml_limite_legal_l linha).",
   "schema_A": "edgv",
   "schema_B": "edgv",
   "afixo_geom_A": {
@@ -13114,6 +13114,59 @@
         {
           "attr_A": "geocodigo",
           "attr_B": "geocodigo_ibge"
+        }
+      ]
+    },
+    {
+      "__comment": "Topo 2.0: lml_limite_legal (linha) -> llp_limite_legal (linha) | divisa politico-administrativa capturada como feicao linear; tipo herdado direto (1=internacional, 2=estadual, 3=municipal, 4=distrital)",
+      "classe_A": "lml_limite_legal",
+      "classe_B": "llp_limite_legal",
+      "geom_A": [
+        "LINESTRING"
+      ],
+      "geom_B": [
+        "LINESTRING"
+      ],
+      "atributos_default_B": [
+        {
+          "nome_atributo": "sobreposto",
+          "valor": 2
+        },
+        {
+          "nome_atributo": "exibir_rotulo_aproximado",
+          "valor": 2
+        },
+        {
+          "nome_atributo": "em_litigio",
+          "valor": 2
+        },
+        {
+          "nome_atributo": "maritimo",
+          "valor": 2
+        }
+      ],
+      "mapeamento_atributos": [
+        {
+          "attr_A": "nome",
+          "attr_B": "nome"
+        },
+        {
+          "attr_A": "tipo",
+          "attr_B": "tipo"
+        },
+        {
+          "attr_A": "geometriaaproximada",
+          "attr_B": "geometria_aproximada",
+          "traducao": [
+            {
+              "valor_A": true,
+              "valor_B": 1
+            },
+            {
+              "valor_A": false,
+              "valor_B": 2
+            }
+          ]
         }
       ]
     },

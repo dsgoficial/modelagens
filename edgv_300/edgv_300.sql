@@ -1187,6 +1187,20 @@ INSERT INTO dominios.tipo_delim_fis (code,code_name) VALUES (9999,'A SER PREENCH
 
 ALTER TABLE dominios.tipo_delim_fis OWNER TO postgres;
 
+CREATE TABLE dominios.tipo_limite_legal (
+	 code smallint NOT NULL,
+	 code_name text NOT NULL,
+	 CONSTRAINT tipo_limite_legal_pk PRIMARY KEY (code)
+);
+
+INSERT INTO dominios.tipo_limite_legal (code,code_name) VALUES (1,'Limite Internacional (1)');
+INSERT INTO dominios.tipo_limite_legal (code,code_name) VALUES (2,'Limite Estadual (2)');
+INSERT INTO dominios.tipo_limite_legal (code,code_name) VALUES (3,'Limite Municipal (3)');
+INSERT INTO dominios.tipo_limite_legal (code,code_name) VALUES (4,'Limite Distrital (4)');
+INSERT INTO dominios.tipo_limite_legal (code,code_name) VALUES (9999,'A SER PREENCHIDO (9999)');
+
+ALTER TABLE dominios.tipo_limite_legal OWNER TO postgres;
+
 CREATE TABLE dominios.tipo_banco (
 	 code smallint NOT NULL,
 	 code_name text NOT NULL,
@@ -15542,6 +15556,27 @@ CREATE TABLE edgv.lml_distrito_a(
 CREATE INDEX lml_distrito_a_geom ON edgv.lml_distrito_a USING gist (geom);
 
 ALTER TABLE edgv.lml_distrito_a OWNER TO postgres;
+
+CREATE TABLE edgv.lml_limite_legal_l(
+	 id uuid NOT NULL DEFAULT uuid_generate_v4(),
+	 nome varchar(255),
+	 tipo smallint NOT NULL,
+	 geometriaaproximada boolean NOT NULL,
+	 observacao VARCHAR(255),
+	 geom geometry(MultiLinestring, 4674),
+	 CONSTRAINT lml_limite_legal_l_pk PRIMARY KEY (id)
+	 WITH (FILLFACTOR = 80)
+);
+CREATE INDEX lml_limite_legal_l_geom ON edgv.lml_limite_legal_l USING gist (geom);
+
+ALTER TABLE edgv.lml_limite_legal_l OWNER TO postgres;
+
+ALTER TABLE edgv.lml_limite_legal_l
+	 ADD CONSTRAINT lml_limite_legal_l_tipo_fk FOREIGN KEY (tipo)
+	 REFERENCES dominios.tipo_limite_legal (code) MATCH FULL
+	 ON UPDATE NO ACTION ON DELETE NO ACTION;
+
+ALTER TABLE edgv.lml_limite_legal_l ALTER COLUMN tipo SET DEFAULT 9999;
 
 CREATE TABLE edgv.lml_area_densamente_edificada_a(
 	 id uuid NOT NULL DEFAULT uuid_generate_v4(),

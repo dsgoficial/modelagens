@@ -6847,6 +6847,11 @@
       "classe_B": "llp_unidade_federacao"
     },
     {
+      "__comment": "lml_limite_legal <-> llp_limite_legal | divisa legal capturada como linha; geometriaaproximada->geometria_aproximada via mapeamento global; tipo/nome diretos (1.4 so modela tipo 1=internacional e 2=estadual)",
+      "classe_A": "lml_limite_legal",
+      "classe_B": "llp_limite_legal"
+    },
+    {
       "__comment": "dut_trecho_duto <-> infra_trecho_duto",
       "classe_A": "dut_trecho_duto",
       "classe_B": "infra_trecho_duto",

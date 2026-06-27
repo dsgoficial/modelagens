@@ -6870,6 +6870,34 @@
             ]
         },
         {
+            "nome": "Limite_Legal",
+            "categoria": "LML",
+            "descricao": "Linha de limite legal politico-administrativo (internacional, estadual, municipal ou distrital), capturada como feicao linear.",
+            "primitivas": [
+                "MultiLinestring"
+            ],
+            "atributos": [
+                {
+                    "nome": "NOME",
+                    "tipo": "varchar(255)",
+                    "descricao": "-",
+                    "cardinalidade": "0..1"
+                },
+                {
+                    "nome": "TIPO",
+                    "tipo": "varchar(255)",
+                    "descricao": "Tipo de limite legal.",
+                    "cardinalidade": "0..1"
+                },
+                {
+                    "nome": "GEOAPROX",
+                    "tipo": "boolean",
+                    "descricao": "-",
+                    "cardinalidade": "0..1"
+                }
+            ]
+        },
+        {
             "nome": "Area_Densamente_Edificada",
             "categoria": "LML",
             "descricao": "-",
