@@ -53,6 +53,7 @@ Classes ou valores fora do mapa sao ignorados (campo, tipo 901, vira terreno abe
 
 - Todo terreno exposto (tipo 1000 a 1004) -> Sand (nao so areia 1002). A cobertura por IA nao distingue subtipo.
 - Regime 0 (desconhecido) -> River permanente (21002). A hidrografia da BHO/IAT nao classifica perene/intermitente.
+- Rodovia (`infra_via_deslocamento_l` tipo 2 Estrada/Rodovia e 4 Auto-estrada) -> o `name` MASACODE vem da `sigla` (ex.: BR-101), nao do campo `nome`. As demais vias (caminho, arruamento, trilha) mantem o `nome`.
 
 (As mesmas decisoes estao no `convertEDGV3Topo14ToMASACODE.py` do EBGeo Desktop.)
 

@@ -13,6 +13,8 @@ modelagens EDGV. Aqui so se gera o produto MASACODE a partir de uma Topo 1.4 ja 
 Mapeamento (fiel ao EBGeo Desktop, com as decisoes correntes da DGEO):
   - Terreno exposto (cobter_vegetacao tipo 1000-1004) -> Sand (todas as variantes, nao so areia 1002).
   - Drenagem regime 0 (Desconhecido) -> River permanente (21002), junto com regime 1; regime 3 -> 21003.
+  - Rodovia (infra_via_deslocamento tipo 2 Estrada/Rodovia e 4 Auto-estrada) -> name vem da sigla
+    (ex.: BR-101), nao do campo nome. Demais vias mantem o nome.
 
 Uso:
   python conversao_modelagens/masacode/converte_edgv_topo14_masacode.py --config .../config_masacode_exemplo.json
@@ -112,6 +114,10 @@ def _classify(table, gdf):
             for t, j in zip(g['tipo'], jur)
         ]
         g['__out'] = 'Road'
+        # Para rodovia (Estrada/Rodovia=2, Auto-estrada=4) o name MASACODE vem da
+        # sigla (ex.: BR-101), nao do campo nome. Demais vias mantem o nome.
+        eh_rodovia = g['tipo'].map(lambda t: int(t) in (2, 4))
+        g.loc[eh_rodovia, 'name'] = g['sigla'] if 'sigla' in g.columns else None
     else:
         return None
 
