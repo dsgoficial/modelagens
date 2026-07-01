@@ -17,11 +17,11 @@ Mudanças no schema de dados entre EDGV Topo 1.4 e EDGV Topo 2.0. Apenas modelag
 
 ### 1.2 Atributos numéricos (nullable, sem FK)
 
-#### `infra_elemento_energia_l`, `_p`, `_a` (+1 coluna cada)
+#### `elemnat_ponto_cotado_p` (+1 coluna)
 
 | Coluna | Tipo | Descrição |
 |--------|------|-----------|
-| `tensao_kv` | integer | Tensão da linha de transmissão em kV |
+| `rank_zoom` | smallint | Rank de proeminência por grade para filtrar por zoom (1 = mais proeminente); calculado offline, à la `ordem_strahler` da drenagem |
 
 #### `infra_elemento_viario_l` (+4 colunas)
 
@@ -80,6 +80,12 @@ Mudanças no schema de dados entre EDGV Topo 1.4 e EDGV Topo 2.0. Apenas modelag
 |--------|------|--------|
 | `label_x` | real | Removidas — posicionamento de label tratado por edição cartográfica, não pelo modelo |
 | `label_y` | real | Removidas — posicionamento de label tratado por edição cartográfica, não pelo modelo|
+
+#### `cobter_area_edificada_a` (−1 coluna)
+
+| Coluna | Tipo | Motivo |
+|--------|------|--------|
+| `nome` | varchar(255) | Removida — área edificada não é entidade nomeada |
 
 ---
 
@@ -219,11 +225,18 @@ A travessia hidroviária passa a ser **linha-only** no Topo 2.0: a travessia é 
 | 3 | Limite Municipal |
 | 4 | Limite Distrital |
 
-### `dominios.tipo_via_deslocamento` (+1)
+### `dominios.tipo_via_deslocamento` (+2)
 
 | Código | Valor |
 |--------|-------|
+| 0 | Desconhecido |
 | 7 | Alça de acesso / Rotatória |
+
+### `dominios.tipo_veg` (+1)
+
+| Código | Valor |
+|--------|-------|
+| 1101 | Neve/Gelo |
 
 ### `dominios.tipo_elemento_viario` (+1)
 
@@ -374,10 +387,15 @@ ALTER TABLE edgv.llp_limite_legal_l
     ADD CONSTRAINT llp_limite_legal_l_maritimo_fk
     FOREIGN KEY (maritimo) REFERENCES dominios.booleano (code);
 
--- infra_elemento_energia_l/_p/_a: tensao_kv
-ALTER TABLE edgv.infra_elemento_energia_l ADD COLUMN tensao_kv integer;
-ALTER TABLE edgv.infra_elemento_energia_p ADD COLUMN tensao_kv integer;
-ALTER TABLE edgv.infra_elemento_energia_a ADD COLUMN tensao_kv integer;
+-- elemnat_ponto_cotado_p: rank_zoom (rank de proeminencia para filtrar por zoom; nullable, calculado offline)
+ALTER TABLE edgv.elemnat_ponto_cotado_p ADD COLUMN rank_zoom smallint;
+
+-- cobter_area_edificada_a: remocao de nome (area edificada nao e entidade nomeada)
+ALTER TABLE edgv.cobter_area_edificada_a DROP COLUMN nome;
+
+-- Novos valores de dominio (0.10.0)
+INSERT INTO dominios.tipo_veg (code, code_name, filter) VALUES (1101, 'Neve/Gelo (1101)', 'Neve e Gelo');
+INSERT INTO dominios.tipo_via_deslocamento (code, code_name) VALUES (0, 'Desconhecido (0)');
 
 -- infra_elemento_viario_l: carga_suport_maxima, gabarito_vertical, largura, vao_livre
 ALTER TABLE edgv.infra_elemento_viario_l ADD COLUMN carga_suport_maxima real;

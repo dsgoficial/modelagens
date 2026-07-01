@@ -4,9 +4,9 @@
     "modelo_A": "EDGV 3.0",
     "versao_modelo_A": "1.1.3",
     "modelo_B": "EDGV Topo 2.0",
-    "versao_modelo_B": "0.8.0"
+    "versao_modelo_B": "0.10.0"
   },
-  "__comment": "UTF-8. Conversao EDGV 3.0 completa para EDGV Topo 2.0 v0.8. 167 mapeamentos (155 herdados da 3.0→Topo 1.4 + 11 novos Topo 2.0 + 1 lml_limite_legal_l linha).",
+  "__comment": "UTF-8. Conversao EDGV 3.0 completa para EDGV Topo 2.0 v0.10. 165 mapeamentos. Rev 0.10.0: llp_pais_a e llp_unidade_federacao_a removidas; Pais/UF consolidados em llp_limite_legal_a (tipo=1/2); mapeamentos legados lml_pais->llp_pais e lml_unidade_federacao->llp_unidade_federacao removidos.",
   "schema_A": "edgv",
   "schema_B": "edgv",
   "afixo_geom_A": {
@@ -307,30 +307,6 @@
           "attr_B": "tipo_ref"
         }
       ]
-    },
-    {
-      "__comment": "lml_pais <-> llp_pais",
-      "classe_A": "lml_pais",
-      "classe_B": "llp_pais",
-      "atributos_default_B": [
-        {
-          "nome_atributo": "em_litigio",
-          "valor": 2
-        },
-        {
-          "nome_atributo": "exibir_rotulo_aproximado",
-          "valor": 2
-        },
-        {
-          "nome_atributo": "maritimo",
-          "valor": 2
-        },
-        {
-          "nome_atributo": "sobreposto",
-          "valor": 2
-        }
-      ],
-      "mapeamento_atributos": []
     },
     {
       "__comment": "aux_obstaculo_vertical <-> infra_obstaculo_vertical",
@@ -7503,35 +7479,6 @@
       "mapeamento_atributos": []
     },
     {
-      "__comment": "lml_unidade_federacao <-> llp_unidade_federacao",
-      "classe_A": "lml_unidade_federacao",
-      "classe_B": "llp_unidade_federacao",
-      "atributos_default_B": [
-        {
-          "nome_atributo": "em_litigio",
-          "valor": 2
-        },
-        {
-          "nome_atributo": "exibir_rotulo_aproximado",
-          "valor": 2
-        },
-        {
-          "nome_atributo": "maritimo",
-          "valor": 2
-        },
-        {
-          "nome_atributo": "sobreposto",
-          "valor": 2
-        }
-      ],
-      "mapeamento_atributos": [
-        {
-          "attr_A": "sigla",
-          "attr_B": "sigla"
-        }
-      ]
-    },
-    {
       "__comment": "dut_trecho_duto <-> infra_trecho_duto",
       "classe_A": "dut_trecho_duto",
       "classe_B": "infra_trecho_duto",
@@ -12997,7 +12944,7 @@
       ]
     },
     {
-      "__comment": "Topo 2.0: lml_unidade_federacao → llp_limite_legal (tipo=2, polígono)",
+      "__comment": "Topo 2.0: lml_unidade_federacao → llp_limite_legal (tipo=2, polígono). Rev 0.10.0: sigla de UF traduzida do dominio smallint sigla_uf para a string de 2 letras de llp_limite_legal.sigla via `traducao` (1=AC ... 27=TO; 9999 fica sem traducao).",
       "classe_A": "lml_unidade_federacao",
       "classe_B": "llp_limite_legal",
       "geom_A": [
@@ -13030,12 +12977,41 @@
       ],
       "mapeamento_atributos": [
         {
-          "attr_A": "sigla",
-          "attr_B": "sigla"
-        },
-        {
           "attr_A": "geocodigo",
           "attr_B": "geocodigo_ibge"
+        },
+        {
+          "attr_A": "sigla",
+          "attr_B": "sigla",
+          "traducao": [
+            {"valor_A": 1, "valor_B": "AC"},
+            {"valor_A": 2, "valor_B": "AL"},
+            {"valor_A": 3, "valor_B": "AM"},
+            {"valor_A": 4, "valor_B": "AP"},
+            {"valor_A": 5, "valor_B": "BA"},
+            {"valor_A": 6, "valor_B": "CE"},
+            {"valor_A": 7, "valor_B": "DF"},
+            {"valor_A": 8, "valor_B": "ES"},
+            {"valor_A": 9, "valor_B": "GO"},
+            {"valor_A": 10, "valor_B": "MA"},
+            {"valor_A": 11, "valor_B": "MG"},
+            {"valor_A": 12, "valor_B": "MS"},
+            {"valor_A": 13, "valor_B": "MT"},
+            {"valor_A": 14, "valor_B": "PA"},
+            {"valor_A": 15, "valor_B": "PB"},
+            {"valor_A": 16, "valor_B": "PE"},
+            {"valor_A": 17, "valor_B": "PI"},
+            {"valor_A": 18, "valor_B": "PR"},
+            {"valor_A": 19, "valor_B": "RJ"},
+            {"valor_A": 20, "valor_B": "RN"},
+            {"valor_A": 21, "valor_B": "RO"},
+            {"valor_A": 22, "valor_B": "RR"},
+            {"valor_A": 23, "valor_B": "RS"},
+            {"valor_A": 24, "valor_B": "SC"},
+            {"valor_A": 25, "valor_B": "SE"},
+            {"valor_A": 26, "valor_B": "SP"},
+            {"valor_A": 27, "valor_B": "TO"}
+          ]
         }
       ]
     },

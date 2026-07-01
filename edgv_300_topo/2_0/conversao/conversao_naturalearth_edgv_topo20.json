@@ -3,7 +3,7 @@
     "version": "1.1",
     "date": "2026-03-29",
     "source": "Natural Earth v5.1",
-    "target": "EDGV Topo 2.0 v0.9.0",
+    "target": "EDGV Topo 2.0 v0.10.0",
     "description": "Mapeamento Natural Earth para EDGV Topo 2.0. Dados mundiais z0-z7 com overzoom MapLibre z8+. Consumido por ne_to_edgv.py. Usa datasets 10m (que ja incluem min_zoom/scalerank para filtragem multi-escala), exceto ne_50m_urban_areas (unico 50m, sem equivalente 10m).",
     "total_rules": 36,
     "active_rules": 31,
@@ -46,7 +46,7 @@
   },
   "rules": [
     {
-      "_comment": "=== ADMIN 0 COUNTRIES → llp_pais_a ==="
+      "_comment": "=== ADMIN 0 COUNTRIES → llp_limite_legal_a (tipo=1); rev 0.10.0: era llp_pais_a ==="
     },
     {
       "id": "admin0_country",
@@ -76,7 +76,7 @@
       "note": "SKIP — fronteiras internacionais virao do banco IBGE/GADM, nao do NE."
     },
     {
-      "_comment": "=== ADMIN 1 STATES/PROVINCES → llp_unidade_federacao_a ==="
+      "_comment": "=== ADMIN 1 STATES/PROVINCES → llp_limite_legal_a (tipo=2); rev 0.10.0: era llp_unidade_federacao_a ==="
     },
     {
       "id": "admin1_states",
@@ -841,7 +841,7 @@
       "note": "Manchas urbanas. assentamento_precario=2 (nao). 2143 features. Sem nome no NE."
     },
     {
-      "_comment": "=== LAND → llp_pais_a (auxilliar para fundo de mapa) ==="
+      "_comment": "=== LAND → __tile_only_land (auxiliar para fundo de mapa) ==="
     },
     {
       "id": "land",
@@ -1028,7 +1028,7 @@
       "note": "Planaltos, passagens, cabos. 8 features. name_pt/lat_y/long_x/scalerank adicionados."
     },
     {
-      "_comment": "=== GLACIATED AREAS → cobter_vegetacao_a ==="
+      "_comment": "=== GLACIATED AREAS → cobter_vegetacao_a (tipo_veg=1101 Neve/Gelo) ==="
     },
     {
       "id": "glaciated",
@@ -1039,8 +1039,10 @@
         ]
       },
       "edgv_target": {
-        "table": "__tile_only_glaciated",
-        "attributes": {}
+        "table": "cobter_vegetacao_a",
+        "attributes": {
+          "tipo": 1101
+        }
       },
       "ne_attribute_mapping": {
         "name": "nome"
@@ -1050,7 +1052,7 @@
         "min_zoom": "min_zoom"
       },
       "confidence": "medium",
-      "note": "Areas glaciais. 1886 features. Nao tem tipo correspondente na cobter_vegetacao_a. Layer exclusivo de tile."
+      "note": "Areas glaciais (neve/gelo). 1886 features. Rev 0.10.0: tipo_veg ganhou o codigo 1101 (Neve/Gelo), entao passa a mapear para cobter_vegetacao_a com tipo=1101 (antes era __tile_only por falta de dominio). Camada de tile 'glaciated' preservada via TABLE_TO_LAYER em ne_to_edgv.py."
     },
     {
       "_comment": "=== BATHYMETRY → __tile_only ==="

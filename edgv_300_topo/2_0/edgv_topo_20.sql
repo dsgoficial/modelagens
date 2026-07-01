@@ -7,10 +7,10 @@ SET search_path TO pg_catalog,public,edgv,dominios;
 
 CREATE TABLE public.db_metadata(
 	 edgvversion varchar(50) NOT NULL DEFAULT 'EDGV Topo 2.0',
-	 dbimplversion varchar(50) NOT NULL DEFAULT '0.9.0',
+	 dbimplversion varchar(50) NOT NULL DEFAULT '0.10.0',
 	 CONSTRAINT edgvversioncheck CHECK (edgvversion = 'EDGV Topo 2.0')
 );
-INSERT INTO public.db_metadata (edgvversion, dbimplversion) VALUES ('EDGV Topo 2.0','0.9.0');
+INSERT INTO public.db_metadata (edgvversion, dbimplversion) VALUES ('EDGV Topo 2.0','0.10.0');
 
 CREATE TABLE dominios.sigla_uf (
 	 code smallint NOT NULL,
@@ -822,14 +822,11 @@ INSERT INTO dominios.tipo_edificacao (code,code_name, filter) VALUES (1307,'Pub 
 INSERT INTO dominios.tipo_edificacao (code,code_name, filter) VALUES (1308,'Pub Civ - Câmara municipal (1308)','Edificação pública civil');
 INSERT INTO dominios.tipo_edificacao (code,code_name, filter) VALUES (1309,'Pub Civ - Assembléia legislativa (1309)','Edificação pública civil');
 INSERT INTO dominios.tipo_edificacao (code,code_name, filter) VALUES (1310,'Pub Civ - Autarquia (1310)','Edificação pública civil');
-
-
 INSERT INTO dominios.tipo_edificacao (code,code_name, filter) VALUES (1313,'Pub Civ - Fórum (1313)','Edificação pública civil');
 INSERT INTO dominios.tipo_edificacao (code,code_name, filter) VALUES (1314,'Pub Civ - Fundação (1314)','Edificação pública civil');
 INSERT INTO dominios.tipo_edificacao (code,code_name, filter) VALUES (1315,'Pub Civ - Procuradoria (1315)','Edificação pública civil');
 INSERT INTO dominios.tipo_edificacao (code,code_name, filter) VALUES (1316,'Pub Civ - Secretaria (1316)','Edificação pública civil');
 INSERT INTO dominios.tipo_edificacao (code,code_name, filter) VALUES (1322,'Pub Civ - Prefeitura (1322)','Edificação pública civil');
-
 INSERT INTO dominios.tipo_edificacao (code,code_name, filter) VALUES (1398,'Pub Civ - Outros (1398)','Edificação pública civil');
 INSERT INTO dominios.tipo_edificacao (code,code_name, filter) VALUES (1401,'Habitação indígena isolada (1401)','Habitação indígena');
 INSERT INTO dominios.tipo_edificacao (code,code_name, filter) VALUES (1402,'Habitação indígena coletiva (1402)','Habitação indígena');
@@ -1218,8 +1215,6 @@ INSERT INTO dominios.tipo_limite_legal (code,code_name) VALUES (9999,'A SER PREE
 
 ALTER TABLE dominios.tipo_limite_legal OWNER TO postgres;
 
- 
-
 CREATE TABLE dominios.tipo_localidade (
 	 code smallint NOT NULL,
 	 code_name text NOT NULL,
@@ -1274,7 +1269,6 @@ INSERT INTO dominios.tipo_ocupacao_solo (code,code_name, filter) VALUES (398,'Pi
 INSERT INTO dominios.tipo_ocupacao_solo (code,code_name, filter) VALUES (404,'Pátio rodoviário (404)','Pátio');
 INSERT INTO dominios.tipo_ocupacao_solo (code,code_name, filter) VALUES (405,'Pátio ferroviário (405)','Pátio');
 INSERT INTO dominios.tipo_ocupacao_solo (code,code_name, filter) VALUES (406,'Pátio metroviário (406)','Pátio');
-
 INSERT INTO dominios.tipo_ocupacao_solo (code,code_name, filter) VALUES (409,'Pátio aeroportuário (409)','Pátio');
 INSERT INTO dominios.tipo_ocupacao_solo (code,code_name, filter) VALUES (414,'Pátio portuário (414)','Pátio');
 INSERT INTO dominios.tipo_ocupacao_solo (code,code_name, filter) VALUES (415,'Pátio hidroviário (415)','Pátio');
@@ -1393,7 +1387,6 @@ INSERT INTO dominios.tipo_veg (code,code_name, filter) VALUES (194,'Cult - Peren
 INSERT INTO dominios.tipo_veg (code,code_name, filter) VALUES (196,'Cult - Anual irrigado (196)','Vegetação Cultivada');
 INSERT INTO dominios.tipo_veg (code,code_name, filter) VALUES (197,'Cult - Anual não irrigado (197)','Vegetação Cultivada');
 INSERT INTO dominios.tipo_veg (code,code_name, filter) VALUES (201,'Mangue (201)','Mangue');
-
 INSERT INTO dominios.tipo_veg (code,code_name, filter) VALUES (301,'Brejo/pântano (301)','Brejo ou pântano');
 INSERT INTO dominios.tipo_veg (code,code_name, filter) VALUES (401,'Restinga (401)','Restinga');
 INSERT INTO dominios.tipo_veg (code,code_name, filter) VALUES (501,'Campinarana (501)','Campinarana');
@@ -1408,6 +1401,7 @@ INSERT INTO dominios.tipo_veg (code,code_name, filter) VALUES (1002,'Terreno exp
 INSERT INTO dominios.tipo_veg (code,code_name, filter) VALUES (1003,'Terreno exposto - pedregoso (1003)','Terreno Exposto');
 INSERT INTO dominios.tipo_veg (code,code_name, filter) VALUES (1004,'Terreno exposto - pavimentado (1004)','Terreno Exposto');
 INSERT INTO dominios.tipo_veg (code,code_name, filter) VALUES (1296,'Reflorestamento (1296)','Reflorestamento');
+INSERT INTO dominios.tipo_veg (code,code_name, filter) VALUES (1101,'Neve/Gelo (1101)','Neve e Gelo');
 INSERT INTO dominios.tipo_veg (code,code_name, filter) VALUES (9999,'A SER PREENCHIDO (9999)','A SER PREENCHIDO (9999)');
 
 ALTER TABLE dominios.tipo_veg OWNER TO postgres;
@@ -1418,6 +1412,7 @@ CREATE TABLE dominios.tipo_via_deslocamento (
 	 CONSTRAINT tipo_via_deslocamento_pk PRIMARY KEY (code)
 );
 
+INSERT INTO dominios.tipo_via_deslocamento (code,code_name) VALUES (0,'Desconhecido (0)');
 INSERT INTO dominios.tipo_via_deslocamento (code,code_name) VALUES (2,'Estrada/Rodovia (2)');
 INSERT INTO dominios.tipo_via_deslocamento (code,code_name) VALUES (3,'Caminho carroçável (3)');
 INSERT INTO dominios.tipo_via_deslocamento (code,code_name) VALUES (4,'Auto-estrada (4)');
@@ -1470,7 +1465,6 @@ ALTER TABLE dominios.tipo_delimitacao_fisica OWNER TO postgres;
 
 CREATE TABLE edgv.cobter_area_edificada_a(
 	 id uuid NOT NULL DEFAULT uuid_generate_v4(),
-	 nome varchar(255),
 	 assentamento_precario smallint NOT NULL,
 	 observacao varchar(255),
 	 geom geometry(MultiPolygon, 4674),
@@ -1868,7 +1862,7 @@ ALTER TABLE edgv.constr_edificacao_p
 
 ALTER TABLE edgv.constr_edificacao_p
 	 ADD CONSTRAINT constr_edificacao_p_material_construcao_check 
-	 CHECK (material_construcao = ANY(ARRAY[0 :: SMALLINT, 1 :: SMALLINT, 2 :: SMALLINT, 3 :: SMALLINT, 4 :: SMALLINT, 5 :: SMALLINT, 97 :: SMALLINT, 98 :: SMALLINT, 9999 :: SMALLINT]));
+	 CHECK (material_construcao = ANY(ARRAY[0 :: SMALLINT, 1 :: SMALLINT, 2 :: SMALLINT, 3 :: SMALLINT, 4 :: SMALLINT, 5 :: SMALLINT, 97 :: SMALLINT, 98 :: SMALLINT, 9999 :: SMALLINT])); 
 
 ALTER TABLE edgv.constr_edificacao_p ALTER COLUMN material_construcao SET DEFAULT 9999;
 
@@ -2567,6 +2561,7 @@ ALTER TABLE edgv.elemnat_ilha_a ALTER COLUMN visivel SET DEFAULT 9999;
 CREATE TABLE edgv.elemnat_ponto_cotado_p(
 	 id uuid NOT NULL DEFAULT uuid_generate_v4(),
 	 cota real NOT NULL,
+	 rank_zoom smallint,
 	 cota_comprovada smallint NOT NULL,
 	 cota_mais_alta smallint NOT NULL,
 	 label_x real,
@@ -2644,17 +2639,6 @@ ALTER TABLE edgv.elemnat_terreno_sujeito_inundacao_a
 	 ON UPDATE NO ACTION ON DELETE NO ACTION;
 
 ALTER TABLE edgv.elemnat_terreno_sujeito_inundacao_a ALTER COLUMN visivel SET DEFAULT 9999;
- 
-
- 
-
- 
-
- 
-
- 
-
- 
 
 CREATE TABLE edgv.elemnat_toponimo_fisiografico_natural_p(
 	 id uuid NOT NULL DEFAULT uuid_generate_v4(),
@@ -2966,7 +2950,7 @@ ALTER TABLE edgv.infra_barragem_a
 
 ALTER TABLE edgv.infra_barragem_a
 	 ADD CONSTRAINT infra_barragem_a_material_construcao_check 
-	 CHECK (material_construcao = ANY(ARRAY[0 :: SMALLINT, 1 :: SMALLINT, 2 :: SMALLINT, 3 :: SMALLINT, 4 :: SMALLINT, 5 :: SMALLINT, 23 :: SMALLINT, 9999 :: SMALLINT]));
+	 CHECK (material_construcao = ANY(ARRAY[0 :: SMALLINT, 1 :: SMALLINT, 2 :: SMALLINT, 3 :: SMALLINT, 4 :: SMALLINT, 5 :: SMALLINT, 23 :: SMALLINT, 9999 :: SMALLINT])); 
 
 ALTER TABLE edgv.infra_barragem_a ALTER COLUMN material_construcao SET DEFAULT 9999;
 
@@ -2997,7 +2981,6 @@ CREATE TABLE edgv.infra_elemento_energia_p(
 	 label_y real,
 	 justificativa_txt smallint NOT NULL,
 	 simb_rot real,
-	 tensao_kv integer,
 	 observacao varchar(255),
 	 geom geometry(MultiPoint, 4674),
 	 CONSTRAINT infra_elemento_energia_p_pk PRIMARY KEY (id)
@@ -3048,7 +3031,6 @@ CREATE TABLE edgv.infra_elemento_energia_l(
 	 situacao_fisica smallint NOT NULL,
 	 visivel smallint NOT NULL,
 	 texto_edicao varchar(255),
-	 tensao_kv integer,
 	 observacao varchar(255),
 	 geom geometry(MultiLinestring, 4674),
 	 CONSTRAINT infra_elemento_energia_l_pk PRIMARY KEY (id)
@@ -3093,7 +3075,6 @@ CREATE TABLE edgv.infra_elemento_energia_a(
 	 label_x real,
 	 label_y real,
 	 justificativa_txt smallint NOT NULL,
-	 tensao_kv integer,
 	 observacao varchar(255),
 	 geom geometry(MultiPolygon, 4674),
 	 CONSTRAINT infra_elemento_energia_a_pk PRIMARY KEY (id)
@@ -3455,7 +3436,7 @@ ALTER TABLE edgv.infra_ferrovia_l
 
 ALTER TABLE edgv.infra_ferrovia_l
 	 ADD CONSTRAINT infra_ferrovia_l_posicao_relativa_check 
-	 CHECK (posicao_relativa = ANY(ARRAY[0 :: SMALLINT, 2 :: SMALLINT, 3 :: SMALLINT, 6 :: SMALLINT, 9999 :: SMALLINT]));
+	 CHECK (posicao_relativa = ANY(ARRAY[2 :: SMALLINT, 3 :: SMALLINT, 6 :: SMALLINT, 9999 :: SMALLINT])); 
 
 ALTER TABLE edgv.infra_ferrovia_l ALTER COLUMN posicao_relativa SET DEFAULT 9999;
 
@@ -3579,7 +3560,6 @@ CREATE TABLE edgv.infra_pista_pouso_a(
 	 label_x real,
 	 label_y real,
 	 justificativa_txt smallint NOT NULL,
-	 simb_ponto smallint NOT NULL,
 	 observacao varchar(255),
 	 geom geometry(MultiPolygon, 4674),
 	 CONSTRAINT infra_pista_pouso_a_pk PRIMARY KEY (id)
@@ -3639,13 +3619,6 @@ ALTER TABLE edgv.infra_pista_pouso_a
 
 ALTER TABLE edgv.infra_pista_pouso_a ALTER COLUMN justificativa_txt SET DEFAULT 9999;
 
-ALTER TABLE edgv.infra_pista_pouso_a
-	 ADD CONSTRAINT infra_pista_pouso_a_simb_ponto_fk FOREIGN KEY (simb_ponto)
-	 REFERENCES dominios.booleano (code) MATCH FULL
-	 ON UPDATE NO ACTION ON DELETE NO ACTION;
-
-ALTER TABLE edgv.infra_pista_pouso_a ALTER COLUMN simb_ponto SET DEFAULT 9999;
-
 CREATE TABLE edgv.infra_pista_pouso_l(
 	 id uuid NOT NULL DEFAULT uuid_generate_v4(),
 	 nome varchar(255),
@@ -3659,7 +3632,6 @@ CREATE TABLE edgv.infra_pista_pouso_l(
 	 label_x real,
 	 label_y real,
 	 justificativa_txt smallint NOT NULL,
-	 simb_ponto smallint NOT NULL,
 	 observacao varchar(255),
 	 geom geometry(MultiLinestring, 4674),
 	 CONSTRAINT infra_pista_pouso_l_pk PRIMARY KEY (id)
@@ -3687,7 +3659,7 @@ ALTER TABLE edgv.infra_pista_pouso_l
 
 ALTER TABLE edgv.infra_pista_pouso_l
 	 ADD CONSTRAINT infra_pista_pouso_l_revestimento_check 
-	 CHECK (revestimento = ANY(ARRAY[0 :: SMALLINT, 1 :: SMALLINT, 2 :: SMALLINT, 3 :: SMALLINT, 9999 :: SMALLINT]));
+	 CHECK (revestimento = ANY(ARRAY[0 :: SMALLINT, 1 :: SMALLINT, 2 :: SMALLINT, 3 :: SMALLINT, 9999 :: SMALLINT])); 
 
 ALTER TABLE edgv.infra_pista_pouso_l ALTER COLUMN revestimento SET DEFAULT 9999;
 
@@ -3718,13 +3690,6 @@ ALTER TABLE edgv.infra_pista_pouso_l
 	 ON UPDATE NO ACTION ON DELETE NO ACTION;
 
 ALTER TABLE edgv.infra_pista_pouso_l ALTER COLUMN justificativa_txt SET DEFAULT 9999;
-
-ALTER TABLE edgv.infra_pista_pouso_l
-	 ADD CONSTRAINT infra_pista_pouso_l_simb_ponto_fk FOREIGN KEY (simb_ponto)
-	 REFERENCES dominios.booleano (code) MATCH FULL
-	 ON UPDATE NO ACTION ON DELETE NO ACTION;
-
-ALTER TABLE edgv.infra_pista_pouso_l ALTER COLUMN simb_ponto SET DEFAULT 9999;
 
 CREATE TABLE edgv.infra_pista_pouso_p(
 	 id uuid NOT NULL DEFAULT uuid_generate_v4(),
@@ -3767,7 +3732,7 @@ ALTER TABLE edgv.infra_pista_pouso_p
 
 ALTER TABLE edgv.infra_pista_pouso_p
 	 ADD CONSTRAINT infra_pista_pouso_p_revestimento_check 
-	 CHECK (revestimento = ANY(ARRAY[0 :: SMALLINT, 1 :: SMALLINT, 2 :: SMALLINT, 3 :: SMALLINT, 9999 :: SMALLINT]));
+	 CHECK (revestimento = ANY(ARRAY[0 :: SMALLINT, 1 :: SMALLINT, 2 :: SMALLINT, 3 :: SMALLINT, 9999 :: SMALLINT])); 
 
 ALTER TABLE edgv.infra_pista_pouso_p ALTER COLUMN revestimento SET DEFAULT 9999;
 
@@ -3986,10 +3951,6 @@ ALTER TABLE edgv.infra_via_deslocamento_l
 	 REFERENCES dominios.revestimento (code) MATCH FULL
 	 ON UPDATE NO ACTION ON DELETE NO ACTION;
 
-ALTER TABLE edgv.infra_via_deslocamento_l
-	 ADD CONSTRAINT infra_via_deslocamento_l_revestimento_check 
-	 CHECK (revestimento = ANY(ARRAY[0 :: SMALLINT, 1 :: SMALLINT, 2 :: SMALLINT, 3 :: SMALLINT, 4 :: SMALLINT, 9999 :: SMALLINT]));
-
 ALTER TABLE edgv.infra_via_deslocamento_l ALTER COLUMN revestimento SET DEFAULT 9999;
 
 ALTER TABLE edgv.infra_via_deslocamento_l
@@ -4024,10 +3985,6 @@ ALTER TABLE edgv.infra_via_deslocamento_l
 	 ADD CONSTRAINT infra_via_deslocamento_l_administracao_fk FOREIGN KEY (administracao)
 	 REFERENCES dominios.administracao (code) MATCH FULL
 	 ON UPDATE NO ACTION ON DELETE NO ACTION;
-
-ALTER TABLE edgv.infra_via_deslocamento_l
-	 ADD CONSTRAINT infra_via_deslocamento_l_administracao_check 
-	 CHECK (administracao = ANY(ARRAY[0 :: SMALLINT, 1 :: SMALLINT, 2 :: SMALLINT, 3 :: SMALLINT, 6 :: SMALLINT, 7 :: SMALLINT, 9999 :: SMALLINT]));
 
 ALTER TABLE edgv.infra_via_deslocamento_l ALTER COLUMN administracao SET DEFAULT 9999;
 
@@ -4114,34 +4071,6 @@ ALTER TABLE edgv.llp_limite_especial_a
 	 ON UPDATE NO ACTION ON DELETE NO ACTION;
 
 ALTER TABLE edgv.llp_limite_especial_a ALTER COLUMN visivel SET DEFAULT 9999;
-
-CREATE TABLE edgv.llp_unidade_federacao_a(
-	 id uuid NOT NULL DEFAULT uuid_generate_v4(),
-	 nome varchar(255),
-	 sigla smallint NOT NULL,
-	 geometria_aproximada smallint NOT NULL,
-	 observacao varchar(255),
-	 geom geometry(MultiPolygon, 4674),
-	 CONSTRAINT llp_unidade_federacao_a_pk PRIMARY KEY (id)
-	 WITH (FILLFACTOR = 80)
-);
-CREATE INDEX llp_unidade_federacao_a_geom ON edgv.llp_unidade_federacao_a USING gist (geom);
-
-ALTER TABLE edgv.llp_unidade_federacao_a OWNER TO postgres;
-
-ALTER TABLE edgv.llp_unidade_federacao_a
-	 ADD CONSTRAINT llp_unidade_federacao_a_sigla_fk FOREIGN KEY (sigla)
-	 REFERENCES dominios.sigla_uf (code) MATCH FULL
-	 ON UPDATE NO ACTION ON DELETE NO ACTION;
-
-ALTER TABLE edgv.llp_unidade_federacao_a ALTER COLUMN sigla SET DEFAULT 9999;
-
-ALTER TABLE edgv.llp_unidade_federacao_a
-	 ADD CONSTRAINT llp_unidade_federacao_a_geometria_aproximada_fk FOREIGN KEY (geometria_aproximada)
-	 REFERENCES dominios.booleano (code) MATCH FULL
-	 ON UPDATE NO ACTION ON DELETE NO ACTION;
-
-ALTER TABLE edgv.llp_unidade_federacao_a ALTER COLUMN geometria_aproximada SET DEFAULT 9999;
 
 CREATE TABLE edgv.llp_localidade_p(
 	 id uuid NOT NULL DEFAULT uuid_generate_v4(),
@@ -4298,27 +4227,6 @@ ALTER TABLE edgv.llp_ponto_controle_p
 	 ON UPDATE NO ACTION ON DELETE NO ACTION;
 
 ALTER TABLE edgv.llp_ponto_controle_p ALTER COLUMN justificativa_txt SET DEFAULT 9999;
-
-CREATE TABLE edgv.llp_pais_a(
-	 id uuid NOT NULL DEFAULT uuid_generate_v4(),
-	 nome varchar(255),
-	 sigla varchar(3),
-	 geometria_aproximada smallint NOT NULL,
-	 observacao varchar(255),
-	 geom geometry(MultiPolygon, 4674),
-	 CONSTRAINT llp_pais_a_pk PRIMARY KEY (id)
-	 WITH (FILLFACTOR = 80)
-);
-CREATE INDEX llp_pais_a_geom ON edgv.llp_pais_a USING gist (geom);
-
-ALTER TABLE edgv.llp_pais_a OWNER TO postgres;
-
-ALTER TABLE edgv.llp_pais_a
-	 ADD CONSTRAINT llp_pais_a_geometria_aproximada_fk FOREIGN KEY (geometria_aproximada)
-	 REFERENCES dominios.booleano (code) MATCH FULL
-	 ON UPDATE NO ACTION ON DELETE NO ACTION;
-
-ALTER TABLE edgv.llp_pais_a ALTER COLUMN geometria_aproximada SET DEFAULT 9999;
 
 CREATE TABLE edgv.llp_area_sem_dados_a(
 	 id uuid NOT NULL DEFAULT uuid_generate_v4(),
@@ -5042,7 +4950,6 @@ ALTER TABLE edgv.centroide_massa_dagua_p ALTER COLUMN regime SET DEFAULT 9999;
 
 CREATE TABLE edgv.centroide_area_edificada_p(
 	 id uuid NOT NULL DEFAULT uuid_generate_v4(),
-	 nome varchar(255),
 	 assentamento_precario smallint NOT NULL,
 	 observacao varchar(255),
 	 geom geometry(MultiPoint, 4674),

@@ -1,6 +1,6 @@
 {
   "modelo": "EDGV Topo 2.0",
-  "versao": "0.9.0",
+  "versao": "0.10.0",
   "schema_dados": "edgv",
   "schema_dominios": "dominios",
   "a_ser_preenchido": {
@@ -3901,6 +3901,11 @@
           "code": 1296,
           "value": "Reflorestamento",
           "valor_filtro": "Reflorestamento"
+        },
+        {
+          "code": 1101,
+          "value": "Neve/Gelo",
+          "valor_filtro": "Neve e Gelo"
         }
       ],
       "filtro": true
@@ -3908,6 +3913,10 @@
     {
       "nome": "tipo_via_deslocamento",
       "valores": [
+        {
+          "code": 0,
+          "value": "Desconhecido"
+        },
         {
           "code": 2,
           "value": "Estrada/Rodovia"
@@ -4000,11 +4009,6 @@
         "MultiPolygon"
       ],
       "atributos": [
-        {
-          "nome": "nome",
-          "tipo": "varchar(255)",
-          "cardinalidade": "0..1"
-        },
         {
           "nome": "assentamento_precario",
           "tipo": "smallint",
@@ -5278,6 +5282,12 @@
           "cardinalidade": "1..1"
         },
         {
+          "nome": "rank_zoom",
+          "tipo": "smallint",
+          "cardinalidade": "0..1",
+          "descricao": "Rank de proeminencia por grade para filtrar por zoom (1 = mais proeminente); calculado offline"
+        },
+        {
           "nome": "cota_comprovada",
           "tipo": "smallint",
           "cardinalidade": "1..1",
@@ -5817,12 +5827,6 @@
           "primitivas": [
             "MultiPoint"
           ]
-        },
-        {
-          "nome": "tensao_kv",
-          "tipo": "integer",
-          "cardinalidade": "0..1",
-          "descricao": "Tensao da linha de transmissao em kV"
         }
       ]
     },
@@ -6517,16 +6521,6 @@
           "primitivas": [
             "MultiPoint"
           ]
-        },
-        {
-          "nome": "simb_ponto",
-          "tipo": "smallint",
-          "cardinalidade": "1..1",
-          "mapa_valor": "booleano",
-          "primitivas": [
-            "MultiLinestring",
-            "MultiPolygon"
-          ]
         }
       ]
     },
@@ -6921,32 +6915,6 @@
       ]
     },
     {
-      "nome": "unidade_federacao",
-      "categoria": "llp",
-      "primitivas": [
-        "MultiPolygon"
-      ],
-      "atributos": [
-        {
-          "nome": "nome",
-          "tipo": "varchar(255)",
-          "cardinalidade": "0..1"
-        },
-        {
-          "nome": "sigla",
-          "tipo": "smallint",
-          "cardinalidade": "1..1",
-          "mapa_valor": "sigla_uf"
-        },
-        {
-          "nome": "geometria_aproximada",
-          "tipo": "smallint",
-          "cardinalidade": "1..1",
-          "mapa_valor": "booleano"
-        }
-      ]
-    },
-    {
       "nome": "localidade",
       "categoria": "llp",
       "primitivas": [
@@ -7092,34 +7060,6 @@
           "tipo": "smallint",
           "cardinalidade": "1..1",
           "mapa_valor": "justificativa"
-        }
-      ]
-    },
-    {
-      "nome": "pais",
-      "categoria": "llp",
-      "descricao": "-",
-      "primitivas": [
-        "MultiPolygon"
-      ],
-      "atributos": [
-        {
-          "nome": "nome",
-          "tipo": "varchar(255)",
-          "descricao": "-",
-          "cardinalidade": "0..1"
-        },
-        {
-          "nome": "sigla",
-          "tipo": "varchar(3)",
-          "descricao": "-",
-          "cardinalidade": "0..1"
-        },
-        {
-          "nome": "geometria_aproximada",
-          "tipo": "smallint",
-          "cardinalidade": "1..1",
-          "mapa_valor": "booleano"
         }
       ]
     },
@@ -7735,11 +7675,6 @@
         "MultiPoint"
       ],
       "atributos": [
-        {
-          "nome": "nome",
-          "tipo": "varchar(255)",
-          "cardinalidade": "0..1"
-        },
         {
           "nome": "assentamento_precario",
           "tipo": "smallint",
