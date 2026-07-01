@@ -1,11 +1,11 @@
 {
   "metadata": {
-    "version": "1.1",
-    "date": "2026-06-10",
+    "version": "1.2",
+    "date": "2026-07-01",
     "source": "OpenStreetMap",
-    "target": "EDGV Topo 2.0 v0.9.1",
+    "target": "EDGV Topo 2.0 v0.10.0",
     "description": "Mapeamento de tags OSM para tabelas e atributos EDGV Topo 2.0. Consumido pelo PythonCaller no FME Workbench.",
-    "total_rules": 273,
+    "total_rules": 275,
     "match_strategy": "first_match_wins"
   },
   "rules": [
@@ -567,14 +567,14 @@
       "edgv_target": {
         "table": "llp_limite_especial_a",
         "attributes": {
-          "tipo": 25
+          "tipo": 5
         }
       },
       "osm_attribute_mapping": {
         "name": "nome"
       },
       "confidence": "medium",
-      "note": "ARIE — protect_class=6 pode ser FLONA ou ARIE"
+      "note": "protect_class=6 (paisagem protegida) e ambiguo no OSM; baixado para UC generica (5) para nao afirmar ARIE errado"
     },
     {
       "id": "limite_esp_uc_generica",
@@ -1069,6 +1069,26 @@
       "note": "Floresta densa"
     },
     {
+      "id": "veg_glacier",
+      "osm_filter": {
+        "tags": {
+          "natural": "glacier"
+        },
+        "geometry": [
+          "polygon"
+        ]
+      },
+      "edgv_target": {
+        "table": "cobter_vegetacao_a",
+        "attributes": {
+          "tipo": 1101
+        }
+      },
+      "osm_attribute_mapping": {},
+      "confidence": "high",
+      "note": "Neve/Gelo (natural=glacier); escopo America do Sul (0.10.0)"
+    },
+    {
       "id": "veg_reflorestamento",
       "osm_filter": {
         "tags": {
@@ -1087,7 +1107,7 @@
       },
       "osm_attribute_mapping": {},
       "confidence": "medium",
-      "note": "Reflorestamento (coníferas)"
+      "note": "Reflorestamento (landuse=forest + leaf_type=needleleaved). Caveat: a araucaria NATIVA tambem e acicular e cai aqui; refinar se houver tag de manejo/producao para separar plantacao de floresta densa nativa"
     },
     {
       "id": "veg_floresta_landuse",
@@ -1545,11 +1565,9 @@
         "table": "cobter_area_edificada_a",
         "attributes": {}
       },
-      "osm_attribute_mapping": {
-        "name": "nome"
-      },
+      "osm_attribute_mapping": {},
       "confidence": "high",
-      "note": "Área edificada residencial"
+      "note": "Área edificada residencial (0.10.0: nome removido de cobter_area_edificada_a)"
     },
     {
       "_comment": "=== INFRA — VIAS DE DESLOCAMENTO ==="
@@ -1585,10 +1603,23 @@
             "paved": 3,
             "asphalt": 3,
             "concrete": 3,
+            "concrete:plates": 3,
+            "chipseal": 3,
+            "bitumen": 3,
             "cobblestone": 4,
+            "sett": 4,
+            "paving_stones": 4,
             "unpaved": 1,
             "gravel": 2,
-            "ground": 1
+            "fine_gravel": 2,
+            "compacted": 2,
+            "pebblestone": 2,
+            "ground": 1,
+            "dirt": 1,
+            "earth": 1,
+            "sand": 1,
+            "grass": 1,
+            "mud": 1
           }
         }
       },
@@ -1651,8 +1682,23 @@
             "paved": 3,
             "asphalt": 3,
             "concrete": 3,
+            "concrete:plates": 3,
+            "chipseal": 3,
+            "bitumen": 3,
+            "cobblestone": 4,
+            "sett": 4,
+            "paving_stones": 4,
             "unpaved": 1,
-            "gravel": 2
+            "gravel": 2,
+            "fine_gravel": 2,
+            "compacted": 2,
+            "pebblestone": 2,
+            "ground": 1,
+            "dirt": 1,
+            "earth": 1,
+            "sand": 1,
+            "grass": 1,
+            "mud": 1
           }
         },
         "dual_carriageway": {
@@ -1719,8 +1765,23 @@
             "paved": 3,
             "asphalt": 3,
             "concrete": 3,
+            "concrete:plates": 3,
+            "chipseal": 3,
+            "bitumen": 3,
+            "cobblestone": 4,
+            "sett": 4,
+            "paving_stones": 4,
             "unpaved": 1,
-            "gravel": 2
+            "gravel": 2,
+            "fine_gravel": 2,
+            "compacted": 2,
+            "pebblestone": 2,
+            "ground": 1,
+            "dirt": 1,
+            "earth": 1,
+            "sand": 1,
+            "grass": 1,
+            "mud": 1
           }
         },
         "dual_carriageway": {
@@ -1788,8 +1849,23 @@
             "paved": 3,
             "asphalt": 3,
             "concrete": 3,
+            "concrete:plates": 3,
+            "chipseal": 3,
+            "bitumen": 3,
+            "cobblestone": 4,
+            "sett": 4,
+            "paving_stones": 4,
             "unpaved": 1,
-            "gravel": 2
+            "gravel": 2,
+            "fine_gravel": 2,
+            "compacted": 2,
+            "pebblestone": 2,
+            "ground": 1,
+            "dirt": 1,
+            "earth": 1,
+            "sand": 1,
+            "grass": 1,
+            "mud": 1
           }
         },
         "dual_carriageway": {
@@ -1857,8 +1933,24 @@
           "map": {
             "paved": 3,
             "asphalt": 3,
+            "concrete": 3,
+            "concrete:plates": 3,
+            "chipseal": 3,
+            "bitumen": 3,
+            "cobblestone": 4,
+            "sett": 4,
+            "paving_stones": 4,
             "unpaved": 1,
-            "gravel": 2
+            "gravel": 2,
+            "fine_gravel": 2,
+            "compacted": 2,
+            "pebblestone": 2,
+            "ground": 1,
+            "dirt": 1,
+            "earth": 1,
+            "sand": 1,
+            "grass": 1,
+            "mud": 1
           }
         }
       },
@@ -1918,9 +2010,23 @@
             "paved": 3,
             "asphalt": 3,
             "concrete": 3,
+            "concrete:plates": 3,
+            "chipseal": 3,
+            "bitumen": 3,
+            "cobblestone": 4,
+            "sett": 4,
+            "paving_stones": 4,
             "unpaved": 1,
             "gravel": 2,
-            "ground": 1
+            "fine_gravel": 2,
+            "compacted": 2,
+            "pebblestone": 2,
+            "ground": 1,
+            "dirt": 1,
+            "earth": 1,
+            "sand": 1,
+            "grass": 1,
+            "mud": 1
           }
         }
       },
@@ -1953,9 +2059,24 @@
           "map": {
             "paved": 3,
             "asphalt": 3,
+            "concrete": 3,
+            "concrete:plates": 3,
+            "chipseal": 3,
+            "bitumen": 3,
+            "cobblestone": 4,
+            "sett": 4,
+            "paving_stones": 4,
             "unpaved": 1,
             "gravel": 2,
-            "ground": 1
+            "fine_gravel": 2,
+            "compacted": 2,
+            "pebblestone": 2,
+            "ground": 1,
+            "dirt": 1,
+            "earth": 1,
+            "sand": 1,
+            "grass": 1,
+            "mud": 1
           }
         }
       },
@@ -1987,9 +2108,24 @@
           "map": {
             "paved": 3,
             "asphalt": 3,
+            "concrete": 3,
+            "concrete:plates": 3,
+            "chipseal": 3,
+            "bitumen": 3,
+            "cobblestone": 4,
+            "sett": 4,
+            "paving_stones": 4,
             "unpaved": 1,
             "gravel": 2,
-            "ground": 1
+            "fine_gravel": 2,
+            "compacted": 2,
+            "pebblestone": 2,
+            "ground": 1,
+            "dirt": 1,
+            "earth": 1,
+            "sand": 1,
+            "grass": 1,
+            "mud": 1
           }
         }
       },
@@ -2117,12 +2253,24 @@
           "map": {
             "paved": 3,
             "asphalt": 3,
+            "concrete": 3,
+            "concrete:plates": 3,
+            "chipseal": 3,
+            "bitumen": 3,
+            "cobblestone": 4,
+            "sett": 4,
+            "paving_stones": 4,
+            "unpaved": 1,
             "gravel": 2,
+            "fine_gravel": 2,
             "compacted": 2,
+            "pebblestone": 2,
             "ground": 1,
             "dirt": 1,
-            "mud": 1,
-            "sand": 1
+            "earth": 1,
+            "sand": 1,
+            "grass": 1,
+            "mud": 1
           }
         }
       },
@@ -2200,6 +2348,29 @@
       },
       "confidence": "high",
       "note": "Escadas"
+    },
+    {
+      "id": "via_road_generico",
+      "osm_filter": {
+        "tags": {
+          "highway": "road"
+        },
+        "geometry": [
+          "line"
+        ]
+      },
+      "edgv_target": {
+        "table": "infra_via_deslocamento_l",
+        "attributes": {
+          "tipo": 0,
+          "situacao_fisica": 3
+        }
+      },
+      "osm_attribute_mapping": {
+        "name": "nome"
+      },
+      "confidence": "medium",
+      "note": "Via de classe desconhecida (highway=road) -> tipo 0 Desconhecido (0.10.0)"
     },
     {
       "_comment": "=== INFRA — FERROVIAS ==="
@@ -2350,7 +2521,7 @@
       "edgv_target": {
         "table": "infra_ferrovia_l",
         "attributes": {
-          "tipo": 5,
+          "tipo": 6,
           "situacao_fisica": 3
         }
       },
@@ -2358,7 +2529,7 @@
         "name": "nome"
       },
       "confidence": "medium",
-      "note": "Monotrilho → aproximado para bonde"
+      "note": "Monotrilho -> aeromovel (6): guia elevada, mais proximo que bonde de rua (railway=monorail)"
     },
     {
       "id": "ferrovia_funicular",
