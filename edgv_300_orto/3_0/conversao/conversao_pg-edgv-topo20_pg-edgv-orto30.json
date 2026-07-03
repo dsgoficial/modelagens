@@ -6,7 +6,7 @@
     "modelo_B": "EDGV Orto 3.0",
     "versao_modelo_B": "3.0.0"
   },
-  "__comment": "UTF-8. Topo 2.0 <-> Orto 3.0. Comuns: 1:1 por nome. As areas especiais e localidades, unificadas no Topo 2.0 (limite_especial/localidade), sao classes SEPARADAS no Orto e mapeadas por filtro sobre 'tipo'. Atributos auxiliares proprios do orto (edicao_articulacao_imagem, edicao das areas especiais) nao tem fonte no Topo 2.0 — ver orto30_topo20_sem_correspondencia.md. Rev Topo 2.0 0.11.0: as feicoes continentais novas estao em cobter_vegetacao (crosta salina 1005, arbustiva 1200) e elemnat_elemento_fisiografico (vulcao 24, cratera 25), ambas ja fora do escopo conservador do Orto 3.0 (sem correspondencia); nada a mapear aqui.",
+  "__comment": "UTF-8. Topo 2.0 <-> Orto 3.0. Comuns: 1:1 por nome. As areas especiais e localidades, unificadas no Topo 2.0 (limite_especial/localidade), sao classes SEPARADAS no Orto e mapeadas por filtro sobre 'tipo'. Atributos auxiliares proprios do orto (edicao_articulacao_imagem, edicao das areas especiais) nao tem fonte no Topo 2.0 — ver orto30_topo20_sem_correspondencia.md.",
   "schema_A": "edgv",
   "schema_B": "edgv",
   "afixo_geom_A": {
@@ -226,14 +226,6 @@
         ]
       },
       "__comment": "split por tipo de llp_limite_especial (codigos [5, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35])."
-    },
-    {
-      "classe_A": "llp_unidade_federacao",
-      "classe_B": "llp_unidade_federacao"
-    },
-    {
-      "classe_A": "llp_pais",
-      "classe_B": "llp_pais"
     },
     {
       "classe_A": "llp_area_sem_dados",

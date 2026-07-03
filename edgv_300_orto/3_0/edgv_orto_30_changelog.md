@@ -10,7 +10,7 @@
 
 | | Orto 2.5 | **Orto 3.0** |
 |---|---|---|
-| Modelo base | EDGV 3.0 | **EDGV Topo 2.0** |
+| Modelo base | EDGV 3.0 | **EDGV Topo 2.0 v0.11.0** (regerado 2026-07-03; antes 0.9.0) |
 | Versão | 2.5.4 | **3.0.0** |
 | Classes temáticas | 27 | **27** (mesmas) |
 | Classes auxiliares (`extension_classes`) | 24 | **24** (mesmas) |

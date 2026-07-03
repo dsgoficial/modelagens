@@ -1791,6 +1791,10 @@
       "nome": "tipo_via_deslocamento",
       "valores": [
         {
+          "code": 0,
+          "value": "Desconhecido"
+        },
+        {
           "code": 2,
           "value": "Estrada/Rodovia"
         },
@@ -2242,6 +2246,12 @@
           "nome": "cota",
           "tipo": "real",
           "cardinalidade": "1..1"
+        },
+        {
+          "nome": "rank_zoom",
+          "tipo": "smallint",
+          "cardinalidade": "0..1",
+          "descricao": "Rank de proeminencia por grade para filtrar por zoom (1 = mais proeminente); calculado offline"
         },
         {
           "nome": "cota_comprovada",
@@ -2706,12 +2716,6 @@
           "primitivas": [
             "MultiPoint"
           ]
-        },
-        {
-          "nome": "tensao_kv",
-          "tipo": "integer",
-          "cardinalidade": "0..1",
-          "descricao": "Tensao da linha de transmissao em kV"
         }
       ]
     },
@@ -3204,16 +3208,6 @@
           "cardinalidade": "0..1",
           "primitivas": [
             "MultiPoint"
-          ]
-        },
-        {
-          "nome": "simb_ponto",
-          "tipo": "smallint",
-          "cardinalidade": "1..1",
-          "mapa_valor": "booleano",
-          "primitivas": [
-            "MultiLinestring",
-            "MultiPolygon"
           ]
         }
       ]

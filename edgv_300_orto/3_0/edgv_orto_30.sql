@@ -761,6 +761,7 @@ CREATE TABLE dominios.tipo_via_deslocamento (
 	 CONSTRAINT tipo_via_deslocamento_pk PRIMARY KEY (code)
 );
 
+INSERT INTO dominios.tipo_via_deslocamento (code,code_name) VALUES (0,'Desconhecido (0)');
 INSERT INTO dominios.tipo_via_deslocamento (code,code_name) VALUES (2,'Estrada/Rodovia (2)');
 INSERT INTO dominios.tipo_via_deslocamento (code,code_name) VALUES (3,'Caminho carroçável (3)');
 INSERT INTO dominios.tipo_via_deslocamento (code,code_name) VALUES (4,'Auto-estrada (4)');
@@ -1223,6 +1224,7 @@ ALTER TABLE edgv.elemnat_ilha_a ALTER COLUMN visivel SET DEFAULT 9999;
 CREATE TABLE edgv.elemnat_ponto_cotado_p(
 	 id uuid NOT NULL DEFAULT uuid_generate_v4(),
 	 cota real NOT NULL,
+	 rank_zoom smallint,
 	 cota_comprovada smallint NOT NULL,
 	 cota_mais_alta smallint NOT NULL,
 	 label_x real,
@@ -1538,7 +1540,7 @@ ALTER TABLE edgv.infra_barragem_a
 
 ALTER TABLE edgv.infra_barragem_a
 	 ADD CONSTRAINT infra_barragem_a_material_construcao_check 
-	 CHECK (material_construcao = ANY(ARRAY[0 :: SMALLINT, 1 :: SMALLINT, 2 :: SMALLINT, 3 :: SMALLINT, 4 :: SMALLINT, 5 :: SMALLINT, 23 :: SMALLINT, 9999 :: SMALLINT, 9999 :: SMALLINT])); 
+	 CHECK (material_construcao = ANY(ARRAY[0 :: SMALLINT, 1 :: SMALLINT, 2 :: SMALLINT, 3 :: SMALLINT, 4 :: SMALLINT, 5 :: SMALLINT, 23 :: SMALLINT, 9999 :: SMALLINT])); 
 
 ALTER TABLE edgv.infra_barragem_a ALTER COLUMN material_construcao SET DEFAULT 9999;
 
@@ -1569,7 +1571,6 @@ CREATE TABLE edgv.infra_elemento_energia_p(
 	 label_y real,
 	 justificativa_txt smallint NOT NULL,
 	 simb_rot real,
-	 tensao_kv integer,
 	 observacao varchar(255),
 	 geom geometry(MultiPoint, 4674),
 	 CONSTRAINT infra_elemento_energia_p_pk PRIMARY KEY (id)
@@ -1620,7 +1621,6 @@ CREATE TABLE edgv.infra_elemento_energia_l(
 	 situacao_fisica smallint NOT NULL,
 	 visivel smallint NOT NULL,
 	 texto_edicao varchar(255),
-	 tensao_kv integer,
 	 observacao varchar(255),
 	 geom geometry(MultiLinestring, 4674),
 	 CONSTRAINT infra_elemento_energia_l_pk PRIMARY KEY (id)
@@ -1665,7 +1665,6 @@ CREATE TABLE edgv.infra_elemento_energia_a(
 	 label_x real,
 	 label_y real,
 	 justificativa_txt smallint NOT NULL,
-	 tensao_kv integer,
 	 observacao varchar(255),
 	 geom geometry(MultiPolygon, 4674),
 	 CONSTRAINT infra_elemento_energia_a_pk PRIMARY KEY (id)
@@ -2001,7 +2000,6 @@ CREATE TABLE edgv.infra_pista_pouso_a(
 	 label_x real,
 	 label_y real,
 	 justificativa_txt smallint NOT NULL,
-	 simb_ponto smallint NOT NULL,
 	 observacao varchar(255),
 	 geom geometry(MultiPolygon, 4674),
 	 CONSTRAINT infra_pista_pouso_a_pk PRIMARY KEY (id)
@@ -2061,13 +2059,6 @@ ALTER TABLE edgv.infra_pista_pouso_a
 
 ALTER TABLE edgv.infra_pista_pouso_a ALTER COLUMN justificativa_txt SET DEFAULT 9999;
 
-ALTER TABLE edgv.infra_pista_pouso_a
-	 ADD CONSTRAINT infra_pista_pouso_a_simb_ponto_fk FOREIGN KEY (simb_ponto)
-	 REFERENCES dominios.booleano (code) MATCH FULL
-	 ON UPDATE NO ACTION ON DELETE NO ACTION;
-
-ALTER TABLE edgv.infra_pista_pouso_a ALTER COLUMN simb_ponto SET DEFAULT 9999;
-
 CREATE TABLE edgv.infra_pista_pouso_l(
 	 id uuid NOT NULL DEFAULT uuid_generate_v4(),
 	 nome varchar(255),
@@ -2081,7 +2072,6 @@ CREATE TABLE edgv.infra_pista_pouso_l(
 	 label_x real,
 	 label_y real,
 	 justificativa_txt smallint NOT NULL,
-	 simb_ponto smallint NOT NULL,
 	 observacao varchar(255),
 	 geom geometry(MultiLinestring, 4674),
 	 CONSTRAINT infra_pista_pouso_l_pk PRIMARY KEY (id)
@@ -2109,7 +2099,7 @@ ALTER TABLE edgv.infra_pista_pouso_l
 
 ALTER TABLE edgv.infra_pista_pouso_l
 	 ADD CONSTRAINT infra_pista_pouso_l_revestimento_check 
-	 CHECK (revestimento = ANY(ARRAY[0 :: SMALLINT, 1 :: SMALLINT, 2 :: SMALLINT, 3 :: SMALLINT, 9999 :: SMALLINT, 9999 :: SMALLINT])); 
+	 CHECK (revestimento = ANY(ARRAY[0 :: SMALLINT, 1 :: SMALLINT, 2 :: SMALLINT, 3 :: SMALLINT, 9999 :: SMALLINT])); 
 
 ALTER TABLE edgv.infra_pista_pouso_l ALTER COLUMN revestimento SET DEFAULT 9999;
 
@@ -2140,13 +2130,6 @@ ALTER TABLE edgv.infra_pista_pouso_l
 	 ON UPDATE NO ACTION ON DELETE NO ACTION;
 
 ALTER TABLE edgv.infra_pista_pouso_l ALTER COLUMN justificativa_txt SET DEFAULT 9999;
-
-ALTER TABLE edgv.infra_pista_pouso_l
-	 ADD CONSTRAINT infra_pista_pouso_l_simb_ponto_fk FOREIGN KEY (simb_ponto)
-	 REFERENCES dominios.booleano (code) MATCH FULL
-	 ON UPDATE NO ACTION ON DELETE NO ACTION;
-
-ALTER TABLE edgv.infra_pista_pouso_l ALTER COLUMN simb_ponto SET DEFAULT 9999;
 
 CREATE TABLE edgv.infra_pista_pouso_p(
 	 id uuid NOT NULL DEFAULT uuid_generate_v4(),
@@ -2189,7 +2172,7 @@ ALTER TABLE edgv.infra_pista_pouso_p
 
 ALTER TABLE edgv.infra_pista_pouso_p
 	 ADD CONSTRAINT infra_pista_pouso_p_revestimento_check 
-	 CHECK (revestimento = ANY(ARRAY[0 :: SMALLINT, 1 :: SMALLINT, 2 :: SMALLINT, 3 :: SMALLINT, 9999 :: SMALLINT, 9999 :: SMALLINT, 9999 :: SMALLINT])); 
+	 CHECK (revestimento = ANY(ARRAY[0 :: SMALLINT, 1 :: SMALLINT, 2 :: SMALLINT, 3 :: SMALLINT, 9999 :: SMALLINT])); 
 
 ALTER TABLE edgv.infra_pista_pouso_p ALTER COLUMN revestimento SET DEFAULT 9999;
 

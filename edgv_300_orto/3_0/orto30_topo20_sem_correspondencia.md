@@ -4,7 +4,7 @@ Complemento da conversao `conversao_pg-edgv-topo20_pg-edgv-orto30.json`.
 
 ## 1. Classes tematicas do Topo 2.0 sem classe no Orto 3.0
 
-19 de 42 classes tematicas. O Orto 3.0 adota escopo conservador (precedencia Orto 2.5): exclui o que e intrinsecamente nao interpretavel por ortoimagem (batimetria, geodesia de campo, subsuperficie, rotas conceituais) e o que ja estava fora do produto Orto 2.5.
+19 de 40 classes tematicas. O Orto 3.0 adota escopo conservador (precedencia Orto 2.5): exclui o que e intrinsecamente nao interpretavel por ortoimagem (batimetria, geodesia de campo, subsuperficie, rotas conceituais) e o que ja estava fora do produto Orto 2.5.
 
 | Classe Topo 2.0 | Motivo |
 |---|---|
