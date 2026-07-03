@@ -12,43 +12,6 @@ CREATE TABLE public.db_metadata(
 );
 INSERT INTO public.db_metadata (edgvversion, dbimplversion) VALUES ('EDGV Orto 3.0','3.0.0');
 
-CREATE TABLE dominios.sigla_uf (
-	 code smallint NOT NULL,
-	 code_name text NOT NULL,
-	 CONSTRAINT sigla_uf_pk PRIMARY KEY (code)
-);
-
-INSERT INTO dominios.sigla_uf (code,code_name) VALUES (1,'AC (1)');
-INSERT INTO dominios.sigla_uf (code,code_name) VALUES (2,'AL (2)');
-INSERT INTO dominios.sigla_uf (code,code_name) VALUES (3,'AM (3)');
-INSERT INTO dominios.sigla_uf (code,code_name) VALUES (4,'AP (4)');
-INSERT INTO dominios.sigla_uf (code,code_name) VALUES (5,'BA (5)');
-INSERT INTO dominios.sigla_uf (code,code_name) VALUES (6,'CE (6)');
-INSERT INTO dominios.sigla_uf (code,code_name) VALUES (7,'DF (7)');
-INSERT INTO dominios.sigla_uf (code,code_name) VALUES (8,'ES (8)');
-INSERT INTO dominios.sigla_uf (code,code_name) VALUES (9,'GO (9)');
-INSERT INTO dominios.sigla_uf (code,code_name) VALUES (10,'MA (10)');
-INSERT INTO dominios.sigla_uf (code,code_name) VALUES (11,'MG (11)');
-INSERT INTO dominios.sigla_uf (code,code_name) VALUES (12,'MS (12)');
-INSERT INTO dominios.sigla_uf (code,code_name) VALUES (13,'MT (13)');
-INSERT INTO dominios.sigla_uf (code,code_name) VALUES (14,'PA (14)');
-INSERT INTO dominios.sigla_uf (code,code_name) VALUES (15,'PB (15)');
-INSERT INTO dominios.sigla_uf (code,code_name) VALUES (16,'PE (16)');
-INSERT INTO dominios.sigla_uf (code,code_name) VALUES (17,'PI (17)');
-INSERT INTO dominios.sigla_uf (code,code_name) VALUES (18,'PR (18)');
-INSERT INTO dominios.sigla_uf (code,code_name) VALUES (19,'RJ (19)');
-INSERT INTO dominios.sigla_uf (code,code_name) VALUES (20,'RN (20)');
-INSERT INTO dominios.sigla_uf (code,code_name) VALUES (21,'RO (21)');
-INSERT INTO dominios.sigla_uf (code,code_name) VALUES (22,'RR (22)');
-INSERT INTO dominios.sigla_uf (code,code_name) VALUES (23,'RS (23)');
-INSERT INTO dominios.sigla_uf (code,code_name) VALUES (24,'SC (24)');
-INSERT INTO dominios.sigla_uf (code,code_name) VALUES (25,'SE (25)');
-INSERT INTO dominios.sigla_uf (code,code_name) VALUES (26,'SP (26)');
-INSERT INTO dominios.sigla_uf (code,code_name) VALUES (27,'TO (27)');
-INSERT INTO dominios.sigla_uf (code,code_name) VALUES (9999,'A SER PREENCHIDO (9999)');
-
-ALTER TABLE dominios.sigla_uf OWNER TO postgres;
-
 CREATE TABLE dominios.tipo_obstaculo (
 	 code smallint NOT NULL,
 	 code_name text NOT NULL,
@@ -2608,55 +2571,6 @@ ALTER TABLE edgv.llp_unidade_conservacao_a
 	 ON UPDATE NO ACTION ON DELETE NO ACTION;
 
 ALTER TABLE edgv.llp_unidade_conservacao_a ALTER COLUMN visivel SET DEFAULT 9999;
-
-CREATE TABLE edgv.llp_unidade_federacao_a(
-	 id uuid NOT NULL DEFAULT uuid_generate_v4(),
-	 nome varchar(255),
-	 sigla smallint NOT NULL,
-	 geometria_aproximada smallint NOT NULL,
-	 observacao varchar(255),
-	 geom geometry(MultiPolygon, 4674),
-	 CONSTRAINT llp_unidade_federacao_a_pk PRIMARY KEY (id)
-	 WITH (FILLFACTOR = 80)
-);
-CREATE INDEX llp_unidade_federacao_a_geom ON edgv.llp_unidade_federacao_a USING gist (geom);
-
-ALTER TABLE edgv.llp_unidade_federacao_a OWNER TO postgres;
-
-ALTER TABLE edgv.llp_unidade_federacao_a
-	 ADD CONSTRAINT llp_unidade_federacao_a_sigla_fk FOREIGN KEY (sigla)
-	 REFERENCES dominios.sigla_uf (code) MATCH FULL
-	 ON UPDATE NO ACTION ON DELETE NO ACTION;
-
-ALTER TABLE edgv.llp_unidade_federacao_a ALTER COLUMN sigla SET DEFAULT 9999;
-
-ALTER TABLE edgv.llp_unidade_federacao_a
-	 ADD CONSTRAINT llp_unidade_federacao_a_geometria_aproximada_fk FOREIGN KEY (geometria_aproximada)
-	 REFERENCES dominios.booleano (code) MATCH FULL
-	 ON UPDATE NO ACTION ON DELETE NO ACTION;
-
-ALTER TABLE edgv.llp_unidade_federacao_a ALTER COLUMN geometria_aproximada SET DEFAULT 9999;
-
-CREATE TABLE edgv.llp_pais_a(
-	 id uuid NOT NULL DEFAULT uuid_generate_v4(),
-	 nome varchar(255),
-	 sigla varchar(3),
-	 geometria_aproximada smallint NOT NULL,
-	 observacao varchar(255),
-	 geom geometry(MultiPolygon, 4674),
-	 CONSTRAINT llp_pais_a_pk PRIMARY KEY (id)
-	 WITH (FILLFACTOR = 80)
-);
-CREATE INDEX llp_pais_a_geom ON edgv.llp_pais_a USING gist (geom);
-
-ALTER TABLE edgv.llp_pais_a OWNER TO postgres;
-
-ALTER TABLE edgv.llp_pais_a
-	 ADD CONSTRAINT llp_pais_a_geometria_aproximada_fk FOREIGN KEY (geometria_aproximada)
-	 REFERENCES dominios.booleano (code) MATCH FULL
-	 ON UPDATE NO ACTION ON DELETE NO ACTION;
-
-ALTER TABLE edgv.llp_pais_a ALTER COLUMN geometria_aproximada SET DEFAULT 9999;
 
 CREATE TABLE edgv.llp_area_sem_dados_a(
 	 id uuid NOT NULL DEFAULT uuid_generate_v4(),

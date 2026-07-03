@@ -110,14 +110,6 @@
       "classe_B": "llp_unidade_conservacao"
     },
     {
-      "classe_A": "llp_unidade_federacao",
-      "classe_B": "llp_unidade_federacao"
-    },
-    {
-      "classe_A": "llp_pais",
-      "classe_B": "llp_pais"
-    },
-    {
       "classe_A": "llp_area_sem_dados",
       "classe_B": "llp_area_sem_dados"
     },
@@ -231,6 +223,144 @@
     {
       "classe_A": "edicao_simb_area",
       "classe_B": "edicao_simb_area"
+    },
+    {
+      "classe_A": "llp_pais",
+      "classe_B": "llp_limite_legal",
+      "atributos_default_B": [
+        {
+          "nome_atributo": "tipo",
+          "valor": 1
+        }
+      ],
+      "__comment": "llp_pais consolidado em llp_limite_legal (tipo=1), seguindo a Topo 2.0 (0.10.0). nome/geometria_aproximada alinham por nome."
+    },
+    {
+      "classe_A": "llp_unidade_federacao",
+      "classe_B": "llp_limite_legal",
+      "atributos_default_B": [
+        {
+          "nome_atributo": "tipo",
+          "valor": 2
+        }
+      ],
+      "__comment": "llp_unidade_federacao consolidado em llp_limite_legal (tipo=2), seguindo a Topo 2.0 (0.10.0). nome/geometria_aproximada alinham por nome. sigla traduzida do dominio smallint sigla_uf para a string de 2 letras.",
+      "mapeamento_atributos": [
+        {
+          "attr_A": "sigla",
+          "attr_B": "sigla",
+          "traducao": [
+            {
+              "valor_A": 1,
+              "valor_B": "AC"
+            },
+            {
+              "valor_A": 2,
+              "valor_B": "AL"
+            },
+            {
+              "valor_A": 3,
+              "valor_B": "AM"
+            },
+            {
+              "valor_A": 4,
+              "valor_B": "AP"
+            },
+            {
+              "valor_A": 5,
+              "valor_B": "BA"
+            },
+            {
+              "valor_A": 6,
+              "valor_B": "CE"
+            },
+            {
+              "valor_A": 7,
+              "valor_B": "DF"
+            },
+            {
+              "valor_A": 8,
+              "valor_B": "ES"
+            },
+            {
+              "valor_A": 9,
+              "valor_B": "GO"
+            },
+            {
+              "valor_A": 10,
+              "valor_B": "MA"
+            },
+            {
+              "valor_A": 11,
+              "valor_B": "MG"
+            },
+            {
+              "valor_A": 12,
+              "valor_B": "MS"
+            },
+            {
+              "valor_A": 13,
+              "valor_B": "MT"
+            },
+            {
+              "valor_A": 14,
+              "valor_B": "PA"
+            },
+            {
+              "valor_A": 15,
+              "valor_B": "PB"
+            },
+            {
+              "valor_A": 16,
+              "valor_B": "PE"
+            },
+            {
+              "valor_A": 17,
+              "valor_B": "PI"
+            },
+            {
+              "valor_A": 18,
+              "valor_B": "PR"
+            },
+            {
+              "valor_A": 19,
+              "valor_B": "RJ"
+            },
+            {
+              "valor_A": 20,
+              "valor_B": "RN"
+            },
+            {
+              "valor_A": 21,
+              "valor_B": "RO"
+            },
+            {
+              "valor_A": 22,
+              "valor_B": "RR"
+            },
+            {
+              "valor_A": 23,
+              "valor_B": "RS"
+            },
+            {
+              "valor_A": 24,
+              "valor_B": "SC"
+            },
+            {
+              "valor_A": 25,
+              "valor_B": "SE"
+            },
+            {
+              "valor_A": 26,
+              "valor_B": "SP"
+            },
+            {
+              "valor_A": 27,
+              "valor_B": "TO"
+            }
+          ]
+        }
+      ]
     }
   ]
 }

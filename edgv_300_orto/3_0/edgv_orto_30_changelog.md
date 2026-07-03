@@ -4,7 +4,9 @@
 > Estratégia: **espelhar o conjunto de classes do Orto 2.5** (mesma estrutura,
 > classes separadas), porém com todas as definições **rebaseadas no EDGV
 > Topo 2.0** (tipos, domínios, primitivas, CHECKs e a extensão de qualidade/
-> linhagem). O conjunto de classes do Orto 3.0 é **idêntico** ao do Orto 2.5.
+> linhagem). O conjunto de classes espelha o do Orto 2.5, com UMA exceção:
+> `pais`/`unidade_federacao` foram **consolidados** em `llp_limite_legal` (tipo
+> 1/2), seguindo a Topo 2.0 (0.10.0).
 
 ## 1. Visão geral
 
@@ -12,10 +14,10 @@
 |---|---|---|
 | Modelo base | EDGV 3.0 | **EDGV Topo 2.0 v0.11.0** (regerado 2026-07-03; antes 0.9.0) |
 | Versão | 2.5.4 | **3.0.0** |
-| Classes temáticas | 27 | **27** (mesmas) |
+| Classes temáticas | 27 | **25** (`pais`/`unidade_federacao` consolidados em `llp_limite_legal`) |
 | Classes auxiliares (`extension_classes`) | 24 | **24** (mesmas) |
-| Domínios | 42 | **42** (rebaseados no Topo 2.0) |
-| SQL DDL | ❌ não existia | ✅ **gerado** — 70 tabelas `edgv` + 42 `dominios` |
+| Domínios | 42 | **41** (rebaseados no Topo 2.0; `sigla_uf` sai com a UF) |
+| SQL DDL | ❌ não existia | ✅ **gerado** — 68 tabelas `edgv` + 41 `dominios` |
 | Extensão de qualidade | básica (179 linhas) | ✅ **completa** (geocódigo, `fontes` JSON, ciclo de vida, acurácias, triggers, SAP) |
 | CRS | 4674 (SIRGAS 2000) | 4674 (SIRGAS 2000) |
 
@@ -33,8 +35,15 @@ Para **cada classe do Orto 2.5**:
     `edicao_terra_indigena`, `edicao_unidade_conservacao`.
 
 Os domínios referenciados vêm do Topo 2.0 (todos presentes; **códigos idênticos**
-aos do Orto 2.5 — o Topo apenas acrescenta códigos novos, logo nenhuma tradução
-de valores é necessária).
+aos do Orto 2.5 — o Topo apenas acrescenta códigos novos). Única tradução de valor
+na conversão 2.5 → 3.0: a `sigla` da UF, que no Orto 2.5 é o domínio smallint
+`sigla_uf` (1..27) e no `llp_limite_legal` do Topo 2.0 é string (`AC`..`TO`).
+
+**Exceção ao espelho do Orto 2.5:** `pais` e `unidade_federacao` (classes
+separadas no Orto 2.5) NÃO entram no Orto 3.0; suas feições vão para
+`llp_limite_legal` com `tipo`=1 (Internacional/País) e 2 (Estadual/UF), seguindo a
+consolidação que a Topo 2.0 fez na 0.10.0. Com isso o domínio `sigla_uf` também
+sai do Orto 3.0 (só a UF o usava).
 
 ## 3. Diferenças em relação ao desenho anterior (rascunho "subconjunto estrito")
 

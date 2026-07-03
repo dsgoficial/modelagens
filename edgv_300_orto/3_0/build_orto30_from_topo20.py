@@ -49,6 +49,14 @@ SPLIT = {
 }
 # tipo_limite_especial code 3 (Territorio quilombola) nao tem classe no Orto -> descartado.
 
+# Topo 2.0 (0.10.0) consolidou pais/UF em llp_limite_legal (tipo 1/2). O Orto 3.0
+# segue: dropa as classes separadas do Orto 2.5 e migra as feicoes para
+# llp_limite_legal via tipo default.  orto25_class(key) : tipo_limite_legal
+CONSOLIDA_LL = {
+    "llp_pais": 1,               # Pais -> llp_limite_legal tipo 1 (Internacional)
+    "llp_unidade_federacao": 2,  # UF   -> llp_limite_legal tipo 2 (Estadual)
+}
+
 # Classes auxiliares proprias do produto orto, sem fonte no Topo 2.0.
 ORTO_ONLY_EXT = {
     "edicao_area_pub_militar", "edicao_terra_indigena",
@@ -125,6 +133,8 @@ def main():
     out_classes = []
     for c in orto25["classes"]:
         k = key(c)
+        if k in CONSOLIDA_LL:                      # consolidado em llp_limite_legal (segue Topo 2.0 0.10.0)
+            continue
         if k in topo_classes:                      # baseado no Topo 2.0 (atributos integrais)
             tc = clone(topo_classes[k])
         else:                                      # classe propria do orto -> verbatim do 2.5
@@ -199,7 +209,12 @@ def main():
     orto_them = [key(c) for c in out_classes]
     orto_ext = [key(c) for c in out_ext]
 
-    write_conv_orto25(orto_them, orto_ext, rep)
+    # traducao sigla_uf (smallint 1..27 no Orto 2.5) -> string ("AC".."TO"), para a
+    # UF migrar de sigla-dominio para llp_limite_legal.sigla (varchar).
+    sigla_uf_trad = [{"valor_A": v["code"], "valor_B": v["value"]}
+                     for v in topo_dom.get("sigla_uf", {}).get("valores", [])]
+
+    write_conv_orto25(orto_them, orto_ext, rep, sigla_uf_trad)
     write_conv_topo20(orto_them, orto_ext, topo_classes, rep)
     write_gapdoc(topo, orto_them, rep)
 
@@ -214,7 +229,7 @@ def main():
         print("ATENCAO dominios vindos do Orto 2.5 (nao achados no Topo):", rep["dom_from25"])
 
 
-def write_conv_orto25(orto_them, orto_ext, rep):
+def write_conv_orto25(orto_them, orto_ext, rep, sigla_uf_trad=None):
     """Orto 2.5 -> Orto 3.0: 1:1 por nome (estruturas espelhadas)."""
     def entry(k, header):
         e = {"classe_A": k, "classe_B": k}
@@ -233,6 +248,22 @@ def write_conv_orto25(orto_them, orto_ext, rep):
         mape.append(entry(k, "classes tematicas (1:1). Orto 3.0 herda os atributos integrais do Topo 2.0." if i == 0 else ""))
     for i, k in enumerate(orto_ext):
         mape.append(entry(k, "classes auxiliares (1:1)." if i == 0 else ""))
+    # pais/UF do Orto 2.5 -> llp_limite_legal (consolidacao, segue Topo 2.0 0.10.0)
+    for k, tipo in CONSOLIDA_LL.items():
+        e = {
+            "classe_A": k,
+            "classe_B": "llp_limite_legal",
+            "atributos_default_B": [{"nome_atributo": "tipo", "valor": tipo}],
+            "__comment": (f"{k} consolidado em llp_limite_legal (tipo={tipo}), seguindo a "
+                          "Topo 2.0 (0.10.0). nome/geometria_aproximada alinham por nome."),
+        }
+        # UF: sigla e' dominio smallint (sigla_uf) no 2.5 -> string em llp_limite_legal.sigla
+        if k == "llp_unidade_federacao" and sigla_uf_trad:
+            e["mapeamento_atributos"] = [
+                {"attr_A": "sigla", "attr_B": "sigla", "traducao": sigla_uf_trad}
+            ]
+            e["__comment"] += " sigla traduzida do dominio smallint sigla_uf para a string de 2 letras."
+        mape.append(e)
     total_lost = sum(len(v) for v in rep["lost25"].values())
     conv = {
         "metadados": {
@@ -354,6 +385,9 @@ def write_gapdoc(topo, orto_them, rep):
              "3.0; tais feicoes nao sao convertidas de Topo 2.0 para Orto 3.0.")
     L.append("- `localidade` no Topo 2.0 com `tipo` em {1,2,3,4,9,10} -> `llp_localidade`; "
              "{5,6,7} -> `llp_aglomerado_rural`; {8} -> `llp_nome_local`.")
+    L.append("- `pais`/`unidade_federacao` do Orto 2.5 foram CONSOLIDADOS em `llp_limite_legal` "
+             "(tipo 1=Internacional/Pais, 2=Estadual/UF), seguindo a Topo 2.0 (0.10.0); o Orto "
+             "3.0 nao tem classes separadas de pais/UF.")
     p = os.path.join(HERE, "orto30_topo20_sem_correspondencia.md")
     with open(p, "w", encoding="utf-8") as f:
         f.write("\n".join(L) + "\n")

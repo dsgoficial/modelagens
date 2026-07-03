@@ -55,3 +55,4 @@ Complemento da conversao `conversao_pg-edgv-topo20_pg-edgv-orto30.json`.
 
 - `tipo_limite_especial` codigo 3 (Territorio quilombola) nao tem classe no Orto 3.0; tais feicoes nao sao convertidas de Topo 2.0 para Orto 3.0.
 - `localidade` no Topo 2.0 com `tipo` em {1,2,3,4,9,10} -> `llp_localidade`; {5,6,7} -> `llp_aglomerado_rural`; {8} -> `llp_nome_local`.
+- `pais`/`unidade_federacao` do Orto 2.5 foram CONSOLIDADOS em `llp_limite_legal` (tipo 1=Internacional/Pais, 2=Estadual/UF), seguindo a Topo 2.0 (0.10.0); o Orto 3.0 nao tem classes separadas de pais/UF.
