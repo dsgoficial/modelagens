@@ -3008,8 +3008,14 @@
     },
     {
       "classe_A": "bh070",
-      "classe_B": "infra_travessia_hidroviaria",
-      "__comment": "[5/5] BH070 Ford → Travessia hidroviária (vau)",
+      "classe_B": "infra_elemento_viario",
+      "__comment": "[5/5] BH070 Ford → Elemento viário tipo=401 (Travessia - Vau natural). CORRIGIDO: antes ia para infra_travessia_hidroviaria (cujo tipo_travessia só tem Balsa/Bote); um vau não é balsa. CHECK de infra_elemento_viario_l.tipo admite 401/402.",
+      "atributos_default_B": [
+        {
+          "nome_atributo": "tipo",
+          "valor": 401
+        }
+      ],
       "mapeamento_atributos": [
         {
           "attr_A": "nam",

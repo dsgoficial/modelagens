@@ -13975,23 +13975,6 @@
       "atributos_default_B": []
     },
     {
-      "__comment": "veg_ec030 Forest -> cobter_vegetacao",
-      "classe_A": "veg_ec030",
-      "classe_B": "cobter_vegetacao",
-      "atributos_default_B": [
-        {
-          "nome_atributo": "tipo",
-          "valor": 601
-        }
-      ],
-      "mapeamento_atributos": [
-        {
-          "attr_A": "fna",
-          "attr_B": "nome"
-        }
-      ]
-    },
-    {
       "__comment": "oce_bb081 Shore Protection -> infra_elemento_viario (Quebramar)",
       "classe_A": "oce_bb081",
       "classe_B": "infra_elemento_viario",
