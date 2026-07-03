@@ -1,11 +1,11 @@
 {
   "metadata": {
-    "version": "1.2",
-    "date": "2026-07-01",
+    "version": "1.3",
+    "date": "2026-07-03",
     "source": "OpenStreetMap",
-    "target": "EDGV Topo 2.0 v0.10.0",
-    "description": "Mapeamento de tags OSM para tabelas e atributos EDGV Topo 2.0. Consumido pelo PythonCaller no FME Workbench.",
-    "total_rules": 275,
+    "target": "EDGV Topo 2.0 v0.11.0",
+    "description": "Mapeamento de tags OSM para tabelas e atributos EDGV Topo 2.0. Consumido pelo PythonCaller no FME Workbench. Rev 0.11.0: natural=scrub/heath -> Vegetacao arbustiva (1200); natural=volcano/crater -> elemnat_elemento_fisiografico_p (24/25). Salar nao mapeado do OSM (sem tag confiavel; vem do MGCP/MUVD).",
+    "total_rules": 293,
     "match_strategy": "first_match_wins"
   },
   "rules": [
@@ -1327,12 +1327,12 @@
       "edgv_target": {
         "table": "cobter_vegetacao_a",
         "attributes": {
-          "tipo": 901
+          "tipo": 1200
         }
       },
       "osm_attribute_mapping": {},
-      "confidence": "medium",
-      "note": "Vegetacao arbustiva generica (scrub -> Campo)"
+      "confidence": "high",
+      "note": "Vegetacao arbustiva (natural=scrub -> tipo_veg 1200; rev 0.11.0, antes caia em Campo 901 por falta de dominio)"
     },
     {
       "id": "veg_heath",
@@ -1347,12 +1347,12 @@
       "edgv_target": {
         "table": "cobter_vegetacao_a",
         "attributes": {
-          "tipo": 901
+          "tipo": 1200
         }
       },
       "osm_attribute_mapping": {},
-      "confidence": "low",
-      "note": "CORRIGIDO: heath → Campo (901), não Caatinga. Heath é charneca, não caatinga."
+      "confidence": "medium",
+      "note": "Charneca/heath (arbusto anao dominante) -> Vegetacao arbustiva (tipo_veg 1200; rev 0.11.0, antes Campo 901). Nao e caatinga."
     },
     {
       "id": "veg_areia",
@@ -4514,7 +4514,7 @@
       "note": "Península"
     },
     {
-      "id": "topn_volcano",
+      "id": "fisio_vulcao",
       "osm_filter": {
         "tags": {
           "natural": "volcano"
@@ -4524,16 +4524,38 @@
         ]
       },
       "edgv_target": {
-        "table": "elemnat_toponimo_fisiografico_natural_p",
+        "table": "elemnat_elemento_fisiografico_p",
         "attributes": {
-          "tipo": 3
+          "tipo": 24
         }
       },
       "osm_attribute_mapping": {
         "name": "nome"
       },
       "confidence": "high",
-      "note": "Vulcão → Montanha"
+      "note": "Vulcao (natural=volcano) -> elemnat_elemento_fisiografico_p tipo 24 (rev 0.11.0; antes ia para o toponimo Montanha 3). Escopo continental America do Sul (arco andino)."
+    },
+    {
+      "id": "fisio_cratera",
+      "osm_filter": {
+        "tags": {
+          "natural": "crater"
+        },
+        "geometry": [
+          "point"
+        ]
+      },
+      "edgv_target": {
+        "table": "elemnat_elemento_fisiografico_p",
+        "attributes": {
+          "tipo": 25
+        }
+      },
+      "osm_attribute_mapping": {
+        "name": "nome"
+      },
+      "confidence": "low",
+      "note": "Cratera (natural=crater, tag pouco frequente no OSM) -> elemnat_elemento_fisiografico_p tipo 25 (rev 0.11.0). Escopo continental."
     },
     {
       "id": "topn_morro",

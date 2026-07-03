@@ -1,10 +1,10 @@
 {
   "metadata": {
     "version": "1.1",
-    "date": "2026-03-29",
+    "date": "2026-07-03",
     "source": "Natural Earth v5.1",
-    "target": "EDGV Topo 2.0 v0.10.0",
-    "description": "Mapeamento Natural Earth para EDGV Topo 2.0. Dados mundiais z0-z7 com overzoom MapLibre z8+. Consumido por ne_to_edgv.py. Usa datasets 10m (que ja incluem min_zoom/scalerank para filtragem multi-escala), exceto ne_50m_urban_areas (unico 50m, sem equivalente 10m).",
+    "target": "EDGV Topo 2.0 v0.11.0",
+    "description": "Mapeamento Natural Earth para EDGV Topo 2.0. Dados mundiais z0-z7 com overzoom MapLibre z8+. Consumido por ne_to_edgv.py. Usa datasets 10m (que ja incluem min_zoom/scalerank para filtragem multi-escala), exceto ne_50m_urban_areas (unico 50m, sem equivalente 10m). Rev 0.11.0: as feicoes continentais novas (vulcao/cratera, salar/crosta salina, vegetacao arbustiva) nao tem dataset de origem no Natural Earth, entao nada a adicionar; alinhado a 0.11.0 sem mudanca de conteudo.",
     "total_rules": 36,
     "active_rules": 31,
     "skipped_rules": 5,

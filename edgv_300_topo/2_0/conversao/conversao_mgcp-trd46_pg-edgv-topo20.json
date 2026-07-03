@@ -1,12 +1,12 @@
 {
   "metadados": {
-    "versao_arquivo": "1.5",
+    "versao_arquivo": "1.6",
     "modelo_A": "MGCP TRD4",
     "versao_modelo_A": "4.6",
     "modelo_B": "EDGV Topo 2.0",
-    "versao_modelo_B": "0.8.0"
+    "versao_modelo_B": "0.11.0"
   },
-  "__comment": "UTF-8. Conversão MGCP TRD4 v4.6 → EDGV Topo 2.0 v0.8. Direção A=>B. Nomes baseados no alias DSGTools oficial. Scores: [5/5]=BOM (correspondência direta), [4/5]=ACEITÁVEL (aproximação razoável), [3/5]=FORÇADO (encaixe semântico pobre), [2/5]=INEXISTENTE_BR (feição inexistente no Brasil).",
+  "__comment": "UTF-8. Conversão MGCP TRD4 v4.6 → EDGV Topo 2.0 v0.11.0. Direção A=>B. Nomes baseados no alias DSGTools oficial. Scores: [5/5]=BOM (correspondência direta), [4/5]=ACEITÁVEL (aproximação razoável), [3/5]=FORÇADO (encaixe semântico pobre), [2/5]=INEXISTENTE_BR (feição inexistente no Brasil). Rev 0.11.0 (escopo continental América do Sul): EB020 Thicket -> Vegetação arbustiva (1200); BH150 Salt Flat -> crosta salina (1005, antes elemento fisiográfico); DB180 Volcano -> elemento fisiográfico (24). Feições antes marcadas INEXISTENTE_BR (vulcão, salar) passam a ser válidas fora do Brasil.",
   "schema_A": "mgcp",
   "schema_B": "edgv",
   "afixo_geom_A": {
@@ -3064,13 +3064,15 @@
     },
     {
       "classe_A": "bh150",
-      "classe_B": "elemnat_elemento_fisiografico",
-      "__comment": "[4/5] BH150 Salt Flat → Elemento fisiográfico (planície salina)",
-      "mapeamento_atributos": [
+      "classe_B": "cobter_vegetacao",
+      "__comment": "[4/5] BH150 Salt Flat → Vegetação tipo=1005 (Terreno exposto - crosta salina / salar); rev 0.11.0, antes ia para elemnat_elemento_fisiografico. Distinto de BH155 Salt Evaporator (extração antrópica, tipo=6). cobter_vegetacao não tem coluna nome (nam descartado).",
+      "atributos_default_B": [
         {
-          "attr_A": "nam",
-          "attr_B": "nome"
-        },
+          "nome_atributo": "tipo",
+          "valor": 1005
+        }
+      ],
+      "mapeamento_atributos": [
         {
           "attr_A": "txt",
           "attr_B": "observacao"
@@ -3361,7 +3363,13 @@
     {
       "classe_A": "eb020",
       "classe_B": "cobter_vegetacao",
-      "__comment": "[5/5] EB020 Thicket → Vegetação"
+      "__comment": "[5/5] EB020 Thicket → Vegetação arbustiva tipo=1200 (rev 0.11.0; matagal/brush denso). Antes sem tipo default (caía em 9999).",
+      "atributos_default_B": [
+        {
+          "nome_atributo": "tipo",
+          "valor": 1200
+        }
+      ]
     },
     {
       "classe_A": "ec010",
@@ -3430,6 +3438,33 @@
         {
           "nome_atributo": "tipo",
           "valor": 22
+        }
+      ],
+      "filtro_A": {
+        "$not": {
+          "nome_atributo": "$GEOM_TYPE",
+          "valor": "LINESTRING"
+        }
+      }
+    },
+    {
+      "classe_A": "db180",
+      "classe_B": "elemnat_elemento_fisiografico",
+      "__comment": "[5/5] DB180 Volcano → elemnat_elemento_fisiografico tipo=24 (rev 0.11.0; arco andino sul-americano). MGCP TRD não tem classe distinta de cratera; cratera (25) fica sem fonte MGCP.",
+      "atributos_default_B": [
+        {
+          "nome_atributo": "tipo",
+          "valor": 24
+        }
+      ],
+      "mapeamento_atributos": [
+        {
+          "attr_A": "nam",
+          "attr_B": "nome"
+        },
+        {
+          "attr_A": "txt",
+          "attr_B": "observacao"
         }
       ],
       "filtro_A": {

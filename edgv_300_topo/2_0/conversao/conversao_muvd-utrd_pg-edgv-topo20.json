@@ -1,12 +1,12 @@
 {
   "metadados": {
-    "versao_arquivo": "1.2",
+    "versao_arquivo": "1.3",
     "modelo_A": "MUVD UTRD",
     "versao_modelo_A": "1.2",
     "modelo_B": "EDGV Topo 2.0",
-    "versao_modelo_B": "0.8.0"
+    "versao_modelo_B": "0.11.0"
   },
-  "__comment": "UTF-8. Conversão MUVD UTRD → EDGV Topo 2.0 v0.8. Direção A=>B. Nomes baseados no alias DSGTools oficial. Scores: [5/5]=BOM (correspondência direta), [4/5]=ACEITÁVEL (aproximação razoável), [3/5]=FORÇADO (encaixe semântico pobre), [2/5]=INEXISTENTE_BR (feição inexistente no Brasil).",
+  "__comment": "UTF-8. Conversão MUVD UTRD → EDGV Topo 2.0 v0.11.0. Direção A=>B. Nomes baseados no alias DSGTools oficial. Scores: [5/5]=BOM (correspondência direta), [4/5]=ACEITÁVEL (aproximação razoável), [3/5]=FORÇADO (encaixe semântico pobre), [2/5]=INEXISTENTE_BR (feição inexistente no Brasil). Rev 0.11.0 (escopo continental): EB020 Thicket -> Vegetação arbustiva (1200, antes 701 Cerrado); BH150 Salt Flat -> crosta salina (1005, antes elemento fisiográfico). MUVD (urbano) não tem vulcão/cratera.",
   "schema_A": "muvd",
   "schema_B": "edgv",
   "afixo_geom_A": {
@@ -9912,15 +9912,15 @@
     },
     {
       "classe_A": "phy_bh150",
-      "classe_B": "elemnat_elemento_fisiografico",
-      "__comment": "[4/5] BH150 Salt Flat → Elemento fisiográfico (planície salina)",
-      "mapeamento_atributos": [
+      "classe_B": "cobter_vegetacao",
+      "__comment": "[4/5] BH150 Salt Flat → Vegetação tipo=1005 (Terreno exposto - crosta salina / salar); rev 0.11.0, antes ia para elemnat_elemento_fisiografico. cobter_vegetacao não tem coluna nome (fna descartado).",
+      "mapeamento_atributos": [],
+      "atributos_default_B": [
         {
-          "attr_A": "fna",
-          "attr_B": "nome"
+          "nome_atributo": "tipo",
+          "valor": 1005
         }
-      ],
-      "atributos_default_B": []
+      ]
     },
     {
       "classe_A": "phy_da005",
@@ -10155,11 +10155,11 @@
     {
       "classe_A": "veg_eb020",
       "classe_B": "cobter_vegetacao",
-      "__comment": "[5/5] EB020 Thicket → Vegetação",
+      "__comment": "[5/5] EB020 Thicket → Vegetação arbustiva tipo=1200 (rev 0.11.0; matagal/brush denso, escopo continental). Antes 701 Cerrado, bioma brasileiro inválido fora do BR.",
       "atributos_default_B": [
         {
           "nome_atributo": "tipo",
-          "valor": 701
+          "valor": 1200
         }
       ],
       "mapeamento_atributos": []
