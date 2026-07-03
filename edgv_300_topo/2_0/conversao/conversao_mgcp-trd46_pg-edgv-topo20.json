@@ -3080,23 +3080,6 @@
       ]
     },
     {
-      "classe_A": "bh160",
-      "classe_B": "cobter_vegetacao",
-      "__comment": "[4/5] BH160 Sabkha → Vegetação tipo=1005 (Terreno exposto - crosta salina); rev 0.11.0. Sabkha (planície salina costeira/interior) é o mesmo balde de crosta salina do salar; par de BH150 Salt Flat. cobter_vegetacao não tem coluna nome.",
-      "atributos_default_B": [
-        {
-          "nome_atributo": "tipo",
-          "valor": 1005
-        }
-      ],
-      "mapeamento_atributos": [
-        {
-          "attr_A": "txt",
-          "attr_B": "observacao"
-        }
-      ]
-    },
-    {
       "classe_A": "bh155",
       "classe_B": "constr_extracao_mineral",
       "__comment": "[5/5] BH155 Salt Evaporator → Extração mineral tipo=6 (Salina)",
