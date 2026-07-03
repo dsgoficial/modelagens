@@ -4,6 +4,81 @@ Mudanças no schema de dados entre EDGV Topo 1.4 e EDGV Topo 2.0. Apenas modelag
 
 ---
 
+## Revisão 0.11.0 (2026-07-03): cobertura continental América do Sul
+
+A EDGV Topo 2.0 cobre toda a América do Sul (não só o Brasil; por isso `tipo_veg` já traz Neve/Gelo 1101). Esta revisão adiciona feições/atributos de cobertura continental, decididas na análise `edgv_topo_20/analysis/comparativo_edgv30_topo20_gap.md` e no cruzamento com WorldCover/Dynamic World/MapBiomas (`.../cobertura_worldcover_dynamicworld_mapbiomas_para_tipo_veg.md`). Só as três adições abaixo; o resto do levantamento foi rejeitado ou já estava coberto.
+
+### 1. Novos valores de domínio
+
+#### `dominios.tipo_elemento_fisiografico` (+2)
+
+| Código | Valor | Motivo |
+|--------|-------|--------|
+| 24 | Vulcão | Arco vulcânico andino (Chile, Argentina, Peru, Bolívia, Equador, Colômbia, Venezuela). Ausente na EDGV 3.0; fonte de aquisição MGCP db180. "Cone" foi descartado (redundante com Vulcão; detalhe fino demais para as escalas sistemáticas) |
+| 25 | Cratera | Depressão de cume vulcânico, par de Vulcão |
+
+Fumarola/geiser não entrou (opcional, fica para revisão futura se houver demanda).
+
+#### `dominios.tipo_veg` (+2)
+
+| Código | Valor | Filtro | Motivo |
+|--------|-------|--------|--------|
+| 1005 | Terreno exposto - crosta salina | Terreno Exposto | Salar/planície salina natural (Salar de Uyuni, Atacama, Altiplano). Distinto de `tipo_extracao_mineral`=6 (Salina, que é extração antrópica) |
+| 1200 | Vegetação arbustiva | Vegetação Arbustiva | Shrub/matorral/estepe arbustiva/Chaco. Recebe WorldCover 20 (Shrubland) e Dynamic World 5 (shrub_and_scrub). Os análogos existentes (Cerrado 701, Caatinga 801) são biomas brasileiros, inválidos para o resto do continente |
+
+### 2. CHECK constraints alterados
+
+`elemnat_elemento_fisiografico` recebe Vulcão (24) e Cratera (25) nas primitivas polígono e ponto (não em linha):
+
+| Tabela | Coluna | Valores adicionados |
+|--------|--------|---------------------|
+| `elemnat_elemento_fisiografico_a` | `tipo` | 24, 25 |
+| `elemnat_elemento_fisiografico_p` | `tipo` | 24, 25 |
+
+`cobter_vegetacao_a.tipo` (CHECK derivado do domínio inteiro) passa a aceitar 1005 e 1200 automaticamente na regeneração.
+
+### 3. DDL de migração (0.10.0 -> 0.11.0)
+
+```sql
+INSERT INTO dominios.tipo_elemento_fisiografico (code, code_name) VALUES
+    (24, 'Vulcão (24)'),
+    (25, 'Cratera (25)');
+
+INSERT INTO dominios.tipo_veg (code, code_name, filter) VALUES
+    (1005, 'Terreno exposto - crosta salina (1005)', 'Terreno Exposto'),
+    (1200, 'Vegetação arbustiva (1200)', 'Vegetação Arbustiva');
+
+ALTER TABLE edgv.elemnat_elemento_fisiografico_a DROP CONSTRAINT elemnat_elemento_fisiografico_a_tipo_check;
+ALTER TABLE edgv.elemnat_elemento_fisiografico_a ADD CONSTRAINT elemnat_elemento_fisiografico_a_tipo_check
+    CHECK (tipo = ANY(ARRAY[15, 16, 21, 22, 23, 24, 25, 9999]::SMALLINT[]));
+ALTER TABLE edgv.elemnat_elemento_fisiografico_p DROP CONSTRAINT elemnat_elemento_fisiografico_p_tipo_check;
+ALTER TABLE edgv.elemnat_elemento_fisiografico_p ADD CONSTRAINT elemnat_elemento_fisiografico_p_tipo_check
+    CHECK (tipo = ANY(ARRAY[15, 16, 19, 20, 21, 22, 24, 25, 9999]::SMALLINT[]));
+
+ALTER TABLE public.db_metadata ALTER COLUMN dbimplversion SET DEFAULT '0.11.0';
+UPDATE public.db_metadata SET dbimplversion = '0.11.0';
+```
+
+### 4. Conversão para EDGV 3.0 (crosswalk) - ESPECIFICADO, aplicar e validar com o conversor
+
+O CDGV topográfico dissemina em SHP EDGV 3.0, então cada valor novo precisa de tratamento em `conversao_pg-edgv-300_pg-edgv-topo20.json`. As regras abaixo NÃO foram aplicadas ainda (precisam de teste com o conversor real, `converter-modelagens`):
+
+- **Vegetação arbustiva (1200) - SEM PERDA.** Mapeia para `veg_campo` da EDGV 3.0 com `classificacaoporte`=2 (Arbustiva) e `tipocampo`=0 (Desconhecido), ou seja "campo arbustivo". Válido: o CHECK de `veg_campo_a.classificacaoporte` = {0,2,3,4,9999} já admite Arbustiva(2). "Campo" é classe fisionômica genérica, não bioma, então serve ao matorral/estepe continental. NÃO usar `tipocampo`=Sujo (campo sujo é gramíneo com arbustos esparsos, conceito de cerrado brasileiro; o sentido arbustivo vai no porte). Regra bidirecional (adicionar ao crosswalk):
+  - `filtro_A` no par existente `veg_campo -> cobter_vegetacao` (tipo 901): `{"$not": {"nome_atributo": "classificacaoporte", "valor": 2}}` (campo com porte != Arbustiva -> 901).
+  - Novo par `veg_campo -> cobter_vegetacao` com `filtro_A` `classificacaoporte`=2, `filtro_B` `tipo`=1200, `atributos_default_B` `tipo`=1200, `atributos_default_A` = {antropizada 0, densidade 2, secundaria 0, tipocampo 0, classificacaoporte 2}.
+- **Salar (1005) - perda documentada.** Não há salar natural na EDGV 3.0. Na disseminação (B=>A), mapear 1005 -> `rel_terreno_exposto` com `tipoterrexp`=0 (Desconhecido); regra direcional, pois a `traducao` 1:1 de terreno exposto já usa o valor 0 para 1000. Perde-se a distinção de crosta salina no SHP 3.0.
+- **Vulcão/Cratera (24/25) - sem alvo na 3.0.** A EDGV 3.0 não tem vulcão. Na disseminação, mapear para o elemento fisiográfico genérico da 3.0 ("Outros"/`elemento_fisiografico_natural`) ou sinalizar para tratamento manual. Decisão de fallback pendente.
+
+### 5. Moss/lichen (WorldCover 100) - sem mudança de schema
+
+Sem valor novo. Aproximado a `tipo_veg`=901 Campo (vegetação esparsa/rasteira; melhor no grupo vegetado que em terreno exposto). Perda documentada no arquivo de cobertura.
+
+### 6. Nota sobre o mastergen
+
+Ao regenerar o SQL pelo `rotinas/mastergen.py`, o bug do 9999 duplicado nos CHECK (corrigido no SQL da 0.10.0) reaparece: o gerador ainda anexa 9999 sem dedup. O SQL desta revisão foi aplicado preservando a correção da 0.10.0 (sem duplicatas). Corrigir o mastergen é pendência à parte.
+
+---
+
 ## 1. Novos atributos em tabelas existentes
 
 ### 1.1 Atributos com domínio (NOT NULL, DEFAULT 9999, FK)

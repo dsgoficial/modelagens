@@ -1,6 +1,6 @@
 {
   "modelo": "EDGV Topo 2.0",
-  "versao": "0.10.0",
+  "versao": "0.11.0",
   "schema_dados": "edgv",
   "schema_dominios": "dominios",
   "a_ser_preenchido": {
@@ -2573,6 +2573,14 @@
         {
           "code": 23,
           "value": "Rocha - Area rochosa/lajedo"
+        },
+        {
+          "code": 24,
+          "value": "Vulcão"
+        },
+        {
+          "code": 25,
+          "value": "Cratera"
         }
       ]
     },
@@ -3906,6 +3914,16 @@
           "code": 1101,
           "value": "Neve/Gelo",
           "valor_filtro": "Neve e Gelo"
+        },
+        {
+          "code": 1005,
+          "value": "Terreno exposto - crosta salina",
+          "valor_filtro": "Terreno Exposto"
+        },
+        {
+          "code": 1200,
+          "value": "Vegetação arbustiva",
+          "valor_filtro": "Vegetação Arbustiva"
         }
       ],
       "filtro": true
@@ -5019,6 +5037,20 @@
               "code": 23,
               "primitivas": [
                 "MultiPolygon"
+              ]
+            },
+            {
+              "code": 24,
+              "primitivas": [
+                "MultiPolygon",
+                "MultiPoint"
+              ]
+            },
+            {
+              "code": 25,
+              "primitivas": [
+                "MultiPolygon",
+                "MultiPoint"
               ]
             }
           ]

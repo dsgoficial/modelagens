@@ -7,10 +7,10 @@ SET search_path TO pg_catalog,public,edgv,dominios;
 
 CREATE TABLE public.db_metadata(
 	 edgvversion varchar(50) NOT NULL DEFAULT 'EDGV Topo 2.0',
-	 dbimplversion varchar(50) NOT NULL DEFAULT '0.10.0',
+	 dbimplversion varchar(50) NOT NULL DEFAULT '0.11.0',
 	 CONSTRAINT edgvversioncheck CHECK (edgvversion = 'EDGV Topo 2.0')
 );
-INSERT INTO public.db_metadata (edgvversion, dbimplversion) VALUES ('EDGV Topo 2.0','0.10.0');
+INSERT INTO public.db_metadata (edgvversion, dbimplversion) VALUES ('EDGV Topo 2.0','0.11.0');
 
 CREATE TABLE dominios.sigla_uf (
 	 code smallint NOT NULL,
@@ -921,6 +921,8 @@ INSERT INTO dominios.tipo_elemento_fisiografico (code,code_name) VALUES (20,'Cav
 INSERT INTO dominios.tipo_elemento_fisiografico (code,code_name) VALUES (21,'Rocha - Matacão/pedra (21)');
 INSERT INTO dominios.tipo_elemento_fisiografico (code,code_name) VALUES (22,'Rocha - Penedo isolado (22)');
 INSERT INTO dominios.tipo_elemento_fisiografico (code,code_name) VALUES (23,'Rocha - Area rochosa/lajedo (23)');
+INSERT INTO dominios.tipo_elemento_fisiografico (code,code_name) VALUES (24,'Vulcão (24)');
+INSERT INTO dominios.tipo_elemento_fisiografico (code,code_name) VALUES (25,'Cratera (25)');
 INSERT INTO dominios.tipo_elemento_fisiografico (code,code_name) VALUES (9999,'A SER PREENCHIDO (9999)');
 
 ALTER TABLE dominios.tipo_elemento_fisiografico OWNER TO postgres;
@@ -1402,6 +1404,8 @@ INSERT INTO dominios.tipo_veg (code,code_name, filter) VALUES (1003,'Terreno exp
 INSERT INTO dominios.tipo_veg (code,code_name, filter) VALUES (1004,'Terreno exposto - pavimentado (1004)','Terreno Exposto');
 INSERT INTO dominios.tipo_veg (code,code_name, filter) VALUES (1296,'Reflorestamento (1296)','Reflorestamento');
 INSERT INTO dominios.tipo_veg (code,code_name, filter) VALUES (1101,'Neve/Gelo (1101)','Neve e Gelo');
+INSERT INTO dominios.tipo_veg (code,code_name, filter) VALUES (1005,'Terreno exposto - crosta salina (1005)','Terreno Exposto');
+INSERT INTO dominios.tipo_veg (code,code_name, filter) VALUES (1200,'Vegetação arbustiva (1200)','Vegetação Arbustiva');
 INSERT INTO dominios.tipo_veg (code,code_name, filter) VALUES (9999,'A SER PREENCHIDO (9999)','A SER PREENCHIDO (9999)');
 
 ALTER TABLE dominios.tipo_veg OWNER TO postgres;
@@ -2243,7 +2247,7 @@ ALTER TABLE edgv.elemnat_elemento_fisiografico_a
 
 ALTER TABLE edgv.elemnat_elemento_fisiografico_a
 	 ADD CONSTRAINT elemnat_elemento_fisiografico_a_tipo_check 
-	 CHECK (tipo = ANY(ARRAY[15 :: SMALLINT, 16 :: SMALLINT, 21 :: SMALLINT, 22 :: SMALLINT, 23 :: SMALLINT, 9999 :: SMALLINT])); 
+	 CHECK (tipo = ANY(ARRAY[15 :: SMALLINT, 16 :: SMALLINT, 21 :: SMALLINT, 22 :: SMALLINT, 23 :: SMALLINT, 24 :: SMALLINT, 25 :: SMALLINT, 9999 :: SMALLINT])); 
 
 ALTER TABLE edgv.elemnat_elemento_fisiografico_a ALTER COLUMN tipo SET DEFAULT 9999;
 
@@ -2330,7 +2334,7 @@ ALTER TABLE edgv.elemnat_elemento_fisiografico_p
 
 ALTER TABLE edgv.elemnat_elemento_fisiografico_p
 	 ADD CONSTRAINT elemnat_elemento_fisiografico_p_tipo_check 
-	 CHECK (tipo = ANY(ARRAY[15 :: SMALLINT, 16 :: SMALLINT, 19 :: SMALLINT, 20 :: SMALLINT, 21 :: SMALLINT, 22 :: SMALLINT, 9999 :: SMALLINT])); 
+	 CHECK (tipo = ANY(ARRAY[15 :: SMALLINT, 16 :: SMALLINT, 19 :: SMALLINT, 20 :: SMALLINT, 21 :: SMALLINT, 22 :: SMALLINT, 24 :: SMALLINT, 25 :: SMALLINT, 9999 :: SMALLINT])); 
 
 ALTER TABLE edgv.elemnat_elemento_fisiografico_p ALTER COLUMN tipo SET DEFAULT 9999;
 
