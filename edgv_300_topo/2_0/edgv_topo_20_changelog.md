@@ -287,6 +287,33 @@ Cobertura continental (a Topo 2.0 mapeia toda a América do Sul, não só o Bras
 | 2505 | Port - Terminal de granéis | Edificação portuária |
 | 3009 | Seg - Polícia Federal | Edificação de segurança pública |
 
+### `dominios.tipo_edificacao` (+8, incremento 0.12.0)
+
+| Código | Valor | Filtro |
+|--------|-------|--------|
+| 2102 | Ssoc – Equipamento público de proteção social | Edificação de desenvolvimento social |
+| 2602 | Comb - Estação de compressão de gás | Infraestrutura de combustíveis |
+| 2603 | Comb - Polo de processamento de gás | Infraestrutura de combustíveis |
+| 2604 | Comb - Terminal de GNL/regaseificação | Infraestrutura de combustíveis |
+| 2605 | Comb - Base de distribuição de combustíveis | Infraestrutura de combustíveis |
+| 3010 | Seg - Defesa Civil | Edificação de segurança pública |
+| 3011 | Seg - Perícia forense | Edificação de segurança pública |
+| 3012 | Seg - Unidade socioeducativa | Edificação de segurança pública |
+
+Origem: stress test do acervo GeoSwarm (256k feições) contra a 0.11.0
+(propostas B1–B5, `geoswarm docs/propostas_modelagem_topo20.md`). Racional:
+(a) o grupo 3xxx cobria PM/PC/PF/bombeiros/prisional mas não Defesa Civil,
+perícia forense (IML/IGP) nem o sistema socioeducativo — todos distinguíveis
+por fonte autoritativa (origem B); (b) a 2.0 ganhou os DUTOS de gás
+(311/312) mas os NÓS da rede (compressão, processamento, GNL, base) caíam em
+1023 "coque/refino" — a rede tinha linha e não tinha nó; (c) a rede estatal
+SUAS (CRAS/CREAS/Conselho Tutelar, capilar como a UBS da saúde) dividia um
+único 2101 com asilos privados e associações de moradores. Filtro novo
+"Infraestrutura de combustíveis" agrupa 2602–2605 (o 2601 posto de
+combustível mantém o filtro próprio). Nas fontes colaborativas quase nada
+distingue esses códigos (OSM parcialmente: ver conversao_osm v1.4) — o
+alimentador primário é a coleta autoritativa (GeoSwarm/insumos oficiais).
+
 ### `dominios.tipo_elemento_energia` (+2)
 
 | Código | Valor |
@@ -379,7 +406,7 @@ Bug originado em `mastergen.py`: o gerador anexa `9999` aos valores do CHECK sem
 | Campo | 1.4 | 2.0 |
 |-------|-----|-----|
 | `edgvversion` | EDGV 3.0 Topo | EDGV Topo 2.0 |
-| `dbimplversion` | 1.4.4 | 0.11.0 |
+| `dbimplversion` | 1.4.4 | 0.12.0 |
 
 ---
 
@@ -858,4 +885,22 @@ ALTER TABLE edgv.elemnat_elemento_fisiografico_p ADD CONSTRAINT elemnat_elemento
 
 UPDATE public.db_metadata SET dbimplversion = '0.11.0';
 ALTER TABLE public.db_metadata ALTER COLUMN dbimplversion SET DEFAULT '0.11.0';
+
+-- ===========================================
+-- Incremento 0.12.0: codigos B1-B5 do stress test GeoSwarm
+-- (defesa civil, pericia forense, socioeducativo, nos de gas, SUAS)
+-- constr_edificacao nao tem CHECK de tipo (so FK) -- basta o INSERT no dominio
+-- ===========================================
+INSERT INTO dominios.tipo_edificacao (code, code_name, filter) VALUES
+    (2102, 'Ssoc – Equipamento público de proteção social (2102)', 'Edificação de desenvolvimento social'),
+    (2602, 'Comb - Estação de compressão de gás (2602)', 'Infraestrutura de combustíveis'),
+    (2603, 'Comb - Polo de processamento de gás (2603)', 'Infraestrutura de combustíveis'),
+    (2604, 'Comb - Terminal de GNL/regaseificação (2604)', 'Infraestrutura de combustíveis'),
+    (2605, 'Comb - Base de distribuição de combustíveis (2605)', 'Infraestrutura de combustíveis'),
+    (3010, 'Seg - Defesa Civil (3010)', 'Edificação de segurança pública'),
+    (3011, 'Seg - Perícia forense (3011)', 'Edificação de segurança pública'),
+    (3012, 'Seg - Unidade socioeducativa (3012)', 'Edificação de segurança pública');
+
+UPDATE public.db_metadata SET dbimplversion = '0.12.0';
+ALTER TABLE public.db_metadata ALTER COLUMN dbimplversion SET DEFAULT '0.12.0';
 ```

@@ -1,11 +1,11 @@
 {
   "metadata": {
-    "version": "1.3",
-    "date": "2026-07-03",
+    "version": "1.4",
+    "date": "2026-07-04",
     "source": "OpenStreetMap",
-    "target": "EDGV Topo 2.0 v0.11.0",
-    "description": "Mapeamento de tags OSM para tabelas e atributos EDGV Topo 2.0. Consumido pelo PythonCaller no FME Workbench. Rev 0.11.0: natural=scrub/heath -> Vegetacao arbustiva (1200); natural=volcano/crater -> elemnat_elemento_fisiografico_p (24/25). Salar nao mapeado do OSM (sem tag confiavel; vem do MGCP/MUVD).",
-    "total_rules": 293,
+    "target": "EDGV Topo 2.0 v0.12.0",
+    "description": "Mapeamento de tags OSM para tabelas e atributos EDGV Topo 2.0. Consumido pelo PythonCaller no FME Workbench. Rev 0.11.0: natural=scrub/heath -> Vegetacao arbustiva (1200); natural=volcano/crater -> elemnat_elemento_fisiografico_p (24/25). Salar nao mapeado do OSM (sem tag confiavel; vem do MGCP/MUVD). Rev 0.12.0: office=government+government=emergency/civil_defence -> Defesa Civil (3010); amenity=social_facility -> 2101 (tag antes sem regra); pipeline=substation+substation=compression -> Estacao de compressao de gas (2602). Pericia forense (3011), socioeducativo (3012), demais nos de gas (2603-2605) e SUAS estatal (2102) NAO tem tag OSM confiavel -- alimentados por fonte autoritativa (GeoSwarm).",
+    "total_rules": 298,
     "match_strategy": "first_match_wins"
   },
   "rules": [
@@ -3241,6 +3241,52 @@
       "note": "Duto genérico (fallback)"
     },
     {
+      "id": "estacao_compressao_gas_p",
+      "osm_filter": {
+        "tags": {
+          "pipeline": "substation",
+          "substation": "compression"
+        },
+        "geometry": [
+          "point"
+        ]
+      },
+      "edgv_target": {
+        "table": "constr_edificacao_p",
+        "attributes": {
+          "tipo": 2602
+        }
+      },
+      "osm_attribute_mapping": {
+        "name": "nome"
+      },
+      "confidence": "high",
+      "note": "Estacao de compressao de gasoduto (0.12.0, tipo 2602). Tag documentada no wiki OSM (pipeline=substation + substation=compression)"
+    },
+    {
+      "id": "estacao_compressao_gas_a",
+      "osm_filter": {
+        "tags": {
+          "pipeline": "substation",
+          "substation": "compression"
+        },
+        "geometry": [
+          "polygon"
+        ]
+      },
+      "edgv_target": {
+        "table": "constr_edificacao_a",
+        "attributes": {
+          "tipo": 2602
+        }
+      },
+      "osm_attribute_mapping": {
+        "name": "nome"
+      },
+      "confidence": "high",
+      "note": "Estacao de compressao de gasoduto (poligono)"
+    },
+    {
       "_comment": "=== INFRA — OUTROS ==="
     },
     {
@@ -5734,6 +5780,41 @@
       "note": "Museu"
     },
     {
+      "id": "edif_defesa_civil",
+      "osm_filter": {
+        "tags": {
+          "office": "government",
+          "government": [
+            "emergency",
+            "civil_defence",
+            "emergency_management"
+          ]
+        },
+        "geometry": [
+          "point",
+          "polygon"
+        ]
+      },
+      "edgv_target": {
+        "table": "constr_edificacao_p",
+        "attributes": {
+          "tipo": 3010
+        }
+      },
+      "osm_attribute_mapping": {
+        "name": "nome",
+        "height": "altura",
+        "building:levels": "pavimentos",
+        "addr:street": {
+          "column": "endereco",
+          "concat_with": "addr:housenumber",
+          "separator": ", "
+        }
+      },
+      "confidence": "medium",
+      "note": "Defesa Civil (0.12.0, tipo 3010). ANTES de edif_governo (first_match_wins). Tags candidatas de baixa frequencia no BR -- fonte primaria e a coleta autoritativa (GeoSwarm); validar frequencia com osm_unmapped_tags"
+    },
+    {
       "id": "edif_governo",
       "osm_filter": {
         "tags": {
@@ -5761,6 +5842,64 @@
       },
       "confidence": "high",
       "note": "Gestao publica (office=government)"
+    },
+    {
+      "id": "edif_social_facility",
+      "osm_filter": {
+        "tags": {
+          "amenity": "social_facility"
+        },
+        "geometry": [
+          "point"
+        ]
+      },
+      "edgv_target": {
+        "table": "constr_edificacao_p",
+        "attributes": {
+          "tipo": 2101
+        }
+      },
+      "osm_attribute_mapping": {
+        "name": "nome",
+        "height": "altura",
+        "building:levels": "pavimentos",
+        "addr:street": {
+          "column": "endereco",
+          "concat_with": "addr:housenumber",
+          "separator": ", "
+        }
+      },
+      "confidence": "high",
+      "note": "Servico social generico (asilos, abrigos, centros de convivencia). Tag antes SEM regra (gap fechado na v1.4). O 2102 (equipamento publico SUAS) vem so de fonte autoritativa -- OSM nao distingue CRAS/CREAS com confianca"
+    },
+    {
+      "id": "edif_social_facility_a",
+      "osm_filter": {
+        "tags": {
+          "amenity": "social_facility"
+        },
+        "geometry": [
+          "polygon"
+        ]
+      },
+      "edgv_target": {
+        "table": "constr_edificacao_a",
+        "attributes": {
+          "tipo": 2101
+        }
+      },
+      "osm_attribute_mapping": {
+        "name": "nome",
+        "height": "altura",
+        "building:levels": "pavimentos",
+        "addr:street": {
+          "column": "endereco",
+          "concat_with": "addr:housenumber",
+          "separator": ", "
+        }
+      },
+      "confidence": "high",
+      "note": "Servico social generico (poligono)"
     },
     {
       "id": "edif_militar_building_a",

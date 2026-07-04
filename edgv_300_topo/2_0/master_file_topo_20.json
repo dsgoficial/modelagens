@@ -1,6 +1,6 @@
 {
   "modelo": "EDGV Topo 2.0",
-  "versao": "0.11.0",
+  "versao": "0.12.0",
   "schema_dados": "edgv",
   "schema_dominios": "dominios",
   "a_ser_preenchido": {
@@ -2317,6 +2317,11 @@
           "valor_filtro": "Edificação de desenvolvimento social"
         },
         {
+          "code": 2102,
+          "value": "Ssoc – Equipamento público de proteção social",
+          "valor_filtro": "Edificação de desenvolvimento social"
+        },
+        {
           "code": 2208,
           "value": "Rod - Terminal interestadual",
           "valor_filtro": "Edificação rodoviária"
@@ -2447,6 +2452,26 @@
           "valor_filtro": "Posto de combustível"
         },
         {
+          "code": 2602,
+          "value": "Comb - Estação de compressão de gás",
+          "valor_filtro": "Infraestrutura de combustíveis"
+        },
+        {
+          "code": 2603,
+          "value": "Comb - Polo de processamento de gás",
+          "valor_filtro": "Infraestrutura de combustíveis"
+        },
+        {
+          "code": 2604,
+          "value": "Comb - Terminal de GNL/regaseificação",
+          "valor_filtro": "Infraestrutura de combustíveis"
+        },
+        {
+          "code": 2605,
+          "value": "Comb - Base de distribuição de combustíveis",
+          "valor_filtro": "Infraestrutura de combustíveis"
+        },
+        {
           "code": 2901,
           "value": "Dip – Consulado",
           "valor_filtro": "Representação diplomática"
@@ -2499,6 +2524,21 @@
         {
           "code": 3009,
           "value": "Seg - Polícia Federal",
+          "valor_filtro": "Edificação de segurança pública"
+        },
+        {
+          "code": 3010,
+          "value": "Seg - Defesa Civil",
+          "valor_filtro": "Edificação de segurança pública"
+        },
+        {
+          "code": 3011,
+          "value": "Seg - Perícia forense",
+          "valor_filtro": "Edificação de segurança pública"
+        },
+        {
+          "code": 3012,
+          "value": "Seg - Unidade socioeducativa",
           "valor_filtro": "Edificação de segurança pública"
         },
         {

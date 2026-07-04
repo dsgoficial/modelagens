@@ -1,0 +1,4025 @@
+{
+  "metadata": {
+    "version": "1.0",
+    "date": "2026-07-04",
+    "source": "GeoSwarm (PostGIS feicoes_ponto/linha/area)",
+    "target": "EDGV Topo 2.0 v0.11.0",
+    "description": "Mapeamento das subcategorias GeoSwarm (C01-C21) para tabelas e atributos EDGV Topo 2.0. Gerado por scripts/gerar_conversao_edgv.py a partir de scripts/edgv_subcategorias.py (fonte unica). table_base sem sufixo: o sufixo _p/_l/_a e roteado pela tabela de origem GeoSwarm (feicoes_ponto/linha/area) em tempo de exportacao. relevancia_carta encoda a doutrina de atributacao por relevancia da carta 25k: o acervo exporta tudo; a derivacao para carta exclui relevancia 'nao'. Execucao: scripts/exportar_edgv.py.",
+    "total_rules": 263,
+    "match_strategy": "exact_match (categoria + subcategoria canonica)",
+    "attribute_mapping_common": {
+      "nome": "nome",
+      "fontes[0].endereco": "endereco",
+      "fontes[0].metadados.altura": "altura",
+      "fontes[0].metadados.pavimentos": "pavimentos",
+      "fontes": "fontes (extension; convertido por exportar_edgv.py)",
+      "id_feicao": "geocodigo"
+    },
+    "extension_mapping": {
+      "status_ciclo_vida": "2 (Em validacao) -- GeoSwarm e fase de PREPARO",
+      "validacao": "1 (Nao validada)",
+      "confirmacao_geometria": "2 se metodo_geo=coordenada_explicita e prioridade>=3, senao 1",
+      "confirmacao_atributos": "7 se corroboracoes>=2; 6 se corroboracoes=1; 3 se prioridade>=3; senao 1",
+      "fontes[].metodo_aquisicao": "4 conflacao/colaborativo; 9 geocodificado (nominatim/viacep); 5 insumo autoritativo; 9999 centroide"
+    }
+  },
+  "rules": [
+    {
+      "_comment": "=== C01 ==="
+    },
+    {
+      "id": "c01_ubs",
+      "geoswarm_filter": {
+        "categoria": "C01",
+        "subcategoria": "UBS"
+      },
+      "edgv_target": {
+        "table_base": "constr_edificacao",
+        "attributes": {
+          "tipo": 2028
+        }
+      },
+      "relevancia_carta": "sim",
+      "note": "Edificacao de saude"
+    },
+    {
+      "id": "c01_upa",
+      "geoswarm_filter": {
+        "categoria": "C01",
+        "subcategoria": "UPA"
+      },
+      "edgv_target": {
+        "table_base": "constr_edificacao",
+        "attributes": {
+          "tipo": 2027
+        }
+      },
+      "relevancia_carta": "sim",
+      "note": "Edificacao de saude"
+    },
+    {
+      "id": "c01_hospital",
+      "geoswarm_filter": {
+        "categoria": "C01",
+        "subcategoria": "Hospital"
+      },
+      "edgv_target": {
+        "table_base": "constr_edificacao",
+        "attributes": {
+          "tipo": 2025
+        }
+      },
+      "relevancia_carta": "sim",
+      "note": "Edificacao de saude"
+    },
+    {
+      "id": "c01_hospital_especializado",
+      "geoswarm_filter": {
+        "categoria": "C01",
+        "subcategoria": "Hospital Especializado"
+      },
+      "edgv_target": {
+        "table_base": "constr_edificacao",
+        "attributes": {
+          "tipo": 2026
+        }
+      },
+      "relevancia_carta": "sim",
+      "note": "Edificacao de saude"
+    },
+    {
+      "id": "c01_pronto_socorro",
+      "geoswarm_filter": {
+        "categoria": "C01",
+        "subcategoria": "Pronto Socorro"
+      },
+      "edgv_target": {
+        "table_base": "constr_edificacao",
+        "attributes": {
+          "tipo": 2027
+        }
+      },
+      "relevancia_carta": "sim",
+      "note": "Edificacao de saude"
+    },
+    {
+      "id": "c01_caps",
+      "geoswarm_filter": {
+        "categoria": "C01",
+        "subcategoria": "CAPS"
+      },
+      "edgv_target": {
+        "table_base": "constr_edificacao",
+        "attributes": {
+          "tipo": 2028
+        }
+      },
+      "relevancia_carta": "sim",
+      "note": "Edificacao de saude"
+    },
+    {
+      "id": "c01_samu",
+      "geoswarm_filter": {
+        "categoria": "C01",
+        "subcategoria": "SAMU"
+      },
+      "edgv_target": {
+        "table_base": "constr_edificacao",
+        "attributes": {
+          "tipo": 2027
+        }
+      },
+      "relevancia_carta": "sim",
+      "note": "Edificacao de saude"
+    },
+    {
+      "id": "c01_clinica",
+      "geoswarm_filter": {
+        "categoria": "C01",
+        "subcategoria": "Clinica"
+      },
+      "edgv_target": {
+        "table_base": "constr_edificacao",
+        "attributes": {
+          "tipo": 2029
+        }
+      },
+      "relevancia_carta": "sim",
+      "note": "Edificacao de saude"
+    },
+    {
+      "id": "c01_laboratorio",
+      "geoswarm_filter": {
+        "categoria": "C01",
+        "subcategoria": "Laboratorio"
+      },
+      "edgv_target": {
+        "table_base": "constr_edificacao",
+        "attributes": {
+          "tipo": 2029
+        }
+      },
+      "relevancia_carta": "sim",
+      "note": "Edificacao de saude"
+    },
+    {
+      "id": "c01_farmacia_popular",
+      "geoswarm_filter": {
+        "categoria": "C01",
+        "subcategoria": "Farmacia Popular"
+      },
+      "edgv_target": {
+        "table_base": "constr_edificacao",
+        "attributes": {
+          "tipo": 2029
+        }
+      },
+      "relevancia_carta": "sim",
+      "note": "Edificacao de saude"
+    },
+    {
+      "id": "c01_posto_de_vacinacao",
+      "geoswarm_filter": {
+        "categoria": "C01",
+        "subcategoria": "Posto de Vacinacao"
+      },
+      "edgv_target": {
+        "table_base": "constr_edificacao",
+        "attributes": {
+          "tipo": 2028
+        }
+      },
+      "relevancia_carta": "sim",
+      "note": "Edificacao de saude"
+    },
+    {
+      "id": "c01_secretaria_de_saude",
+      "geoswarm_filter": {
+        "categoria": "C01",
+        "subcategoria": "Secretaria de Saude"
+      },
+      "edgv_target": {
+        "table_base": "constr_edificacao",
+        "attributes": {
+          "tipo": 1316
+        }
+      },
+      "relevancia_carta": "sim",
+      "note": "Edificacao publica civil"
+    },
+    {
+      "_comment": "=== C02 ==="
+    },
+    {
+      "id": "c02_creche",
+      "geoswarm_filter": {
+        "categoria": "C02",
+        "subcategoria": "Creche"
+      },
+      "edgv_target": {
+        "table_base": "constr_edificacao",
+        "attributes": {
+          "tipo": 516
+        }
+      },
+      "relevancia_carta": "sim",
+      "note": "Edificacao de ensino"
+    },
+    {
+      "id": "c02_pre-escola",
+      "geoswarm_filter": {
+        "categoria": "C02",
+        "subcategoria": "Pre-escola"
+      },
+      "edgv_target": {
+        "table_base": "constr_edificacao",
+        "attributes": {
+          "tipo": 517
+        }
+      },
+      "relevancia_carta": "sim",
+      "note": "Edificacao de ensino"
+    },
+    {
+      "id": "c02_escola_fundamental",
+      "geoswarm_filter": {
+        "categoria": "C02",
+        "subcategoria": "Escola Fundamental"
+      },
+      "edgv_target": {
+        "table_base": "constr_edificacao",
+        "attributes": {
+          "tipo": 518
+        }
+      },
+      "relevancia_carta": "sim",
+      "note": "Edificacao de ensino"
+    },
+    {
+      "id": "c02_escola_medio",
+      "geoswarm_filter": {
+        "categoria": "C02",
+        "subcategoria": "Escola Medio"
+      },
+      "edgv_target": {
+        "table_base": "constr_edificacao",
+        "attributes": {
+          "tipo": 519
+        }
+      },
+      "relevancia_carta": "sim",
+      "note": "Edificacao de ensino"
+    },
+    {
+      "id": "c02_universidade_graduacao",
+      "geoswarm_filter": {
+        "categoria": "C02",
+        "subcategoria": "Universidade Graduacao"
+      },
+      "edgv_target": {
+        "table_base": "constr_edificacao",
+        "attributes": {
+          "tipo": 520
+        }
+      },
+      "relevancia_carta": "sim",
+      "note": "Edificacao de ensino"
+    },
+    {
+      "id": "c02_universidade_pos-graduacao",
+      "geoswarm_filter": {
+        "categoria": "C02",
+        "subcategoria": "Universidade Pos-graduacao"
+      },
+      "edgv_target": {
+        "table_base": "constr_edificacao",
+        "attributes": {
+          "tipo": 521
+        }
+      },
+      "relevancia_carta": "sim",
+      "note": "Edificacao de ensino"
+    },
+    {
+      "id": "c02_instituto_federal",
+      "geoswarm_filter": {
+        "categoria": "C02",
+        "subcategoria": "Instituto Federal"
+      },
+      "edgv_target": {
+        "table_base": "constr_edificacao",
+        "attributes": {
+          "tipo": 524
+        }
+      },
+      "relevancia_carta": "sim",
+      "note": "Edificacao de ensino"
+    },
+    {
+      "id": "c02_escola_tecnica",
+      "geoswarm_filter": {
+        "categoria": "C02",
+        "subcategoria": "Escola Tecnica"
+      },
+      "edgv_target": {
+        "table_base": "constr_edificacao",
+        "attributes": {
+          "tipo": 523
+        }
+      },
+      "relevancia_carta": "sim",
+      "note": "Edificacao de ensino"
+    },
+    {
+      "id": "c02_escola_tecnologica",
+      "geoswarm_filter": {
+        "categoria": "C02",
+        "subcategoria": "Escola Tecnologica"
+      },
+      "edgv_target": {
+        "table_base": "constr_edificacao",
+        "attributes": {
+          "tipo": 524
+        }
+      },
+      "relevancia_carta": "sim",
+      "note": "Edificacao de ensino"
+    },
+    {
+      "id": "c02_senai",
+      "geoswarm_filter": {
+        "categoria": "C02",
+        "subcategoria": "SENAI"
+      },
+      "edgv_target": {
+        "table_base": "constr_edificacao",
+        "attributes": {
+          "tipo": 523
+        }
+      },
+      "relevancia_carta": "sim",
+      "note": "Edificacao de ensino"
+    },
+    {
+      "id": "c02_senac",
+      "geoswarm_filter": {
+        "categoria": "C02",
+        "subcategoria": "SENAC"
+      },
+      "edgv_target": {
+        "table_base": "constr_edificacao",
+        "attributes": {
+          "tipo": 524
+        }
+      },
+      "relevancia_carta": "sim",
+      "note": "Edificacao de ensino"
+    },
+    {
+      "id": "c02_biblioteca",
+      "geoswarm_filter": {
+        "categoria": "C02",
+        "subcategoria": "Biblioteca"
+      },
+      "edgv_target": {
+        "table_base": "constr_edificacao",
+        "attributes": {
+          "tipo": 525
+        }
+      },
+      "relevancia_carta": "sim",
+      "note": "Edificacao de ensino"
+    },
+    {
+      "id": "c02_escola_municipal",
+      "geoswarm_filter": {
+        "categoria": "C02",
+        "subcategoria": "Escola Municipal"
+      },
+      "edgv_target": {
+        "table_base": "constr_edificacao",
+        "attributes": {
+          "tipo": 518
+        }
+      },
+      "relevancia_carta": "sim",
+      "note": "Edificacao de ensino"
+    },
+    {
+      "id": "c02_escola_estadual",
+      "geoswarm_filter": {
+        "categoria": "C02",
+        "subcategoria": "Escola Estadual"
+      },
+      "edgv_target": {
+        "table_base": "constr_edificacao",
+        "attributes": {
+          "tipo": 518
+        }
+      },
+      "relevancia_carta": "sim",
+      "note": "Edificacao de ensino"
+    },
+    {
+      "id": "c02_escola_federal",
+      "geoswarm_filter": {
+        "categoria": "C02",
+        "subcategoria": "Escola Federal"
+      },
+      "edgv_target": {
+        "table_base": "constr_edificacao",
+        "attributes": {
+          "tipo": 519
+        }
+      },
+      "relevancia_carta": "sim",
+      "note": "Edificacao de ensino"
+    },
+    {
+      "id": "c02_escola_particular",
+      "geoswarm_filter": {
+        "categoria": "C02",
+        "subcategoria": "Escola Particular"
+      },
+      "edgv_target": {
+        "table_base": "constr_edificacao",
+        "attributes": {
+          "tipo": 518
+        }
+      },
+      "relevancia_carta": "sim",
+      "note": "Edificacao de ensino"
+    },
+    {
+      "_comment": "=== C03 ==="
+    },
+    {
+      "id": "c03_delegacia_pc",
+      "geoswarm_filter": {
+        "categoria": "C03",
+        "subcategoria": "Delegacia PC"
+      },
+      "edgv_target": {
+        "table_base": "constr_edificacao",
+        "attributes": {
+          "tipo": 3001
+        }
+      },
+      "relevancia_carta": "sim",
+      "note": "Edificacao de seguranca publica"
+    },
+    {
+      "id": "c03_batalhao_pm",
+      "geoswarm_filter": {
+        "categoria": "C03",
+        "subcategoria": "Batalhao PM"
+      },
+      "edgv_target": {
+        "table_base": "constr_edificacao",
+        "attributes": {
+          "tipo": 3005
+        }
+      },
+      "relevancia_carta": "sim",
+      "note": "Edificacao de seguranca publica"
+    },
+    {
+      "id": "c03_posto_pm",
+      "geoswarm_filter": {
+        "categoria": "C03",
+        "subcategoria": "Posto PM"
+      },
+      "edgv_target": {
+        "table_base": "constr_edificacao",
+        "attributes": {
+          "tipo": 3002
+        }
+      },
+      "relevancia_carta": "sim",
+      "note": "Edificacao de seguranca publica"
+    },
+    {
+      "id": "c03_posto_prf",
+      "geoswarm_filter": {
+        "categoria": "C03",
+        "subcategoria": "Posto PRF"
+      },
+      "edgv_target": {
+        "table_base": "constr_edificacao",
+        "attributes": {
+          "tipo": 3004
+        }
+      },
+      "relevancia_carta": "sim",
+      "note": "Edificacao de seguranca publica"
+    },
+    {
+      "id": "c03_delegacia_pf",
+      "geoswarm_filter": {
+        "categoria": "C03",
+        "subcategoria": "Delegacia PF"
+      },
+      "edgv_target": {
+        "table_base": "constr_edificacao",
+        "attributes": {
+          "tipo": 3009
+        }
+      },
+      "relevancia_carta": "sim",
+      "note": "Edificacao de seguranca publica"
+    },
+    {
+      "id": "c03_corpo_de_bombeiros_militar",
+      "geoswarm_filter": {
+        "categoria": "C03",
+        "subcategoria": "Corpo de Bombeiros Militar"
+      },
+      "edgv_target": {
+        "table_base": "constr_edificacao",
+        "attributes": {
+          "tipo": 3007
+        }
+      },
+      "relevancia_carta": "sim",
+      "note": "Edificacao de seguranca publica"
+    },
+    {
+      "id": "c03_corpo_de_bombeiros_civil",
+      "geoswarm_filter": {
+        "categoria": "C03",
+        "subcategoria": "Corpo de Bombeiros Civil"
+      },
+      "edgv_target": {
+        "table_base": "constr_edificacao",
+        "attributes": {
+          "tipo": 3008
+        }
+      },
+      "relevancia_carta": "sim",
+      "note": "Edificacao de seguranca publica"
+    },
+    {
+      "id": "c03_guarda_municipal",
+      "geoswarm_filter": {
+        "categoria": "C03",
+        "subcategoria": "Guarda Municipal"
+      },
+      "edgv_target": {
+        "table_base": "constr_edificacao",
+        "attributes": {
+          "tipo": 3003
+        }
+      },
+      "relevancia_carta": "sim",
+      "note": "Edificacao de seguranca publica"
+    },
+    {
+      "id": "c03_presidio",
+      "geoswarm_filter": {
+        "categoria": "C03",
+        "subcategoria": "Presidio"
+      },
+      "edgv_target": {
+        "table_base": "constr_edificacao",
+        "attributes": {
+          "tipo": 3006
+        }
+      },
+      "relevancia_carta": "sim",
+      "note": "Edificacao de seguranca publica"
+    },
+    {
+      "id": "c03_penitenciaria",
+      "geoswarm_filter": {
+        "categoria": "C03",
+        "subcategoria": "Penitenciaria"
+      },
+      "edgv_target": {
+        "table_base": "constr_edificacao",
+        "attributes": {
+          "tipo": 3006
+        }
+      },
+      "relevancia_carta": "sim",
+      "note": "Edificacao de seguranca publica"
+    },
+    {
+      "id": "c03_unidade_socioeducativa",
+      "geoswarm_filter": {
+        "categoria": "C03",
+        "subcategoria": "Unidade Socioeducativa"
+      },
+      "edgv_target": {
+        "table_base": "constr_edificacao",
+        "attributes": {
+          "tipo": 3012
+        }
+      },
+      "relevancia_carta": "sim",
+      "note": "Seg - Unidade socioeducativa (0.12.0)"
+    },
+    {
+      "id": "c03_instituto_de_pericia",
+      "geoswarm_filter": {
+        "categoria": "C03",
+        "subcategoria": "Instituto de Pericia"
+      },
+      "edgv_target": {
+        "table_base": "constr_edificacao",
+        "attributes": {
+          "tipo": 3011
+        }
+      },
+      "relevancia_carta": "sim",
+      "note": "Seg - Pericia forense (0.12.0)"
+    },
+    {
+      "id": "c03_forum",
+      "geoswarm_filter": {
+        "categoria": "C03",
+        "subcategoria": "Forum"
+      },
+      "edgv_target": {
+        "table_base": "constr_edificacao",
+        "attributes": {
+          "tipo": 1313
+        }
+      },
+      "relevancia_carta": "sim",
+      "note": "Edificacao publica civil"
+    },
+    {
+      "id": "c03_comarca",
+      "geoswarm_filter": {
+        "categoria": "C03",
+        "subcategoria": "Comarca"
+      },
+      "edgv_target": {
+        "table_base": "constr_edificacao",
+        "attributes": {
+          "tipo": 1313
+        }
+      },
+      "relevancia_carta": "sim",
+      "note": "Edificacao publica civil"
+    },
+    {
+      "id": "c03_promotoria_mp",
+      "geoswarm_filter": {
+        "categoria": "C03",
+        "subcategoria": "Promotoria MP"
+      },
+      "edgv_target": {
+        "table_base": "constr_edificacao",
+        "attributes": {
+          "tipo": 1315
+        }
+      },
+      "relevancia_carta": "sim",
+      "note": "Edificacao publica civil"
+    },
+    {
+      "id": "c03_defensoria_publica",
+      "geoswarm_filter": {
+        "categoria": "C03",
+        "subcategoria": "Defensoria Publica"
+      },
+      "edgv_target": {
+        "table_base": "constr_edificacao",
+        "attributes": {
+          "tipo": 1315
+        }
+      },
+      "relevancia_carta": "sim",
+      "note": "Edificacao publica civil"
+    },
+    {
+      "id": "c03_junta_militar",
+      "geoswarm_filter": {
+        "categoria": "C03",
+        "subcategoria": "Junta Militar"
+      },
+      "edgv_target": {
+        "table_base": "constr_edificacao",
+        "attributes": {
+          "tipo": 1718
+        }
+      },
+      "relevancia_carta": "sim",
+      "note": "Edificacao militar"
+    },
+    {
+      "id": "c03_detran",
+      "geoswarm_filter": {
+        "categoria": "C03",
+        "subcategoria": "DETRAN"
+      },
+      "edgv_target": {
+        "table_base": "constr_edificacao",
+        "attributes": {
+          "tipo": 1398
+        }
+      },
+      "relevancia_carta": "sim",
+      "note": "Edificacao publica civil"
+    },
+    {
+      "id": "c03_ciretran",
+      "geoswarm_filter": {
+        "categoria": "C03",
+        "subcategoria": "CIRETRAN"
+      },
+      "edgv_target": {
+        "table_base": "constr_edificacao",
+        "attributes": {
+          "tipo": 1398
+        }
+      },
+      "relevancia_carta": "sim",
+      "note": "Edificacao publica civil"
+    },
+    {
+      "id": "c03_defesa_civil",
+      "geoswarm_filter": {
+        "categoria": "C03",
+        "subcategoria": "Defesa Civil"
+      },
+      "edgv_target": {
+        "table_base": "constr_edificacao",
+        "attributes": {
+          "tipo": 3010
+        }
+      },
+      "relevancia_carta": "sim",
+      "note": "Seg - Defesa Civil (0.12.0)"
+    },
+    {
+      "id": "c03_superintendencia_pf",
+      "geoswarm_filter": {
+        "categoria": "C03",
+        "subcategoria": "Superintendencia PF"
+      },
+      "edgv_target": {
+        "table_base": "constr_edificacao",
+        "attributes": {
+          "tipo": 3009
+        }
+      },
+      "relevancia_carta": "sim",
+      "note": "Edificacao de seguranca publica"
+    },
+    {
+      "id": "c03_colonia_agricola_penal",
+      "geoswarm_filter": {
+        "categoria": "C03",
+        "subcategoria": "Colonia Agricola Penal"
+      },
+      "edgv_target": {
+        "table_base": "constr_edificacao",
+        "attributes": {
+          "tipo": 3006
+        }
+      },
+      "relevancia_carta": "sim",
+      "note": "Edificacao de seguranca publica"
+    },
+    {
+      "_comment": "=== C04 ==="
+    },
+    {
+      "id": "c04_cras",
+      "geoswarm_filter": {
+        "categoria": "C04",
+        "subcategoria": "CRAS"
+      },
+      "edgv_target": {
+        "table_base": "constr_edificacao",
+        "attributes": {
+          "tipo": 2102
+        }
+      },
+      "relevancia_carta": "sim",
+      "note": "Ssoc - Equipamento publico de protecao social (0.12.0)"
+    },
+    {
+      "id": "c04_creas",
+      "geoswarm_filter": {
+        "categoria": "C04",
+        "subcategoria": "CREAS"
+      },
+      "edgv_target": {
+        "table_base": "constr_edificacao",
+        "attributes": {
+          "tipo": 2102
+        }
+      },
+      "relevancia_carta": "sim",
+      "note": "Ssoc - Equipamento publico de protecao social (0.12.0)"
+    },
+    {
+      "id": "c04_abrigo",
+      "geoswarm_filter": {
+        "categoria": "C04",
+        "subcategoria": "Abrigo"
+      },
+      "edgv_target": {
+        "table_base": "constr_edificacao",
+        "attributes": {
+          "tipo": 2101
+        }
+      },
+      "relevancia_carta": "sim",
+      "note": "Edificacao de desenvolvimento social"
+    },
+    {
+      "id": "c04_albergue",
+      "geoswarm_filter": {
+        "categoria": "C04",
+        "subcategoria": "Albergue"
+      },
+      "edgv_target": {
+        "table_base": "constr_edificacao",
+        "attributes": {
+          "tipo": 2101
+        }
+      },
+      "relevancia_carta": "sim",
+      "note": "Edificacao de desenvolvimento social"
+    },
+    {
+      "id": "c04_centro_de_convivencia",
+      "geoswarm_filter": {
+        "categoria": "C04",
+        "subcategoria": "Centro de Convivencia"
+      },
+      "edgv_target": {
+        "table_base": "constr_edificacao",
+        "attributes": {
+          "tipo": 2101
+        }
+      },
+      "relevancia_carta": "sim",
+      "note": "Edificacao de desenvolvimento social"
+    },
+    {
+      "id": "c04_conselho_tutelar",
+      "geoswarm_filter": {
+        "categoria": "C04",
+        "subcategoria": "Conselho Tutelar"
+      },
+      "edgv_target": {
+        "table_base": "constr_edificacao",
+        "attributes": {
+          "tipo": 2102
+        }
+      },
+      "relevancia_carta": "sim",
+      "note": "Ssoc - Equipamento publico de protecao social (0.12.0)"
+    },
+    {
+      "id": "c04_asilo",
+      "geoswarm_filter": {
+        "categoria": "C04",
+        "subcategoria": "Asilo"
+      },
+      "edgv_target": {
+        "table_base": "constr_edificacao",
+        "attributes": {
+          "tipo": 2101
+        }
+      },
+      "relevancia_carta": "sim",
+      "note": "Edificacao de desenvolvimento social"
+    },
+    {
+      "_comment": "=== C05 ==="
+    },
+    {
+      "id": "c05_museu",
+      "geoswarm_filter": {
+        "categoria": "C05",
+        "subcategoria": "Museu"
+      },
+      "edgv_target": {
+        "table_base": "constr_edificacao",
+        "attributes": {
+          "tipo": 803
+        }
+      },
+      "relevancia_carta": "sim",
+      "note": "Edificacao de lazer"
+    },
+    {
+      "id": "c05_teatro",
+      "geoswarm_filter": {
+        "categoria": "C05",
+        "subcategoria": "Teatro"
+      },
+      "edgv_target": {
+        "table_base": "constr_edificacao",
+        "attributes": {
+          "tipo": 804
+        }
+      },
+      "relevancia_carta": "sim",
+      "note": "Edificacao de lazer"
+    },
+    {
+      "id": "c05_centro_cultural",
+      "geoswarm_filter": {
+        "categoria": "C05",
+        "subcategoria": "Centro Cultural"
+      },
+      "edgv_target": {
+        "table_base": "constr_edificacao",
+        "attributes": {
+          "tipo": 807
+        }
+      },
+      "relevancia_carta": "sim",
+      "note": "Edificacao de lazer"
+    },
+    {
+      "id": "c05_cinema",
+      "geoswarm_filter": {
+        "categoria": "C05",
+        "subcategoria": "Cinema"
+      },
+      "edgv_target": {
+        "table_base": "constr_edificacao",
+        "attributes": {
+          "tipo": 806
+        }
+      },
+      "relevancia_carta": "sim",
+      "note": "Edificacao de lazer"
+    },
+    {
+      "id": "c05_biblioteca",
+      "geoswarm_filter": {
+        "categoria": "C05",
+        "subcategoria": "Biblioteca"
+      },
+      "edgv_target": {
+        "table_base": "constr_edificacao",
+        "attributes": {
+          "tipo": 810
+        }
+      },
+      "relevancia_carta": "sim",
+      "note": "Edificacao de lazer"
+    },
+    {
+      "id": "c05_estadio",
+      "geoswarm_filter": {
+        "categoria": "C05",
+        "subcategoria": "Estadio"
+      },
+      "edgv_target": {
+        "table_base": "constr_edificacao",
+        "attributes": {
+          "tipo": 801
+        }
+      },
+      "relevancia_carta": "sim",
+      "note": "Edificacao de lazer"
+    },
+    {
+      "id": "c05_ginasio",
+      "geoswarm_filter": {
+        "categoria": "C05",
+        "subcategoria": "Ginasio"
+      },
+      "edgv_target": {
+        "table_base": "constr_edificacao",
+        "attributes": {
+          "tipo": 802
+        }
+      },
+      "relevancia_carta": "sim",
+      "note": "Edificacao de lazer"
+    },
+    {
+      "id": "c05_parque_urbano",
+      "geoswarm_filter": {
+        "categoria": "C05",
+        "subcategoria": "Parque Urbano"
+      },
+      "edgv_target": {
+        "table_base": "constr_ocupacao_solo",
+        "attributes": {
+          "tipo": 1404
+        }
+      },
+      "relevancia_carta": "sim",
+      "note": "Area verde publica"
+    },
+    {
+      "id": "c05_praca",
+      "geoswarm_filter": {
+        "categoria": "C05",
+        "subcategoria": "Praca"
+      },
+      "edgv_target": {
+        "table_base": "constr_ocupacao_solo",
+        "attributes": {
+          "tipo": 1401
+        }
+      },
+      "relevancia_carta": "sim",
+      "note": "Praca"
+    },
+    {
+      "id": "c05_quadra_esportiva",
+      "geoswarm_filter": {
+        "categoria": "C05",
+        "subcategoria": "Quadra Esportiva"
+      },
+      "edgv_target": {
+        "table_base": "constr_ocupacao_solo",
+        "attributes": {
+          "tipo": 206
+        }
+      },
+      "relevancia_carta": "sim",
+      "note": "Campo ou quadra"
+    },
+    {
+      "id": "c05_centro_de_eventos",
+      "geoswarm_filter": {
+        "categoria": "C05",
+        "subcategoria": "Centro de Eventos"
+      },
+      "edgv_target": {
+        "table_base": "constr_edificacao",
+        "attributes": {
+          "tipo": 818
+        }
+      },
+      "relevancia_carta": "sim",
+      "note": "Edificacao de lazer"
+    },
+    {
+      "id": "c05_anfiteatro",
+      "geoswarm_filter": {
+        "categoria": "C05",
+        "subcategoria": "Anfiteatro"
+      },
+      "edgv_target": {
+        "table_base": "constr_edificacao",
+        "attributes": {
+          "tipo": 805
+        }
+      },
+      "relevancia_carta": "sim",
+      "note": "Edificacao de lazer"
+    },
+    {
+      "id": "c05_arquivo",
+      "geoswarm_filter": {
+        "categoria": "C05",
+        "subcategoria": "Arquivo"
+      },
+      "edgv_target": {
+        "table_base": "constr_edificacao",
+        "attributes": {
+          "tipo": 809
+        }
+      },
+      "relevancia_carta": "sim",
+      "note": "Edificacao de lazer"
+    },
+    {
+      "id": "c05_galeria",
+      "geoswarm_filter": {
+        "categoria": "C05",
+        "subcategoria": "Galeria"
+      },
+      "edgv_target": {
+        "table_base": "constr_edificacao",
+        "attributes": {
+          "tipo": 819
+        }
+      },
+      "relevancia_carta": "sim",
+      "note": "Edificacao de lazer"
+    },
+    {
+      "id": "c05_concha_acustica",
+      "geoswarm_filter": {
+        "categoria": "C05",
+        "subcategoria": "Concha Acustica"
+      },
+      "edgv_target": {
+        "table_base": "constr_edificacao",
+        "attributes": {
+          "tipo": 813
+        }
+      },
+      "relevancia_carta": "sim",
+      "note": "Edificacao de lazer"
+    },
+    {
+      "_comment": "=== C06 ==="
+    },
+    {
+      "id": "c06_terminal_rodoviario",
+      "geoswarm_filter": {
+        "categoria": "C06",
+        "subcategoria": "Terminal Rodoviario"
+      },
+      "edgv_target": {
+        "table_base": "constr_edificacao",
+        "attributes": {
+          "tipo": 2208
+        }
+      },
+      "relevancia_carta": "sim",
+      "note": "Edificacao rodoviaria"
+    },
+    {
+      "id": "c06_terminal_urbano",
+      "geoswarm_filter": {
+        "categoria": "C06",
+        "subcategoria": "Terminal Urbano"
+      },
+      "edgv_target": {
+        "table_base": "constr_edificacao",
+        "attributes": {
+          "tipo": 2209
+        }
+      },
+      "relevancia_carta": "sim",
+      "note": "Edificacao rodoviaria"
+    },
+    {
+      "id": "c06_parada_interestadual",
+      "geoswarm_filter": {
+        "categoria": "C06",
+        "subcategoria": "Parada Interestadual"
+      },
+      "edgv_target": {
+        "table_base": "constr_edificacao",
+        "attributes": {
+          "tipo": 2210
+        }
+      },
+      "relevancia_carta": "sim",
+      "note": "Edificacao rodoviaria"
+    },
+    {
+      "id": "c06_posto_pedagio",
+      "geoswarm_filter": {
+        "categoria": "C06",
+        "subcategoria": "Posto Pedagio"
+      },
+      "edgv_target": {
+        "table_base": "constr_edificacao",
+        "attributes": {
+          "tipo": 2213
+        }
+      },
+      "relevancia_carta": "sim",
+      "note": "Edificacao rodoviaria"
+    },
+    {
+      "id": "c06_aeroporto",
+      "geoswarm_filter": {
+        "categoria": "C06",
+        "subcategoria": "Aeroporto"
+      },
+      "edgv_target": {
+        "table_base": "infra_pista_pouso",
+        "attributes": {
+          "tipo": 9
+        }
+      },
+      "relevancia_carta": "sim",
+      "note": "Pista de pouso"
+    },
+    {
+      "id": "c06_heliporto",
+      "geoswarm_filter": {
+        "categoria": "C06",
+        "subcategoria": "Heliporto"
+      },
+      "edgv_target": {
+        "table_base": "infra_pista_pouso",
+        "attributes": {
+          "tipo": 11
+        }
+      },
+      "relevancia_carta": "sim",
+      "note": "Heliponto"
+    },
+    {
+      "id": "c06_porto",
+      "geoswarm_filter": {
+        "categoria": "C06",
+        "subcategoria": "Porto"
+      },
+      "edgv_target": {
+        "table_base": "constr_edificacao",
+        "attributes": {
+          "tipo": 2501
+        }
+      },
+      "relevancia_carta": "sim",
+      "note": "Edificacao portuaria"
+    },
+    {
+      "id": "c06_atracadouro",
+      "geoswarm_filter": {
+        "categoria": "C06",
+        "subcategoria": "Atracadouro"
+      },
+      "edgv_target": {
+        "table_base": "infra_elemento_infraestrutura",
+        "attributes": {
+          "tipo": 1938
+        }
+      },
+      "relevancia_carta": "sim",
+      "note": "Atracadouro Terminal"
+    },
+    {
+      "id": "c06_estacao_ferroviaria",
+      "geoswarm_filter": {
+        "categoria": "C06",
+        "subcategoria": "Estacao Ferroviaria"
+      },
+      "edgv_target": {
+        "table_base": "constr_edificacao",
+        "attributes": {
+          "tipo": 2316
+        }
+      },
+      "relevancia_carta": "sim",
+      "note": "Edificacao ferroviaria ou metroviaria"
+    },
+    {
+      "id": "c06_terminal_ferroviario",
+      "geoswarm_filter": {
+        "categoria": "C06",
+        "subcategoria": "Terminal Ferroviario"
+      },
+      "edgv_target": {
+        "table_base": "constr_edificacao",
+        "attributes": {
+          "tipo": 2318
+        }
+      },
+      "relevancia_carta": "sim",
+      "note": "Edificacao ferroviaria ou metroviaria"
+    },
+    {
+      "id": "c06_estacao_metroviaria",
+      "geoswarm_filter": {
+        "categoria": "C06",
+        "subcategoria": "Estacao Metroviaria"
+      },
+      "edgv_target": {
+        "table_base": "constr_edificacao",
+        "attributes": {
+          "tipo": 2317
+        }
+      },
+      "relevancia_carta": "sim",
+      "note": "Edificacao ferroviaria ou metroviaria"
+    },
+    {
+      "id": "c06_farol",
+      "geoswarm_filter": {
+        "categoria": "C06",
+        "subcategoria": "Farol"
+      },
+      "edgv_target": {
+        "table_base": "constr_ocupacao_solo",
+        "attributes": {
+          "tipo": 1101
+        }
+      },
+      "relevancia_carta": "sim",
+      "note": "Farol ou farolete"
+    },
+    {
+      "id": "c06_baliza",
+      "geoswarm_filter": {
+        "categoria": "C06",
+        "subcategoria": "Baliza"
+      },
+      "edgv_target": {
+        "table_base": "constr_ocupacao_solo",
+        "attributes": {
+          "tipo": 1202
+        }
+      },
+      "relevancia_carta": "sim",
+      "note": "Obstaculo de navegacao - artificial"
+    },
+    {
+      "id": "c06_obstaculo_vertical",
+      "geoswarm_filter": {
+        "categoria": "C06",
+        "subcategoria": "Obstaculo Vertical"
+      },
+      "edgv_target": {
+        "table_base": "infra_obstaculo_vertical",
+        "attributes": {
+          "tipo": 1
+        }
+      },
+      "relevancia_carta": "condicional",
+      "note": "Obstaculo individual"
+    },
+    {
+      "id": "c06_ponte",
+      "geoswarm_filter": {
+        "categoria": "C06",
+        "subcategoria": "Ponte"
+      },
+      "edgv_target": {
+        "table_base": "infra_elemento_viario",
+        "attributes": {
+          "tipo": 203
+        }
+      },
+      "relevancia_carta": "sim",
+      "note": "Ponte fixa"
+    },
+    {
+      "id": "c06_viaduto",
+      "geoswarm_filter": {
+        "categoria": "C06",
+        "subcategoria": "Viaduto"
+      },
+      "edgv_target": {
+        "table_base": "infra_elemento_viario",
+        "attributes": {
+          "tipo": 302
+        }
+      },
+      "relevancia_carta": "sim",
+      "note": "Viaduto"
+    },
+    {
+      "id": "c06_tunel",
+      "geoswarm_filter": {
+        "categoria": "C06",
+        "subcategoria": "Tunel"
+      },
+      "edgv_target": {
+        "table_base": "infra_elemento_viario",
+        "attributes": {
+          "tipo": 101
+        }
+      },
+      "relevancia_carta": "sim",
+      "note": "Tunel"
+    },
+    {
+      "id": "c06_hidrovia",
+      "geoswarm_filter": {
+        "categoria": "C06",
+        "subcategoria": "Hidrovia"
+      },
+      "edgv_target": {
+        "table_base": "infra_trecho_hidroviario",
+        "attributes": {}
+      },
+      "relevancia_carta": "sim",
+      "note": "Trecho hidroviario (classe sem atributo tipo)"
+    },
+    {
+      "id": "c06_travessia",
+      "geoswarm_filter": {
+        "categoria": "C06",
+        "subcategoria": "Travessia"
+      },
+      "edgv_target": {
+        "table_base": "infra_travessia_hidroviaria",
+        "attributes": {
+          "tipo": 1
+        }
+      },
+      "relevancia_carta": "sim",
+      "note": "Travessia - Balsa"
+    },
+    {
+      "id": "c06_eclusa",
+      "geoswarm_filter": {
+        "categoria": "C06",
+        "subcategoria": "Eclusa"
+      },
+      "edgv_target": {
+        "table_base": "infra_elemento_infraestrutura",
+        "attributes": {
+          "tipo": 1001
+        }
+      },
+      "relevancia_carta": "sim",
+      "note": "Eclusa"
+    },
+    {
+      "_comment": "=== C07 ==="
+    },
+    {
+      "id": "c07_eta",
+      "geoswarm_filter": {
+        "categoria": "C07",
+        "subcategoria": "ETA"
+      },
+      "edgv_target": {
+        "table_base": "constr_edificacao",
+        "attributes": {
+          "tipo": 302
+        }
+      },
+      "relevancia_carta": "sim",
+      "note": "Edificacao de abastecimento de agua"
+    },
+    {
+      "id": "c07_ete",
+      "geoswarm_filter": {
+        "categoria": "C07",
+        "subcategoria": "ETE"
+      },
+      "edgv_target": {
+        "table_base": "constr_edificacao",
+        "attributes": {
+          "tipo": 405
+        }
+      },
+      "relevancia_carta": "sim",
+      "note": "Edificacao de saneamento"
+    },
+    {
+      "id": "c07_estacao_elevatoria",
+      "geoswarm_filter": {
+        "categoria": "C07",
+        "subcategoria": "Estacao Elevatoria"
+      },
+      "edgv_target": {
+        "table_base": "constr_edificacao",
+        "attributes": {
+          "tipo": 303
+        }
+      },
+      "relevancia_carta": "sim",
+      "note": "Edificacao de abastecimento de agua"
+    },
+    {
+      "id": "c07_reservatorio",
+      "geoswarm_filter": {
+        "categoria": "C07",
+        "subcategoria": "Reservatorio"
+      },
+      "edgv_target": {
+        "table_base": "constr_deposito",
+        "attributes": {
+          "tipo": 204
+        }
+      },
+      "relevancia_carta": "sim",
+      "note": "Deposito de abastecimento de agua"
+    },
+    {
+      "id": "c07_aterro_sanitario",
+      "geoswarm_filter": {
+        "categoria": "C07",
+        "subcategoria": "Aterro Sanitario"
+      },
+      "edgv_target": {
+        "table_base": "constr_deposito",
+        "attributes": {
+          "tipo": 305
+        }
+      },
+      "relevancia_carta": "sim",
+      "note": "Deposito de saneamento"
+    },
+    {
+      "id": "c07_aterro_controlado",
+      "geoswarm_filter": {
+        "categoria": "C07",
+        "subcategoria": "Aterro Controlado"
+      },
+      "edgv_target": {
+        "table_base": "constr_deposito",
+        "attributes": {
+          "tipo": 306
+        }
+      },
+      "relevancia_carta": "sim",
+      "note": "Deposito de saneamento"
+    },
+    {
+      "id": "c07_ecoponto",
+      "geoswarm_filter": {
+        "categoria": "C07",
+        "subcategoria": "Ecoponto"
+      },
+      "edgv_target": {
+        "table_base": "constr_edificacao",
+        "attributes": {
+          "tipo": 406
+        }
+      },
+      "relevancia_carta": "sim",
+      "note": "Edificacao de saneamento"
+    },
+    {
+      "id": "c07_usina_reciclagem",
+      "geoswarm_filter": {
+        "categoria": "C07",
+        "subcategoria": "Usina Reciclagem"
+      },
+      "edgv_target": {
+        "table_base": "constr_edificacao",
+        "attributes": {
+          "tipo": 406
+        }
+      },
+      "relevancia_carta": "sim",
+      "note": "Edificacao de saneamento"
+    },
+    {
+      "id": "c07_coleta_seletiva",
+      "geoswarm_filter": {
+        "categoria": "C07",
+        "subcategoria": "Coleta Seletiva"
+      },
+      "edgv_target": {
+        "table_base": "constr_edificacao",
+        "attributes": {
+          "tipo": 498
+        }
+      },
+      "relevancia_carta": "sim",
+      "note": "Edificacao de saneamento"
+    },
+    {
+      "id": "c07_adutora",
+      "geoswarm_filter": {
+        "categoria": "C07",
+        "subcategoria": "Adutora"
+      },
+      "edgv_target": {
+        "table_base": "infra_trecho_duto",
+        "attributes": {
+          "tipo": 301
+        }
+      },
+      "relevancia_carta": "nao",
+      "note": "Duto - Agua"
+    },
+    {
+      "id": "c07_adutora_pisf",
+      "geoswarm_filter": {
+        "categoria": "C07",
+        "subcategoria": "Adutora PISF"
+      },
+      "edgv_target": {
+        "table_base": "infra_trecho_duto",
+        "attributes": {
+          "tipo": 301
+        }
+      },
+      "relevancia_carta": "nao",
+      "note": "Duto - Agua"
+    },
+    {
+      "id": "c07_captacao_superficial",
+      "geoswarm_filter": {
+        "categoria": "C07",
+        "subcategoria": "Captacao Superficial"
+      },
+      "edgv_target": {
+        "table_base": "constr_edificacao",
+        "attributes": {
+          "tipo": 301
+        }
+      },
+      "relevancia_carta": "sim",
+      "note": "Edificacao de abastecimento de agua"
+    },
+    {
+      "id": "c07_captacao_subterranea",
+      "geoswarm_filter": {
+        "categoria": "C07",
+        "subcategoria": "Captacao Subterranea"
+      },
+      "edgv_target": {
+        "table_base": "constr_edificacao",
+        "attributes": {
+          "tipo": 301
+        }
+      },
+      "relevancia_carta": "sim",
+      "note": "Edificacao de abastecimento de agua"
+    },
+    {
+      "_comment": "=== C08 ==="
+    },
+    {
+      "id": "c08_subestacao",
+      "geoswarm_filter": {
+        "categoria": "C08",
+        "subcategoria": "Subestacao"
+      },
+      "edgv_target": {
+        "table_base": "infra_elemento_energia",
+        "attributes": {
+          "tipo": 1801
+        }
+      },
+      "relevancia_carta": "sim",
+      "note": "Subestacao de energia"
+    },
+    {
+      "id": "c08_subestacao_distribuicao",
+      "geoswarm_filter": {
+        "categoria": "C08",
+        "subcategoria": "Subestacao Distribuicao"
+      },
+      "edgv_target": {
+        "table_base": "infra_elemento_energia",
+        "attributes": {
+          "tipo": 1802
+        }
+      },
+      "relevancia_carta": "sim",
+      "note": "Subestacao de energia"
+    },
+    {
+      "id": "c08_pch",
+      "geoswarm_filter": {
+        "categoria": "C08",
+        "subcategoria": "PCH"
+      },
+      "edgv_target": {
+        "table_base": "infra_elemento_energia",
+        "attributes": {
+          "tipo": 408
+        }
+      },
+      "relevancia_carta": "sim",
+      "note": "Estacao geradora de energia"
+    },
+    {
+      "id": "c08_uhe",
+      "geoswarm_filter": {
+        "categoria": "C08",
+        "subcategoria": "UHE"
+      },
+      "edgv_target": {
+        "table_base": "infra_elemento_energia",
+        "attributes": {
+          "tipo": 408
+        }
+      },
+      "relevancia_carta": "sim",
+      "note": "Estacao geradora de energia"
+    },
+    {
+      "id": "c08_eolica",
+      "geoswarm_filter": {
+        "categoria": "C08",
+        "subcategoria": "Eolica"
+      },
+      "edgv_target": {
+        "table_base": "infra_elemento_energia",
+        "attributes": {
+          "tipo": 405
+        }
+      },
+      "relevancia_carta": "sim",
+      "note": "Estacao geradora de energia"
+    },
+    {
+      "id": "c08_solar",
+      "geoswarm_filter": {
+        "categoria": "C08",
+        "subcategoria": "Solar"
+      },
+      "edgv_target": {
+        "table_base": "infra_elemento_energia",
+        "attributes": {
+          "tipo": 406
+        }
+      },
+      "relevancia_carta": "sim",
+      "note": "Estacao geradora de energia"
+    },
+    {
+      "id": "c08_termica",
+      "geoswarm_filter": {
+        "categoria": "C08",
+        "subcategoria": "Termica"
+      },
+      "edgv_target": {
+        "table_base": "infra_elemento_energia",
+        "attributes": {
+          "tipo": 409
+        }
+      },
+      "relevancia_carta": "sim",
+      "note": "Estacao geradora de energia"
+    },
+    {
+      "id": "c08_linha_transmissao",
+      "geoswarm_filter": {
+        "categoria": "C08",
+        "subcategoria": "Linha Transmissao"
+      },
+      "edgv_target": {
+        "table_base": "infra_elemento_energia",
+        "attributes": {
+          "tipo": 303
+        }
+      },
+      "relevancia_carta": "sim",
+      "note": "Linha de energia"
+    },
+    {
+      "id": "c08_torre_energia",
+      "geoswarm_filter": {
+        "categoria": "C08",
+        "subcategoria": "Torre Energia"
+      },
+      "edgv_target": {
+        "table_base": "infra_elemento_energia",
+        "attributes": {
+          "tipo": 1401
+        }
+      },
+      "relevancia_carta": "sim",
+      "note": "Torre de energia"
+    },
+    {
+      "id": "c08_aerogerador",
+      "geoswarm_filter": {
+        "categoria": "C08",
+        "subcategoria": "Aerogerador"
+      },
+      "edgv_target": {
+        "table_base": "infra_elemento_energia",
+        "attributes": {
+          "tipo": 1701
+        }
+      },
+      "relevancia_carta": "sim",
+      "note": "Aerogerador"
+    },
+    {
+      "id": "c08_nuclear",
+      "geoswarm_filter": {
+        "categoria": "C08",
+        "subcategoria": "Nuclear"
+      },
+      "edgv_target": {
+        "table_base": "infra_elemento_energia",
+        "attributes": {
+          "tipo": 410
+        }
+      },
+      "relevancia_carta": "sim",
+      "note": "Estacao geradora de energia"
+    },
+    {
+      "id": "c08_biomassa",
+      "geoswarm_filter": {
+        "categoria": "C08",
+        "subcategoria": "Biomassa"
+      },
+      "edgv_target": {
+        "table_base": "infra_elemento_energia",
+        "attributes": {
+          "tipo": 411
+        }
+      },
+      "relevancia_carta": "sim",
+      "note": "Estacao geradora de energia"
+    },
+    {
+      "id": "c08_casa_de_forca",
+      "geoswarm_filter": {
+        "categoria": "C08",
+        "subcategoria": "Casa de Forca"
+      },
+      "edgv_target": {
+        "table_base": "infra_elemento_energia",
+        "attributes": {
+          "tipo": 501
+        }
+      },
+      "relevancia_carta": "sim",
+      "note": "Casa de Forca"
+    },
+    {
+      "_comment": "=== C09 ==="
+    },
+    {
+      "id": "c09_prefeitura",
+      "geoswarm_filter": {
+        "categoria": "C09",
+        "subcategoria": "Prefeitura"
+      },
+      "edgv_target": {
+        "table_base": "constr_edificacao",
+        "attributes": {
+          "tipo": 1322
+        }
+      },
+      "relevancia_carta": "sim",
+      "note": "Edificacao publica civil"
+    },
+    {
+      "id": "c09_camara_municipal",
+      "geoswarm_filter": {
+        "categoria": "C09",
+        "subcategoria": "Camara Municipal"
+      },
+      "edgv_target": {
+        "table_base": "constr_edificacao",
+        "attributes": {
+          "tipo": 1308
+        }
+      },
+      "relevancia_carta": "sim",
+      "note": "Edificacao publica civil"
+    },
+    {
+      "id": "c09_secretaria",
+      "geoswarm_filter": {
+        "categoria": "C09",
+        "subcategoria": "Secretaria"
+      },
+      "edgv_target": {
+        "table_base": "constr_edificacao",
+        "attributes": {
+          "tipo": 1316
+        }
+      },
+      "relevancia_carta": "sim",
+      "note": "Edificacao publica civil"
+    },
+    {
+      "id": "c09_cartorio",
+      "geoswarm_filter": {
+        "categoria": "C09",
+        "subcategoria": "Cartorio"
+      },
+      "edgv_target": {
+        "table_base": "constr_edificacao",
+        "attributes": {
+          "tipo": 1303
+        }
+      },
+      "relevancia_carta": "sim",
+      "note": "Edificacao publica civil"
+    },
+    {
+      "id": "c09_agencia_inss",
+      "geoswarm_filter": {
+        "categoria": "C09",
+        "subcategoria": "Agencia INSS"
+      },
+      "edgv_target": {
+        "table_base": "constr_edificacao",
+        "attributes": {
+          "tipo": 1307
+        }
+      },
+      "relevancia_carta": "sim",
+      "note": "Edificacao publica civil"
+    },
+    {
+      "id": "c09_agencia_correios",
+      "geoswarm_filter": {
+        "categoria": "C09",
+        "subcategoria": "Agencia Correios"
+      },
+      "edgv_target": {
+        "table_base": "constr_edificacao",
+        "attributes": {
+          "tipo": 1398
+        }
+      },
+      "relevancia_carta": "nao",
+      "note": "Edificacao publica civil"
+    },
+    {
+      "id": "c09_receita_federal",
+      "geoswarm_filter": {
+        "categoria": "C09",
+        "subcategoria": "Receita Federal"
+      },
+      "edgv_target": {
+        "table_base": "constr_edificacao",
+        "attributes": {
+          "tipo": 1910
+        }
+      },
+      "relevancia_carta": "sim",
+      "note": "Posto fiscal"
+    },
+    {
+      "id": "c09_centro_administrativo",
+      "geoswarm_filter": {
+        "categoria": "C09",
+        "subcategoria": "Centro Administrativo"
+      },
+      "edgv_target": {
+        "table_base": "constr_edificacao",
+        "attributes": {
+          "tipo": 1304
+        }
+      },
+      "relevancia_carta": "sim",
+      "note": "Edificacao publica civil"
+    },
+    {
+      "id": "c09_autarquia",
+      "geoswarm_filter": {
+        "categoria": "C09",
+        "subcategoria": "Autarquia"
+      },
+      "edgv_target": {
+        "table_base": "constr_edificacao",
+        "attributes": {
+          "tipo": 1310
+        }
+      },
+      "relevancia_carta": "sim",
+      "note": "Edificacao publica civil"
+    },
+    {
+      "id": "c09_fundacao",
+      "geoswarm_filter": {
+        "categoria": "C09",
+        "subcategoria": "Fundacao"
+      },
+      "edgv_target": {
+        "table_base": "constr_edificacao",
+        "attributes": {
+          "tipo": 1314
+        }
+      },
+      "relevancia_carta": "sim",
+      "note": "Edificacao publica civil"
+    },
+    {
+      "id": "c09_tre",
+      "geoswarm_filter": {
+        "categoria": "C09",
+        "subcategoria": "TRE"
+      },
+      "edgv_target": {
+        "table_base": "constr_edificacao",
+        "attributes": {
+          "tipo": 1305
+        }
+      },
+      "relevancia_carta": "sim",
+      "note": "Edificacao publica civil"
+    },
+    {
+      "id": "c09_posto_de_fronteira",
+      "geoswarm_filter": {
+        "categoria": "C09",
+        "subcategoria": "Posto de Fronteira"
+      },
+      "edgv_target": {
+        "table_base": "constr_edificacao",
+        "attributes": {
+          "tipo": 1910
+        }
+      },
+      "relevancia_carta": "sim",
+      "note": "Posto fiscal"
+    },
+    {
+      "id": "c09_alfandega",
+      "geoswarm_filter": {
+        "categoria": "C09",
+        "subcategoria": "Alfandega"
+      },
+      "edgv_target": {
+        "table_base": "constr_edificacao",
+        "attributes": {
+          "tipo": 1995
+        }
+      },
+      "relevancia_carta": "sim",
+      "note": "Posto fiscal"
+    },
+    {
+      "_comment": "=== C10 ==="
+    },
+    {
+      "id": "c10_mercado_publico",
+      "geoswarm_filter": {
+        "categoria": "C10",
+        "subcategoria": "Mercado Publico"
+      },
+      "edgv_target": {
+        "table_base": "constr_edificacao",
+        "attributes": {
+          "tipo": 910
+        }
+      },
+      "relevancia_carta": "sim",
+      "note": "Edificacao de comercio e servico"
+    },
+    {
+      "id": "c10_feira",
+      "geoswarm_filter": {
+        "categoria": "C10",
+        "subcategoria": "Feira"
+      },
+      "edgv_target": {
+        "table_base": "constr_edificacao",
+        "attributes": {
+          "tipo": 904
+        }
+      },
+      "relevancia_carta": "condicional",
+      "note": "Edificacao de comercio e servico"
+    },
+    {
+      "id": "c10_ceasa",
+      "geoswarm_filter": {
+        "categoria": "C10",
+        "subcategoria": "CEASA"
+      },
+      "edgv_target": {
+        "table_base": "constr_edificacao",
+        "attributes": {
+          "tipo": 904
+        }
+      },
+      "relevancia_carta": "sim",
+      "note": "Edificacao de comercio e servico"
+    },
+    {
+      "id": "c10_matadouro",
+      "geoswarm_filter": {
+        "categoria": "C10",
+        "subcategoria": "Matadouro"
+      },
+      "edgv_target": {
+        "table_base": "constr_edificacao",
+        "attributes": {
+          "tipo": 1015
+        }
+      },
+      "relevancia_carta": "sim",
+      "note": "Edificacao industrial"
+    },
+    {
+      "id": "c10_entreposto",
+      "geoswarm_filter": {
+        "categoria": "C10",
+        "subcategoria": "Entreposto"
+      },
+      "edgv_target": {
+        "table_base": "constr_edificacao",
+        "attributes": {
+          "tipo": 904
+        }
+      },
+      "relevancia_carta": "sim",
+      "note": "Edificacao de comercio e servico"
+    },
+    {
+      "_comment": "=== C11 ==="
+    },
+    {
+      "id": "c11_igreja",
+      "geoswarm_filter": {
+        "categoria": "C11",
+        "subcategoria": "Igreja"
+      },
+      "edgv_target": {
+        "table_base": "constr_edificacao",
+        "attributes": {
+          "tipo": 601
+        }
+      },
+      "relevancia_carta": "sim",
+      "note": "Edificacao religiosa"
+    },
+    {
+      "id": "c11_catedral",
+      "geoswarm_filter": {
+        "categoria": "C11",
+        "subcategoria": "Catedral"
+      },
+      "edgv_target": {
+        "table_base": "constr_edificacao",
+        "attributes": {
+          "tipo": 601
+        }
+      },
+      "relevancia_carta": "sim",
+      "note": "Edificacao religiosa"
+    },
+    {
+      "id": "c11_capela",
+      "geoswarm_filter": {
+        "categoria": "C11",
+        "subcategoria": "Capela"
+      },
+      "edgv_target": {
+        "table_base": "constr_edificacao",
+        "attributes": {
+          "tipo": 601
+        }
+      },
+      "relevancia_carta": "sim",
+      "note": "Edificacao religiosa"
+    },
+    {
+      "id": "c11_templo",
+      "geoswarm_filter": {
+        "categoria": "C11",
+        "subcategoria": "Templo"
+      },
+      "edgv_target": {
+        "table_base": "constr_edificacao",
+        "attributes": {
+          "tipo": 602
+        }
+      },
+      "relevancia_carta": "sim",
+      "note": "Edificacao religiosa"
+    },
+    {
+      "id": "c11_centro_religioso",
+      "geoswarm_filter": {
+        "categoria": "C11",
+        "subcategoria": "Centro Religioso"
+      },
+      "edgv_target": {
+        "table_base": "constr_edificacao",
+        "attributes": {
+          "tipo": 603
+        }
+      },
+      "relevancia_carta": "sim",
+      "note": "Edificacao religiosa"
+    },
+    {
+      "id": "c11_mesquita",
+      "geoswarm_filter": {
+        "categoria": "C11",
+        "subcategoria": "Mesquita"
+      },
+      "edgv_target": {
+        "table_base": "constr_edificacao",
+        "attributes": {
+          "tipo": 606
+        }
+      },
+      "relevancia_carta": "sim",
+      "note": "Edificacao religiosa"
+    },
+    {
+      "id": "c11_sinagoga",
+      "geoswarm_filter": {
+        "categoria": "C11",
+        "subcategoria": "Sinagoga"
+      },
+      "edgv_target": {
+        "table_base": "constr_edificacao",
+        "attributes": {
+          "tipo": 607
+        }
+      },
+      "relevancia_carta": "sim",
+      "note": "Edificacao religiosa"
+    },
+    {
+      "id": "c11_centro_espirita",
+      "geoswarm_filter": {
+        "categoria": "C11",
+        "subcategoria": "Centro Espirita"
+      },
+      "edgv_target": {
+        "table_base": "constr_edificacao",
+        "attributes": {
+          "tipo": 603
+        }
+      },
+      "relevancia_carta": "sim",
+      "note": "Edificacao religiosa"
+    },
+    {
+      "id": "c11_terreiro",
+      "geoswarm_filter": {
+        "categoria": "C11",
+        "subcategoria": "Terreiro"
+      },
+      "edgv_target": {
+        "table_base": "constr_edificacao",
+        "attributes": {
+          "tipo": 609
+        }
+      },
+      "relevancia_carta": "sim",
+      "note": "Edificacao religiosa"
+    },
+    {
+      "id": "c11_mosteiro",
+      "geoswarm_filter": {
+        "categoria": "C11",
+        "subcategoria": "Mosteiro"
+      },
+      "edgv_target": {
+        "table_base": "constr_edificacao",
+        "attributes": {
+          "tipo": 604
+        }
+      },
+      "relevancia_carta": "sim",
+      "note": "Edificacao religiosa"
+    },
+    {
+      "id": "c11_convento",
+      "geoswarm_filter": {
+        "categoria": "C11",
+        "subcategoria": "Convento"
+      },
+      "edgv_target": {
+        "table_base": "constr_edificacao",
+        "attributes": {
+          "tipo": 605
+        }
+      },
+      "relevancia_carta": "sim",
+      "note": "Edificacao religiosa"
+    },
+    {
+      "id": "c11_paroquia",
+      "geoswarm_filter": {
+        "categoria": "C11",
+        "subcategoria": "Paroquia"
+      },
+      "edgv_target": {
+        "table_base": "constr_edificacao",
+        "attributes": {
+          "tipo": 601
+        }
+      },
+      "relevancia_carta": "sim",
+      "note": "Edificacao religiosa"
+    },
+    {
+      "_comment": "=== C12 ==="
+    },
+    {
+      "id": "c12_cemiterio_municipal",
+      "geoswarm_filter": {
+        "categoria": "C12",
+        "subcategoria": "Cemiterio Municipal"
+      },
+      "edgv_target": {
+        "table_base": "constr_ocupacao_solo",
+        "attributes": {
+          "tipo": 104
+        }
+      },
+      "relevancia_carta": "sim",
+      "note": "Cemiterio"
+    },
+    {
+      "id": "c12_cemiterio_particular",
+      "geoswarm_filter": {
+        "categoria": "C12",
+        "subcategoria": "Cemiterio Particular"
+      },
+      "edgv_target": {
+        "table_base": "constr_ocupacao_solo",
+        "attributes": {
+          "tipo": 104
+        }
+      },
+      "relevancia_carta": "sim",
+      "note": "Cemiterio"
+    },
+    {
+      "id": "c12_cemiterio_parque",
+      "geoswarm_filter": {
+        "categoria": "C12",
+        "subcategoria": "Cemiterio Parque"
+      },
+      "edgv_target": {
+        "table_base": "constr_ocupacao_solo",
+        "attributes": {
+          "tipo": 102
+        }
+      },
+      "relevancia_carta": "sim",
+      "note": "Cemiterio"
+    },
+    {
+      "id": "c12_crematorio",
+      "geoswarm_filter": {
+        "categoria": "C12",
+        "subcategoria": "Crematorio"
+      },
+      "edgv_target": {
+        "table_base": "constr_ocupacao_solo",
+        "attributes": {
+          "tipo": 101
+        }
+      },
+      "relevancia_carta": "sim",
+      "note": "Cemiterio"
+    },
+    {
+      "id": "c12_capela_mortuaria",
+      "geoswarm_filter": {
+        "categoria": "C12",
+        "subcategoria": "Capela Mortuaria"
+      },
+      "edgv_target": {
+        "table_base": "constr_edificacao",
+        "attributes": {
+          "tipo": 608
+        }
+      },
+      "relevancia_carta": "sim",
+      "note": "Edificacao religiosa"
+    },
+    {
+      "_comment": "=== C13 ==="
+    },
+    {
+      "id": "c13_hotel",
+      "geoswarm_filter": {
+        "categoria": "C13",
+        "subcategoria": "Hotel"
+      },
+      "edgv_target": {
+        "table_base": "constr_edificacao",
+        "attributes": {
+          "tipo": 907
+        }
+      },
+      "relevancia_carta": "condicional",
+      "note": "Edificacao de comercio e servico"
+    },
+    {
+      "id": "c13_pousada",
+      "geoswarm_filter": {
+        "categoria": "C13",
+        "subcategoria": "Pousada"
+      },
+      "edgv_target": {
+        "table_base": "constr_edificacao",
+        "attributes": {
+          "tipo": 907
+        }
+      },
+      "relevancia_carta": "condicional",
+      "note": "Edificacao de comercio e servico"
+    },
+    {
+      "id": "c13_camping",
+      "geoswarm_filter": {
+        "categoria": "C13",
+        "subcategoria": "Camping"
+      },
+      "edgv_target": {
+        "table_base": "constr_edificacao",
+        "attributes": {
+          "tipo": 798
+        }
+      },
+      "relevancia_carta": "sim",
+      "note": "Edificacao ou construcao turistica"
+    },
+    {
+      "id": "c13_mirante",
+      "geoswarm_filter": {
+        "categoria": "C13",
+        "subcategoria": "Mirante"
+      },
+      "edgv_target": {
+        "table_base": "constr_edificacao",
+        "attributes": {
+          "tipo": 711
+        }
+      },
+      "relevancia_carta": "sim",
+      "note": "Edificacao ou construcao turistica"
+    },
+    {
+      "id": "c13_ponto_turistico",
+      "geoswarm_filter": {
+        "categoria": "C13",
+        "subcategoria": "Ponto Turistico"
+      },
+      "edgv_target": {
+        "table_base": "constr_edificacao",
+        "attributes": {
+          "tipo": 798
+        }
+      },
+      "relevancia_carta": "sim",
+      "note": "Edificacao ou construcao turistica"
+    },
+    {
+      "id": "c13_centro_informacao_turistica",
+      "geoswarm_filter": {
+        "categoria": "C13",
+        "subcategoria": "Centro Informacao Turistica"
+      },
+      "edgv_target": {
+        "table_base": "constr_edificacao",
+        "attributes": {
+          "tipo": 798
+        }
+      },
+      "relevancia_carta": "sim",
+      "note": "Edificacao ou construcao turistica"
+    },
+    {
+      "id": "c13_monumento",
+      "geoswarm_filter": {
+        "categoria": "C13",
+        "subcategoria": "Monumento"
+      },
+      "edgv_target": {
+        "table_base": "constr_edificacao",
+        "attributes": {
+          "tipo": 712
+        }
+      },
+      "relevancia_carta": "sim",
+      "note": "Edificacao ou construcao turistica"
+    },
+    {
+      "id": "c13_estatua",
+      "geoswarm_filter": {
+        "categoria": "C13",
+        "subcategoria": "Estatua"
+      },
+      "edgv_target": {
+        "table_base": "constr_edificacao",
+        "attributes": {
+          "tipo": 710
+        }
+      },
+      "relevancia_carta": "sim",
+      "note": "Edificacao ou construcao turistica"
+    },
+    {
+      "id": "c13_cruzeiro",
+      "geoswarm_filter": {
+        "categoria": "C13",
+        "subcategoria": "Cruzeiro"
+      },
+      "edgv_target": {
+        "table_base": "constr_edificacao",
+        "attributes": {
+          "tipo": 709
+        }
+      },
+      "relevancia_carta": "sim",
+      "note": "Edificacao ou construcao turistica"
+    },
+    {
+      "_comment": "=== C14 ==="
+    },
+    {
+      "id": "c14_centro_de_convencoes",
+      "geoswarm_filter": {
+        "categoria": "C14",
+        "subcategoria": "Centro de Convencoes"
+      },
+      "edgv_target": {
+        "table_base": "constr_edificacao",
+        "attributes": {
+          "tipo": 905
+        }
+      },
+      "relevancia_carta": "sim",
+      "note": "Edificacao de comercio e servico"
+    },
+    {
+      "id": "c14_centro_comunitario",
+      "geoswarm_filter": {
+        "categoria": "C14",
+        "subcategoria": "Centro Comunitario"
+      },
+      "edgv_target": {
+        "table_base": "constr_edificacao",
+        "attributes": {
+          "tipo": 2101
+        }
+      },
+      "relevancia_carta": "sim",
+      "note": "Edificacao de desenvolvimento social"
+    },
+    {
+      "id": "c14_associacao_de_moradores",
+      "geoswarm_filter": {
+        "categoria": "C14",
+        "subcategoria": "Associacao de Moradores"
+      },
+      "edgv_target": {
+        "table_base": "constr_edificacao",
+        "attributes": {
+          "tipo": 2101
+        }
+      },
+      "relevancia_carta": "sim",
+      "note": "Edificacao de desenvolvimento social"
+    },
+    {
+      "id": "c14_cooperativa",
+      "geoswarm_filter": {
+        "categoria": "C14",
+        "subcategoria": "Cooperativa"
+      },
+      "edgv_target": {
+        "table_base": "constr_edificacao",
+        "attributes": {
+          "tipo": 998
+        }
+      },
+      "relevancia_carta": "condicional",
+      "note": "Edificacao de comercio e servico"
+    },
+    {
+      "id": "c14_shopping_center",
+      "geoswarm_filter": {
+        "categoria": "C14",
+        "subcategoria": "Shopping Center"
+      },
+      "edgv_target": {
+        "table_base": "constr_edificacao",
+        "attributes": {
+          "tipo": 903
+        }
+      },
+      "relevancia_carta": "sim",
+      "note": "Edificacao de comercio e servico"
+    },
+    {
+      "id": "c14_fabrica",
+      "geoswarm_filter": {
+        "categoria": "C14",
+        "subcategoria": "Fabrica"
+      },
+      "edgv_target": {
+        "table_base": "constr_edificacao",
+        "attributes": {
+          "tipo": 1098
+        }
+      },
+      "relevancia_carta": "condicional",
+      "note": "Ind - Outros"
+    },
+    {
+      "id": "c14_frigorifico",
+      "geoswarm_filter": {
+        "categoria": "C14",
+        "subcategoria": "Frigorifico"
+      },
+      "edgv_target": {
+        "table_base": "constr_edificacao",
+        "attributes": {
+          "tipo": 1015
+        }
+      },
+      "relevancia_carta": "sim",
+      "note": "Ind - Fabricacao alimenticia e bebidas"
+    },
+    {
+      "id": "c14_industria_alimenticia",
+      "geoswarm_filter": {
+        "categoria": "C14",
+        "subcategoria": "Industria Alimenticia"
+      },
+      "edgv_target": {
+        "table_base": "constr_edificacao",
+        "attributes": {
+          "tipo": 1015
+        }
+      },
+      "relevancia_carta": "sim",
+      "note": "Ind - Fabricacao alimenticia e bebidas"
+    },
+    {
+      "id": "c14_industria_bebidas",
+      "geoswarm_filter": {
+        "categoria": "C14",
+        "subcategoria": "Industria Bebidas"
+      },
+      "edgv_target": {
+        "table_base": "constr_edificacao",
+        "attributes": {
+          "tipo": 1015
+        }
+      },
+      "relevancia_carta": "sim",
+      "note": "Ind - Fabricacao alimenticia e bebidas"
+    },
+    {
+      "id": "c14_industria_fumo",
+      "geoswarm_filter": {
+        "categoria": "C14",
+        "subcategoria": "Industria Fumo"
+      },
+      "edgv_target": {
+        "table_base": "constr_edificacao",
+        "attributes": {
+          "tipo": 1016
+        }
+      },
+      "relevancia_carta": "sim",
+      "note": "Ind - Fabricacao de produtos do fumo"
+    },
+    {
+      "id": "c14_industria_textil",
+      "geoswarm_filter": {
+        "categoria": "C14",
+        "subcategoria": "Industria Textil"
+      },
+      "edgv_target": {
+        "table_base": "constr_edificacao",
+        "attributes": {
+          "tipo": 1017
+        }
+      },
+      "relevancia_carta": "sim",
+      "note": "Ind - Fabricacao de produtos texteis"
+    },
+    {
+      "id": "c14_industria_madeira",
+      "geoswarm_filter": {
+        "categoria": "C14",
+        "subcategoria": "Industria Madeira"
+      },
+      "edgv_target": {
+        "table_base": "constr_edificacao",
+        "attributes": {
+          "tipo": 1020
+        }
+      },
+      "relevancia_carta": "sim",
+      "note": "Ind - Fabricacao de produtos de madeira e celulose"
+    },
+    {
+      "id": "c14_industria_celulose",
+      "geoswarm_filter": {
+        "categoria": "C14",
+        "subcategoria": "Industria Celulose"
+      },
+      "edgv_target": {
+        "table_base": "constr_edificacao",
+        "attributes": {
+          "tipo": 1021
+        }
+      },
+      "relevancia_carta": "sim",
+      "note": "Ind - Fabricacao de celulose, papel e produtos de papel"
+    },
+    {
+      "id": "c14_industria_combustiveis",
+      "geoswarm_filter": {
+        "categoria": "C14",
+        "subcategoria": "Industria Combustiveis"
+      },
+      "edgv_target": {
+        "table_base": "constr_edificacao",
+        "attributes": {
+          "tipo": 1023
+        }
+      },
+      "relevancia_carta": "sim",
+      "note": "Ind - Fabricacao de coque, refino de petroleo"
+    },
+    {
+      "id": "c14_industria_quimica",
+      "geoswarm_filter": {
+        "categoria": "C14",
+        "subcategoria": "Industria Quimica"
+      },
+      "edgv_target": {
+        "table_base": "constr_edificacao",
+        "attributes": {
+          "tipo": 1024
+        }
+      },
+      "relevancia_carta": "sim",
+      "note": "Ind - Fabricacao de produtos quimicos"
+    },
+    {
+      "id": "c14_industria_farmaceutica",
+      "geoswarm_filter": {
+        "categoria": "C14",
+        "subcategoria": "Industria Farmaceutica"
+      },
+      "edgv_target": {
+        "table_base": "constr_edificacao",
+        "attributes": {
+          "tipo": 1024
+        }
+      },
+      "relevancia_carta": "sim",
+      "note": "Ind - Fabricacao de produtos quimicos"
+    },
+    {
+      "id": "c14_industria_plastico",
+      "geoswarm_filter": {
+        "categoria": "C14",
+        "subcategoria": "Industria Plastico"
+      },
+      "edgv_target": {
+        "table_base": "constr_edificacao",
+        "attributes": {
+          "tipo": 1025
+        }
+      },
+      "relevancia_carta": "sim",
+      "note": "Ind - Fabricacao de artigos de borracha e material plastico"
+    },
+    {
+      "id": "c14_industria_ceramica",
+      "geoswarm_filter": {
+        "categoria": "C14",
+        "subcategoria": "Industria Ceramica"
+      },
+      "edgv_target": {
+        "table_base": "constr_edificacao",
+        "attributes": {
+          "tipo": 1026
+        }
+      },
+      "relevancia_carta": "sim",
+      "note": "Ind - Fabricacao de produtos de minerais nao-metalicos"
+    },
+    {
+      "id": "c14_siderurgica",
+      "geoswarm_filter": {
+        "categoria": "C14",
+        "subcategoria": "Siderurgica"
+      },
+      "edgv_target": {
+        "table_base": "constr_edificacao",
+        "attributes": {
+          "tipo": 1027
+        }
+      },
+      "relevancia_carta": "sim",
+      "note": "Ind - Industria de metalurgia basica"
+    },
+    {
+      "id": "c14_metalurgica",
+      "geoswarm_filter": {
+        "categoria": "C14",
+        "subcategoria": "Metalurgica"
+      },
+      "edgv_target": {
+        "table_base": "constr_edificacao",
+        "attributes": {
+          "tipo": 1027
+        }
+      },
+      "relevancia_carta": "sim",
+      "note": "Ind - Industria de metalurgia basica"
+    },
+    {
+      "id": "c14_industria_eletroeletronica",
+      "geoswarm_filter": {
+        "categoria": "C14",
+        "subcategoria": "Industria Eletroeletronica"
+      },
+      "edgv_target": {
+        "table_base": "constr_edificacao",
+        "attributes": {
+          "tipo": 1032
+        }
+      },
+      "relevancia_carta": "sim",
+      "note": "Ind - Fabricacao de material eletronico"
+    },
+    {
+      "id": "c14_industria_mecanica",
+      "geoswarm_filter": {
+        "categoria": "C14",
+        "subcategoria": "Industria Mecanica"
+      },
+      "edgv_target": {
+        "table_base": "constr_edificacao",
+        "attributes": {
+          "tipo": 1029
+        }
+      },
+      "relevancia_carta": "sim",
+      "note": "Ind - Fabricacao de maquinas e equipamentos"
+    },
+    {
+      "id": "c14_montadora_veiculos",
+      "geoswarm_filter": {
+        "categoria": "C14",
+        "subcategoria": "Montadora Veiculos"
+      },
+      "edgv_target": {
+        "table_base": "constr_edificacao",
+        "attributes": {
+          "tipo": 1034
+        }
+      },
+      "relevancia_carta": "sim",
+      "note": "Ind - Fabricacao e montagem de veiculos automotores"
+    },
+    {
+      "id": "c14_estaleiro",
+      "geoswarm_filter": {
+        "categoria": "C14",
+        "subcategoria": "Estaleiro"
+      },
+      "edgv_target": {
+        "table_base": "constr_edificacao",
+        "attributes": {
+          "tipo": 1035
+        }
+      },
+      "relevancia_carta": "sim",
+      "note": "Ind - Fabricacao de outros equipamentos de transporte"
+    },
+    {
+      "id": "c14_industria_aeronautica",
+      "geoswarm_filter": {
+        "categoria": "C14",
+        "subcategoria": "Industria Aeronautica"
+      },
+      "edgv_target": {
+        "table_base": "constr_edificacao",
+        "attributes": {
+          "tipo": 1035
+        }
+      },
+      "relevancia_carta": "sim",
+      "note": "Ind - Fabricacao de outros equipamentos de transporte"
+    },
+    {
+      "id": "c14_industria_moveleira",
+      "geoswarm_filter": {
+        "categoria": "C14",
+        "subcategoria": "Industria Moveleira"
+      },
+      "edgv_target": {
+        "table_base": "constr_edificacao",
+        "attributes": {
+          "tipo": 1036
+        }
+      },
+      "relevancia_carta": "sim",
+      "note": "Ind - Fabricacao de moveis e industrias diversas"
+    },
+    {
+      "id": "c14_industria_belica",
+      "geoswarm_filter": {
+        "categoria": "C14",
+        "subcategoria": "Industria Belica"
+      },
+      "edgv_target": {
+        "table_base": "constr_edificacao",
+        "attributes": {
+          "tipo": 1028
+        }
+      },
+      "relevancia_carta": "sim",
+      "note": "Ind - Fabricacao de produtos de metal"
+    },
+    {
+      "id": "c14_refinaria",
+      "geoswarm_filter": {
+        "categoria": "C14",
+        "subcategoria": "Refinaria"
+      },
+      "edgv_target": {
+        "table_base": "constr_edificacao",
+        "attributes": {
+          "tipo": 1023
+        }
+      },
+      "relevancia_carta": "sim",
+      "note": "Ind - Fabricacao de coque, refino de petroleo"
+    },
+    {
+      "id": "c14_usina_alcool",
+      "geoswarm_filter": {
+        "categoria": "C14",
+        "subcategoria": "Usina Alcool"
+      },
+      "edgv_target": {
+        "table_base": "constr_edificacao",
+        "attributes": {
+          "tipo": 1023
+        }
+      },
+      "relevancia_carta": "sim",
+      "note": "Ind - Fabricacao de coque, refino de petroleo"
+    },
+    {
+      "id": "c14_outros_equipamentos",
+      "geoswarm_filter": {
+        "categoria": "C14",
+        "subcategoria": "Outros Equipamentos"
+      },
+      "edgv_target": {
+        "table_base": "constr_edificacao",
+        "attributes": {
+          "tipo": 0
+        }
+      },
+      "relevancia_carta": "condicional",
+      "note": "Edificacao generica"
+    },
+    {
+      "id": "c14_fundacao",
+      "geoswarm_filter": {
+        "categoria": "C14",
+        "subcategoria": "Fundacao"
+      },
+      "edgv_target": {
+        "table_base": "constr_edificacao",
+        "attributes": {
+          "tipo": 1314
+        }
+      },
+      "relevancia_carta": "sim",
+      "note": "Edificacao publica civil"
+    },
+    {
+      "_comment": "=== C15 ==="
+    },
+    {
+      "id": "c15_erb",
+      "geoswarm_filter": {
+        "categoria": "C15",
+        "subcategoria": "ERB"
+      },
+      "edgv_target": {
+        "table_base": "constr_edificacao",
+        "attributes": {
+          "tipo": 103
+        }
+      },
+      "relevancia_carta": "sim",
+      "note": "Edificacao de comunicacao"
+    },
+    {
+      "id": "c15_torre_comunicacao",
+      "geoswarm_filter": {
+        "categoria": "C15",
+        "subcategoria": "Torre Comunicacao"
+      },
+      "edgv_target": {
+        "table_base": "infra_elemento_infraestrutura",
+        "attributes": {
+          "tipo": 1201
+        }
+      },
+      "relevancia_carta": "sim",
+      "note": "Torre de comunicacao"
+    },
+    {
+      "id": "c15_antena_comunicacao",
+      "geoswarm_filter": {
+        "categoria": "C15",
+        "subcategoria": "Antena Comunicacao"
+      },
+      "edgv_target": {
+        "table_base": "infra_elemento_infraestrutura",
+        "attributes": {
+          "tipo": 1301
+        }
+      },
+      "relevancia_carta": "sim",
+      "note": "Antena de comunicacao"
+    },
+    {
+      "id": "c15_radiodifusao",
+      "geoswarm_filter": {
+        "categoria": "C15",
+        "subcategoria": "Radiodifusao"
+      },
+      "edgv_target": {
+        "table_base": "constr_edificacao",
+        "attributes": {
+          "tipo": 101
+        }
+      },
+      "relevancia_carta": "sim",
+      "note": "Edificacao de comunicacao"
+    },
+    {
+      "id": "c15_repetidora",
+      "geoswarm_filter": {
+        "categoria": "C15",
+        "subcategoria": "Repetidora"
+      },
+      "edgv_target": {
+        "table_base": "constr_edificacao",
+        "attributes": {
+          "tipo": 104
+        }
+      },
+      "relevancia_carta": "sim",
+      "note": "Edificacao de comunicacao"
+    },
+    {
+      "id": "c15_datacenter",
+      "geoswarm_filter": {
+        "categoria": "C15",
+        "subcategoria": "Datacenter"
+      },
+      "edgv_target": {
+        "table_base": "constr_edificacao",
+        "attributes": {
+          "tipo": 106
+        }
+      },
+      "relevancia_carta": "sim",
+      "note": "Com - Datacenter"
+    },
+    {
+      "id": "c15_cabo_submarino",
+      "geoswarm_filter": {
+        "categoria": "C15",
+        "subcategoria": "Cabo Submarino"
+      },
+      "edgv_target": {
+        "table_base": "infra_elemento_infraestrutura",
+        "attributes": {
+          "tipo": 1104
+        }
+      },
+      "relevancia_carta": "sim",
+      "note": "Trecho de comunicacao - Cabo submarino"
+    },
+    {
+      "id": "c15_fibra_backbone",
+      "geoswarm_filter": {
+        "categoria": "C15",
+        "subcategoria": "Fibra Backbone"
+      },
+      "edgv_target": {
+        "table_base": "infra_elemento_infraestrutura",
+        "attributes": {
+          "tipo": 1105
+        }
+      },
+      "relevancia_carta": "sim",
+      "note": "Trecho de comunicacao - Fibra optica terrestre"
+    },
+    {
+      "id": "c15_estacao_de_aterrissagem",
+      "geoswarm_filter": {
+        "categoria": "C15",
+        "subcategoria": "Estacao de Aterrissagem"
+      },
+      "edgv_target": {
+        "table_base": "constr_edificacao",
+        "attributes": {
+          "tipo": 107
+        }
+      },
+      "relevancia_carta": "sim",
+      "note": "Com - Estacao de aterrissagem de cabos"
+    },
+    {
+      "_comment": "=== C16 ==="
+    },
+    {
+      "id": "c16_posto_revendedor",
+      "geoswarm_filter": {
+        "categoria": "C16",
+        "subcategoria": "Posto Revendedor"
+      },
+      "edgv_target": {
+        "table_base": "constr_edificacao",
+        "attributes": {
+          "tipo": 2601
+        }
+      },
+      "relevancia_carta": "condicional",
+      "note": "Posto de combustivel"
+    },
+    {
+      "id": "c16_posto_glp",
+      "geoswarm_filter": {
+        "categoria": "C16",
+        "subcategoria": "Posto GLP"
+      },
+      "edgv_target": {
+        "table_base": "constr_edificacao",
+        "attributes": {
+          "tipo": 2601
+        }
+      },
+      "relevancia_carta": "condicional",
+      "note": "Posto de combustivel"
+    },
+    {
+      "id": "c16_base_distribuicao",
+      "geoswarm_filter": {
+        "categoria": "C16",
+        "subcategoria": "Base Distribuicao"
+      },
+      "edgv_target": {
+        "table_base": "constr_edificacao",
+        "attributes": {
+          "tipo": 2605
+        }
+      },
+      "relevancia_carta": "sim",
+      "note": "Comb - Base de distribuicao de combustiveis (0.12.0)"
+    },
+    {
+      "id": "c16_terminal_combustiveis",
+      "geoswarm_filter": {
+        "categoria": "C16",
+        "subcategoria": "Terminal Combustiveis"
+      },
+      "edgv_target": {
+        "table_base": "constr_edificacao",
+        "attributes": {
+          "tipo": 2605
+        }
+      },
+      "relevancia_carta": "sim",
+      "note": "Comb - Base de distribuicao de combustiveis (0.12.0)"
+    },
+    {
+      "id": "c16_refinaria",
+      "geoswarm_filter": {
+        "categoria": "C16",
+        "subcategoria": "Refinaria"
+      },
+      "edgv_target": {
+        "table_base": "constr_edificacao",
+        "attributes": {
+          "tipo": 1023
+        }
+      },
+      "relevancia_carta": "sim",
+      "note": "Edificacao industrial"
+    },
+    {
+      "id": "c16_gasoduto_transporte",
+      "geoswarm_filter": {
+        "categoria": "C16",
+        "subcategoria": "Gasoduto Transporte"
+      },
+      "edgv_target": {
+        "table_base": "infra_trecho_duto",
+        "attributes": {
+          "tipo": 311
+        }
+      },
+      "relevancia_carta": "sim",
+      "note": "Duto - Gas de transporte"
+    },
+    {
+      "id": "c16_gasoduto_distribuicao",
+      "geoswarm_filter": {
+        "categoria": "C16",
+        "subcategoria": "Gasoduto Distribuicao"
+      },
+      "edgv_target": {
+        "table_base": "infra_trecho_duto",
+        "attributes": {
+          "tipo": 312
+        }
+      },
+      "relevancia_carta": "sim",
+      "note": "Duto - Gas de distribuicao"
+    },
+    {
+      "id": "c16_duto_escoamento",
+      "geoswarm_filter": {
+        "categoria": "C16",
+        "subcategoria": "Duto Escoamento"
+      },
+      "edgv_target": {
+        "table_base": "infra_trecho_duto",
+        "attributes": {
+          "tipo": 306
+        }
+      },
+      "relevancia_carta": "sim",
+      "note": "Duto - Petroleo"
+    },
+    {
+      "id": "c16_terminal_gnl",
+      "geoswarm_filter": {
+        "categoria": "C16",
+        "subcategoria": "Terminal GNL"
+      },
+      "edgv_target": {
+        "table_base": "constr_edificacao",
+        "attributes": {
+          "tipo": 2604
+        }
+      },
+      "relevancia_carta": "sim",
+      "note": "Comb - Terminal de GNL/regaseificacao (0.12.0)"
+    },
+    {
+      "id": "c16_estacao_compressao",
+      "geoswarm_filter": {
+        "categoria": "C16",
+        "subcategoria": "Estacao Compressao"
+      },
+      "edgv_target": {
+        "table_base": "constr_edificacao",
+        "attributes": {
+          "tipo": 2602
+        }
+      },
+      "relevancia_carta": "sim",
+      "note": "Comb - Estacao de compressao de gas (0.12.0)"
+    },
+    {
+      "id": "c16_polo_processamento_gas",
+      "geoswarm_filter": {
+        "categoria": "C16",
+        "subcategoria": "Polo Processamento Gas"
+      },
+      "edgv_target": {
+        "table_base": "constr_edificacao",
+        "attributes": {
+          "tipo": 2603
+        }
+      },
+      "relevancia_carta": "sim",
+      "note": "Comb - Polo de processamento de gas (0.12.0)"
+    },
+    {
+      "id": "c16_base_glp",
+      "geoswarm_filter": {
+        "categoria": "C16",
+        "subcategoria": "Base GLP"
+      },
+      "edgv_target": {
+        "table_base": "constr_edificacao",
+        "attributes": {
+          "tipo": 2605
+        }
+      },
+      "relevancia_carta": "sim",
+      "note": "Comb - Base de distribuicao de combustiveis (0.12.0)"
+    },
+    {
+      "_comment": "=== C17 ==="
+    },
+    {
+      "id": "c17_mina",
+      "geoswarm_filter": {
+        "categoria": "C17",
+        "subcategoria": "Mina"
+      },
+      "edgv_target": {
+        "table_base": "constr_extracao_mineral",
+        "attributes": {
+          "tipo": 4
+        }
+      },
+      "relevancia_carta": "sim",
+      "note": "Mina / Pedreira"
+    },
+    {
+      "id": "c17_garimpo",
+      "geoswarm_filter": {
+        "categoria": "C17",
+        "subcategoria": "Garimpo"
+      },
+      "edgv_target": {
+        "table_base": "constr_extracao_mineral",
+        "attributes": {
+          "tipo": 5
+        }
+      },
+      "relevancia_carta": "condicional",
+      "note": "Garimpo"
+    },
+    {
+      "id": "c17_pedreira",
+      "geoswarm_filter": {
+        "categoria": "C17",
+        "subcategoria": "Pedreira"
+      },
+      "edgv_target": {
+        "table_base": "constr_extracao_mineral",
+        "attributes": {
+          "tipo": 4
+        }
+      },
+      "relevancia_carta": "sim",
+      "note": "Mina / Pedreira"
+    },
+    {
+      "id": "c17_pesquisa_mineral",
+      "geoswarm_filter": {
+        "categoria": "C17",
+        "subcategoria": "Pesquisa Mineral"
+      },
+      "edgv_target": {
+        "table_base": "constr_extracao_mineral",
+        "attributes": {
+          "tipo": 4
+        }
+      },
+      "relevancia_carta": "nao",
+      "note": "Mina / Pedreira"
+    },
+    {
+      "id": "c17_beneficiamento",
+      "geoswarm_filter": {
+        "categoria": "C17",
+        "subcategoria": "Beneficiamento"
+      },
+      "edgv_target": {
+        "table_base": "constr_edificacao",
+        "attributes": {
+          "tipo": 1198
+        }
+      },
+      "relevancia_carta": "sim",
+      "note": "Edificacao de extracao mineral"
+    },
+    {
+      "id": "c17_carvao",
+      "geoswarm_filter": {
+        "categoria": "C17",
+        "subcategoria": "Carvao"
+      },
+      "edgv_target": {
+        "table_base": "constr_extracao_mineral",
+        "attributes": {
+          "tipo": 4
+        }
+      },
+      "relevancia_carta": "sim",
+      "note": "Mina / Pedreira"
+    },
+    {
+      "_comment": "=== C18 ==="
+    },
+    {
+      "id": "c18_barragem",
+      "geoswarm_filter": {
+        "categoria": "C18",
+        "subcategoria": "Barragem"
+      },
+      "edgv_target": {
+        "table_base": "infra_barragem",
+        "attributes": {
+          "tipo": 1
+        }
+      },
+      "relevancia_carta": "sim",
+      "note": "Barragem"
+    },
+    {
+      "id": "c18_reservatorio",
+      "geoswarm_filter": {
+        "categoria": "C18",
+        "subcategoria": "Reservatorio"
+      },
+      "edgv_target": {
+        "table_base": "cobter_massa_dagua",
+        "attributes": {
+          "tipo": 10
+        }
+      },
+      "relevancia_carta": "sim",
+      "note": "Represa/acude com fluxo"
+    },
+    {
+      "id": "c18_risco_deslizamento",
+      "geoswarm_filter": {
+        "categoria": "C18",
+        "subcategoria": "Risco Deslizamento"
+      },
+      "edgv_target": null,
+      "relevancia_carta": "nao",
+      "note": "SEM CLASSE na Topo 2.0 (gap: risco geologico) -- NAO EXPORTAVEL"
+    },
+    {
+      "id": "c18_risco_inundacao",
+      "geoswarm_filter": {
+        "categoria": "C18",
+        "subcategoria": "Risco Inundacao"
+      },
+      "edgv_target": {
+        "table_base": "elemnat_terreno_sujeito_inundacao",
+        "attributes": {}
+      },
+      "relevancia_carta": "sim",
+      "note": "Terreno sujeito a inundacao (classe sem atributo tipo)"
+    },
+    {
+      "id": "c18_risco_erosao",
+      "geoswarm_filter": {
+        "categoria": "C18",
+        "subcategoria": "Risco Erosao"
+      },
+      "edgv_target": null,
+      "relevancia_carta": "nao",
+      "note": "SEM CLASSE na Topo 2.0 (gap: risco geologico) -- NAO EXPORTAVEL"
+    },
+    {
+      "id": "c18_estacao_cemaden",
+      "geoswarm_filter": {
+        "categoria": "C18",
+        "subcategoria": "Estacao CEMADEN"
+      },
+      "edgv_target": {
+        "table_base": "constr_ocupacao_solo",
+        "attributes": {
+          "tipo": 1614
+        }
+      },
+      "relevancia_carta": "sim",
+      "note": "Ponto de estacao de medicao de fenomenos"
+    },
+    {
+      "id": "c18_estacao_meteorologica_automatica",
+      "geoswarm_filter": {
+        "categoria": "C18",
+        "subcategoria": "Estacao Meteorologica Automatica"
+      },
+      "edgv_target": {
+        "table_base": "constr_ocupacao_solo",
+        "attributes": {
+          "tipo": 1601
+        }
+      },
+      "relevancia_carta": "sim",
+      "note": "Ponto de estacao de medicao de fenomenos"
+    },
+    {
+      "id": "c18_estacao_meteorologica_convencional",
+      "geoswarm_filter": {
+        "categoria": "C18",
+        "subcategoria": "Estacao Meteorologica Convencional"
+      },
+      "edgv_target": {
+        "table_base": "constr_ocupacao_solo",
+        "attributes": {
+          "tipo": 1602
+        }
+      },
+      "relevancia_carta": "sim",
+      "note": "Ponto de estacao de medicao de fenomenos"
+    },
+    {
+      "_comment": "=== C19 ==="
+    },
+    {
+      "id": "c19_silo",
+      "geoswarm_filter": {
+        "categoria": "C19",
+        "subcategoria": "Silo"
+      },
+      "edgv_target": {
+        "table_base": "constr_deposito",
+        "attributes": {
+          "tipo": 109
+        }
+      },
+      "relevancia_carta": "condicional",
+      "note": "Deposito geral"
+    },
+    {
+      "id": "c19_armazem_graneleiro",
+      "geoswarm_filter": {
+        "categoria": "C19",
+        "subcategoria": "Armazem Graneleiro"
+      },
+      "edgv_target": {
+        "table_base": "constr_deposito",
+        "attributes": {
+          "tipo": 132
+        }
+      },
+      "relevancia_carta": "condicional",
+      "note": "Deposito geral"
+    },
+    {
+      "id": "c19_armazem_convencional",
+      "geoswarm_filter": {
+        "categoria": "C19",
+        "subcategoria": "Armazem Convencional"
+      },
+      "edgv_target": {
+        "table_base": "constr_deposito",
+        "attributes": {
+          "tipo": 132
+        }
+      },
+      "relevancia_carta": "condicional",
+      "note": "Deposito geral"
+    },
+    {
+      "id": "c19_unidade_conab",
+      "geoswarm_filter": {
+        "categoria": "C19",
+        "subcategoria": "Unidade CONAB"
+      },
+      "edgv_target": {
+        "table_base": "constr_deposito",
+        "attributes": {
+          "tipo": 132
+        }
+      },
+      "relevancia_carta": "sim",
+      "note": "Deposito geral"
+    },
+    {
+      "id": "c19_galpao",
+      "geoswarm_filter": {
+        "categoria": "C19",
+        "subcategoria": "Galpao"
+      },
+      "edgv_target": {
+        "table_base": "constr_deposito",
+        "attributes": {
+          "tipo": 108
+        }
+      },
+      "relevancia_carta": "condicional",
+      "note": "Deposito geral"
+    },
+    {
+      "_comment": "=== C20 ==="
+    },
+    {
+      "id": "c20_povoado",
+      "geoswarm_filter": {
+        "categoria": "C20",
+        "subcategoria": "Povoado"
+      },
+      "edgv_target": {
+        "table_base": "llp_localidade",
+        "attributes": {
+          "tipo": 6
+        }
+      },
+      "relevancia_carta": "sim",
+      "note": "Aglomerado rural isolado - Povoado"
+    },
+    {
+      "id": "c20_lugarejo",
+      "geoswarm_filter": {
+        "categoria": "C20",
+        "subcategoria": "Lugarejo"
+      },
+      "edgv_target": {
+        "table_base": "llp_localidade",
+        "attributes": {
+          "tipo": 7
+        }
+      },
+      "relevancia_carta": "sim",
+      "note": "Outros aglomerados rurais - Lugarejo"
+    },
+    {
+      "id": "c20_outras_localidades",
+      "geoswarm_filter": {
+        "categoria": "C20",
+        "subcategoria": "Outras Localidades"
+      },
+      "edgv_target": {
+        "table_base": "llp_localidade",
+        "attributes": {
+          "tipo": 8
+        }
+      },
+      "relevancia_carta": "sim",
+      "note": "Nome local"
+    },
+    {
+      "id": "c20_nucleo_rural",
+      "geoswarm_filter": {
+        "categoria": "C20",
+        "subcategoria": "Nucleo Rural"
+      },
+      "edgv_target": {
+        "table_base": "llp_localidade",
+        "attributes": {
+          "tipo": 5
+        }
+      },
+      "relevancia_carta": "sim",
+      "note": "Aglomerado rural isolado - Nucleo"
+    },
+    {
+      "id": "c20_agrovila",
+      "geoswarm_filter": {
+        "categoria": "C20",
+        "subcategoria": "Agrovila"
+      },
+      "edgv_target": {
+        "table_base": "llp_localidade",
+        "attributes": {
+          "tipo": 5
+        }
+      },
+      "relevancia_carta": "sim",
+      "note": "Aglomerado rural isolado – Nucleo"
+    },
+    {
+      "id": "c20_localidade_indigena",
+      "geoswarm_filter": {
+        "categoria": "C20",
+        "subcategoria": "Localidade Indigena"
+      },
+      "edgv_target": {
+        "table_base": "llp_localidade",
+        "attributes": {
+          "tipo": 9
+        }
+      },
+      "relevancia_carta": "sim",
+      "note": "Aldeia indigena"
+    },
+    {
+      "id": "c20_localidade_quilombola",
+      "geoswarm_filter": {
+        "categoria": "C20",
+        "subcategoria": "Localidade Quilombola"
+      },
+      "edgv_target": {
+        "table_base": "llp_localidade",
+        "attributes": {
+          "tipo": 10
+        }
+      },
+      "relevancia_carta": "sim",
+      "note": "Comunidade quilombola"
+    },
+    {
+      "_comment": "=== C21 ==="
+    },
+    {
+      "id": "c21_morro",
+      "geoswarm_filter": {
+        "categoria": "C21",
+        "subcategoria": "Morro"
+      },
+      "edgv_target": {
+        "table_base": "elemnat_toponimo_fisiografico_natural",
+        "attributes": {
+          "tipo": 2
+        }
+      },
+      "relevancia_carta": "sim",
+      "note": "Morro"
+    },
+    {
+      "id": "c21_serra",
+      "geoswarm_filter": {
+        "categoria": "C21",
+        "subcategoria": "Serra"
+      },
+      "edgv_target": {
+        "table_base": "elemnat_toponimo_fisiografico_natural",
+        "attributes": {
+          "tipo": 1
+        }
+      },
+      "relevancia_carta": "sim",
+      "note": "Serra"
+    },
+    {
+      "id": "c21_pico",
+      "geoswarm_filter": {
+        "categoria": "C21",
+        "subcategoria": "Pico"
+      },
+      "edgv_target": {
+        "table_base": "elemnat_toponimo_fisiografico_natural",
+        "attributes": {
+          "tipo": 17
+        }
+      },
+      "relevancia_carta": "sim",
+      "note": "Pico"
+    },
+    {
+      "id": "c21_praia",
+      "geoswarm_filter": {
+        "categoria": "C21",
+        "subcategoria": "Praia"
+      },
+      "edgv_target": {
+        "table_base": "elemnat_toponimo_fisiografico_natural",
+        "attributes": {
+          "tipo": 12
+        }
+      },
+      "relevancia_carta": "sim",
+      "note": "Praia"
+    },
+    {
+      "id": "c21_ilha",
+      "geoswarm_filter": {
+        "categoria": "C21",
+        "subcategoria": "Ilha"
+      },
+      "edgv_target": {
+        "table_base": "elemnat_ilha",
+        "attributes": {
+          "tipo": 2
+        }
+      },
+      "relevancia_carta": "sim",
+      "note": "Ilha maritima"
+    },
+    {
+      "id": "c21_ponta",
+      "geoswarm_filter": {
+        "categoria": "C21",
+        "subcategoria": "Ponta"
+      },
+      "edgv_target": {
+        "table_base": "elemnat_toponimo_fisiografico_natural",
+        "attributes": {
+          "tipo": 10
+        }
+      },
+      "relevancia_carta": "sim",
+      "note": "Ponta"
+    },
+    {
+      "id": "c21_baia",
+      "geoswarm_filter": {
+        "categoria": "C21",
+        "subcategoria": "Baia"
+      },
+      "edgv_target": {
+        "table_base": "cobter_massa_dagua",
+        "attributes": {
+          "tipo": 4
+        }
+      },
+      "relevancia_carta": "condicional",
+      "note": "Baia (sem fluxo) - ponto = insumo de nome"
+    },
+    {
+      "id": "c21_enseada",
+      "geoswarm_filter": {
+        "categoria": "C21",
+        "subcategoria": "Enseada"
+      },
+      "edgv_target": {
+        "table_base": "cobter_massa_dagua",
+        "attributes": {
+          "tipo": 5
+        }
+      },
+      "relevancia_carta": "condicional",
+      "note": "Enseada (sem fluxo) - ponto = insumo de nome"
+    },
+    {
+      "id": "c21_cachoeira",
+      "geoswarm_filter": {
+        "categoria": "C21",
+        "subcategoria": "Cachoeira"
+      },
+      "edgv_target": {
+        "table_base": "elemnat_elemento_hidrografico",
+        "attributes": {
+          "tipo": 9
+        }
+      },
+      "relevancia_carta": "sim",
+      "note": "Cachoeira"
+    },
+    {
+      "id": "c21_corredeira",
+      "geoswarm_filter": {
+        "categoria": "C21",
+        "subcategoria": "Corredeira"
+      },
+      "edgv_target": {
+        "table_base": "elemnat_elemento_hidrografico",
+        "attributes": {
+          "tipo": 12
+        }
+      },
+      "relevancia_carta": "sim",
+      "note": "Corredeira"
+    },
+    {
+      "id": "c21_penhasco",
+      "geoswarm_filter": {
+        "categoria": "C21",
+        "subcategoria": "Penhasco"
+      },
+      "edgv_target": {
+        "table_base": "elemnat_elemento_fisiografico",
+        "attributes": {
+          "tipo": 13
+        }
+      },
+      "relevancia_carta": "sim",
+      "note": "Falesia"
+    },
+    {
+      "id": "c21_cabo",
+      "geoswarm_filter": {
+        "categoria": "C21",
+        "subcategoria": "Cabo"
+      },
+      "edgv_target": {
+        "table_base": "elemnat_toponimo_fisiografico_natural",
+        "attributes": {
+          "tipo": 11
+        }
+      },
+      "relevancia_carta": "sim",
+      "note": "Cabo"
+    },
+    {
+      "id": "c21_duna",
+      "geoswarm_filter": {
+        "categoria": "C21",
+        "subcategoria": "Duna"
+      },
+      "edgv_target": {
+        "table_base": "elemnat_elemento_fisiografico",
+        "attributes": {
+          "tipo": 16
+        }
+      },
+      "relevancia_carta": "sim",
+      "note": "Duna"
+    },
+    {
+      "id": "c21_macico",
+      "geoswarm_filter": {
+        "categoria": "C21",
+        "subcategoria": "Macico"
+      },
+      "edgv_target": {
+        "table_base": "elemnat_toponimo_fisiografico_natural",
+        "attributes": {
+          "tipo": 5
+        }
+      },
+      "relevancia_carta": "sim",
+      "note": "Macico"
+    },
+    {
+      "id": "c21_montanha",
+      "geoswarm_filter": {
+        "categoria": "C21",
+        "subcategoria": "Montanha"
+      },
+      "edgv_target": {
+        "table_base": "elemnat_toponimo_fisiografico_natural",
+        "attributes": {
+          "tipo": 3
+        }
+      },
+      "relevancia_carta": "sim",
+      "note": "Montanha"
+    },
+    {
+      "id": "c21_chapada",
+      "geoswarm_filter": {
+        "categoria": "C21",
+        "subcategoria": "Chapada"
+      },
+      "edgv_target": {
+        "table_base": "elemnat_toponimo_fisiografico_natural",
+        "attributes": {
+          "tipo": 4
+        }
+      },
+      "relevancia_carta": "sim",
+      "note": "Chapada"
+    },
+    {
+      "id": "c21_planalto",
+      "geoswarm_filter": {
+        "categoria": "C21",
+        "subcategoria": "Planalto"
+      },
+      "edgv_target": {
+        "table_base": "elemnat_toponimo_fisiografico_natural",
+        "attributes": {
+          "tipo": 6
+        }
+      },
+      "relevancia_carta": "sim",
+      "note": "Planalto"
+    },
+    {
+      "id": "c21_planicie",
+      "geoswarm_filter": {
+        "categoria": "C21",
+        "subcategoria": "Planicie"
+      },
+      "edgv_target": {
+        "table_base": "elemnat_toponimo_fisiografico_natural",
+        "attributes": {
+          "tipo": 7
+        }
+      },
+      "relevancia_carta": "sim",
+      "note": "Planicie"
+    },
+    {
+      "id": "c21_peninsula",
+      "geoswarm_filter": {
+        "categoria": "C21",
+        "subcategoria": "Peninsula"
+      },
+      "edgv_target": {
+        "table_base": "elemnat_toponimo_fisiografico_natural",
+        "attributes": {
+          "tipo": 9
+        }
+      },
+      "relevancia_carta": "sim",
+      "note": "Peninsula"
+    },
+    {
+      "_comment": "=== C22 ==="
+    },
+    {
+      "id": "c22_terra_indigena",
+      "geoswarm_filter": {
+        "categoria": "C22",
+        "subcategoria": "Terra Indigena"
+      },
+      "edgv_target": {
+        "table_base": "llp_limite_especial",
+        "attributes": {
+          "tipo": 2
+        }
+      },
+      "relevancia_carta": "sim",
+      "note": "Terra indigena"
+    },
+    {
+      "id": "c22_territorio_quilombola",
+      "geoswarm_filter": {
+        "categoria": "C22",
+        "subcategoria": "Territorio Quilombola"
+      },
+      "edgv_target": {
+        "table_base": "llp_limite_especial",
+        "attributes": {
+          "tipo": 3
+        }
+      },
+      "relevancia_carta": "sim",
+      "note": "Territorio quilombola"
+    },
+    {
+      "id": "c22_unidade_de_conservacao",
+      "geoswarm_filter": {
+        "categoria": "C22",
+        "subcategoria": "Unidade de Conservacao"
+      },
+      "edgv_target": {
+        "table_base": "llp_limite_especial",
+        "attributes": {
+          "tipo": 5
+        }
+      },
+      "relevancia_carta": "sim",
+      "note": "Unidade de Conservacao (generica; refinar por categoria_uc)"
+    },
+    {
+      "id": "c22_area_militar",
+      "geoswarm_filter": {
+        "categoria": "C22",
+        "subcategoria": "Area Militar"
+      },
+      "edgv_target": {
+        "table_base": "llp_limite_especial",
+        "attributes": {
+          "tipo": 36
+        }
+      },
+      "relevancia_carta": "sim",
+      "note": "Area militar"
+    }
+  ]
+}

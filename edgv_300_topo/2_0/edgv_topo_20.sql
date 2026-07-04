@@ -7,10 +7,10 @@ SET search_path TO pg_catalog,public,edgv,dominios;
 
 CREATE TABLE public.db_metadata(
 	 edgvversion varchar(50) NOT NULL DEFAULT 'EDGV Topo 2.0',
-	 dbimplversion varchar(50) NOT NULL DEFAULT '0.11.0',
+	 dbimplversion varchar(50) NOT NULL DEFAULT '0.12.0',
 	 CONSTRAINT edgvversioncheck CHECK (edgvversion = 'EDGV Topo 2.0')
 );
-INSERT INTO public.db_metadata (edgvversion, dbimplversion) VALUES ('EDGV Topo 2.0','0.11.0');
+INSERT INTO public.db_metadata (edgvversion, dbimplversion) VALUES ('EDGV Topo 2.0','0.12.0');
 
 CREATE TABLE dominios.sigla_uf (
 	 code smallint NOT NULL,
@@ -849,6 +849,7 @@ INSERT INTO dominios.tipo_edificacao (code,code_name, filter) VALUES (2029,'Sau 
 INSERT INTO dominios.tipo_edificacao (code,code_name, filter) VALUES (2030,'Sau - Outras atividades relacionadas com a atenção à saúde (instituto de pesquisa) (2030)','Edificação de saúde');
 INSERT INTO dominios.tipo_edificacao (code,code_name, filter) VALUES (2031,'Sau - Serviços veterinários (2031)','Edificação de saúde');
 INSERT INTO dominios.tipo_edificacao (code,code_name, filter) VALUES (2101,'Ssoc – Serviço Social (2101)','Edificação de desenvolvimento social');
+INSERT INTO dominios.tipo_edificacao (code,code_name, filter) VALUES (2102,'Ssoc – Equipamento público de proteção social (2102)','Edificação de desenvolvimento social');
 INSERT INTO dominios.tipo_edificacao (code,code_name, filter) VALUES (2208,'Rod - Terminal interestadual (2208)','Edificação rodoviária');
 INSERT INTO dominios.tipo_edificacao (code,code_name, filter) VALUES (2209,'Rod - Terminal urbano (2209)','Edificação rodoviária');
 INSERT INTO dominios.tipo_edificacao (code,code_name, filter) VALUES (2210,'Rod - Parada interestadual (2210)','Edificação rodoviária');
@@ -875,6 +876,10 @@ INSERT INTO dominios.tipo_edificacao (code,code_name, filter) VALUES (2503,'Port
 INSERT INTO dominios.tipo_edificacao (code,code_name, filter) VALUES (2504,'Port - Terminal de contêineres (2504)','Edificação portuária');
 INSERT INTO dominios.tipo_edificacao (code,code_name, filter) VALUES (2505,'Port - Terminal de granéis (2505)','Edificação portuária');
 INSERT INTO dominios.tipo_edificacao (code,code_name, filter) VALUES (2601,'Posto de combustível (2601)','Posto de combustível');
+INSERT INTO dominios.tipo_edificacao (code,code_name, filter) VALUES (2602,'Comb - Estação de compressão de gás (2602)','Infraestrutura de combustíveis');
+INSERT INTO dominios.tipo_edificacao (code,code_name, filter) VALUES (2603,'Comb - Polo de processamento de gás (2603)','Infraestrutura de combustíveis');
+INSERT INTO dominios.tipo_edificacao (code,code_name, filter) VALUES (2604,'Comb - Terminal de GNL/regaseificação (2604)','Infraestrutura de combustíveis');
+INSERT INTO dominios.tipo_edificacao (code,code_name, filter) VALUES (2605,'Comb - Base de distribuição de combustíveis (2605)','Infraestrutura de combustíveis');
 INSERT INTO dominios.tipo_edificacao (code,code_name, filter) VALUES (2901,'Dip – Consulado (2901)','Representação diplomática');
 INSERT INTO dominios.tipo_edificacao (code,code_name, filter) VALUES (2902,'Dip – Embaixada (2902)','Representação diplomática');
 INSERT INTO dominios.tipo_edificacao (code,code_name, filter) VALUES (3001,'Seg – Delegacia de polícia civil (3001)','Edificação de segurança pública');
@@ -886,6 +891,9 @@ INSERT INTO dominios.tipo_edificacao (code,code_name, filter) VALUES (3006,'Seg 
 INSERT INTO dominios.tipo_edificacao (code,code_name, filter) VALUES (3007,'Seg - Bombeiros Militar (3007)','Edificação de segurança pública');
 INSERT INTO dominios.tipo_edificacao (code,code_name, filter) VALUES (3008,'Seg - Bombeiros Civil (3008)','Edificação de segurança pública');
 INSERT INTO dominios.tipo_edificacao (code,code_name, filter) VALUES (3009,'Seg - Polícia Federal (3009)','Edificação de segurança pública');
+INSERT INTO dominios.tipo_edificacao (code,code_name, filter) VALUES (3010,'Seg - Defesa Civil (3010)','Edificação de segurança pública');
+INSERT INTO dominios.tipo_edificacao (code,code_name, filter) VALUES (3011,'Seg - Perícia forense (3011)','Edificação de segurança pública');
+INSERT INTO dominios.tipo_edificacao (code,code_name, filter) VALUES (3012,'Seg - Unidade socioeducativa (3012)','Edificação de segurança pública');
 INSERT INTO dominios.tipo_edificacao (code,code_name, filter) VALUES (3098,'Seg – Outras polícias (3098)','Edificação de segurança pública');
 INSERT INTO dominios.tipo_edificacao (code,code_name, filter) VALUES (9999,'A SER PREENCHIDO (9999)','A SER PREENCHIDO (9999)');
 
