@@ -10,6 +10,8 @@
 --   5. Trigger preenche_metadado() (produção + geocodigo)
 --   6. Tabela de estilos (layer_styles)
 --   7. Tabelas auxiliares SAP / revisão / track
+--   8. Metadados de qualidade da base contínua
+--      (confiabilidade, escala máxima autoritativa, linhagem, completude por subfase)
 --================================================================
 
 -- Coluna 'fontes' é TEXT contendo um array JSON serializado (compatibilidade QGIS).
@@ -111,11 +113,11 @@ CREATE TABLE IF NOT EXISTS dominios.status_ciclo_vida (
 );
 
 INSERT INTO dominios.status_ciclo_vida (code, code_name) VALUES
-    (1, 'Ativo (1)'),
-    (2, 'Em validação (2)'),
-    (3, 'Sob verificação (3)'),
-    (4, 'Depreciado (4)'),
-    (9999, 'A SER PREENCHIDO (9999)')
+    (1, 'Ativo'),
+    (2, 'Em validação'),
+    (3, 'Sob verificação'),
+    (4, 'Depreciado'),
+    (9999, 'A SER PREENCHIDO')
 ON CONFLICT DO NOTHING;
 
 -- 2.2 dominios.tipo_validacao
@@ -126,11 +128,11 @@ CREATE TABLE IF NOT EXISTS dominios.tipo_validacao (
 );
 
 INSERT INTO dominios.tipo_validacao (code, code_name) VALUES
-    (1, 'Não validada (1)'),
-    (2, 'Validação geométrica (2)'),
-    (3, 'Validação de atributos (3)'),
-    (4, 'Validação completa (4)'),
-    (9999, 'A SER PREENCHIDO (9999)')
+    (1, 'Não validada'),
+    (2, 'Validação geométrica'),
+    (3, 'Validação de atributos'),
+    (4, 'Validação completa'),
+    (9999, 'A SER PREENCHIDO')
 ON CONFLICT DO NOTHING;
 
 -- 2.3 dominios.confirmacao_geometria
@@ -142,12 +144,12 @@ CREATE TABLE IF NOT EXISTS dominios.confirmacao_geometria (
 );
 
 INSERT INTO dominios.confirmacao_geometria (code, code_name, nivel) VALUES
-    (1, 'Não confirmada (1)', NULL),
-    (2, 'Cruzamento com fonte autoritativa (2)', 'baixo'),
-    (3, 'Fotointerpretação (3)', 'medio'),
-    (4, 'Imagem 360° (4)', 'medio'),
-    (5, 'Campo visual (5)', 'alto'),
-    (9999, 'A SER PREENCHIDO (9999)', NULL)
+    (1, 'Não confirmada', NULL),
+    (2, 'Cruzamento com fonte autoritativa', 'baixo'),
+    (3, 'Fotointerpretação', 'medio'),
+    (4, 'Imagem 360°', 'medio'),
+    (5, 'Campo visual', 'alto'),
+    (9999, 'A SER PREENCHIDO', NULL)
 ON CONFLICT DO NOTHING;
 
 -- 2.4 dominios.confirmacao_atributos
@@ -159,17 +161,17 @@ CREATE TABLE IF NOT EXISTS dominios.confirmacao_atributos (
 );
 
 INSERT INTO dominios.confirmacao_atributos (code, code_name, nivel) VALUES
-    (1, 'Não confirmada (1)', NULL),
-    (2, 'Origem autoritativa - nome (2)', 'baixo'),
-    (3, 'Origem autoritativa - parcial (3)', 'baixo'),
-    (4, 'Parcial - fotointerpretação (4)', 'baixo'),
-    (5, 'Parcial - cruzamento nome (5)', 'baixo'),
-    (6, 'Parcial - cruzamento temático (6)', 'medio'),
-    (7, 'Parcial - cruzamento múltiplo (7)', 'medio'),
-    (8, 'Parcial - campo (8)', 'medio'),
-    (9, 'Completa - cruzamento (9)', 'alto'),
-    (10, 'Completa - campo (10)', 'alto'),
-    (9999, 'A SER PREENCHIDO (9999)', NULL)
+    (1, 'Não confirmada', NULL),
+    (2, 'Origem autoritativa - nome', 'baixo'),
+    (3, 'Origem autoritativa - parcial', 'baixo'),
+    (4, 'Parcial - fotointerpretação', 'baixo'),
+    (5, 'Parcial - cruzamento nome', 'baixo'),
+    (6, 'Parcial - cruzamento temático', 'medio'),
+    (7, 'Parcial - cruzamento múltiplo', 'medio'),
+    (8, 'Parcial - campo', 'medio'),
+    (9, 'Completa - cruzamento', 'alto'),
+    (10, 'Completa - campo', 'alto'),
+    (9999, 'A SER PREENCHIDO', NULL)
 ON CONFLICT DO NOTHING;
 
 -- 2.5 dominios.metodo_aquisicao (tabela de referência — usada dentro do JSON fontes)
@@ -180,29 +182,27 @@ CREATE TABLE IF NOT EXISTS dominios.metodo_aquisicao (
 );
 
 INSERT INTO dominios.metodo_aquisicao (code, code_name) VALUES
-    (1, 'Extração por fotointerpretação (1)'),
-    (2, 'Levantamento de campo (2)'),
-    (3, 'Digitalização de carta (3)'),
-    (4, 'Insumo colaborativo (4)'),
-    (5, 'Insumo autoritativo (5)'),
-    (6, 'Insumo cooperativo (6)'),
-    (7, 'Insumo concessionária (7)'),
-    (8, 'Extração automática (8)'),
-    (9, 'Geocodificação (9)'),
-    (9999, 'A SER PREENCHIDO (9999)')
+    (1, 'Extração por fotointerpretação'),
+    (2, 'Levantamento de campo'),
+    (3, 'Digitalização de carta'),
+    (4, 'Insumo colaborativo'),
+    (5, 'Insumo autoritativo'),
+    (6, 'Insumo cooperativo'),
+    (7, 'Insumo concessionária'),
+    (8, 'Extração automática'),
+    (9, 'Geocodificação'),
+    (9999, 'A SER PREENCHIDO')
 ON CONFLICT DO NOTHING;
 
 --########################################################
 -- 3. Colunas de qualidade e linhagem
---    Adicionadas a todas as tabelas edgv com geometria,
---    exceto classes de edição (prefixo 'edicao_').
+--    Adicionadas a todas as tabelas edgv com geometria
 --########################################################
 
 DO $$DECLARE r record; t text;
 BEGIN
     FOR r in select f_table_name from public.geometry_columns
               WHERE f_table_schema = 'edgv'
-                AND f_table_name NOT LIKE 'edicao\_%' ESCAPE '\'
     LOOP
         t := r.f_table_name;
         -- Colunas (IF NOT EXISTS para idempotência)
@@ -245,13 +245,10 @@ BEGIN
 END$$;
 
 --########################################################
--- 5. Triggers preenche_metadado() e preserva_geocodigo()
---    preenche_metadado: operador/data de criação e atualização
---                       (aplicada a todas as tabelas edgv)
---    preserva_geocodigo: preserva geocodigo em UPDATE e garante
---                        valor em INSERT (fallback para DEFAULT).
---                        Aplicada só nas tabelas edgv que possuem
---                        a coluna geocodigo (não-edição).
+-- 5. Trigger preenche_metadado()
+--    Preenche operador/data de criação e atualização
+--    Preserva geocodigo em UPDATE (impede alteração acidental)
+--    Garante geocodigo em INSERT (fallback para DEFAULT)
 --########################################################
 
 CREATE OR REPLACE FUNCTION public.preenche_metadado()
@@ -264,6 +261,8 @@ $BODY$
 			NEW.data_atualizacao = CURRENT_TIMESTAMP;
 			NEW.operador_criacao = OLD.operador_criacao;
 			NEW.data_criacao = OLD.data_criacao;
+			-- Preserva geocodigo: impede alteração acidental
+			NEW.geocodigo = OLD.geocodigo;
 		ELSIF TG_OP = 'INSERT' THEN
 			-- Só preenche se não vier valor (permite preservar dados de migração)
 			IF NEW.operador_criacao IS NULL THEN
@@ -271,6 +270,10 @@ $BODY$
 			END IF;
 			IF NEW.data_criacao IS NULL THEN
 				NEW.data_criacao = CURRENT_TIMESTAMP;
+			END IF;
+			-- Garante geocodigo se NULL (fallback para o DEFAULT)
+			IF NEW.geocodigo IS NULL THEN
+				NEW.geocodigo = uuid_generate_v4();
 			END IF;
 		END IF;
 
@@ -284,33 +287,7 @@ ALTER FUNCTION public.preenche_metadado()
 
 GRANT EXECUTE ON FUNCTION public.preenche_metadado() TO PUBLIC;
 
-CREATE OR REPLACE FUNCTION public.preserva_geocodigo()
-  RETURNS trigger AS
-$BODY$
-    BEGIN
-
-		IF TG_OP = 'UPDATE' THEN
-			-- Preserva geocodigo: impede alteração acidental
-			NEW.geocodigo = OLD.geocodigo;
-		ELSIF TG_OP = 'INSERT' THEN
-			-- Garante geocodigo se NULL (fallback para o DEFAULT)
-			IF NEW.geocodigo IS NULL THEN
-				NEW.geocodigo = uuid_generate_v4();
-			END IF;
-		END IF;
-
-		RETURN NEW;
-	END;
-$BODY$
-  LANGUAGE plpgsql VOLATILE
-  COST 100;
-ALTER FUNCTION public.preserva_geocodigo()
-  OWNER TO postgres;
-
-GRANT EXECUTE ON FUNCTION public.preserva_geocodigo() TO PUBLIC;
-
--- Cria triggers em todas as tabelas edgv.
--- preenche_metadado em todas; preserva_geocodigo só nas não-edição.
+-- Cria trigger de metadados em todas as tabelas edgv
 
 DO $$DECLARE r record;
 BEGIN
@@ -319,11 +296,6 @@ BEGIN
 	IF r.f_table_schema = 'edgv' THEN
 		EXECUTE 'DROP TRIGGER IF EXISTS b_preenche_metadado ON edgv.' || quote_ident(r.f_table_name);
 		EXECUTE 'CREATE TRIGGER b_preenche_metadado BEFORE INSERT OR UPDATE ON edgv.' || quote_ident(r.f_table_name) || ' FOR EACH ROW EXECUTE PROCEDURE public.preenche_metadado()';
-
-		EXECUTE 'DROP TRIGGER IF EXISTS c_preserva_geocodigo ON edgv.' || quote_ident(r.f_table_name);
-		IF r.f_table_name NOT LIKE 'edicao\_%' ESCAPE '\' THEN
-			EXECUTE 'CREATE TRIGGER c_preserva_geocodigo BEFORE INSERT OR UPDATE ON edgv.' || quote_ident(r.f_table_name) || ' FOR EACH ROW EXECUTE PROCEDURE public.preserva_geocodigo()';
-		END IF;
 	END IF;
     END LOOP;
 END$$;
@@ -466,3 +438,213 @@ END $$;
 ALTER TABLE public.aux_track_l OWNER TO postgres;
 
 GRANT SELECT ON TABLE public.aux_track_l TO public;
+
+--########################################################
+-- 8. Metadados de qualidade da base contínua
+--    Materializa o Apêndice C (confiabilidade, escala máxima autoritativa,
+--    escala mínima de derivação, data de confirmação), o Apêndice G (linhagem)
+--    e o Apêndice F.2.3 (completude por subfase) do RT 08/2026.
+--########################################################
+
+-- 8.1 dominios.confiabilidade (Apêndice C.4)
+CREATE TABLE IF NOT EXISTS dominios.confiabilidade (
+    code smallint NOT NULL,
+    code_name text NOT NULL,
+    CONSTRAINT confiabilidade_pk PRIMARY KEY (code)
+);
+
+INSERT INTO dominios.confiabilidade (code, code_name) VALUES
+    (1, 'Alta'),
+    (2, 'Média'),
+    (3, 'Baixa'),
+    (4, 'Indeterminada')
+ON CONFLICT DO NOTHING;
+
+-- 8.2 dominios.nivel_completude (Apêndice F.2.3). Hierarquia cumulativa;
+--     ausencia_confirmada equivale a completa para todas as escalas.
+CREATE TABLE IF NOT EXISTS dominios.nivel_completude (
+    code smallint NOT NULL,
+    code_name text NOT NULL,
+    CONSTRAINT nivel_completude_pk PRIMARY KEY (code)
+);
+
+INSERT INTO dominios.nivel_completude (code, code_name) VALUES
+    (1, 'Não verificada'),
+    (2, 'Ausência confirmada'),
+    (3, 'Verificada 1:250.000'),
+    (4, 'Verificada 1:100.000'),
+    (5, 'Verificada 1:50.000'),
+    (6, 'Verificada 1:25.000')
+ON CONFLICT DO NOTHING;
+
+-- 8.3 Colunas confiabilidade (FK, nullable: feição depreciada não recebe)
+--     e escala_maxima_autoritativa, em todas as tabelas edgv com geometria
+DO $$DECLARE r record; t text;
+BEGIN
+    FOR r in select f_table_name from public.geometry_columns
+              WHERE f_table_schema = 'edgv'
+    LOOP
+        t := r.f_table_name;
+        EXECUTE 'ALTER TABLE edgv.' || quote_ident(t)
+            || ' ADD COLUMN IF NOT EXISTS confiabilidade SMALLINT'
+            || ', ADD COLUMN IF NOT EXISTS escala_maxima_autoritativa INTEGER'
+            || ', ADD COLUMN IF NOT EXISTS data_confirmacao DATE'
+            || ', ADD COLUMN IF NOT EXISTS escala_minima_derivacao INTEGER;';
+        BEGIN EXECUTE 'ALTER TABLE edgv.' || quote_ident(t) || ' ADD CONSTRAINT ' || t || '_conf_fk FOREIGN KEY (confiabilidade) REFERENCES dominios.confiabilidade(code);';
+        EXCEPTION WHEN duplicate_object THEN NULL; END;
+    END LOOP;
+END$$;
+
+-- 8.4 computa_qualidade(): computa e PERSISTE confiabilidade e
+--     escala_maxima_autoritativa a partir dos campos de qualidade, e mantém
+--     data_confirmacao (data da confirmação mais recente da feição).
+--     Regras: Apêndice C.4 (confiabilidade) e C.5 (escala).
+CREATE OR REPLACE FUNCTION public.computa_qualidade()
+  RETURNS trigger AS
+$BODY$
+    DECLARE
+        g_ord smallint;
+        a_ord smallint;
+        idade_anos double precision;
+        esc integer;
+    BEGIN
+        -- Ordinal do nível de confirmação: 0 nenhum, 1 baixo, 2 medio, 3 alto
+        SELECT CASE nivel WHEN 'alto' THEN 3 WHEN 'medio' THEN 2 WHEN 'baixo' THEN 1 ELSE 0 END
+          INTO g_ord FROM dominios.confirmacao_geometria WHERE code = NEW.confirmacao_geometria;
+        SELECT CASE nivel WHEN 'alto' THEN 3 WHEN 'medio' THEN 2 WHEN 'baixo' THEN 1 ELSE 0 END
+          INTO a_ord FROM dominios.confirmacao_atributos WHERE code = NEW.confirmacao_atributos;
+        g_ord := coalesce(g_ord, 0);
+        a_ord := coalesce(a_ord, 0);
+
+        -- Confiabilidade (C.4). Depreciada (4): sem classificação (NULL).
+        IF NEW.status_ciclo_vida = 4 THEN
+            NEW.confiabilidade := NULL;
+        ELSIF NEW.status_ciclo_vida = 3 THEN
+            NEW.confiabilidade := 4;   -- Indeterminada (sob verificação)
+        ELSIF g_ord >= 2 AND a_ord >= 2 AND NEW.acuracia_planimetrica IS NOT NULL AND NEW.acuracia_planimetrica <= 25 THEN
+            NEW.confiabilidade := 1;   -- Alta
+        ELSIF g_ord >= 1 OR a_ord >= 1 THEN
+            NEW.confiabilidade := 2;   -- Média
+        ELSE
+            NEW.confiabilidade := 3;   -- Baixa
+        END IF;
+
+        -- Escala máxima autoritativa (C.5). Só feição ativa, validação completa.
+        esc := NULL;
+        IF NEW.status_ciclo_vida = 1 AND NEW.validacao = 4 AND NEW.acuracia_planimetrica IS NOT NULL THEN
+            idade_anos := extract(epoch FROM (CURRENT_TIMESTAMP - coalesce(NEW.data_atualizacao, NEW.data_criacao, CURRENT_TIMESTAMP))) / 31557600.0;
+            IF    g_ord >= 2 AND a_ord >= 2 AND NEW.acuracia_planimetrica <= 12.5 AND idade_anos <= 5  THEN esc := 25000;
+            ELSIF g_ord >= 2 AND a_ord >= 2 AND NEW.acuracia_planimetrica <= 25   AND idade_anos <= 7  THEN esc := 50000;
+            ELSIF g_ord >= 1 AND a_ord >= 1 AND NEW.acuracia_planimetrica <= 50   AND idade_anos <= 8  THEN esc := 100000;
+            ELSIF g_ord >= 1 AND a_ord >= 1 AND NEW.acuracia_planimetrica <= 125  AND idade_anos <= 10 THEN esc := 250000;
+            END IF;
+        END IF;
+        NEW.escala_maxima_autoritativa := esc;
+
+        -- data_confirmacao: data da confirmação mais recente da feição. Atualizada
+        -- quando uma confirmação de geometria ou de atributos passa a valor confirmado.
+        IF TG_OP = 'INSERT' THEN
+            IF (NEW.confirmacao_geometria <> 1 OR NEW.confirmacao_atributos <> 1) AND NEW.data_confirmacao IS NULL THEN
+                NEW.data_confirmacao := CURRENT_DATE;
+            END IF;
+        ELSIF TG_OP = 'UPDATE' THEN
+            IF (NEW.confirmacao_geometria IS DISTINCT FROM OLD.confirmacao_geometria AND NEW.confirmacao_geometria <> 1)
+               OR (NEW.confirmacao_atributos IS DISTINCT FROM OLD.confirmacao_atributos AND NEW.confirmacao_atributos <> 1) THEN
+                NEW.data_confirmacao := CURRENT_DATE;
+            END IF;
+        END IF;
+
+        RETURN NEW;
+    END;
+$BODY$
+  LANGUAGE plpgsql VOLATILE
+  COST 100;
+ALTER FUNCTION public.computa_qualidade() OWNER TO postgres;
+GRANT EXECUTE ON FUNCTION public.computa_qualidade() TO PUBLIC;
+
+-- Trigger c_computa_qualidade: roda APÓS b_preenche_metadado (ordem alfabética)
+DO $$DECLARE r record;
+BEGIN
+	FOR r in select f_table_schema, f_table_name from public.geometry_columns
+    LOOP
+	IF r.f_table_schema = 'edgv' THEN
+		EXECUTE 'DROP TRIGGER IF EXISTS c_computa_qualidade ON edgv.' || quote_ident(r.f_table_name);
+		EXECUTE 'CREATE TRIGGER c_computa_qualidade BEFORE INSERT OR UPDATE ON edgv.' || quote_ident(r.f_table_name) || ' FOR EACH ROW EXECUTE PROCEDURE public.computa_qualidade()';
+	END IF;
+    END LOOP;
+END$$;
+
+-- 8.5 recomputa_escala_idade(): job periódico (ex.: diário).
+--     A aptidão pode expirar por envelhecimento sem nova edição; o trigger
+--     só dispara na escrita, então esta rotina reavalia as feições aptas.
+--     Desabilita b_preenche_metadado durante o UPDATE para NÃO tocar
+--     data_atualizacao (transacional: rollback restaura o trigger).
+CREATE OR REPLACE FUNCTION public.recomputa_escala_idade()
+  RETURNS void AS
+$BODY$
+    DECLARE r record;
+    BEGIN
+        FOR r in select f_table_name from public.geometry_columns
+                  WHERE f_table_schema = 'edgv'
+        LOOP
+            EXECUTE 'ALTER TABLE edgv.' || quote_ident(r.f_table_name) || ' DISABLE TRIGGER b_preenche_metadado';
+            EXECUTE 'UPDATE edgv.' || quote_ident(r.f_table_name)
+                 || ' SET escala_maxima_autoritativa = escala_maxima_autoritativa'
+                 || ' WHERE escala_maxima_autoritativa IS NOT NULL';
+            EXECUTE 'ALTER TABLE edgv.' || quote_ident(r.f_table_name) || ' ENABLE TRIGGER b_preenche_metadado';
+        END LOOP;
+    END;
+$BODY$
+  LANGUAGE plpgsql VOLATILE
+  COST 100;
+ALTER FUNCTION public.recomputa_escala_idade() OWNER TO postgres;
+GRANT EXECUTE ON FUNCTION public.recomputa_escala_idade() TO PUBLIC;
+
+-- 8.6 edgv.linhagem_feicao (Apêndice C.7 / G.4): predecessor -> sucessor
+CREATE TABLE IF NOT EXISTS edgv.linhagem_feicao (
+    id BIGSERIAL PRIMARY KEY,
+    geocodigo_origem UUID NOT NULL,
+    geocodigo_destino UUID NOT NULL,
+    tipo_evento VARCHAR(30) NOT NULL,
+    data_evento timestamp with time zone NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    operador VARCHAR(255),
+    CONSTRAINT linhagem_tipo_evento_chk CHECK (tipo_evento IN ('divisao','fusao','migracao'))
+);
+CREATE INDEX IF NOT EXISTS linhagem_feicao_origem_idx ON edgv.linhagem_feicao (geocodigo_origem);
+CREATE INDEX IF NOT EXISTS linhagem_feicao_destino_idx ON edgv.linhagem_feicao (geocodigo_destino);
+ALTER TABLE edgv.linhagem_feicao OWNER TO postgres;
+GRANT ALL ON TABLE edgv.linhagem_feicao TO public;
+GRANT USAGE, SELECT ON SEQUENCE edgv.linhagem_feicao_id_seq TO public;
+
+-- 8.7 edgv.completude_subfase (Apêndice F.2.3): verificação de completude
+--     por subfase da linha de produção, na granularidade da MI 1:25.000.
+CREATE TABLE IF NOT EXISTS edgv.completude_subfase (
+    id BIGSERIAL PRIMARY KEY,
+    mi_25k VARCHAR(20) NOT NULL,
+    subfase VARCHAR(60) NOT NULL,
+    nivel_completude SMALLINT NOT NULL DEFAULT 1,
+    data_verificacao DATE,
+    operador VARCHAR(255),
+    observacao TEXT,
+    CONSTRAINT completude_subfase_uk UNIQUE (mi_25k, subfase),
+    CONSTRAINT completude_subfase_nc_fk FOREIGN KEY (nivel_completude) REFERENCES dominios.nivel_completude(code)
+);
+CREATE INDEX IF NOT EXISTS completude_subfase_mi_idx ON edgv.completude_subfase (mi_25k);
+ALTER TABLE edgv.completude_subfase OWNER TO postgres;
+GRANT ALL ON TABLE edgv.completude_subfase TO public;
+GRANT USAGE, SELECT ON SEQUENCE edgv.completude_subfase_id_seq TO public;
+
+-- 8.8 escala_minima_derivacao (Apêndice C): menor escala do SCN em que a feição
+--     deve aparecer na carta derivada (250000, 100000, 50000, 25000 ou NULL).
+--     É o análogo cartográfico do min_zoom dos vector tiles: o par de qualidade
+--     escala_maxima_autoritativa diz até que detalhe a feição é BOA o bastante;
+--     escala_minima_derivacao diz a partir de que generalização ela é RELEVANTE
+--     o bastante. Uma feição compõe a carta de escala S quando, em denominador,
+--     escala_maxima_autoritativa <= S <= escala_minima_derivacao.
+--
+--     A coluna (adicionada em 8.3) NÃO é preenchida pelo trigger genérico de
+--     qualidade: o valor depende de atributos temáticos POR CLASSE (hierarquia
+--     viária, população, dimensões, presença de nome), vários deles derivados
+--     no build, exatamente como o min_zoom. Por isso é computada pelo mesmo
+--     motor de regras por classe (zoom_model / pipeline de tiles), e não por
+--     SQL genérico. O operador pode ajustar o valor calculado diretamente.
