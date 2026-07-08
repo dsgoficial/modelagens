@@ -4,7 +4,7 @@ Complemento da conversao `conversao_pg-edgv-topo20_pg-edgv-orto30.json`.
 
 ## 1. Classes tematicas do Topo 2.0 sem classe no Orto 3.0
 
-19 de 40 classes tematicas. O Orto 3.0 adota escopo conservador (precedencia Orto 2.5): exclui o que e intrinsecamente nao interpretavel por ortoimagem (batimetria, geodesia de campo, subsuperficie, rotas conceituais) e o que ja estava fora do produto Orto 2.5.
+18 de 39 classes tematicas. O Orto 3.0 adota escopo conservador (precedencia Orto 2.5): exclui o que e intrinsecamente nao interpretavel por ortoimagem (batimetria, geodesia de campo, subsuperficie, rotas conceituais) e o que ja estava fora do produto Orto 2.5.
 
 | Classe Topo 2.0 | Motivo |
 |---|---|
@@ -20,7 +20,6 @@ Complemento da conversao `conversao_pg-edgv-topo20_pg-edgv-orto30.json`.
 | `infra_alteracao_fisiografica_antropica` | Classe nova no Topo 2.0; fora do escopo conservador do Orto 3.0 (precedencia Orto 2.5). |
 | `infra_elemento_viario` | Classe nova no Topo 2.0 (detalhamento viario urbano); fora do escopo conservador do Orto 3.0 (precedencia Orto 2.5). |
 | `infra_mobilidade_urbana` | Classe nova no Topo 2.0; fora do escopo conservador do Orto 3.0 (precedencia Orto 2.5). |
-| `infra_obstaculo_terrestre` | Classe nova no Topo 2.0; fora do escopo conservador do Orto 3.0 (precedencia Orto 2.5). |
 | `infra_travessia_hidroviaria` | Rota/travessia hidroviaria conceitual; fora do escopo conservador do Orto 3.0 (precedencia Orto 2.5). |
 | `infra_trecho_duto` | Subsuperficie / nao interpretavel por ortoimagem. |
 | `infra_trecho_hidroviario` | Rota hidroviaria conceitual; fora do escopo conservador do Orto 3.0 (precedencia Orto 2.5). |

@@ -180,31 +180,6 @@
       ]
     },
     {
-      "nome": "tipo_obstaculo_terrestre",
-      "valores": [
-        {
-          "code": 1,
-          "value": "Antitanque",
-          "descricao": "Dentes de dragão, ouriços, obstáculos antitanque"
-        },
-        {
-          "code": 2,
-          "value": "Arame / Concertina",
-          "descricao": "Arame farpado, concertina, obstáculos de arame"
-        },
-        {
-          "code": 3,
-          "value": "Barreira veicular",
-          "descricao": "Bollard, jersey barrier, blocos de concreto"
-        },
-        {
-          "code": 4,
-          "value": "Campo minado",
-          "descricao": "Área com minas terrestres (conceitual)"
-        }
-      ]
-    },
-    {
       "nome": "exibir_lado_simbologia",
       "valores": [
         {
@@ -7309,39 +7284,6 @@
           "tipo": "smallint",
           "cardinalidade": "1..1",
           "mapa_valor": "booleano"
-        }
-      ]
-    },
-    {
-      "nome": "obstaculo_terrestre",
-      "categoria": "infra",
-      "primitivas": [
-        "MultiPoint",
-        "MultiLinestring",
-        "MultiPolygon"
-      ],
-      "atributos": [
-        {
-          "nome": "nome",
-          "tipo": "varchar(255)",
-          "cardinalidade": "0..1"
-        },
-        {
-          "nome": "tipo",
-          "tipo": "smallint",
-          "cardinalidade": "1..1",
-          "mapa_valor": "tipo_obstaculo_terrestre"
-        },
-        {
-          "nome": "visivel",
-          "tipo": "smallint",
-          "cardinalidade": "1..1",
-          "mapa_valor": "booleano"
-        },
-        {
-          "nome": "texto_edicao",
-          "tipo": "varchar(255)",
-          "cardinalidade": "0..1"
         }
       ]
     },

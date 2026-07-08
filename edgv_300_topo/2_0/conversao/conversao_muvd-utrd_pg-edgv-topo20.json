@@ -945,23 +945,6 @@
       "atributos_default_B": []
     },
     {
-      "classe_A": "tran_ap041",
-      "classe_B": "infra_obstaculo_terrestre",
-      "__comment": "[4/5] AP041 Vehicle Barrier → Obstáculo terrestre tipo=3 (barreira veicular)",
-      "atributos_default_B": [
-        {
-          "nome_atributo": "tipo",
-          "valor": 3
-        }
-      ],
-      "mapeamento_atributos": [
-        {
-          "attr_A": "fna",
-          "attr_B": "nome"
-        }
-      ]
-    },
-    {
       "classe_A": "tran_ap075",
       "classe_B": "infra_via_deslocamento",
       "__comment": "[5/5] AP075 Land Transportation Way → Via de deslocamento",
@@ -1756,23 +1739,6 @@
         }
       ],
       "atributos_default_B": []
-    },
-    {
-      "classe_A": "tran_aq068",
-      "classe_B": "infra_obstaculo_terrestre",
-      "__comment": "[4/5] AQ068 Transportation Block → Obstáculo terrestre tipo=3 (barreira veicular)",
-      "atributos_default_B": [
-        {
-          "nome_atributo": "tipo",
-          "valor": 3
-        }
-      ],
-      "mapeamento_atributos": [
-        {
-          "attr_A": "fna",
-          "attr_B": "nome"
-        }
-      ]
     },
     {
       "classe_A": "tran_aq070",

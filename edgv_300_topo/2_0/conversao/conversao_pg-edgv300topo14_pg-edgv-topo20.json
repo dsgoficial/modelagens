@@ -96,7 +96,7 @@
       "classe_B": "elemnat_sumidouro_vertedouro"
     },
     {
-      "__comment": "infra - infraestrutura (14 classes, 22 tabelas na 1.4; +3 tabelas novas na 2.0: obstaculo_terrestre_p/l/a — sem mapeamento da 1.4)",
+      "__comment": "infra - infraestrutura (14 classes, 22 tabelas na 1.4)",
       "classe_A": "infra_alteracao_fisiografica_antropica",
       "classe_B": "infra_alteracao_fisiografica_antropica"
     },

@@ -61,20 +61,6 @@ INSERT INTO dominios.tipo_obstaculo (code,code_name) VALUES (9999,'A SER PREENCH
 
 ALTER TABLE dominios.tipo_obstaculo OWNER TO postgres;
 
-CREATE TABLE dominios.tipo_obstaculo_terrestre (
-	 code smallint NOT NULL,
-	 code_name text NOT NULL,
-	 CONSTRAINT tipo_obstaculo_terrestre_pk PRIMARY KEY (code)
-);
-
-INSERT INTO dominios.tipo_obstaculo_terrestre (code,code_name) VALUES (1,'Antitanque (1)');
-INSERT INTO dominios.tipo_obstaculo_terrestre (code,code_name) VALUES (2,'Arame / Concertina (2)');
-INSERT INTO dominios.tipo_obstaculo_terrestre (code,code_name) VALUES (3,'Barreira veicular (3)');
-INSERT INTO dominios.tipo_obstaculo_terrestre (code,code_name) VALUES (4,'Campo minado (4)');
-INSERT INTO dominios.tipo_obstaculo_terrestre (code,code_name) VALUES (9999,'A SER PREENCHIDO (9999)');
-
-ALTER TABLE dominios.tipo_obstaculo_terrestre OWNER TO postgres;
-
 CREATE TABLE dominios.exibir_lado_simbologia (
 	 code smallint NOT NULL,
 	 code_name text NOT NULL,
@@ -4393,93 +4379,6 @@ ALTER TABLE edgv.infra_obstaculo_vertical_p
 	 ON UPDATE NO ACTION ON DELETE NO ACTION;
 
 ALTER TABLE edgv.infra_obstaculo_vertical_p ALTER COLUMN exibir_linha_rotulo SET DEFAULT 9999;
-
-CREATE TABLE edgv.infra_obstaculo_terrestre_p(
-	 id uuid NOT NULL DEFAULT uuid_generate_v4(),
-	 nome varchar(255),
-	 tipo smallint NOT NULL,
-	 visivel smallint NOT NULL,
-	 texto_edicao varchar(255),
-	 observacao varchar(255),
-	 geom geometry(MultiPoint, 4674),
-	 CONSTRAINT infra_obstaculo_terrestre_p_pk PRIMARY KEY (id)
-	 WITH (FILLFACTOR = 80)
-);
-CREATE INDEX infra_obstaculo_terrestre_p_geom ON edgv.infra_obstaculo_terrestre_p USING gist (geom);
-
-ALTER TABLE edgv.infra_obstaculo_terrestre_p OWNER TO postgres;
-
-ALTER TABLE edgv.infra_obstaculo_terrestre_p
-	 ADD CONSTRAINT infra_obstaculo_terrestre_p_tipo_fk FOREIGN KEY (tipo)
-	 REFERENCES dominios.tipo_obstaculo_terrestre (code) MATCH FULL
-	 ON UPDATE NO ACTION ON DELETE NO ACTION;
-
-ALTER TABLE edgv.infra_obstaculo_terrestre_p ALTER COLUMN tipo SET DEFAULT 9999;
-
-ALTER TABLE edgv.infra_obstaculo_terrestre_p
-	 ADD CONSTRAINT infra_obstaculo_terrestre_p_visivel_fk FOREIGN KEY (visivel)
-	 REFERENCES dominios.booleano (code) MATCH FULL
-	 ON UPDATE NO ACTION ON DELETE NO ACTION;
-
-ALTER TABLE edgv.infra_obstaculo_terrestre_p ALTER COLUMN visivel SET DEFAULT 9999;
-
-CREATE TABLE edgv.infra_obstaculo_terrestre_l(
-	 id uuid NOT NULL DEFAULT uuid_generate_v4(),
-	 nome varchar(255),
-	 tipo smallint NOT NULL,
-	 visivel smallint NOT NULL,
-	 texto_edicao varchar(255),
-	 observacao varchar(255),
-	 geom geometry(MultiLinestring, 4674),
-	 CONSTRAINT infra_obstaculo_terrestre_l_pk PRIMARY KEY (id)
-	 WITH (FILLFACTOR = 80)
-);
-CREATE INDEX infra_obstaculo_terrestre_l_geom ON edgv.infra_obstaculo_terrestre_l USING gist (geom);
-
-ALTER TABLE edgv.infra_obstaculo_terrestre_l OWNER TO postgres;
-
-ALTER TABLE edgv.infra_obstaculo_terrestre_l
-	 ADD CONSTRAINT infra_obstaculo_terrestre_l_tipo_fk FOREIGN KEY (tipo)
-	 REFERENCES dominios.tipo_obstaculo_terrestre (code) MATCH FULL
-	 ON UPDATE NO ACTION ON DELETE NO ACTION;
-
-ALTER TABLE edgv.infra_obstaculo_terrestre_l ALTER COLUMN tipo SET DEFAULT 9999;
-
-ALTER TABLE edgv.infra_obstaculo_terrestre_l
-	 ADD CONSTRAINT infra_obstaculo_terrestre_l_visivel_fk FOREIGN KEY (visivel)
-	 REFERENCES dominios.booleano (code) MATCH FULL
-	 ON UPDATE NO ACTION ON DELETE NO ACTION;
-
-ALTER TABLE edgv.infra_obstaculo_terrestre_l ALTER COLUMN visivel SET DEFAULT 9999;
-
-CREATE TABLE edgv.infra_obstaculo_terrestre_a(
-	 id uuid NOT NULL DEFAULT uuid_generate_v4(),
-	 nome varchar(255),
-	 tipo smallint NOT NULL,
-	 visivel smallint NOT NULL,
-	 texto_edicao varchar(255),
-	 observacao varchar(255),
-	 geom geometry(MultiPolygon, 4674),
-	 CONSTRAINT infra_obstaculo_terrestre_a_pk PRIMARY KEY (id)
-	 WITH (FILLFACTOR = 80)
-);
-CREATE INDEX infra_obstaculo_terrestre_a_geom ON edgv.infra_obstaculo_terrestre_a USING gist (geom);
-
-ALTER TABLE edgv.infra_obstaculo_terrestre_a OWNER TO postgres;
-
-ALTER TABLE edgv.infra_obstaculo_terrestre_a
-	 ADD CONSTRAINT infra_obstaculo_terrestre_a_tipo_fk FOREIGN KEY (tipo)
-	 REFERENCES dominios.tipo_obstaculo_terrestre (code) MATCH FULL
-	 ON UPDATE NO ACTION ON DELETE NO ACTION;
-
-ALTER TABLE edgv.infra_obstaculo_terrestre_a ALTER COLUMN tipo SET DEFAULT 9999;
-
-ALTER TABLE edgv.infra_obstaculo_terrestre_a
-	 ADD CONSTRAINT infra_obstaculo_terrestre_a_visivel_fk FOREIGN KEY (visivel)
-	 REFERENCES dominios.booleano (code) MATCH FULL
-	 ON UPDATE NO ACTION ON DELETE NO ACTION;
-
-ALTER TABLE edgv.infra_obstaculo_terrestre_a ALTER COLUMN visivel SET DEFAULT 9999;
 
 CREATE TABLE edgv.llp_delimitacao_fisica_l(
 	 id uuid NOT NULL DEFAULT uuid_generate_v4(),

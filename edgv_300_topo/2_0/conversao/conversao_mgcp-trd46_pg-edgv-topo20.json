@@ -5291,27 +5291,6 @@
       ]
     },
     {
-      "classe_A": "al060",
-      "classe_B": "infra_obstaculo_terrestre",
-      "__comment": "[5/5] AL060 Dragon's Teeth → Obstáculo terrestre tipo=1 (Antitanque)",
-      "atributos_default_B": [
-        {
-          "nome_atributo": "tipo",
-          "valor": 1
-        }
-      ],
-      "mapeamento_atributos": [
-        {
-          "attr_A": "nam",
-          "attr_B": "nome"
-        },
-        {
-          "attr_A": "txt",
-          "attr_B": "observacao"
-        }
-      ]
-    },
-    {
       "classe_A": "zd020",
       "classe_B": "llp_area_sem_dados",
       "__comment": "[5/5] ZD020 Void Collection Area → Área sem dados"

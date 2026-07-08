@@ -76,7 +76,6 @@ EXCLUSAO_MOTIVOS = {
     "infra_alteracao_fisiografica_antropica": "Classe nova no Topo 2.0; fora do escopo conservador do Orto 3.0 (precedencia Orto 2.5).",
     "infra_elemento_viario": "Classe nova no Topo 2.0 (detalhamento viario urbano); fora do escopo conservador do Orto 3.0 (precedencia Orto 2.5).",
     "infra_mobilidade_urbana": "Classe nova no Topo 2.0; fora do escopo conservador do Orto 3.0 (precedencia Orto 2.5).",
-    "infra_obstaculo_terrestre": "Classe nova no Topo 2.0; fora do escopo conservador do Orto 3.0 (precedencia Orto 2.5).",
     "infra_travessia_hidroviaria": "Rota/travessia hidroviaria conceitual; fora do escopo conservador do Orto 3.0 (precedencia Orto 2.5).",
     "infra_trecho_duto": "Subsuperficie / nao interpretavel por ortoimagem.",
     "infra_trecho_hidroviario": "Rota hidroviaria conceitual; fora do escopo conservador do Orto 3.0 (precedencia Orto 2.5).",

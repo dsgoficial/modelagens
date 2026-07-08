@@ -166,20 +166,6 @@ Pontos cotados batimétricos (profundidade). Espelha `elemnat_ponto_cotado_p`. O
 | `observacao` | varchar(255) | nullable |
 | `geom` | MultiPoint, 4674 | índice GiST |
 
-### `infra_obstaculo_terrestre_p`, `_l`, `_a`
-
-Obstáculos terrestres de interesse militar. Três geometrias (ponto, linha, polígono).
-
-| Coluna | Tipo | Constraints |
-|--------|------|-------------|
-| `id` | uuid | PK, DEFAULT uuid_generate_v4() |
-| `nome` | varchar(255) | nullable |
-| `tipo` | smallint | NOT NULL, FK → `dominios.tipo_obstaculo_terrestre`, DEFAULT 9999 |
-| `observacao` | varchar(255) | nullable |
-| `visivel` | smallint | NOT NULL, FK → `dominios.booleano`, DEFAULT 9999 |
-| `texto_edicao` | varchar(255) | nullable |
-| `geom` | Multi*, 4674 | índice GiST |
-
 ---
 
 ## 3. Tabelas removidas
@@ -202,16 +188,6 @@ A travessia hidroviária passa a ser **linha-only** no Topo 2.0: a travessia é 
 |--------|-------|
 | 1 | Cerca |
 | 2 | Muro |
-| 9999 | A SER PREENCHIDO |
-
-### `dominios.tipo_obstaculo_terrestre`
-
-| Código | Valor |
-|--------|-------|
-| 1 | Antitanque |
-| 2 | Arame / Concertina |
-| 3 | Barreira veicular |
-| 4 | Campo minado |
 | 9999 | A SER PREENCHIDO |
 
 ---
@@ -497,18 +473,6 @@ INSERT INTO dominios.tipo_delimitacao_fisica (code, code_name) VALUES
     (2, 'Muro (2)'),
     (9999, 'A SER PREENCHIDO (9999)');
 
-CREATE TABLE dominios.tipo_obstaculo_terrestre (
-    code smallint NOT NULL,
-    code_name text NOT NULL,
-    CONSTRAINT tipo_obstaculo_terrestre_pk PRIMARY KEY (code)
-);
-INSERT INTO dominios.tipo_obstaculo_terrestre (code, code_name) VALUES
-    (1, 'Antitanque (1)'),
-    (2, 'Arame / Concertina (2)'),
-    (3, 'Barreira veicular (3)'),
-    (4, 'Campo minado (4)'),
-    (9999, 'A SER PREENCHIDO (9999)');
-
 -- ===========================================
 -- Novos valores em domínios existentes
 -- ===========================================
@@ -661,54 +625,6 @@ CREATE INDEX elemnat_ponto_cotado_batimetrico_p_geom ON edgv.elemnat_ponto_cotad
 ALTER TABLE edgv.elemnat_ponto_cotado_batimetrico_p ADD CONSTRAINT elemnat_ponto_cotado_batimetrico_p_geometria_aproximada_fk
     FOREIGN KEY (geometria_aproximada) REFERENCES dominios.booleano (code);
 ALTER TABLE edgv.elemnat_ponto_cotado_batimetrico_p ADD CONSTRAINT elemnat_ponto_cotado_batimetrico_p_visivel_fk
-    FOREIGN KEY (visivel) REFERENCES dominios.booleano (code);
-
-CREATE TABLE edgv.infra_obstaculo_terrestre_p (
-    id uuid NOT NULL DEFAULT uuid_generate_v4(),
-    nome varchar(255),
-    tipo smallint NOT NULL DEFAULT 9999,
-    observacao varchar(255),
-    visivel smallint NOT NULL DEFAULT 9999,
-    texto_edicao varchar(255),
-    geom geometry(MultiPoint, 4674),
-    CONSTRAINT infra_obstaculo_terrestre_p_pk PRIMARY KEY (id)
-);
-CREATE INDEX infra_obstaculo_terrestre_p_geom ON edgv.infra_obstaculo_terrestre_p USING gist (geom);
-ALTER TABLE edgv.infra_obstaculo_terrestre_p ADD CONSTRAINT infra_obstaculo_terrestre_p_tipo_fk
-    FOREIGN KEY (tipo) REFERENCES dominios.tipo_obstaculo_terrestre (code);
-ALTER TABLE edgv.infra_obstaculo_terrestre_p ADD CONSTRAINT infra_obstaculo_terrestre_p_visivel_fk
-    FOREIGN KEY (visivel) REFERENCES dominios.booleano (code);
-
-CREATE TABLE edgv.infra_obstaculo_terrestre_l (
-    id uuid NOT NULL DEFAULT uuid_generate_v4(),
-    nome varchar(255),
-    tipo smallint NOT NULL DEFAULT 9999,
-    observacao varchar(255),
-    visivel smallint NOT NULL DEFAULT 9999,
-    texto_edicao varchar(255),
-    geom geometry(MultiLineString, 4674),
-    CONSTRAINT infra_obstaculo_terrestre_l_pk PRIMARY KEY (id)
-);
-CREATE INDEX infra_obstaculo_terrestre_l_geom ON edgv.infra_obstaculo_terrestre_l USING gist (geom);
-ALTER TABLE edgv.infra_obstaculo_terrestre_l ADD CONSTRAINT infra_obstaculo_terrestre_l_tipo_fk
-    FOREIGN KEY (tipo) REFERENCES dominios.tipo_obstaculo_terrestre (code);
-ALTER TABLE edgv.infra_obstaculo_terrestre_l ADD CONSTRAINT infra_obstaculo_terrestre_l_visivel_fk
-    FOREIGN KEY (visivel) REFERENCES dominios.booleano (code);
-
-CREATE TABLE edgv.infra_obstaculo_terrestre_a (
-    id uuid NOT NULL DEFAULT uuid_generate_v4(),
-    nome varchar(255),
-    tipo smallint NOT NULL DEFAULT 9999,
-    observacao varchar(255),
-    visivel smallint NOT NULL DEFAULT 9999,
-    texto_edicao varchar(255),
-    geom geometry(MultiPolygon, 4674),
-    CONSTRAINT infra_obstaculo_terrestre_a_pk PRIMARY KEY (id)
-);
-CREATE INDEX infra_obstaculo_terrestre_a_geom ON edgv.infra_obstaculo_terrestre_a USING gist (geom);
-ALTER TABLE edgv.infra_obstaculo_terrestre_a ADD CONSTRAINT infra_obstaculo_terrestre_a_tipo_fk
-    FOREIGN KEY (tipo) REFERENCES dominios.tipo_obstaculo_terrestre (code);
-ALTER TABLE edgv.infra_obstaculo_terrestre_a ADD CONSTRAINT infra_obstaculo_terrestre_a_visivel_fk
     FOREIGN KEY (visivel) REFERENCES dominios.booleano (code);
 
 -- ===========================================
