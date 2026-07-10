@@ -8576,8 +8576,18 @@
           "valor": 0
         }
       ],
-      "atributos_default_B": [],
-      "mapeamento_atributos": []
+      "atributos_default_B": [
+        {
+          "nome_atributo": "navegavel",
+          "valor": 1
+        }
+      ],
+      "mapeamento_atributos": [
+        {
+          "attr_A": "caladomaxseca",
+          "attr_B": "calado_max_seca"
+        }
+      ]
     },
     {
       "__comment": "enc_hidreletrica <-> infra_elemento_energia | estação geradora hidrelétrica",
@@ -12985,10 +12995,6 @@
           "valor": 2
         },
         {
-          "nome_atributo": "maritimo",
-          "valor": 2
-        },
-        {
           "nome_atributo": "sobreposto",
           "valor": 2
         }
@@ -13021,10 +13027,6 @@
         },
         {
           "nome_atributo": "exibir_rotulo_aproximado",
-          "valor": 2
-        },
-        {
-          "nome_atributo": "maritimo",
           "valor": 2
         },
         {
@@ -13096,10 +13098,6 @@
           "valor": 2
         },
         {
-          "nome_atributo": "maritimo",
-          "valor": 2
-        },
-        {
           "nome_atributo": "sobreposto",
           "valor": 2
         }
@@ -13135,10 +13133,6 @@
           "valor": 2
         },
         {
-          "nome_atributo": "maritimo",
-          "valor": 2
-        },
-        {
           "nome_atributo": "sobreposto",
           "valor": 2
         }
@@ -13171,10 +13165,6 @@
         },
         {
           "nome_atributo": "em_litigio",
-          "valor": 2
-        },
-        {
-          "nome_atributo": "maritimo",
           "valor": 2
         }
       ],

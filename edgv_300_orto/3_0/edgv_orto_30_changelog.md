@@ -67,7 +67,8 @@ integral do Topo 2.0** — não há poda. O Orto 3.0 é *baseado no* Topo 2.0; a
 distinção "orto" está na **seleção de classes** (perfil ortoimagem), não na
 redução de atributos. Assim, por exemplo, `via_deslocamento`/`ferrovia` mantêm
 `largura`/`gabarito_vertical`/`vao_livre`/`carga_suport_maxima`, e `limite_legal`
-mantém `sigla`/`geocodigo_ibge`/`populacao`/`em_litigio`/`maritimo`. As 22 classes
+mantém `sigla`/`geocodigo_ibge`/`populacao`/`em_litigio`/`cod_iso` (rev Topo 0.13.0:
+o `maritimo` foi substituído por tipos marítimos em `tipo_limite_legal`, 5/6/7). As 22 classes
 comuns são **idênticas, atributo a atributo, ao Topo 2.0** — conversão sem perda.
 
 As 5 classes separadas e a `edicao_articulacao_imagem` (sem contraparte no Topo

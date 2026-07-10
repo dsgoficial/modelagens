@@ -1557,6 +1557,18 @@
         {
           "code": 4,
           "value": "Limite Distrital"
+        },
+        {
+          "code": 5,
+          "value": "Mar Territorial (12 MN)"
+        },
+        {
+          "code": 6,
+          "value": "Zona Contígua (24 MN)"
+        },
+        {
+          "code": 7,
+          "value": "Zona Econômica Exclusiva (200 MN)"
         }
       ]
     },
@@ -3676,15 +3688,6 @@
           ]
         },
         {
-          "nome": "maritimo",
-          "tipo": "smallint",
-          "cardinalidade": "1..1",
-          "mapa_valor": "booleano",
-          "primitivas": [
-            "MultiLinestring"
-          ]
-        },
-        {
           "nome": "sigla",
           "tipo": "varchar(10)",
           "cardinalidade": "0..1",
@@ -3695,6 +3698,14 @@
         {
           "nome": "geocodigo_ibge",
           "tipo": "varchar(15)",
+          "cardinalidade": "0..1",
+          "primitivas": [
+            "MultiPolygon"
+          ]
+        },
+        {
+          "nome": "cod_iso",
+          "tipo": "varchar(3)",
           "cardinalidade": "0..1",
           "primitivas": [
             "MultiPolygon"

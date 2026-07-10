@@ -8,12 +8,13 @@ Mudanças no schema de dados entre EDGV Topo 1.4 e EDGV Topo 2.0. Apenas modelag
 
 ### 1.1 Atributos com domínio (NOT NULL, DEFAULT 9999, FK)
 
-#### `llp_limite_legal_l` (+2 colunas)
+#### `llp_limite_legal_l` (+1 coluna)
 
 | Coluna | Tipo | FK | Descrição |
 |--------|------|----|-----------|
 | `em_litigio` | smallint | `dominios.booleano` | Fronteira disputada |
-| `maritimo` | smallint | `dominios.booleano` | Limite marítimo |
+
+> Rev 0.13.0 (2026-07-10): a coluna `maritimo` (booleano) foi **removida**; o limite marítimo passou a ser codificado no `tipo_limite_legal` (ver seção 5, códigos 5/6/7) e o filtro do layer `limite-maritimo` migrou de `maritimo_texto` para `caso`.
 
 ### 1.2 Atributos numéricos (nullable, sem FK)
 
@@ -86,6 +87,16 @@ Mudanças no schema de dados entre EDGV Topo 1.4 e EDGV Topo 2.0. Apenas modelag
 | Coluna | Tipo | Motivo |
 |--------|------|--------|
 | `nome` | varchar(255) | Removida — área edificada não é entidade nomeada |
+
+### 1.3 Rev 0.13.0 (2026-07-10)
+
+Aporte do cruzamento com a ET-EDGV SPU 4.0 (ver `analysis/comparativo_edgvspu40_topo20.md`). Reabre o gap 3.0 A1 (navegabilidade), antes rejeitado, por valor de logística fluvial e mobilidade anfíbia.
+
+| Tabela | Coluna | Tipo | FK / domínio | Descrição |
+|--------|--------|------|--------------|-----------|
+| `infra_trecho_hidroviario_l` | `navegavel` | smallint | `dominios.auxiliar` | Trecho navegável (espelha `trecho_drenagem.navegavel` da EDGV 3.0) |
+| `infra_trecho_hidroviario_l` | `calado_max_seca` | real | — | Calado máximo na seca em metros (EDGV 3.0 `caladomaxseca`) |
+| `llp_limite_legal_a` | `cod_iso` | varchar(3) | — | Código ISO 3166-1 alpha-3 do país (cobertura América do Sul; antes ia sobrecarregado em `sigla`) |
 
 ---
 
@@ -194,12 +205,17 @@ A travessia hidroviária passa a ser **linha-only** no Topo 2.0: a travessia é 
 
 ## 5. Novos valores em domínios existentes
 
-### `dominios.tipo_limite_legal` (+2)
+### `dominios.tipo_limite_legal` (+5)
 
 | Código | Valor |
 |--------|-------|
 | 3 | Limite Municipal |
 | 4 | Limite Distrital |
+| 5 | Mar Territorial (12 MN) |
+| 6 | Zona Contígua (24 MN) |
+| 7 | Zona Econômica Exclusiva (200 MN) |
+
+> Códigos 5/6/7 na rev 0.13.0 (2026-07-10): substituem o antigo booleano `maritimo` (removido). MN = milhas náuticas.
 
 ### `dominios.tipo_via_deslocamento` (+2)
 
@@ -382,7 +398,7 @@ Bug originado em `mastergen.py`: o gerador anexa `9999` aos valores do CHECK sem
 | Campo | 1.4 | 2.0 |
 |-------|-----|-----|
 | `edgvversion` | EDGV 3.0 Topo | EDGV Topo 2.0 |
-| `dbimplversion` | 1.4.4 | 0.12.0 |
+| `dbimplversion` | 1.4.4 | 0.13.0 |
 
 ---
 
@@ -819,4 +835,31 @@ INSERT INTO dominios.tipo_edificacao (code, code_name, filter) VALUES
 
 UPDATE public.db_metadata SET dbimplversion = '0.12.0';
 ALTER TABLE public.db_metadata ALTER COLUMN dbimplversion SET DEFAULT '0.12.0';
+
+-- ===========================================
+-- Incremento 0.13.0: cruzamento com a ET-EDGV SPU 4.0
+-- (limites maritimos como tipo; navegabilidade/calado da hidrovia; ISO do pais)
+-- ===========================================
+
+-- 1) Limite maritimo vira tipo; remove o booleano `maritimo`
+INSERT INTO dominios.tipo_limite_legal (code, code_name) VALUES
+    (5, 'Mar Territorial (12 MN) (5)'),
+    (6, 'Zona Contígua (24 MN) (6)'),
+    (7, 'Zona Econômica Exclusiva (200 MN) (7)');
+
+ALTER TABLE edgv.llp_limite_legal_l DROP CONSTRAINT IF EXISTS llp_limite_legal_l_maritimo_fk;
+ALTER TABLE edgv.llp_limite_legal_l DROP COLUMN IF EXISTS maritimo;
+
+-- 2) Navegabilidade e calado da hidrovia (reabre gap 3.0 A1)
+ALTER TABLE edgv.infra_trecho_hidroviario_l ADD COLUMN navegavel smallint NOT NULL DEFAULT 9999;
+ALTER TABLE edgv.infra_trecho_hidroviario_l
+    ADD CONSTRAINT infra_trecho_hidroviario_l_navegavel_fk
+    FOREIGN KEY (navegavel) REFERENCES dominios.auxiliar (code);
+ALTER TABLE edgv.infra_trecho_hidroviario_l ADD COLUMN calado_max_seca real;
+
+-- 3) Codigo ISO 3166-1 alpha-3 do pais
+ALTER TABLE edgv.llp_limite_legal_a ADD COLUMN cod_iso varchar(3);
+
+UPDATE public.db_metadata SET dbimplversion = '0.13.0';
+ALTER TABLE public.db_metadata ALTER COLUMN dbimplversion SET DEFAULT '0.13.0';
 ```

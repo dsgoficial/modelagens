@@ -1,6 +1,6 @@
 {
   "modelo": "EDGV Topo 2.0",
-  "versao": "0.12.0",
+  "versao": "0.13.0",
   "schema_dados": "edgv",
   "schema_dominios": "dominios",
   "a_ser_preenchido": {
@@ -3332,6 +3332,18 @@
         {
           "code": 4,
           "value": "Limite Distrital"
+        },
+        {
+          "code": 5,
+          "value": "Mar Territorial (12 MN)"
+        },
+        {
+          "code": 6,
+          "value": "Zona Contígua (24 MN)"
+        },
+        {
+          "code": 7,
+          "value": "Zona Econômica Exclusiva (200 MN)"
         }
       ]
     },
@@ -6680,6 +6692,17 @@
           "mapa_valor": "situacao_fisica"
         },
         {
+          "nome": "navegavel",
+          "tipo": "smallint",
+          "cardinalidade": "1..1",
+          "mapa_valor": "auxiliar"
+        },
+        {
+          "nome": "calado_max_seca",
+          "tipo": "real",
+          "cardinalidade": "0..1"
+        },
+        {
           "nome": "texto_edicao",
           "tipo": "varchar(255)",
           "cardinalidade": "0..1"
@@ -7206,15 +7229,6 @@
           ]
         },
         {
-          "nome": "maritimo",
-          "tipo": "smallint",
-          "cardinalidade": "1..1",
-          "mapa_valor": "booleano",
-          "primitivas": [
-            "MultiLinestring"
-          ]
-        },
-        {
           "nome": "sigla",
           "tipo": "varchar(10)",
           "cardinalidade": "0..1",
@@ -7225,6 +7239,14 @@
         {
           "nome": "geocodigo_ibge",
           "tipo": "varchar(15)",
+          "cardinalidade": "0..1",
+          "primitivas": [
+            "MultiPolygon"
+          ]
+        },
+        {
+          "nome": "cod_iso",
+          "tipo": "varchar(3)",
           "cardinalidade": "0..1",
           "primitivas": [
             "MultiPolygon"

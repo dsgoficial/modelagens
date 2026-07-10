@@ -666,6 +666,9 @@ INSERT INTO dominios.tipo_limite_legal (code,code_name) VALUES (1,'Limite Intern
 INSERT INTO dominios.tipo_limite_legal (code,code_name) VALUES (2,'Limite Estadual (2)');
 INSERT INTO dominios.tipo_limite_legal (code,code_name) VALUES (3,'Limite Municipal (3)');
 INSERT INTO dominios.tipo_limite_legal (code,code_name) VALUES (4,'Limite Distrital (4)');
+INSERT INTO dominios.tipo_limite_legal (code,code_name) VALUES (5,'Mar Territorial (12 MN) (5)');
+INSERT INTO dominios.tipo_limite_legal (code,code_name) VALUES (6,'Zona Contígua (24 MN) (6)');
+INSERT INTO dominios.tipo_limite_legal (code,code_name) VALUES (7,'Zona Econômica Exclusiva (200 MN) (7)');
 INSERT INTO dominios.tipo_limite_legal (code,code_name) VALUES (9999,'A SER PREENCHIDO (9999)');
 
 ALTER TABLE dominios.tipo_limite_legal OWNER TO postgres;
@@ -2604,7 +2607,6 @@ CREATE TABLE edgv.llp_limite_legal_l(
 	 sobreposto smallint NOT NULL,
 	 exibir_rotulo_aproximado smallint NOT NULL,
 	 em_litigio smallint NOT NULL,
-	 maritimo smallint NOT NULL,
 	 observacao varchar(255),
 	 geom geometry(MultiLinestring, 4674),
 	 CONSTRAINT llp_limite_legal_l_pk PRIMARY KEY (id)
@@ -2649,13 +2651,6 @@ ALTER TABLE edgv.llp_limite_legal_l
 
 ALTER TABLE edgv.llp_limite_legal_l ALTER COLUMN em_litigio SET DEFAULT 9999;
 
-ALTER TABLE edgv.llp_limite_legal_l
-	 ADD CONSTRAINT llp_limite_legal_l_maritimo_fk FOREIGN KEY (maritimo)
-	 REFERENCES dominios.booleano (code) MATCH FULL
-	 ON UPDATE NO ACTION ON DELETE NO ACTION;
-
-ALTER TABLE edgv.llp_limite_legal_l ALTER COLUMN maritimo SET DEFAULT 9999;
-
 CREATE TABLE edgv.llp_limite_legal_a(
 	 id uuid NOT NULL DEFAULT uuid_generate_v4(),
 	 nome varchar(255),
@@ -2663,6 +2658,7 @@ CREATE TABLE edgv.llp_limite_legal_a(
 	 geometria_aproximada smallint NOT NULL,
 	 sigla varchar(10),
 	 geocodigo_ibge varchar(15),
+	 cod_iso varchar(3),
 	 populacao integer,
 	 observacao varchar(255),
 	 geom geometry(MultiPolygon, 4674),
