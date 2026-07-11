@@ -88,10 +88,6 @@
         {
           "attr_A": "longitude",
           "attr_B": "longitude"
-        },
-        {
-          "attr_A": "orgaoenteresp",
-          "attr_B": "orgao_responsavel"
         }
       ]
     },
@@ -199,10 +195,6 @@
         {
           "attr_A": "longitude",
           "attr_B": "longitude"
-        },
-        {
-          "attr_A": "orgaoenteresp",
-          "attr_B": "orgao_responsavel"
         }
       ],
       "atributos_default_B": []
@@ -297,14 +289,6 @@
         {
           "attr_A": "longitude",
           "attr_B": "longitude"
-        },
-        {
-          "attr_A": "altitudegeometrica",
-          "attr_B": "altitude_geometrica"
-        },
-        {
-          "attr_A": "tiporef",
-          "attr_B": "tipo_ref"
         }
       ]
     },
@@ -5815,28 +5799,18 @@
         "LINESTRING"
       ],
       "filtro_A": {
-        "$and": [
+        "$or": [
           {
-            "$or": [
-              {
-                "nome_atributo": "tipotravessia",
-                "valor": 0
-              },
-              {
-                "nome_atributo": "tipotravessia",
-                "valor": 1
-              },
-              {
-                "nome_atributo": "tipotravessia",
-                "valor": 2
-              }
-            ]
+            "nome_atributo": "tipotravessia",
+            "valor": 0
           },
           {
-            "$not": {
-              "nome_atributo": "matconstr",
-              "valor": 23
-            }
+            "nome_atributo": "tipotravessia",
+            "valor": 1
+          },
+          {
+            "nome_atributo": "tipotravessia",
+            "valor": 2
           }
         ]
       },
@@ -5898,24 +5872,6 @@
             {
               "valor_A": 2,
               "valor_B": 402
-            }
-          ]
-        },
-        {
-          "attr_A": "matconstr",
-          "attr_B": "material_construcao",
-          "traducao": [
-            {
-              "valor_A": 8,
-              "valor_B": 98
-            },
-            {
-              "valor_A": 23,
-              "valor_B": 9999
-            },
-            {
-              "valor_A": 99,
-              "valor_B": 98
             }
           ]
         }
@@ -6634,25 +6590,7 @@
           "valor": 9999
         }
       ],
-      "mapeamento_atributos": [],
-      "filtro_A": {
-        "$not": {
-          "$or": [
-            {
-              "nome_atributo": "administracao",
-              "valor": 3
-            },
-            {
-              "nome_atributo": "administracao",
-              "valor": 15
-            },
-            {
-              "nome_atributo": "administracao",
-              "valor": 97
-            }
-          ]
-        }
-      }
+      "mapeamento_atributos": []
     },
     {
       "__comment": "tra_trilha_picada <-> infra_via_deslocamento",
@@ -6704,25 +6642,7 @@
           "valor": 9999
         }
       ],
-      "mapeamento_atributos": [],
-      "filtro_A": {
-        "$not": {
-          "$or": [
-            {
-              "nome_atributo": "administracao",
-              "valor": 3
-            },
-            {
-              "nome_atributo": "administracao",
-              "valor": 15
-            },
-            {
-              "nome_atributo": "administracao",
-              "valor": 97
-            }
-          ]
-        }
-      }
+      "mapeamento_atributos": []
     },
     {
       "__comment": "tra_ponte <-> infra_elemento_viario | ponte",
@@ -6841,26 +6761,12 @@
           "attr_B": "material_construcao",
           "traducao": [
             {
-              "valor_A": 8,
-              "valor_B": 98
-            },
-            {
-              "valor_A": 23,
-              "valor_B": 9999
-            },
-            {
               "valor_A": 99,
               "valor_B": 98
             }
           ]
         }
-      ],
-      "filtro_A": {
-        "$not": {
-          "nome_atributo": "matconstr",
-          "valor": 23
-        }
-      }
+      ]
     },
     {
       "__comment": "tra_tunel <-> infra_elemento_viario | tunel e passagem subterrânea sob via",
@@ -7123,7 +7029,7 @@
         {
           "tupla_A": [
             {
-              "nome_atributo": "situacao_espacial",
+              "nome_atributo": "situacaoespacial",
               "valor": 2
             }
           ],
@@ -8412,10 +8318,6 @@
                   {
                     "nome_atributo": "tipoelemnat",
                     "valor": 12
-                  },
-                  {
-                    "nome_atributo": "tipoelemnat",
-                    "valor": 17
                   }
                 ]
               }
@@ -8426,13 +8328,7 @@
       "mapeamento_atributos": [
         {
           "attr_A": "tipoelemnat",
-          "attr_B": "tipo",
-          "traducao": [
-            {
-              "valor_A": 22,
-              "valor_B": 17
-            }
-          ]
+          "attr_B": "tipo"
         }
       ],
       "atributos_default_B": []
@@ -8766,44 +8662,34 @@
         }
       ],
       "filtro_A": {
-        "$and": [
-          {
-            "$not": {
-              "$or": [
+        "$not": {
+          "$or": [
+            {
+              "$and": [
                 {
-                  "$and": [
-                    {
-                      "nome_atributo": "$GEOM_TYPE",
-                      "valor": "LINESTRING"
-                    },
-                    {
-                      "nome_atributo": "classeativecon",
-                      "valor": 2
-                    }
-                  ]
+                  "nome_atributo": "$GEOM_TYPE",
+                  "valor": "LINESTRING"
                 },
                 {
-                  "$and": [
-                    {
-                      "nome_atributo": "$GEOM_TYPE",
-                      "valor": "LINESTRING"
-                    },
-                    {
-                      "nome_atributo": "classeativecon",
-                      "valor": 3
-                    }
-                  ]
+                  "nome_atributo": "classeativecon",
+                  "valor": 2
+                }
+              ]
+            },
+            {
+              "$and": [
+                {
+                  "nome_atributo": "$GEOM_TYPE",
+                  "valor": "LINESTRING"
+                },
+                {
+                  "nome_atributo": "classeativecon",
+                  "valor": 3
                 }
               ]
             }
-          },
-          {
-            "$not": {
-              "nome_atributo": "classeativecon",
-              "valor": 0
-            }
-          }
-        ]
+          ]
+        }
       }
     },
     {
@@ -9154,10 +9040,6 @@
           "attr_B": "tipo",
           "traducao": [
             {
-              "valor_A": 0,
-              "valor_B": 9999
-            },
-            {
               "valor_A": 1,
               "valor_B": 9999
             },
@@ -9214,340 +9096,12 @@
               "valor_B": 14
             },
             {
-              "valor_A": 15,
-              "valor_B": 15
-            },
-            {
-              "valor_A": 16,
-              "valor_B": 16
-            },
-            {
-              "valor_A": 17,
-              "valor_B": 9999
-            },
-            {
               "valor_A": 18,
               "valor_B": 18
             },
             {
               "valor_A": 19,
               "valor_B": 19
-            },
-            {
-              "valor_A": 20,
-              "valor_B": 20
-            },
-            {
-              "valor_A": 21,
-              "valor_B": 21
-            },
-            {
-              "valor_A": 22,
-              "valor_B": 22
-            },
-            {
-              "valor_A": 23,
-              "valor_B": 23
-            },
-            {
-              "valor_A": 24,
-              "valor_B": 9999
-            },
-            {
-              "valor_A": 25,
-              "valor_B": 9999
-            },
-            {
-              "valor_A": 26,
-              "valor_B": 9999
-            },
-            {
-              "valor_A": 27,
-              "valor_B": 9999
-            },
-            {
-              "valor_A": 28,
-              "valor_B": 9999
-            },
-            {
-              "valor_A": 29,
-              "valor_B": 9999
-            },
-            {
-              "valor_A": 30,
-              "valor_B": 9999
-            },
-            {
-              "valor_A": 31,
-              "valor_B": 9999
-            },
-            {
-              "valor_A": 32,
-              "valor_B": 9999
-            },
-            {
-              "valor_A": 33,
-              "valor_B": 9999
-            },
-            {
-              "valor_A": 34,
-              "valor_B": 9999
-            },
-            {
-              "valor_A": 35,
-              "valor_B": 9999
-            },
-            {
-              "valor_A": 36,
-              "valor_B": 9999
-            },
-            {
-              "valor_A": 37,
-              "valor_B": 9999
-            },
-            {
-              "valor_A": 38,
-              "valor_B": 9999
-            },
-            {
-              "valor_A": 39,
-              "valor_B": 9999
-            },
-            {
-              "valor_A": 40,
-              "valor_B": 9999
-            },
-            {
-              "valor_A": 41,
-              "valor_B": 9999
-            },
-            {
-              "valor_A": 42,
-              "valor_B": 9999
-            },
-            {
-              "valor_A": 43,
-              "valor_B": 9999
-            },
-            {
-              "valor_A": 44,
-              "valor_B": 9999
-            },
-            {
-              "valor_A": 45,
-              "valor_B": 9999
-            },
-            {
-              "valor_A": 46,
-              "valor_B": 9999
-            },
-            {
-              "valor_A": 47,
-              "valor_B": 9999
-            },
-            {
-              "valor_A": 48,
-              "valor_B": 9999
-            },
-            {
-              "valor_A": 49,
-              "valor_B": 9999
-            },
-            {
-              "valor_A": 50,
-              "valor_B": 9999
-            },
-            {
-              "valor_A": 51,
-              "valor_B": 9999
-            },
-            {
-              "valor_A": 52,
-              "valor_B": 9999
-            },
-            {
-              "valor_A": 53,
-              "valor_B": 9999
-            },
-            {
-              "valor_A": 54,
-              "valor_B": 9999
-            },
-            {
-              "valor_A": 55,
-              "valor_B": 9999
-            },
-            {
-              "valor_A": 56,
-              "valor_B": 9999
-            },
-            {
-              "valor_A": 57,
-              "valor_B": 9999
-            },
-            {
-              "valor_A": 58,
-              "valor_B": 9999
-            },
-            {
-              "valor_A": 59,
-              "valor_B": 9999
-            },
-            {
-              "valor_A": 60,
-              "valor_B": 9999
-            },
-            {
-              "valor_A": 61,
-              "valor_B": 9999
-            },
-            {
-              "valor_A": 62,
-              "valor_B": 9999
-            },
-            {
-              "valor_A": 63,
-              "valor_B": 9999
-            },
-            {
-              "valor_A": 64,
-              "valor_B": 9999
-            },
-            {
-              "valor_A": 65,
-              "valor_B": 9999
-            },
-            {
-              "valor_A": 66,
-              "valor_B": 9999
-            },
-            {
-              "valor_A": 67,
-              "valor_B": 9999
-            },
-            {
-              "valor_A": 68,
-              "valor_B": 9999
-            },
-            {
-              "valor_A": 69,
-              "valor_B": 9999
-            },
-            {
-              "valor_A": 70,
-              "valor_B": 9999
-            },
-            {
-              "valor_A": 71,
-              "valor_B": 9999
-            },
-            {
-              "valor_A": 72,
-              "valor_B": 9999
-            },
-            {
-              "valor_A": 73,
-              "valor_B": 9999
-            },
-            {
-              "valor_A": 74,
-              "valor_B": 9999
-            },
-            {
-              "valor_A": 75,
-              "valor_B": 9999
-            },
-            {
-              "valor_A": 76,
-              "valor_B": 9999
-            },
-            {
-              "valor_A": 77,
-              "valor_B": 9999
-            },
-            {
-              "valor_A": 78,
-              "valor_B": 9999
-            },
-            {
-              "valor_A": 79,
-              "valor_B": 9999
-            },
-            {
-              "valor_A": 80,
-              "valor_B": 9999
-            },
-            {
-              "valor_A": 81,
-              "valor_B": 9999
-            },
-            {
-              "valor_A": 82,
-              "valor_B": 9999
-            },
-            {
-              "valor_A": 83,
-              "valor_B": 9999
-            },
-            {
-              "valor_A": 84,
-              "valor_B": 9999
-            },
-            {
-              "valor_A": 85,
-              "valor_B": 9999
-            },
-            {
-              "valor_A": 86,
-              "valor_B": 9999
-            },
-            {
-              "valor_A": 87,
-              "valor_B": 9999
-            },
-            {
-              "valor_A": 88,
-              "valor_B": 9999
-            },
-            {
-              "valor_A": 89,
-              "valor_B": 9999
-            },
-            {
-              "valor_A": 90,
-              "valor_B": 9999
-            },
-            {
-              "valor_A": 91,
-              "valor_B": 9999
-            },
-            {
-              "valor_A": 92,
-              "valor_B": 9999
-            },
-            {
-              "valor_A": 93,
-              "valor_B": 9999
-            },
-            {
-              "valor_A": 94,
-              "valor_B": 9999
-            },
-            {
-              "valor_A": 95,
-              "valor_B": 9999
-            },
-            {
-              "valor_A": 96,
-              "valor_B": 9999
-            },
-            {
-              "valor_A": 97,
-              "valor_B": 9999
-            },
-            {
-              "valor_A": 98,
-              "valor_B": 9999
             },
             {
               "valor_A": 99,
@@ -9616,95 +9170,11 @@
               "$and": [
                 {
                   "nome_atributo": "$GEOM_TYPE",
-                  "valor": "POINT"
-                },
-                {
-                  "nome_atributo": "tipoelemnat",
-                  "valor": 23
-                }
-              ]
-            },
-            {
-              "$and": [
-                {
-                  "nome_atributo": "$GEOM_TYPE",
-                  "valor": "LINESTRING"
-                },
-                {
-                  "nome_atributo": "tipoelemnat",
-                  "valor": 15
-                }
-              ]
-            },
-            {
-              "$and": [
-                {
-                  "nome_atributo": "$GEOM_TYPE",
-                  "valor": "LINESTRING"
-                },
-                {
-                  "nome_atributo": "tipoelemnat",
-                  "valor": 16
-                }
-              ]
-            },
-            {
-              "$and": [
-                {
-                  "nome_atributo": "$GEOM_TYPE",
                   "valor": "LINESTRING"
                 },
                 {
                   "nome_atributo": "tipoelemnat",
                   "valor": 19
-                }
-              ]
-            },
-            {
-              "$and": [
-                {
-                  "nome_atributo": "$GEOM_TYPE",
-                  "valor": "LINESTRING"
-                },
-                {
-                  "nome_atributo": "tipoelemnat",
-                  "valor": 20
-                }
-              ]
-            },
-            {
-              "$and": [
-                {
-                  "nome_atributo": "$GEOM_TYPE",
-                  "valor": "LINESTRING"
-                },
-                {
-                  "nome_atributo": "tipoelemnat",
-                  "valor": 21
-                }
-              ]
-            },
-            {
-              "$and": [
-                {
-                  "nome_atributo": "$GEOM_TYPE",
-                  "valor": "LINESTRING"
-                },
-                {
-                  "nome_atributo": "tipoelemnat",
-                  "valor": 22
-                }
-              ]
-            },
-            {
-              "$and": [
-                {
-                  "nome_atributo": "$GEOM_TYPE",
-                  "valor": "LINESTRING"
-                },
-                {
-                  "nome_atributo": "tipoelemnat",
-                  "valor": 23
                 }
               ]
             },
@@ -9765,18 +9235,6 @@
                 {
                   "nome_atributo": "tipoelemnat",
                   "valor": 19
-                }
-              ]
-            },
-            {
-              "$and": [
-                {
-                  "nome_atributo": "$GEOM_TYPE",
-                  "valor": "POLYGON"
-                },
-                {
-                  "nome_atributo": "tipoelemnat",
-                  "valor": 20
                 }
               ]
             }
@@ -10539,9 +9997,13 @@
       "mapeamento_atributos": []
     },
     {
-      "__comment": "laz_sitio_arqueologico <-> constr_ocupacao_solo | Sítio Arqueológico",
+      "__comment": "laz_sitio_arqueologico <-> constr_ocupacao_solo | Sítio Arqueológico. Apenas polígono: tipo 601 é restrito a polígono em constr_ocupacao_solo no Topo 2.0 — laz_sitio_arqueologico_p sem correspondência",
       "classe_A": "laz_sitio_arqueologico",
       "classe_B": "constr_ocupacao_solo",
+      "filtro_A": {
+        "nome_atributo": "$GEOM_TYPE",
+        "valor": "POLYGON"
+      },
       "filtro_B": {
         "nome_atributo": "tipo",
         "valor": 601
@@ -12985,18 +12447,6 @@
         {
           "nome_atributo": "tipo",
           "valor": 1
-        },
-        {
-          "nome_atributo": "em_litigio",
-          "valor": 2
-        },
-        {
-          "nome_atributo": "exibir_rotulo_aproximado",
-          "valor": 2
-        },
-        {
-          "nome_atributo": "sobreposto",
-          "valor": 2
         }
       ],
       "mapeamento_atributos": [
@@ -13019,18 +12469,6 @@
       "atributos_default_B": [
         {
           "nome_atributo": "tipo",
-          "valor": 2
-        },
-        {
-          "nome_atributo": "em_litigio",
-          "valor": 2
-        },
-        {
-          "nome_atributo": "exibir_rotulo_aproximado",
-          "valor": 2
-        },
-        {
-          "nome_atributo": "sobreposto",
           "valor": 2
         }
       ],
@@ -13088,18 +12526,6 @@
         {
           "nome_atributo": "tipo",
           "valor": 3
-        },
-        {
-          "nome_atributo": "em_litigio",
-          "valor": 2
-        },
-        {
-          "nome_atributo": "exibir_rotulo_aproximado",
-          "valor": 2
-        },
-        {
-          "nome_atributo": "sobreposto",
-          "valor": 2
         }
       ],
       "mapeamento_atributos": [
@@ -13123,18 +12549,6 @@
         {
           "nome_atributo": "tipo",
           "valor": 4
-        },
-        {
-          "nome_atributo": "em_litigio",
-          "valor": 2
-        },
-        {
-          "nome_atributo": "exibir_rotulo_aproximado",
-          "valor": 2
-        },
-        {
-          "nome_atributo": "sobreposto",
-          "valor": 2
         }
       ],
       "mapeamento_atributos": [
@@ -13415,10 +12829,6 @@
         {
           "nome_atributo": "indice",
           "valor": 1
-        },
-        {
-          "nome_atributo": "cota",
-          "valor": 0
         }
       ]
     },
@@ -13432,12 +12842,7 @@
           "attr_B": "profundidade"
         }
       ],
-      "atributos_default_B": [
-        {
-          "nome_atributo": "cota",
-          "valor": 0
-        }
-      ]
+      "atributos_default_B": []
     },
     {
       "__comment": "Topo 2.0: cbge_delimitacao_fisica → llp_delimitacao_fisica",

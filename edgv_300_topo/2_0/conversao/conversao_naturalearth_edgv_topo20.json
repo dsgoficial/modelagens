@@ -1044,15 +1044,13 @@
           "tipo": 1101
         }
       },
-      "ne_attribute_mapping": {
-        "name": "nome"
-      },
       "ne_extra_properties": {
+        "name": "nome",
         "scalerank": "scalerank",
         "min_zoom": "min_zoom"
       },
       "confidence": "medium",
-      "note": "Areas glaciais (neve/gelo). 1886 features. Rev 0.10.0: tipo_veg ganhou o codigo 1101 (Neve/Gelo), entao passa a mapear para cobter_vegetacao_a com tipo=1101 (antes era __tile_only por falta de dominio). Camada de tile 'glaciated' preservada via TABLE_TO_LAYER em ne_to_edgv.py."
+      "note": "Areas glaciais (neve/gelo). 1886 features. Rev 0.10.0: tipo_veg ganhou o codigo 1101 (Neve/Gelo), entao passa a mapear para cobter_vegetacao_a com tipo=1101 (antes era __tile_only por falta de dominio). Camada de tile 'glaciated' preservada via TABLE_TO_LAYER em ne_to_edgv.py. O nome NE e tile-only (via ne_extra_properties) porque cobter_vegetacao_a nao possui coluna nome."
     },
     {
       "_comment": "=== BATHYMETRY → __tile_only ==="

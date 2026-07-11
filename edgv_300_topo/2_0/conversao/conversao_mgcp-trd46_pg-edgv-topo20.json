@@ -126,14 +126,6 @@
               "valor_B": 2
             },
             {
-              "valor_A": 5,
-              "valor_B": 1
-            },
-            {
-              "valor_A": 6,
-              "valor_B": 1
-            },
-            {
               "valor_A": 9999,
               "valor_B": 9999
             }
@@ -789,6 +781,9 @@
             }
           ]
         }
+      ],
+      "geom_A": [
+        "LINESTRING"
       ]
     },
     {
@@ -857,6 +852,9 @@
           "attr_A": "wid",
           "attr_B": "largura"
         }
+      ],
+      "geom_A": [
+        "LINESTRING"
       ]
     },
     {
@@ -1023,6 +1021,9 @@
           "attr_A": "txt",
           "attr_B": "observacao"
         }
+      ],
+      "geom_A": [
+        "POLYGON"
       ]
     },
     {
@@ -1350,10 +1351,6 @@
               "valor_B": 9999
             }
           ]
-        },
-        {
-          "attr_A": "hgt",
-          "attr_B": "altura"
         }
       ],
       "atributos_default_B": []
@@ -2564,6 +2561,9 @@
           "attr_A": "wid",
           "attr_B": "largura"
         }
+      ],
+      "geom_A": [
+        "LINESTRING"
       ]
     },
     {
@@ -2615,6 +2615,9 @@
           "attr_A": "wid",
           "attr_B": "largura"
         }
+      ],
+      "geom_A": [
+        "LINESTRING"
       ]
     },
     {
@@ -2656,6 +2659,9 @@
             }
           ]
         }
+      ],
+      "geom_A": [
+        "LINESTRING"
       ]
     },
     {
@@ -2802,6 +2808,9 @@
             }
           ]
         }
+      ],
+      "geom_A": [
+        "POLYGON"
       ]
     },
     {
@@ -3148,6 +3157,10 @@
           "attr_A": "txt",
           "attr_B": "observacao"
         }
+      ],
+      "geom_A": [
+        "POLYGON",
+        "LINESTRING"
       ]
     },
     {
@@ -3391,6 +3404,9 @@
           "attr_A": "txt",
           "attr_B": "observacao"
         }
+      ],
+      "geom_A": [
+        "POLYGON"
       ]
     },
     {
@@ -3586,6 +3602,9 @@
           "attr_A": "txt",
           "attr_B": "observacao"
         }
+      ],
+      "geom_A": [
+        "LINESTRING"
       ]
     },
     {
@@ -4045,6 +4064,9 @@
           "attr_A": "txt",
           "attr_B": "observacao"
         }
+      ],
+      "geom_A": [
+        "POLYGON"
       ]
     },
     {
@@ -4056,6 +4078,9 @@
           "nome_atributo": "tipo",
           "valor": 8
         }
+      ],
+      "geom_A": [
+        "POLYGON"
       ]
     },
     {
@@ -4077,6 +4102,9 @@
           "attr_A": "txt",
           "attr_B": "observacao"
         }
+      ],
+      "geom_A": [
+        "POLYGON"
       ]
     },
     {
@@ -4180,10 +4208,6 @@
       ],
       "mapeamento_atributos": [
         {
-          "attr_A": "nam",
-          "attr_B": "nome"
-        },
-        {
           "attr_A": "txt",
           "attr_B": "observacao"
         }
@@ -4193,6 +4217,9 @@
       "classe_A": "al210",
       "classe_B": "constr_edificacao",
       "__comment": "[4/5] AL210 Protection Shed → Edificação (abrigo/proteção)",
+      "geom_A": [
+        "POINT"
+      ],
       "atributos_default_B": [
         {
           "nome_atributo": "situacao_fisica",
@@ -4407,6 +4434,9 @@
           "attr_A": "txt",
           "attr_B": "observacao"
         }
+      ],
+      "geom_A": [
+        "POLYGON"
       ]
     },
     {
@@ -4816,6 +4846,9 @@
           "attr_A": "txt",
           "attr_B": "observacao"
         }
+      ],
+      "geom_A": [
+        "POLYGON"
       ]
     },
     {
@@ -4917,6 +4950,9 @@
           "attr_A": "txt",
           "attr_B": "observacao"
         }
+      ],
+      "geom_A": [
+        "POLYGON"
       ]
     },
     {
@@ -5102,13 +5138,12 @@
       "__comment": "[5/5] AL020 Built-Up Area (Polygon) → Área edificada",
       "mapeamento_atributos": [
         {
-          "attr_A": "nam",
-          "attr_B": "nome"
-        },
-        {
           "attr_A": "txt",
           "attr_B": "observacao"
         }
+      ],
+      "geom_A": [
+        "POLYGON"
       ],
       "geom_B": [
         "POLYGON"
@@ -5288,6 +5323,9 @@
           "attr_A": "txt",
           "attr_B": "observacao"
         }
+      ],
+      "geom_A": [
+        "POLYGON"
       ]
     },
     {
@@ -5855,6 +5893,9 @@
           "attr_A": "txt",
           "attr_B": "observacao"
         }
+      ],
+      "geom_A": [
+        "POINT"
       ]
     },
     {
@@ -5890,10 +5931,6 @@
         }
       ],
       "atributos_default_B": [
-        {
-          "nome_atributo": "tipo",
-          "valor": 1
-        },
         {
           "nome_atributo": "indice",
           "valor": 1

@@ -5,7 +5,7 @@
     "source": "Overture Maps Foundation",
     "target": "EDGV Topo 2.0 v0.11.0",
     "description": "Mapeamento Overture Maps para EDGV Topo 2.0. Consumido por overture_to_edgv.py. Rev 0.11.0: so o ponteiro de versao; o conteudo (edificacao, via, massa d'agua, drenagem, ferrovia, deposito) nao e afetado pelas revisoes 0.9-0.11 (nao mapeia admin/energia/vegetacao/fisiografia/area_edificada, verificado).",
-    "total_rules": 106,
+    "total_rules": 105,
     "match_strategy": "first_match_wins"
   },
   "rules": [

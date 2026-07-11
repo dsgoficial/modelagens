@@ -128,10 +128,6 @@
           "attr_B": "bitola",
           "traducao": [
             {
-              "valor_A": 0,
-              "valor_B": 9999
-            },
-            {
               "valor_A": 1,
               "valor_B": 3
             },
@@ -192,10 +188,6 @@
           "attr_B": "eletrificada",
           "traducao": [
             {
-              "valor_A": 0,
-              "valor_B": 9999
-            },
-            {
               "valor_A": 1,
               "valor_B": 1
             },
@@ -221,10 +213,6 @@
           "attr_A": "rir",
           "attr_B": "em_arruamento",
           "traducao": [
-            {
-              "valor_A": 0,
-              "valor_B": 9999
-            },
             {
               "valor_A": 1000,
               "valor_B": 2
@@ -357,10 +345,6 @@
           "attr_B": "bitola",
           "traducao": [
             {
-              "valor_A": 0,
-              "valor_B": 9999
-            },
-            {
               "valor_A": 1,
               "valor_B": 3
             },
@@ -387,10 +371,6 @@
           "attr_B": "eletrificada",
           "traducao": [
             {
-              "valor_A": 0,
-              "valor_B": 9999
-            },
-            {
               "valor_A": 1,
               "valor_B": 1
             },
@@ -416,10 +396,6 @@
           "attr_A": "rir",
           "attr_B": "em_arruamento",
           "traducao": [
-            {
-              "valor_A": 0,
-              "valor_B": 9999
-            },
             {
               "valor_A": 1000,
               "valor_B": 2
@@ -627,15 +603,15 @@
             },
             {
               "valor_A": 152,
-              "valor_B": 9
+              "valor_B": 98
             },
             {
               "valor_A": 16,
-              "valor_B": 23
+              "valor_B": 98
             },
             {
               "valor_A": 104,
-              "valor_B": 23
+              "valor_B": 98
             },
             {
               "valor_A": 40,
@@ -691,8 +667,16 @@
       "atributos_default_B": [],
       "filtro_A": {
         "$not": {
-          "nome_atributo": "mcc",
-          "valor": 23
+          "$or": [
+            {
+              "nome_atributo": "mcc",
+              "valor": 16
+            },
+            {
+              "nome_atributo": "mcc",
+              "valor": 104
+            }
+          ]
         }
       }
     },
@@ -885,15 +869,15 @@
             },
             {
               "valor_A": 152,
-              "valor_B": 9
+              "valor_B": 98
             },
             {
               "valor_A": 16,
-              "valor_B": 23
+              "valor_B": 98
             },
             {
               "valor_A": 104,
-              "valor_B": 23
+              "valor_B": 98
             },
             {
               "valor_A": 40,
@@ -1221,15 +1205,15 @@
             },
             {
               "valor_A": 152,
-              "valor_B": 9
+              "valor_B": 98
             },
             {
               "valor_A": 16,
-              "valor_B": 23
+              "valor_B": 98
             },
             {
               "valor_A": 104,
-              "valor_B": 23
+              "valor_B": 98
             },
             {
               "valor_A": 40,
@@ -1367,6 +1351,9 @@
             }
           ]
         }
+      ],
+      "geom_A": [
+        "LINESTRING"
       ],
       "atributos_default_B": []
     },
@@ -1532,6 +1519,9 @@
           "attr_B": "nome"
         }
       ],
+      "geom_A": [
+        "POLYGON"
+      ],
       "atributos_default_B": []
     },
     {
@@ -1627,15 +1617,15 @@
             },
             {
               "valor_A": 152,
-              "valor_B": 9
+              "valor_B": 98
             },
             {
               "valor_A": 16,
-              "valor_B": 23
+              "valor_B": 98
             },
             {
               "valor_A": 104,
-              "valor_B": 23
+              "valor_B": 98
             },
             {
               "valor_A": 40,
@@ -1683,6 +1673,9 @@
             }
           ]
         }
+      ],
+      "geom_A": [
+        "LINESTRING"
       ],
       "atributos_default_B": []
     },
@@ -1973,29 +1966,10 @@
         {
           "attr_A": "ohc",
           "attr_B": "gabarito_vertical"
-        },
-        {
-          "attr_A": "mcc",
-          "attr_B": "material_construcao",
-          "traducao": [
-            {
-              "valor_A": 8,
-              "valor_B": 9999
-            },
-            {
-              "valor_A": 9,
-              "valor_B": 9999
-            },
-            {
-              "valor_A": 23,
-              "valor_B": 9999
-            },
-            {
-              "valor_A": 99,
-              "valor_B": 9999
-            }
-          ]
         }
+      ],
+      "geom_A": [
+        "LINESTRING"
       ],
       "atributos_default_B": []
     },
@@ -2068,6 +2042,9 @@
           ]
         }
       ],
+      "geom_A": [
+        "LINESTRING"
+      ],
       "atributos_default_B": [
         {
           "nome_atributo": "posicao_relativa",
@@ -2113,6 +2090,9 @@
           "nome_atributo": "tipo",
           "valor": 16
         }
+      ],
+      "geom_A": [
+        "POLYGON"
       ],
       "mapeamento_atributos": []
     },
@@ -2165,6 +2145,9 @@
           "attr_A": "wid",
           "attr_B": "largura"
         }
+      ],
+      "geom_A": [
+        "LINESTRING"
       ]
     },
     {
@@ -2837,13 +2820,7 @@
           "attr_B": "altura"
         }
       ],
-      "atributos_default_B": [],
-      "filtro_A": {
-        "$not": {
-          "nome_atributo": "mcc",
-          "valor": 23
-        }
-      }
+      "atributos_default_B": []
     },
     {
       "classe_A": "cul_ac020",
@@ -2901,13 +2878,7 @@
           "attr_B": "altura"
         }
       ],
-      "atributos_default_B": [],
-      "filtro_A": {
-        "$not": {
-          "nome_atributo": "mcc",
-          "valor": 23
-        }
-      }
+      "atributos_default_B": []
     },
     {
       "classe_A": "cul_ac030",
@@ -2977,13 +2948,7 @@
           "attr_B": "endereco"
         }
       ],
-      "atributos_default_B": [],
-      "filtro_A": {
-        "$not": {
-          "nome_atributo": "mcc",
-          "valor": 23
-        }
-      }
+      "atributos_default_B": []
     },
     {
       "classe_A": "cul_ac060",
@@ -3078,15 +3043,15 @@
             },
             {
               "valor_A": 152,
-              "valor_B": 9
+              "valor_B": 98
             },
             {
               "valor_A": 16,
-              "valor_B": 23
+              "valor_B": 98
             },
             {
               "valor_A": 104,
-              "valor_B": 23
+              "valor_B": 98
             },
             {
               "valor_A": 40,
@@ -3138,8 +3103,16 @@
       "atributos_default_B": [],
       "filtro_A": {
         "$not": {
-          "nome_atributo": "mcc",
-          "valor": 23
+          "$or": [
+            {
+              "nome_atributo": "mcc",
+              "valor": 16
+            },
+            {
+              "nome_atributo": "mcc",
+              "valor": 104
+            }
+          ]
         }
       }
     },
@@ -3210,10 +3183,6 @@
               "valor_B": 9999
             }
           ]
-        },
-        {
-          "attr_A": "hgt",
-          "attr_B": "altura"
         }
       ],
       "atributos_default_B": []
@@ -3322,10 +3291,6 @@
               "valor_B": 9999
             }
           ]
-        },
-        {
-          "attr_A": "hgt",
-          "attr_B": "altura"
         }
       ],
       "atributos_default_B": []
@@ -3380,10 +3345,6 @@
               "valor_B": 9999
             }
           ]
-        },
-        {
-          "attr_A": "hgt",
-          "attr_B": "altura"
         }
       ],
       "atributos_default_B": []
@@ -3444,10 +3405,6 @@
               "valor_B": 9999
             }
           ]
-        },
-        {
-          "attr_A": "hgt",
-          "attr_B": "altura"
         }
       ]
     },
@@ -3501,10 +3458,6 @@
               "valor_B": 9999
             }
           ]
-        },
-        {
-          "attr_A": "hgt",
-          "attr_B": "altura"
         }
       ],
       "atributos_default_B": []
@@ -3559,10 +3512,6 @@
               "valor_B": 9999
             }
           ]
-        },
-        {
-          "attr_A": "hgt",
-          "attr_B": "altura"
         }
       ],
       "atributos_default_B": []
@@ -3617,10 +3566,6 @@
               "valor_B": 9999
             }
           ]
-        },
-        {
-          "attr_A": "hgt",
-          "attr_B": "altura"
         }
       ],
       "atributos_default_B": []
@@ -3830,15 +3775,15 @@
             },
             {
               "valor_A": 152,
-              "valor_B": 9
+              "valor_B": 98
             },
             {
               "valor_A": 16,
-              "valor_B": 23
+              "valor_B": 98
             },
             {
               "valor_A": 104,
-              "valor_B": 23
+              "valor_B": 98
             },
             {
               "valor_A": 40,
@@ -3890,8 +3835,16 @@
       "atributos_default_B": [],
       "filtro_A": {
         "$not": {
-          "nome_atributo": "mcc",
-          "valor": 23
+          "$or": [
+            {
+              "nome_atributo": "mcc",
+              "valor": 16
+            },
+            {
+              "nome_atributo": "mcc",
+              "valor": 104
+            }
+          ]
         }
       }
     },
@@ -4175,13 +4128,7 @@
           "attr_B": "endereco"
         }
       ],
-      "atributos_default_B": [],
-      "filtro_A": {
-        "$not": {
-          "nome_atributo": "mcc",
-          "valor": 23
-        }
-      }
+      "atributos_default_B": []
     },
     {
       "classe_A": "cul_ag040",
@@ -4243,13 +4190,7 @@
           "attr_B": "endereco"
         }
       ],
-      "atributos_default_B": [],
-      "filtro_A": {
-        "$not": {
-          "nome_atributo": "mcc",
-          "valor": 23
-        }
-      }
+      "atributos_default_B": []
     },
     {
       "classe_A": "cul_ag060",
@@ -4261,13 +4202,7 @@
           "attr_B": "nome"
         }
       ],
-      "atributos_default_B": [],
-      "filtro_A": {
-        "$not": {
-          "nome_atributo": "mcc",
-          "valor": 23
-        }
-      }
+      "atributos_default_B": []
     },
     {
       "classe_A": "cul_ah070",
@@ -4279,13 +4214,7 @@
           "attr_B": "nome"
         }
       ],
-      "atributos_default_B": [],
-      "filtro_A": {
-        "$not": {
-          "nome_atributo": "mcc",
-          "valor": 23
-        }
-      }
+      "atributos_default_B": []
     },
     {
       "classe_A": "cul_aj051",
@@ -4438,15 +4367,15 @@
             },
             {
               "valor_A": 152,
-              "valor_B": 9
+              "valor_B": 98
             },
             {
               "valor_A": 16,
-              "valor_B": 23
+              "valor_B": 98
             },
             {
               "valor_A": 104,
-              "valor_B": 23
+              "valor_B": 98
             },
             {
               "valor_A": 40,
@@ -4502,8 +4431,16 @@
       "atributos_default_B": [],
       "filtro_A": {
         "$not": {
-          "nome_atributo": "mcc",
-          "valor": 23
+          "$or": [
+            {
+              "nome_atributo": "mcc",
+              "valor": 16
+            },
+            {
+              "nome_atributo": "mcc",
+              "valor": 104
+            }
+          ]
         }
       }
     },
@@ -4600,15 +4537,15 @@
             },
             {
               "valor_A": 152,
-              "valor_B": 9
+              "valor_B": 98
             },
             {
               "valor_A": 16,
-              "valor_B": 23
+              "valor_B": 98
             },
             {
               "valor_A": 104,
-              "valor_B": 23
+              "valor_B": 98
             },
             {
               "valor_A": 40,
@@ -4660,8 +4597,16 @@
       "atributos_default_B": [],
       "filtro_A": {
         "$not": {
-          "nome_atributo": "mcc",
-          "valor": 23
+          "$or": [
+            {
+              "nome_atributo": "mcc",
+              "valor": 16
+            },
+            {
+              "nome_atributo": "mcc",
+              "valor": 104
+            }
+          ]
         }
       }
     },
@@ -4680,6 +4625,9 @@
           "attr_A": "fna",
           "attr_B": "nome"
         }
+      ],
+      "geom_A": [
+        "POLYGON"
       ]
     },
     {
@@ -4823,13 +4771,7 @@
           "attr_B": "endereco"
         }
       ],
-      "atributos_default_B": [],
-      "filtro_A": {
-        "$not": {
-          "nome_atributo": "mcc",
-          "valor": 23
-        }
-      }
+      "atributos_default_B": []
     },
     {
       "classe_A": "cul_ak110",
@@ -4924,15 +4866,15 @@
             },
             {
               "valor_A": 152,
-              "valor_B": 9
+              "valor_B": 98
             },
             {
               "valor_A": 16,
-              "valor_B": 23
+              "valor_B": 98
             },
             {
               "valor_A": 104,
-              "valor_B": 23
+              "valor_B": 98
             },
             {
               "valor_A": 40,
@@ -4984,8 +4926,16 @@
       "atributos_default_B": [],
       "filtro_A": {
         "$not": {
-          "nome_atributo": "mcc",
-          "valor": 23
+          "$or": [
+            {
+              "nome_atributo": "mcc",
+              "valor": 16
+            },
+            {
+              "nome_atributo": "mcc",
+              "valor": 104
+            }
+          ]
         }
       }
     },
@@ -5075,6 +5025,9 @@
           "attr_A": "fna",
           "attr_B": "nome"
         }
+      ],
+      "geom_A": [
+        "POLYGON"
       ]
     },
     {
@@ -5170,15 +5123,15 @@
             },
             {
               "valor_A": 152,
-              "valor_B": 9
+              "valor_B": 98
             },
             {
               "valor_A": 16,
-              "valor_B": 23
+              "valor_B": 98
             },
             {
               "valor_A": 104,
-              "valor_B": 23
+              "valor_B": 98
             },
             {
               "valor_A": 40,
@@ -5234,8 +5187,16 @@
       "atributos_default_B": [],
       "filtro_A": {
         "$not": {
-          "nome_atributo": "mcc",
-          "valor": 23
+          "$or": [
+            {
+              "nome_atributo": "mcc",
+              "valor": 16
+            },
+            {
+              "nome_atributo": "mcc",
+              "valor": 104
+            }
+          ]
         }
       }
     },
@@ -5332,15 +5293,15 @@
             },
             {
               "valor_A": 152,
-              "valor_B": 9
+              "valor_B": 98
             },
             {
               "valor_A": 16,
-              "valor_B": 23
+              "valor_B": 98
             },
             {
               "valor_A": 104,
-              "valor_B": 23
+              "valor_B": 98
             },
             {
               "valor_A": 40,
@@ -5396,8 +5357,16 @@
       "atributos_default_B": [],
       "filtro_A": {
         "$not": {
-          "nome_atributo": "mcc",
-          "valor": 23
+          "$or": [
+            {
+              "nome_atributo": "mcc",
+              "valor": 16
+            },
+            {
+              "nome_atributo": "mcc",
+              "valor": 104
+            }
+          ]
         }
       }
     },
@@ -5557,15 +5526,15 @@
             },
             {
               "valor_A": 152,
-              "valor_B": 9
+              "valor_B": 98
             },
             {
               "valor_A": 16,
-              "valor_B": 23
+              "valor_B": 98
             },
             {
               "valor_A": 104,
-              "valor_B": 23
+              "valor_B": 98
             },
             {
               "valor_A": 40,
@@ -5820,8 +5789,16 @@
       ],
       "filtro_A": {
         "$not": {
-          "nome_atributo": "mcc",
-          "valor": 23
+          "$or": [
+            {
+              "nome_atributo": "mcc",
+              "valor": 16
+            },
+            {
+              "nome_atributo": "mcc",
+              "valor": 104
+            }
+          ]
         }
       }
     },
@@ -5972,15 +5949,15 @@
             },
             {
               "valor_A": 152,
-              "valor_B": 9
+              "valor_B": 98
             },
             {
               "valor_A": 16,
-              "valor_B": 23
+              "valor_B": 98
             },
             {
               "valor_A": 104,
-              "valor_B": 23
+              "valor_B": 98
             },
             {
               "valor_A": 40,
@@ -6029,11 +6006,23 @@
           ]
         }
       ],
+      "geom_A": [
+        "POLYGON",
+        "POINT"
+      ],
       "atributos_default_B": [],
       "filtro_A": {
         "$not": {
-          "nome_atributo": "mcc",
-          "valor": 23
+          "$or": [
+            {
+              "nome_atributo": "mcc",
+              "valor": 16
+            },
+            {
+              "nome_atributo": "mcc",
+              "valor": 104
+            }
+          ]
         }
       }
     },
@@ -6111,13 +6100,7 @@
             }
           ]
         }
-      ],
-      "filtro_A": {
-        "$not": {
-          "nome_atributo": "mcc",
-          "valor": 23
-        }
-      }
+      ]
     },
     {
       "classe_A": "cul_al030",
@@ -6241,15 +6224,15 @@
             },
             {
               "valor_A": 152,
-              "valor_B": 9
+              "valor_B": 98
             },
             {
               "valor_A": 16,
-              "valor_B": 23
+              "valor_B": 98
             },
             {
               "valor_A": 104,
-              "valor_B": 23
+              "valor_B": 98
             },
             {
               "valor_A": 40,
@@ -6301,8 +6284,16 @@
       "atributos_default_B": [],
       "filtro_A": {
         "$not": {
-          "nome_atributo": "mcc",
-          "valor": 23
+          "$or": [
+            {
+              "nome_atributo": "mcc",
+              "valor": 16
+            },
+            {
+              "nome_atributo": "mcc",
+              "valor": 104
+            }
+          ]
         }
       }
     },
@@ -6316,13 +6307,7 @@
           "attr_B": "nome"
         }
       ],
-      "atributos_default_B": [],
-      "filtro_A": {
-        "$not": {
-          "nome_atributo": "mcc",
-          "valor": 23
-        }
-      }
+      "atributos_default_B": []
     },
     {
       "classe_A": "cul_al050",
@@ -6433,44 +6418,6 @@
             {
               "valor_A": 9999,
               "valor_B": 9999
-            }
-          ]
-        },
-        {
-          "attr_A": "mcc",
-          "attr_B": "tipo",
-          "traducao": [
-            {
-              "valor_A": 5,
-              "valor_B": 2
-            },
-            {
-              "valor_A": 21,
-              "valor_B": 2
-            },
-            {
-              "valor_A": 46,
-              "valor_B": 2
-            },
-            {
-              "valor_A": 73,
-              "valor_B": 2
-            },
-            {
-              "valor_A": 8,
-              "valor_B": 1
-            },
-            {
-              "valor_A": 72,
-              "valor_B": 1
-            },
-            {
-              "valor_A": 28,
-              "valor_B": 1
-            },
-            {
-              "valor_A": 7,
-              "valor_B": 1
             }
           ]
         }
@@ -6673,15 +6620,15 @@
             },
             {
               "valor_A": 152,
-              "valor_B": 9
+              "valor_B": 98
             },
             {
               "valor_A": 16,
-              "valor_B": 23
+              "valor_B": 98
             },
             {
               "valor_A": 104,
-              "valor_B": 23
+              "valor_B": 98
             },
             {
               "valor_A": 40,
@@ -6737,8 +6684,16 @@
       "atributos_default_B": [],
       "filtro_A": {
         "$not": {
-          "nome_atributo": "mcc",
-          "valor": 23
+          "$or": [
+            {
+              "nome_atributo": "mcc",
+              "valor": 16
+            },
+            {
+              "nome_atributo": "mcc",
+              "valor": 104
+            }
+          ]
         }
       }
     },
@@ -6947,15 +6902,15 @@
             },
             {
               "valor_A": 152,
-              "valor_B": 9
+              "valor_B": 98
             },
             {
               "valor_A": 16,
-              "valor_B": 23
+              "valor_B": 98
             },
             {
               "valor_A": 104,
-              "valor_B": 23
+              "valor_B": 98
             },
             {
               "valor_A": 40,
@@ -7011,8 +6966,16 @@
       "atributos_default_B": [],
       "filtro_A": {
         "$not": {
-          "nome_atributo": "mcc",
-          "valor": 23
+          "$or": [
+            {
+              "nome_atributo": "mcc",
+              "valor": 16
+            },
+            {
+              "nome_atributo": "mcc",
+              "valor": 104
+            }
+          ]
         }
       }
     },
@@ -7020,6 +6983,9 @@
       "classe_A": "cul_al155",
       "classe_B": "infra_obstaculo_vertical",
       "__comment": "[5/5] AL155 Overhead Obstruction → Obstáculo vertical",
+      "geom_A": [
+        "POINT"
+      ],
       "mapeamento_atributos": [
         {
           "attr_A": "fna",
@@ -7064,13 +7030,7 @@
           "attr_A": "hgt",
           "attr_B": "altura"
         }
-      ],
-      "filtro_A": {
-        "$not": {
-          "nome_atributo": "mcc",
-          "valor": 23
-        }
-      }
+      ]
     },
     {
       "classe_A": "cul_al241",
@@ -7122,10 +7082,6 @@
               "valor_B": 9999
             }
           ]
-        },
-        {
-          "attr_A": "hgt",
-          "attr_B": "altura"
         }
       ],
       "atributos_default_B": []
@@ -7219,15 +7175,15 @@
             },
             {
               "valor_A": 152,
-              "valor_B": 9
+              "valor_B": 98
             },
             {
               "valor_A": 16,
-              "valor_B": 23
+              "valor_B": 98
             },
             {
               "valor_A": 104,
-              "valor_B": 23
+              "valor_B": 98
             },
             {
               "valor_A": 40,
@@ -7283,8 +7239,16 @@
       "atributos_default_B": [],
       "filtro_A": {
         "$not": {
-          "nome_atributo": "mcc",
-          "valor": 23
+          "$or": [
+            {
+              "nome_atributo": "mcc",
+              "valor": 16
+            },
+            {
+              "nome_atributo": "mcc",
+              "valor": 104
+            }
+          ]
         }
       }
     },
@@ -8119,15 +8083,15 @@
             },
             {
               "valor_A": 152,
-              "valor_B": 9
+              "valor_B": 98
             },
             {
               "valor_A": 16,
-              "valor_B": 23
+              "valor_B": 98
             },
             {
               "valor_A": 104,
-              "valor_B": 23
+              "valor_B": 98
             },
             {
               "valor_A": 40,
@@ -8183,8 +8147,16 @@
       "atributos_default_B": [],
       "filtro_A": {
         "$not": {
-          "nome_atributo": "mcc",
-          "valor": 23
+          "$or": [
+            {
+              "nome_atributo": "mcc",
+              "valor": 16
+            },
+            {
+              "nome_atributo": "mcc",
+              "valor": 104
+            }
+          ]
         }
       }
     },
@@ -8299,12 +8271,8 @@
     {
       "classe_A": "cul_at010",
       "classe_B": "constr_edificacao",
-      "__comment": "[5/5] AT010 Dish Aerial → Elemento de infraestrutura tipo=1301 (Antena de comunicação)",
+      "__comment": "[5/5] AT010 Dish Aerial → Edificação tipo=101 (Comunicações)",
       "atributos_default_B": [
-        {
-          "nome_atributo": "tipo",
-          "valor": 1301
-        },
         {
           "nome_atributo": "tipo",
           "valor": 101
@@ -8357,13 +8325,7 @@
             }
           ]
         }
-      ],
-      "filtro_A": {
-        "$not": {
-          "nome_atributo": "mcc",
-          "valor": 23
-        }
-      }
+      ]
     },
     {
       "classe_A": "cul_at011",
@@ -9097,6 +9059,9 @@
           ]
         }
       ],
+      "geom_A": [
+        "LINESTRING"
+      ],
       "atributos_default_B": []
     },
     {
@@ -9160,6 +9125,9 @@
           "attr_A": "wid",
           "attr_B": "largura"
         }
+      ],
+      "geom_A": [
+        "LINESTRING"
       ]
     },
     {
@@ -9175,6 +9143,9 @@
           "attr_A": "wid",
           "attr_B": "largura"
         }
+      ],
+      "geom_A": [
+        "LINESTRING"
       ],
       "atributos_default_B": []
     },
@@ -9271,6 +9242,9 @@
           "attr_B": "largura"
         }
       ],
+      "geom_A": [
+        "LINESTRING"
+      ],
       "atributos_default_B": []
     },
     {
@@ -9358,6 +9332,9 @@
             }
           ]
         }
+      ],
+      "geom_A": [
+        "POLYGON"
       ]
     },
     {
@@ -9495,7 +9472,21 @@
           "attr_A": "fna",
           "attr_B": "nome"
         }
-      ]
+      ],
+      "filtro_A": {
+        "$not": {
+          "$or": [
+            {
+              "nome_atributo": "$GEOM_TYPE",
+              "valor": "LINESTRING"
+            },
+            {
+              "nome_atributo": "$GEOM_TYPE",
+              "valor": "POLYGON"
+            }
+          ]
+        }
+      }
     },
     {
       "classe_A": "hyd_bi020",
@@ -9550,7 +9541,7 @@
             },
             {
               "valor_A": 152,
-              "valor_B": 9
+              "valor_B": 9999
             },
             {
               "valor_A": 16,
@@ -9562,39 +9553,39 @@
             },
             {
               "valor_A": 40,
-              "valor_B": 98
+              "valor_B": 9999
             },
             {
               "valor_A": 24,
-              "valor_B": 98
+              "valor_B": 9999
             },
             {
               "valor_A": 25,
-              "valor_B": 98
+              "valor_B": 9999
             },
             {
               "valor_A": 45,
-              "valor_B": 98
+              "valor_B": 9999
             },
             {
               "valor_A": 52,
-              "valor_B": 98
+              "valor_B": 9999
             },
             {
               "valor_A": 74,
-              "valor_B": 98
+              "valor_B": 9999
             },
             {
               "valor_A": 86,
-              "valor_B": 98
+              "valor_B": 9999
             },
             {
               "valor_A": 153,
-              "valor_B": 98
+              "valor_B": 9999
             },
             {
               "valor_A": 999,
-              "valor_B": 98
+              "valor_B": 9999
             },
             {
               "valor_A": -9999,
@@ -10079,6 +10070,9 @@
           "attr_B": "nome"
         }
       ],
+      "geom_A": [
+        "LINESTRING"
+      ],
       "atributos_default_B": []
     },
     {
@@ -10134,6 +10128,9 @@
       "classe_A": "veg_ec015",
       "classe_B": "cobter_vegetacao",
       "__comment": "[5/5] EC015 Forest → Vegetação",
+      "geom_A": [
+        "POLYGON"
+      ],
       "atributos_default_B": [
         {
           "nome_atributo": "tipo",
@@ -10220,13 +10217,7 @@
             }
           ]
         }
-      ],
-      "filtro_A": {
-        "$not": {
-          "nome_atributo": "mcc",
-          "valor": 23
-        }
-      }
+      ]
     },
     {
       "classe_A": "agr_aj050",
@@ -10321,15 +10312,15 @@
             },
             {
               "valor_A": 152,
-              "valor_B": 9
+              "valor_B": 98
             },
             {
               "valor_A": 16,
-              "valor_B": 23
+              "valor_B": 98
             },
             {
               "valor_A": 104,
-              "valor_B": 23
+              "valor_B": 98
             },
             {
               "valor_A": 40,
@@ -10381,8 +10372,16 @@
       "atributos_default_B": [],
       "filtro_A": {
         "$not": {
-          "nome_atributo": "mcc",
-          "valor": 23
+          "$or": [
+            {
+              "nome_atributo": "mcc",
+              "valor": 16
+            },
+            {
+              "nome_atributo": "mcc",
+              "valor": 104
+            }
+          ]
         }
       }
     },
@@ -10496,15 +10495,15 @@
             },
             {
               "valor_A": 152,
-              "valor_B": 9
+              "valor_B": 98
             },
             {
               "valor_A": 16,
-              "valor_B": 23
+              "valor_B": 98
             },
             {
               "valor_A": 104,
-              "valor_B": 23
+              "valor_B": 98
             },
             {
               "valor_A": 40,
@@ -10560,8 +10559,16 @@
       "atributos_default_B": [],
       "filtro_A": {
         "$not": {
-          "nome_atributo": "mcc",
-          "valor": 23
+          "$or": [
+            {
+              "nome_atributo": "mcc",
+              "valor": 16
+            },
+            {
+              "nome_atributo": "mcc",
+              "valor": 104
+            }
+          ]
         }
       }
     },
@@ -10658,15 +10665,15 @@
             },
             {
               "valor_A": 152,
-              "valor_B": 9
+              "valor_B": 98
             },
             {
               "valor_A": 16,
-              "valor_B": 23
+              "valor_B": 98
             },
             {
               "valor_A": 104,
-              "valor_B": 23
+              "valor_B": 98
             },
             {
               "valor_A": 40,
@@ -10722,8 +10729,16 @@
       "atributos_default_B": [],
       "filtro_A": {
         "$not": {
-          "nome_atributo": "mcc",
-          "valor": 23
+          "$or": [
+            {
+              "nome_atributo": "mcc",
+              "valor": 16
+            },
+            {
+              "nome_atributo": "mcc",
+              "valor": 104
+            }
+          ]
         }
       }
     },
@@ -11214,15 +11229,15 @@
             },
             {
               "valor_A": 152,
-              "valor_B": 9
+              "valor_B": 98
             },
             {
               "valor_A": 16,
-              "valor_B": 23
+              "valor_B": 98
             },
             {
               "valor_A": 104,
-              "valor_B": 23
+              "valor_B": 98
             },
             {
               "valor_A": 40,
@@ -11278,8 +11293,16 @@
       "atributos_default_B": [],
       "filtro_A": {
         "$not": {
-          "nome_atributo": "mcc",
-          "valor": 23
+          "$or": [
+            {
+              "nome_atributo": "mcc",
+              "valor": 16
+            },
+            {
+              "nome_atributo": "mcc",
+              "valor": 104
+            }
+          ]
         }
       }
     },
@@ -11772,15 +11795,15 @@
             },
             {
               "valor_A": 152,
-              "valor_B": 9
+              "valor_B": 98
             },
             {
               "valor_A": 16,
-              "valor_B": 23
+              "valor_B": 98
             },
             {
               "valor_A": 104,
-              "valor_B": 23
+              "valor_B": 98
             },
             {
               "valor_A": 40,
@@ -11831,8 +11854,16 @@
       ],
       "filtro_A": {
         "$not": {
-          "nome_atributo": "mcc",
-          "valor": 23
+          "$or": [
+            {
+              "nome_atributo": "mcc",
+              "valor": 16
+            },
+            {
+              "nome_atributo": "mcc",
+              "valor": 104
+            }
+          ]
         }
       }
     },
@@ -12254,15 +12285,15 @@
             },
             {
               "valor_A": 152,
-              "valor_B": 9
+              "valor_B": 98
             },
             {
               "valor_A": 16,
-              "valor_B": 23
+              "valor_B": 98
             },
             {
               "valor_A": 104,
-              "valor_B": 23
+              "valor_B": 98
             },
             {
               "valor_A": 40,
@@ -12318,8 +12349,16 @@
       "atributos_default_B": [],
       "filtro_A": {
         "$not": {
-          "nome_atributo": "mcc",
-          "valor": 23
+          "$or": [
+            {
+              "nome_atributo": "mcc",
+              "valor": 16
+            },
+            {
+              "nome_atributo": "mcc",
+              "valor": 104
+            }
+          ]
         }
       }
     },
@@ -12422,15 +12461,15 @@
             },
             {
               "valor_A": 152,
-              "valor_B": 9
+              "valor_B": 98
             },
             {
               "valor_A": 16,
-              "valor_B": 23
+              "valor_B": 98
             },
             {
               "valor_A": 104,
-              "valor_B": 23
+              "valor_B": 98
             },
             {
               "valor_A": 40,
@@ -12485,8 +12524,16 @@
       ],
       "filtro_A": {
         "$not": {
-          "nome_atributo": "mcc",
-          "valor": 23
+          "$or": [
+            {
+              "nome_atributo": "mcc",
+              "valor": 16
+            },
+            {
+              "nome_atributo": "mcc",
+              "valor": 104
+            }
+          ]
         }
       }
     },
@@ -13253,6 +13300,9 @@
           "attr_B": "nome"
         }
       ],
+      "geom_A": [
+        "POLYGON"
+      ],
       "atributos_default_B": []
     },
     {
@@ -13276,12 +13326,6 @@
       "classe_A": "pop_al020",
       "classe_B": "cobter_area_edificada",
       "__comment": "[5/5] AL020 Built-Up Area (polygon) → Área edificada",
-      "mapeamento_atributos": [
-        {
-          "attr_A": "fna",
-          "attr_B": "nome"
-        }
-      ],
       "atributos_default_B": []
     },
     {
@@ -13300,12 +13344,7 @@
       "classe_A": "pop_al022",
       "classe_B": "cobter_area_edificada",
       "__comment": "[4/5] AL022 Built-Up Area Density → Área edificada",
-      "mapeamento_atributos": [
-        {
-          "attr_A": "fna",
-          "attr_B": "nome"
-        }
-      ],
+      "mapeamento_atributos": [],
       "atributos_default_B": []
     },
     {
@@ -13401,15 +13440,15 @@
             },
             {
               "valor_A": 152,
-              "valor_B": 9
+              "valor_B": 98
             },
             {
               "valor_A": 16,
-              "valor_B": 23
+              "valor_B": 98
             },
             {
               "valor_A": 104,
-              "valor_B": 23
+              "valor_B": 98
             },
             {
               "valor_A": 40,
@@ -13458,11 +13497,23 @@
           ]
         }
       ],
+      "geom_A": [
+        "POLYGON",
+        "POINT"
+      ],
       "atributos_default_B": [],
       "filtro_A": {
         "$not": {
-          "nome_atributo": "mcc",
-          "valor": 23
+          "$or": [
+            {
+              "nome_atributo": "mcc",
+              "valor": 16
+            },
+            {
+              "nome_atributo": "mcc",
+              "valor": 104
+            }
+          ]
         }
       }
     },
@@ -13555,15 +13606,15 @@
             },
             {
               "valor_A": 152,
-              "valor_B": 9
+              "valor_B": 98
             },
             {
               "valor_A": 16,
-              "valor_B": 23
+              "valor_B": 98
             },
             {
               "valor_A": 104,
-              "valor_B": 23
+              "valor_B": 98
             },
             {
               "valor_A": 40,
@@ -13615,8 +13666,16 @@
       "atributos_default_B": [],
       "filtro_A": {
         "$not": {
-          "nome_atributo": "mcc",
-          "valor": 23
+          "$or": [
+            {
+              "nome_atributo": "mcc",
+              "valor": 16
+            },
+            {
+              "nome_atributo": "mcc",
+              "valor": 104
+            }
+          ]
         }
       }
     },
@@ -13968,7 +14027,7 @@
               "valor_B": 4
             },
             {
-              "valor_A": -999999,
+              "valor_A": -9999,
               "valor_B": 3
             },
             {
@@ -13982,23 +14041,98 @@
           "attr_B": "material_construcao",
           "traducao": [
             {
-              "valor_A": 8,
-              "valor_B": 9999
-            },
-            {
               "valor_A": 9,
+              "valor_B": 1
+            },
+            {
+              "valor_A": 149,
+              "valor_B": 1
+            },
+            {
+              "valor_A": 21,
+              "valor_B": 2
+            },
+            {
+              "valor_A": 64,
+              "valor_B": 3
+            },
+            {
+              "valor_A": 7,
+              "valor_B": 4
+            },
+            {
+              "valor_A": 84,
+              "valor_B": 4
+            },
+            {
+              "valor_A": 108,
+              "valor_B": 4
+            },
+            {
+              "valor_A": 117,
+              "valor_B": 5
+            },
+            {
+              "valor_A": 152,
+              "valor_B": 98
+            },
+            {
+              "valor_A": 16,
+              "valor_B": 98
+            },
+            {
+              "valor_A": 104,
+              "valor_B": 98
+            },
+            {
+              "valor_A": 40,
+              "valor_B": 98
+            },
+            {
+              "valor_A": 24,
+              "valor_B": 98
+            },
+            {
+              "valor_A": 25,
+              "valor_B": 98
+            },
+            {
+              "valor_A": 45,
+              "valor_B": 98
+            },
+            {
+              "valor_A": 52,
+              "valor_B": 98
+            },
+            {
+              "valor_A": 74,
+              "valor_B": 98
+            },
+            {
+              "valor_A": 86,
+              "valor_B": 98
+            },
+            {
+              "valor_A": 153,
+              "valor_B": 98
+            },
+            {
+              "valor_A": 999,
+              "valor_B": 98
+            },
+            {
+              "valor_A": -9999,
               "valor_B": 9999
             },
             {
-              "valor_A": 23,
-              "valor_B": 9999
-            },
-            {
-              "valor_A": 99,
+              "valor_A": 9999,
               "valor_B": 9999
             }
           ]
         }
+      ],
+      "geom_A": [
+        "LINESTRING"
       ]
     },
     {
@@ -14029,7 +14163,7 @@
               "valor_B": 4
             },
             {
-              "valor_A": -999999,
+              "valor_A": -9999,
               "valor_B": 3
             },
             {
