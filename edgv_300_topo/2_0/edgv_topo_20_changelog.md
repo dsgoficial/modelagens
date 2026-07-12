@@ -400,7 +400,7 @@ Bug originado em `mastergen.py`: o gerador anexa `9999` aos valores do CHECK sem
 | Campo | 1.4 | 2.0 |
 |-------|-----|-----|
 | `edgvversion` | EDGV 3.0 Topo | EDGV Topo 2.0 |
-| `dbimplversion` | 1.4.4 | 0.13.0 |
+| `dbimplversion` | 1.4.4 | 0.14.0 |
 
 ---
 
@@ -861,4 +861,16 @@ ALTER TABLE edgv.llp_limite_legal_a ADD COLUMN cod_iso varchar(3);
 
 UPDATE public.db_metadata SET dbimplversion = '0.13.0';
 ALTER TABLE public.db_metadata ALTER COLUMN dbimplversion SET DEFAULT '0.13.0';
+
+-- ===========================================
+-- Incremento 0.14.0 (modelo 2026-07-11, tiles 2026-07-12)
+-- Modelo: tipo_localidade 11 (Bairro), alvo do subtype neighborhood do Overture.
+-- Tiles (sem DDL de modelo): rotulo de toda feicao vem de texto_edicao (derivado
+-- `rotulo`) e a camada derivada rotulo_area carrega os rotulos de poligono.
+-- ===========================================
+INSERT INTO dominios.tipo_localidade (code, code_name) VALUES
+    (11, 'Bairro (11)');
+
+UPDATE public.db_metadata SET dbimplversion = '0.14.0';
+ALTER TABLE public.db_metadata ALTER COLUMN dbimplversion SET DEFAULT '0.14.0';
 ```
