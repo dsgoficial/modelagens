@@ -14,7 +14,6 @@ Mudanças no schema de dados entre EDGV Topo 1.4 e EDGV Topo 2.0. Apenas modelag
 |--------|------|----|-----------|
 | `em_litigio` | smallint | `dominios.booleano` | Fronteira disputada |
 
-> Rev 0.13.0 (2026-07-10): a coluna `maritimo` (booleano) foi **removida**; o limite marítimo passou a ser codificado no `tipo_limite_legal` (ver seção 5, códigos 5/6/7) e o filtro do layer `limite-maritimo` migrou de `maritimo_texto` para `caso`.
 
 ### 1.2 Atributos numéricos (nullable, sem FK)
 
@@ -214,7 +213,6 @@ A travessia hidroviária passa a ser **linha-only** no Topo 2.0: a travessia é 
 | 6 | Zona Contígua (24 MN) |
 | 7 | Zona Econômica Exclusiva (200 MN) |
 
-> Códigos 5/6/7 na rev 0.13.0 (2026-07-10): substituem o antigo booleano `maritimo` (removido). MN = milhas náuticas.
 
 ### `dominios.tipo_via_deslocamento` (+2)
 
@@ -238,7 +236,6 @@ A travessia hidroviária passa a ser **linha-only** no Topo 2.0: a travessia é 
 | 24 | Vulcão |
 | 25 | Cratera |
 
-Cobertura continental (a Topo 2.0 mapeia toda a América do Sul, não só o Brasil; o `tipo_veg` 1101 Neve/Gelo é o precedente): vulcão/cratera para o arco andino; crosta salina para o salar/planície salina do Altiplano-Atacama (distinta de `tipo_extracao_mineral`=6 Salina, que é extração antrópica); vegetação arbustiva (shrub) recebe WorldCover 20 Shrubland e Dynamic World 5 shrub_and_scrub, e volta à EDGV 3.0 como `veg_campo` + `classificacaoporte`=Arbustiva ("campo arbustivo"), sem perda.
 
 ### `dominios.tipo_elemento_viario` (+1)
 
@@ -277,11 +274,6 @@ Cobertura continental (a Topo 2.0 mapeia toda a América do Sul, não só o Bras
 | 2504 | Port - Terminal de contêineres | Edificação portuária |
 | 2505 | Port - Terminal de granéis | Edificação portuária |
 | 3009 | Seg - Polícia Federal | Edificação de segurança pública |
-
-### `dominios.tipo_edificacao` (+8, incremento 0.12.0)
-
-| Código | Valor | Filtro |
-|--------|-------|--------|
 | 2102 | Ssoc – Equipamento público de proteção social | Edificação de desenvolvimento social |
 | 2602 | Comb - Estação de compressão de gás | Infraestrutura de combustíveis |
 | 2603 | Comb - Polo de processamento de gás | Infraestrutura de combustíveis |
@@ -290,20 +282,6 @@ Cobertura continental (a Topo 2.0 mapeia toda a América do Sul, não só o Bras
 | 3010 | Seg - Defesa Civil | Edificação de segurança pública |
 | 3011 | Seg - Perícia forense | Edificação de segurança pública |
 | 3012 | Seg - Unidade socioeducativa | Edificação de segurança pública |
-
-Origem: stress test do acervo GeoSwarm (256k feições) contra a 0.11.0
-(propostas B1–B5, `geoswarm docs/propostas_modelagem_topo20.md`). Racional:
-(a) o grupo 3xxx cobria PM/PC/PF/bombeiros/prisional mas não Defesa Civil,
-perícia forense (IML/IGP) nem o sistema socioeducativo — todos distinguíveis
-por fonte autoritativa (origem B); (b) a 2.0 ganhou os DUTOS de gás
-(311/312) mas os NÓS da rede (compressão, processamento, GNL, base) caíam em
-1023 "coque/refino" — a rede tinha linha e não tinha nó; (c) a rede estatal
-SUAS (CRAS/CREAS/Conselho Tutelar, capilar como a UBS da saúde) dividia um
-único 2101 com asilos privados e associações de moradores. Filtro novo
-"Infraestrutura de combustíveis" agrupa 2602–2605 (o 2601 posto de
-combustível mantém o filtro próprio). Nas fontes colaborativas quase nada
-distingue esses códigos (OSM parcialmente: ver conversao_osm v1.4) — o
-alimentador primário é a coleta autoritativa (GeoSwarm/insumos oficiais).
 
 ### `dominios.tipo_elemento_energia` (+2)
 
