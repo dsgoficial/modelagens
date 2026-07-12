@@ -3861,6 +3861,28 @@
       "note": "Terreno sem cobertura vegetal (WorldCover bare/sparse vegetation) -> 1000 Terreno exposto - desconhecido. O WorldCover nao discrimina cascalho/areia/pedregoso/crosta salina (1001-1005), entao 1000 (natureza nao determinada) e o alvo correto; refinar por land.class do OSM."
     },
     {
+      "id": "landcover_crop",
+      "overture_filter": {
+        "theme": "base",
+        "type": "land_cover",
+        "subtype": [
+          "crop"
+        ],
+        "geometry": [
+          "polygon"
+        ]
+      },
+      "edgv_target": {
+        "table": "cobter_vegetacao_a",
+        "attributes": {
+          "tipo": 196
+        }
+      },
+      "overture_attribute_mapping": {},
+      "confidence": "medium",
+      "note": "Lavoura (WorldCover cropland, indiferenciada) -> 196 Cult - Anual irrigado (decisao do chefe 2026-07-12). O WorldCover nao discrimina a cultura; a feicao entra com confiabilidade Baixa/metodo automatico, para o operador refinar (ex.: 197 anual nao irrigado, dominante no Sul de sequeiro; 150 arroz de inundacao no RS)."
+    },
+    {
       "id": "landcover_urban",
       "overture_filter": {
         "theme": "base",
