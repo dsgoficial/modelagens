@@ -453,11 +453,15 @@ CREATE TABLE IF NOT EXISTS dominios.confiabilidade (
     CONSTRAINT confiabilidade_pk PRIMARY KEY (code)
 );
 
+-- Revisao 2026-07-12: 5 niveis (era 4). Os DOIS mais altos (Muito Alta, Alta)
+-- sao os que qualificam para INDE (ver public.linha_derivacao). O nivel novo,
+-- Muito Alta, separa o confirmado em campo de alta acuracia do meramente confirmado.
 INSERT INTO dominios.confiabilidade (code, code_name) VALUES
-    (1, 'Alta'),
-    (2, 'Média'),
-    (3, 'Baixa'),
-    (4, 'Indeterminada')
+    (1, 'Muito Alta'),
+    (2, 'Alta'),
+    (3, 'Média'),
+    (4, 'Baixa'),
+    (5, 'Indeterminada')
 ON CONFLICT DO NOTHING;
 
 -- 8.2 dominios.nivel_completude (Apêndice F.2.3). Hierarquia cumulativa;
@@ -516,17 +520,22 @@ $BODY$
         g_ord := coalesce(g_ord, 0);
         a_ord := coalesce(a_ord, 0);
 
-        -- Confiabilidade (C.4). Depreciada (4): sem classificação (NULL).
+        -- Confiabilidade (C.4, revisao 2026-07-12: 5 niveis; os dois mais altos = INDE).
+        -- So confirmacao + acuracia (a temporalidade e criterio ORTOGONAL, aplicado
+        -- na derivacao do produto por public.linha_derivacao, nao aqui).
+        -- Depreciada (status 4): sem classificação (NULL).
         IF NEW.status_ciclo_vida = 4 THEN
             NEW.confiabilidade := NULL;
         ELSIF NEW.status_ciclo_vida = 3 THEN
-            NEW.confiabilidade := 4;   -- Indeterminada (sob verificação)
+            NEW.confiabilidade := 5;   -- Indeterminada (sob verificação)
+        ELSIF g_ord >= 3 AND a_ord >= 3 AND NEW.acuracia_planimetrica IS NOT NULL AND NEW.acuracia_planimetrica <= 12.5 THEN
+            NEW.confiabilidade := 1;   -- Muito Alta (confirmação em campo + acurácia ótima)
         ELSIF g_ord >= 2 AND a_ord >= 2 AND NEW.acuracia_planimetrica IS NOT NULL AND NEW.acuracia_planimetrica <= 25 THEN
-            NEW.confiabilidade := 1;   -- Alta
+            NEW.confiabilidade := 2;   -- Alta
         ELSIF g_ord >= 1 OR a_ord >= 1 THEN
-            NEW.confiabilidade := 2;   -- Média
+            NEW.confiabilidade := 3;   -- Média (ao menos uma confirmação independente)
         ELSE
-            NEW.confiabilidade := 3;   -- Baixa
+            NEW.confiabilidade := 4;   -- Baixa (sem confirmação independente)
         END IF;
 
         -- Escala máxima autoritativa (C.5). Só feição ativa, validação completa.
@@ -599,6 +608,59 @@ $BODY$
   COST 100;
 ALTER FUNCTION public.recomputa_escala_idade() OWNER TO postgres;
 GRANT EXECUTE ON FUNCTION public.recomputa_escala_idade() TO PUBLIC;
+
+-- linha_derivacao(): linha de derivacao do produto POR FEICAO (revisao 2026-07-12,
+--     ajustada na mesma data apos reflexao). A aptidao por feicao COLAPSA na
+--     escala_maxima_autoritativa (C.5), que ja e confianca + temporalidade + validacao
+--     resolvidas POR ESCALA. Nao ha mais gate flat de confiabilidade+idade: ele so
+--     duplicava a escala_maxima e a CONTRADIZIA nas escalas grosseiras (100k/250k, que o
+--     C.5 admite em confiabilidade Media). INDE quando a feicao e ativa e tem
+--     escala_maxima_autoritativa (apta a alguma escala do SCN); senao Militar/expedito,
+--     desde que o status nao seja sob verificacao (3) nem depreciada (4). A confiabilidade
+--     fica como rotulo legivel (top-2 Muito Alta/Alta = INDE de detalhe 25k/50k; Media =
+--     INDE grosseiro 100k/250k). O TERRITORIO e criterio de AREA (nao aqui): fora do
+--     Brasil e sempre llp_area_sem_dados_a para o INDE (obrigatorio; INDE nao tem dado
+--     internacional). Retorna 'INDE', 'MILITAR' ou NULL (feicao sem produto).
+DROP FUNCTION IF EXISTS public.linha_derivacao(smallint, smallint, smallint, timestamptz, timestamptz);
+CREATE OR REPLACE FUNCTION public.linha_derivacao(
+    p_status_ciclo_vida smallint,
+    p_escala_maxima_autoritativa integer)
+  RETURNS text AS
+$BODY$
+    SELECT CASE
+        WHEN p_status_ciclo_vida IN (3, 4) THEN NULL   -- sob verificacao / depreciada: sem produto
+        WHEN p_status_ciclo_vida = 1 AND p_escala_maxima_autoritativa IS NOT NULL THEN 'INDE'
+        ELSE 'MILITAR'
+    END;
+$BODY$
+  LANGUAGE sql STABLE;
+ALTER FUNCTION public.linha_derivacao(smallint, integer) OWNER TO postgres;
+GRANT EXECUTE ON FUNCTION public.linha_derivacao(smallint, integer) TO PUBLIC;
+
+-- celula_publicavel_inde(): a TERCEIRA perna do INDE, de AREA (nao por feicao).
+--     O produto INDE oficial de escala S so sai onde a celula MI 1:25.000 esta
+--     verificada-completa em S (edgv.completude_subfase.nivel_completude, F.2.3),
+--     alem da qualidade por feicao (linha_derivacao) e da aptidao de escala. Como
+--     e espacial (por celula), nao entra em linha_derivacao: e filtro na derivacao,
+--     cruzando a feicao com a celula pela grade MI. nivel_completude e cumulativo:
+--     2 Ausencia confirmada = completa em qualquer escala; 3..6 = verificada ate
+--     250k..25k. p_escala em denominador (250000, 100000, 50000, 25000).
+CREATE OR REPLACE FUNCTION public.celula_publicavel_inde(
+    p_nivel_completude smallint, p_escala integer)
+  RETURNS boolean AS
+$BODY$
+    SELECT CASE
+        WHEN p_nivel_completude = 2 THEN true          -- ausencia confirmada = completa
+        WHEN p_escala = 250000 THEN p_nivel_completude >= 3
+        WHEN p_escala = 100000 THEN p_nivel_completude >= 4
+        WHEN p_escala = 50000  THEN p_nivel_completude >= 5
+        WHEN p_escala = 25000  THEN p_nivel_completude >= 6
+        ELSE false
+    END;
+$BODY$
+  LANGUAGE sql IMMUTABLE;
+ALTER FUNCTION public.celula_publicavel_inde(smallint, integer) OWNER TO postgres;
+GRANT EXECUTE ON FUNCTION public.celula_publicavel_inde(smallint, integer) TO PUBLIC;
 
 -- 8.6 edgv.linhagem_feicao (Apêndice C.7 / G.4): predecessor -> sucessor
 CREATE TABLE IF NOT EXISTS edgv.linhagem_feicao (

@@ -4113,8 +4113,7 @@
         }
       },
       "overture_attribute_mapping": {
-        "names.primary": "nome",
-        "height": "altura"
+        "names.primary": "nome"
       },
       "confidence": "high",
       "note": "Subestação (default: transmissão)"
@@ -4165,8 +4164,7 @@
         }
       },
       "overture_attribute_mapping": {
-        "names.primary": "nome",
-        "height": "altura"
+        "names.primary": "nome"
       },
       "confidence": "medium",
       "note": "Transformador aproximado a 1802 Subestação de distribuição"
@@ -4217,8 +4215,7 @@
         }
       },
       "overture_attribute_mapping": {
-        "names.primary": "nome",
-        "height": "altura"
+        "names.primary": "nome"
       },
       "confidence": "medium",
       "note": "Usina geradora de fonte desconhecida (498 Estação geradora - Outras)"
@@ -5951,7 +5948,7 @@
       "edgv_target": {
         "table": "elemnat_elemento_fisiografico_a",
         "attributes": {
-          "tipo": 8
+          "tipo": 9999
         }
       },
       "overture_attribute_mapping": {
@@ -6150,7 +6147,7 @@
       "edgv_target": {
         "table": "elemnat_elemento_fisiografico_l",
         "attributes": {
-          "tipo": 25
+          "tipo": 9999
         }
       },
       "overture_attribute_mapping": {
@@ -6376,7 +6373,7 @@
       "edgv_target": {
         "table": "elemnat_toponimo_fisiografico_natural_p",
         "attributes": {
-          "tipo": 1
+          "tipo": 9999
         }
       },
       "overture_attribute_mapping": {
@@ -6448,7 +6445,7 @@
       "edgv_target": {
         "table": "elemnat_toponimo_fisiografico_natural_l",
         "attributes": {
-          "tipo": 6
+          "tipo": 9999
         }
       },
       "overture_attribute_mapping": {
@@ -6496,7 +6493,7 @@
       "edgv_target": {
         "table": "elemnat_toponimo_fisiografico_natural_l",
         "attributes": {
-          "tipo": 9
+          "tipo": 9999
         }
       },
       "overture_attribute_mapping": {
@@ -6867,7 +6864,7 @@
       "edgv_target": {
         "table": "elemnat_elemento_hidrografico_p",
         "attributes": {
-          "tipo": 15
+          "tipo": 9999
         }
       },
       "overture_attribute_mapping": {
@@ -6946,7 +6943,7 @@
       "edgv_target": {
         "table": "elemnat_toponimo_fisiografico_natural_l",
         "attributes": {
-          "tipo": 11
+          "tipo": 9999
         }
       },
       "overture_attribute_mapping": {
@@ -7277,8 +7274,7 @@
         }
       },
       "overture_attribute_mapping": {
-        "names.primary": "nome",
-        "categories.primary": "atributos_originais"
+        "names.primary": "nome"
       },
       "confidence": "media",
       "note": "Abrigo para pessoas em situação de rua -> equipamento público de proteção social."
@@ -7301,8 +7297,7 @@
         }
       },
       "overture_attribute_mapping": {
-        "names.primary": "nome",
-        "categories.primary": "atributos_originais"
+        "names.primary": "nome"
       },
       "confidence": "media",
       "note": "Centro de assistência/proteção social -> equipamento público de proteção social."
@@ -7325,8 +7320,7 @@
         }
       },
       "overture_attribute_mapping": {
-        "names.primary": "nome",
-        "categories.primary": "atributos_originais"
+        "names.primary": "nome"
       },
       "confidence": "media",
       "note": "Proteção à criança (conselho tutelar/abrigo) -> equipamento público de proteção social."
@@ -7349,8 +7343,7 @@
         }
       },
       "overture_attribute_mapping": {
-        "names.primary": "nome",
-        "categories.primary": "atributos_originais"
+        "names.primary": "nome"
       },
       "confidence": "media",
       "note": "Serviços ao idoso (centro de convivência) -> equipamento público de proteção social."
@@ -7373,8 +7366,7 @@
         }
       },
       "overture_attribute_mapping": {
-        "names.primary": "nome",
-        "categories.primary": "atributos_originais"
+        "names.primary": "nome"
       },
       "confidence": "baixa",
       "note": "Acolhimento familiar -> equipamento público de proteção social."
@@ -7397,8 +7389,7 @@
         }
       },
       "overture_attribute_mapping": {
-        "names.primary": "nome",
-        "categories.primary": "atributos_originais"
+        "names.primary": "nome"
       },
       "confidence": "alta",
       "note": "Codigo 2316 (Ferrov - Estacao ferroviaria de passageiros). No de profundidade 4; vence o gap de transportation. A estacao e a edificacao; a via vem do tema transportation."
@@ -7421,8 +7412,7 @@
         }
       },
       "overture_attribute_mapping": {
-        "names.primary": "nome",
-        "categories.primary": "atributos_originais"
+        "names.primary": "nome"
       },
       "confidence": "alta",
       "note": "Pré-escola -> educação infantil pré-escola."
@@ -7445,8 +7435,7 @@
         }
       },
       "overture_attribute_mapping": {
-        "names.primary": "nome",
-        "categories.primary": "atributos_originais"
+        "names.primary": "nome"
       },
       "confidence": "alta",
       "note": "Ensino médio."
@@ -7469,8 +7458,7 @@
         }
       },
       "overture_attribute_mapping": {
-        "names.primary": "nome",
-        "categories.primary": "atributos_originais"
+        "names.primary": "nome"
       },
       "confidence": "alta",
       "note": "Escola técnica -> educação profissional de nível técnico."
@@ -7493,8 +7481,7 @@
         }
       },
       "overture_attribute_mapping": {
-        "names.primary": "nome",
-        "categories.primary": "atributos_originais"
+        "names.primary": "nome"
       },
       "confidence": "media",
       "note": "Organizações de serviço social (subárvore: caridade, banco de alimentos, voluntariado, habitação, juventude etc.) -> serviço social."
@@ -7517,8 +7504,7 @@
         }
       },
       "overture_attribute_mapping": {
-        "names.primary": "nome",
-        "categories.primary": "atributos_originais"
+        "names.primary": "nome"
       },
       "confidence": "alta",
       "note": "Previdência social (INSS) -> seguridade social."
@@ -7541,8 +7527,7 @@
         }
       },
       "overture_attribute_mapping": {
-        "names.primary": "nome",
-        "categories.primary": "atributos_originais"
+        "names.primary": "nome"
       },
       "confidence": "alta",
       "note": "Centro de detenção juvenil -> unidade socioeducativa."
@@ -7565,8 +7550,7 @@
         }
       },
       "overture_attribute_mapping": {
-        "names.primary": "nome",
-        "categories.primary": "atributos_originais"
+        "names.primary": "nome"
       },
       "confidence": "alta",
       "note": "Supermercado casa com 904 'Comerc - Mercado' (edificacao comercial de mercado, estabelecimento privado). Regra profunda (nivel 3) vence o fallback retail->998."
@@ -7589,8 +7573,7 @@
         }
       },
       "overture_attribute_mapping": {
-        "names.primary": "nome",
-        "categories.primary": "atributos_originais"
+        "names.primary": "nome"
       },
       "confidence": "alta",
       "note": "Shopping center / centro comercial casa com 903 'Comerc - Centro comercial'. Estrutura de grande porte que a carta topografica distingue."
@@ -7613,8 +7596,7 @@
         }
       },
       "overture_attribute_mapping": {
-        "names.primary": "nome",
-        "categories.primary": "atributos_originais"
+        "names.primary": "nome"
       },
       "confidence": "media",
       "note": "Galeria comercial (shopping passage) aproximada a 903 'Comerc - Centro comercial', por ser estrutura comercial coletiva."
@@ -7637,8 +7619,7 @@
         }
       },
       "overture_attribute_mapping": {
-        "names.primary": "nome",
-        "categories.primary": "atributos_originais"
+        "names.primary": "nome"
       },
       "confidence": "alta",
       "note": "Feira / mercado de produtores casa com 910 'Comerc - Mercado publico'."
@@ -7661,8 +7642,7 @@
         }
       },
       "overture_attribute_mapping": {
-        "names.primary": "nome",
-        "categories.primary": "atributos_originais"
+        "names.primary": "nome"
       },
       "confidence": "alta",
       "note": "Mercado publico casa com 910 'Comerc - Mercado publico'."
@@ -7685,8 +7665,7 @@
         }
       },
       "overture_attribute_mapping": {
-        "names.primary": "nome",
-        "categories.primary": "atributos_originais"
+        "names.primary": "nome"
       },
       "confidence": "alta",
       "note": "Codigo 2317 (Ferrov - Estacao metroviaria). Estacao de metro como edificacao."
@@ -7709,8 +7688,7 @@
         }
       },
       "overture_attribute_mapping": {
-        "names.primary": "nome",
-        "categories.primary": "atributos_originais"
+        "names.primary": "nome"
       },
       "confidence": "alta",
       "note": "Codigo 2317 (Ferrov - Estacao metroviaria). Estacao de VLT/metro leve tratada como estacao metroviaria."
@@ -7733,8 +7711,7 @@
         }
       },
       "overture_attribute_mapping": {
-        "names.primary": "nome",
-        "categories.primary": "atributos_originais"
+        "names.primary": "nome"
       },
       "confidence": "alta",
       "note": "Codigo 2214 (Rod - Rodoviaria). Terminal de onibus como edificacao rodoviaria."
@@ -7757,8 +7734,7 @@
         }
       },
       "overture_attribute_mapping": {
-        "names.primary": "nome",
-        "categories.primary": "atributos_originais"
+        "names.primary": "nome"
       },
       "confidence": "media",
       "note": "Codigo 2209 (Rod - Terminal urbano). Terminal de integracao multimodal tratado como terminal urbano."
@@ -7781,8 +7757,7 @@
         }
       },
       "overture_attribute_mapping": {
-        "names.primary": "nome",
-        "categories.primary": "atributos_originais"
+        "names.primary": "nome"
       },
       "confidence": "alta",
       "note": "Codigo 2426 (Aero - Terminal de passageiros). No de profundidade 3; vence o gap de 'airport' (aerodromo/infra). O terminal e a edificacao aeroportuaria."
@@ -7805,8 +7780,7 @@
         }
       },
       "overture_attribute_mapping": {
-        "names.primary": "nome",
-        "categories.primary": "atributos_originais"
+        "names.primary": "nome"
       },
       "confidence": "alta",
       "note": "Codigo 2213 (Rod - Posto de pedagio). Vence o gap de road_structures_and_services."
@@ -7829,8 +7803,7 @@
         }
       },
       "overture_attribute_mapping": {
-        "names.primary": "nome",
-        "categories.primary": "atributos_originais"
+        "names.primary": "nome"
       },
       "confidence": "media",
       "note": "Codigo 798 (Tur - Outros). Centro de visitantes tratado como construcao turistica; vence o gap de travel_services."
@@ -7853,8 +7826,7 @@
         }
       },
       "overture_attribute_mapping": {
-        "names.primary": "nome",
-        "categories.primary": "atributos_originais"
+        "names.primary": "nome"
       },
       "confidence": "media",
       "note": "Codigo 802 (Laz - Ginasio). Academia/ginasio como edificacao coberta; vence o gap de sports_and_recreation_venue (que trata quadras/campos abertos)."
@@ -7877,8 +7849,7 @@
         }
       },
       "overture_attribute_mapping": {
-        "names.primary": "nome",
-        "categories.primary": "atributos_originais"
+        "names.primary": "nome"
       },
       "confidence": "media",
       "note": "Codigo 802 (Laz - Ginasio). Centro de ginastica coberto."
@@ -7901,8 +7872,7 @@
         }
       },
       "overture_attribute_mapping": {
-        "names.primary": "nome",
-        "categories.primary": "atributos_originais"
+        "names.primary": "nome"
       },
       "confidence": "media",
       "note": "Codigo 898 (Laz - Outros). Boliche como edificacao de lazer coberta; vence o gap de sports_and_recreation_venue."
@@ -7925,8 +7895,7 @@
         }
       },
       "overture_attribute_mapping": {
-        "names.primary": "nome",
-        "categories.primary": "atributos_originais"
+        "names.primary": "nome"
       },
       "confidence": "media",
       "note": "Codigo 898 (Laz - Outros). Ginasio de escalada indoor (edificacao); vence o gap do venue."
@@ -7949,8 +7918,7 @@
         }
       },
       "overture_attribute_mapping": {
-        "names.primary": "nome",
-        "categories.primary": "atributos_originais"
+        "names.primary": "nome"
       },
       "confidence": "media",
       "note": "Codigo 898 (Laz - Outros). Parque de trampolim indoor (edificacao coberta); vence o gap do venue."
@@ -7973,8 +7941,7 @@
         }
       },
       "overture_attribute_mapping": {
-        "names.primary": "nome",
-        "categories.primary": "atributos_originais"
+        "names.primary": "nome"
       },
       "confidence": "media",
       "note": "Codigo 898 (Laz - Outros). Salao de bilhar/sinuca (inclui folha pool_hall) como edificacao de lazer."
@@ -7997,8 +7964,7 @@
         }
       },
       "overture_attribute_mapping": {
-        "names.primary": "nome",
-        "categories.primary": "atributos_originais"
+        "names.primary": "nome"
       },
       "confidence": "media",
       "note": "Codigo 898 (Laz - Outros). Pista de patinacao coberta (inclui ice_skating_rink e roller_skating_rink) como edificacao de lazer."
@@ -8021,8 +7987,7 @@
         }
       },
       "overture_attribute_mapping": {
-        "names.primary": "nome",
-        "categories.primary": "atributos_originais"
+        "names.primary": "nome"
       },
       "confidence": "alta",
       "note": "Hospital veterinario de emergencia -> 2031 (Sau - Servicos veterinarios, Edificacao de saude). Estabelecimento de atendimento medico animal com edificacao propria."
@@ -8045,8 +8010,7 @@
         }
       },
       "overture_attribute_mapping": {
-        "names.primary": "nome",
-        "categories.primary": "atributos_originais"
+        "names.primary": "nome"
       },
       "confidence": "alta",
       "note": "Hospital veterinario -> 2031 (Sau - Servicos veterinarios, Edificacao de saude)."
@@ -8069,8 +8033,7 @@
         }
       },
       "overture_attribute_mapping": {
-        "names.primary": "nome",
-        "categories.primary": "atributos_originais"
+        "names.primary": "nome"
       },
       "confidence": "media",
       "note": "Fisioterapia/reabilitacao animal -> 2031 (Sau - Servicos veterinarios). Servico de saude animal com clinica; confianca media por poder ser servico movel."
@@ -8093,8 +8056,7 @@
         }
       },
       "overture_attribute_mapping": {
-        "names.primary": "nome",
-        "categories.primary": "atributos_originais"
+        "names.primary": "nome"
       },
       "confidence": "media",
       "note": "Pet shop / banho e tosa -> 998 (Comerc - Outros, Edificacao de comercio e servico). Loja/estabelecimento comercial; a EDGV nao distingue pet shop, cai no generico de comercio."
@@ -8117,8 +8079,7 @@
         }
       },
       "overture_attribute_mapping": {
-        "names.primary": "nome",
-        "categories.primary": "atributos_originais"
+        "names.primary": "nome"
       },
       "confidence": "alta",
       "note": "Hospital geral -> atendimento hospitalar."
@@ -8141,8 +8102,7 @@
         }
       },
       "overture_attribute_mapping": {
-        "names.primary": "nome",
-        "categories.primary": "atributos_originais"
+        "names.primary": "nome"
       },
       "confidence": "alta",
       "note": "Hospital infantil -> atendimento hospitalar especializado."
@@ -8165,8 +8125,7 @@
         }
       },
       "overture_attribute_mapping": {
-        "names.primary": "nome",
-        "categories.primary": "atributos_originais"
+        "names.primary": "nome"
       },
       "confidence": "alta",
       "note": "Centro oncológico -> atendimento hospitalar especializado."
@@ -8189,8 +8148,7 @@
         }
       },
       "overture_attribute_mapping": {
-        "names.primary": "nome",
-        "categories.primary": "atributos_originais"
+        "names.primary": "nome"
       },
       "confidence": "media",
       "note": "Maternidade -> atendimento hospitalar especializado."
@@ -8213,8 +8171,7 @@
         }
       },
       "overture_attribute_mapping": {
-        "names.primary": "nome",
-        "categories.primary": "atributos_originais"
+        "names.primary": "nome"
       },
       "confidence": "media",
       "note": "Centro cirúrgico -> atendimento hospitalar especializado."
@@ -8237,8 +8194,7 @@
         }
       },
       "overture_attribute_mapping": {
-        "names.primary": "nome",
-        "categories.primary": "atributos_originais"
+        "names.primary": "nome"
       },
       "confidence": "media",
       "note": "Cuidados paliativos com internação -> atendimento hospitalar especializado."
@@ -8261,8 +8217,7 @@
         }
       },
       "overture_attribute_mapping": {
-        "names.primary": "nome",
-        "categories.primary": "atributos_originais"
+        "names.primary": "nome"
       },
       "confidence": "alta",
       "note": "Pronto socorro -> urgência e emergência."
@@ -8285,8 +8240,7 @@
         }
       },
       "overture_attribute_mapping": {
-        "names.primary": "nome",
-        "categories.primary": "atributos_originais"
+        "names.primary": "nome"
       },
       "confidence": "alta",
       "note": "Clínica de urgência -> urgência e emergência."
@@ -8309,8 +8263,7 @@
         }
       },
       "overture_attribute_mapping": {
-        "names.primary": "nome",
-        "categories.primary": "atributos_originais"
+        "names.primary": "nome"
       },
       "confidence": "media",
       "note": "Base de ambulância/SAMU -> urgência e emergência."
@@ -8333,8 +8286,7 @@
         }
       },
       "overture_attribute_mapping": {
-        "names.primary": "nome",
-        "categories.primary": "atributos_originais"
+        "names.primary": "nome"
       },
       "confidence": "alta",
       "note": "Imagem e laboratório (subárvore) -> complementação diagnóstica ou terapêutica."
@@ -8357,8 +8309,7 @@
         }
       },
       "overture_attribute_mapping": {
-        "names.primary": "nome",
-        "categories.primary": "atributos_originais"
+        "names.primary": "nome"
       },
       "confidence": "alta",
       "note": "Clínica de diálise -> complementação terapêutica."
@@ -8381,8 +8332,7 @@
         }
       },
       "overture_attribute_mapping": {
-        "names.primary": "nome",
-        "categories.primary": "atributos_originais"
+        "names.primary": "nome"
       },
       "confidence": "alta",
       "note": "Centro de imagem -> complementação diagnóstica."
@@ -8405,8 +8355,7 @@
         }
       },
       "overture_attribute_mapping": {
-        "names.primary": "nome",
-        "categories.primary": "atributos_originais"
+        "names.primary": "nome"
       },
       "confidence": "alta",
       "note": "Fisioterapia -> complementação terapêutica."
@@ -8429,8 +8378,7 @@
         }
       },
       "overture_attribute_mapping": {
-        "names.primary": "nome",
-        "categories.primary": "atributos_originais"
+        "names.primary": "nome"
       },
       "confidence": "media",
       "note": "Terapia ocupacional -> complementação terapêutica."
@@ -8453,8 +8401,7 @@
         }
       },
       "overture_attribute_mapping": {
-        "names.primary": "nome",
-        "categories.primary": "atributos_originais"
+        "names.primary": "nome"
       },
       "confidence": "media",
       "note": "Centro de reabilitação (subárvore) -> complementação terapêutica."
@@ -8477,8 +8424,7 @@
         }
       },
       "overture_attribute_mapping": {
-        "names.primary": "nome",
-        "categories.primary": "atributos_originais"
+        "names.primary": "nome"
       },
       "confidence": "media",
       "note": "Hemocentro/coleta -> complementação diagnóstica ou terapêutica."
@@ -8501,8 +8447,7 @@
         }
       },
       "overture_attribute_mapping": {
-        "names.primary": "nome",
-        "categories.primary": "atributos_originais"
+        "names.primary": "nome"
       },
       "confidence": "baixa",
       "note": "Banco/laboratório reprodutivo -> complementação terapêutica."
@@ -8525,8 +8470,7 @@
         }
       },
       "overture_attribute_mapping": {
-        "names.primary": "nome",
-        "categories.primary": "atributos_originais"
+        "names.primary": "nome"
       },
       "confidence": "baixa",
       "note": "Cirurgia refrativa ambulatorial -> complementação terapêutica."
@@ -8549,8 +8493,7 @@
         }
       },
       "overture_attribute_mapping": {
-        "names.primary": "nome",
-        "categories.primary": "atributos_originais"
+        "names.primary": "nome"
       },
       "confidence": "baixa",
       "note": "Banco de tecidos/órgãos -> complementação terapêutica."
@@ -8573,8 +8516,7 @@
         }
       },
       "overture_attribute_mapping": {
-        "names.primary": "nome",
-        "categories.primary": "atributos_originais"
+        "names.primary": "nome"
       },
       "confidence": "baixa",
       "note": "Escritório de plano de saúde -> edificação de comércio e serviço (não é edificação de saúde)."
@@ -8597,8 +8539,7 @@
         }
       },
       "overture_attribute_mapping": {
-        "names.primary": "nome",
-        "categories.primary": "atributos_originais"
+        "names.primary": "nome"
       },
       "confidence": "alta",
       "note": "Faculdade/universidade e suas escolas (subárvore) -> educação superior graduação e pós-graduação."
@@ -8621,8 +8562,7 @@
         }
       },
       "overture_attribute_mapping": {
-        "names.primary": "nome",
-        "categories.primary": "atributos_originais"
+        "names.primary": "nome"
       },
       "confidence": "media",
       "note": "Edificação de campus universitário -> educação superior."
@@ -8645,8 +8585,7 @@
         }
       },
       "overture_attribute_mapping": {
-        "names.primary": "nome",
-        "categories.primary": "atributos_originais"
+        "names.primary": "nome"
       },
       "confidence": "media",
       "note": "Escola (subárvore: charter, elementar, média, montessori, privada, pública, religiosa, waldorf) sem nível discriminado -> ensino fundamental como nível representativo de educação básica."
@@ -8669,8 +8608,7 @@
         }
       },
       "overture_attribute_mapping": {
-        "names.primary": "nome",
-        "categories.primary": "atributos_originais"
+        "names.primary": "nome"
       },
       "confidence": "alta",
       "note": "Igrejas e catedrais cristãs (subárvore: anglicana, batista, católica, episcopal, evangélica, testemunhas de jeová, pentecostal) -> igreja cristã."
@@ -8693,8 +8631,7 @@
         }
       },
       "overture_attribute_mapping": {
-        "names.primary": "nome",
-        "categories.primary": "atributos_originais"
+        "names.primary": "nome"
       },
       "confidence": "media",
       "note": "Missão religiosa cristã -> igreja cristã."
@@ -8717,8 +8654,7 @@
         }
       },
       "overture_attribute_mapping": {
-        "names.primary": "nome",
-        "categories.primary": "atributos_originais"
+        "names.primary": "nome"
       },
       "confidence": "alta",
       "note": "Templo budista -> templo."
@@ -8741,8 +8677,7 @@
         }
       },
       "overture_attribute_mapping": {
-        "names.primary": "nome",
-        "categories.primary": "atributos_originais"
+        "names.primary": "nome"
       },
       "confidence": "alta",
       "note": "Templo hindu -> templo."
@@ -8765,8 +8700,7 @@
         }
       },
       "overture_attribute_mapping": {
-        "names.primary": "nome",
-        "categories.primary": "atributos_originais"
+        "names.primary": "nome"
       },
       "confidence": "media",
       "note": "Santuário xintoísta -> templo."
@@ -8789,8 +8723,7 @@
         }
       },
       "overture_attribute_mapping": {
-        "names.primary": "nome",
-        "categories.primary": "atributos_originais"
+        "names.primary": "nome"
       },
       "confidence": "media",
       "note": "Templo sikh -> templo."
@@ -8813,8 +8746,7 @@
         }
       },
       "overture_attribute_mapping": {
-        "names.primary": "nome",
-        "categories.primary": "atributos_originais"
+        "names.primary": "nome"
       },
       "confidence": "alta",
       "note": "Templo genérico -> templo."
@@ -8837,8 +8769,7 @@
         }
       },
       "overture_attribute_mapping": {
-        "names.primary": "nome",
-        "categories.primary": "atributos_originais"
+        "names.primary": "nome"
       },
       "confidence": "alta",
       "note": "Mesquita."
@@ -8861,8 +8792,7 @@
         }
       },
       "overture_attribute_mapping": {
-        "names.primary": "nome",
-        "categories.primary": "atributos_originais"
+        "names.primary": "nome"
       },
       "confidence": "alta",
       "note": "Sinagoga."
@@ -8885,8 +8815,7 @@
         }
       },
       "overture_attribute_mapping": {
-        "names.primary": "nome",
-        "categories.primary": "atributos_originais"
+        "names.primary": "nome"
       },
       "confidence": "media",
       "note": "Conventos e mosteiros (bundle) -> convento; abrange mosteiro (604) onde aplicável."
@@ -8909,8 +8838,7 @@
         }
       },
       "overture_attribute_mapping": {
-        "names.primary": "nome",
-        "categories.primary": "atributos_originais"
+        "names.primary": "nome"
       },
       "confidence": "alta",
       "note": "Banco/cooperativa de crédito (subárvore) -> banco."
@@ -8933,8 +8861,7 @@
         }
       },
       "overture_attribute_mapping": {
-        "names.primary": "nome",
-        "categories.primary": "atributos_originais"
+        "names.primary": "nome"
       },
       "confidence": "media",
       "note": "Concessionária de serviço público/energia (subárvore energia, distribuidora elétrica) -> edificação de energia."
@@ -8957,8 +8884,7 @@
         }
       },
       "overture_attribute_mapping": {
-        "names.primary": "nome",
-        "categories.primary": "atributos_originais"
+        "names.primary": "nome"
       },
       "confidence": "media",
       "note": "Força policial genérica -> delegacia de polícia."
@@ -8981,8 +8907,7 @@
         }
       },
       "overture_attribute_mapping": {
-        "names.primary": "nome",
-        "categories.primary": "atributos_originais"
+        "names.primary": "nome"
       },
       "confidence": "alta",
       "note": "Delegacia/departamento de polícia -> delegacia de polícia."
@@ -9005,8 +8930,7 @@
         }
       },
       "overture_attribute_mapping": {
-        "names.primary": "nome",
-        "categories.primary": "atributos_originais"
+        "names.primary": "nome"
       },
       "confidence": "alta",
       "note": "Cadeia/presídio -> edificação prisional."
@@ -9029,8 +8953,7 @@
         }
       },
       "overture_attribute_mapping": {
-        "names.primary": "nome",
-        "categories.primary": "atributos_originais"
+        "names.primary": "nome"
       },
       "confidence": "baixa",
       "note": "Agência dos correios (subárvore) -> edificação de comércio e serviço (sem tipo postal próprio na EDGV)."
@@ -9053,8 +8976,7 @@
         }
       },
       "overture_attribute_mapping": {
-        "names.primary": "nome",
-        "categories.primary": "atributos_originais"
+        "names.primary": "nome"
       },
       "confidence": "media",
       "note": "Organização militar -> aquartelamento."
@@ -9077,8 +8999,7 @@
         }
       },
       "overture_attribute_mapping": {
-        "names.primary": "nome",
-        "categories.primary": "atributos_originais"
+        "names.primary": "nome"
       },
       "confidence": "alta",
       "note": "Fórum/tribunal -> fórum."
@@ -9101,8 +9022,7 @@
         }
       },
       "overture_attribute_mapping": {
-        "names.primary": "nome",
-        "categories.primary": "atributos_originais"
+        "names.primary": "nome"
       },
       "confidence": "alta",
       "note": "Embaixada -> representação diplomática embaixada."
@@ -9125,8 +9045,7 @@
         }
       },
       "overture_attribute_mapping": {
-        "names.primary": "nome",
-        "categories.primary": "atributos_originais"
+        "names.primary": "nome"
       },
       "confidence": "alta",
       "note": "Corpo de bombeiros -> bombeiros militar."
@@ -9149,8 +9068,7 @@
         }
       },
       "overture_attribute_mapping": {
-        "names.primary": "nome",
-        "categories.primary": "atributos_originais"
+        "names.primary": "nome"
       },
       "confidence": "alta",
       "note": "Biblioteca -> biblioteca (lazer/cultura)."
@@ -9173,8 +9091,7 @@
         }
       },
       "overture_attribute_mapping": {
-        "names.primary": "nome",
-        "categories.primary": "atributos_originais"
+        "names.primary": "nome"
       },
       "confidence": "baixa",
       "note": "Serviços de segurança nacional -> outras polícias/segurança pública."
@@ -9197,8 +9114,7 @@
         }
       },
       "overture_attribute_mapping": {
-        "names.primary": "nome",
-        "categories.primary": "atributos_originais"
+        "names.primary": "nome"
       },
       "confidence": "alta",
       "note": "Cartório de registro civil -> cartorial."
@@ -9221,8 +9137,7 @@
         }
       },
       "overture_attribute_mapping": {
-        "names.primary": "nome",
-        "categories.primary": "atributos_originais"
+        "names.primary": "nome"
       },
       "confidence": "alta",
       "note": "Cartório/registro -> cartorial."
@@ -9245,8 +9160,7 @@
         }
       },
       "overture_attribute_mapping": {
-        "names.primary": "nome",
-        "categories.primary": "atributos_originais"
+        "names.primary": "nome"
       },
       "confidence": "media",
       "note": "Órgão de tributação (Receita/Fazenda) -> tributação (posto fiscal)."
@@ -9269,8 +9183,7 @@
         }
       },
       "overture_attribute_mapping": {
-        "names.primary": "nome",
-        "categories.primary": "atributos_originais"
+        "names.primary": "nome"
       },
       "confidence": "media",
       "note": "Prefeitura/paço municipal -> prefeitura."
@@ -9293,8 +9206,7 @@
         }
       },
       "overture_attribute_mapping": {
-        "names.primary": "nome",
-        "categories.primary": "atributos_originais"
+        "names.primary": "nome"
       },
       "confidence": "alta",
       "note": "Estação meteorológica -> edificação de medição de fenômenos."
@@ -9317,8 +9229,7 @@
         }
       },
       "overture_attribute_mapping": {
-        "names.primary": "nome",
-        "categories.primary": "atributos_originais"
+        "names.primary": "nome"
       },
       "confidence": "media",
       "note": "Órgão previdenciário -> seguridade social."
@@ -9341,8 +9252,7 @@
         }
       },
       "overture_attribute_mapping": {
-        "names.primary": "nome",
-        "categories.primary": "atributos_originais"
+        "names.primary": "nome"
       },
       "confidence": "baixa",
       "note": "Agência de emprego/seguro-desemprego -> seguridade social."
@@ -9365,8 +9275,7 @@
         }
       },
       "overture_attribute_mapping": {
-        "names.primary": "nome",
-        "categories.primary": "atributos_originais"
+        "names.primary": "nome"
       },
       "confidence": "media",
       "note": "Casa de repouso/asilo -> equipamento público de proteção social."
@@ -9389,8 +9298,7 @@
         }
       },
       "overture_attribute_mapping": {
-        "names.primary": "nome",
-        "categories.primary": "atributos_originais"
+        "names.primary": "nome"
       },
       "confidence": "media",
       "note": "Centro de referência à família (CRAS) -> equipamento público de proteção social."
@@ -9413,8 +9321,7 @@
         }
       },
       "overture_attribute_mapping": {
-        "names.primary": "nome",
-        "categories.primary": "atributos_originais"
+        "names.primary": "nome"
       },
       "confidence": "baixa",
       "note": "Casa da criança -> equipamento público de proteção social."
@@ -9437,8 +9344,7 @@
         }
       },
       "overture_attribute_mapping": {
-        "names.primary": "nome",
-        "categories.primary": "atributos_originais"
+        "names.primary": "nome"
       },
       "confidence": "media",
       "note": "Departamento de serviço social -> serviço social."
@@ -9461,8 +9367,7 @@
         }
       },
       "overture_attribute_mapping": {
-        "names.primary": "nome",
-        "categories.primary": "atributos_originais"
+        "names.primary": "nome"
       },
       "confidence": "media",
       "note": "Serviços comunitários/apoio (inclui apoio à deficiência) -> serviço social."
@@ -9485,8 +9390,7 @@
         }
       },
       "overture_attribute_mapping": {
-        "names.primary": "nome",
-        "categories.primary": "atributos_originais"
+        "names.primary": "nome"
       },
       "confidence": "baixa",
       "note": "Centro cívico -> centro cultural."
@@ -9509,8 +9413,7 @@
         }
       },
       "overture_attribute_mapping": {
-        "names.primary": "nome",
-        "categories.primary": "atributos_originais"
+        "names.primary": "nome"
       },
       "confidence": "baixa",
       "note": "Centro comunitário -> centro cultural."
@@ -9533,8 +9436,7 @@
         }
       },
       "overture_attribute_mapping": {
-        "names.primary": "nome",
-        "categories.primary": "atributos_originais"
+        "names.primary": "nome"
       },
       "confidence": "baixa",
       "note": "Câmara de comércio (associação empresarial) -> edificação de comércio e serviço."
@@ -9557,8 +9459,7 @@
         }
       },
       "overture_attribute_mapping": {
-        "names.primary": "nome",
-        "categories.primary": "atributos_originais"
+        "names.primary": "nome"
       },
       "confidence": "baixa",
       "note": "Associações e organizações genéricas (subárvore: sindicato, ONG, associação política, agrícola, ambiental etc.) sem tipo específico -> edificação genérica."
@@ -9581,8 +9482,7 @@
         }
       },
       "overture_attribute_mapping": {
-        "names.primary": "nome",
-        "categories.primary": "atributos_originais"
+        "names.primary": "nome"
       },
       "confidence": "baixa",
       "note": "Banheiro público -> edificação genérica."
@@ -9605,8 +9505,7 @@
         }
       },
       "overture_attribute_mapping": {
-        "names.primary": "nome",
-        "categories.primary": "atributos_originais"
+        "names.primary": "nome"
       },
       "confidence": "baixa",
       "note": "Conjunto habitacional popular -> edificação genérica (residencial)."
@@ -9629,8 +9528,7 @@
         }
       },
       "overture_attribute_mapping": {
-        "names.primary": "nome",
-        "categories.primary": "atributos_originais"
+        "names.primary": "nome"
       },
       "confidence": "baixa",
       "note": "Sede de partido político -> edificação genérica."
@@ -9653,8 +9551,7 @@
         }
       },
       "overture_attribute_mapping": {
-        "names.primary": "nome",
-        "categories.primary": "atributos_originais"
+        "names.primary": "nome"
       },
       "confidence": "baixa",
       "note": "Sede de escoteiros -> edificação genérica."
@@ -9677,8 +9574,7 @@
         }
       },
       "overture_attribute_mapping": {
-        "names.primary": "nome",
-        "categories.primary": "atributos_originais"
+        "names.primary": "nome"
       },
       "confidence": "baixa",
       "note": "Serviço/companhia ferroviária -> administração ferroviária."
@@ -9701,8 +9597,7 @@
         }
       },
       "overture_attribute_mapping": {
-        "names.primary": "nome",
-        "categories.primary": "atributos_originais"
+        "names.primary": "nome"
       },
       "confidence": "alta",
       "note": "Posto de combustivel casa com 2601 'Posto de combustivel'. Cobre por no-no-caminho os filhos truck_gas_station e fuel_dock. Regra nivel 2 vence o fallback automotive->998."
@@ -9725,8 +9620,7 @@
         }
       },
       "overture_attribute_mapping": {
-        "names.primary": "nome",
-        "categories.primary": "atributos_originais"
+        "names.primary": "nome"
       },
       "confidence": "alta",
       "note": "Codigo 801 (Laz - Estadio). Casa todos os estadios/arenas por esporte (football_stadium, soccer_stadium, baseball_stadium, basketball_stadium, tennis_stadium, hockey_arena, rugby_stadium, cricket_ground, track_stadium)."
@@ -9749,8 +9643,7 @@
         }
       },
       "overture_attribute_mapping": {
-        "names.primary": "nome",
-        "categories.primary": "atributos_originais"
+        "names.primary": "nome"
       },
       "confidence": "alta",
       "note": "Codigo 806 (Laz - Espaco de exibicao de filmes). Casa cinema e drive_in_theater/outdoor_movies (exibicao de filmes)."
@@ -9773,8 +9666,7 @@
         }
       },
       "overture_attribute_mapping": {
-        "names.primary": "nome",
-        "categories.primary": "atributos_originais"
+        "names.primary": "nome"
       },
       "confidence": "alta",
       "note": "Codigo 804 (Laz - Teatro). Casa a folha theatre. Teatros e casas de espetaculo."
@@ -9797,8 +9689,7 @@
         }
       },
       "overture_attribute_mapping": {
-        "names.primary": "nome",
-        "categories.primary": "atributos_originais"
+        "names.primary": "nome"
       },
       "confidence": "media",
       "note": "Codigo 805 (Laz - Anfiteatro). Auditorio/anfiteatro."
@@ -9821,8 +9712,7 @@
         }
       },
       "overture_attribute_mapping": {
-        "names.primary": "nome",
-        "categories.primary": "atributos_originais"
+        "names.primary": "nome"
       },
       "confidence": "media",
       "note": "Codigo 812 (Laz - Circo)."
@@ -9845,8 +9735,7 @@
         }
       },
       "overture_attribute_mapping": {
-        "names.primary": "nome",
-        "categories.primary": "atributos_originais"
+        "names.primary": "nome"
       },
       "confidence": "media",
       "note": "Codigo 817 (Laz - Equipamentos culturais diversos). Planetario como equipamento cultural/cientifico (sem codigo proprio na EDGV)."
@@ -9869,8 +9758,7 @@
         }
       },
       "overture_attribute_mapping": {
-        "names.primary": "nome",
-        "categories.primary": "atributos_originais"
+        "names.primary": "nome"
       },
       "confidence": "media",
       "note": "Codigo 909 (Comerc - Centro de exposicoes). Centro de exposicoes e feiras."
@@ -9893,8 +9781,7 @@
         }
       },
       "overture_attribute_mapping": {
-        "names.primary": "nome",
-        "categories.primary": "atributos_originais"
+        "names.primary": "nome"
       },
       "confidence": "alta",
       "note": "Codigo 803 (Laz - Museu). Casa toda a subarvore museum (art_museum, history_museum, military_museum, science_museum, national_museum, childrens_museum, aviation_museum, sports_museum e demais)."
@@ -9917,8 +9804,7 @@
         }
       },
       "overture_attribute_mapping": {
-        "names.primary": "nome",
-        "categories.primary": "atributos_originais"
+        "names.primary": "nome"
       },
       "confidence": "alta",
       "note": "Codigo 819 (Laz - Galeria). Galeria de arte."
@@ -9941,8 +9827,7 @@
         }
       },
       "overture_attribute_mapping": {
-        "names.primary": "nome",
-        "categories.primary": "atributos_originais"
+        "names.primary": "nome"
       },
       "confidence": "alta",
       "note": "Codigo 807 (Laz - Centro cultural)."
@@ -9965,8 +9850,7 @@
         }
       },
       "overture_attribute_mapping": {
-        "names.primary": "nome",
-        "categories.primary": "atributos_originais"
+        "names.primary": "nome"
       },
       "confidence": "alta",
       "note": "Codigo 712 (Tur - Monumento)."
@@ -9989,8 +9873,7 @@
         }
       },
       "overture_attribute_mapping": {
-        "names.primary": "nome",
-        "categories.primary": "atributos_originais"
+        "names.primary": "nome"
       },
       "confidence": "alta",
       "note": "Codigo 710 (Tur - Estatua). Escultura/estatua."
@@ -10013,8 +9896,7 @@
         }
       },
       "overture_attribute_mapping": {
-        "names.primary": "nome",
-        "categories.primary": "atributos_originais"
+        "names.primary": "nome"
       },
       "confidence": "media",
       "note": "Codigo 711 (Tur - Mirante). Trata o lookout como mirante construido/desenvolvido. Mirante puramente natural (sem estrutura) deveria ir a base/relevo; aqui prevalece a leitura de construcao turistica."
@@ -10037,8 +9919,7 @@
         }
       },
       "overture_attribute_mapping": {
-        "names.primary": "nome",
-        "categories.primary": "atributos_originais"
+        "names.primary": "nome"
       },
       "confidence": "media",
       "note": "Codigo 798 (Tur - Outros). Castelo como construcao turistica historica (EDGV nao tem codigo proprio de castelo)."
@@ -10061,8 +9942,7 @@
         }
       },
       "overture_attribute_mapping": {
-        "names.primary": "nome",
-        "categories.primary": "atributos_originais"
+        "names.primary": "nome"
       },
       "confidence": "media",
       "note": "Codigo 798 (Tur - Outros). Palacio historico como construcao turistica."
@@ -10085,8 +9965,7 @@
         }
       },
       "overture_attribute_mapping": {
-        "names.primary": "nome",
-        "categories.primary": "atributos_originais"
+        "names.primary": "nome"
       },
       "confidence": "media",
       "note": "Codigo 798 (Tur - Outros). Forte/fortaleza historica como construcao turistica."
@@ -10109,8 +9988,7 @@
         }
       },
       "overture_attribute_mapping": {
-        "names.primary": "nome",
-        "categories.primary": "atributos_originais"
+        "names.primary": "nome"
       },
       "confidence": "baixa",
       "note": "Codigo 798 (Tur - Outros). Ruina historica como construcao turistica."
@@ -10133,8 +10011,7 @@
         }
       },
       "overture_attribute_mapping": {
-        "names.primary": "nome",
-        "categories.primary": "atributos_originais"
+        "names.primary": "nome"
       },
       "confidence": "media",
       "note": "Codigo 798 (Tur - Outros). Marco/edificacao historica turistica."
@@ -10157,8 +10034,7 @@
         }
       },
       "overture_attribute_mapping": {
-        "names.primary": "nome",
-        "categories.primary": "atributos_originais"
+        "names.primary": "nome"
       },
       "confidence": "baixa",
       "note": "Codigo 817 (Laz - Equipamentos culturais diversos). Observatorio astronomico como equipamento cultural/cientifico (sem codigo proprio)."
@@ -10181,8 +10057,7 @@
         }
       },
       "overture_attribute_mapping": {
-        "names.primary": "nome",
-        "categories.primary": "atributos_originais"
+        "names.primary": "nome"
       },
       "confidence": "baixa",
       "note": "Codigo 817 (Laz - Equipamentos culturais diversos). Aquario como equipamento cultural coberto (sem codigo proprio; distinto de zoo, que e area)."
@@ -10205,8 +10080,7 @@
         }
       },
       "overture_attribute_mapping": {
-        "names.primary": "nome",
-        "categories.primary": "atributos_originais"
+        "names.primary": "nome"
       },
       "confidence": "media",
       "note": "Codigo 3 (Edif. Flutuante / Palafita). Casa-barco como edificacao flutuante."
@@ -10229,8 +10103,7 @@
         }
       },
       "overture_attribute_mapping": {
-        "names.primary": "nome",
-        "categories.primary": "atributos_originais"
+        "names.primary": "nome"
       },
       "confidence": "media",
       "note": "Codigo 907 (Comerc - Hotel / motel / pousada). Agroturismo como hospedagem."
@@ -10253,8 +10126,7 @@
         }
       },
       "overture_attribute_mapping": {
-        "names.primary": "nome",
-        "categories.primary": "atributos_originais"
+        "names.primary": "nome"
       },
       "confidence": "baixa",
       "note": "Codigo 907 (Comerc - Hotel / motel / pousada). Casa de campo para hospedagem/aluguel."
@@ -10277,8 +10149,7 @@
         }
       },
       "overture_attribute_mapping": {
-        "names.primary": "nome",
-        "categories.primary": "atributos_originais"
+        "names.primary": "nome"
       },
       "confidence": "media",
       "note": "Codigo 907 (Comerc - Hotel / motel / pousada). Pousada japonesa (ryokan) como hospedagem."
@@ -10301,8 +10172,7 @@
         }
       },
       "overture_attribute_mapping": {
-        "names.primary": "nome",
-        "categories.primary": "atributos_originais"
+        "names.primary": "nome"
       },
       "confidence": "media",
       "note": "Codigo 907 (Comerc - Hotel / motel / pousada). Hospedagem com cozinha propria."
@@ -10325,8 +10195,7 @@
         }
       },
       "overture_attribute_mapping": {
-        "names.primary": "nome",
-        "categories.primary": "atributos_originais"
+        "names.primary": "nome"
       },
       "confidence": "baixa",
       "note": "Codigo 907 (Comerc - Hotel / motel / pousada). Resort de esqui pela componente de hospedagem (a area de esqui em si, ski_area, vai a gap)."
@@ -10349,8 +10218,7 @@
         }
       },
       "overture_attribute_mapping": {
-        "names.primary": "nome",
-        "categories.primary": "atributos_originais"
+        "names.primary": "nome"
       },
       "confidence": "alta",
       "note": "Clinica/consultorio veterinario -> 2031 (Sau - Servicos veterinarios, Edificacao de saude). E o unico codigo da EDGV explicitamente veterinario."
@@ -10373,8 +10241,7 @@
         }
       },
       "overture_attribute_mapping": {
-        "names.primary": "nome",
-        "categories.primary": "atributos_originais"
+        "names.primary": "nome"
       },
       "confidence": "baixa",
       "note": "Edificacao residencial multifamiliar -> 0 (Edificacao generica). A EDGV nao tem tipo residencial dedicado; predio de apartamentos e edificacao generica. Confianca baixa: o POI pode marcar o condominio como um todo, nao um predio."
@@ -10397,8 +10264,7 @@
         }
       },
       "overture_attribute_mapping": {
-        "names.primary": "nome",
-        "categories.primary": "atributos_originais"
+        "names.primary": "nome"
       },
       "confidence": "baixa",
       "note": "Condominio residencial -> 0 (Edificacao generica). Sem tipo residencial proprio na EDGV; confianca baixa (POI de conjunto, nao de edificacao unica)."
@@ -10421,8 +10287,7 @@
         }
       },
       "overture_attribute_mapping": {
-        "names.primary": "nome",
-        "categories.primary": "atributos_originais"
+        "names.primary": "nome"
       },
       "confidence": "baixa",
       "note": "Alojamento estudantil / moradia universitaria -> 0 (Edificacao generica). Uso residencial; a EDGV nao distingue alojamento, cai no generico."
@@ -10445,8 +10310,7 @@
         }
       },
       "overture_attribute_mapping": {
-        "names.primary": "nome",
-        "categories.primary": "atributos_originais"
+        "names.primary": "nome"
       },
       "confidence": "baixa",
       "note": "Revenda de casas moveis -> 998 (Comerc - Outros, Edificacao de comercio e servico). Ponto de venda comercial; confianca baixa por ser patio de vendas mais que edificacao."
@@ -10469,8 +10333,7 @@
         }
       },
       "overture_attribute_mapping": {
-        "names.primary": "nome",
-        "categories.primary": "atributos_originais"
+        "names.primary": "nome"
       },
       "confidence": "media",
       "note": "Fallback da raiz saúde: consultórios, clínicas, postos e demais estabelecimentos sem distinção específica -> atenção ambulatorial (posto e centro de saúde)."
@@ -10493,8 +10356,7 @@
         }
       },
       "overture_attribute_mapping": {
-        "names.primary": "nome",
-        "categories.primary": "atributos_originais"
+        "names.primary": "nome"
       },
       "confidence": "media",
       "note": "Fallback da raiz educação: educação de adultos, cursos livres, tutoria, administração escolar e demais -> outras atividades de ensino."
@@ -10517,8 +10379,7 @@
         }
       },
       "overture_attribute_mapping": {
-        "names.primary": "nome",
-        "categories.primary": "atributos_originais"
+        "names.primary": "nome"
       },
       "confidence": "media",
       "note": "Fallback da raiz religiosa: destino de peregrinação e demais sem distinção -> centro religioso."
@@ -10541,8 +10402,7 @@
         }
       },
       "overture_attribute_mapping": {
-        "names.primary": "nome",
-        "categories.primary": "atributos_originais"
+        "names.primary": "nome"
       },
       "confidence": "media",
       "note": "Fallback da raiz financeira: contador, corretoras, seguradoras, câmbio, assessoria e demais escritórios de serviço financeiro -> edificação de comércio e serviço."
@@ -10565,8 +10425,7 @@
         }
       },
       "overture_attribute_mapping": {
-        "names.primary": "nome",
-        "categories.primary": "atributos_originais"
+        "names.primary": "nome"
       },
       "confidence": "media",
       "note": "Fallback da raiz serviço público e governo: repartições de governo (municipal/estadual/federal), DMV, imigração e demais -> gestão pública."
@@ -10589,8 +10448,7 @@
         }
       },
       "overture_attribute_mapping": {
-        "names.primary": "nome",
-        "categories.primary": "atributos_originais"
+        "names.primary": "nome"
       },
       "confidence": "media",
       "note": "Fallback da raiz retail (287 categorias): comercio varejista generico -> 998 'Comerc - Outros' (Edificacao de comercio e servico). Excecoes profundas (supermarket, shopping_center, shopping_passage, farmers_market, public_market) sao resolvidas por regras mais especificas. A EDGV nao distingue farmacia/drugstore nem lojas por ramo, todas colapsam aqui."
@@ -10613,8 +10471,7 @@
         }
       },
       "overture_attribute_mapping": {
-        "names.primary": "nome",
-        "categories.primary": "atributos_originais"
+        "names.primary": "nome"
       },
       "confidence": "media",
       "note": "Fallback da raiz eat_and_drink (227 categorias): restaurante, bar, cafe e afins -> 998 'Comerc - Outros'. A EDGV Topo 2.0 nao possui tipo proprio de restaurante/bar; todo o ramo alimenticio colapsa no comercio/servico generico."
@@ -10637,8 +10494,7 @@
         }
       },
       "overture_attribute_mapping": {
-        "names.primary": "nome",
-        "categories.primary": "atributos_originais"
+        "names.primary": "nome"
       },
       "confidence": "media",
       "note": "Fallback da raiz beauty_and_spa (41 categorias): salao de beleza, barbearia, spa -> 998 'Comerc - Outros'. Sem tipo proprio na EDGV; edificacao de servico generica."
@@ -10661,8 +10517,7 @@
         }
       },
       "overture_attribute_mapping": {
-        "names.primary": "nome",
-        "categories.primary": "atributos_originais"
+        "names.primary": "nome"
       },
       "confidence": "media",
       "note": "Fallback da raiz automotive (74 categorias): concessionaria, oficina, autopecas -> 998 'Comerc - Outros'. Unica excecao distinguida pela EDGV e o posto de combustivel (gas_station->2601); a EDGV nao tem tipo de oficina mecanica. ev_charging_station colapsa aqui (2601 e especifico de combustivel, nao eletrico)."
@@ -10685,8 +10540,7 @@
         }
       },
       "overture_attribute_mapping": {
-        "names.primary": "nome",
-        "categories.primary": "atributos_originais"
+        "names.primary": "nome"
       },
       "confidence": "media",
       "note": "Fallback da raiz professional_services (270 categorias): advocacia, contabilidade, agencias, lavanderia, TI etc. -> 998 'Comerc - Outros' (Edificacao de comercio e SERVICO). Preferido o generico ao GAP porque a EDGV tem codigo de servico (998); nenhum destes servicos tem tipo de edificacao proprio."
@@ -10709,8 +10563,7 @@
         }
       },
       "overture_attribute_mapping": {
-        "names.primary": "nome",
-        "categories.primary": "atributos_originais"
+        "names.primary": "nome"
       },
       "confidence": "media",
       "note": "Fallback da raiz business_to_business (238 categorias): atacado, distribuicao, servicos B2B, e tambem subarvores de manufatura/agro/mineracao -> 998 'Comerc - Outros'. Decisao por raiz (colapso): o POI B2B e um estabelecimento pontual de comercio/servico, nao a grande instalacao industrial/agropecuaria/mineral que os codigos Ind/Agro/ExtMin da EDGV visam (essas vem de outra fonte). Preferido o generico ao GAP porque 998 existe."
@@ -10733,8 +10586,7 @@
         }
       },
       "overture_attribute_mapping": {
-        "names.primary": "nome",
-        "categories.primary": "atributos_originais"
+        "names.primary": "nome"
       },
       "confidence": "media",
       "note": "Fallback da raiz home_service (93 categorias): encanador, eletricista, telhadista, paisagismo etc. -> 998 'Comerc - Outros'. Servico de obra domiciliar sem edificacao propria; quando ha POI, representa o escritorio/loja do prestador. Preferido o generico ao GAP porque 998 (servico) existe."
@@ -10757,8 +10609,7 @@
         }
       },
       "overture_attribute_mapping": {
-        "names.primary": "nome",
-        "categories.primary": "atributos_originais"
+        "names.primary": "nome"
       },
       "confidence": "media",
       "note": "Fallback da raiz private_establishments_and_corporates (5 categorias): escritorio corporativo, fundo de private equity etc. -> 998 'Comerc - Outros'. Edificacao de servico generica; sem tipo proprio na EDGV."
@@ -10781,8 +10632,7 @@
         }
       },
       "overture_attribute_mapping": {
-        "names.primary": "nome",
-        "categories.primary": "atributos_originais"
+        "names.primary": "nome"
       },
       "confidence": "baixa",
       "note": "Codigo 898 (Laz - Outros). FALLBACK da raiz arts_and_entertainment: edificacao de lazer/entretenimento sem tipo proprio (casino, arcade, bingo_hall, comedy_club, dance_club, music_venue, karaoke, escape_rooms, laser_tag, cabaret, social_club, country_club, strip_club etc). Nos mais profundos com regra ou gap prevalecem."
@@ -10805,8 +10655,7 @@
         }
       },
       "overture_attribute_mapping": {
-        "names.primary": "nome",
-        "categories.primary": "atributos_originais"
+        "names.primary": "nome"
       },
       "confidence": "alta",
       "note": "Codigo 907 (Comerc - Hotel / motel / pousada). FALLBACK da raiz accommodation: hotel, motel, inn, hostel, bed_and_breakfast, guest_house, lodge, resort/beach_resort, cabin, cottage, holiday_rental_home, service_apartments, mountain_huts, health_retreats. Excecoes campground e rv_park vao a gap."
