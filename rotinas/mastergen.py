@@ -211,8 +211,9 @@ class MasterGen():
                                 sql.append(u"\t ADD CONSTRAINT {0} ".format(constraint_name))
 
                                 if 'a_ser_preenchido' in master:
-                                    valores_att.append(
-                                        master["a_ser_preenchido"]["code"])
+                                    asp_code = master["a_ser_preenchido"]["code"]
+                                    if asp_code not in valores_att:
+                                        valores_att.append(asp_code)
 
                                 sql.append(u"\t CHECK ({0} = ANY(ARRAY[{1}])); ".format(atributo["nome"],
                                                                                         ", ".join(["{0} :: SMALLINT".format(valor) for valor in valores_att])))
@@ -232,8 +233,9 @@ class MasterGen():
                             sql.append(u"\t ADD CONSTRAINT {0} ".format(constraint_name))
 
                             if 'a_ser_preenchido' in master:
-                                valores_att.append(
-                                    master["a_ser_preenchido"]["code"])
+                                asp_code = master["a_ser_preenchido"]["code"]
+                                if asp_code not in valores_att:
+                                    valores_att.append(asp_code)
                                 sql.append(u"\t CHECK ({0} <@ ANY(ARRAY[{1}])); ".format(atributo["nome"],
                                                                                         ", ".join(["{0} :: SMALLINT".format(valor) for valor in valores_att])))
                             else:

@@ -90,13 +90,11 @@ Mudanças no schema de dados entre EDGV Topo 1.4 e EDGV Topo 2.0. Apenas modelag
 
 ### 1.3 Rev 0.13.0 (2026-07-10)
 
-Aporte do cruzamento com a ET-EDGV SPU 4.0 (ver `analysis/comparativo_edgvspu40_topo20.md`). Reabre o gap 3.0 A1 (navegabilidade), antes rejeitado, por valor de logística fluvial e mobilidade anfíbia.
+Aporte do cruzamento com a ET-EDGV SPU 4.0 (ver `analysis/comparativo_edgvspu40_topo20.md`). Traz o calado da hidrovia (parte do gap 3.0 A1), por valor de logística fluvial e mobilidade anfíbia. A navegabilidade não entra como atributo: um trecho hidroviário é, por definição, navegável (o `cod_iso` do limite legal está documentado na seção 2, na classe `llp_limite_legal_a`).
 
 | Tabela | Coluna | Tipo | FK / domínio | Descrição |
 |--------|--------|------|--------------|-----------|
-| `infra_trecho_hidroviario_l` | `navegavel` | smallint | `dominios.auxiliar` | Trecho navegável (espelha `trecho_drenagem.navegavel` da EDGV 3.0) |
 | `infra_trecho_hidroviario_l` | `calado_max_seca` | real | — | Calado máximo na seca em metros (EDGV 3.0 `caladomaxseca`) |
-| `llp_limite_legal_a` | `cod_iso` | varchar(3) | — | Código ISO 3166-1 alpha-3 do país (cobertura América do Sul; antes ia sobrecarregado em `sigla`) |
 
 ---
 
@@ -144,6 +142,7 @@ Polígonos de limites político-administrativos unificados: país, UF, municípi
 | `tipo` | smallint | NOT NULL, FK → `dominios.tipo_limite_legal`, DEFAULT 9999 |
 | `sigla` | varchar(10) | nullable (ex: "BR", "SP") |
 | `geocodigo_ibge` | varchar(15) | nullable (código IBGE: UF 2 dígitos, município 7, distrito 9) |
+| `cod_iso` | varchar(3) | nullable (ISO 3166-1 alpha-3 do país; cobertura América do Sul; adicionado na rev 0.13.0, antes sobrecarregado em `sigla`) |
 | `geometria_aproximada` | smallint | NOT NULL, FK → `dominios.booleano`, DEFAULT 9999 |
 | `observacao` | varchar(255) | nullable |
 | `geom` | MultiPolygon, 4674 | índice GiST |
@@ -320,12 +319,15 @@ alimentador primário é a coleta autoritativa (GeoSwarm/insumos oficiais).
 | 311 | Duto – Gás de transporte |
 | 312 | Duto – Gás de distribuição |
 
-### `dominios.tipo_localidade` (+2)
+### `dominios.tipo_localidade` (+3)
 
 | Código | Valor |
 |--------|-------|
 | 9 | Aldeia indígena |
 | 10 | Comunidade quilombola |
+| 11 | Bairro |
+
+> Rev 0.14.0 (2026-07-11): adicionado o código 11 `Bairro` (subdivisão intraurbana), alvo do subtype `neighborhood` do Overture divisions no mapeamento Overture -> EDGV Topo 2.0 (ver analysis/overture_referencia_e_mapeamento_topo20.md).
 
 ### `dominios.tipo_limite_especial` (+1)
 
@@ -536,7 +538,8 @@ INSERT INTO dominios.tipo_trecho_duto (code, code_name, filter) VALUES
 
 INSERT INTO dominios.tipo_localidade (code, code_name) VALUES
     (9, 'Aldeia indígena (9)'),
-    (10, 'Comunidade quilombola (10)');
+    (10, 'Comunidade quilombola (10)'),
+    (11, 'Bairro (11)');
 
 INSERT INTO dominios.tipo_limite_especial (code, code_name) VALUES
     (3, 'Território quilombola (3)');
@@ -838,7 +841,7 @@ ALTER TABLE public.db_metadata ALTER COLUMN dbimplversion SET DEFAULT '0.12.0';
 
 -- ===========================================
 -- Incremento 0.13.0: cruzamento com a ET-EDGV SPU 4.0
--- (limites maritimos como tipo; navegabilidade/calado da hidrovia; ISO do pais)
+-- (limites maritimos como tipo; calado da hidrovia; ISO do pais)
 -- ===========================================
 
 -- 1) Limite maritimo vira tipo; remove o booleano `maritimo`
@@ -850,11 +853,7 @@ INSERT INTO dominios.tipo_limite_legal (code, code_name) VALUES
 ALTER TABLE edgv.llp_limite_legal_l DROP CONSTRAINT IF EXISTS llp_limite_legal_l_maritimo_fk;
 ALTER TABLE edgv.llp_limite_legal_l DROP COLUMN IF EXISTS maritimo;
 
--- 2) Navegabilidade e calado da hidrovia (reabre gap 3.0 A1)
-ALTER TABLE edgv.infra_trecho_hidroviario_l ADD COLUMN navegavel smallint NOT NULL DEFAULT 9999;
-ALTER TABLE edgv.infra_trecho_hidroviario_l
-    ADD CONSTRAINT infra_trecho_hidroviario_l_navegavel_fk
-    FOREIGN KEY (navegavel) REFERENCES dominios.auxiliar (code);
+-- 2) Calado da hidrovia (parte do gap 3.0 A1; navegabilidade nao entra, e redundante)
 ALTER TABLE edgv.infra_trecho_hidroviario_l ADD COLUMN calado_max_seca real;
 
 -- 3) Codigo ISO 3166-1 alpha-3 do pais

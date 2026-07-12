@@ -3904,6 +3904,11 @@
           "code": 10,
           "value": "Comunidade quilombola",
           "descricao": "Povoado habitado por comunidade remanescente de quilombo."
+        },
+        {
+          "code": 11,
+          "value": "Bairro",
+          "descricao": "Subdivisão intraurbana de uma cidade, com nome consagrado; unidade de referência abaixo da cidade na hierarquia de localidades. Alvo do subtype neighborhood do Overture divisions."
         }
       ]
     },
@@ -7559,13 +7564,6 @@
           "cardinalidade": "1..1",
           "mapa_valor": "situacao_fisica",
           "descricao": "Situação física do trecho hidroviário, conforme o domínio situacao_fisica."
-        },
-        {
-          "nome": "navegavel",
-          "tipo": "smallint",
-          "cardinalidade": "1..1",
-          "mapa_valor": "auxiliar",
-          "descricao": "Indica se o trecho é navegável, conforme o domínio auxiliar."
         },
         {
           "nome": "calado_max_seca",

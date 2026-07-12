@@ -33,14 +33,14 @@ TOPO_MASTER = os.path.join(ROOT, "edgv_300_topo", "2_0", "master_file_topo_20.js
 ORTO25_MASTER = os.path.join(ROOT, "edgv_300_orto", "2_5", "master_file_300_orto_25.json")
 
 VERSAO_ORTO = "3.0.0"
-VERSAO_TOPO = "0.13.0"
+VERSAO_TOPO = "0.14.0"
 VERSAO_ORTO25 = "2.5.4"
 
 # Split Topo 2.0 -> Orto 3.0: classes do Topo unificadas (limite_especial,
 # localidade) que no Orto sao classes SEPARADAS, distinguidas por 'tipo'.
 #   orto_class : (topo_class_source, [codigos_tipo])
 SPLIT = {
-    "llp_localidade": ("llp_localidade", [1, 2, 3, 4, 9, 10]),
+    "llp_localidade": ("llp_localidade", [1, 2, 3, 4, 9, 10, 11]),
     "llp_aglomerado_rural": ("llp_localidade", [5, 6, 7]),
     "llp_nome_local": ("llp_localidade", [8]),
     "llp_area_pub_militar": ("llp_limite_especial", [36]),

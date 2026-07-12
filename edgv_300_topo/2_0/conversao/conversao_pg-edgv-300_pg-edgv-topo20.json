@@ -8472,12 +8472,6 @@
           "valor": 0
         }
       ],
-      "atributos_default_B": [
-        {
-          "nome_atributo": "navegavel",
-          "valor": 1
-        }
-      ],
       "mapeamento_atributos": [
         {
           "attr_A": "caladomaxseca",

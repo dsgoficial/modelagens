@@ -12,7 +12,8 @@
     {
       "nome": "observacao",
       "tipo": "varchar(255)",
-      "cardinalidade": "0..1"
+      "cardinalidade": "0..1",
+      "descricao": "Observação livre sobre a feição, para registro que não cabe nos demais atributos."
     }
   ],
   "coord_sys": 4674,
@@ -31,12 +32,12 @@
         {
           "code": 1,
           "value": "Obstáculo individual",
-          "descricao": "-"
+          "descricao": "Obstáculo isolado, uma única estrutura vertical (torre, chaminé, mastro)."
         },
         {
           "code": 2,
           "value": "Obstáculo múltiplo",
-          "descricao": "-"
+          "descricao": "Obstáculo múltiplo, um agrupamento de estruturas verticais próximas tratado como um todo."
         }
       ]
     },
@@ -46,17 +47,17 @@
         {
           "code": 1,
           "value": "Esquerda",
-          "descricao": "-"
+          "descricao": "Rótulo ancorado pela borda esquerda; o texto se estende para a direita do ponto."
         },
         {
           "code": 2,
           "value": "Centro",
-          "descricao": "-"
+          "descricao": "Rótulo ancorado pelo centro horizontal."
         },
         {
           "code": 3,
           "value": "Direita",
-          "descricao": "-"
+          "descricao": "Rótulo ancorado pela borda direita; o texto se estende para a esquerda do ponto."
         }
       ]
     },
@@ -66,17 +67,17 @@
         {
           "code": 1,
           "value": "Inferior",
-          "descricao": "-"
+          "descricao": "Rótulo ancorado pela base; o texto se estende para cima do ponto."
         },
         {
           "code": 2,
           "value": "Meio",
-          "descricao": "-"
+          "descricao": "Rótulo ancorado pela linha média vertical."
         },
         {
           "code": 3,
           "value": "Superior",
-          "descricao": "-"
+          "descricao": "Rótulo ancorado pelo topo; o texto se estende para baixo do ponto."
         }
       ]
     },
@@ -85,31 +86,38 @@
       "valores": [
         {
           "code": 0,
-          "value": "Desconhecida"
+          "value": "Desconhecida",
+          "descricao": "Distância entre os trilhos não conhecida."
         },
         {
           "code": 1,
-          "value": "Métrica"
+          "value": "Métrica",
+          "descricao": "Bitola métrica (1,00 m entre trilhos), a mais comum na malha brasileira."
         },
         {
           "code": 2,
-          "value": "Internacional"
+          "value": "Internacional",
+          "descricao": "Bitola internacional ou padrão (1,435 m), usada em metrôs e ferrovias novas."
         },
         {
           "code": 3,
-          "value": "Larga"
+          "value": "Larga",
+          "descricao": "Bitola larga (em torno de 1,60 m), de maior estabilidade para cargas pesadas."
         },
         {
           "code": 4,
-          "value": "Mista métrica internacional"
+          "value": "Mista métrica internacional",
+          "descricao": "Bitola mista com três trilhos, servindo material métrico e internacional na mesma via."
         },
         {
           "code": 5,
-          "value": "Mista métrica larga"
+          "value": "Mista métrica larga",
+          "descricao": "Bitola mista com três trilhos, servindo material métrico e largo na mesma via."
         },
         {
           "code": 6,
-          "value": "Mista internacional larga"
+          "value": "Mista internacional larga",
+          "descricao": "Bitola mista com três trilhos, servindo material internacional e largo na mesma via."
         }
       ]
     },
@@ -119,332 +127,332 @@
         {
           "code": 0,
           "value": "Desconhecido",
-          "descricao": "-"
+          "descricao": "Produto não informado."
         },
         {
           "code": 3,
           "value": "Petróleo",
-          "descricao": "-"
+          "descricao": "Petróleo: óleo bruto extraído para refino em combustíveis."
         },
         {
           "code": 5,
           "value": "Gás",
-          "descricao": "-"
+          "descricao": "Gás natural: hidrocarboneto gasoso, associado ou não ao petróleo."
         },
         {
           "code": 18,
           "value": "Cascalho",
-          "descricao": "-"
+          "descricao": "Cascalho: fragmentos grossos de rocha, usados em pavimentação e drenagem."
         },
         {
           "code": 22,
           "value": "Pedra (brita)",
-          "descricao": "-"
+          "descricao": "Pedra britada (brita): rocha fragmentada por britagem, agregado de construção."
         },
         {
           "code": 23,
           "value": "Granito",
-          "descricao": "-"
+          "descricao": "Granito: rocha ígnea dura, ornamental e de construção."
         },
         {
           "code": 24,
           "value": "Mármore",
-          "descricao": "-"
+          "descricao": "Mármore: rocha carbonática metamórfica, ornamental."
         },
         {
           "code": 25,
           "value": "Bauxita",
-          "descricao": "-"
+          "descricao": "Bauxita: minério do qual se extrai o alumínio."
         },
         {
           "code": 26,
           "value": "Manganês",
-          "descricao": "-"
+          "descricao": "Manganês: metal usado em ligas de aço."
         },
         {
           "code": 27,
           "value": "Talco",
-          "descricao": "-"
+          "descricao": "Talco: mineral macio, usado em pó, tinta e cosméticos."
         },
         {
           "code": 32,
           "value": "Cobre",
-          "descricao": "-"
+          "descricao": "Cobre: metal condutor, usado em fios e ligas."
         },
         {
           "code": 33,
           "value": "Carvão mineral",
-          "descricao": "-"
+          "descricao": "Carvão mineral: combustível fóssil sólido, distinto do carvão vegetal."
         },
         {
           "code": 34,
           "value": "Sal",
-          "descricao": "-"
+          "descricao": "Sal: cloreto de sódio, de salina ou sal-gema."
         },
         {
           "code": 35,
           "value": "Ferro",
-          "descricao": "-"
+          "descricao": "Ferro: minério (hematita, magnetita), base da siderurgia."
         },
         {
           "code": 37,
           "value": "Ouro",
-          "descricao": "-"
+          "descricao": "Ouro: metal precioso, de veio ou de aluvião."
         },
         {
           "code": 38,
           "value": "Diamante",
-          "descricao": "-"
+          "descricao": "Diamante: gema, a forma mais dura do carbono."
         },
         {
           "code": 39,
           "value": "Prata",
-          "descricao": "-"
+          "descricao": "Prata: metal precioso e condutor."
         },
         {
           "code": 40,
           "value": "Pedra preciosa",
-          "descricao": "-"
+          "descricao": "Pedra preciosa genérica, quando a espécie não é especificada."
         },
         {
           "code": 42,
           "value": "Areia",
-          "descricao": "-"
+          "descricao": "Areia: sedimento fino de quartzo, agregado de construção."
         },
         {
           "code": 43,
           "value": "Saibro/piçarra",
-          "descricao": "-"
+          "descricao": "Saibro ou piçarra: solo areno-argiloso para aterro e sub-base."
         },
         {
           "code": 45,
           "value": "Ágata",
-          "descricao": "-"
+          "descricao": "Ágata: variedade de calcedônia, gema ornamental."
         },
         {
           "code": 47,
           "value": "Água marinha",
-          "descricao": "-"
+          "descricao": "Água-marinha: variedade azul do berilo, gema."
         },
         {
           "code": 48,
           "value": "Água mineral",
-          "descricao": "-"
+          "descricao": "Água mineral: água subterrânea de composição própria, envasada."
         },
         {
           "code": 49,
           "value": "Alexandrita",
-          "descricao": "-"
+          "descricao": "Alexandrita: variedade rara do crisoberilo, gema que muda de cor."
         },
         {
           "code": 50,
           "value": "Ametista",
-          "descricao": "-"
+          "descricao": "Ametista: variedade roxa do quartzo, gema."
         },
         {
           "code": 51,
           "value": "Amianto",
-          "descricao": "-"
+          "descricao": "Amianto (asbesto): mineral fibroso, isolante térmico."
         },
         {
           "code": 52,
           "value": "Argila",
-          "descricao": "-"
+          "descricao": "Argila: sedimento plástico, matéria-prima de cerâmica."
         },
         {
           "code": 53,
           "value": "Barita",
-          "descricao": "-"
+          "descricao": "Barita: sulfato de bário, carga industrial e fluido de perfuração."
         },
         {
           "code": 54,
           "value": "Bentonita",
-          "descricao": "-"
+          "descricao": "Bentonita: argila expansiva, usada em fluidos e vedação."
         },
         {
           "code": 55,
           "value": "Calcário",
-          "descricao": "-"
+          "descricao": "Calcário: rocha carbonática, insumo de cimento e cal."
         },
         {
           "code": 56,
           "value": "Carvão vegetal",
-          "descricao": "-"
+          "descricao": "Carvão vegetal: carvão de biomassa, distinto do mineral fóssil."
         },
         {
           "code": 57,
           "value": "Caulim",
-          "descricao": "-"
+          "descricao": "Caulim: argila branca, usada em papel e cerâmica."
         },
         {
           "code": 59,
           "value": "Chumbo",
-          "descricao": "-"
+          "descricao": "Chumbo: metal pesado, usado em baterias."
         },
         {
           "code": 60,
           "value": "Citrino",
-          "descricao": "-"
+          "descricao": "Citrino: variedade amarela do quartzo, gema."
         },
         {
           "code": 61,
           "value": "Crisoberilo",
-          "descricao": "-"
+          "descricao": "Crisoberilo: mineral de berílio e alumínio, gema."
         },
         {
           "code": 62,
           "value": "Cristal de rocha",
-          "descricao": "-"
+          "descricao": "Cristal de rocha: quartzo incolor e transparente."
         },
         {
           "code": 63,
           "value": "Cromo",
-          "descricao": "-"
+          "descricao": "Cromo: metal de ligas inoxidáveis."
         },
         {
           "code": 64,
           "value": "Diatomita",
-          "descricao": "-"
+          "descricao": "Diatomita: rocha silicosa porosa, usada como filtro."
         },
         {
           "code": 65,
           "value": "Dolomito",
-          "descricao": "-"
+          "descricao": "Dolomito: rocha de carbonato de cálcio e magnésio."
         },
         {
           "code": 67,
           "value": "Esmeralda",
-          "descricao": "-"
+          "descricao": "Esmeralda: variedade verde do berilo, gema."
         },
         {
           "code": 68,
           "value": "Estanho",
-          "descricao": "-"
+          "descricao": "Estanho: metal (cassiterita), usado em solda e ligas."
         },
         {
           "code": 69,
           "value": "Feldspato",
-          "descricao": "-"
+          "descricao": "Feldspato: silicato usado em vidro e cerâmica."
         },
         {
           "code": 70,
           "value": "Fosfato",
-          "descricao": "-"
+          "descricao": "Fosfato: minério base de fertilizantes."
         },
         {
           "code": 71,
           "value": "Gipsita",
-          "descricao": "-"
+          "descricao": "Gipsita: sulfato de cálcio, matéria-prima do gesso."
         },
         {
           "code": 72,
           "value": "Grafita",
-          "descricao": "-"
+          "descricao": "Grafita: forma cristalina do carbono, lubrificante e eletrodo."
         },
         {
           "code": 73,
           "value": "Granada",
-          "descricao": "-"
+          "descricao": "Granada: silicato usado como gema e abrasivo."
         },
         {
           "code": 74,
           "value": "Lítio",
-          "descricao": "-"
+          "descricao": "Lítio: metal leve, usado em baterias."
         },
         {
           "code": 78,
           "value": "Magnesita",
-          "descricao": "-"
+          "descricao": "Magnesita: minério de magnésio, refratário."
         },
         {
           "code": 79,
           "value": "Mica",
-          "descricao": "-"
+          "descricao": "Mica: silicato lamelar, isolante elétrico."
         },
         {
           "code": 80,
           "value": "Nióbio",
-          "descricao": "-"
+          "descricao": "Nióbio: metal de ligas especiais de alta resistência."
         },
         {
           "code": 81,
           "value": "Níquel",
-          "descricao": "-"
+          "descricao": "Níquel: metal de ligas inoxidáveis e baterias."
         },
         {
           "code": 82,
           "value": "Opala",
-          "descricao": "-"
+          "descricao": "Opala: gema de sílica hidratada, opalescente."
         },
         {
           "code": 83,
           "value": "Rocha ornamental",
-          "descricao": "-"
+          "descricao": "Rocha ornamental: bloco para revestimento, quando a rocha não é especificada."
         },
         {
           "code": 84,
           "value": "Sal-gema",
-          "descricao": "-"
+          "descricao": "Sal-gema: sal de rocha extraído de mina, distinto do de salina."
         },
         {
           "code": 85,
           "value": "Terras raras",
-          "descricao": "-"
+          "descricao": "Terras raras: grupo de elementos usados em alta tecnologia."
         },
         {
           "code": 86,
           "value": "Titânio",
-          "descricao": "-"
+          "descricao": "Titânio: metal leve e resistente (ilmenita, rutilo)."
         },
         {
           "code": 87,
           "value": "Topázio",
-          "descricao": "-"
+          "descricao": "Topázio: gema de silicato de alumínio."
         },
         {
           "code": 88,
           "value": "Tório",
-          "descricao": "-"
+          "descricao": "Tório: elemento radioativo de uso nuclear."
         },
         {
           "code": 89,
           "value": "Tungstênio",
-          "descricao": "-"
+          "descricao": "Tungstênio: metal muito denso e refratário (scheelita)."
         },
         {
           "code": 90,
           "value": "Turfa",
-          "descricao": "-"
+          "descricao": "Turfa: matéria orgânica parcialmente carbonizada, combustível."
         },
         {
           "code": 91,
           "value": "Turmalina",
-          "descricao": "-"
+          "descricao": "Turmalina: silicato, gema de cores variadas."
         },
         {
           "code": 92,
           "value": "Urânio",
-          "descricao": "-"
+          "descricao": "Urânio: elemento radioativo, combustível nuclear."
         },
         {
           "code": 93,
           "value": "Vermiculita",
-          "descricao": "-"
+          "descricao": "Vermiculita: mica expansível, isolante e substrato agrícola."
         },
         {
           "code": 94,
           "value": "Zinco",
-          "descricao": "-"
+          "descricao": "Zinco: metal de galvanização e ligas."
         },
         {
           "code": 99,
           "value": "Outros",
-          "descricao": "-"
+          "descricao": "Outro produto não listado."
         },
         {
           "code": 100,
           "value": "Zircônio",
-          "descricao": "-"
+          "descricao": "Zircônio: metal refratário (zirconita), resistente à corrosão."
         }
       ]
     },
@@ -454,17 +462,17 @@
         {
           "code": 1,
           "value": "Na linha",
-          "descricao": "-"
+          "descricao": "Rótulo sobre a linha, interrompendo o traçado do curso."
         },
         {
           "code": 2,
           "value": "Acima da linha",
-          "descricao": "-"
+          "descricao": "Rótulo posicionado acima da linha do curso."
         },
         {
           "code": 3,
           "value": "Abaixo da linha",
-          "descricao": "-"
+          "descricao": "Rótulo posicionado abaixo da linha do curso."
         }
       ]
     },
@@ -558,15 +566,18 @@
       "valores": [
         {
           "code": 1,
-          "value": "Esquerda"
+          "value": "Esquerda",
+          "descricao": "Texto ancorado pela borda esquerda, que cresce para a direita a partir do ponto de inserção."
         },
         {
           "code": 2,
-          "value": "Centro"
+          "value": "Centro",
+          "descricao": "Texto ancorado pelo meio, distribuído simetricamente em torno do ponto de inserção."
         },
         {
           "code": 3,
-          "value": "Direita"
+          "value": "Direita",
+          "descricao": "Texto ancorado pela borda direita, que cresce para a esquerda a partir do ponto de inserção."
         }
       ]
     },
@@ -575,15 +586,18 @@
       "valores": [
         {
           "code": 0,
-          "value": "Desconhecido"
+          "value": "Desconhecido",
+          "descricao": "Não se dispõe da informação."
         },
         {
           "code": 1,
-          "value": "Sim"
+          "value": "Sim",
+          "descricao": "A condição se verifica (afirmativo)."
         },
         {
           "code": 2,
-          "value": "Não"
+          "value": "Não",
+          "descricao": "A condição não se verifica (negativo)."
         }
       ]
     },
@@ -592,27 +606,33 @@
       "valores": [
         {
           "code": 0,
-          "value": "Desconhecida"
+          "value": "Desconhecida",
+          "descricao": "Não se sabe quem administra a feição."
         },
         {
           "code": 1,
-          "value": "Federal"
+          "value": "Federal",
+          "descricao": "Sob administração da União; caso das rodovias BR e das ferrovias sob o governo central."
         },
         {
           "code": 2,
-          "value": "Estadual"
+          "value": "Estadual",
+          "descricao": "Sob administração do governo estadual; caso das rodovias estaduais."
         },
         {
           "code": 3,
-          "value": "Municipal"
+          "value": "Municipal",
+          "descricao": "Sob administração da prefeitura; caso das vias municipais."
         },
         {
           "code": 6,
-          "value": "Particular"
+          "value": "Particular",
+          "descricao": "Sob administração de pessoa ou empresa privada, sem delegação do poder público."
         },
         {
           "code": 7,
-          "value": "Concessionada"
+          "value": "Concessionada",
+          "descricao": "Operada por empresa privada sob concessão, mantendo o poder público a titularidade; caso das rodovias pedagiadas."
         }
       ]
     },
@@ -621,11 +641,13 @@
       "valores": [
         {
           "code": 1,
-          "value": "Sim"
+          "value": "Sim",
+          "descricao": "Verdadeiro."
         },
         {
           "code": 2,
-          "value": "Não"
+          "value": "Não",
+          "descricao": "Falso."
         }
       ]
     },
@@ -634,15 +656,18 @@
       "valores": [
         {
           "code": 3,
-          "value": "Sumidouro - Canalização, Gruta ou fenda"
+          "value": "Sumidouro - Canalização, Gruta ou fenda",
+          "descricao": "Sumidouro por conduto: o curso d'água some no subsolo por uma abertura definida (canalização, gruta ou fenda na rocha)."
         },
         {
           "code": 4,
-          "value": "Sumidouro - Desconhecida, Absorção"
+          "value": "Sumidouro - Desconhecida, Absorção",
+          "descricao": "Sumidouro por absorção difusa: o curso some infiltrando no terreno permeável, sem uma abertura identificável."
         },
         {
           "code": 5,
-          "value": "Vertedouro"
+          "value": "Vertedouro",
+          "descricao": "Vertedouro (ressurgência): ponto onde a água subterrânea ressurge à superfície, o inverso do sumidouro."
         }
       ]
     },
@@ -651,19 +676,23 @@
       "valores": [
         {
           "code": 1,
-          "value": "Fora de polígono"
+          "value": "Fora de polígono",
+          "descricao": "Trecho fora de massa d'água representada como área; drenagem em linha isolada."
         },
         {
           "code": 2,
-          "value": "Dentro de polígono - Trecho principal"
+          "value": "Dentro de polígono - Trecho principal",
+          "descricao": "Trecho dentro de massa d'água em área, correndo pelo eixo do fluxo principal."
         },
         {
           "code": 3,
-          "value": "Dentro de polígono - Trecho secundário"
+          "value": "Dentro de polígono - Trecho secundário",
+          "descricao": "Trecho dentro de massa d'água em área, ramo secundário do fluxo."
         },
         {
           "code": 4,
-          "value": "Dentro de polígono - Trecho compartilhado"
+          "value": "Dentro de polígono - Trecho compartilhado",
+          "descricao": "Trecho dentro de massa d'água em área, compartilhado entre corpos ou fluxos."
         }
       ]
     },
@@ -672,11 +701,13 @@
       "valores": [
         {
           "code": 5,
-          "value": "A céu aberto"
+          "value": "A céu aberto",
+          "descricao": "Lavra a céu aberto, na superfície (cava, pedreira), distinta da galeria subterrânea."
         },
         {
           "code": 6,
-          "value": "Subterrânea"
+          "value": "Subterrânea",
+          "descricao": "Lavra subterrânea, por poços e galerias, sem remover a cobertura do terreno."
         }
       ]
     },
@@ -685,15 +716,18 @@
       "valores": [
         {
           "code": 1,
-          "value": "Mestra"
+          "value": "Mestra",
+          "descricao": "Curva mestra: realçada a intervalos regulares, com traço reforçado e cota rotulada."
         },
         {
           "code": 2,
-          "value": "Normal"
+          "value": "Normal",
+          "descricao": "Curva normal: curva no intervalo padrão da equidistância."
         },
         {
           "code": 3,
-          "value": "Auxiliar"
+          "value": "Auxiliar",
+          "descricao": "Curva auxiliar: curva intermediária, traçada em meia equidistância em áreas de relevo suave."
         }
       ]
     },
@@ -702,23 +736,28 @@
       "valores": [
         {
           "code": 0,
-          "value": "Desconhecida"
+          "value": "Desconhecida",
+          "descricao": "Esfera legal responsável não conhecida."
         },
         {
           "code": 1,
-          "value": "Federal"
+          "value": "Federal",
+          "descricao": "Domínio legal da União (âmbito federal)."
         },
         {
           "code": 2,
-          "value": "Estadual"
+          "value": "Estadual",
+          "descricao": "Domínio legal do estado."
         },
         {
           "code": 3,
-          "value": "Municipal"
+          "value": "Municipal",
+          "descricao": "Domínio legal do município."
         },
         {
           "code": 6,
-          "value": "Particular"
+          "value": "Particular",
+          "descricao": "Domínio legal privado (bem particular)."
         }
       ]
     },
@@ -727,11 +766,13 @@
       "valores": [
         {
           "code": 1,
-          "value": "Barragem"
+          "value": "Barragem",
+          "descricao": "Barragem: barra um curso d'água para acumular volume em reservatório."
         },
         {
           "code": 2,
-          "value": "Dique"
+          "value": "Dique",
+          "descricao": "Dique: muro longitudinal que confina a água e protege a área baixa de inundação, sem represar."
         }
       ]
     },
@@ -740,43 +781,53 @@
       "valores": [
         {
           "code": 0,
-          "value": "Desconhecido"
+          "value": "Desconhecido",
+          "descricao": "Material da feição não conhecido ou não informado."
         },
         {
           "code": 1,
-          "value": "Alvenaria"
+          "value": "Alvenaria",
+          "descricao": "Alvenaria: tijolo ou bloco cerâmico assentado com argamassa."
         },
         {
           "code": 2,
-          "value": "Concreto"
+          "value": "Concreto",
+          "descricao": "Concreto, moldado ou pré-fabricado (distinto da alvenaria de tijolos)."
         },
         {
           "code": 3,
-          "value": "Metal"
+          "value": "Metal",
+          "descricao": "Metal, como aço, ferro ou alumínio."
         },
         {
           "code": 4,
-          "value": "Rocha"
+          "value": "Rocha",
+          "descricao": "Rocha ou pedra natural, empregada sem processamento em concreto."
         },
         {
           "code": 5,
-          "value": "Madeira"
+          "value": "Madeira",
+          "descricao": "Madeira, natural ou beneficiada."
         },
         {
           "code": 9,
-          "value": "Fibra"
+          "value": "Fibra",
+          "descricao": "Fibra ou material plástico (polímero, fibra de vidro, lona)."
         },
         {
           "code": 23,
-          "value": "Terra"
+          "value": "Terra",
+          "descricao": "Terra compactada, como taipa de pilão ou aterro apiloado."
         },
         {
           "code": 97,
-          "value": "Não aplicável"
+          "value": "Não aplicável",
+          "descricao": "O atributo material não se aplica a esta feição."
         },
         {
           "code": 98,
-          "value": "Outros"
+          "value": "Outros",
+          "descricao": "Material conhecido, porém não previsto entre as opções listadas."
         }
       ]
     },
@@ -785,19 +836,23 @@
       "valores": [
         {
           "code": 0,
-          "value": "Desconhecido"
+          "value": "Desconhecido",
+          "descricao": "Quantidade de vias paralelas não conhecida."
         },
         {
           "code": 1,
-          "value": "Simples"
+          "value": "Simples",
+          "descricao": "Via singela: um único par de trilhos, com tráfego alternado nos dois sentidos."
         },
         {
           "code": 2,
-          "value": "Dupla"
+          "value": "Dupla",
+          "descricao": "Via dupla: dois pares de trilhos paralelos, um para cada sentido."
         },
         {
           "code": 3,
-          "value": "Múltipla"
+          "value": "Múltipla",
+          "descricao": "Via múltipla: três ou mais pares de trilhos paralelos no mesmo trecho."
         }
       ]
     },
@@ -806,15 +861,18 @@
       "valores": [
         {
           "code": 12,
-          "value": "Adjacentes"
+          "value": "Adjacentes",
+          "descricao": "Pistas lado a lado no mesmo nível, separadas apenas por canteiro ou faixa."
         },
         {
           "code": 13,
-          "value": "Superpostas"
+          "value": "Superpostas",
+          "descricao": "Pistas em tabuleiros sobrepostos, uma acima da outra, como em ponte de dois andares."
         },
         {
           "code": 97,
-          "value": "Não aplicável"
+          "value": "Não aplicável",
+          "descricao": "Não aplicável a esta feição."
         }
       ]
     },
@@ -823,27 +881,33 @@
       "valores": [
         {
           "code": 0,
-          "value": "Desconhecido"
+          "value": "Desconhecido",
+          "descricao": "Posição do trecho em relação ao terreno não conhecida."
         },
         {
           "code": 2,
-          "value": "Superfície"
+          "value": "Superfície",
+          "descricao": "No plano do terreno, apoiado sobre a superfície natural."
         },
         {
           "code": 3,
-          "value": "Elevado"
+          "value": "Elevado",
+          "descricao": "Elevado acima do terreno, sobre estrutura, pilares ou aterro."
         },
         {
           "code": 4,
-          "value": "Emerso"
+          "value": "Emerso",
+          "descricao": "Emerso, acima da lâmina d'água (parte visível sobre o corpo d'água)."
         },
         {
           "code": 5,
-          "value": "Submerso"
+          "value": "Submerso",
+          "descricao": "Submerso, sob a lâmina d'água (caso de duto ou cabo no leito)."
         },
         {
           "code": 6,
-          "value": "Subterrâneo"
+          "value": "Subterrâneo",
+          "descricao": "Subterrâneo, escavado abaixo da superfície do terreno."
         }
       ]
     },
@@ -852,19 +916,23 @@
       "valores": [
         {
           "code": 0,
-          "value": "Desconhecido"
+          "value": "Desconhecido",
+          "descricao": "Regime de permanência da água desconhecido ou não informado."
         },
         {
           "code": 1,
-          "value": "Permanente"
+          "value": "Permanente",
+          "descricao": "Perene: água presente o ano todo, sem secar em condições normais."
         },
         {
           "code": 3,
-          "value": "Temporário"
+          "value": "Temporário",
+          "descricao": "Intermitente: água presente só em parte do ano, tipicamente na estação chuvosa, secando na estiagem."
         },
         {
           "code": 5,
-          "value": "Seco"
+          "value": "Seco",
+          "descricao": "Efêmero: leito normalmente seco, que só retém água logo após chuvas fortes ou eventos excepcionais."
         }
       ]
     },
@@ -873,23 +941,28 @@
       "valores": [
         {
           "code": 0,
-          "value": "Desconhecido"
+          "value": "Desconhecido",
+          "descricao": "Tipo de revestimento não conhecido."
         },
         {
           "code": 1,
-          "value": "Leito natural"
+          "value": "Leito natural",
+          "descricao": "Leito natural, o próprio terreno em terra sem revestimento (estrada de chão)."
         },
         {
           "code": 2,
-          "value": "Revestimento primário (solto)"
+          "value": "Revestimento primário (solto)",
+          "descricao": "Revestimento primário de material solto compactado (cascalho, saibro)."
         },
         {
           "code": 3,
-          "value": "Pavimentado"
+          "value": "Pavimentado",
+          "descricao": "Pavimento rígido ou flexível de asfalto ou concreto."
         },
         {
           "code": 4,
-          "value": "Calçado"
+          "value": "Calçado",
+          "descricao": "Calçamento com peças justapostas (paralelepípedo, pedra, bloco)."
         }
       ]
     },
@@ -898,23 +971,28 @@
       "valores": [
         {
           "code": 0,
-          "value": "Desconhecida"
+          "value": "Desconhecida",
+          "descricao": "Situação física não informada."
         },
         {
           "code": 1,
-          "value": "Abandonada"
+          "value": "Abandonada",
+          "descricao": "Concluída, porém sem uso ou ocupação atual."
         },
         {
           "code": 2,
-          "value": "Destruída"
+          "value": "Destruída",
+          "descricao": "Demolida ou arruinada, não mais funcional."
         },
         {
           "code": 3,
-          "value": "Construída"
+          "value": "Construída",
+          "descricao": "Concluída e em uso normal."
         },
         {
           "code": 4,
-          "value": "Em construção"
+          "value": "Em construção",
+          "descricao": "Obra em andamento, ainda não concluída."
         }
       ]
     },
@@ -923,47 +1001,58 @@
       "valores": [
         {
           "code": 1,
-          "value": "Rio (com fluxo)"
+          "value": "Rio (com fluxo)",
+          "descricao": "Trecho de rio natural largo o bastante para ser representado como área (não como eixo), com fluxo corrente."
         },
         {
           "code": 2,
-          "value": "Canal (com fluxo)"
+          "value": "Canal (com fluxo)",
+          "descricao": "Canal ou curso d'água artificial escavado, com fluxo corrente, representado como área."
         },
         {
           "code": 3,
-          "value": "Oceano (sem fluxo)"
+          "value": "Oceano (sem fluxo)",
+          "descricao": "Oceano: massa de água salgada aberta que envolve os continentes."
         },
         {
           "code": 4,
-          "value": "Baía (sem fluxo)"
+          "value": "Baía (sem fluxo)",
+          "descricao": "Baía: reentrância ampla e abrigada do litoral, com boca larga aberta ao mar."
         },
         {
           "code": 5,
-          "value": "Enseada (sem fluxo)"
+          "value": "Enseada (sem fluxo)",
+          "descricao": "Enseada: pequena reentrância do litoral, de boca mais aberta e menos abrigada que a baía."
         },
         {
           "code": 6,
-          "value": "Meandro Abandonado (sem fluxo)"
+          "value": "Meandro Abandonado (sem fluxo)",
+          "descricao": "Meandro abandonado: curva de rio isolada do curso principal, que ficou sem fluxo passante."
         },
         {
           "code": 7,
-          "value": "Lago ou Lagoa (sem fluxo)"
+          "value": "Lago ou Lagoa (sem fluxo)",
+          "descricao": "Lago ou lagoa: corpo d'água interior parado, sem ligação de troca com o mar."
         },
         {
           "code": 9,
-          "value": "Laguna (com fluxo)"
+          "value": "Laguna (com fluxo)",
+          "descricao": "Laguna: corpo d'água costeiro ligado ao mar por uma abertura, com troca de água e salinidade variável."
         },
         {
           "code": 10,
-          "value": "Represa/açude com fluxo"
+          "value": "Represa/açude com fluxo",
+          "descricao": "Reservatório de barramento com fluxo passante (represa d'água corrente), formado por barragem em curso d'água ativo."
         },
         {
           "code": 11,
-          "value": "Represa/açude sem fluxo"
+          "value": "Represa/açude sem fluxo",
+          "descricao": "Reservatório de barramento sem fluxo passante (açude, lago de acumulação fechado)."
         },
         {
           "code": 12,
-          "value": "Canal não operacional (sem fluxo)"
+          "value": "Canal não operacional (sem fluxo)",
+          "descricao": "Canal artificial desativado, que já não conduz água."
         }
       ]
     },
@@ -972,51 +1061,63 @@
       "valores": [
         {
           "code": 1,
-          "value": "Serra"
+          "value": "Serra",
+          "descricao": "Serra: cadeia alongada de elevações contíguas, sucessão de morros ou montanhas."
         },
         {
           "code": 2,
-          "value": "Morro"
+          "value": "Morro",
+          "descricao": "Morro: elevação isolada de altura moderada e vertentes suaves, menor que a montanha."
         },
         {
           "code": 3,
-          "value": "Montanha"
+          "value": "Montanha",
+          "descricao": "Montanha: elevação de grande altura e vertentes íngremes, maior que o morro."
         },
         {
           "code": 4,
-          "value": "Chapada"
+          "value": "Chapada",
+          "descricao": "Chapada: planalto de topo plano e extenso, limitado nas bordas por escarpas abruptas."
         },
         {
           "code": 5,
-          "value": "Maciço"
+          "value": "Maciço",
+          "descricao": "Maciço: bloco montanhoso compacto e macio, agrupamento de elevações sem alinhamento definido."
         },
         {
           "code": 6,
-          "value": "Planalto"
+          "value": "Planalto",
+          "descricao": "Planalto: superfície elevada e relativamente plana, situada acima das terras que a cercam."
         },
         {
           "code": 7,
-          "value": "Planície"
+          "value": "Planície",
+          "descricao": "Planície: superfície plana de baixa altitude, próxima ao nível do mar."
         },
         {
           "code": 9,
-          "value": "Península"
+          "value": "Península",
+          "descricao": "Península: porção de terra cercada de água em quase toda a volta, ligada ao continente por um istmo estreito."
         },
         {
           "code": 10,
-          "value": "Ponta"
+          "value": "Ponta",
+          "descricao": "Ponta: saliência estreita e baixa da costa que avança sobre a água."
         },
         {
           "code": 11,
-          "value": "Cabo"
+          "value": "Cabo",
+          "descricao": "Cabo: ponta ampla e proeminente do litoral, acidente costeiro destacado e de referência."
         },
         {
           "code": 12,
-          "value": "Praia"
+          "value": "Praia",
+          "descricao": "Praia: faixa de areia ou cascalho na orla, entre a terra e a linha d'água."
         },
         {
           "code": 17,
-          "value": "Pico"
+          "value": "Pico",
+          "descricao": "Pico: cume agudo e pontiagudo, ponto mais alto e proeminente de uma elevação."
         }
       ]
     },
@@ -1025,15 +1126,18 @@
       "valores": [
         {
           "code": 1,
-          "value": "Fluvial"
+          "value": "Fluvial",
+          "descricao": "Ilha fluvial: terra firme permanentemente emersa cercada pela água de um rio; distingue-se do banco de areia, que é depósito raso e submersível."
         },
         {
           "code": 2,
-          "value": "Marítima"
+          "value": "Marítima",
+          "descricao": "Ilha marítima: terra firme emersa cercada pelo mar; distingue-se da península, ligada ao continente por um istmo."
         },
         {
           "code": 3,
-          "value": "Lacustre"
+          "value": "Lacustre",
+          "descricao": "Ilha lacustre: terra firme emersa cercada pela água de um lago ou lagoa."
         }
       ]
     },
@@ -1042,67 +1146,83 @@
       "valores": [
         {
           "code": 1,
-          "value": "Poço dágua"
+          "value": "Poço dágua",
+          "descricao": "Poço d'água: escavação vertical raso para captar água do lençol freático, sem pressão natural."
         },
         {
           "code": 2,
-          "value": "Poço artesiano"
+          "value": "Poço artesiano",
+          "descricao": "Poço artesiano: perfuração profunda que atinge aquífero confinado, cuja água sobe sob pressão (distinto do poço freático raso)."
         },
         {
           "code": 3,
-          "value": "Olho dágua - permanente"
+          "value": "Olho dágua - permanente",
+          "descricao": "Olho d'água (fonte, nascente) com afloramento permanente de água ao longo de todo o ano."
         },
         {
           "code": 4,
-          "value": "Olho dágua - intermitente"
+          "value": "Olho dágua - intermitente",
+          "descricao": "Olho d'água (fonte, nascente) que aflora apenas em parte do ano, secando na estiagem."
         },
         {
           "code": 6,
-          "value": "Foz marítima"
+          "value": "Foz marítima",
+          "descricao": "Foz marítima: desembocadura de um curso d'água no mar, onde o rio encontra o oceano."
         },
         {
           "code": 8,
-          "value": "Rocha em água"
+          "value": "Rocha em água",
+          "descricao": "Rocha em água: afloramento rochoso submerso ou aflorante dentro de corpo d'água, perigo à navegação."
         },
         {
           "code": 9,
-          "value": "Cachoeira"
+          "value": "Cachoeira",
+          "descricao": "Cachoeira: queda d'água vertical de altura moderada, menor que o salto e a catarata."
         },
         {
           "code": 10,
-          "value": "Salto"
+          "value": "Salto",
+          "descricao": "Salto: queda d'água vertical de grande altura, em geral estreita."
         },
         {
           "code": 11,
-          "value": "Catarata"
+          "value": "Catarata",
+          "descricao": "Catarata: queda d'água de grande volume e largura, a mais imponente das quedas."
         },
         {
           "code": 12,
-          "value": "Corredeira"
+          "value": "Corredeira",
+          "descricao": "Corredeira: trecho raso de fluxo rápido e turbulento sobre leito com forte declive, mas sem queda vertical (distinto da cachoeira)."
         },
         {
           "code": 14,
-          "value": "Banco de areia fluvial"
+          "value": "Banco de areia fluvial",
+          "descricao": "Banco de areia fluvial: depósito raso de areia no leito de um rio, emerso na estiagem e coberto na cheia; distinto da ilha, que é terra firme permanente."
         },
         {
           "code": 15,
-          "value": "Banco de areia marítimo"
+          "value": "Banco de areia marítimo",
+          "descricao": "Banco de areia marinho: depósito raso de areia no fundo do mar próximo à costa, risco à navegação em baixa-mar."
         },
         {
           "code": 16,
-          "value": "Banco de areia lacustre"
+          "value": "Banco de areia lacustre",
+          "descricao": "Banco de areia lacustre: depósito raso de areia no fundo de um lago ou lagoa."
         },
         {
           "code": 17,
-          "value": "Banco de areia cordão arenoso"
+          "value": "Banco de areia cordão arenoso",
+          "descricao": "Cordão arenoso: banco de areia estreito e alongado, disposto paralelo à linha de costa."
         },
         {
           "code": 18,
-          "value": "Recife contiguo"
+          "value": "Recife contiguo",
+          "descricao": "Recife contíguo: recife ligado à costa, formando barreira colada à orla."
         },
         {
           "code": 19,
-          "value": "Recife afastado"
+          "value": "Recife afastado",
+          "descricao": "Recife afastado: recife destacado da costa, ao largo, isolado em mar aberto."
         }
       ]
     },
@@ -1112,77 +1232,92 @@
         {
           "code": 303,
           "value": "Linha de transmissão de energia",
-          "valor_filtro": "Linha de energia"
+          "valor_filtro": "Linha de energia",
+          "descricao": "Linha de alta tensão que leva a energia da geração às subestações, suspensa por torres."
         },
         {
           "code": 405,
           "value": "Estação geradora – Eólica",
-          "valor_filtro": "Estação geradora de energia"
+          "valor_filtro": "Estação geradora de energia",
+          "descricao": "Usina que gera eletricidade convertendo a energia cinética do vento por aerogeradores."
         },
         {
           "code": 406,
           "value": "Estação geradora – Solar",
-          "valor_filtro": "Estação geradora de energia"
+          "valor_filtro": "Estação geradora de energia",
+          "descricao": "Usina que gera eletricidade a partir da radiação solar, por painéis fotovoltaicos."
         },
         {
           "code": 407,
           "value": "Estação geradora – Maré-motriz",
-          "valor_filtro": "Estação geradora de energia"
+          "valor_filtro": "Estação geradora de energia",
+          "descricao": "Usina que gera eletricidade aproveitando o fluxo das marés (maré-motriz)."
         },
         {
           "code": 408,
           "value": "Estação geradora – Hidrelétrica",
-          "valor_filtro": "Estação geradora de energia"
+          "valor_filtro": "Estação geradora de energia",
+          "descricao": "Usina que gera eletricidade pela queda d'água represada, movendo turbinas hidráulicas."
         },
         {
           "code": 409,
           "value": "Estação geradora – Termelétrica",
-          "valor_filtro": "Estação geradora de energia"
+          "valor_filtro": "Estação geradora de energia",
+          "descricao": "Usina termelétrica que gera eletricidade queimando combustível (carvão, óleo, gás) para produzir vapor."
         },
         {
           "code": 410,
           "value": "Estação geradora – Nuclear",
-          "valor_filtro": "Estação geradora de energia"
+          "valor_filtro": "Estação geradora de energia",
+          "descricao": "Usina que gera eletricidade pelo calor da fissão nuclear em reator."
         },
         {
           "code": 411,
           "value": "Estação geradora – Biomassa",
-          "valor_filtro": "Estação geradora de energia"
+          "valor_filtro": "Estação geradora de energia",
+          "descricao": "Usina que gera eletricidade queimando matéria orgânica (bagaço de cana, lenha, resíduos)."
         },
         {
           "code": 498,
           "value": "Estação geradora – Outras",
-          "valor_filtro": "Estação geradora de energia"
+          "valor_filtro": "Estação geradora de energia",
+          "descricao": "Usina geradora cuja fonte primária não consta entre as listadas."
         },
         {
           "code": 501,
           "value": "Casa de Força",
-          "valor_filtro": "Casa de Força"
+          "valor_filtro": "Casa de Força",
+          "descricao": "Casa de força: edificação junto à usina que abriga as turbinas e os geradores."
         },
         {
           "code": 1401,
           "value": "Torre de energia",
-          "valor_filtro": "Torre de energia"
+          "valor_filtro": "Torre de energia",
+          "descricao": "Torre metálica que sustenta os cabos da linha de transmissão ao longo do traçado."
         },
         {
           "code": 1701,
           "value": "Aerogerador",
-          "valor_filtro": "Aerogerador"
+          "valor_filtro": "Aerogerador",
+          "descricao": "Aerogerador isolado, uma única turbina eólica sobre torre."
         },
         {
           "code": 1702,
           "value": "Múltiplos Aerogeradores",
-          "valor_filtro": "Aerogerador"
+          "valor_filtro": "Aerogerador",
+          "descricao": "Parque eólico, conjunto de vários aerogeradores agrupados numa área."
         },
         {
           "code": 1801,
           "value": "Subestação de transmissão de energia elétrica",
-          "valor_filtro": "Subestação de energia"
+          "valor_filtro": "Subestação de energia",
+          "descricao": "Subestação de transmissão, que eleva ou rebaixa a tensão entre linhas de alta tensão."
         },
         {
           "code": 1802,
           "value": "Subestação de distribuição de energia elétrica",
-          "valor_filtro": "Subestação de energia"
+          "valor_filtro": "Subestação de energia",
+          "descricao": "Subestação de distribuição, que rebaixa a tensão para a rede que atende o consumidor."
         }
       ],
       "filtro": true
@@ -1193,162 +1328,194 @@
         {
           "code": 607,
           "value": "Pedestre - Passagem subterrânea",
-          "valor_filtro": "Travessia pedestre"
+          "valor_filtro": "Travessia pedestre",
+          "descricao": "Passagem escavada sob a via por onde o pedestre cruza sem contato com o tráfego."
         },
         {
           "code": 608,
           "value": "Pedestre - Passarela",
-          "valor_filtro": "Travessia pedestre"
+          "valor_filtro": "Travessia pedestre",
+          "descricao": "Passarela elevada sobre a via por onde o pedestre cruza acima do tráfego."
         },
         {
           "code": 609,
           "value": "Pedestre - Pinguela",
-          "valor_filtro": "Travessia pedestre"
+          "valor_filtro": "Travessia pedestre",
+          "descricao": "Pinguela: passagem estreita e rústica, de tábua ou tronco, sobre curso d'água menor."
         },
         {
           "code": 701,
           "value": "Quebramar",
-          "valor_filtro": "Quebramar"
+          "valor_filtro": "Quebramar",
+          "descricao": "Quebramar: molhe destacado que abriga a área portuária da ação das ondas."
         },
         {
           "code": 801,
           "value": "Molhe",
-          "valor_filtro": "Molhe"
+          "valor_filtro": "Molhe",
+          "descricao": "Molhe: estrutura que avança no mar para fixar um canal ou proteger a entrada do porto."
         },
         {
           "code": 901,
           "value": "Comporta",
-          "valor_filtro": "Comporta"
+          "valor_filtro": "Comporta",
+          "descricao": "Comporta: anteparo móvel que controla a passagem de água num canal ou barragem."
         },
         {
           "code": 1001,
           "value": "Eclusa",
-          "valor_filtro": "Eclusa"
+          "valor_filtro": "Eclusa",
+          "descricao": "Eclusa: câmara com portas que vence o desnível de um curso d'água para a navegação passar."
         },
         {
           "code": 1201,
           "value": "Torre de comunicação",
-          "valor_filtro": "Torre de comunicação"
+          "valor_filtro": "Torre de comunicação",
+          "descricao": "Torre alta que sustenta antenas de telecomunicação (telefonia, rádio, TV)."
         },
         {
           "code": 1301,
           "value": "Antena de comunicação",
-          "valor_filtro": "Antena de comunicação"
+          "valor_filtro": "Antena de comunicação",
+          "descricao": "Antena que transmite ou recebe sinais, montada em torre ou sobre edificação."
         },
         {
           "code": 1400,
           "value": "Plataforma - Desconhecido",
-          "valor_filtro": "Plataforma"
+          "valor_filtro": "Plataforma",
+          "descricao": "Plataforma marítima cujo produto explorado não foi identificado."
         },
         {
           "code": 1401,
           "value": "Plataforma - Petróleo",
-          "valor_filtro": "Plataforma"
+          "valor_filtro": "Plataforma",
+          "descricao": "Plataforma marítima de extração de petróleo."
         },
         {
           "code": 1402,
           "value": "Plataforma - Gás",
-          "valor_filtro": "Plataforma"
+          "valor_filtro": "Plataforma",
+          "descricao": "Plataforma marítima de extração de gás natural."
         },
         {
           "code": 1495,
           "value": "Plataforma - Mista",
-          "valor_filtro": "Plataforma"
+          "valor_filtro": "Plataforma",
+          "descricao": "Plataforma marítima que extrai petróleo e gás no mesmo campo."
         },
         {
           "code": 1501,
           "value": "Funicular",
-          "valor_filtro": "Funicular"
+          "valor_filtro": "Funicular",
+          "descricao": "Funicular: veículo sobre trilhos puxado por cabo, vencendo rampa íngreme por contrapeso."
         },
         {
           "code": 1601,
           "value": "Cremalheira",
-          "valor_filtro": "Cremalheira"
+          "valor_filtro": "Cremalheira",
+          "descricao": "Cremalheira: via férrea com trilho central dentado que dá aderência em rampas fortes."
         },
         {
           "code": 1701,
           "value": "Girador Ferroviário",
-          "valor_filtro": "Girador Ferroviário"
+          "valor_filtro": "Girador Ferroviário",
+          "descricao": "Girador ferroviário: plataforma giratória que inverte o sentido da locomotiva."
         },
         {
           "code": 1801,
           "value": "Fundeadouro",
-          "valor_filtro": "Fundeadouro"
+          "valor_filtro": "Fundeadouro",
+          "descricao": "Fundeadouro: área balizada onde as embarcações lançam âncora e permanecem paradas."
         },
         {
           "code": 1938,
           "value": "Atrac - Cais",
-          "valor_filtro": "Atracadouro Terminal"
+          "valor_filtro": "Atracadouro Terminal",
+          "descricao": "Cais: muralha de atracação assentada em terra firme, à beira do porto."
         },
         {
           "code": 1939,
           "value": "Atrac - Cais flutuante",
-          "valor_filtro": "Atracadouro Terminal"
+          "valor_filtro": "Atracadouro Terminal",
+          "descricao": "Cais flutuante: plataforma de atracação que sobe e desce com o nível da água."
         },
         {
           "code": 1940,
           "value": "Atrac - Trapiche",
-          "valor_filtro": "Atracadouro Terminal"
+          "valor_filtro": "Atracadouro Terminal",
+          "descricao": "Trapiche: passadiço de atracação sobre estacas que avança sobre a água."
         },
         {
           "code": 1941,
           "value": "Atrac - Molhe de atracação",
-          "valor_filtro": "Atracadouro Terminal"
+          "valor_filtro": "Atracadouro Terminal",
+          "descricao": "Molhe usado para atracação de embarcações, e não só para proteção do porto."
         },
         {
           "code": 1942,
           "value": "Atrac - Pier",
-          "valor_filtro": "Atracadouro Terminal"
+          "valor_filtro": "Atracadouro Terminal",
+          "descricao": "Píer: estrutura de atracação que avança perpendicular à margem, acostável dos dois lados."
         },
         {
           "code": 1943,
           "value": "Atrac - Dolfim",
-          "valor_filtro": "Atracadouro Terminal"
+          "valor_filtro": "Atracadouro Terminal",
+          "descricao": "Dolfim: bloco isolado, cravado no fundo, para amarrar ou apoiar a embarcação atracada."
         },
         {
           "code": 1944,
           "value": "Atrac - Desembarcadouro",
-          "valor_filtro": "Atracadouro Terminal"
+          "valor_filtro": "Atracadouro Terminal",
+          "descricao": "Desembarcadouro: ponto simples de embarque e desembarque de passageiros ou carga."
         },
         {
           "code": 2001,
           "value": "Caminho Aéreo – Teleférico",
-          "valor_filtro": "Caminho Aéreo"
+          "valor_filtro": "Caminho Aéreo",
+          "descricao": "Teleférico: cabine suspensa em cabo aéreo para transporte de passageiros sobre o relevo."
         },
         {
           "code": 2098,
           "value": "Caminho Aéreo – Outros",
-          "valor_filtro": "Caminho Aéreo"
+          "valor_filtro": "Caminho Aéreo",
+          "descricao": "Caminho aéreo por cabo de outro tipo não listado."
         },
         {
           "code": 1101,
           "value": "Trecho de comunicação - Sinal de TV",
-          "valor_filtro": "Trecho de comunicação"
+          "valor_filtro": "Trecho de comunicação",
+          "descricao": "Trecho de linha de comunicação que transporta sinal de televisão."
         },
         {
           "code": 1102,
           "value": "Trecho de comunicação - Dados",
-          "valor_filtro": "Trecho de comunicação"
+          "valor_filtro": "Trecho de comunicação",
+          "descricao": "Trecho de linha de comunicação que transporta dados."
         },
         {
           "code": 1103,
           "value": "Trecho de comunicação - Telefônica",
-          "valor_filtro": "Trecho de comunicação"
+          "valor_filtro": "Trecho de comunicação",
+          "descricao": "Trecho de linha de comunicação que transporta sinal telefônico."
         },
         {
           "code": 1104,
           "value": "Trecho de comunicação - Cabo submarino",
-          "valor_filtro": "Trecho de comunicação"
+          "valor_filtro": "Trecho de comunicação",
+          "descricao": "Trecho de comunicação por cabo submarino, assentado no leito do mar."
         },
         {
           "code": 1105,
           "value": "Trecho de comunicação - Fibra óptica terrestre",
-          "valor_filtro": "Trecho de comunicação"
+          "valor_filtro": "Trecho de comunicação",
+          "descricao": "Trecho de comunicação por cabo de fibra óptica em terra."
         },
         {
           "code": 1198,
           "value": "Trecho de comunicação - Outros",
-          "valor_filtro": "Trecho de comunicação"
+          "valor_filtro": "Trecho de comunicação",
+          "descricao": "Trecho de linha de comunicação de outra natureza não listada."
         }
       ],
       "filtro": true
@@ -1359,67 +1526,80 @@
         {
           "code": 101,
           "value": "Túnel",
-          "valor_filtro": "Túnel"
+          "valor_filtro": "Túnel",
+          "descricao": "Túnel: galeria escavada que faz a via atravessar por dentro do relevo ou obstáculo."
         },
         {
           "code": 102,
           "value": "Túnel - Passagem subterrânea sob via",
-          "valor_filtro": "Túnel"
+          "valor_filtro": "Túnel",
+          "descricao": "Túnel curto que faz uma via passar por baixo de outra (passagem inferior)."
         },
         {
           "code": 201,
           "value": "Ponte móvel",
-          "valor_filtro": "Ponte"
+          "valor_filtro": "Ponte",
+          "descricao": "Ponte móvel, cujo tabuleiro se levanta ou gira para dar passagem à navegação."
         },
         {
           "code": 202,
           "value": "Ponte pênsil",
-          "valor_filtro": "Ponte"
+          "valor_filtro": "Ponte",
+          "descricao": "Ponte pênsil, com o tabuleiro pendurado em cabos que descem das torres."
         },
         {
           "code": 203,
           "value": "Ponte fixa",
-          "valor_filtro": "Ponte"
+          "valor_filtro": "Ponte",
+          "descricao": "Ponte fixa comum, apoiada em pilares, sem partes móveis nem suspensão por cabos."
         },
         {
           "code": 204,
           "value": "Ponte estaiada",
-          "valor_filtro": "Ponte"
+          "valor_filtro": "Ponte",
+          "descricao": "Ponte estaiada, com o tabuleiro sustentado por estais retos ancorados em torres."
         },
         {
           "code": 205,
           "value": "Ponte flutuante",
-          "valor_filtro": "Ponte"
+          "valor_filtro": "Ponte",
+          "descricao": "Ponte flutuante, com o tabuleiro apoiado sobre flutuadores na água."
         },
         {
           "code": 301,
           "value": "Passagem elevada",
-          "valor_filtro": "Passagem elevada / Viaduto"
+          "valor_filtro": "Passagem elevada / Viaduto",
+          "descricao": "Passagem elevada, estrutura que faz uma via cruzar por cima de outra."
         },
         {
           "code": 302,
           "value": "Viaduto",
-          "valor_filtro": "Passagem elevada / Viaduto"
+          "valor_filtro": "Passagem elevada / Viaduto",
+          "descricao": "Viaduto: obra que vence depressão ou cruzamento em terra, sem curso d'água relevante embaixo."
         },
         {
           "code": 401,
           "value": "Travessia - Vau natural",
-          "valor_filtro": "Travessia"
+          "valor_filtro": "Travessia",
+          "descricao": "Vau natural: ponto raso onde se atravessa o curso d'água a pé ou de veículo, sem obra."
         },
         {
           "code": 402,
           "value": "Travessia - Vau construído",
-          "valor_filtro": "Travessia"
+          "valor_filtro": "Travessia",
+          "descricao": "Vau construído: leito reforçado e nivelado para permitir a travessia do curso d'água."
         },
         {
           "code": 501,
           "value": "Galeria/Bueiro",
-          "valor_filtro": "Galeria/Bueiro"
+          "valor_filtro": "Galeria/Bueiro",
+          "descricao": "Galeria ou bueiro: conduto sob o aterro da via que dá passagem à água de um lado a outro."
         },
         {
           "code": 97,
           "value": "Não aplicável",
-          "valor_filtro": "Não aplicável"
+          "valor_filtro": "Não aplicável",
+          "descricao": "Não aplicável a esta feição."
         }
       ],
       "filtro": true
@@ -1429,23 +1609,28 @@
       "valores": [
         {
           "code": 1,
-          "value": "Poço - água subterrânea"
+          "value": "Poço - água subterrânea",
+          "descricao": "Poço de captação de água subterrânea (aquífero), distinto do poço de petróleo."
         },
         {
           "code": 4,
-          "value": "Mina / Pedreira"
+          "value": "Mina / Pedreira",
+          "descricao": "Mina ou pedreira: lavra de minério ou rocha em escala industrial, distinta do garimpo artesanal."
         },
         {
           "code": 5,
-          "value": "Garimpo"
+          "value": "Garimpo",
+          "descricao": "Garimpo: extração artesanal ou informal, sem a estrutura industrial de uma mina."
         },
         {
           "code": 6,
-          "value": "Salina"
+          "value": "Salina",
+          "descricao": "Salina: obtenção de sal por evaporação de água salgada, distinta da mina de sal-gema."
         },
         {
           "code": 8,
-          "value": "Poço - petróleo"
+          "value": "Poço - petróleo",
+          "descricao": "Poço de petróleo ou gás, distinto do poço de água."
         }
       ]
     },
@@ -1454,19 +1639,23 @@
       "valores": [
         {
           "code": 5,
-          "value": "Bonde"
+          "value": "Bonde",
+          "descricao": "Bonde: veículo urbano de passageiros sobre trilhos, geralmente na própria rua."
         },
         {
           "code": 6,
-          "value": "Aeromóvel"
+          "value": "Aeromóvel",
+          "descricao": "Aeromóvel: veículo sobre trilhos impulsionado por ar comprimido, em via elevada."
         },
         {
           "code": 7,
-          "value": "Trem"
+          "value": "Trem",
+          "descricao": "Trem: ferrovia convencional de tração por locomotiva, para carga e passageiros."
         },
         {
           "code": 8,
-          "value": "Metrô"
+          "value": "Metrô",
+          "descricao": "Metrô: ferrovia urbana de passageiros, de alta capacidade e traçado segregado."
         }
       ]
     },
@@ -1475,67 +1664,83 @@
       "valores": [
         {
           "code": 2,
-          "value": "Terra indígena"
+          "value": "Terra indígena",
+          "descricao": "Terra indígena: área de posse permanente e usufruto exclusivo de povos indígenas, demarcada e sob regime da FUNAI."
         },
         {
           "code": 3,
-          "value": "Território quilombola"
+          "value": "Território quilombola",
+          "descricao": "Território quilombola: área titulada a comunidade remanescente de quilombo, sob domínio coletivo."
         },
         {
           "code": 5,
-          "value": "Unidade de Conservação"
+          "value": "Unidade de Conservação",
+          "descricao": "Unidade de conservação do SNUC cuja categoria específica não foi discriminada; usado quando só se sabe que a área é protegida."
         },
         {
           "code": 24,
-          "value": "Área de Proteção Ambiental – APA"
+          "value": "Área de Proteção Ambiental – APA",
+          "descricao": "Área de Proteção Ambiental (APA): unidade de uso sustentável, extensa e com ocupação humana, que concilia atividade econômica e proteção dos atributos naturais."
         },
         {
           "code": 25,
-          "value": "Área de Relevante Interesse Ecológico – ARIE"
+          "value": "Área de Relevante Interesse Ecológico – ARIE",
+          "descricao": "Área de Relevante Interesse Ecológico (ARIE): unidade de uso sustentável, de pequena extensão e pouca ocupação, com características naturais singulares a preservar."
         },
         {
           "code": 26,
-          "value": "Floresta – FLO"
+          "value": "Floresta – FLO",
+          "descricao": "Floresta Nacional, Estadual ou Municipal (FLONA/FLO): unidade de uso sustentável em floresta pública, voltada ao uso múltiplo e sustentável dos recursos florestais."
         },
         {
           "code": 27,
-          "value": "Reserva de Desenvolvimento Sustentável – RDS"
+          "value": "Reserva de Desenvolvimento Sustentável – RDS",
+          "descricao": "Reserva de Desenvolvimento Sustentável (RDS): unidade de uso sustentável habitada por populações tradicionais cujo modo de vida contribui para a conservação."
         },
         {
           "code": 28,
-          "value": "Reserva Extrativista – RESEX"
+          "value": "Reserva Extrativista – RESEX",
+          "descricao": "Reserva Extrativista (RESEX): unidade de uso sustentável de populações extrativistas, que exploram os recursos de forma sustentável."
         },
         {
           "code": 29,
-          "value": "Reserva de Fauna – REFAU"
+          "value": "Reserva de Fauna – REFAU",
+          "descricao": "Reserva de Fauna (REFAU): unidade de uso sustentável destinada a estudos técnico-científicos sobre populações de fauna nativa."
         },
         {
           "code": 30,
-          "value": "Reserva Particular do Patrimônio Natural – RPPN"
+          "value": "Reserva Particular do Patrimônio Natural – RPPN",
+          "descricao": "Reserva Particular do Patrimônio Natural (RPPN): unidade de uso sustentável em área privada, gravada em perpetuidade para conservar a biodiversidade."
         },
         {
           "code": 31,
-          "value": "Estação Ecológica – ESEC"
+          "value": "Estação Ecológica – ESEC",
+          "descricao": "Estação Ecológica (ESEC): unidade de proteção integral voltada à preservação da natureza e à pesquisa científica, com visitação restrita."
         },
         {
           "code": 32,
-          "value": "Parque – PAR"
+          "value": "Parque – PAR",
+          "descricao": "Parque Nacional, Estadual ou Municipal (PARNA): unidade de proteção integral que preserva ecossistemas e admite visitação, recreação e educação ambiental."
         },
         {
           "code": 33,
-          "value": "Monumento Natural – MONA"
+          "value": "Monumento Natural – MONA",
+          "descricao": "Monumento Natural (MONA): unidade de proteção integral que preserva sítios naturais singulares ou de rara beleza cênica."
         },
         {
           "code": 34,
-          "value": "Reserva Biológica – REBIO"
+          "value": "Reserva Biológica – REBIO",
+          "descricao": "Reserva Biológica (REBIO): unidade de proteção integral com o regime mais restritivo, sem interferência humana direta nem visitação comum."
         },
         {
           "code": 35,
-          "value": "Refúgio de Vida Silvestre – RVS"
+          "value": "Refúgio de Vida Silvestre – RVS",
+          "descricao": "Refúgio de Vida Silvestre (RVS): unidade de proteção integral que protege ambientes onde vivem espécies da fauna e da flora a conservar."
         },
         {
           "code": 36,
-          "value": "Área militar"
+          "value": "Área militar",
+          "descricao": "Área militar: terreno sob administração das Forças Armadas, com restrição de acesso e uso por motivo de defesa."
         }
       ]
     },
@@ -1544,31 +1749,38 @@
       "valores": [
         {
           "code": 1,
-          "value": "Limite Internacional"
+          "value": "Limite Internacional",
+          "descricao": "Fronteira entre o Brasil e um país vizinho, o nível mais alto da hierarquia político-administrativa."
         },
         {
           "code": 2,
-          "value": "Limite Estadual"
+          "value": "Limite Estadual",
+          "descricao": "Divisa entre dois estados ou o Distrito Federal, imediatamente abaixo da fronteira internacional."
         },
         {
           "code": 3,
-          "value": "Limite Municipal"
+          "value": "Limite Municipal",
+          "descricao": "Divisa entre dois municípios, abaixo da divisa estadual."
         },
         {
           "code": 4,
-          "value": "Limite Distrital"
+          "value": "Limite Distrital",
+          "descricao": "Divisa entre distritos dentro de um mesmo município, a menor divisão político-administrativa."
         },
         {
           "code": 5,
-          "value": "Mar Territorial (12 MN)"
+          "value": "Mar Territorial (12 MN)",
+          "descricao": "Faixa de mar de 12 milhas náuticas medida da linha de base costeira, onde o país exerce soberania plena, como em seu território."
         },
         {
           "code": 6,
-          "value": "Zona Contígua (24 MN)"
+          "value": "Zona Contígua (24 MN)",
+          "descricao": "Faixa de mar de 12 a 24 milhas náuticas, além do mar territorial, onde o país só fiscaliza (alfândega, imigração, sanitário), sem soberania plena."
         },
         {
           "code": 7,
-          "value": "Zona Econômica Exclusiva (200 MN)"
+          "value": "Zona Econômica Exclusiva (200 MN)",
+          "descricao": "Faixa de mar até 200 milhas náuticas da linha de base, onde o país tem direito exclusivo sobre os recursos naturais, mas não soberania territorial."
         }
       ]
     },
@@ -1577,43 +1789,58 @@
       "valores": [
         {
           "code": 1,
-          "value": "Cidade"
+          "value": "Cidade",
+          "descricao": "Sede do município, o núcleo urbano onde funciona a prefeitura; hierarquicamente acima da vila e abaixo das capitais."
         },
         {
           "code": 2,
-          "value": "Capital estadual"
+          "value": "Capital estadual",
+          "descricao": "Cidade que é sede do governo de um estado ou do Distrito Federal, acima das demais cidades daquela unidade."
         },
         {
           "code": 3,
-          "value": "Capital federal"
+          "value": "Capital federal",
+          "descricao": "Cidade sede do governo da União (Brasília), o topo da hierarquia de localidades."
         },
         {
           "code": 4,
-          "value": "Vila"
+          "value": "Vila",
+          "descricao": "Sede de distrito, aglomerado urbano subordinado ao município e situado abaixo da cidade na hierarquia."
         },
         {
           "code": 5,
-          "value": "Aglomerado rural isolado – Núcleo"
+          "value": "Aglomerado rural isolado – Núcleo",
+          "descricao": "Aglomerado rural isolado do tipo núcleo: povoamento vinculado a um único proprietário ou empreendimento (fazenda, agrovila), sem autonomia de povoado."
         },
         {
           "code": 6,
-          "value": "Aglomerado rural isolado – Povoado"
+          "value": "Aglomerado rural isolado – Povoado",
+          "descricao": "Aglomerado rural isolado do tipo povoado: povoamento sem vínculo a um único proprietário, com moradores e alguns serviços, mais estruturado que o lugarejo."
         },
         {
           "code": 7,
-          "value": "Outros aglomerados rurais – Lugarejo"
+          "value": "Outros aglomerados rurais – Lugarejo",
+          "descricao": "Lugarejo e demais aglomerados rurais menores, com poucas edificações e sem os serviços que caracterizam o povoado."
         },
         {
           "code": 8,
-          "value": "Nome local"
+          "value": "Nome local",
+          "descricao": "Lugar identificado apenas por um nome consagrado (um sítio, um ponto de referência), sem constituir aglomerado de edificações."
         },
         {
           "code": 9,
-          "value": "Aldeia indígena"
+          "value": "Aldeia indígena",
+          "descricao": "Povoado habitado por comunidade indígena, em geral dentro de terra indígena."
         },
         {
           "code": 10,
-          "value": "Comunidade quilombola"
+          "value": "Comunidade quilombola",
+          "descricao": "Povoado habitado por comunidade remanescente de quilombo."
+        },
+        {
+          "code": 11,
+          "value": "Bairro",
+          "descricao": "Subdivisão intraurbana de uma cidade, com nome consagrado; unidade de referência abaixo da cidade na hierarquia de localidades. Alvo do subtype neighborhood do Overture divisions."
         }
       ]
     },
@@ -1622,15 +1849,18 @@
       "valores": [
         {
           "code": 9,
-          "value": "Pista de pouso"
+          "value": "Pista de pouso",
+          "descricao": "Pista de pouso e decolagem, faixa onde a aeronave ganha ou perde velocidade para voar."
         },
         {
           "code": 10,
-          "value": "Pista de táxi"
+          "value": "Pista de táxi",
+          "descricao": "Pista de táxi, faixa de ligação por onde a aeronave rola em solo entre a pista e o pátio."
         },
         {
           "code": 11,
-          "value": "Heliponto"
+          "value": "Heliponto",
+          "descricao": "Heliponto: pequena área demarcada para pouso e decolagem de helicópteros."
         }
       ]
     },
@@ -1639,23 +1869,28 @@
       "valores": [
         {
           "code": 1,
-          "value": "Rio"
+          "value": "Rio",
+          "descricao": "Rio: curso d'água natural, distinto do canal (artificial) e do trecho pluvial (rede urbana de águas de chuva)."
         },
         {
           "code": 2,
-          "value": "Canal"
+          "value": "Canal",
+          "descricao": "Canal: curso d'água artificial escavado a céu aberto, para navegação, irrigação ou drenagem."
         },
         {
           "code": 3,
-          "value": "Trecho pluvial"
+          "value": "Trecho pluvial",
+          "descricao": "Trecho pluvial: escoamento conduzido pela rede urbana de drenagem de águas de chuva."
         },
         {
           "code": 4,
-          "value": "Canal encoberto"
+          "value": "Canal encoberto",
+          "descricao": "Canal encoberto: trecho de canal artificial coberto ou correndo em galeria fechada."
         },
         {
           "code": 5,
-          "value": "Canal não operacional"
+          "value": "Canal não operacional",
+          "descricao": "Canal não operacional: canal artificial desativado, que não conduz mais fluxo d'água."
         }
       ]
     },
@@ -1664,31 +1899,38 @@
       "valores": [
         {
           "code": 0,
-          "value": "Desconhecido"
+          "value": "Desconhecido",
+          "descricao": "Categoria da via não conhecida."
         },
         {
           "code": 2,
-          "value": "Estrada/Rodovia"
+          "value": "Estrada/Rodovia",
+          "descricao": "Estrada ou rodovia, via de rodagem que liga localidades."
         },
         {
           "code": 3,
-          "value": "Caminho carroçável"
+          "value": "Caminho carroçável",
+          "descricao": "Caminho carroçável, transitável por veículo em leito natural, sem pavimento."
         },
         {
           "code": 4,
-          "value": "Auto-estrada"
+          "value": "Auto-estrada",
+          "descricao": "Auto-estrada, via expressa de pistas separadas e acesso controlado por trevos."
         },
         {
           "code": 5,
-          "value": "Arruamento"
+          "value": "Arruamento",
+          "descricao": "Arruamento, via interna ao tecido urbano (rua, avenida)."
         },
         {
           "code": 6,
-          "value": "Trilha ou Picada"
+          "value": "Trilha ou Picada",
+          "descricao": "Trilha ou picada, estreita, transitável a pé ou por tração animal."
         },
         {
           "code": 7,
-          "value": "Alça de acesso / Rotatória"
+          "value": "Alça de acesso / Rotatória",
+          "descricao": "Alça de acesso ou rotatória que interliga vias num entroncamento."
         }
       ]
     },
@@ -1697,15 +1939,18 @@
       "valores": [
         {
           "code": 0,
-          "value": "Desconhecido"
+          "value": "Desconhecido",
+          "descricao": "Regime de tráfego ao longo do ano não conhecido."
         },
         {
           "code": 1,
-          "value": "Permanente"
+          "value": "Permanente",
+          "descricao": "Trafegável o ano inteiro, sem interrupção sazonal."
         },
         {
           "code": 2,
-          "value": "Periódico"
+          "value": "Periódico",
+          "descricao": "Trafegável só em parte do ano, interrompido na cheia ou na estação chuvosa."
         }
       ]
     },
@@ -1714,23 +1959,28 @@
       "valores": [
         {
           "code": 0,
-          "value": "Desconhecido"
+          "value": "Desconhecido",
+          "descricao": "Natureza do uso da pista não conhecida."
         },
         {
           "code": 6,
-          "value": "Particular"
+          "value": "Particular",
+          "descricao": "Pista particular, de uso restrito ao proprietário (fazenda, empresa)."
         },
         {
           "code": 11,
-          "value": "Público"
+          "value": "Público",
+          "descricao": "Pista de uso público, aberta à aviação civil."
         },
         {
           "code": 12,
-          "value": "Militar"
+          "value": "Militar",
+          "descricao": "Pista de uso militar, em organização das Forças Armadas."
         },
         {
           "code": 13,
-          "value": "Público/Militar"
+          "value": "Público/Militar",
+          "descricao": "Pista de uso compartilhado, civil e militar."
         }
       ]
     }
@@ -1746,47 +1996,56 @@
         {
           "nome": "nome",
           "tipo": "varchar(255)",
-          "cardinalidade": "0..1"
+          "cardinalidade": "0..1",
+          "descricao": "Nome oficial ou consagrado do corpo d'água."
         },
         {
           "nome": "tipo",
           "tipo": "smallint",
           "cardinalidade": "1..1",
-          "mapa_valor": "tipo_massa_dagua"
+          "mapa_valor": "tipo_massa_dagua",
+          "descricao": "Natureza do corpo d'água e presença de fluxo (rio, canal, oceano, baía, lago, represa), conforme o domínio tipo_massa_dagua."
         },
         {
           "nome": "regime",
           "tipo": "smallint",
           "cardinalidade": "1..1",
-          "mapa_valor": "regime"
+          "mapa_valor": "regime",
+          "descricao": "Regime de permanência da água no corpo ao longo do ano (permanente, temporário, seco), conforme o domínio regime."
         },
         {
           "nome": "texto_edicao",
           "tipo": "varchar(255)",
-          "cardinalidade": "0..1"
+          "cardinalidade": "0..1",
+          "descricao": "Texto do rótulo definido manualmente na edição cartográfica, quando difere do nome ou precisa de quebra específica."
         },
         {
           "nome": "label_x",
           "tipo": "real",
-          "cardinalidade": "0..1"
+          "cardinalidade": "0..1",
+          "descricao": "Deslocamento horizontal do rótulo em relação à feição, para reposicionar o texto na edição."
         },
         {
           "nome": "label_y",
           "tipo": "real",
-          "cardinalidade": "0..1"
+          "cardinalidade": "0..1",
+          "descricao": "Deslocamento vertical do rótulo em relação à feição, para reposicionar o texto na edição."
         },
         {
           "nome": "tamanho_txt",
           "tipo": "real",
-          "cardinalidade": "0..1"
+          "cardinalidade": "0..1",
+          "descricao": "Tamanho da fonte do rótulo, em pontos, definido na edição cartográfica."
         },
         {
           "nome": "justificativa_txt",
           "tipo": "smallint",
           "cardinalidade": "1..1",
-          "mapa_valor": "justificativa"
+          "mapa_valor": "justificativa",
+          "descricao": "Alinhamento do texto do rótulo (esquerda, centro, direita), conforme o domínio justificativa."
         }
-      ]
+      ],
+      "descricao": "Corpo d'água represado, em repouso ou com fluxo, representado como área: rio largo, lago, lagoa, oceano, baía, represa. O tipo discrimina a natureza do corpo e se há fluxo; o regime informa a permanência da água ao longo do ano."
     },
     {
       "nome": "extracao_mineral",
@@ -1799,18 +2058,20 @@
         {
           "nome": "nome",
           "tipo": "varchar(255)",
-          "cardinalidade": "0..1"
+          "cardinalidade": "0..1",
+          "descricao": "Nome oficial ou consagrado da feição."
         },
         {
           "nome": "tipo",
           "tipo": "smallint",
           "cardinalidade": "1..1",
-          "mapa_valor": "tipo_extracao_mineral"
+          "mapa_valor": "tipo_extracao_mineral",
+          "descricao": "Tipo do sítio de extração mineral (poço de água, mina ou pedreira, garimpo, salina, poço de petróleo), conforme o domínio tipo_extracao_mineral."
         },
         {
           "nome": "tipo_produto",
           "tipo": "smallint",
-          "descricao": "-",
+          "descricao": "Substância mineral extraída ou o resíduo produzido (petróleo, gás, ferro, ouro, areia, calcário, entre muitos), conforme o domínio tipo_produto_residuo.",
           "cardinalidade": "1..1",
           "mapa_valor": "tipo_produto_residuo"
         },
@@ -1818,42 +2079,50 @@
           "nome": "forma_extracao",
           "tipo": "smallint",
           "cardinalidade": "1..1",
-          "mapa_valor": "forma_extracao"
+          "mapa_valor": "forma_extracao",
+          "descricao": "Forma de lavra da substância (a céu aberto ou subterrânea), conforme o domínio forma_extracao."
         },
         {
           "nome": "situacao_fisica",
           "tipo": "smallint",
           "cardinalidade": "1..1",
-          "mapa_valor": "situacao_fisica"
+          "mapa_valor": "situacao_fisica",
+          "descricao": "Situação física do sítio de extração (em atividade, abandonado, destruído), conforme o domínio situacao_fisica."
         },
         {
           "nome": "visivel",
           "tipo": "smallint",
           "cardinalidade": "1..1",
-          "mapa_valor": "booleano"
+          "mapa_valor": "booleano",
+          "descricao": "Indica se a feição deve ser desenhada no produto; permite suprimir uma feição existente na base sem excluí-la."
         },
         {
           "nome": "texto_edicao",
           "tipo": "varchar(255)",
-          "cardinalidade": "0..1"
+          "cardinalidade": "0..1",
+          "descricao": "Texto do rótulo definido manualmente na edição cartográfica, quando difere do nome ou precisa de quebra específica."
         },
         {
           "nome": "label_x",
           "tipo": "real",
-          "cardinalidade": "0..1"
+          "cardinalidade": "0..1",
+          "descricao": "Deslocamento horizontal do rótulo em relação à feição, para reposicionar o texto na edição."
         },
         {
           "nome": "label_y",
           "tipo": "real",
-          "cardinalidade": "0..1"
+          "cardinalidade": "0..1",
+          "descricao": "Deslocamento vertical do rótulo em relação à feição, para reposicionar o texto na edição."
         },
         {
           "nome": "justificativa_txt",
           "tipo": "smallint",
           "cardinalidade": "1..1",
-          "mapa_valor": "justificativa"
+          "mapa_valor": "justificativa",
+          "descricao": "Alinhamento do texto do rótulo (esquerda, centro, direita), conforme o domínio justificativa."
         }
-      ]
+      ],
+      "descricao": "Sítio de extração de substância mineral (poço, mina, pedreira, garimpo, salina). Registra o local da lavra, a substância retirada e a forma de extração, distinguindo-se da edificação de apoio à mineração. Representada por polígono (a área lavrada) ou por ponto (o local)."
     },
     {
       "nome": "curva_nivel",
@@ -1865,38 +2134,45 @@
         {
           "nome": "cota",
           "tipo": "integer",
-          "cardinalidade": "1..1"
+          "cardinalidade": "1..1",
+          "descricao": "Cota altimétrica da curva, em metros, referida ao datum vertical."
         },
         {
           "nome": "indice",
           "tipo": "smallint",
           "cardinalidade": "1..1",
-          "mapa_valor": "indice"
+          "mapa_valor": "indice",
+          "descricao": "Categoria da curva quanto ao intervalo de equidistância (mestra, normal, auxiliar), conforme o domínio indice."
         },
         {
           "nome": "depressao",
           "tipo": "smallint",
           "cardinalidade": "1..1",
-          "mapa_valor": "booleano"
+          "mapa_valor": "booleano",
+          "descricao": "Indica que a curva delimita uma depressão, em que o terreno desce para dentro do fechamento em vez de subir, conforme o domínio booleano."
         },
         {
           "nome": "dentro_massa_dagua",
           "tipo": "smallint",
           "cardinalidade": "1..1",
-          "mapa_valor": "booleano"
+          "mapa_valor": "booleano",
+          "descricao": "Indica que a curva está submersa, dentro de uma massa d'água, conforme o domínio booleano."
         },
         {
           "nome": "texto_edicao",
           "tipo": "varchar(255)",
-          "cardinalidade": "0..1"
+          "cardinalidade": "0..1",
+          "descricao": "Texto do rótulo definido manualmente na edição cartográfica, quando difere do nome ou precisa de quebra específica."
         },
         {
           "nome": "visivel",
           "tipo": "smallint",
           "cardinalidade": "1..1",
-          "mapa_valor": "booleano"
+          "mapa_valor": "booleano",
+          "descricao": "Indica se a feição deve ser desenhada no produto; permite suprimir uma feição existente na base sem excluí-la."
         }
-      ]
+      ],
+      "descricao": "Linha que une pontos de mesma cota altimétrica, representando o relevo por isolinhas. É representada como linha; a cota dá a altitude e o atributo indice separa a curva mestra da normal e da auxiliar. Distingue-se da curva_batimetrica, que representa profundidades sob a lâmina d'água."
     },
     {
       "nome": "elemento_hidrografico",
@@ -1910,7 +2186,8 @@
         {
           "nome": "nome",
           "tipo": "varchar(255)",
-          "cardinalidade": "0..1"
+          "cardinalidade": "0..1",
+          "descricao": "Nome oficial ou consagrado da feição."
         },
         {
           "nome": "tipo",
@@ -2015,28 +2292,33 @@
                 "MultiPoint"
               ]
             }
-          ]
+          ],
+          "descricao": "Natureza do elemento hidrográfico (poço, olho d'água, foz, rocha em água, cachoeira, salto, corredeira, banco de areia, recife), conforme o domínio tipo_elemento_hidrografico."
         },
         {
           "nome": "texto_edicao",
           "tipo": "varchar(255)",
-          "cardinalidade": "0..1"
+          "cardinalidade": "0..1",
+          "descricao": "Texto do rótulo definido manualmente na edição cartográfica, quando difere do nome ou precisa de quebra específica."
         },
         {
           "nome": "label_x",
           "tipo": "real",
-          "cardinalidade": "0..1"
+          "cardinalidade": "0..1",
+          "descricao": "Deslocamento horizontal do rótulo em relação à feição, para reposicionar o texto na edição."
         },
         {
           "nome": "label_y",
           "tipo": "real",
-          "cardinalidade": "0..1"
+          "cardinalidade": "0..1",
+          "descricao": "Deslocamento vertical do rótulo em relação à feição, para reposicionar o texto na edição."
         },
         {
           "nome": "justificativa_txt",
           "tipo": "smallint",
           "cardinalidade": "1..1",
-          "mapa_valor": "justificativa"
+          "mapa_valor": "justificativa",
+          "descricao": "Alinhamento do texto do rótulo (esquerda, centro, direita), conforme o domínio justificativa."
         },
         {
           "nome": "simb_rot",
@@ -2050,9 +2332,11 @@
           "nome": "visivel",
           "tipo": "smallint",
           "cardinalidade": "1..1",
-          "mapa_valor": "booleano"
+          "mapa_valor": "booleano",
+          "descricao": "Indica se a feição deve ser desenhada no produto; permite suprimir uma feição existente na base sem excluí-la."
         }
-      ]
+      ],
+      "descricao": "Feição pontual, linear ou em área associada à hidrografia que não é o trecho de drenagem em si: poço, olho d'água, cachoeira, salto, corredeira, banco de areia, recife, rocha em água, foz marítima. O tipo discrimina o elemento; a representação (ponto, linha ou polígono) segue a natureza da feição."
     },
     {
       "nome": "ilha",
@@ -2065,47 +2349,56 @@
         {
           "nome": "nome",
           "tipo": "varchar(255)",
-          "cardinalidade": "0..1"
+          "cardinalidade": "0..1",
+          "descricao": "Nome oficial ou consagrado da feição."
         },
         {
           "nome": "tipo",
           "tipo": "smallint",
           "cardinalidade": "1..1",
-          "mapa_valor": "tipo_ilha"
+          "mapa_valor": "tipo_ilha",
+          "descricao": "Corpo d'água que circunda a ilha (fluvial, marítima, lacustre), conforme o domínio tipo_ilha."
         },
         {
           "nome": "texto_edicao",
           "tipo": "varchar(255)",
-          "cardinalidade": "0..1"
+          "cardinalidade": "0..1",
+          "descricao": "Texto do rótulo definido manualmente na edição cartográfica, quando difere do nome ou precisa de quebra específica."
         },
         {
           "nome": "label_x",
           "tipo": "real",
-          "cardinalidade": "0..1"
+          "cardinalidade": "0..1",
+          "descricao": "Deslocamento horizontal do rótulo em relação à feição, para reposicionar o texto na edição."
         },
         {
           "nome": "label_y",
           "tipo": "real",
-          "cardinalidade": "0..1"
+          "cardinalidade": "0..1",
+          "descricao": "Deslocamento vertical do rótulo em relação à feição, para reposicionar o texto na edição."
         },
         {
           "nome": "tamanho_txt",
           "tipo": "real",
-          "cardinalidade": "0..1"
+          "cardinalidade": "0..1",
+          "descricao": "Tamanho da fonte do rótulo, em pontos, definido na edição cartográfica."
         },
         {
           "nome": "justificativa_txt",
           "tipo": "smallint",
           "cardinalidade": "1..1",
-          "mapa_valor": "justificativa"
+          "mapa_valor": "justificativa",
+          "descricao": "Alinhamento do texto do rótulo (esquerda, centro, direita), conforme o domínio justificativa."
         },
         {
           "nome": "visivel",
           "tipo": "smallint",
           "cardinalidade": "1..1",
-          "mapa_valor": "booleano"
+          "mapa_valor": "booleano",
+          "descricao": "Indica se a feição deve ser desenhada no produto; permite suprimir uma feição existente na base sem excluí-la."
         }
-      ]
+      ],
+      "descricao": "Porção de terra cercada de água por todos os lados, em rio, mar ou lago. Representada por polígono (ilha grande) ou por ponto (ilha pequena); o tipo informa o corpo d'água que a circunda (fluvial, marítima, lacustre)."
     },
     {
       "nome": "ponto_cotado",
@@ -2117,7 +2410,8 @@
         {
           "nome": "cota",
           "tipo": "real",
-          "cardinalidade": "1..1"
+          "cardinalidade": "1..1",
+          "descricao": "Altitude do ponto, em metros, referida ao datum vertical."
         },
         {
           "nome": "rank_zoom",
@@ -2129,49 +2423,58 @@
           "nome": "cota_comprovada",
           "tipo": "smallint",
           "cardinalidade": "1..1",
-          "mapa_valor": "booleano"
+          "mapa_valor": "booleano",
+          "descricao": "Indica que a altitude foi determinada por medição em campo, não estimada por interpolação, conforme o domínio booleano."
         },
         {
           "nome": "cota_mais_alta",
           "tipo": "smallint",
           "cardinalidade": "1..1",
-          "mapa_valor": "booleano"
+          "mapa_valor": "booleano",
+          "descricao": "Indica que este é o ponto de maior altitude da folha (ponto culminante), realçado na carta, conforme o domínio booleano."
         },
         {
           "nome": "label_x",
           "tipo": "real",
-          "cardinalidade": "0..1"
+          "cardinalidade": "0..1",
+          "descricao": "Deslocamento horizontal do rótulo em relação à feição, para reposicionar o texto na edição."
         },
         {
           "nome": "label_y",
           "tipo": "real",
-          "cardinalidade": "0..1"
+          "cardinalidade": "0..1",
+          "descricao": "Deslocamento vertical do rótulo em relação à feição, para reposicionar o texto na edição."
         },
         {
           "nome": "visivel",
           "tipo": "smallint",
           "cardinalidade": "1..1",
-          "mapa_valor": "booleano"
+          "mapa_valor": "booleano",
+          "descricao": "Indica se a feição deve ser desenhada no produto; permite suprimir uma feição existente na base sem excluí-la."
         },
         {
           "nome": "ancora_horizontal",
           "tipo": "smallint",
           "cardinalidade": "1..1",
-          "mapa_valor": "ancora_horizontal"
+          "mapa_valor": "ancora_horizontal",
+          "descricao": "Ancoragem horizontal do rótulo em relação ao ponto de inserção, conforme o domínio ancora_horizontal."
         },
         {
           "nome": "ancora_vertical",
           "tipo": "smallint",
           "cardinalidade": "1..1",
-          "mapa_valor": "ancora_vertical"
+          "mapa_valor": "ancora_vertical",
+          "descricao": "Ancoragem vertical do rótulo em relação ao ponto de inserção, conforme o domínio ancora_vertical."
         },
         {
           "nome": "suprimir_simbologia",
           "tipo": "smallint",
           "cardinalidade": "1..1",
-          "mapa_valor": "booleano"
+          "mapa_valor": "booleano",
+          "descricao": "Indica que o símbolo do ponto deve ser omitido, mantendo apenas o valor da cota, conforme o domínio booleano."
         }
-      ]
+      ],
+      "descricao": "Ponto de altitude conhecida do terreno, que densifica a informação altimétrica entre as curvas de nível, sobretudo em cumes e pontos notáveis. Representado por ponto; a cota dá a altitude e o atributo cota_mais_alta marca o ponto culminante da folha."
     },
     {
       "nome": "terreno_sujeito_inundacao",
@@ -2184,9 +2487,11 @@
           "nome": "visivel",
           "tipo": "smallint",
           "cardinalidade": "1..1",
-          "mapa_valor": "booleano"
+          "mapa_valor": "booleano",
+          "descricao": "Indica se a feição deve ser desenhada no produto; permite suprimir uma feição existente na base sem excluí-la."
         }
-      ]
+      ],
+      "descricao": "Área plana sujeita a alagamento periódico por transbordamento de curso d'água ou acúmulo de chuva, sem lâmina d'água permanente. Representada por polígono; distingue-se da massa_dagua, que caracteriza um corpo d'água com água permanente ou sazonal."
     },
     {
       "nome": "toponimo_fisiografico_natural",
@@ -2199,7 +2504,8 @@
         {
           "nome": "nome",
           "tipo": "varchar(255)",
-          "cardinalidade": "0..1"
+          "cardinalidade": "0..1",
+          "descricao": "Nome oficial ou consagrado da feição."
         },
         {
           "nome": "tipo",
@@ -2225,12 +2531,14 @@
               2,
               12
             ]
-          }
+          },
+          "descricao": "Tipo de acidente geográfico nomeado (serra, morro, montanha, chapada, maciço, planalto, planície, península, ponta, cabo, praia, pico), conforme o domínio tipo_toponimo_fisiografico."
         },
         {
           "nome": "texto_edicao",
           "tipo": "varchar(255)",
-          "cardinalidade": "0..1"
+          "cardinalidade": "0..1",
+          "descricao": "Texto do rótulo definido manualmente na edição cartográfica, quando difere do nome ou precisa de quebra específica."
         },
         {
           "nome": "label_x",
@@ -2238,7 +2546,8 @@
           "cardinalidade": "0..1",
           "primitivas": [
             "MultiPoint"
-          ]
+          ],
+          "descricao": "Deslocamento horizontal do rótulo em relação à feição, para reposicionar o texto na edição."
         },
         {
           "nome": "label_y",
@@ -2246,12 +2555,14 @@
           "cardinalidade": "0..1",
           "primitivas": [
             "MultiPoint"
-          ]
+          ],
+          "descricao": "Deslocamento vertical do rótulo em relação à feição, para reposicionar o texto na edição."
         },
         {
           "nome": "tamanho_txt",
           "tipo": "real",
-          "cardinalidade": "0..1"
+          "cardinalidade": "0..1",
+          "descricao": "Tamanho da fonte do rótulo, em pontos, definido na edição cartográfica."
         },
         {
           "nome": "justificativa_txt",
@@ -2260,7 +2571,8 @@
           "mapa_valor": "justificativa",
           "primitivas": [
             "MultiPoint"
-          ]
+          ],
+          "descricao": "Alinhamento do texto do rótulo (esquerda, centro, direita), conforme o domínio justificativa."
         },
         {
           "nome": "espacamento",
@@ -2271,9 +2583,11 @@
           "nome": "visivel",
           "tipo": "smallint",
           "cardinalidade": "1..1",
-          "mapa_valor": "booleano"
+          "mapa_valor": "booleano",
+          "descricao": "Indica se a feição deve ser desenhada no produto; permite suprimir uma feição existente na base sem excluí-la."
         }
-      ]
+      ],
+      "descricao": "Feição que porta o nome de uma forma de relevo ou acidente natural (serra, morro, chapada, praia, cabo, pico), para rotular na carta a extensão ou o ponto do acidente. Representada por ponto ou linha, serve de suporte ao topônimo: não delimita a feição, apenas a nomeia."
     },
     {
       "nome": "trecho_drenagem",
@@ -2285,59 +2599,69 @@
         {
           "nome": "nome",
           "tipo": "varchar(255)",
-          "cardinalidade": "0..1"
+          "cardinalidade": "0..1",
+          "descricao": "Nome oficial ou consagrado da feição."
         },
         {
           "nome": "tipo",
           "tipo": "smallint",
           "cardinalidade": "1..1",
-          "mapa_valor": "tipo_trecho_drenagem"
+          "mapa_valor": "tipo_trecho_drenagem",
+          "descricao": "Natureza do trecho de drenagem (rio, canal, trecho pluvial, canal encoberto, canal não operacional), conforme o domínio tipo_trecho_drenagem."
         },
         {
           "nome": "situacao_em_poligono",
           "tipo": "smallint",
           "cardinalidade": "1..1",
-          "mapa_valor": "situacao_em_poligono"
+          "mapa_valor": "situacao_em_poligono",
+          "descricao": "Posição do trecho em relação a uma massa d'água representada como área: fora do polígono ou, se dentro, se é o fluxo principal, secundário ou compartilhado, conforme o domínio situacao_em_poligono."
         },
         {
           "nome": "regime",
           "tipo": "smallint",
           "cardinalidade": "1..1",
-          "mapa_valor": "regime"
+          "mapa_valor": "regime",
+          "descricao": "Regime de permanência da água no trecho ao longo do ano (permanente, temporário, seco), conforme o domínio regime."
         },
         {
           "nome": "em_galeria_bueiro",
           "tipo": "smallint",
           "cardinalidade": "1..1",
-          "mapa_valor": "booleano"
+          "mapa_valor": "booleano",
+          "descricao": "Indica que o trecho corre em galeria ou bueiro, encoberto sob via ou terreno, conforme o domínio booleano."
         },
         {
           "nome": "texto_edicao",
           "tipo": "varchar(255)",
-          "cardinalidade": "0..1"
+          "cardinalidade": "0..1",
+          "descricao": "Texto do rótulo definido manualmente na edição cartográfica, quando difere do nome ou precisa de quebra específica."
         },
         {
           "nome": "tamanho_txt",
           "tipo": "real",
-          "cardinalidade": "0..1"
+          "cardinalidade": "0..1",
+          "descricao": "Tamanho da fonte do rótulo, em pontos, definido na edição cartográfica."
         },
         {
           "nome": "visivel",
           "tipo": "smallint",
           "cardinalidade": "1..1",
-          "mapa_valor": "booleano"
+          "mapa_valor": "booleano",
+          "descricao": "Indica se a feição deve ser desenhada no produto; permite suprimir uma feição existente na base sem excluí-la."
         },
         {
           "nome": "posicao_rotulo",
           "tipo": "smallint",
           "cardinalidade": "1..1",
-          "mapa_valor": "posicao_rotulo"
+          "mapa_valor": "posicao_rotulo",
+          "descricao": "Posição do rótulo do curso em relação à linha de drenagem (na linha, acima, abaixo), conforme o domínio posicao_rotulo."
         },
         {
           "nome": "direcao_fixada",
           "tipo": "smallint",
           "cardinalidade": "1..1",
-          "mapa_valor": "booleano"
+          "mapa_valor": "booleano",
+          "descricao": "Indica que o sentido de fluxo do trecho foi fixado manualmente, sobrepondo a direção inferida da geometria, conforme o domínio booleano."
         },
         {
           "nome": "ordem_strahler",
@@ -2351,7 +2675,8 @@
           "cardinalidade": "0..1",
           "descricao": "Largura do curso d'agua em metros"
         }
-      ]
+      ],
+      "descricao": "Segmento de curso d'água natural ou artificial representado por linha (o eixo do fluxo), unidade básica da rede de drenagem. O tipo separa rio, canal e trecho pluvial; o regime informa a permanência da água e a ordem_strahler dá a hierarquia na rede. Quando o curso é largo o bastante para virar área, o trecho corre dentro da massa_dagua (ver situacao_em_poligono)."
     },
     {
       "nome": "barragem",
@@ -2364,13 +2689,15 @@
         {
           "nome": "nome",
           "tipo": "varchar(255)",
-          "cardinalidade": "0..1"
+          "cardinalidade": "0..1",
+          "descricao": "Nome oficial ou consagrado da feição."
         },
         {
           "nome": "tipo",
           "tipo": "smallint",
           "cardinalidade": "1..1",
-          "mapa_valor": "tipo_barragem"
+          "mapa_valor": "tipo_barragem",
+          "descricao": "Distingue a barragem, que represa a água em reservatório, do dique, que contém a água para proteger área baixa, conforme o domínio tipo_barragem."
         },
         {
           "nome": "material_construcao",
@@ -2385,28 +2712,33 @@
             4,
             5,
             23
-          ]
+          ],
+          "descricao": "Material predominante da estrutura, conforme o domínio material_construcao."
         },
         {
           "nome": "texto_edicao",
           "tipo": "varchar(255)",
-          "cardinalidade": "0..1"
+          "cardinalidade": "0..1",
+          "descricao": "Texto do rótulo definido manualmente na edição cartográfica, quando difere do nome ou precisa de quebra específica."
         },
         {
           "nome": "label_x",
           "tipo": "real",
-          "cardinalidade": "0..1"
+          "cardinalidade": "0..1",
+          "descricao": "Deslocamento horizontal do rótulo em relação à feição, para reposicionar o texto na edição."
         },
         {
           "nome": "label_y",
           "tipo": "real",
-          "cardinalidade": "0..1"
+          "cardinalidade": "0..1",
+          "descricao": "Deslocamento vertical do rótulo em relação à feição, para reposicionar o texto na edição."
         },
         {
           "nome": "sobreposto_transportes",
           "tipo": "smallint",
           "cardinalidade": "1..1",
-          "mapa_valor": "booleano"
+          "mapa_valor": "booleano",
+          "descricao": "Indica que a crista da barragem também é usada como via (a barragem serve de passagem), conforme o domínio booleano."
         },
         {
           "nome": "largura_simbologia",
@@ -2420,9 +2752,11 @@
           "nome": "visivel",
           "tipo": "smallint",
           "cardinalidade": "1..1",
-          "mapa_valor": "booleano"
+          "mapa_valor": "booleano",
+          "descricao": "Indica se a feição deve ser desenhada no produto; permite suprimir uma feição existente na base sem excluí-la."
         }
-      ]
+      ],
+      "descricao": "Estrutura que barra ou represa a água. Representada por linha (a crista) ou por polígono (o corpo da barragem). O tipo separa a barragem propriamente dita, que forma reservatório, do dique, que protege área baixa contra inundação; o material informa a construção."
     },
     {
       "nome": "elemento_energia",
@@ -2436,7 +2770,8 @@
         {
           "nome": "nome",
           "tipo": "varchar(255)",
-          "cardinalidade": "0..1"
+          "cardinalidade": "0..1",
+          "descricao": "Nome oficial ou consagrado da feição."
         },
         {
           "nome": "tipo",
@@ -2516,7 +2851,8 @@
                 "MultiPolygon"
               ]
             }
-          ]
+          ],
+          "descricao": "Tipo do elemento do sistema de energia (linha de transmissão, estação geradora por fonte, subestação, torre, aerogerador), conforme o domínio tipo_elemento_energia."
         },
         {
           "nome": "altitude",
@@ -2525,7 +2861,8 @@
           "primitivas": [
             "MultiPoint",
             "MultiLinestring"
-          ]
+          ],
+          "descricao": "Altitude do elemento em relação ao nível médio do mar, em metros."
         },
         {
           "nome": "altura",
@@ -2534,24 +2871,28 @@
           "primitivas": [
             "MultiPoint",
             "MultiLinestring"
-          ]
+          ],
+          "descricao": "Altura do elemento em relação à base, em metros."
         },
         {
           "nome": "situacao_fisica",
           "tipo": "smallint",
           "cardinalidade": "1..1",
-          "mapa_valor": "situacao_fisica"
+          "mapa_valor": "situacao_fisica",
+          "descricao": "Situação física do elemento (construído, em construção, destruído, abandonado), conforme o domínio situacao_fisica."
         },
         {
           "nome": "visivel",
           "tipo": "smallint",
           "cardinalidade": "1..1",
-          "mapa_valor": "booleano"
+          "mapa_valor": "booleano",
+          "descricao": "Indica se a feição deve ser desenhada no produto; permite suprimir uma feição existente na base sem excluí-la."
         },
         {
           "nome": "texto_edicao",
           "tipo": "varchar(255)",
-          "cardinalidade": "0..1"
+          "cardinalidade": "0..1",
+          "descricao": "Texto do rótulo definido manualmente na edição cartográfica, quando difere do nome ou precisa de quebra específica."
         },
         {
           "nome": "label_x",
@@ -2560,7 +2901,8 @@
           "primitivas": [
             "MultiPoint",
             "MultiPolygon"
-          ]
+          ],
+          "descricao": "Deslocamento horizontal do rótulo em relação à feição, para reposicionar o texto na edição."
         },
         {
           "nome": "label_y",
@@ -2569,7 +2911,8 @@
           "primitivas": [
             "MultiPoint",
             "MultiPolygon"
-          ]
+          ],
+          "descricao": "Deslocamento vertical do rótulo em relação à feição, para reposicionar o texto na edição."
         },
         {
           "nome": "justificativa_txt",
@@ -2579,7 +2922,8 @@
           "primitivas": [
             "MultiPoint",
             "MultiPolygon"
-          ]
+          ],
+          "descricao": "Alinhamento do texto do rótulo (esquerda, centro, direita), conforme o domínio justificativa."
         },
         {
           "nome": "simb_rot",
@@ -2589,7 +2933,8 @@
             "MultiPoint"
           ]
         }
-      ]
+      ],
+      "descricao": "Feição do sistema de energia elétrica: linha de transmissão, estação geradora (discriminada pela fonte: hidrelétrica, térmica, eólica, solar, nuclear, etc.), subestação, torre e aerogerador. Representada por ponto, linha ou polígono conforme o elemento."
     },
     {
       "nome": "elemento_infraestrutura",
@@ -2603,7 +2948,8 @@
         {
           "nome": "nome",
           "tipo": "varchar(255)",
-          "cardinalidade": "0..1"
+          "cardinalidade": "0..1",
+          "descricao": "Nome oficial ou consagrado da feição."
         },
         {
           "nome": "tipo",
@@ -2788,40 +3134,47 @@
                 "MultiLinestring"
               ]
             }
-          ]
+          ],
+          "descricao": "Tipo do elemento de infraestrutura (travessia de pedestre, estrutura portuária, torre ou antena de comunicação, eclusa, comporta, plataforma, caminho aéreo, trecho de comunicação), conforme o domínio tipo_elemento_infraestrutura."
         },
         {
           "nome": "situacao_fisica",
           "tipo": "smallint",
           "cardinalidade": "1..1",
-          "mapa_valor": "situacao_fisica"
+          "mapa_valor": "situacao_fisica",
+          "descricao": "Situação física do elemento (construído, em construção, destruído, abandonado), conforme o domínio situacao_fisica."
         },
         {
           "nome": "texto_edicao",
           "tipo": "varchar(255)",
-          "cardinalidade": "0..1"
+          "cardinalidade": "0..1",
+          "descricao": "Texto do rótulo definido manualmente na edição cartográfica, quando difere do nome ou precisa de quebra específica."
         },
         {
           "nome": "label_x",
           "tipo": "real",
-          "cardinalidade": "0..1"
+          "cardinalidade": "0..1",
+          "descricao": "Deslocamento horizontal do rótulo em relação à feição, para reposicionar o texto na edição."
         },
         {
           "nome": "label_y",
           "tipo": "real",
-          "cardinalidade": "0..1"
+          "cardinalidade": "0..1",
+          "descricao": "Deslocamento vertical do rótulo em relação à feição, para reposicionar o texto na edição."
         },
         {
           "nome": "justificativa_txt",
           "tipo": "smallint",
           "cardinalidade": "1..1",
-          "mapa_valor": "justificativa"
+          "mapa_valor": "justificativa",
+          "descricao": "Alinhamento do texto do rótulo (esquerda, centro, direita), conforme o domínio justificativa."
         },
         {
           "nome": "visivel",
           "tipo": "smallint",
           "cardinalidade": "1..1",
-          "mapa_valor": "booleano"
+          "mapa_valor": "booleano",
+          "descricao": "Indica se a feição deve ser desenhada no produto; permite suprimir uma feição existente na base sem excluí-la."
         },
         {
           "nome": "simb_rot",
@@ -2831,7 +3184,8 @@
             "MultiPoint"
           ]
         }
-      ]
+      ],
+      "descricao": "Elemento de infraestrutura que não se enquadra nas demais classes da categoria: travessia de pedestre, estrutura portuária (cais, píer, molhe, quebramar), torre e antena de comunicação, trecho de comunicação (cabo, fibra), eclusa, comporta, plataforma marítima e caminho aéreo. Representada por ponto, linha ou polígono."
     },
     {
       "nome": "ferrovia",
@@ -2843,19 +3197,22 @@
         {
           "nome": "nome",
           "tipo": "varchar(255)",
-          "cardinalidade": "0..1"
+          "cardinalidade": "0..1",
+          "descricao": "Nome oficial ou consagrado da feição."
         },
         {
           "nome": "tipo",
           "tipo": "smallint",
           "cardinalidade": "1..1",
-          "mapa_valor": "tipo_ferrovia"
+          "mapa_valor": "tipo_ferrovia",
+          "descricao": "Tipo de transporte sobre trilhos (trem, metrô, bonde, aeromóvel), conforme o domínio tipo_ferrovia."
         },
         {
           "nome": "situacao_fisica",
           "tipo": "smallint",
           "cardinalidade": "1..1",
-          "mapa_valor": "situacao_fisica"
+          "mapa_valor": "situacao_fisica",
+          "descricao": "Situação física da ferrovia (construída, em construção, destruída, abandonada), conforme o domínio situacao_fisica."
         },
         {
           "nome": "posicao_relativa",
@@ -2866,48 +3223,56 @@
             2,
             3,
             6
-          ]
+          ],
+          "descricao": "Posição do trecho em relação ao terreno (superfície, elevado, subterrâneo, etc.), conforme o domínio posicao_relativa."
         },
         {
           "nome": "nr_linhas",
           "tipo": "smallint",
           "cardinalidade": "1..1",
-          "mapa_valor": "nr_linhas"
+          "mapa_valor": "nr_linhas",
+          "descricao": "Número de linhas (vias) da ferrovia no trecho (simples, dupla, múltipla), conforme o domínio nr_linhas."
         },
         {
           "nome": "eletrificada",
           "tipo": "smallint",
           "cardinalidade": "1..1",
-          "mapa_valor": "auxiliar"
+          "mapa_valor": "auxiliar",
+          "descricao": "Indica se o trecho é eletrificado, conforme o domínio auxiliar."
         },
         {
           "nome": "bitola",
           "tipo": "smallint",
           "cardinalidade": "1..1",
-          "mapa_valor": "bitola"
+          "mapa_valor": "bitola",
+          "descricao": "Bitola da via, isto é, a distância entre os trilhos (métrica, internacional, larga ou mista), conforme o domínio bitola."
         },
         {
           "nome": "em_arruamento",
           "tipo": "smallint",
           "cardinalidade": "1..1",
-          "mapa_valor": "booleano"
+          "mapa_valor": "booleano",
+          "descricao": "Indica se o trecho corre sobre arruamento urbano (trilho embutido na via de veículos), conforme o domínio booleano."
         },
         {
           "nome": "jurisdicao",
           "tipo": "smallint",
           "cardinalidade": "1..1",
-          "mapa_valor": "jurisdicao"
+          "mapa_valor": "jurisdicao",
+          "descricao": "Esfera de jurisdição sobre a ferrovia (federal, estadual, municipal, particular), conforme o domínio jurisdicao."
         },
         {
           "nome": "administracao",
           "tipo": "smallint",
           "cardinalidade": "1..1",
-          "mapa_valor": "administracao"
+          "mapa_valor": "administracao",
+          "descricao": "Esfera que administra a ferrovia (federal, estadual, municipal, particular, concessionada), conforme o domínio administracao."
         },
         {
           "nome": "concessionaria",
           "tipo": "varchar(255)",
-          "cardinalidade": "0..1"
+          "cardinalidade": "0..1",
+          "descricao": "Nome da concessionária que opera a ferrovia, quando concessionada."
         },
         {
           "nome": "tipo_elemento_viario",
@@ -2925,12 +3290,14 @@
             301,
             302,
             97
-          ]
+          ],
+          "descricao": "Tipo de obra de arte que o trecho de ferrovia atravessa (ponte, túnel, viaduto), conforme o domínio tipo_elemento_viario; usa não aplicável quando não há obra de arte."
         },
         {
           "nome": "nome_elemento_viario",
           "tipo": "varchar(255)",
-          "cardinalidade": "0..1"
+          "cardinalidade": "0..1",
+          "descricao": "Nome da obra de arte atravessada pelo trecho de ferrovia."
         },
         {
           "nome": "material_construcao_elemento_viario",
@@ -2946,44 +3313,48 @@
             5,
             97,
             98
-          ]
+          ],
+          "descricao": "Material da obra de arte atravessada pelo trecho de ferrovia, conforme o domínio material_construcao."
         },
         {
           "nome": "texto_edicao",
           "tipo": "varchar(255)",
-          "cardinalidade": "0..1"
+          "cardinalidade": "0..1",
+          "descricao": "Texto do rótulo definido manualmente na edição cartográfica, quando difere do nome ou precisa de quebra específica."
         },
         {
           "nome": "visivel",
           "tipo": "smallint",
           "cardinalidade": "1..1",
-          "mapa_valor": "booleano"
+          "mapa_valor": "booleano",
+          "descricao": "Indica se a feição deve ser desenhada no produto; permite suprimir uma feição existente na base sem excluí-la."
         },
         {
           "nome": "carga_suport_maxima",
           "tipo": "real",
           "cardinalidade": "0..1",
-          "descricao": "Tonelagem maxima suportada (ponte/viaduto ferroviario)"
+          "descricao": "Carga máxima suportada pela obra de arte no trecho, em toneladas; dado de trafegabilidade de interesse militar."
         },
         {
           "nome": "gabarito_vertical",
           "tipo": "real",
           "cardinalidade": "0..1",
-          "descricao": "Altura livre em metros (tunel ferroviario)"
+          "descricao": "Altura livre sob a obra de arte no trecho (gabarito vertical), em metros."
         },
         {
           "nome": "largura",
           "tipo": "real",
           "cardinalidade": "0..1",
-          "descricao": "Largura da plataforma ferroviaria em metros"
+          "descricao": "Largura útil da obra de arte no trecho, em metros."
         },
         {
           "nome": "vao_livre",
           "tipo": "real",
           "cardinalidade": "0..1",
-          "descricao": "Comprimento do maior vao de ponte em metros"
+          "descricao": "Maior vão livre entre apoios da obra de arte no trecho, em metros."
         }
-      ]
+      ],
+      "descricao": "Via permanente de transporte sobre trilhos: trem, metrô, bonde e aeromóvel. Representada por linha. Distingue-se da via_deslocamento (rodovia) por trafegar sobre trilhos; carrega a bitola, o número de linhas, a eletrificação e a administração."
     },
     {
       "nome": "pista_pouso",
@@ -2997,7 +3368,8 @@
         {
           "nome": "nome",
           "tipo": "varchar(255)",
-          "cardinalidade": "0..1"
+          "cardinalidade": "0..1",
+          "descricao": "Nome oficial ou consagrado da feição."
         },
         {
           "nome": "tipo",
@@ -3016,7 +3388,8 @@
               9,
               10
             ]
-          }
+          },
+          "descricao": "Tipo de infraestrutura aeroportuária (pista de pouso, pista de táxi, heliponto), conforme o domínio tipo_pista_pouso."
         },
         {
           "nome": "revestimento",
@@ -3028,51 +3401,60 @@
             1,
             2,
             3
-          ]
+          ],
+          "descricao": "Revestimento da pista (leito natural, primário, pavimentado, calçado), conforme o domínio revestimento."
         },
         {
           "nome": "uso_pista",
           "tipo": "smallint",
           "cardinalidade": "1..1",
-          "mapa_valor": "uso_pista"
+          "mapa_valor": "uso_pista",
+          "descricao": "Natureza do uso da pista (público, militar, particular ou público/militar), conforme o domínio uso_pista."
         },
         {
           "nome": "situacao_fisica",
           "tipo": "smallint",
           "cardinalidade": "1..1",
-          "mapa_valor": "situacao_fisica"
+          "mapa_valor": "situacao_fisica",
+          "descricao": "Situação física da pista (construída, em construção, destruída, abandonada), conforme o domínio situacao_fisica."
         },
         {
           "nome": "altitude",
           "tipo": "real",
-          "cardinalidade": "0..1"
+          "cardinalidade": "0..1",
+          "descricao": "Altitude da pista em relação ao nível médio do mar, em metros."
         },
         {
           "nome": "visivel",
           "tipo": "smallint",
           "cardinalidade": "1..1",
-          "mapa_valor": "booleano"
+          "mapa_valor": "booleano",
+          "descricao": "Indica se a feição deve ser desenhada no produto; permite suprimir uma feição existente na base sem excluí-la."
         },
         {
           "nome": "texto_edicao",
           "tipo": "varchar(255)",
-          "cardinalidade": "0..1"
+          "cardinalidade": "0..1",
+          "descricao": "Texto do rótulo definido manualmente na edição cartográfica, quando difere do nome ou precisa de quebra específica."
         },
         {
           "nome": "label_x",
           "tipo": "real",
-          "cardinalidade": "0..1"
+          "cardinalidade": "0..1",
+          "descricao": "Deslocamento horizontal do rótulo em relação à feição, para reposicionar o texto na edição."
         },
         {
           "nome": "label_y",
           "tipo": "real",
-          "cardinalidade": "0..1"
+          "cardinalidade": "0..1",
+          "descricao": "Deslocamento vertical do rótulo em relação à feição, para reposicionar o texto na edição."
         },
         {
           "nome": "justificativa_txt",
           "tipo": "smallint",
           "cardinalidade": "1..1",
-          "mapa_valor": "justificativa"
+          "mapa_valor": "justificativa",
+          "descricao": "Alinhamento do texto do rótulo (esquerda, centro, direita), conforme o domínio justificativa."
         },
         {
           "nome": "simb_rot",
@@ -3082,7 +3464,8 @@
             "MultiPoint"
           ]
         }
-      ]
+      ],
+      "descricao": "Infraestrutura aeroportuária de pouso e decolagem: pista de pouso, pista de táxi e heliponto. Representada por polígono, linha ou ponto conforme a escala. Carrega o revestimento, o uso (público, militar) e a altitude."
     },
     {
       "nome": "via_deslocamento",
@@ -3094,13 +3477,15 @@
         {
           "nome": "nome",
           "tipo": "varchar(255)",
-          "cardinalidade": "0..1"
+          "cardinalidade": "0..1",
+          "descricao": "Nome oficial ou consagrado da feição."
         },
         {
           "nome": "tipo",
           "tipo": "smallint",
           "cardinalidade": "1..1",
-          "mapa_valor": "tipo_via_deslocamento"
+          "mapa_valor": "tipo_via_deslocamento",
+          "descricao": "Categoria da via terrestre (rodovia, auto-estrada, caminho carroçável, arruamento, trilha, alça de acesso), conforme o domínio tipo_via_deslocamento."
         },
         {
           "nome": "revestimento",
@@ -3113,35 +3498,41 @@
             2,
             3,
             4
-          ]
+          ],
+          "descricao": "Revestimento da via (leito natural, primário, pavimentado, calçado), conforme o domínio revestimento."
         },
         {
           "nome": "trafego",
           "tipo": "smallint",
           "cardinalidade": "1..1",
-          "mapa_valor": "trafego"
+          "mapa_valor": "trafego",
+          "descricao": "Regime de tráfego da via ao longo do ano (permanente ou periódico), conforme o domínio trafego."
         },
         {
           "nome": "nr_faixas",
           "tipo": "varchar(255)",
-          "cardinalidade": "0..1"
+          "cardinalidade": "0..1",
+          "descricao": "Número de faixas de rolamento da via."
         },
         {
           "nome": "nr_pistas",
           "tipo": "varchar(255)",
-          "cardinalidade": "0..1"
+          "cardinalidade": "0..1",
+          "descricao": "Número de pistas (conjuntos de faixas de mesmo sentido) da via."
         },
         {
           "nome": "canteiro_divisorio",
           "tipo": "smallint",
           "cardinalidade": "1..1",
-          "mapa_valor": "auxiliar"
+          "mapa_valor": "auxiliar",
+          "descricao": "Indica a presença de canteiro central separando as pistas, conforme o domínio auxiliar."
         },
         {
           "nome": "situacao_fisica",
           "tipo": "smallint",
           "cardinalidade": "1..1",
-          "mapa_valor": "situacao_fisica"
+          "mapa_valor": "situacao_fisica",
+          "descricao": "Situação física da via (construída, em construção, destruída, abandonada), conforme o domínio situacao_fisica."
         },
         {
           "nome": "jurisdicao",
@@ -3154,12 +3545,14 @@
             2,
             3,
             6
-          ]
+          ],
+          "descricao": "Esfera de jurisdição sobre a via (federal, estadual, municipal, particular), conforme o domínio jurisdicao."
         },
         {
           "nome": "sigla",
           "tipo": "varchar(255)",
-          "cardinalidade": "0..1"
+          "cardinalidade": "0..1",
+          "descricao": "Sigla oficial da rodovia (por exemplo, BR-101, SP-070), base do rótulo do escudo na carta."
         },
         {
           "nome": "administracao",
@@ -3173,12 +3566,14 @@
             3,
             6,
             7
-          ]
+          ],
+          "descricao": "Esfera que administra a via (federal, estadual, municipal, particular, concessionada), conforme o domínio administracao."
         },
         {
           "nome": "concessionaria",
           "tipo": "varchar(255)",
-          "cardinalidade": "0..1"
+          "cardinalidade": "0..1",
+          "descricao": "Nome da concessionária que opera a via, quando concessionada."
         },
         {
           "nome": "tipo_elemento_viario",
@@ -3198,18 +3593,21 @@
             401,
             402,
             97
-          ]
+          ],
+          "descricao": "Tipo de obra de arte que o trecho de via atravessa (ponte, túnel, viaduto), conforme o domínio tipo_elemento_viario; usa não aplicável quando não há obra de arte."
         },
         {
           "nome": "nome_elemento_viario",
           "tipo": "varchar(255)",
-          "cardinalidade": "0..1"
+          "cardinalidade": "0..1",
+          "descricao": "Nome da obra de arte atravessada pelo trecho de via."
         },
         {
           "nome": "posicao_pista_elemento_viario",
           "tipo": "smallint",
           "cardinalidade": "1..1",
-          "mapa_valor": "posicao_pista"
+          "mapa_valor": "posicao_pista",
+          "descricao": "Disposição das pistas na obra de arte atravessada (adjacentes ou superpostas), conforme o domínio posicao_pista."
         },
         {
           "nome": "material_construcao_elemento_viario",
@@ -3225,18 +3623,21 @@
             5,
             97,
             98
-          ]
+          ],
+          "descricao": "Material da obra de arte atravessada pelo trecho de via, conforme o domínio material_construcao."
         },
         {
           "nome": "texto_edicao",
           "tipo": "varchar(255)",
-          "cardinalidade": "0..1"
+          "cardinalidade": "0..1",
+          "descricao": "Texto do rótulo definido manualmente na edição cartográfica, quando difere do nome ou precisa de quebra específica."
         },
         {
           "nome": "visivel",
           "tipo": "smallint",
           "cardinalidade": "1..1",
-          "mapa_valor": "booleano"
+          "mapa_valor": "booleano",
+          "descricao": "Indica se a feição deve ser desenhada no produto; permite suprimir uma feição existente na base sem excluí-la."
         },
         {
           "nome": "ordem_simbologia",
@@ -3247,27 +3648,28 @@
           "nome": "carga_suport_maxima",
           "tipo": "real",
           "cardinalidade": "0..1",
-          "descricao": "Tonelagem maxima suportada (ponte/viaduto)"
+          "descricao": "Carga máxima suportada pela obra de arte no trecho, em toneladas; dado de trafegabilidade de interesse militar."
         },
         {
           "nome": "gabarito_vertical",
           "tipo": "real",
           "cardinalidade": "0..1",
-          "descricao": "Altura livre em metros (tunel, passagem sob viaduto)"
+          "descricao": "Altura livre sob a obra de arte no trecho (gabarito vertical), em metros."
         },
         {
           "nome": "largura",
           "tipo": "real",
           "cardinalidade": "0..1",
-          "descricao": "Largura da plataforma em metros"
+          "descricao": "Largura útil da obra de arte no trecho, em metros."
         },
         {
           "nome": "vao_livre",
           "tipo": "real",
           "cardinalidade": "0..1",
-          "descricao": "Comprimento do maior vao de ponte em metros"
+          "descricao": "Maior vão livre entre apoios da obra de arte no trecho, em metros."
         }
-      ]
+      ],
+      "descricao": "Via terrestre de deslocamento: rodovia, estrada, auto-estrada, caminho carroçável, arruamento, trilha e alça de acesso. Representada por linha; é a classe principal do sistema rodoviário e carrega revestimento, tráfego, número de faixas, jurisdição e a sigla oficial da rodovia."
     },
     {
       "nome": "aglomerado_rural",
@@ -3384,47 +3786,56 @@
         {
           "nome": "nome",
           "tipo": "varchar(255)",
-          "cardinalidade": "0..1"
+          "cardinalidade": "0..1",
+          "descricao": "Nome oficial ou consagrado da localidade, base do rótulo na carta."
         },
         {
           "nome": "tipo",
           "tipo": "smallint",
           "cardinalidade": "1..1",
-          "mapa_valor": "tipo_localidade"
+          "mapa_valor": "tipo_localidade",
+          "descricao": "Categoria hierárquica da localidade (capital, cidade, vila, aglomerado rural, aldeia, comunidade quilombola), conforme o domínio tipo_localidade."
         },
         {
           "nome": "populacao",
           "tipo": "integer",
-          "cardinalidade": "0..1"
+          "cardinalidade": "0..1",
+          "descricao": "População residente estimada, em habitantes; combinada ao tipo, determina em que escala a localidade aparece e a proeminência do seu rótulo."
         },
         {
           "nome": "texto_edicao",
           "tipo": "varchar(255)",
-          "cardinalidade": "0..1"
+          "cardinalidade": "0..1",
+          "descricao": "Texto do rótulo definido manualmente na edição cartográfica, quando difere do nome ou precisa de quebra específica."
         },
         {
           "nome": "label_x",
           "tipo": "real",
-          "cardinalidade": "0..1"
+          "cardinalidade": "0..1",
+          "descricao": "Deslocamento horizontal do rótulo em relação à feição, para reposicionar o texto na edição."
         },
         {
           "nome": "label_y",
           "tipo": "real",
-          "cardinalidade": "0..1"
+          "cardinalidade": "0..1",
+          "descricao": "Deslocamento vertical do rótulo em relação à feição, para reposicionar o texto na edição."
         },
         {
           "nome": "justificativa_txt",
           "tipo": "smallint",
           "cardinalidade": "1..1",
-          "mapa_valor": "justificativa"
+          "mapa_valor": "justificativa",
+          "descricao": "Alinhamento do texto do rótulo (esquerda, centro, direita), conforme o domínio justificativa."
         },
         {
           "nome": "visivel",
           "tipo": "smallint",
           "cardinalidade": "1..1",
-          "mapa_valor": "booleano"
+          "mapa_valor": "booleano",
+          "descricao": "Indica se a feição deve ser desenhada no produto; permite suprimir uma feição existente na base sem excluí-la."
         }
-      ]
+      ],
+      "descricao": "Lugar habitado identificado por nome e hierarquizado por tipo e população, da capital federal ao nome local sem estrutura de aglomerado. Admite representação por ponto (a sede, em escalas menores) ou por polígono (a mancha da área habitada, em escalas maiores). O tipo e a população governam a seleção e a prioridade do rótulo por escala."
     },
     {
       "nome": "nome_local",
@@ -3602,30 +4013,36 @@
         {
           "nome": "texto_edicao",
           "tipo": "varchar(255)",
-          "cardinalidade": "0..1"
+          "cardinalidade": "0..1",
+          "descricao": "Texto do rótulo definido manualmente na edição cartográfica, quando difere do nome ou precisa de quebra específica."
         },
         {
           "nome": "label_x",
           "tipo": "real",
-          "cardinalidade": "0..1"
+          "cardinalidade": "0..1",
+          "descricao": "Deslocamento horizontal do rótulo em relação à feição, para reposicionar o texto na edição."
         },
         {
           "nome": "label_y",
           "tipo": "real",
-          "cardinalidade": "0..1"
+          "cardinalidade": "0..1",
+          "descricao": "Deslocamento vertical do rótulo em relação à feição, para reposicionar o texto na edição."
         },
         {
           "nome": "tamanho_txt",
           "tipo": "real",
-          "cardinalidade": "0..1"
+          "cardinalidade": "0..1",
+          "descricao": "Tamanho da fonte do rótulo, em pontos, definido na edição cartográfica."
         },
         {
           "nome": "justificativa_txt",
           "tipo": "smallint",
           "cardinalidade": "1..1",
-          "mapa_valor": "justificativa"
+          "mapa_valor": "justificativa",
+          "descricao": "Alinhamento do texto do rótulo (esquerda, centro, direita), conforme o domínio justificativa."
         }
-      ]
+      ],
+      "descricao": "Área em que não há dados vetoriais coletados ou disponíveis, delimitada explicitamente para registrar a lacuna de cobertura na base contínua, em vez de deixá-la implícita pela simples ausência de feições (o que seria ambíguo com uma área de fato vazia no terreno)."
     },
     {
       "nome": "limite_legal",
@@ -3638,19 +4055,22 @@
         {
           "nome": "nome",
           "tipo": "varchar(255)",
-          "cardinalidade": "0..1"
+          "cardinalidade": "0..1",
+          "descricao": "Nome da unidade territorial delimitada (país, UF, município, distrito) ou a denominação do limite marítimo."
         },
         {
           "nome": "tipo",
           "tipo": "smallint",
           "cardinalidade": "1..1",
-          "mapa_valor": "tipo_limite_legal"
+          "mapa_valor": "tipo_limite_legal",
+          "descricao": "Nível do limite político-administrativo ou faixa marítima, conforme o domínio tipo_limite_legal; governa a partir de que escala o limite aparece."
         },
         {
           "nome": "geometria_aproximada",
           "tipo": "smallint",
           "cardinalidade": "1..1",
-          "mapa_valor": "booleano"
+          "mapa_valor": "booleano",
+          "descricao": "Indica que o traçado do limite foi obtido por inferência ou de forma aproximada, sem o memorial descritivo preciso."
         },
         {
           "nome": "texto_edicao",
@@ -3658,7 +4078,8 @@
           "cardinalidade": "0..1",
           "primitivas": [
             "MultiLinestring"
-          ]
+          ],
+          "descricao": "Texto do rótulo definido manualmente na edição cartográfica, quando difere do nome ou precisa de quebra específica."
         },
         {
           "nome": "sobreposto",
@@ -3667,7 +4088,8 @@
           "mapa_valor": "booleano",
           "primitivas": [
             "MultiLinestring"
-          ]
+          ],
+          "descricao": "Indica que o segmento de limite coincide com o eixo de outra feição (corre sobre um rio, uma via ou um divisor de águas), o que afeta a simbologia para evitar traço duplicado."
         },
         {
           "nome": "exibir_rotulo_aproximado",
@@ -3676,7 +4098,8 @@
           "mapa_valor": "booleano",
           "primitivas": [
             "MultiLinestring"
-          ]
+          ],
+          "descricao": "Controla a exibição do rótulo que sinaliza ao leitor o caráter aproximado do limite naquele trecho."
         },
         {
           "nome": "em_litigio",
@@ -3685,7 +4108,8 @@
           "mapa_valor": "booleano",
           "primitivas": [
             "MultiLinestring"
-          ]
+          ],
+          "descricao": "Indica que o traçado é objeto de contestação ou pendência judicial entre as partes, condição representada por simbologia própria."
         },
         {
           "nome": "sigla",
@@ -3693,7 +4117,8 @@
           "cardinalidade": "0..1",
           "primitivas": [
             "MultiPolygon"
-          ]
+          ],
+          "descricao": "Sigla da unidade delimitada (por exemplo, a sigla da UF ou do país em uso corrente)."
         },
         {
           "nome": "geocodigo_ibge",
@@ -3701,7 +4126,8 @@
           "cardinalidade": "0..1",
           "primitivas": [
             "MultiPolygon"
-          ]
+          ],
+          "descricao": "Código da unidade territorial no cadastro do IBGE, chave para cruzar com dados oficiais de população e área."
         },
         {
           "nome": "cod_iso",
@@ -3709,7 +4135,8 @@
           "cardinalidade": "0..1",
           "primitivas": [
             "MultiPolygon"
-          ]
+          ],
+          "descricao": "Código do país no padrão ISO 3166-1 alpha-3 (por exemplo, BRA), usado nos limites internacionais."
         },
         {
           "nome": "populacao",
@@ -3717,9 +4144,11 @@
           "cardinalidade": "0..1",
           "primitivas": [
             "MultiPolygon"
-          ]
+          ],
+          "descricao": "População residente estimada da unidade territorial, em habitantes."
         }
-      ]
+      ],
+      "descricao": "Feição que materializa um limite oficial político-administrativo ou marítimo: internacional, estadual, municipal, distrital, mar territorial, zona contígua e zona econômica exclusiva. Representada como linha (o traçado do limite) e como polígono (a área por ele delimitada), carregando os códigos oficiais da unidade territorial (IBGE, ISO)."
     },
     {
       "nome": "sumidouro_vertedouro",
@@ -3732,20 +4161,23 @@
           "nome": "tipo",
           "tipo": "smallint",
           "cardinalidade": "1..1",
-          "mapa_valor": "tipo_sumidouro_vertedouro"
+          "mapa_valor": "tipo_sumidouro_vertedouro",
+          "descricao": "Distingue sumidouro (a água some) de vertedouro (a água ressurge) e a forma do sumidouro, conforme o domínio tipo_sumidouro_vertedouro."
         },
         {
           "nome": "visivel",
           "tipo": "smallint",
           "cardinalidade": "1..1",
-          "mapa_valor": "booleano"
+          "mapa_valor": "booleano",
+          "descricao": "Indica se a feição deve ser desenhada no produto; permite suprimir uma feição existente na base sem excluí-la."
         },
         {
           "nome": "simb_rot",
           "tipo": "real",
           "cardinalidade": "0..1"
         }
-      ]
+      ],
+      "descricao": "Ponto onde um curso d'água desaparece no subsolo (sumidouro) ou ressurge à superfície (vertedouro), típico de terreno cárstico. Representado por ponto; o tipo distingue o vertedouro do sumidouro e a forma pela qual a água some."
     },
     {
       "nome": "obstaculo_vertical",
@@ -3757,34 +4189,40 @@
         {
           "nome": "nome",
           "tipo": "varchar(255)",
-          "cardinalidade": "0..1"
+          "cardinalidade": "0..1",
+          "descricao": "Nome oficial ou consagrado da feição."
         },
         {
           "nome": "altitude",
           "tipo": "real",
-          "cardinalidade": "0..1"
+          "cardinalidade": "0..1",
+          "descricao": "Altitude do topo do obstáculo em relação ao nível médio do mar, em metros."
         },
         {
           "nome": "altura",
           "tipo": "real",
-          "cardinalidade": "0..1"
+          "cardinalidade": "0..1",
+          "descricao": "Altura do obstáculo em relação à sua base, em metros."
         },
         {
           "nome": "tipo",
           "tipo": "smallint",
           "cardinalidade": "1..1",
-          "mapa_valor": "tipo_obstaculo"
+          "mapa_valor": "tipo_obstaculo",
+          "descricao": "Distingue o obstáculo individual do obstáculo múltiplo (conjunto agrupado), conforme o domínio tipo_obstaculo."
         },
         {
           "nome": "texto_edicao",
           "tipo": "varchar(255)",
-          "cardinalidade": "0..1"
+          "cardinalidade": "0..1",
+          "descricao": "Texto do rótulo definido manualmente na edição cartográfica, quando difere do nome ou precisa de quebra específica."
         },
         {
           "nome": "visivel",
           "tipo": "smallint",
           "cardinalidade": "1..1",
-          "mapa_valor": "booleano"
+          "mapa_valor": "booleano",
+          "descricao": "Indica se a feição deve ser desenhada no produto; permite suprimir uma feição existente na base sem excluí-la."
         },
         {
           "nome": "exibir_linha_rotulo",
@@ -3792,7 +4230,8 @@
           "cardinalidade": "1..1",
           "mapa_valor": "booleano"
         }
-      ]
+      ],
+      "descricao": "Obstáculo que se ergue acima do terreno e é relevante como referência ou risco à navegação aérea, individual ou em conjunto (por exemplo, torre ou chaminé). Representado por ponto; carrega a altura em relação à base e a altitude do topo."
     }
   ],
   "extension_classes": [

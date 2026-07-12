@@ -1230,6 +1230,7 @@ INSERT INTO dominios.tipo_localidade (code,code_name) VALUES (7,'Outros aglomera
 INSERT INTO dominios.tipo_localidade (code,code_name) VALUES (8,'Nome local (8)');
 INSERT INTO dominios.tipo_localidade (code,code_name) VALUES (9,'Aldeia indígena (9)');
 INSERT INTO dominios.tipo_localidade (code,code_name) VALUES (10,'Comunidade quilombola (10)');
+INSERT INTO dominios.tipo_localidade (code,code_name) VALUES (11,'Bairro (11)');
 INSERT INTO dominios.tipo_localidade (code,code_name) VALUES (9999,'A SER PREENCHIDO (9999)');
 
 ALTER TABLE dominios.tipo_localidade OWNER TO postgres;
@@ -3853,7 +3854,6 @@ CREATE TABLE edgv.infra_trecho_hidroviario_l(
 	 id uuid NOT NULL DEFAULT uuid_generate_v4(),
 	 nome varchar(255),
 	 situacao_fisica smallint NOT NULL,
-	 navegavel smallint NOT NULL,
 	 calado_max_seca real,
 	 texto_edicao varchar(255),
 	 visivel smallint NOT NULL,
@@ -3872,13 +3872,6 @@ ALTER TABLE edgv.infra_trecho_hidroviario_l
 	 ON UPDATE NO ACTION ON DELETE NO ACTION;
 
 ALTER TABLE edgv.infra_trecho_hidroviario_l ALTER COLUMN situacao_fisica SET DEFAULT 9999;
-
-ALTER TABLE edgv.infra_trecho_hidroviario_l
-	 ADD CONSTRAINT infra_trecho_hidroviario_l_navegavel_fk FOREIGN KEY (navegavel)
-	 REFERENCES dominios.auxiliar (code) MATCH FULL
-	 ON UPDATE NO ACTION ON DELETE NO ACTION;
-
-ALTER TABLE edgv.infra_trecho_hidroviario_l ALTER COLUMN navegavel SET DEFAULT 9999;
 
 ALTER TABLE edgv.infra_trecho_hidroviario_l
 	 ADD CONSTRAINT infra_trecho_hidroviario_l_visivel_fk FOREIGN KEY (visivel)

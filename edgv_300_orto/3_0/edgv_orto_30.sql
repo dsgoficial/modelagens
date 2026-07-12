@@ -689,6 +689,7 @@ INSERT INTO dominios.tipo_localidade (code,code_name) VALUES (7,'Outros aglomera
 INSERT INTO dominios.tipo_localidade (code,code_name) VALUES (8,'Nome local (8)');
 INSERT INTO dominios.tipo_localidade (code,code_name) VALUES (9,'Aldeia indígena (9)');
 INSERT INTO dominios.tipo_localidade (code,code_name) VALUES (10,'Comunidade quilombola (10)');
+INSERT INTO dominios.tipo_localidade (code,code_name) VALUES (11,'Bairro (11)');
 INSERT INTO dominios.tipo_localidade (code,code_name) VALUES (9999,'A SER PREENCHIDO (9999)');
 
 ALTER TABLE dominios.tipo_localidade OWNER TO postgres;

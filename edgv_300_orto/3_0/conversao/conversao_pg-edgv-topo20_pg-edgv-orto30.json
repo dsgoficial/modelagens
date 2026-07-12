@@ -2,7 +2,7 @@
   "metadados": {
     "versao_arquivo": "1.1",
     "modelo_A": "EDGV Topo 2.0",
-    "versao_modelo_A": "0.13.0",
+    "versao_modelo_A": "0.14.0",
     "modelo_B": "EDGV Orto 3.0",
     "versao_modelo_B": "3.0.0"
   },
@@ -143,10 +143,14 @@
           {
             "nome_atributo": "tipo",
             "valor": 10
+          },
+          {
+            "nome_atributo": "tipo",
+            "valor": 11
           }
         ]
       },
-      "__comment": "llp_localidade restrito aos tipos [1, 2, 3, 4, 9, 10] (demais tipos viram classes separadas)."
+      "__comment": "llp_localidade restrito aos tipos [1, 2, 3, 4, 9, 10, 11] (demais tipos viram classes separadas)."
     },
     {
       "classe_A": "llp_localidade",
