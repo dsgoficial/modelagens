@@ -3875,12 +3875,12 @@
       "edgv_target": {
         "table": "cobter_vegetacao_a",
         "attributes": {
-          "tipo": 196
+          "tipo": 195
         }
       },
       "overture_attribute_mapping": {},
       "confidence": "medium",
-      "note": "Lavoura (WorldCover cropland, indiferenciada) -> 196 Cult - Anual irrigado (decisao do chefe 2026-07-12). O WorldCover nao discrimina a cultura; a feicao entra com confiabilidade Baixa/metodo automatico, para o operador refinar (ex.: 197 anual nao irrigado, dominante no Sul de sequeiro; 150 arroz de inundacao no RS)."
+      "note": "Lavoura (WorldCover cropland, indiferenciada) -> 195 Cult - Irrigacao desconhecida (decisao do chefe 2026-07-12; codigo criado para nao afirmar irrigacao que o sensor nao informa). Feicao entra com confiabilidade Baixa/metodo automatico para o operador refinar (196/197/150 conforme o caso)."
     },
     {
       "id": "landcover_urban",

@@ -4464,6 +4464,12 @@
           "descricao": "Cultura permanente, de ciclo longo sem replantio anual (café, citros, fruteiras)."
         },
         {
+          "code": 195,
+          "value": "Cult - Irrigação desconhecida",
+          "valor_filtro": "Vegetação Cultivada",
+          "descricao": "Cultura/lavoura sem discriminação de irrigação: alvo de fontes agrícolas indiferenciadas (WorldCover cropland), que não informam se há irrigação."
+        },
+        {
           "code": 196,
           "value": "Cult - Anual irrigado",
           "valor_filtro": "Vegetação Cultivada",

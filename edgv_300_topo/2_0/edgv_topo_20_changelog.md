@@ -382,6 +382,8 @@ Bug originado em `mastergen.py`: o gerador anexa `9999` aos valores do CHECK sem
 
 **Revisão 2026-07-12 (intra-2.0, só `extension.sql`):** o domínio `dominios.confiabilidade` passou de 4 para 5 códigos (1 Muito Alta, 2 Alta, 3 Média, 4 Baixa, 5 Indeterminada; os dois mais altos qualificam para a INDE), com o trigger `computa_qualidade` ajustado, e foram adicionadas as funções `public.linha_derivacao` (gate binário derivado da linha de produto por feição: INDE quando a feição é ativa e tem `escala_maxima_autoritativa`, que já combina qualidade, temporalidade e validação POR ESCALA; caso contrário Militar/expedito) e `public.celula_publicavel_inde` (a perna de área do INDE: a célula MI 1:25.000 verificada-completa na escala, via `completude_subfase` e `nivel_completude`; a habilitação da área exige também território nacional, INDE é Brasil-only). Sem mudança de tabela ou coluna.
 
+**Revisão 2026-07-12 (intra-2.0, `master_file` + SQL):** o domínio `dominios.tipo_veg` ganhou o código **195 "Cult - Irrigação desconhecida"** (valor_filtro Vegetação Cultivada, entre 194 Perene e 196 Anual irrigado). É o alvo da lavoura indiferenciada do [[overture-maps]] (`land_cover` subtype `crop`, cerca de 233 mil feições no Sul), criado para NÃO afirmar uma irrigação que o sensor (WorldCover cropland) não informa; a regra `landcover_crop` do crosswalk mapeia `crop -> 195`. Propagado ao `master_file_topo_20.json`, ao `edgv_topo_20.sql` (INSERT do domínio) e à spec (codelist).
+
 ---
 
 ## 8. DDL de migração (1.4 → 2.0)
