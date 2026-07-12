@@ -3426,6 +3426,49 @@
       "note": "Escadaria"
     },
     {
+      "id": "road_unknown",
+      "overture_filter": {
+        "theme": "transportation",
+        "type": "segment",
+        "subtype": "road",
+        "class": [
+          "unknown"
+        ],
+        "geometry": [
+          "line"
+        ]
+      },
+      "edgv_target": {
+        "table": "infra_via_deslocamento_l",
+        "attributes": {
+          "tipo": 0,
+          "situacao_fisica": 3
+        }
+      },
+      "overture_attribute_mapping": {
+        "names.primary": "nome",
+        "road_surface": {
+          "column": "revestimento",
+          "map": {
+            "paved": 3,
+            "asphalt": 3,
+            "concrete": 3,
+            "compacted": 2,
+            "gravel": 2,
+            "fine_gravel": 2,
+            "unpaved": 1,
+            "ground": 1,
+            "dirt": 1,
+            "sand": 1,
+            "cobblestone": 4,
+            "sett": 4
+          }
+        }
+      },
+      "confidence": "low",
+      "note": "Via de classe desconhecida (Overture road/unknown) -> tipo 0 Desconhecido; recupera segmentos que ficariam fora da malha por falta de classe (decisao do chefe 2026-07-12)."
+    },
+    {
       "_comment": "=== TRANSPORTATION (rail) → infra_ferrovia_l ==="
     },
     {
@@ -7274,6 +7317,52 @@
       },
       "confidence": "medium",
       "note": "Bairro (subdivisao intraurbana) -> tipo_localidade 11 Bairro, codigo adicionado ao modelo na rev 0.14.0 (decisao do chefe 2026-07-11). Referencia, nao autoritativa."
+    },
+    {
+      "id": "div_pt_microhood",
+      "overture_filter": {
+        "theme": "divisions",
+        "type": "division",
+        "subtype": "microhood",
+        "geometry": [
+          "point"
+        ]
+      },
+      "edgv_target": {
+        "table": "llp_localidade_p",
+        "attributes": {
+          "tipo": 8
+        }
+      },
+      "overture_attribute_mapping": {
+        "names.primary": "nome",
+        "population": "populacao"
+      },
+      "confidence": "low",
+      "note": "Sub-bairro (Overture microhood) -> tipo_localidade 8 Nome local (nao e Bairro; decisao do chefe 2026-07-12). Referencia, nao autoritativa."
+    },
+    {
+      "id": "div_pt_macrohood",
+      "overture_filter": {
+        "theme": "divisions",
+        "type": "division",
+        "subtype": "macrohood",
+        "geometry": [
+          "point"
+        ]
+      },
+      "edgv_target": {
+        "table": "llp_localidade_p",
+        "attributes": {
+          "tipo": 8
+        }
+      },
+      "overture_attribute_mapping": {
+        "names.primary": "nome",
+        "population": "populacao"
+      },
+      "confidence": "low",
+      "note": "Agrupamento de bairros (Overture macrohood) -> tipo_localidade 8 Nome local (nao e Bairro; decisao do chefe 2026-07-12). Referencia, nao autoritativa."
     },
     {
       "_comment": "=== PLACES (POI) -> constr_edificacao_p, por NO da taxonomia (category_node) === (passo 6, refeito; ETL casa no-no-caminho; ordem: no mais profundo primeiro)"
