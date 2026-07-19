@@ -4679,6 +4679,55 @@ ALTER TABLE edgv.aux_elemento_viario_p
 
 ALTER TABLE edgv.aux_elemento_viario_p ALTER COLUMN absorvido SET DEFAULT 9999;
 
+CREATE TABLE edgv.aux_pista_pouso_p(
+	 id uuid NOT NULL DEFAULT uuid_generate_v4(),
+	 tipo smallint NOT NULL,
+	 nome varchar(255),
+	 revestimento smallint,
+	 uso_pista smallint,
+	 situacao_fisica smallint,
+	 altitude real,
+	 largura real,
+	 extensao real,
+	 absorvido smallint NOT NULL,
+	 observacao varchar(255),
+	 geom geometry(MultiPoint, 4674),
+	 CONSTRAINT aux_pista_pouso_p_pk PRIMARY KEY (id)
+	 WITH (FILLFACTOR = 80)
+);
+CREATE INDEX aux_pista_pouso_p_geom ON edgv.aux_pista_pouso_p USING gist (geom);
+
+ALTER TABLE edgv.aux_pista_pouso_p OWNER TO postgres;
+
+ALTER TABLE edgv.aux_pista_pouso_p
+	 ADD CONSTRAINT aux_pista_pouso_p_tipo_fk FOREIGN KEY (tipo)
+	 REFERENCES dominios.tipo_pista_pouso (code) MATCH FULL
+	 ON UPDATE NO ACTION ON DELETE NO ACTION;
+
+ALTER TABLE edgv.aux_pista_pouso_p ALTER COLUMN tipo SET DEFAULT 9999;
+
+ALTER TABLE edgv.aux_pista_pouso_p
+	 ADD CONSTRAINT aux_pista_pouso_p_revestimento_fk FOREIGN KEY (revestimento)
+	 REFERENCES dominios.revestimento (code) MATCH FULL
+	 ON UPDATE NO ACTION ON DELETE NO ACTION;
+
+ALTER TABLE edgv.aux_pista_pouso_p
+	 ADD CONSTRAINT aux_pista_pouso_p_uso_pista_fk FOREIGN KEY (uso_pista)
+	 REFERENCES dominios.uso_pista (code) MATCH FULL
+	 ON UPDATE NO ACTION ON DELETE NO ACTION;
+
+ALTER TABLE edgv.aux_pista_pouso_p
+	 ADD CONSTRAINT aux_pista_pouso_p_situacao_fisica_fk FOREIGN KEY (situacao_fisica)
+	 REFERENCES dominios.situacao_fisica (code) MATCH FULL
+	 ON UPDATE NO ACTION ON DELETE NO ACTION;
+
+ALTER TABLE edgv.aux_pista_pouso_p
+	 ADD CONSTRAINT aux_pista_pouso_p_absorvido_fk FOREIGN KEY (absorvido)
+	 REFERENCES dominios.booleano (code) MATCH FULL
+	 ON UPDATE NO ACTION ON DELETE NO ACTION;
+
+ALTER TABLE edgv.aux_pista_pouso_p ALTER COLUMN absorvido SET DEFAULT 9999;
+
 CREATE TABLE edgv.aux_revisao_p(
 	 id uuid NOT NULL DEFAULT uuid_generate_v4(),
 	 descricao varchar(255),

@@ -9050,6 +9050,81 @@
           "mapa_valor": "booleano"
         }
       ]
+    },
+    {
+      "nome": "pista_pouso",
+      "categoria": "aux",
+      "primitivas": [
+        "MultiPoint"
+      ],
+      "atributos": [
+        {
+          "nome": "tipo",
+          "tipo": "smallint",
+          "cardinalidade": "1..1",
+          "mapa_valor": "tipo_pista_pouso",
+          "descricao": "Tipo da pista (pista de pouso, pista de taxi, heliponto), conforme o dominio tipo_pista_pouso."
+        },
+        {
+          "nome": "nome",
+          "tipo": "varchar(255)",
+          "cardinalidade": "0..1",
+          "descricao": "Nome do aerodromo ou da pista."
+        },
+        {
+          "nome": "revestimento",
+          "tipo": "smallint",
+          "cardinalidade": "0..1",
+          "mapa_valor": "revestimento",
+          "descricao": "Revestimento da pista, conforme o dominio revestimento."
+        },
+        {
+          "nome": "uso_pista",
+          "tipo": "smallint",
+          "cardinalidade": "0..1",
+          "mapa_valor": "uso_pista",
+          "descricao": "Uso da pista, conforme o dominio uso_pista."
+        },
+        {
+          "nome": "situacao_fisica",
+          "tipo": "smallint",
+          "cardinalidade": "0..1",
+          "mapa_valor": "situacao_fisica",
+          "descricao": "Situacao fisica, conforme o dominio situacao_fisica."
+        },
+        {
+          "nome": "altitude",
+          "tipo": "real",
+          "cardinalidade": "0..1",
+          "descricao": "Altitude da pista em metros."
+        },
+        {
+          "nome": "largura",
+          "tipo": "real",
+          "cardinalidade": "0..1",
+          "descricao": "Largura da pista em metros; guardada porque permitira desenhar a pista como linha ou area na absorcao."
+        },
+        {
+          "nome": "extensao",
+          "tipo": "real",
+          "cardinalidade": "0..1",
+          "descricao": "Extensao da pista em metros; guardada porque permitira desenhar a pista como linha ou area na absorcao."
+        },
+        {
+          "nome": "absorvido",
+          "tipo": "smallint",
+          "cardinalidade": "1..1",
+          "mapa_valor": "booleano",
+          "descricao": "Falso enquanto a feicao nao virou pista linear ou areal em infra_pista_pouso; o que permanece falso e fila de trabalho visivel."
+        },
+        {
+          "nome": "observacao",
+          "tipo": "varchar(255)",
+          "cardinalidade": "0..1",
+          "descricao": "Observacao livre."
+        }
+      ],
+      "descricao": "Classe auxiliar que absorve a pista de pouso modelada como PONTO pela fonte externa. Na Topo 2.0 a pista e linha ou area, e infra_pista_pouso_p so admite tipo=11 (Heliponto). Estagio intermediario e fila de trabalho, nao destino final."
     }
   ]
 }

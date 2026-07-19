@@ -129,6 +129,42 @@ Registradas aqui como achado, NÃO como mudança aplicada:
 
 > Rev 2026-07-19: criada a pedido do chefe da DGEO, ao converter o IBGE BC250 para a Topo 2.0. Registrado no changelog que a passagem de nível (`tra_passagem_nivel_p` da BC250, 1.441 feições) permanece SEM destino por decisão: não é feição de interesse, e por isso o domínio `tipo_elemento_viario` NÃO foi estendido.
 
+### `aux_pista_pouso_p`
+
+Classe AUXILIAR (categoria `aux`) que absorve a pista de pouso que a fonte modelou como PONTO.
+
+Mesmo padrão, mesma causa e mesma data que `aux_elemento_viario_p`: na Topo 2.0 a pista de pouso é linha ou área, e o CHECK de `infra_pista_pouso_p` só admite `tipo=11` (Heliponto), único tipo que faz sentido como ponto. Ao converter o IBGE BC250 em 2026-07-19 apareceram **2.128 pistas de pouso e 1 pista de taxiamento modeladas como ponto** (os 1.343 helipontos entram direto na classe cartográfica). Sem esta classe, some a posição de 2.129 aeródromos, que numa carta militar é justamente o dado operacional.
+
+Guarda `largura` e `extensao`, que a origem traz e a classe cartográfica não tem: são eles que permitirão, adiante, desenhar a pista como linha ou área em vez de só marcar o ponto. Como na irmã, `absorvido` nasce falso e impede que a classe vire depósito permanente: o que ficar falso é fila visível.
+
+Não exige domínio novo: reusa `tipo_pista_pouso`, `revestimento`, `uso_pista`, `situacao_fisica` e `booleano`.
+
+| Coluna | Tipo | Constraints |
+|--------|------|-------------|
+| `id` | uuid | PK, DEFAULT uuid_generate_v4() |
+| `tipo` | smallint | NOT NULL, FK → `dominios.tipo_pista_pouso`, DEFAULT 9999 |
+| `nome` | varchar(255) | nullable |
+| `revestimento` | smallint | nullable, FK → `dominios.revestimento` |
+| `uso_pista` | smallint | nullable, FK → `dominios.uso_pista` |
+| `situacao_fisica` | smallint | nullable, FK → `dominios.situacao_fisica` |
+| `altitude` | real | nullable |
+| `largura` | real | nullable |
+| `extensao` | real | nullable |
+| `absorvido` | smallint | NOT NULL, FK → `dominios.booleano`, DEFAULT 9999 |
+| `observacao` | varchar(255) | nullable |
+| `geom` | MultiPoint, 4674 | índice GiST |
+
+> Rev 2026-07-19: criada a pedido do chefe da DGEO, ao converter o IBGE BC250. É a **terceira** ocorrência do mesmo padrão numa só conversão (elemento viário, praia, pista de pouso): a fonte externa modela como ponto o que a Topo 2.0 só admite como linha ou área. Vale registrar como sinal sobre o modelo, não como três acidentes.
+
+#### Partição de tipo por primitiva: achado da conversão BC250 (2026-07-19)
+
+Registrado como achado, NÃO como mudança aplicada. A Topo 2.0 restringe por CHECK quais códigos de `tipo` valem em cada primitiva de uma mesma classe, e a partição nem sempre coincide com o que fontes externas produzem:
+
+- `elemnat_toponimo_fisiografico_natural_l` só admite 1 (Serra), 2 (Morro) e 12 (Praia); `_p` admite todos os outros **menos** 1. Ou seja, topônimo de serra só existe como linha e não como ponto.
+- `elemnat_elemento_fisiografico_p` não admite 13 (Falésia).
+
+Na BC250 isso barrou 806 feições com nome próprio (725 serras pontuais, 78 chapadas/planaltos/maciços/cabos lineares, 3 falésias pontuais). **Decisão do chefe (2026-07-19):** converter mesmo assim, com `tipo=9999` e o valor original da fonte gravado em `observacao`, preservando o topônimo e deixando a pendência legível, em vez de criar mais classes auxiliares ou descartar.
+
 ### `llp_localidade_a`
 
 Polígono de localidades (mesmo schema de `llp_localidade_p`, com geometria MultiPolygon).
