@@ -1529,7 +1529,7 @@
       "note": "Campo (grama)"
     },
     {
-      "id": "veg_campo_meadow",
+      "id": "veg_pastagem_meadow",
       "osm_filter": {
         "tags": {
           "landuse": "meadow"
@@ -1541,12 +1541,12 @@
       "edgv_target": {
         "table": "cobter_vegetacao_a",
         "attributes": {
-          "tipo": 901
+          "tipo": 198
         }
       },
       "osm_attribute_mapping": {},
       "confidence": "high",
-      "note": "Campo (prado)"
+      "note": "Pastagem cultivada. landuse=meadow e a tag OSM de prado/pasto manejado; antes caia em 901 Campo, que e o campo NATURAL."
     },
     {
       "id": "veg_scrub",

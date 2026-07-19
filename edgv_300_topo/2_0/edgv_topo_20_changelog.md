@@ -221,7 +221,7 @@ A travessia hidroviária passa a ser **linha-only** no Topo 2.0: a travessia é 
 | 0 | Desconhecido |
 | 7 | Alça de acesso / Rotatória |
 
-### `dominios.tipo_veg` (+4)
+### `dominios.tipo_veg` (+5)
 
 | Código | Valor |
 |--------|-------|
@@ -229,8 +229,11 @@ A travessia hidroviária passa a ser **linha-only** no Topo 2.0: a travessia é 
 | 1005 | Terreno exposto - crosta salina |
 | 1200 | Vegetação arbustiva |
 | 195 | Cult - Irrigação desconhecida |
+| 198 | Cult - Pastagem cultivada |
 
 > Rev 2026-07-12: adicionado o código 195 `Cult - Irrigação desconhecida` (valor_filtro Vegetação Cultivada), alvo do subtype `crop` do Overture land_cover no mapeamento Overture -> EDGV Topo 2.0.
+
+> Rev 2026-07-19: adicionado o código 198 `Cult - Pastagem cultivada` (valor_filtro Vegetação Cultivada). A pastagem era a única cobertura sem destino próprio no `tipo_veg`: caía em 901 Campo, apagando a distinção entre campo natural e pasto plantado, que é justamente a maior confusão dos classificadores e a maior classe antrópica do país. Entra no bloco `Cult` porque é vegetação plantada, o que dá round-trip limpo para a EDGV 3.0 (`veg_cultivada` + `cultivo_predominante`=24 Pastagem cultivada). Pasto natural sob manejo continua em 901. Alvo do MapBiomas 15 e do OSM `landuse=meadow`.
 
 ### `dominios.tipo_elemento_fisiografico` (+2)
 

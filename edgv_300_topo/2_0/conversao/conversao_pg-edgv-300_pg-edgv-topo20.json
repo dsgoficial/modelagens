@@ -2807,6 +2807,10 @@
               "valor": 13
             },
             {
+              "nome_atributo": "cultivopredominante",
+              "valor": 24
+            },
+            {
               "nome_atributo": "terreno",
               "valor": 2
             }
@@ -2924,6 +2928,48 @@
         {
           "nome_atributo": "tipolavoura",
           "valor": 3
+        }
+      ],
+      "mapeamento_atributos": []
+    },
+    {
+      "__comment": "veg_veg_cultivada <-> cobter_vegetacao | pastagem cultivada",
+      "classe_A": "veg_veg_cultivada",
+      "classe_B": "cobter_vegetacao",
+      "filtro_A": {
+        "nome_atributo": "cultivopredominante",
+        "valor": 24
+      },
+      "atributos_default_B": [
+        {
+          "nome_atributo": "tipo",
+          "valor": 198
+        }
+      ],
+      "filtro_B": {
+        "nome_atributo": "tipo",
+        "valor": 198
+      },
+      "atributos_default_A": [
+        {
+          "nome_atributo": "classificacaoporte",
+          "valor": 3
+        },
+        {
+          "nome_atributo": "terreno",
+          "valor": 0
+        },
+        {
+          "nome_atributo": "finalidade",
+          "valor": 0
+        },
+        {
+          "nome_atributo": "cultivopredominante",
+          "valor": 24
+        },
+        {
+          "nome_atributo": "tipolavoura",
+          "valor": 0
         }
       ],
       "mapeamento_atributos": []

@@ -4482,6 +4482,12 @@
           "descricao": "Cultura temporária (ciclo anual) de sequeiro, dependente só da chuva, sem irrigação."
         },
         {
+          "code": 198,
+          "value": "Cult - Pastagem cultivada",
+          "valor_filtro": "Vegetação Cultivada",
+          "descricao": "Pastagem cultivada: vegetação herbácea plantada e manejada para pecuária, distinta do campo natural (901). Alvo do MapBiomas 15 Pastagem e do OSM landuse=meadow; equivale a cultivo_predominante=24 na EDGV 3.0."
+        },
+        {
           "code": 201,
           "value": "Mangue",
           "valor_filtro": "Mangue",

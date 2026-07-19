@@ -1387,6 +1387,7 @@ INSERT INTO dominios.tipo_veg (code,code_name, filter) VALUES (194,'Cult - Peren
 INSERT INTO dominios.tipo_veg (code,code_name, filter) VALUES (195,'Cult - Irrigação desconhecida (195)','Vegetação Cultivada');
 INSERT INTO dominios.tipo_veg (code,code_name, filter) VALUES (196,'Cult - Anual irrigado (196)','Vegetação Cultivada');
 INSERT INTO dominios.tipo_veg (code,code_name, filter) VALUES (197,'Cult - Anual não irrigado (197)','Vegetação Cultivada');
+INSERT INTO dominios.tipo_veg (code,code_name, filter) VALUES (198,'Cult - Pastagem cultivada (198)','Vegetação Cultivada');
 INSERT INTO dominios.tipo_veg (code,code_name, filter) VALUES (201,'Mangue (201)','Mangue');
 INSERT INTO dominios.tipo_veg (code,code_name, filter) VALUES (301,'Brejo/pântano (301)','Brejo ou pântano');
 INSERT INTO dominios.tipo_veg (code,code_name, filter) VALUES (401,'Restinga (401)','Restinga');
