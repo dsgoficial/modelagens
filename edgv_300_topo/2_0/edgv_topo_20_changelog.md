@@ -124,7 +124,7 @@ Não exige domínio novo: reusa `tipo_elemento_viario`, `material_construcao`, `
 
 Registradas aqui como achado, NÃO como mudança aplicada:
 
-- **Não há código genérico de PONTE.** O domínio só oferece 201 móvel, 202 pênsil, 203 fixa, 204 estaiada e 205 flutuante. Uma fonte que diz apenas "ponte", sem o subtipo (é o caso das 6.988 feições de `tra_ponte_p` da BC250), não tem para onde ir e cai em 9999. Eleger "fixa" como padrão seria inventar semântica, então não se fez. Candidato a um código genérico de ponte, se a DSG concordar.
+- **Não há código genérico de PONTE.** O domínio só oferece 201 móvel, 202 pênsil, 203 fixa, 204 estaiada e 205 flutuante. Uma fonte que diz apenas "ponte", sem o subtipo, não tem código próprio. **CONVENÇÃO ADOTADA (decisão do chefe, 2026-07-19): ponte genérica recebe 203 Ponte fixa**, por ser o caso largamente predominante, em vez de cair em 9999. Vale para toda conversão de fonte externa, não só para a BC250. O domínio segue sem código genérico; se a DSG quiser um, esta convenção é o argumento pronto.
 - **Passagem de nível não existe no domínio e NÃO será acrescentada** (decisão do chefe, 2026-07-19): não é feição de interesse. As 1.441 feições de `tra_passagem_nivel_p` da BC250 permanecem sem destino, por decisão e não por esquecimento.
 
 > Rev 2026-07-19: criada a pedido do chefe da DGEO, ao converter o IBGE BC250 para a Topo 2.0. Registrado no changelog que a passagem de nível (`tra_passagem_nivel_p` da BC250, 1.441 feições) permanece SEM destino por decisão: não é feição de interesse, e por isso o domínio `tipo_elemento_viario` NÃO foi estendido.
