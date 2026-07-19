@@ -1,11 +1,11 @@
 {
   "metadata": {
-    "version": "1.4",
-    "date": "2026-07-04",
+    "version": "1.8",
+    "date": "2026-07-15",
     "source": "OpenStreetMap",
-    "target": "EDGV Topo 2.0 v0.12.0",
-    "description": "Mapeamento de tags OSM para tabelas e atributos EDGV Topo 2.0. Consumido pelo PythonCaller no FME Workbench. Rev 0.11.0: natural=scrub/heath -> Vegetacao arbustiva (1200); natural=volcano/crater -> elemnat_elemento_fisiografico_p (24/25). Salar nao mapeado do OSM (sem tag confiavel; vem do MGCP/MUVD). Rev 0.12.0: office=government+government=emergency/civil_defence -> Defesa Civil (3010); amenity=social_facility -> 2101 (tag antes sem regra); pipeline=substation+substation=compression -> Estacao de compressao de gas (2602). Pericia forense (3011), socioeducativo (3012), demais nos de gas (2603-2605) e SUAS estatal (2102) NAO tem tag OSM confiavel -- alimentados por fonte autoritativa (GeoSwarm).",
-    "total_rules": 298,
+    "target": "EDGV Topo 2.0 v0.14.0",
+    "description": "Mapeamento OSM para EDGV Topo 2.0. Rev 1.8: preserva feicoes com o valor EDGV mais proximo, elimina 9999 explicitos e registra aproximacoes em observacao.",
+    "total_rules": 296,
     "match_strategy": "first_match_wins"
   },
   "rules": [
@@ -203,6 +203,230 @@
       "note": "Nome local (desabitado)"
     },
     {
+      "id": "localidade_bairro",
+      "osm_filter": {
+        "tags": {
+          "place": [
+            "suburb",
+            "quarter",
+            "neighbourhood"
+          ]
+        },
+        "geometry": [
+          "point"
+        ]
+      },
+      "edgv_target": {
+        "table": "llp_localidade_p",
+        "attributes": {
+          "tipo": 11
+        }
+      },
+      "osm_attribute_mapping": {
+        "name": "nome",
+        "population": "populacao"
+      },
+      "confidence": "high",
+      "note": "Bairro, setor ou vizinhanca urbana"
+    },
+    {
+      "id": "localidade_area_capital_federal",
+      "osm_filter": {
+        "tags": {
+          "place": [
+            "city",
+            "town"
+          ],
+          "capital": "yes"
+        },
+        "geometry": [
+          "polygon"
+        ]
+      },
+      "edgv_target": {
+        "table": "llp_localidade_a",
+        "attributes": {
+          "tipo": 3
+        }
+      },
+      "osm_attribute_mapping": {
+        "name": "nome",
+        "population": "populacao"
+      },
+      "confidence": "high",
+      "note": "Area urbana da capital federal"
+    },
+    {
+      "id": "localidade_area_capital_estadual",
+      "osm_filter": {
+        "tags": {
+          "place": [
+            "city",
+            "town"
+          ],
+          "capital": "4"
+        },
+        "geometry": [
+          "polygon"
+        ]
+      },
+      "edgv_target": {
+        "table": "llp_localidade_a",
+        "attributes": {
+          "tipo": 2
+        }
+      },
+      "osm_attribute_mapping": {
+        "name": "nome",
+        "population": "populacao"
+      },
+      "confidence": "high",
+      "note": "Area urbana de capital estadual"
+    },
+    {
+      "id": "localidade_area",
+      "osm_filter": {
+        "tags": {
+          "place": [
+            "city",
+            "town",
+            "village",
+            "hamlet",
+            "isolated_dwelling",
+            "locality",
+            "suburb",
+            "quarter",
+            "neighbourhood"
+          ]
+        },
+        "geometry": [
+          "polygon"
+        ]
+      },
+      "edgv_target": {
+        "table": "llp_localidade_a",
+        "attributes": {}
+      },
+      "osm_attribute_mapping": {
+        "place": {
+          "column": "tipo",
+          "map": {
+            "city": 1,
+            "town": 1,
+            "village": 4,
+            "hamlet": 7,
+            "isolated_dwelling": 7,
+            "locality": 8,
+            "suburb": 11,
+            "quarter": 11,
+            "neighbourhood": 11
+          }
+        },
+        "name": "nome",
+        "population": "populacao"
+      },
+      "confidence": "high",
+      "note": "Area de localidade; classificacao derivada de place"
+    },
+    {
+      "id": "localidade_bairro_limite",
+      "osm_filter": {
+        "tags": {
+          "boundary": "administrative",
+          "admin_level": "10"
+        },
+        "geometry": [
+          "polygon"
+        ]
+      },
+      "edgv_target": {
+        "table": "llp_localidade_a",
+        "attributes": {
+          "tipo": 11
+        }
+      },
+      "osm_attribute_mapping": {
+        "name": "nome",
+        "population": "populacao"
+      },
+      "confidence": "high",
+      "note": "No Brasil, admin_level=10 representa bairro ou subdistrito, nao distrito"
+    },
+    {
+      "id": "limite_legal_administrativo_l",
+      "osm_filter": {
+        "tags": {
+          "boundary": "administrative",
+          "admin_level": [
+            "2",
+            "4",
+            "8",
+            "9"
+          ]
+        },
+        "geometry": [
+          "line"
+        ]
+      },
+      "edgv_target": {
+        "table": "llp_limite_legal_l",
+        "attributes": {}
+      },
+      "osm_attribute_mapping": {
+        "admin_level": {
+          "column": "tipo",
+          "map": {
+            "2": 1,
+            "4": 2,
+            "8": 3,
+            "9": 4
+          }
+        },
+        "name": "nome"
+      },
+      "confidence": "high",
+      "note": "Limite administrativo OSM conforme os niveis usados no Brasil"
+    },
+    {
+      "id": "limite_legal_administrativo_a",
+      "osm_filter": {
+        "tags": {
+          "boundary": "administrative",
+          "admin_level": [
+            "2",
+            "4",
+            "8",
+            "9"
+          ]
+        },
+        "geometry": [
+          "polygon"
+        ]
+      },
+      "edgv_target": {
+        "table": "llp_limite_legal_a",
+        "attributes": {}
+      },
+      "osm_attribute_mapping": {
+        "admin_level": {
+          "column": "tipo",
+          "map": {
+            "2": 1,
+            "4": 2,
+            "8": 3,
+            "9": 4
+          }
+        },
+        "name": "nome",
+        "population": "populacao",
+        "ISO3166-1:alpha3": "cod_iso",
+        "ISO3166-2": "sigla",
+        "IBGE:GEOCODIGO": "geocodigo_ibge"
+      },
+      "confidence": "high",
+      "note": "Area administrativa OSM consolidada em limite legal EDGV"
+    },
+    {
       "id": "localidade_fazenda",
       "osm_filter": {
         "tags": {
@@ -267,14 +491,15 @@
       "edgv_target": {
         "table": "llp_limite_especial_a",
         "attributes": {
-          "tipo": 2
+          "tipo": 5,
+          "observacao": "Aproximacao OSM: protect_class=24 convertido para Unidade de Conservacao generica."
         }
       },
       "osm_attribute_mapping": {
         "name": "nome"
       },
-      "confidence": "high",
-      "note": "Terra indígena via protect_class=24"
+      "confidence": "low",
+      "note": "Protecao politica generica aproximada como Unidade de Conservacao para preservar a feicao"
     },
     {
       "id": "limite_esp_area_militar",
@@ -346,7 +571,8 @@
       "id": "edif_quartel_a",
       "osm_filter": {
         "tags": {
-          "military": "barracks"
+          "military": "barracks",
+          "building": "*"
         },
         "geometry": [
           "polygon"
@@ -355,7 +581,7 @@
       "edgv_target": {
         "table": "constr_edificacao_a",
         "attributes": {
-          "tipo": 3098
+          "tipo": 1712
         }
       },
       "osm_attribute_mapping": {
@@ -369,7 +595,32 @@
         }
       },
       "confidence": "high",
-      "note": "Quartel militar"
+      "note": "Edificacao de aquartelamento; building=* evita confundir o edificio com toda a instalacao militar"
+    },
+    {
+      "id": "limite_esp_barracks",
+      "osm_filter": {
+        "tags": {
+          "military": "barracks"
+        },
+        "tags_absent": [
+          "building"
+        ],
+        "geometry": [
+          "polygon"
+        ]
+      },
+      "edgv_target": {
+        "table": "llp_limite_especial_a",
+        "attributes": {
+          "tipo": 36
+        }
+      },
+      "osm_attribute_mapping": {
+        "name": "nome"
+      },
+      "confidence": "medium",
+      "note": "Area de aquartelamento sem building=*; preservada como area militar"
     },
     {
       "id": "pista_militar_airfield",
@@ -382,16 +633,16 @@
         ]
       },
       "edgv_target": {
-        "table": "infra_pista_pouso_a",
+        "table": "llp_limite_especial_a",
         "attributes": {
-          "tipo": 9
+          "tipo": 36
         }
       },
       "osm_attribute_mapping": {
         "name": "nome"
       },
       "confidence": "high",
-      "note": "Aeródromo militar"
+      "note": "Area de aerodromo militar; military=airfield nao representa a geometria de uma pista"
     },
     {
       "id": "limite_esp_esec",
@@ -407,14 +658,14 @@
       "edgv_target": {
         "table": "llp_limite_especial_a",
         "attributes": {
-          "tipo": 31
+          "tipo": 5
         }
       },
       "osm_attribute_mapping": {
         "name": "nome"
       },
-      "confidence": "high",
-      "note": "Estação Ecológica – ESEC"
+      "confidence": "medium",
+      "note": "IUCN Ia nao determina a categoria juridica brasileira; mantida como UC generica"
     },
     {
       "id": "limite_esp_rebio",
@@ -430,14 +681,14 @@
       "edgv_target": {
         "table": "llp_limite_especial_a",
         "attributes": {
-          "tipo": 34
+          "tipo": 5
         }
       },
       "osm_attribute_mapping": {
         "name": "nome"
       },
-      "confidence": "high",
-      "note": "Reserva Biológica – REBIO"
+      "confidence": "medium",
+      "note": "IUCN Ib nao determina a categoria juridica brasileira; mantida como UC generica"
     },
     {
       "id": "limite_esp_parque",
@@ -452,7 +703,7 @@
       "edgv_target": {
         "table": "llp_limite_especial_a",
         "attributes": {
-          "tipo": 32
+          "tipo": 5
         }
       },
       "osm_attribute_mapping": {
@@ -481,8 +732,8 @@
       "osm_attribute_mapping": {
         "name": "nome"
       },
-      "confidence": "high",
-      "note": "Parque via protect_class=2"
+      "confidence": "medium",
+      "note": "IUCN II nao prova a categoria Parque do SNUC; mantida como UC generica"
     },
     {
       "id": "limite_esp_mona",
@@ -498,14 +749,14 @@
       "edgv_target": {
         "table": "llp_limite_especial_a",
         "attributes": {
-          "tipo": 33
+          "tipo": 5
         }
       },
       "osm_attribute_mapping": {
         "name": "nome"
       },
-      "confidence": "high",
-      "note": "Monumento Natural – MONA"
+      "confidence": "medium",
+      "note": "IUCN III nao prova a categoria MONA do SNUC; mantida como UC generica"
     },
     {
       "id": "limite_esp_refau",
@@ -521,14 +772,14 @@
       "edgv_target": {
         "table": "llp_limite_especial_a",
         "attributes": {
-          "tipo": 29
+          "tipo": 5
         }
       },
       "osm_attribute_mapping": {
         "name": "nome"
       },
-      "confidence": "high",
-      "note": "Reserva de Fauna – REFAU"
+      "confidence": "medium",
+      "note": "IUCN IV abrange varias categorias; mantida como UC generica"
     },
     {
       "id": "limite_esp_apa",
@@ -544,14 +795,14 @@
       "edgv_target": {
         "table": "llp_limite_especial_a",
         "attributes": {
-          "tipo": 24
+          "tipo": 5
         }
       },
       "osm_attribute_mapping": {
         "name": "nome"
       },
-      "confidence": "high",
-      "note": "Área de Proteção Ambiental – APA"
+      "confidence": "medium",
+      "note": "IUCN V nao prova a categoria APA do SNUC; mantida como UC generica"
     },
     {
       "id": "limite_esp_arie",
@@ -639,14 +890,14 @@
       "edgv_target": {
         "table": "constr_ocupacao_solo_a",
         "attributes": {
-          "tipo": 1401
+          "tipo": 1404
         }
       },
       "osm_attribute_mapping": {
         "name": "nome"
       },
       "confidence": "high",
-      "note": "Área verde pública — no Brasil leisure=park é majoritariamente praça; tipo refinado para Largo (1402)/Jardim público (1403)/Parque urbano (1404) pelo prefixo do nome em compute_derived_attributes"
+      "note": "Parque urbano; leisure=common permanece aproximado e pode ser refinado pelo prefixo do nome"
     },
     {
       "id": "ocup_area_verde_square",
@@ -776,28 +1027,6 @@
     },
     {
       "_comment": "=== COBTER — COBERTURA TERRESTRE ==="
-    },
-    {
-      "id": "oceano",
-      "osm_filter": {
-        "tags": {
-          "natural": "coastline"
-        },
-        "geometry": [
-          "polygon"
-        ]
-      },
-      "edgv_target": {
-        "table": "cobter_massa_dagua_a",
-        "attributes": {
-          "tipo": 3
-        }
-      },
-      "osm_attribute_mapping": {
-        "name": "nome"
-      },
-      "confidence": "high",
-      "note": "Oceano (polígono derivado de coastline)"
     },
     {
       "id": "massa_dagua_rio",
@@ -973,14 +1202,15 @@
       "edgv_target": {
         "table": "cobter_massa_dagua_a",
         "attributes": {
-          "tipo": 11
+          "tipo": 11,
+          "observacao": "Aproximacao OSM: basin convertido para represa/acude sem fluxo."
         }
       },
       "osm_attribute_mapping": {
         "name": "nome"
       },
       "confidence": "medium",
-      "note": "Bacia → aproximado para represa"
+      "note": "Bacia artificial; aproximada como represa/acude sem fluxo por falta de subtipo especifico"
     },
     {
       "id": "massa_dagua_canal",
@@ -1037,16 +1267,17 @@
         ]
       },
       "edgv_target": {
-        "table": "infra_elemento_infraestrutura_a",
+        "table": "cobter_massa_dagua_a",
         "attributes": {
-          "tipo": 1938
+          "tipo": 11,
+          "observacao": "Aproximacao OSM: dock convertido para massa d'agua artificial sem fluxo."
         }
       },
       "osm_attribute_mapping": {
         "name": "nome"
       },
-      "confidence": "high",
-      "note": "Doca/cais (infraestrutura portuária)"
+      "confidence": "low",
+      "note": "Doca aproximada como represa/acude sem fluxo para preservar a area de agua"
     },
     {
       "id": "veg_floresta",
@@ -1061,12 +1292,13 @@
       "edgv_target": {
         "table": "cobter_vegetacao_a",
         "attributes": {
-          "tipo": 601
+          "tipo": 601,
+          "observacao": "Aproximacao OSM: natural=wood convertido para floresta densa; densidade e origem nao informadas."
         }
       },
       "osm_attribute_mapping": {},
-      "confidence": "high",
-      "note": "Floresta densa"
+      "confidence": "medium",
+      "note": "Cobertura arborea aproximada como floresta densa; tags mais especificas devem prevalecer"
     },
     {
       "id": "veg_glacier",
@@ -1102,12 +1334,13 @@
       "edgv_target": {
         "table": "cobter_vegetacao_a",
         "attributes": {
-          "tipo": 1296
+          "tipo": 601,
+          "observacao": "Aproximacao OSM: floresta de folha acicular convertida para floresta densa; origem nao informada."
         }
       },
       "osm_attribute_mapping": {},
       "confidence": "medium",
-      "note": "Reflorestamento (landuse=forest + leaf_type=needleleaved). Caveat: a araucaria NATIVA tambem e acicular e cai aqui; refinar se houver tag de manejo/producao para separar plantacao de floresta densa nativa"
+      "note": "Folha acicular nao comprova reflorestamento; aproximada como floresta densa"
     },
     {
       "id": "veg_floresta_landuse",
@@ -1122,12 +1355,13 @@
       "edgv_target": {
         "table": "cobter_vegetacao_a",
         "attributes": {
-          "tipo": 601
+          "tipo": 601,
+          "observacao": "Aproximacao OSM: landuse=forest convertido para floresta densa; densidade e origem nao informadas."
         }
       },
       "osm_attribute_mapping": {},
-      "confidence": "high",
-      "note": "Floresta densa"
+      "confidence": "medium",
+      "note": "Floresta sem densidade ou origem informada; aproximada como floresta densa"
     },
     {
       "id": "veg_mangue",
@@ -1467,7 +1701,7 @@
       "edgv_target": {
         "table": "cobter_vegetacao_a",
         "attributes": {
-          "tipo": 197
+          "tipo": 195
         }
       },
       "osm_attribute_mapping": {
@@ -1544,12 +1778,12 @@
       "edgv_target": {
         "table": "cobter_vegetacao_a",
         "attributes": {
-          "tipo": 197
+          "tipo": 195
         }
       },
       "osm_attribute_mapping": {},
       "confidence": "medium",
-      "note": "Hortas comunitárias → anual não irrigado"
+      "note": "Hortas comunitarias com irrigacao e ciclo nao determinados"
     },
     {
       "id": "area_edificada_residencial",
@@ -1587,10 +1821,8 @@
         "attributes": {
           "tipo": 4,
           "revestimento": 3,
-          "jurisdicao": 1,
           "canteiro_divisorio": 1,
-          "situacao_fisica": 3,
-          "trafego": 1
+          "situacao_fisica": 3
         }
       },
       "osm_attribute_mapping": {
@@ -1609,7 +1841,7 @@
             "cobblestone": 4,
             "sett": 4,
             "paving_stones": 4,
-            "unpaved": 1,
+            "unpaved": 0,
             "gravel": 2,
             "fine_gravel": 2,
             "compacted": 2,
@@ -1641,7 +1873,6 @@
         "attributes": {
           "tipo": 7,
           "revestimento": 3,
-          "jurisdicao": 1,
           "situacao_fisica": 3
         }
       },
@@ -1667,9 +1898,7 @@
         "table": "infra_via_deslocamento_l",
         "attributes": {
           "tipo": 2,
-          "revestimento": 3,
-          "situacao_fisica": 3,
-          "trafego": 1
+          "situacao_fisica": 3
         }
       },
       "osm_attribute_mapping": {
@@ -1688,7 +1917,7 @@
             "cobblestone": 4,
             "sett": 4,
             "paving_stones": 4,
-            "unpaved": 1,
+            "unpaved": 0,
             "gravel": 2,
             "fine_gravel": 2,
             "compacted": 2,
@@ -1726,7 +1955,6 @@
         "table": "infra_via_deslocamento_l",
         "attributes": {
           "tipo": 7,
-          "revestimento": 3,
           "situacao_fisica": 3
         }
       },
@@ -1751,7 +1979,6 @@
         "table": "infra_via_deslocamento_l",
         "attributes": {
           "tipo": 2,
-          "revestimento": 3,
           "situacao_fisica": 3
         }
       },
@@ -1771,7 +1998,7 @@
             "cobblestone": 4,
             "sett": 4,
             "paving_stones": 4,
-            "unpaved": 1,
+            "unpaved": 0,
             "gravel": 2,
             "fine_gravel": 2,
             "compacted": 2,
@@ -1809,7 +2036,6 @@
         "table": "infra_via_deslocamento_l",
         "attributes": {
           "tipo": 7,
-          "revestimento": 3,
           "situacao_fisica": 3
         }
       },
@@ -1834,8 +2060,6 @@
         "table": "infra_via_deslocamento_l",
         "attributes": {
           "tipo": 2,
-          "revestimento": 3,
-          "jurisdicao": 2,
           "situacao_fisica": 3
         }
       },
@@ -1855,7 +2079,7 @@
             "cobblestone": 4,
             "sett": 4,
             "paving_stones": 4,
-            "unpaved": 1,
+            "unpaved": 0,
             "gravel": 2,
             "fine_gravel": 2,
             "compacted": 2,
@@ -1877,7 +2101,7 @@
         }
       },
       "confidence": "high",
-      "note": "Rodovia secundária (default estadual)"
+      "note": "Rodovia secundaria; jurisdicao somente quando inferida de ref"
     },
     {
       "id": "via_secondary_link",
@@ -1893,8 +2117,6 @@
         "table": "infra_via_deslocamento_l",
         "attributes": {
           "tipo": 7,
-          "revestimento": 3,
-          "jurisdicao": 2,
           "situacao_fisica": 3
         }
       },
@@ -1919,8 +2141,6 @@
         "table": "infra_via_deslocamento_l",
         "attributes": {
           "tipo": 2,
-          "revestimento": 3,
-          "jurisdicao": 3,
           "situacao_fisica": 3
         }
       },
@@ -1940,7 +2160,7 @@
             "cobblestone": 4,
             "sett": 4,
             "paving_stones": 4,
-            "unpaved": 1,
+            "unpaved": 0,
             "gravel": 2,
             "fine_gravel": 2,
             "compacted": 2,
@@ -1955,7 +2175,7 @@
         }
       },
       "confidence": "high",
-      "note": "Rodovia terciária (default municipal)"
+      "note": "Rodovia terciaria; jurisdicao somente quando inferida de ref"
     },
     {
       "id": "via_tertiary_link",
@@ -1971,8 +2191,6 @@
         "table": "infra_via_deslocamento_l",
         "attributes": {
           "tipo": 7,
-          "revestimento": 3,
-          "jurisdicao": 3,
           "situacao_fisica": 3
         }
       },
@@ -1997,7 +2215,6 @@
         "table": "infra_via_deslocamento_l",
         "attributes": {
           "tipo": 2,
-          "jurisdicao": 3,
           "situacao_fisica": 3
         }
       },
@@ -2016,7 +2233,7 @@
             "cobblestone": 4,
             "sett": 4,
             "paving_stones": 4,
-            "unpaved": 1,
+            "unpaved": 0,
             "gravel": 2,
             "fine_gravel": 2,
             "compacted": 2,
@@ -2031,7 +2248,7 @@
         }
       },
       "confidence": "high",
-      "note": "Via não classificada (municipal)"
+      "note": "Via nao classificada; jurisdicao somente quando inferida de ref"
     },
     {
       "id": "via_residential",
@@ -2047,7 +2264,6 @@
         "table": "infra_via_deslocamento_l",
         "attributes": {
           "tipo": 5,
-          "revestimento": 3,
           "situacao_fisica": 3
         }
       },
@@ -2066,7 +2282,7 @@
             "cobblestone": 4,
             "sett": 4,
             "paving_stones": 4,
-            "unpaved": 1,
+            "unpaved": 0,
             "gravel": 2,
             "fine_gravel": 2,
             "compacted": 2,
@@ -2097,7 +2313,6 @@
         "table": "infra_via_deslocamento_l",
         "attributes": {
           "tipo": 5,
-          "revestimento": 3,
           "situacao_fisica": 3
         }
       },
@@ -2115,7 +2330,7 @@
             "cobblestone": 4,
             "sett": 4,
             "paving_stones": 4,
-            "unpaved": 1,
+            "unpaved": 0,
             "gravel": 2,
             "fine_gravel": 2,
             "compacted": 2,
@@ -2146,7 +2361,6 @@
         "table": "infra_via_deslocamento_l",
         "attributes": {
           "tipo": 5,
-          "revestimento": 3,
           "situacao_fisica": 3
         }
       },
@@ -2167,10 +2381,9 @@
         ]
       },
       "edgv_target": {
-        "table": "infra_via_deslocamento_l",
+        "table": "infra_mobilidade_urbana_l",
         "attributes": {
-          "tipo": 5,
-          "revestimento": 4,
+          "tipo": 1,
           "situacao_fisica": 3
         }
       },
@@ -2178,7 +2391,7 @@
         "name": "nome"
       },
       "confidence": "high",
-      "note": "Via de pedestre (calçado)"
+      "note": "Calcadao ou rua de pedestres"
     },
     {
       "id": "via_busway",
@@ -2194,7 +2407,6 @@
         "table": "infra_via_deslocamento_l",
         "attributes": {
           "tipo": 5,
-          "revestimento": 3,
           "situacao_fisica": 3
         }
       },
@@ -2218,7 +2430,6 @@
         "table": "infra_via_deslocamento_l",
         "attributes": {
           "tipo": 5,
-          "revestimento": 3,
           "situacao_fisica": 3
         }
       },
@@ -2242,7 +2453,6 @@
         "table": "infra_via_deslocamento_l",
         "attributes": {
           "tipo": 3,
-          "revestimento": 1,
           "situacao_fisica": 3
         }
       },
@@ -2260,7 +2470,7 @@
             "cobblestone": 4,
             "sett": 4,
             "paving_stones": 4,
-            "unpaved": 1,
+            "unpaved": 0,
             "gravel": 2,
             "fine_gravel": 2,
             "compacted": 2,
@@ -2291,12 +2501,30 @@
         "table": "infra_via_deslocamento_l",
         "attributes": {
           "tipo": 6,
-          "revestimento": 1,
           "situacao_fisica": 3
         }
       },
       "osm_attribute_mapping": {
-        "name": "nome"
+        "name": "nome",
+        "surface": {
+          "column": "revestimento",
+          "map": {
+            "paved": 3,
+            "asphalt": 3,
+            "concrete": 3,
+            "cobblestone": 4,
+            "sett": 4,
+            "paving_stones": 4,
+            "gravel": 2,
+            "fine_gravel": 2,
+            "compacted": 2,
+            "ground": 1,
+            "dirt": 1,
+            "earth": 1,
+            "sand": 1,
+            "grass": 1
+          }
+        }
       },
       "confidence": "high",
       "note": "Trilha"
@@ -2315,12 +2543,30 @@
         "table": "infra_via_deslocamento_l",
         "attributes": {
           "tipo": 6,
-          "revestimento": 1,
           "situacao_fisica": 3
         }
       },
       "osm_attribute_mapping": {
-        "name": "nome"
+        "name": "nome",
+        "surface": {
+          "column": "revestimento",
+          "map": {
+            "paved": 3,
+            "asphalt": 3,
+            "concrete": 3,
+            "cobblestone": 4,
+            "sett": 4,
+            "paving_stones": 4,
+            "gravel": 2,
+            "fine_gravel": 2,
+            "compacted": 2,
+            "ground": 1,
+            "dirt": 1,
+            "earth": 1,
+            "sand": 1,
+            "grass": 1
+          }
+        }
       },
       "confidence": "high",
       "note": "Caminho de pedestre"
@@ -2339,7 +2585,6 @@
         "table": "infra_via_deslocamento_l",
         "attributes": {
           "tipo": 6,
-          "revestimento": 4,
           "situacao_fisica": 3
         }
       },
@@ -2371,6 +2616,51 @@
       },
       "confidence": "medium",
       "note": "Via de classe desconhecida (highway=road) -> tipo 0 Desconhecido (0.10.0)"
+    },
+    {
+      "id": "via_ciclo_vida_sem_subtipo",
+      "osm_filter": {
+        "tags": {
+          "highway": [
+            "construction",
+            "disused",
+            "abandoned"
+          ]
+        },
+        "geometry": [
+          "line"
+        ]
+      },
+      "edgv_target": {
+        "table": "infra_via_deslocamento_l",
+        "attributes": {
+          "tipo": 0
+        }
+      },
+      "osm_attribute_mapping": {
+        "name": "nome",
+        "surface": {
+          "column": "revestimento",
+          "map": {
+            "paved": 3,
+            "asphalt": 3,
+            "concrete": 3,
+            "cobblestone": 4,
+            "sett": 4,
+            "paving_stones": 4,
+            "gravel": 2,
+            "fine_gravel": 2,
+            "compacted": 2,
+            "ground": 1,
+            "dirt": 1,
+            "earth": 1,
+            "sand": 1,
+            "grass": 1
+          }
+        }
+      },
+      "confidence": "low",
+      "note": "Via em construcao/desuso sem subtipo recuperavel"
     },
     {
       "_comment": "=== INFRA — FERROVIAS ==="
@@ -2499,14 +2789,15 @@
         "table": "infra_ferrovia_l",
         "attributes": {
           "tipo": 5,
-          "situacao_fisica": 3
+          "situacao_fisica": 3,
+          "observacao": "Aproximacao OSM: light_rail/VLT convertido para bonde."
         }
       },
       "osm_attribute_mapping": {
         "name": "nome"
       },
-      "confidence": "high",
-      "note": "VLT → bonde"
+      "confidence": "medium",
+      "note": "Light rail/VLT aproximado como bonde, o tipo existente funcionalmente mais proximo"
     },
     {
       "id": "ferrovia_monorail",
@@ -2521,15 +2812,42 @@
       "edgv_target": {
         "table": "infra_ferrovia_l",
         "attributes": {
-          "tipo": 6,
-          "situacao_fisica": 3
+          "tipo": 8,
+          "situacao_fisica": 3,
+          "observacao": "Aproximacao OSM: monotrilho convertido funcionalmente para metro."
         }
       },
       "osm_attribute_mapping": {
         "name": "nome"
       },
       "confidence": "medium",
-      "note": "Monotrilho -> aeromovel (6): guia elevada, mais proximo que bonde de rua (railway=monorail)"
+      "note": "Monotrilho urbano aproximado funcionalmente como metro"
+    },
+    {
+      "id": "ferrovia_ciclo_vida_sem_subtipo",
+      "osm_filter": {
+        "tags": {
+          "railway": [
+            "construction",
+            "disused",
+            "abandoned"
+          ]
+        },
+        "geometry": [
+          "line"
+        ]
+      },
+      "edgv_target": {
+        "table": "infra_ferrovia_l",
+        "attributes": {
+          "tipo": 7
+        }
+      },
+      "osm_attribute_mapping": {
+        "name": "nome"
+      },
+      "confidence": "medium",
+      "note": "Ferrovia em construcao/desuso sem subtipo recuperavel"
     },
     {
       "id": "ferrovia_funicular",
@@ -2593,14 +2911,15 @@
         "table": "infra_elemento_energia_l",
         "attributes": {
           "tipo": 303,
-          "situacao_fisica": 3
+          "situacao_fisica": 3,
+          "observacao": "Aproximacao OSM: minor_line de distribuicao convertido para o unico tipo linear de energia disponivel."
         }
       },
       "osm_attribute_mapping": {
         "name": "nome"
       },
-      "confidence": "high",
-      "note": "Linha de distribuição"
+      "confidence": "low",
+      "note": "Linha de distribuicao aproximada como linha de transmissao para preservar a feicao"
     },
     {
       "id": "energia_cable",
@@ -2616,14 +2935,15 @@
         "table": "infra_elemento_energia_l",
         "attributes": {
           "tipo": 303,
-          "situacao_fisica": 3
+          "situacao_fisica": 3,
+          "observacao": "Aproximacao OSM: power=cable convertido para linha de transmissao; tensao e funcao nao informadas."
         }
       },
       "osm_attribute_mapping": {
         "name": "nome"
       },
-      "confidence": "high",
-      "note": "Cabo de energia (subterrâneo/submarino)"
+      "confidence": "low",
+      "note": "Cabo de energia aproximado como linha de transmissao para preservar a feicao"
     },
     {
       "id": "energia_hidro",
@@ -2868,20 +3188,22 @@
       "edgv_target": {
         "table": "infra_elemento_energia_p",
         "attributes": {
-          "tipo": 1401
+          "tipo": 1401,
+          "observacao": "Aproximacao OSM: poste convertido para torre de energia, tipo estrutural mais proximo disponivel."
         }
       },
       "osm_attribute_mapping": {
         "name": "nome"
       },
-      "confidence": "high",
-      "note": "Poste de energia → torre"
+      "confidence": "low",
+      "note": "Poste aproximado como torre de energia para preservar a feicao"
     },
     {
-      "id": "energia_subestacao_tx",
+      "id": "energia_subestacao_transmissao",
       "osm_filter": {
         "tags": {
-          "power": "substation"
+          "power": "substation",
+          "substation": "transmission"
         },
         "geometry": [
           "polygon"
@@ -2898,7 +3220,58 @@
         "name": "nome"
       },
       "confidence": "high",
-      "note": "Subestação de transmissão"
+      "note": "Subestacao explicitamente classificada como transmissao"
+    },
+    {
+      "id": "energia_subestacao_distribuicao",
+      "osm_filter": {
+        "tags": {
+          "power": "substation",
+          "substation": [
+            "distribution",
+            "minor_distribution"
+          ]
+        },
+        "geometry": [
+          "polygon"
+        ]
+      },
+      "edgv_target": {
+        "table": "infra_elemento_energia_a",
+        "attributes": {
+          "tipo": 1802,
+          "situacao_fisica": 3
+        }
+      },
+      "osm_attribute_mapping": {
+        "name": "nome"
+      },
+      "confidence": "high",
+      "note": "Subestacao explicitamente classificada como distribuicao"
+    },
+    {
+      "id": "energia_subestacao_generica",
+      "osm_filter": {
+        "tags": {
+          "power": "substation"
+        },
+        "geometry": [
+          "polygon"
+        ]
+      },
+      "edgv_target": {
+        "table": "infra_elemento_energia_a",
+        "attributes": {
+          "tipo": 1802,
+          "situacao_fisica": 3,
+          "observacao": "Aproximacao OSM: subestacao sem subtipo convertida para subestacao de distribuicao."
+        }
+      },
+      "osm_attribute_mapping": {
+        "name": "nome"
+      },
+      "confidence": "medium",
+      "note": "Subestacao sem subtipo aproximada como distribuicao; regras explicitas de transmissao prevalecem"
     },
     {
       "id": "energia_aerogerador",
@@ -3767,7 +4140,7 @@
       "note": "Antena de comunicação"
     },
     {
-      "id": "infra_eclusa",
+      "id": "infra_comporta_lock_gate",
       "osm_filter": {
         "tags": {
           "waterway": "lock_gate"
@@ -3779,17 +4152,17 @@
       "edgv_target": {
         "table": "infra_elemento_infraestrutura_p",
         "attributes": {
-          "tipo": 1001
+          "tipo": 901
         }
       },
       "osm_attribute_mapping": {
         "name": "nome"
       },
       "confidence": "high",
-      "note": "Eclusa (waterway=lock_gate)"
+      "note": "Comporta de eclusa; lock_gate representa a comporta, nao a eclusa completa"
     },
     {
-      "id": "infra_comporta",
+      "id": "barragem_weir_l",
       "osm_filter": {
         "tags": {
           "waterway": "weir"
@@ -3799,16 +4172,39 @@
         ]
       },
       "edgv_target": {
-        "table": "infra_elemento_infraestrutura_l",
+        "table": "infra_barragem_l",
         "attributes": {
-          "tipo": 901
+          "tipo": 1
         }
       },
       "osm_attribute_mapping": {
         "name": "nome"
       },
-      "confidence": "high",
-      "note": "Comporta (waterway=weir)"
+      "confidence": "medium",
+      "note": "Soleira/pequena barragem; aproximacao EDGV para waterway=weir"
+    },
+    {
+      "id": "barragem_weir_a",
+      "osm_filter": {
+        "tags": {
+          "natural": "water",
+          "water": "weir"
+        },
+        "geometry": [
+          "polygon"
+        ]
+      },
+      "edgv_target": {
+        "table": "infra_barragem_a",
+        "attributes": {
+          "tipo": 1
+        }
+      },
+      "osm_attribute_mapping": {
+        "name": "nome"
+      },
+      "confidence": "medium",
+      "note": "Area de soleira/pequena barragem; aproximacao EDGV"
     },
     {
       "id": "infra_teleferico",
@@ -3867,7 +4263,7 @@
       "edgv_target": {
         "table": "infra_elemento_infraestrutura_l",
         "attributes": {
-          "tipo": 2001
+          "tipo": 2098
         }
       },
       "osm_attribute_mapping": {
@@ -3944,28 +4340,6 @@
       },
       "confidence": "medium",
       "note": "Aterro (embankment)"
-    },
-    {
-      "id": "alteracao_fisio_cutline",
-      "osm_filter": {
-        "tags": {
-          "man_made": "cutline"
-        },
-        "geometry": [
-          "line"
-        ]
-      },
-      "edgv_target": {
-        "table": "infra_alteracao_fisiografica_antropica_l",
-        "attributes": {
-          "tipo": 26
-        }
-      },
-      "osm_attribute_mapping": {
-        "name": "nome"
-      },
-      "confidence": "medium",
-      "note": "Corte (picadão/cutline)"
     },
     {
       "_comment": "=== ELEMNAT — DRENAGEM ==="
@@ -4102,6 +4476,28 @@
       "note": "Cachoeira"
     },
     {
+      "id": "hidro_cachoeira_l",
+      "osm_filter": {
+        "tags": {
+          "waterway": "waterfall"
+        },
+        "geometry": [
+          "line"
+        ]
+      },
+      "edgv_target": {
+        "table": "elemnat_elemento_hidrografico_l",
+        "attributes": {
+          "tipo": 9
+        }
+      },
+      "osm_attribute_mapping": {
+        "name": "nome"
+      },
+      "confidence": "high",
+      "note": "Linha de queda d'agua"
+    },
+    {
       "id": "hidro_corredeira",
       "osm_filter": {
         "tags": {
@@ -4122,6 +4518,28 @@
       },
       "confidence": "high",
       "note": "Corredeira"
+    },
+    {
+      "id": "hidro_corredeira_l",
+      "osm_filter": {
+        "tags": {
+          "waterway": "rapids"
+        },
+        "geometry": [
+          "line"
+        ]
+      },
+      "edgv_target": {
+        "table": "elemnat_elemento_hidrografico_l",
+        "attributes": {
+          "tipo": 12
+        }
+      },
+      "osm_attribute_mapping": {
+        "name": "nome"
+      },
+      "confidence": "high",
+      "note": "Trecho linear de corredeira"
     },
     {
       "id": "hidro_nascente",
@@ -4202,14 +4620,15 @@
       "edgv_target": {
         "table": "elemnat_elemento_hidrografico_a",
         "attributes": {
-          "tipo": 18
+          "tipo": 19,
+          "observacao": "Aproximacao OSM: recife sem relacao com a costa convertido para recife afastado."
         }
       },
       "osm_attribute_mapping": {
         "name": "nome"
       },
-      "confidence": "high",
-      "note": "Recife"
+      "confidence": "medium",
+      "note": "Recife aproximado como afastado quando nao ha evidencia de contato com a costa"
     },
     {
       "id": "hidro_banco_areia",
@@ -4224,14 +4643,15 @@
       "edgv_target": {
         "table": "elemnat_elemento_hidrografico_a",
         "attributes": {
-          "tipo": 15
+          "tipo": 15,
+          "observacao": "Aproximacao OSM: shoal convertido para banco de areia maritimo; ambiente nao informado."
         }
       },
       "osm_attribute_mapping": {
         "name": "nome"
       },
       "confidence": "medium",
-      "note": "Banco de areia"
+      "note": "Baixio aproximado como banco de areia maritimo; pre-processamento espacial deve refinar o ambiente"
     },
     {
       "id": "ilha_p",
@@ -4246,14 +4666,15 @@
       "edgv_target": {
         "table": "elemnat_ilha_p",
         "attributes": {
-          "tipo": 2
+          "tipo": 2,
+          "observacao": "Aproximacao OSM: ilha sem ambiente informado convertida para ilha maritima."
         }
       },
       "osm_attribute_mapping": {
         "name": "nome"
       },
-      "confidence": "high",
-      "note": "Ilha (ponto). tipo=2 (Marítima) como default — pós-processamento pode reclassificar fluvial/lacustre via análise espacial"
+      "confidence": "medium",
+      "note": "Ilha aproximada como maritima; pre-processamento espacial deve refinar para fluvial ou lacustre"
     },
     {
       "id": "ilha_a",
@@ -4268,14 +4689,15 @@
       "edgv_target": {
         "table": "elemnat_ilha_a",
         "attributes": {
-          "tipo": 2
+          "tipo": 2,
+          "observacao": "Aproximacao OSM: ilha sem ambiente informado convertida para ilha maritima."
         }
       },
       "osm_attribute_mapping": {
         "name": "nome"
       },
-      "confidence": "high",
-      "note": "Ilha (polígono). tipo=2 (Marítima) como default — pós-processamento pode reclassificar fluvial/lacustre via análise espacial"
+      "confidence": "medium",
+      "note": "Ilha aproximada como maritima; pre-processamento espacial deve refinar para fluvial ou lacustre"
     },
     {
       "id": "ilha_islet_p",
@@ -4290,14 +4712,15 @@
       "edgv_target": {
         "table": "elemnat_ilha_p",
         "attributes": {
-          "tipo": 2
+          "tipo": 2,
+          "observacao": "Aproximacao OSM: ilhota sem ambiente informado convertida para ilha maritima."
         }
       },
       "osm_attribute_mapping": {
         "name": "nome"
       },
-      "confidence": "high",
-      "note": "Ilhota (ponto). tipo=2 (Marítima) como default — pós-processamento pode reclassificar fluvial/lacustre via análise espacial"
+      "confidence": "medium",
+      "note": "Ilhota aproximada como maritima; pre-processamento espacial deve refinar para fluvial ou lacustre"
     },
     {
       "id": "terreno_inundacao",
@@ -4328,14 +4751,14 @@
         ]
       },
       "edgv_target": {
-        "table": "elemnat_sumidouro_vertedouro_p",
+        "table": "elemnat_elemento_fisiografico_p",
         "attributes": {
-          "tipo": 4
+          "tipo": 15
         }
       },
       "osm_attribute_mapping": {},
       "confidence": "medium",
-      "note": "Sumidouro / dolina"
+      "note": "natural=sinkhole representa dolina; nao comprova sumidouro hidrografico"
     },
     {
       "_comment": "=== ELEMNAT — FISIOGRAFIA E TOPÔNIMOS ==="
@@ -4363,7 +4786,7 @@
       "note": "Duna"
     },
     {
-      "id": "fisio_falesia",
+      "id": "fisio_escarpa_cliff",
       "osm_filter": {
         "tags": {
           "natural": "cliff"
@@ -4375,14 +4798,14 @@
       "edgv_target": {
         "table": "elemnat_elemento_fisiografico_l",
         "attributes": {
-          "tipo": 13
+          "tipo": 8
         }
       },
       "osm_attribute_mapping": {
         "name": "nome"
       },
       "confidence": "high",
-      "note": "Falésia"
+      "note": "natural=cliff e escarpa generica; falesia exigiria contexto costeiro"
     },
     {
       "id": "fisio_caverna",
@@ -4405,28 +4828,6 @@
       },
       "confidence": "high",
       "note": "Caverna (entrada)"
-    },
-    {
-      "id": "fisio_escarpa",
-      "osm_filter": {
-        "tags": {
-          "natural": "ridge"
-        },
-        "geometry": [
-          "line"
-        ]
-      },
-      "edgv_target": {
-        "table": "elemnat_elemento_fisiografico_l",
-        "attributes": {
-          "tipo": 8
-        }
-      },
-      "osm_attribute_mapping": {
-        "name": "nome"
-      },
-      "confidence": "medium",
-      "note": "Escarpa / ridge"
     },
     {
       "id": "fisio_rocha",
@@ -4699,7 +5100,7 @@
       "edgv_target": {
         "table": "constr_edificacao_p",
         "attributes": {
-          "tipo": 518
+          "tipo": 525
         }
       },
       "osm_attribute_mapping": {
@@ -4713,7 +5114,7 @@
         }
       },
       "confidence": "high",
-      "note": "Escola"
+      "note": "Escola sem nivel de ensino; EDGV usa Outras atividades de ensino em vez de presumir ensino fundamental"
     },
     {
       "id": "area_escola",
@@ -4998,7 +5399,8 @@
       "edgv_target": {
         "table": "constr_edificacao_p",
         "attributes": {
-          "tipo": 3001
+          "tipo": 3098,
+          "observacao": "Aproximacao OSM: unidade policial sem subtipo convertida para Outras policias."
         }
       },
       "osm_attribute_mapping": {
@@ -5011,8 +5413,8 @@
           "separator": ", "
         }
       },
-      "confidence": "high",
-      "note": "Delegacia"
+      "confidence": "medium",
+      "note": "Unidade policial sem subtipo classificada como Outras policias; regras especificas prevalecem"
     },
     {
       "id": "edif_bombeiros",
@@ -5027,7 +5429,8 @@
       "edgv_target": {
         "table": "constr_edificacao_p",
         "attributes": {
-          "tipo": 3007
+          "tipo": 3007,
+          "observacao": "Aproximacao OSM: fire_station sem operador convertido para Bombeiros Militar."
         }
       },
       "osm_attribute_mapping": {
@@ -5040,8 +5443,8 @@
           "separator": ", "
         }
       },
-      "confidence": "high",
-      "note": "Corpo de bombeiros"
+      "confidence": "medium",
+      "note": "Quartel de bombeiros aproximado como Bombeiros Militar no contexto brasileiro"
     },
     {
       "id": "edif_prisao",
@@ -5076,7 +5479,8 @@
       "id": "edif_prisao_a",
       "osm_filter": {
         "tags": {
-          "amenity": "prison"
+          "amenity": "prison",
+          "building": "*"
         },
         "geometry": [
           "polygon"
@@ -5412,7 +5816,7 @@
       "edgv_target": {
         "table": "constr_edificacao_p",
         "attributes": {
-          "tipo": 802
+          "tipo": 898
         }
       },
       "osm_attribute_mapping": {
@@ -5425,8 +5829,8 @@
           "separator": ", "
         }
       },
-      "confidence": "high",
-      "note": "Ginásio"
+      "confidence": "medium",
+      "note": "sports_centre nao implica ginasio; mantido como edificacao de lazer - outros"
     },
     {
       "id": "edif_embaixada",
@@ -5458,10 +5862,34 @@
       "note": "Embaixada"
     },
     {
-      "id": "edif_consulado",
+      "id": "edif_diplomatico_embaixada",
       "osm_filter": {
         "tags": {
-          "office": "diplomatic"
+          "office": "diplomatic",
+          "diplomatic": "embassy"
+        },
+        "geometry": [
+          "point"
+        ]
+      },
+      "edgv_target": {
+        "table": "constr_edificacao_p",
+        "attributes": {
+          "tipo": 2902
+        }
+      },
+      "osm_attribute_mapping": {
+        "name": "nome"
+      },
+      "confidence": "high",
+      "note": "Embaixada pela classificacao diplomatica atual"
+    },
+    {
+      "id": "edif_diplomatico_consulado",
+      "osm_filter": {
+        "tags": {
+          "office": "diplomatic",
+          "diplomatic": "consulate"
         },
         "geometry": [
           "point"
@@ -5474,6 +5902,29 @@
         }
       },
       "osm_attribute_mapping": {
+        "name": "nome"
+      },
+      "confidence": "high",
+      "note": "Consulado pela classificacao diplomatica atual"
+    },
+    {
+      "id": "edif_diplomatico_generico",
+      "osm_filter": {
+        "tags": {
+          "office": "diplomatic"
+        },
+        "geometry": [
+          "point"
+        ]
+      },
+      "edgv_target": {
+        "table": "constr_edificacao_p",
+        "attributes": {
+          "tipo": 2902,
+          "observacao": "Aproximacao OSM: office=diplomatic sem subtipo convertido para embaixada."
+        }
+      },
+      "osm_attribute_mapping": {
         "name": "nome",
         "height": "altura",
         "building:levels": "pavimentos",
@@ -5483,8 +5934,31 @@
           "separator": ", "
         }
       },
+      "confidence": "low",
+      "note": "Representacao diplomatica sem subtipo aproximada como embaixada para preservar a feicao"
+    },
+    {
+      "id": "edif_estacao_metroviaria",
+      "osm_filter": {
+        "tags": {
+          "railway": "station",
+          "station": "subway"
+        },
+        "geometry": [
+          "point"
+        ]
+      },
+      "edgv_target": {
+        "table": "constr_edificacao_p",
+        "attributes": {
+          "tipo": 2317
+        }
+      },
+      "osm_attribute_mapping": {
+        "name": "nome"
+      },
       "confidence": "high",
-      "note": "Consulado"
+      "note": "Estacao explicitamente classificada como metroviaria"
     },
     {
       "id": "edif_estacao_ferroviaria",
@@ -5516,35 +5990,6 @@
       "note": "Estação ferroviária"
     },
     {
-      "id": "ferrovia_halt",
-      "osm_filter": {
-        "tags": {
-          "railway": "halt"
-        },
-        "geometry": [
-          "point"
-        ]
-      },
-      "edgv_target": {
-        "table": "constr_edificacao_p",
-        "attributes": {
-          "tipo": 2316
-        }
-      },
-      "osm_attribute_mapping": {
-        "name": "nome",
-        "height": "altura",
-        "building:levels": "pavimentos",
-        "addr:street": {
-          "column": "endereco",
-          "concat_with": "addr:housenumber",
-          "separator": ", "
-        }
-      },
-      "confidence": "high",
-      "note": "Parada ferroviária"
-    },
-    {
       "id": "edif_terminal_onibus",
       "osm_filter": {
         "tags": {
@@ -5557,7 +6002,7 @@
       "edgv_target": {
         "table": "constr_edificacao_p",
         "attributes": {
-          "tipo": 2209
+          "tipo": 2298
         }
       },
       "osm_attribute_mapping": {
@@ -5570,8 +6015,8 @@
           "separator": ", "
         }
       },
-      "confidence": "high",
-      "note": "Terminal de ônibus"
+      "confidence": "medium",
+      "note": "bus_station nao distingue terminal urbano, interestadual ou rodoviaria"
     },
     {
       "id": "edif_aeroporto",
@@ -5586,7 +6031,7 @@
       "edgv_target": {
         "table": "constr_edificacao_p",
         "attributes": {
-          "tipo": 2426
+          "tipo": 2498
         }
       },
       "osm_attribute_mapping": {
@@ -5659,35 +6104,6 @@
       },
       "confidence": "high",
       "note": "Edificação portuária"
-    },
-    {
-      "id": "edif_mirante",
-      "osm_filter": {
-        "tags": {
-          "tourism": "viewpoint"
-        },
-        "geometry": [
-          "point"
-        ]
-      },
-      "edgv_target": {
-        "table": "constr_edificacao_p",
-        "attributes": {
-          "tipo": 711
-        }
-      },
-      "osm_attribute_mapping": {
-        "name": "nome",
-        "height": "altura",
-        "building:levels": "pavimentos",
-        "addr:street": {
-          "column": "endereco",
-          "concat_with": "addr:housenumber",
-          "separator": ", "
-        }
-      },
-      "confidence": "high",
-      "note": "Mirante"
     },
     {
       "id": "edif_monumento",
@@ -5791,8 +6207,7 @@
           ]
         },
         "geometry": [
-          "point",
-          "polygon"
+          "point"
         ]
       },
       "edgv_target": {
@@ -5813,6 +6228,40 @@
       },
       "confidence": "medium",
       "note": "Defesa Civil (0.12.0, tipo 3010). ANTES de edif_governo (first_match_wins). Tags candidatas de baixa frequencia no BR -- fonte primaria e a coleta autoritativa (GeoSwarm); validar frequencia com osm_unmapped_tags"
+    },
+    {
+      "id": "edif_defesa_civil_a",
+      "osm_filter": {
+        "tags": {
+          "office": "government",
+          "government": [
+            "emergency",
+            "civil_defence",
+            "emergency_management"
+          ]
+        },
+        "geometry": [
+          "polygon"
+        ]
+      },
+      "edgv_target": {
+        "table": "constr_edificacao_a",
+        "attributes": {
+          "tipo": 3010
+        }
+      },
+      "osm_attribute_mapping": {
+        "name": "nome",
+        "height": "altura",
+        "building:levels": "pavimentos",
+        "addr:street": {
+          "column": "endereco",
+          "concat_with": "addr:housenumber",
+          "separator": ", "
+        }
+      },
+      "confidence": "medium",
+      "note": "Defesa Civil em poligono"
     },
     {
       "id": "edif_governo",
@@ -5883,23 +6332,16 @@
         ]
       },
       "edgv_target": {
-        "table": "constr_edificacao_a",
+        "table": "constr_area_uso_especifico_a",
         "attributes": {
-          "tipo": 2101
+          "tipo": 11
         }
       },
       "osm_attribute_mapping": {
-        "name": "nome",
-        "height": "altura",
-        "building:levels": "pavimentos",
-        "addr:street": {
-          "column": "endereco",
-          "concat_with": "addr:housenumber",
-          "separator": ", "
-        }
+        "name": "nome"
       },
       "confidence": "high",
-      "note": "Servico social generico (poligono)"
+      "note": "Area relacionada a equipamento de desenvolvimento social"
     },
     {
       "id": "edif_militar_building_a",
@@ -5914,7 +6356,7 @@
       "edgv_target": {
         "table": "constr_edificacao_a",
         "attributes": {
-          "tipo": 3098
+          "tipo": 1798
         }
       },
       "osm_attribute_mapping": {
@@ -5928,7 +6370,7 @@
         }
       },
       "confidence": "high",
-      "note": "Edificação militar"
+      "note": "Edificacao militar generica; nao classificada como policia"
     },
     {
       "id": "edif_governo_building_a",
@@ -6175,7 +6617,7 @@
       "edgv_target": {
         "table": "constr_edificacao_a",
         "attributes": {
-          "tipo": 101
+          "tipo": 0
         }
       },
       "osm_attribute_mapping": {
@@ -6188,8 +6630,8 @@
           "separator": ", "
         }
       },
-      "confidence": "high",
-      "note": "Centro de comunicações (building=communication)"
+      "confidence": "medium",
+      "note": "building=communication nao prova centro de operacoes; mantida como edificacao generica"
     },
     {
       "id": "edif_bombeiro_building",
@@ -6204,7 +6646,8 @@
       "edgv_target": {
         "table": "constr_edificacao_a",
         "attributes": {
-          "tipo": 3007
+          "tipo": 3007,
+          "observacao": "Aproximacao OSM: building=fire_station sem operador convertido para Bombeiros Militar."
         }
       },
       "osm_attribute_mapping": {
@@ -6217,8 +6660,8 @@
           "separator": ", "
         }
       },
-      "confidence": "high",
-      "note": "Corpo de bombeiros (building=fire_station)"
+      "confidence": "medium",
+      "note": "Edificacao de bombeiros aproximada como Bombeiros Militar no contexto brasileiro"
     },
     {
       "id": "edif_templo_building",
@@ -6320,7 +6763,7 @@
       "edgv_target": {
         "table": "constr_edificacao_a",
         "attributes": {
-          "tipo": 2426
+          "tipo": 2498
         }
       },
       "osm_attribute_mapping": {
@@ -6349,7 +6792,7 @@
       "edgv_target": {
         "table": "constr_edificacao_a",
         "attributes": {
-          "tipo": 2426
+          "tipo": 0
         }
       },
       "osm_attribute_mapping": {
@@ -6362,8 +6805,8 @@
           "separator": ", "
         }
       },
-      "confidence": "high",
-      "note": "Terminal de transporte (building=terminal)"
+      "confidence": "medium",
+      "note": "building=terminal sem aeroway/amenity nao determina o modal"
     },
     {
       "id": "edif_heliporto_building",
@@ -6378,7 +6821,7 @@
       "edgv_target": {
         "table": "constr_edificacao_a",
         "attributes": {
-          "tipo": 2426
+          "tipo": 2498
         }
       },
       "osm_attribute_mapping": {
@@ -6526,14 +6969,15 @@
       "edgv_target": {
         "table": "constr_ocupacao_solo_a",
         "attributes": {
-          "tipo": 104
+          "tipo": 104,
+          "observacao": "Aproximacao OSM: cemetery sem religiao ou subtipo convertido para cemiterio comum cristao."
         }
       },
       "osm_attribute_mapping": {
         "name": "nome"
       },
-      "confidence": "high",
-      "note": "Cemitério"
+      "confidence": "medium",
+      "note": "Cemiterio sem subtipo aproximado como cemiterio comum cristao no contexto brasileiro"
     },
     {
       "id": "ocup_cemiterio_amenity",
@@ -6548,14 +6992,15 @@
       "edgv_target": {
         "table": "constr_ocupacao_solo_a",
         "attributes": {
-          "tipo": 104
+          "tipo": 104,
+          "observacao": "Aproximacao OSM: grave_yard sem religiao convertido para cemiterio comum cristao."
         }
       },
       "osm_attribute_mapping": {
         "name": "nome"
       },
-      "confidence": "high",
-      "note": "Cemitério (amenity)"
+      "confidence": "low",
+      "note": "Cemiterio sem religiao aproximado como cemiterio comum cristao para preservar a feicao"
     },
     {
       "id": "ocup_estacionamento",
@@ -6636,14 +7081,14 @@
       "edgv_target": {
         "table": "constr_ocupacao_solo_a",
         "attributes": {
-          "tipo": 206
+          "tipo": 298
         }
       },
       "osm_attribute_mapping": {
         "name": "nome"
       },
-      "confidence": "high",
-      "note": "Campo/quadra poliesportiva"
+      "confidence": "medium",
+      "note": "leisure=pitch sem sport=* nao sustenta modalidade; usada a categoria Outras quadras"
     },
     {
       "id": "ocup_farol",
@@ -7029,23 +7474,16 @@
         ]
       },
       "edgv_target": {
-        "table": "constr_deposito_a",
+        "table": "constr_area_uso_especifico_a",
         "attributes": {
-          "tipo": 301
+          "tipo": 17
         }
       },
       "osm_attribute_mapping": {
-        "name": "nome",
-        "height": "altura",
-        "building:levels": "pavimentos",
-        "addr:street": {
-          "column": "endereco",
-          "concat_with": "addr:housenumber",
-          "separator": ", "
-        }
+        "name": "nome"
       },
-      "confidence": "medium",
-      "note": "Tanque de saneamento (ETE/ETA)"
+      "confidence": "high",
+      "note": "Area de estacao de tratamento de aguas residuais; nao representa um tanque isolado"
     },
     {
       "_comment": "=== CONSTR — EXTRAÇÃO MINERAL ==="
@@ -7145,26 +7583,45 @@
       "id": "extracao_plataforma",
       "osm_filter": {
         "tags": {
-          "man_made": [
-            "offshore_platform",
-            "oil_platform"
-          ]
+          "man_made": "offshore_platform"
         },
         "geometry": [
           "point"
         ]
       },
       "edgv_target": {
-        "table": "constr_extracao_mineral_p",
+        "table": "infra_elemento_infraestrutura_p",
         "attributes": {
-          "tipo": 8
+          "tipo": 1400
         }
       },
       "osm_attribute_mapping": {
         "name": "nome"
       },
       "confidence": "high",
-      "note": "Plataforma offshore"
+      "note": "Plataforma offshore sem produto especificado"
+    },
+    {
+      "id": "extracao_plataforma_petroleo",
+      "osm_filter": {
+        "tags": {
+          "man_made": "oil_platform"
+        },
+        "geometry": [
+          "point"
+        ]
+      },
+      "edgv_target": {
+        "table": "infra_elemento_infraestrutura_p",
+        "attributes": {
+          "tipo": 1401
+        }
+      },
+      "osm_attribute_mapping": {
+        "name": "nome"
+      },
+      "confidence": "high",
+      "note": "Plataforma de petroleo"
     },
     {
       "id": "extracao_mina_p",
