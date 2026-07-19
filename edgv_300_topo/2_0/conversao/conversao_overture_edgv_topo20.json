@@ -10770,6 +10770,169 @@
       },
       "confidence": "alta",
       "note": "Codigo 907 (Comerc - Hotel / motel / pousada). FALLBACK da raiz accommodation: hotel, motel, inn, hostel, bed_and_breakfast, guest_house, lodge, resort/beach_resort, cabin, cottage, holiday_rental_home, service_apartments, mountain_huts, health_retreats. Excecoes campground e rv_park vao a gap."
+    },
+    {
+      "id": "land_grassland_a",
+      "overture_filter": {
+        "theme": "base",
+        "type": "land",
+        "class": [
+          "grassland"
+        ],
+        "geometry": [
+          "polygon"
+        ]
+      },
+      "edgv_target": {
+        "table": "cobter_vegetacao_a",
+        "attributes": {
+          "tipo": 901
+        }
+      },
+      "overture_attribute_mapping": {},
+      "confidence": "high",
+      "note": "Campo (901). Classificacao por TIPO FISICO (porte herbaceo), nunca por toponimo ou bioma, conforme a doutrina do chefe de 2026-07-19."
+    },
+    {
+      "id": "land_wood_a",
+      "overture_filter": {
+        "theme": "base",
+        "type": "land",
+        "class": [
+          "wood",
+          "forest"
+        ],
+        "geometry": [
+          "polygon"
+        ]
+      },
+      "edgv_target": {
+        "table": "cobter_vegetacao_a",
+        "attributes": {
+          "tipo": 601
+        }
+      },
+      "overture_attribute_mapping": {},
+      "confidence": "high",
+      "note": "Floresta densa (601). O OSM nao distingue densa de esparsa; mesmo default do landcover_forest, refinavel por cruzamento posterior."
+    },
+    {
+      "id": "land_wetland_a",
+      "overture_filter": {
+        "theme": "base",
+        "type": "land",
+        "class": [
+          "wetland",
+          "marsh",
+          "swamp"
+        ],
+        "geometry": [
+          "polygon"
+        ]
+      },
+      "edgv_target": {
+        "table": "cobter_vegetacao_a",
+        "attributes": {
+          "tipo": 301
+        }
+      },
+      "overture_attribute_mapping": {},
+      "confidence": "high",
+      "note": "Brejo/pantano (301). Tipo fisico-hidrologico, mais especializado que o porte."
+    },
+    {
+      "id": "land_shrub_a",
+      "overture_filter": {
+        "theme": "base",
+        "type": "land",
+        "class": [
+          "shrub",
+          "scrub",
+          "heath"
+        ],
+        "geometry": [
+          "polygon"
+        ]
+      },
+      "edgv_target": {
+        "table": "cobter_vegetacao_a",
+        "attributes": {
+          "tipo": 1200
+        }
+      },
+      "overture_attribute_mapping": {},
+      "confidence": "high",
+      "note": "Vegetacao arbustiva (1200), o codigo criado justamente para o shrub das legendas globais. Cobre scrub e heath, que sao a mesma fisionomia sob nomes regionais."
+    },
+    {
+      "id": "land_sand_a",
+      "overture_filter": {
+        "theme": "base",
+        "type": "land",
+        "class": [
+          "sand"
+        ],
+        "geometry": [
+          "polygon"
+        ]
+      },
+      "edgv_target": {
+        "table": "cobter_vegetacao_a",
+        "attributes": {
+          "tipo": 1002
+        }
+      },
+      "overture_attribute_mapping": {},
+      "confidence": "medium",
+      "note": "Terreno exposto - areia (1002). NAO confundir com class='beach', que tem regra propria de praia; aqui e areal sem conotacao de linha de costa."
+    },
+    {
+      "id": "infra_generator_a",
+      "overture_filter": {
+        "theme": "base",
+        "type": "infrastructure",
+        "class": [
+          "generator"
+        ],
+        "geometry": [
+          "polygon"
+        ]
+      },
+      "edgv_target": {
+        "table": "infra_elemento_energia_a",
+        "attributes": {
+          "tipo": 498
+        }
+      },
+      "overture_attribute_mapping": {
+        "names.primary": "nome"
+      },
+      "confidence": "medium",
+      "note": "Estacao geradora - Outras (498). O Overture nao informa a fonte primaria (eolica 405, solar 406, hidreletrica 408, termeletrica 409), entao 498 preserva que E uma estacao geradora em vez de cair em 9999. 498 esta no CHECK da classe."
+    },
+    {
+      "id": "infra_parking_a",
+      "overture_filter": {
+        "theme": "base",
+        "type": "infrastructure",
+        "class": [
+          "parking"
+        ],
+        "geometry": [
+          "polygon"
+        ]
+      },
+      "edgv_target": {
+        "table": "constr_area_uso_especifico_a",
+        "attributes": {
+          "tipo": 16
+        }
+      },
+      "overture_attribute_mapping": {
+        "names.primary": "nome"
+      },
+      "confidence": "medium",
+      "note": "Area relacionada a instalacao de estrutura de transporte (16). Estacionamento nao tem codigo proprio no dominio; 16 e o mais especifico que ele oferece."
     }
   ]
 }
