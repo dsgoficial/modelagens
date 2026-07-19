@@ -1179,6 +1179,7 @@ CREATE TABLE dominios.tipo_limite_especial (
 
 INSERT INTO dominios.tipo_limite_especial (code,code_name) VALUES (2,'Terra indígena (2)');
 INSERT INTO dominios.tipo_limite_especial (code,code_name) VALUES (3,'Território quilombola (3)');
+INSERT INTO dominios.tipo_limite_especial (code,code_name) VALUES (4,'Assentamento rural (4)');
 INSERT INTO dominios.tipo_limite_especial (code,code_name) VALUES (5,'Unidade de Conservação (5)');
 INSERT INTO dominios.tipo_limite_especial (code,code_name) VALUES (24,'Área de Proteção Ambiental – APA (24)');
 INSERT INTO dominios.tipo_limite_especial (code,code_name) VALUES (25,'Área de Relevante Interesse Ecológico – ARIE (25)');

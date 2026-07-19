@@ -379,11 +379,14 @@ A travessia hidroviária passa a ser **linha-only** no Topo 2.0: a travessia é 
 
 > Rev 0.14.0 (2026-07-11): adicionado o código 11 `Bairro` (subdivisão intraurbana), alvo do subtype `neighborhood` do Overture divisions no mapeamento Overture -> EDGV Topo 2.0 (ver analysis/overture_referencia_e_mapeamento_topo20.md).
 
-### `dominios.tipo_limite_especial` (+1)
+### `dominios.tipo_limite_especial` (+2)
 
 | Código | Valor |
 |--------|-------|
 | 3 | Território quilombola |
+| 4 | Assentamento rural |
+
+> Rev 0.15.0 (2026-07-19): adicionado o código 4 `Assentamento rural`, alvo das 6.444 feições de assentamento de reforma agrária do Acervo Fundiário do INCRA, que não tinham destino no modelo. O código 4 foi escolhido por adjacência semântica, e não por ser o próximo livre: 2, 3 e 4 formam o bloco dos territórios de destinação fundiária especial (terra indígena, quilombola, assentamento), imediatamente antes do 5 (unidade de conservação genérica) e do bloco contíguo 24 a 35 das categorias do SNUC. Mesmo critério que guiou a inclusão do código 3. Justificativa de conteúdo: assentamento é regime fundiário criado por ato federal, com restrição de alienação, e numa carta militar informa população, acesso e potencial de conflito de terra. Ressalva registrada: destoa das demais entradas por ser projeto de política agrária, não território étnico nem área protegida nem área militar.
 
 ### `dominios.tipo_alteracao_fisiografica` (+1)
 
@@ -592,7 +595,8 @@ INSERT INTO dominios.tipo_localidade (code, code_name) VALUES
     (11, 'Bairro (11)');
 
 INSERT INTO dominios.tipo_limite_especial (code, code_name) VALUES
-    (3, 'Território quilombola (3)');
+    (3, 'Território quilombola (3)'),
+    (4, 'Assentamento rural (4)');
 
 INSERT INTO dominios.tipo_alteracao_fisiografica (code, code_name) VALUES
     (24, 'Caixa de empréstimo (24)');

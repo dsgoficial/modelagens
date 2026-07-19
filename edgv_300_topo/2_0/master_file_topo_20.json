@@ -3741,6 +3741,11 @@
           "descricao": "Território quilombola: área titulada a comunidade remanescente de quilombo, sob domínio coletivo."
         },
         {
+          "code": 4,
+          "value": "Assentamento rural",
+          "descricao": "Assentamento rural: área destinada pelo poder público a projeto de reforma agrária, com parcelamento em lotes familiares e restrição de alienação, sob regime do INCRA ou de órgão fundiário estadual."
+        },
+        {
           "code": 5,
           "value": "Unidade de Conservação",
           "descricao": "Unidade de conservação do SNUC cuja categoria específica não foi discriminada; usado quando só se sabe que a área é protegida."
