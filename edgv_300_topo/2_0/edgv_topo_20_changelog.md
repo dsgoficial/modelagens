@@ -99,6 +99,36 @@ Aporte do cruzamento com a ET-EDGV SPU 4.0 (ver `analysis/comparativo_edgvspu40_
 
 ## 2. Novas tabelas
 
+### `aux_elemento_viario_p`
+
+Classe AUXILIAR (não cartográfica, categoria `aux`) que absorve a obra de arte viária que a fonte modelou como PONTO.
+
+Na Topo 2.0, `infra_elemento_viario` é LINHA por decisão consciente de modelagem. A consequência, descoberta ao converter o IBGE BC250 em 2026-07-19, é que toda ponte, viaduto, túnel e travessia que uma fonte externa modela como ponto **se perde na conversão**: só na BC250 são 12.890 feições. Esta classe é o estágio intermediário e a fila de trabalho, não um destino final: o lugar definitivo da obra de arte continua sendo os campos inline (`tipo_elemento_viario`, `nome_elemento_viario`, `posicao_pista_elemento_viario`, `material_construcao_elemento_viario`) do trecho de `infra_via_deslocamento` que ela cruza.
+
+O campo `absorvido` é o que impede a classe de virar depósito permanente: nasce falso e a rotina de transferência o marca verdadeiro; o que permanecer falso é fila visível, não perda silenciosa.
+
+Não exige domínio novo: reusa `tipo_elemento_viario`, `material_construcao`, `posicao_pista` e `booleano`.
+
+| Coluna | Tipo | Constraints |
+|--------|------|-------------|
+| `id` | uuid | PK, DEFAULT uuid_generate_v4() |
+| `tipo` | smallint | NOT NULL, FK → `dominios.tipo_elemento_viario`, DEFAULT 9999 |
+| `nome` | varchar(255) | nullable |
+| `material_construcao` | smallint | nullable, FK → `dominios.material_construcao` |
+| `posicao_pista` | smallint | nullable, FK → `dominios.posicao_pista` |
+| `absorvido` | smallint | NOT NULL, FK → `dominios.booleano`, DEFAULT 9999 |
+| `observacao` | varchar(255) | nullable |
+| `geom` | MultiPoint, 4674 | índice GiST |
+
+#### Lacunas do domínio `tipo_elemento_viario` observadas na conversão (2026-07-19)
+
+Registradas aqui como achado, NÃO como mudança aplicada:
+
+- **Não há código genérico de PONTE.** O domínio só oferece 201 móvel, 202 pênsil, 203 fixa, 204 estaiada e 205 flutuante. Uma fonte que diz apenas "ponte", sem o subtipo (é o caso das 6.988 feições de `tra_ponte_p` da BC250), não tem para onde ir e cai em 9999. Eleger "fixa" como padrão seria inventar semântica, então não se fez. Candidato a um código genérico de ponte, se a DSG concordar.
+- **Passagem de nível não existe no domínio e NÃO será acrescentada** (decisão do chefe, 2026-07-19): não é feição de interesse. As 1.441 feições de `tra_passagem_nivel_p` da BC250 permanecem sem destino, por decisão e não por esquecimento.
+
+> Rev 2026-07-19: criada a pedido do chefe da DGEO, ao converter o IBGE BC250 para a Topo 2.0. Registrado no changelog que a passagem de nível (`tra_passagem_nivel_p` da BC250, 1.441 feições) permanece SEM destino por decisão: não é feição de interesse, e por isso o domínio `tipo_elemento_viario` NÃO foi estendido.
+
 ### `llp_localidade_a`
 
 Polígono de localidades (mesmo schema de `llp_localidade_p`, com geometria MultiPolygon).

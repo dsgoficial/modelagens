@@ -4639,6 +4639,46 @@ ALTER TABLE edgv.aux_revisao_l
 
 ALTER TABLE edgv.aux_revisao_l ALTER COLUMN corrigido SET DEFAULT 9999;
 
+CREATE TABLE edgv.aux_elemento_viario_p(
+	 id uuid NOT NULL DEFAULT uuid_generate_v4(),
+	 tipo smallint NOT NULL,
+	 nome varchar(255),
+	 material_construcao smallint,
+	 posicao_pista smallint,
+	 absorvido smallint NOT NULL,
+	 observacao varchar(255),
+	 geom geometry(MultiPoint, 4674),
+	 CONSTRAINT aux_elemento_viario_p_pk PRIMARY KEY (id)
+	 WITH (FILLFACTOR = 80)
+);
+CREATE INDEX aux_elemento_viario_p_geom ON edgv.aux_elemento_viario_p USING gist (geom);
+
+ALTER TABLE edgv.aux_elemento_viario_p OWNER TO postgres;
+
+ALTER TABLE edgv.aux_elemento_viario_p
+	 ADD CONSTRAINT aux_elemento_viario_p_tipo_fk FOREIGN KEY (tipo)
+	 REFERENCES dominios.tipo_elemento_viario (code) MATCH FULL
+	 ON UPDATE NO ACTION ON DELETE NO ACTION;
+
+ALTER TABLE edgv.aux_elemento_viario_p ALTER COLUMN tipo SET DEFAULT 9999;
+
+ALTER TABLE edgv.aux_elemento_viario_p
+	 ADD CONSTRAINT aux_elemento_viario_p_material_construcao_fk FOREIGN KEY (material_construcao)
+	 REFERENCES dominios.material_construcao (code) MATCH FULL
+	 ON UPDATE NO ACTION ON DELETE NO ACTION;
+
+ALTER TABLE edgv.aux_elemento_viario_p
+	 ADD CONSTRAINT aux_elemento_viario_p_posicao_pista_fk FOREIGN KEY (posicao_pista)
+	 REFERENCES dominios.posicao_pista (code) MATCH FULL
+	 ON UPDATE NO ACTION ON DELETE NO ACTION;
+
+ALTER TABLE edgv.aux_elemento_viario_p
+	 ADD CONSTRAINT aux_elemento_viario_p_absorvido_fk FOREIGN KEY (absorvido)
+	 REFERENCES dominios.booleano (code) MATCH FULL
+	 ON UPDATE NO ACTION ON DELETE NO ACTION;
+
+ALTER TABLE edgv.aux_elemento_viario_p ALTER COLUMN absorvido SET DEFAULT 9999;
+
 CREATE TABLE edgv.aux_revisao_p(
 	 id uuid NOT NULL DEFAULT uuid_generate_v4(),
 	 descricao varchar(255),

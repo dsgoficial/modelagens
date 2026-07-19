@@ -8563,6 +8563,50 @@
       ]
     },
     {
+      "nome": "elemento_viario",
+      "categoria": "aux",
+      "primitivas": [
+        "MultiPoint"
+      ],
+      "atributos": [
+        {
+          "nome": "tipo",
+          "tipo": "smallint",
+          "cardinalidade": "1..1",
+          "mapa_valor": "tipo_elemento_viario",
+          "descricao": "Tipo da obra de arte viaria (ponte, viaduto, tunel, passagem elevada, vau, galeria), conforme o dominio tipo_elemento_viario."
+        },
+        {
+          "nome": "nome",
+          "tipo": "varchar(255)",
+          "cardinalidade": "0..1",
+          "descricao": "Nome da obra de arte, quando a fonte o traz."
+        },
+        {
+          "nome": "material_construcao",
+          "tipo": "smallint",
+          "cardinalidade": "0..1",
+          "mapa_valor": "material_construcao",
+          "descricao": "Material predominante da obra de arte."
+        },
+        {
+          "nome": "posicao_pista",
+          "tipo": "smallint",
+          "cardinalidade": "0..1",
+          "mapa_valor": "posicao_pista",
+          "descricao": "Posicao relativa da pista na obra de arte."
+        },
+        {
+          "nome": "absorvido",
+          "tipo": "smallint",
+          "cardinalidade": "1..1",
+          "mapa_valor": "booleano",
+          "descricao": "Indica se a obra de arte ja foi transferida para os campos inline do trecho de infra_via_deslocamento que ela cruza. Nasce falso; o que permanecer falso e fila de trabalho visivel, nao perda silenciosa."
+        }
+      ],
+      "descricao": "Classe AUXILIAR (nao cartografica) que absorve a obra de arte viaria que a fonte modelou como PONTO. Na Topo 2.0 infra_elemento_viario e linha por decisao de modelagem; sem esta classe, toda ponte, viaduto e tunel pontual de uma fonte externa (ex.: IBGE BC250, 12.890 feicoes) se perderia na conversao. O destino final da feicao e ser absorvida pelos campos inline do trecho de via; esta classe e o estagio intermediario e a fila de trabalho."
+    },
+    {
       "nome": "grid_edicao",
       "categoria": "edicao",
       "primitivas": [
