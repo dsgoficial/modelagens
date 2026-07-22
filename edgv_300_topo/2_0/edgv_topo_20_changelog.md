@@ -324,6 +324,14 @@ A travessia hidroviária passa a ser **linha-only** no Topo 2.0: a travessia é 
 | 1403 | Jardim público |
 | 1404 | Parque urbano |
 
+### `dominios.tipo_ocupacao_solo` (+1, filter = 'Cemitério')
+
+| Código | Valor |
+|--------|-------|
+| 100 | Cemitério - Desconhecido |
+
+> Rev 0.15.0 (2026-07-22): adicionado o código 100 `Cemitério - Desconhecido`. O grupo Cemitério tinha oito códigos (101 a 108), TODOS discriminando tradição religiosa ou forma construtiva, e nenhum para o caso em que a existência do cemitério é certa e o tipo não. O 108 `Comum - Outras religiões` não serve: ele afirma uma religião específica que não as três nomeadas, não a ausência de informação. O código escolhido é o slot **x00**, que é o que o próprio modelo já usa para o genérico ou desconhecido de um grupo (`300 Duto – Desconhecido`, `1000 Terreno exposto - desconhecido`, `1400 Plataforma - Desconhecido`), e não o 109, que quebraria essa convenção. Motivação de campo: na carga das seis folhas do protótipo Topo 2.0 o OSM quase nunca publica `religion`, e foi preciso adotar 104 (Comum - Cristã) como default, assumindo um fato provável e não verificado. Vale para `constr_ocupacao_solo_a` e `_p`, as mesmas primitivas dos demais cemitérios.
+
 ### `dominios.tipo_elemento_infraestrutura` (+6, filter = 'Trecho de comunicação')
 
 | Código | Valor |
@@ -415,6 +423,8 @@ Adicionado para permitir preenchimento neutro quando fonte externa (OSM, Overtur
 | `infra_ferrovia_l` | `tipo_elemento_viario` | 205 |
 | `infra_via_deslocamento_l` | `tipo_elemento_viario` | 205 |
 | `constr_ocupacao_solo_a` | `tipo` | 1401, 1402, 1403, 1404 |
+| `constr_ocupacao_solo_a` | `tipo` | 100 (Cemitério - Desconhecido) |
+| `constr_ocupacao_solo_p` | `tipo` | 100 (Cemitério - Desconhecido) |
 | `elemnat_elemento_hidrografico_l` | `tipo` | 18 (Recife contíguo) |
 | `infra_via_deslocamento_l` | `revestimento` | 0 (Desconhecido) — permite fallback neutro para dados externos |
 | `infra_ferrovia_l` | `posicao_relativa` | 0 (Desconhecido) |
@@ -563,6 +573,9 @@ INSERT INTO dominios.tipo_ocupacao_solo (code, code_name, filter) VALUES
     (1402, 'Largo (1402)', 'Área verde pública'),
     (1403, 'Jardim público (1403)', 'Área verde pública'),
     (1404, 'Parque urbano (1404)', 'Área verde pública');
+
+INSERT INTO dominios.tipo_ocupacao_solo (code, code_name, filter) VALUES
+    (100, 'Cemitério - Desconhecido (100)', 'Cemitério');
 
 INSERT INTO dominios.tipo_elemento_infraestrutura (code, code_name, filter) VALUES
     (1101, 'Trecho de comunicação - Sinal de TV (1101)', 'Trecho de comunicação'),

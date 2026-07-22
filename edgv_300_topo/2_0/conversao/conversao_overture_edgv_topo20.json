@@ -1,10 +1,10 @@
 {
   "metadata": {
-    "version": "1.6",
-    "date": "2026-07-11",
+    "version": "1.7",
+    "date": "2026-07-22",
     "source": "Overture Maps Foundation",
     "target": "EDGV Topo 2.0 v0.13.0",
-    "description": "Mapeamento Overture Maps para EDGV Topo 2.0. Consumido por overture_to_edgv.py. Rev 1.3 (2026-07-11): passos 1-4 e 7 do plano (analysis/overture_referencia_e_mapeamento_topo20.md). Base (land_cover/infrastructure/land/water), buildings (completado + reorganizado: specific -> subtype-fallback -> catch-all, corrigindo o bldg_generic que sombreava as regras de deposito) e divisions (referencia). Passo 5 (transportation rules) e enriquecimento de atributo dependente do ETL, registrado no plano e no gap doc, nao como regra. places (passo 6, refeito) mapeado por NO da taxonomia (category_node, cobertura 100% das 2117 categorias verificada), sem geoswarm. Gaps em schema/overture_sem_correspondencia.md. ETL: land_cover/land/infrastructure/divisions ainda precisam de THEME_QUERIES em overture_to_edgv.py.",
+    "description": "Mapeamento Overture Maps para EDGV Topo 2.0. Consumido por overture_to_edgv.py. Rev 1.3 (2026-07-11): passos 1-4 e 7 do plano (analysis/overture_referencia_e_mapeamento_topo20.md). Base (land_cover/infrastructure/land/water), buildings (completado + reorganizado: specific -> subtype-fallback -> catch-all, corrigindo o bldg_generic que sombreava as regras de deposito) e divisions (referencia). Passo 5 (transportation rules) e enriquecimento de atributo dependente do ETL, registrado no plano e no gap doc, nao como regra. places (passo 6, refeito) mapeado por NO da taxonomia (category_node, cobertura 100% das 2117 categorias verificada), sem geoswarm. Gaps em schema/overture_sem_correspondencia.md. ETL: land_cover/land/infrastructure/divisions ainda precisam de THEME_QUERIES em overture_to_edgv.py. Rev 1.7 (2026-07-22): fecha o gap de `constr_ocupacao_solo` (cemiterio, campo/quadra, area verde publica, estacionamento, piscina, sitio, ruina, pista de competicao), `elemnat_elemento_hidrografico_l`, `infra_vala_l` e `infra_travessia_hidroviaria_l`. A raiz do gap era o tipo `land_use` do tema base NUNCA ter sido baixado pelo download_overture_sul.py; o sem_correspondencia registrava o adiamento ('area/outro tema') que nunca fechou. Reguas de porte medidas nas 6 folhas do prototipo Topo 2.0.",
     "total_rules": 390,
     "match_strategy": "first_match_wins",
     "source_release": "2026-06-17.0",
@@ -10933,6 +10933,326 @@
       },
       "confidence": "medium",
       "note": "Area relacionada a instalacao de estrutura de transporte (16). Estacionamento nao tem codigo proprio no dominio; 16 e o mais especifico que ele oferece."
+    },
+    {
+      "_comment": "=== BASE/LAND_USE -> constr_ocupacao_solo, elemnat_elemento_hidrografico, infra_vala (rev 1.7, 2026-07-22) ==="
+    },
+    {
+      "id": "landuse_cemiterio",
+      "overture_filter": {
+        "theme": "base",
+        "type": "land_use",
+        "class": [
+          "cemetery"
+        ],
+        "geometry": [
+          "polygon"
+        ]
+      },
+      "edgv_target": {
+        "table": "constr_ocupacao_solo_a",
+        "attributes": {
+          "tipo": 100
+        }
+      },
+      "overture_attribute_mapping": {
+        "name": "nome"
+      },
+      "confidence": "high",
+      "note": "Cemiterio sem tradicao religiosa declarada -> codigo 100 (Cemiterio - Desconhecido), NOVO na v0.15.0. O Overture nao publica religiao; assumir 104 (Comum - Crista) afirmaria fato provavel e nao verificado. Area minima 2.500 m2 (padrao 25k). Quando a fonte declarar religiao, refinar para 104/106/107."
+    },
+    {
+      "id": "landuse_quadra_generica",
+      "overture_filter": {
+        "theme": "base",
+        "type": "land_use",
+        "class": [
+          "pitch",
+          "recreation_ground",
+          "stadium",
+          "sports_centre"
+        ],
+        "geometry": [
+          "polygon"
+        ]
+      },
+      "edgv_target": {
+        "table": "constr_ocupacao_solo_a",
+        "attributes": {
+          "tipo": 298
+        }
+      },
+      "overture_attribute_mapping": {
+        "name": "nome"
+      },
+      "confidence": "high",
+      "note": "Campo ou quadra sem esporte declarado -> 298 (Outras quadras esportivas). Com `sport` declarado, refinar: futebol 201, basquete 202, volei 203, polo 204, hipismo 205, poliesportiva 206, tenis 207. Pista de competicao em AREA entra como 298 por regra do padrao 25k."
+    },
+    {
+      "id": "landuse_parque_urbano",
+      "overture_filter": {
+        "theme": "base",
+        "type": "land_use",
+        "class": [
+          "park"
+        ],
+        "geometry": [
+          "polygon"
+        ]
+      },
+      "edgv_target": {
+        "table": "constr_ocupacao_solo_a",
+        "attributes": {
+          "tipo": 1404
+        }
+      },
+      "overture_attribute_mapping": {
+        "name": "nome"
+      },
+      "confidence": "high",
+      "note": "Parque urbano. Area minima 625 m2."
+    },
+    {
+      "id": "landuse_jardim_publico",
+      "overture_filter": {
+        "theme": "base",
+        "type": "land_use",
+        "class": [
+          "garden",
+          "village_green"
+        ],
+        "geometry": [
+          "polygon"
+        ]
+      },
+      "edgv_target": {
+        "table": "constr_ocupacao_solo_a",
+        "attributes": {
+          "tipo": 1403
+        }
+      },
+      "overture_attribute_mapping": {
+        "name": "nome"
+      },
+      "confidence": "medium",
+      "note": "Jardim publico SO quando se prova publico: nome, acesso publico ou porte de 1 ha (regra do chefe, 2026-07-22). O `garden` do OSM/Overture cobre jardim de condominio em massa: medido em Palmas, 200 poligonos acima de 625 m2, mediana 2.272 m2 e 93% sem nome. Sem o filtro, a carta recebe canteiro privado tipado como equipamento publico."
+    },
+    {
+      "id": "landuse_praca",
+      "overture_filter": {
+        "theme": "base",
+        "type": "land_use",
+        "class": [
+          "square",
+          "plaza"
+        ],
+        "geometry": [
+          "polygon"
+        ]
+      },
+      "edgv_target": {
+        "table": "constr_ocupacao_solo_a",
+        "attributes": {
+          "tipo": 1401
+        }
+      },
+      "overture_attribute_mapping": {
+        "name": "nome"
+      },
+      "confidence": "medium",
+      "note": "Praca. Largo (1402) nao e distinguivel do 1401 pela fonte."
+    },
+    {
+      "id": "landuse_estacionamento",
+      "overture_filter": {
+        "theme": "base",
+        "type": "land_use",
+        "class": [
+          "parking"
+        ],
+        "geometry": [
+          "polygon"
+        ]
+      },
+      "edgv_target": {
+        "table": "constr_ocupacao_solo_a",
+        "attributes": {
+          "tipo": 901
+        }
+      },
+      "overture_attribute_mapping": {
+        "name": "nome"
+      },
+      "confidence": "medium",
+      "note": "Estacionamento SO de GRANDE PORTE: minimo 2.500 m2 (regra do chefe, 2026-07-22; o padrao 25k pede grande porte). Medido em Palmas: 130 acima de 625 m2 com mediana de 1.609 m2, que e estacionamento de comercio de esquina; acima de 2.500 m2 restam 22."
+    },
+    {
+      "id": "landuse_piscina",
+      "overture_filter": {
+        "theme": "base",
+        "type": "land_use",
+        "class": [
+          "swimming_pool"
+        ],
+        "geometry": [
+          "polygon"
+        ]
+      },
+      "edgv_target": {
+        "table": "constr_ocupacao_solo_a",
+        "attributes": {
+          "tipo": 501
+        }
+      },
+      "overture_attribute_mapping": {
+        "name": "nome"
+      },
+      "confidence": "medium",
+      "note": "Piscina: so grande porte publico (padrao 25k, 25k-only). Minimo 625 m2."
+    },
+    {
+      "id": "land_sitio_arqueologico",
+      "overture_filter": {
+        "theme": "base",
+        "type": "land",
+        "class": [
+          "archaeological_site"
+        ],
+        "geometry": [
+          "polygon"
+        ]
+      },
+      "edgv_target": {
+        "table": "constr_ocupacao_solo_a",
+        "attributes": {
+          "tipo": 601
+        }
+      },
+      "overture_attribute_mapping": {
+        "name": "nome"
+      },
+      "confidence": "medium",
+      "note": "Sitio arqueologico."
+    },
+    {
+      "id": "land_ruina",
+      "overture_filter": {
+        "theme": "base",
+        "type": "land",
+        "class": [
+          "ruins"
+        ],
+        "geometry": [
+          "polygon"
+        ]
+      },
+      "edgv_target": {
+        "table": "constr_ocupacao_solo_a",
+        "attributes": {
+          "tipo": 701
+        }
+      },
+      "overture_attribute_mapping": {
+        "name": "nome"
+      },
+      "confidence": "medium",
+      "note": "Ruina."
+    },
+    {
+      "id": "landuse_pista_competicao_l",
+      "overture_filter": {
+        "theme": "base",
+        "type": "land_use",
+        "class": [
+          "track",
+          "raceway"
+        ],
+        "geometry": [
+          "line"
+        ]
+      },
+      "edgv_target": {
+        "table": "constr_ocupacao_solo_l",
+        "attributes": {
+          "tipo": 398
+        }
+      },
+      "overture_attribute_mapping": {
+        "name": "nome"
+      },
+      "confidence": "medium",
+      "note": "Pista de competicao em LINHA -> 398 (Outras pistas). Com `sport` declarado, refinar: atletismo 301, ciclismo 302, motociclismo 303, automobilismo 304, corrida de cavalos 305, bicicross 306, motocross 307."
+    },
+    {
+      "id": "water_cachoeira_l",
+      "overture_filter": {
+        "theme": "base",
+        "type": "water",
+        "class": [
+          "waterfall"
+        ],
+        "geometry": [
+          "line"
+        ]
+      },
+      "edgv_target": {
+        "table": "elemnat_elemento_hidrografico_l",
+        "attributes": {
+          "tipo": 9
+        }
+      },
+      "overture_attribute_mapping": {
+        "name": "nome"
+      },
+      "confidence": "medium",
+      "note": "Cachoeira em linha. Salto (10), Catarata (11) e Corredeira (12) nao sao distinguiveis da fonte; 9 e o generico do grupo de queda."
+    },
+    {
+      "id": "water_corredeira_l",
+      "overture_filter": {
+        "theme": "base",
+        "type": "water",
+        "class": [
+          "rapids"
+        ],
+        "geometry": [
+          "line"
+        ]
+      },
+      "edgv_target": {
+        "table": "elemnat_elemento_hidrografico_l",
+        "attributes": {
+          "tipo": 12
+        }
+      },
+      "overture_attribute_mapping": {
+        "name": "nome"
+      },
+      "confidence": "medium",
+      "note": "Corredeira."
+    },
+    {
+      "id": "water_vala",
+      "overture_filter": {
+        "theme": "base",
+        "type": "water",
+        "class": [
+          "ditch",
+          "drain"
+        ],
+        "geometry": [
+          "line"
+        ]
+      },
+      "edgv_target": {
+        "table": "infra_vala_l",
+        "attributes": {}
+      },
+      "overture_attribute_mapping": {
+        "name": "nome"
+      },
+      "confidence": "medium",
+      "note": "Vala e dreno construido -> infra_vala_l, alternativa que o proprio overture_sem_correspondencia.md ja apontava para `ditch`/`drain`. Classe 25k-only: na 50k reclassifica como canal. A classe nao tem `tipo`; `em_galeria_bueiro` fica 9999 (a fonte nao informa)."
     }
   ]
 }

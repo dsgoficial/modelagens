@@ -1,6 +1,6 @@
 {
   "modelo": "EDGV Topo 2.0",
-  "versao": "0.14.0",
+  "versao": "0.15.0",
   "schema_dados": "edgv",
   "schema_dominios": "dominios",
   "a_ser_preenchido": {
@@ -3921,6 +3921,12 @@
       "nome": "tipo_ocupacao_solo",
       "valores": [
         {
+          "code": 100,
+          "value": "Cemitério - Desconhecido",
+          "valor_filtro": "Cemitério",
+          "descricao": "Cemitério cuja tradição religiosa ou forma construtiva não foi levantada. Usar quando a existência do cemitério é certa mas o tipo não, em vez de assumir a tradição predominante."
+        },
+        {
           "code": 101,
           "value": "Cemitério - Crematório",
           "valor_filtro": "Cemitério",
@@ -5207,6 +5213,13 @@
           "cardinalidade": "1..1",
           "mapa_valor": "tipo_ocupacao_solo",
           "valores": [
+            {
+              "code": 100,
+              "primitivas": [
+                "MultiPolygon",
+                "MultiPoint"
+              ]
+            },
             {
               "code": 101,
               "primitivas": [
@@ -9121,12 +9134,6 @@
           "cardinalidade": "1..1",
           "mapa_valor": "booleano",
           "descricao": "Falso enquanto a feicao nao virou pista linear ou areal em infra_pista_pouso; o que permanece falso e fila de trabalho visivel."
-        },
-        {
-          "nome": "observacao",
-          "tipo": "varchar(255)",
-          "cardinalidade": "0..1",
-          "descricao": "Observacao livre."
         }
       ],
       "descricao": "Classe auxiliar que absorve a pista de pouso modelada como PONTO pela fonte externa. Na Topo 2.0 a pista e linha ou area, e infra_pista_pouso_p so admite tipo=11 (Heliponto). Estagio intermediario e fila de trabalho, nao destino final."

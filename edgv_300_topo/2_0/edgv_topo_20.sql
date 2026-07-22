@@ -7,10 +7,10 @@ SET search_path TO pg_catalog,public,edgv,dominios;
 
 CREATE TABLE public.db_metadata(
 	 edgvversion varchar(50) NOT NULL DEFAULT 'EDGV Topo 2.0',
-	 dbimplversion varchar(50) NOT NULL DEFAULT '0.14.0',
+	 dbimplversion varchar(50) NOT NULL DEFAULT '0.15.0',
 	 CONSTRAINT edgvversioncheck CHECK (edgvversion = 'EDGV Topo 2.0')
 );
-INSERT INTO public.db_metadata (edgvversion, dbimplversion) VALUES ('EDGV Topo 2.0','0.14.0');
+INSERT INTO public.db_metadata (edgvversion, dbimplversion) VALUES ('EDGV Topo 2.0','0.15.0');
 
 CREATE TABLE dominios.sigla_uf (
 	 code smallint NOT NULL,
@@ -1243,6 +1243,7 @@ CREATE TABLE dominios.tipo_ocupacao_solo (
 	 CONSTRAINT tipo_ocupacao_solo_pk PRIMARY KEY (code)
 );
 
+INSERT INTO dominios.tipo_ocupacao_solo (code,code_name, filter) VALUES (100,'Cemitério - Desconhecido (100)','Cemitério');
 INSERT INTO dominios.tipo_ocupacao_solo (code,code_name, filter) VALUES (101,'Cemitério - Crematório (101)','Cemitério');
 INSERT INTO dominios.tipo_ocupacao_solo (code,code_name, filter) VALUES (102,'Cemitério Parque (102)','Cemitério');
 INSERT INTO dominios.tipo_ocupacao_solo (code,code_name, filter) VALUES (103,'Cemitério Vertical (103)','Cemitério');
@@ -2051,7 +2052,7 @@ ALTER TABLE edgv.constr_ocupacao_solo_a
 
 ALTER TABLE edgv.constr_ocupacao_solo_a
 	 ADD CONSTRAINT constr_ocupacao_solo_a_tipo_check 
-	 CHECK (tipo = ANY(ARRAY[101 :: SMALLINT, 102 :: SMALLINT, 103 :: SMALLINT, 104 :: SMALLINT, 105 :: SMALLINT, 106 :: SMALLINT, 107 :: SMALLINT, 108 :: SMALLINT, 201 :: SMALLINT, 202 :: SMALLINT, 203 :: SMALLINT, 204 :: SMALLINT, 205 :: SMALLINT, 206 :: SMALLINT, 207 :: SMALLINT, 298 :: SMALLINT, 404 :: SMALLINT, 405 :: SMALLINT, 406 :: SMALLINT, 409 :: SMALLINT, 414 :: SMALLINT, 415 :: SMALLINT, 416 :: SMALLINT, 501 :: SMALLINT, 601 :: SMALLINT, 701 :: SMALLINT, 801 :: SMALLINT, 802 :: SMALLINT, 804 :: SMALLINT, 803 :: SMALLINT, 805 :: SMALLINT, 806 :: SMALLINT, 901 :: SMALLINT, 1001 :: SMALLINT, 1201 :: SMALLINT, 1202 :: SMALLINT, 1401 :: SMALLINT, 1402 :: SMALLINT, 1403 :: SMALLINT, 1404 :: SMALLINT, 9999 :: SMALLINT])); 
+	 CHECK (tipo = ANY(ARRAY[100 :: SMALLINT, 101 :: SMALLINT, 102 :: SMALLINT, 103 :: SMALLINT, 104 :: SMALLINT, 105 :: SMALLINT, 106 :: SMALLINT, 107 :: SMALLINT, 108 :: SMALLINT, 201 :: SMALLINT, 202 :: SMALLINT, 203 :: SMALLINT, 204 :: SMALLINT, 205 :: SMALLINT, 206 :: SMALLINT, 207 :: SMALLINT, 298 :: SMALLINT, 404 :: SMALLINT, 405 :: SMALLINT, 406 :: SMALLINT, 409 :: SMALLINT, 414 :: SMALLINT, 415 :: SMALLINT, 416 :: SMALLINT, 501 :: SMALLINT, 601 :: SMALLINT, 701 :: SMALLINT, 801 :: SMALLINT, 802 :: SMALLINT, 804 :: SMALLINT, 803 :: SMALLINT, 805 :: SMALLINT, 806 :: SMALLINT, 901 :: SMALLINT, 1001 :: SMALLINT, 1201 :: SMALLINT, 1202 :: SMALLINT, 1401 :: SMALLINT, 1402 :: SMALLINT, 1403 :: SMALLINT, 1404 :: SMALLINT, 9999 :: SMALLINT])); 
 
 ALTER TABLE edgv.constr_ocupacao_solo_a ALTER COLUMN tipo SET DEFAULT 9999;
 
@@ -2153,7 +2154,7 @@ ALTER TABLE edgv.constr_ocupacao_solo_p
 
 ALTER TABLE edgv.constr_ocupacao_solo_p
 	 ADD CONSTRAINT constr_ocupacao_solo_p_tipo_check 
-	 CHECK (tipo = ANY(ARRAY[101 :: SMALLINT, 102 :: SMALLINT, 103 :: SMALLINT, 104 :: SMALLINT, 105 :: SMALLINT, 106 :: SMALLINT, 107 :: SMALLINT, 108 :: SMALLINT, 201 :: SMALLINT, 202 :: SMALLINT, 203 :: SMALLINT, 204 :: SMALLINT, 205 :: SMALLINT, 206 :: SMALLINT, 207 :: SMALLINT, 298 :: SMALLINT, 701 :: SMALLINT, 801 :: SMALLINT, 802 :: SMALLINT, 804 :: SMALLINT, 803 :: SMALLINT, 805 :: SMALLINT, 806 :: SMALLINT, 1101 :: SMALLINT, 1201 :: SMALLINT, 1202 :: SMALLINT, 1601 :: SMALLINT, 1602 :: SMALLINT, 1603 :: SMALLINT, 1604 :: SMALLINT, 1605 :: SMALLINT, 1606 :: SMALLINT, 1607 :: SMALLINT, 1608 :: SMALLINT, 1609 :: SMALLINT, 1610 :: SMALLINT, 1611 :: SMALLINT, 1612 :: SMALLINT, 1613 :: SMALLINT, 1614 :: SMALLINT, 9999 :: SMALLINT])); 
+	 CHECK (tipo = ANY(ARRAY[100 :: SMALLINT, 101 :: SMALLINT, 102 :: SMALLINT, 103 :: SMALLINT, 104 :: SMALLINT, 105 :: SMALLINT, 106 :: SMALLINT, 107 :: SMALLINT, 108 :: SMALLINT, 201 :: SMALLINT, 202 :: SMALLINT, 203 :: SMALLINT, 204 :: SMALLINT, 205 :: SMALLINT, 206 :: SMALLINT, 207 :: SMALLINT, 298 :: SMALLINT, 701 :: SMALLINT, 801 :: SMALLINT, 802 :: SMALLINT, 804 :: SMALLINT, 803 :: SMALLINT, 805 :: SMALLINT, 806 :: SMALLINT, 1101 :: SMALLINT, 1201 :: SMALLINT, 1202 :: SMALLINT, 1601 :: SMALLINT, 1602 :: SMALLINT, 1603 :: SMALLINT, 1604 :: SMALLINT, 1605 :: SMALLINT, 1606 :: SMALLINT, 1607 :: SMALLINT, 1608 :: SMALLINT, 1609 :: SMALLINT, 1610 :: SMALLINT, 1611 :: SMALLINT, 1612 :: SMALLINT, 1613 :: SMALLINT, 1614 :: SMALLINT, 9999 :: SMALLINT])); 
 
 ALTER TABLE edgv.constr_ocupacao_solo_p ALTER COLUMN tipo SET DEFAULT 9999;
 
@@ -4640,95 +4641,6 @@ ALTER TABLE edgv.aux_revisao_l
 
 ALTER TABLE edgv.aux_revisao_l ALTER COLUMN corrigido SET DEFAULT 9999;
 
-CREATE TABLE edgv.aux_elemento_viario_p(
-	 id uuid NOT NULL DEFAULT uuid_generate_v4(),
-	 tipo smallint NOT NULL,
-	 nome varchar(255),
-	 material_construcao smallint,
-	 posicao_pista smallint,
-	 absorvido smallint NOT NULL,
-	 observacao varchar(255),
-	 geom geometry(MultiPoint, 4674),
-	 CONSTRAINT aux_elemento_viario_p_pk PRIMARY KEY (id)
-	 WITH (FILLFACTOR = 80)
-);
-CREATE INDEX aux_elemento_viario_p_geom ON edgv.aux_elemento_viario_p USING gist (geom);
-
-ALTER TABLE edgv.aux_elemento_viario_p OWNER TO postgres;
-
-ALTER TABLE edgv.aux_elemento_viario_p
-	 ADD CONSTRAINT aux_elemento_viario_p_tipo_fk FOREIGN KEY (tipo)
-	 REFERENCES dominios.tipo_elemento_viario (code) MATCH FULL
-	 ON UPDATE NO ACTION ON DELETE NO ACTION;
-
-ALTER TABLE edgv.aux_elemento_viario_p ALTER COLUMN tipo SET DEFAULT 9999;
-
-ALTER TABLE edgv.aux_elemento_viario_p
-	 ADD CONSTRAINT aux_elemento_viario_p_material_construcao_fk FOREIGN KEY (material_construcao)
-	 REFERENCES dominios.material_construcao (code) MATCH FULL
-	 ON UPDATE NO ACTION ON DELETE NO ACTION;
-
-ALTER TABLE edgv.aux_elemento_viario_p
-	 ADD CONSTRAINT aux_elemento_viario_p_posicao_pista_fk FOREIGN KEY (posicao_pista)
-	 REFERENCES dominios.posicao_pista (code) MATCH FULL
-	 ON UPDATE NO ACTION ON DELETE NO ACTION;
-
-ALTER TABLE edgv.aux_elemento_viario_p
-	 ADD CONSTRAINT aux_elemento_viario_p_absorvido_fk FOREIGN KEY (absorvido)
-	 REFERENCES dominios.booleano (code) MATCH FULL
-	 ON UPDATE NO ACTION ON DELETE NO ACTION;
-
-ALTER TABLE edgv.aux_elemento_viario_p ALTER COLUMN absorvido SET DEFAULT 9999;
-
-CREATE TABLE edgv.aux_pista_pouso_p(
-	 id uuid NOT NULL DEFAULT uuid_generate_v4(),
-	 tipo smallint NOT NULL,
-	 nome varchar(255),
-	 revestimento smallint,
-	 uso_pista smallint,
-	 situacao_fisica smallint,
-	 altitude real,
-	 largura real,
-	 extensao real,
-	 absorvido smallint NOT NULL,
-	 observacao varchar(255),
-	 geom geometry(MultiPoint, 4674),
-	 CONSTRAINT aux_pista_pouso_p_pk PRIMARY KEY (id)
-	 WITH (FILLFACTOR = 80)
-);
-CREATE INDEX aux_pista_pouso_p_geom ON edgv.aux_pista_pouso_p USING gist (geom);
-
-ALTER TABLE edgv.aux_pista_pouso_p OWNER TO postgres;
-
-ALTER TABLE edgv.aux_pista_pouso_p
-	 ADD CONSTRAINT aux_pista_pouso_p_tipo_fk FOREIGN KEY (tipo)
-	 REFERENCES dominios.tipo_pista_pouso (code) MATCH FULL
-	 ON UPDATE NO ACTION ON DELETE NO ACTION;
-
-ALTER TABLE edgv.aux_pista_pouso_p ALTER COLUMN tipo SET DEFAULT 9999;
-
-ALTER TABLE edgv.aux_pista_pouso_p
-	 ADD CONSTRAINT aux_pista_pouso_p_revestimento_fk FOREIGN KEY (revestimento)
-	 REFERENCES dominios.revestimento (code) MATCH FULL
-	 ON UPDATE NO ACTION ON DELETE NO ACTION;
-
-ALTER TABLE edgv.aux_pista_pouso_p
-	 ADD CONSTRAINT aux_pista_pouso_p_uso_pista_fk FOREIGN KEY (uso_pista)
-	 REFERENCES dominios.uso_pista (code) MATCH FULL
-	 ON UPDATE NO ACTION ON DELETE NO ACTION;
-
-ALTER TABLE edgv.aux_pista_pouso_p
-	 ADD CONSTRAINT aux_pista_pouso_p_situacao_fisica_fk FOREIGN KEY (situacao_fisica)
-	 REFERENCES dominios.situacao_fisica (code) MATCH FULL
-	 ON UPDATE NO ACTION ON DELETE NO ACTION;
-
-ALTER TABLE edgv.aux_pista_pouso_p
-	 ADD CONSTRAINT aux_pista_pouso_p_absorvido_fk FOREIGN KEY (absorvido)
-	 REFERENCES dominios.booleano (code) MATCH FULL
-	 ON UPDATE NO ACTION ON DELETE NO ACTION;
-
-ALTER TABLE edgv.aux_pista_pouso_p ALTER COLUMN absorvido SET DEFAULT 9999;
-
 CREATE TABLE edgv.aux_revisao_p(
 	 id uuid NOT NULL DEFAULT uuid_generate_v4(),
 	 descricao varchar(255),
@@ -4812,6 +4724,50 @@ CREATE TABLE edgv.aux_moldura_area_continua_a(
 CREATE INDEX aux_moldura_area_continua_a_geom ON edgv.aux_moldura_area_continua_a USING gist (geom);
 
 ALTER TABLE edgv.aux_moldura_area_continua_a OWNER TO postgres;
+
+CREATE TABLE edgv.aux_elemento_viario_p(
+	 id uuid NOT NULL DEFAULT uuid_generate_v4(),
+	 tipo smallint NOT NULL,
+	 nome varchar(255),
+	 material_construcao smallint,
+	 posicao_pista smallint,
+	 absorvido smallint NOT NULL,
+	 observacao varchar(255),
+	 geom geometry(MultiPoint, 4674),
+	 CONSTRAINT aux_elemento_viario_p_pk PRIMARY KEY (id)
+	 WITH (FILLFACTOR = 80)
+);
+CREATE INDEX aux_elemento_viario_p_geom ON edgv.aux_elemento_viario_p USING gist (geom);
+
+ALTER TABLE edgv.aux_elemento_viario_p OWNER TO postgres;
+
+ALTER TABLE edgv.aux_elemento_viario_p
+	 ADD CONSTRAINT aux_elemento_viario_p_tipo_fk FOREIGN KEY (tipo)
+	 REFERENCES dominios.tipo_elemento_viario (code) MATCH FULL
+	 ON UPDATE NO ACTION ON DELETE NO ACTION;
+
+ALTER TABLE edgv.aux_elemento_viario_p ALTER COLUMN tipo SET DEFAULT 9999;
+
+ALTER TABLE edgv.aux_elemento_viario_p
+	 ADD CONSTRAINT aux_elemento_viario_p_material_construcao_fk FOREIGN KEY (material_construcao)
+	 REFERENCES dominios.material_construcao (code) MATCH FULL
+	 ON UPDATE NO ACTION ON DELETE NO ACTION;
+
+ALTER TABLE edgv.aux_elemento_viario_p ALTER COLUMN material_construcao SET DEFAULT 9999;
+
+ALTER TABLE edgv.aux_elemento_viario_p
+	 ADD CONSTRAINT aux_elemento_viario_p_posicao_pista_fk FOREIGN KEY (posicao_pista)
+	 REFERENCES dominios.posicao_pista (code) MATCH FULL
+	 ON UPDATE NO ACTION ON DELETE NO ACTION;
+
+ALTER TABLE edgv.aux_elemento_viario_p ALTER COLUMN posicao_pista SET DEFAULT 9999;
+
+ALTER TABLE edgv.aux_elemento_viario_p
+	 ADD CONSTRAINT aux_elemento_viario_p_absorvido_fk FOREIGN KEY (absorvido)
+	 REFERENCES dominios.booleano (code) MATCH FULL
+	 ON UPDATE NO ACTION ON DELETE NO ACTION;
+
+ALTER TABLE edgv.aux_elemento_viario_p ALTER COLUMN absorvido SET DEFAULT 9999;
 
 CREATE TABLE edgv.edicao_grid_edicao_l(
 	 id uuid NOT NULL DEFAULT uuid_generate_v4(),
@@ -5241,3 +5197,58 @@ ALTER TABLE edgv.edicao_ponto_mudanca_p
 	 ON UPDATE NO ACTION ON DELETE NO ACTION;
 
 ALTER TABLE edgv.edicao_ponto_mudanca_p ALTER COLUMN visivel SET DEFAULT 9999;
+
+CREATE TABLE edgv.aux_pista_pouso_p(
+	 id uuid NOT NULL DEFAULT uuid_generate_v4(),
+	 tipo smallint NOT NULL,
+	 nome varchar(255),
+	 revestimento smallint,
+	 uso_pista smallint,
+	 situacao_fisica smallint,
+	 altitude real,
+	 largura real,
+	 extensao real,
+	 absorvido smallint NOT NULL,
+	 observacao varchar(255),
+	 geom geometry(MultiPoint, 4674),
+	 CONSTRAINT aux_pista_pouso_p_pk PRIMARY KEY (id)
+	 WITH (FILLFACTOR = 80)
+);
+CREATE INDEX aux_pista_pouso_p_geom ON edgv.aux_pista_pouso_p USING gist (geom);
+
+ALTER TABLE edgv.aux_pista_pouso_p OWNER TO postgres;
+
+ALTER TABLE edgv.aux_pista_pouso_p
+	 ADD CONSTRAINT aux_pista_pouso_p_tipo_fk FOREIGN KEY (tipo)
+	 REFERENCES dominios.tipo_pista_pouso (code) MATCH FULL
+	 ON UPDATE NO ACTION ON DELETE NO ACTION;
+
+ALTER TABLE edgv.aux_pista_pouso_p ALTER COLUMN tipo SET DEFAULT 9999;
+
+ALTER TABLE edgv.aux_pista_pouso_p
+	 ADD CONSTRAINT aux_pista_pouso_p_revestimento_fk FOREIGN KEY (revestimento)
+	 REFERENCES dominios.revestimento (code) MATCH FULL
+	 ON UPDATE NO ACTION ON DELETE NO ACTION;
+
+ALTER TABLE edgv.aux_pista_pouso_p ALTER COLUMN revestimento SET DEFAULT 9999;
+
+ALTER TABLE edgv.aux_pista_pouso_p
+	 ADD CONSTRAINT aux_pista_pouso_p_uso_pista_fk FOREIGN KEY (uso_pista)
+	 REFERENCES dominios.uso_pista (code) MATCH FULL
+	 ON UPDATE NO ACTION ON DELETE NO ACTION;
+
+ALTER TABLE edgv.aux_pista_pouso_p ALTER COLUMN uso_pista SET DEFAULT 9999;
+
+ALTER TABLE edgv.aux_pista_pouso_p
+	 ADD CONSTRAINT aux_pista_pouso_p_situacao_fisica_fk FOREIGN KEY (situacao_fisica)
+	 REFERENCES dominios.situacao_fisica (code) MATCH FULL
+	 ON UPDATE NO ACTION ON DELETE NO ACTION;
+
+ALTER TABLE edgv.aux_pista_pouso_p ALTER COLUMN situacao_fisica SET DEFAULT 9999;
+
+ALTER TABLE edgv.aux_pista_pouso_p
+	 ADD CONSTRAINT aux_pista_pouso_p_absorvido_fk FOREIGN KEY (absorvido)
+	 REFERENCES dominios.booleano (code) MATCH FULL
+	 ON UPDATE NO ACTION ON DELETE NO ACTION;
+
+ALTER TABLE edgv.aux_pista_pouso_p ALTER COLUMN absorvido SET DEFAULT 9999;
