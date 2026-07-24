@@ -113,11 +113,11 @@ CREATE TABLE IF NOT EXISTS dominios.status_ciclo_vida (
 );
 
 INSERT INTO dominios.status_ciclo_vida (code, code_name) VALUES
-    (1, 'Ativo'),
-    (2, 'Em validação'),
-    (3, 'Sob verificação'),
-    (4, 'Depreciado'),
-    (9999, 'A SER PREENCHIDO')
+    (1, 'Ativo (1)'),
+    (2, 'Em validação (2)'),
+    (3, 'Sob verificação (3)'),
+    (4, 'Depreciado (4)'),
+    (9999, 'A SER PREENCHIDO (9999)')
 ON CONFLICT DO NOTHING;
 
 -- 2.2 dominios.tipo_validacao
@@ -128,11 +128,11 @@ CREATE TABLE IF NOT EXISTS dominios.tipo_validacao (
 );
 
 INSERT INTO dominios.tipo_validacao (code, code_name) VALUES
-    (1, 'Não validada'),
-    (2, 'Validação geométrica'),
-    (3, 'Validação de atributos'),
-    (4, 'Validação completa'),
-    (9999, 'A SER PREENCHIDO')
+    (1, 'Não validada (1)'),
+    (2, 'Validação geométrica (2)'),
+    (3, 'Validação de atributos (3)'),
+    (4, 'Validação completa (4)'),
+    (9999, 'A SER PREENCHIDO (9999)')
 ON CONFLICT DO NOTHING;
 
 -- 2.3 dominios.confirmacao_geometria
@@ -144,12 +144,12 @@ CREATE TABLE IF NOT EXISTS dominios.confirmacao_geometria (
 );
 
 INSERT INTO dominios.confirmacao_geometria (code, code_name, nivel) VALUES
-    (1, 'Não confirmada', NULL),
-    (2, 'Cruzamento com fonte autoritativa', 'baixo'),
-    (3, 'Fotointerpretação', 'medio'),
-    (4, 'Imagem 360°', 'medio'),
-    (5, 'Campo visual', 'alto'),
-    (9999, 'A SER PREENCHIDO', NULL)
+    (1, 'Não confirmada (1)', NULL),
+    (2, 'Cruzamento com fonte autoritativa (2)', 'baixo'),
+    (3, 'Fotointerpretação (3)', 'medio'),
+    (4, 'Imagem 360° (4)', 'medio'),
+    (5, 'Campo visual (5)', 'alto'),
+    (9999, 'A SER PREENCHIDO (9999)', NULL)
 ON CONFLICT DO NOTHING;
 
 -- 2.4 dominios.confirmacao_atributos
@@ -161,17 +161,17 @@ CREATE TABLE IF NOT EXISTS dominios.confirmacao_atributos (
 );
 
 INSERT INTO dominios.confirmacao_atributos (code, code_name, nivel) VALUES
-    (1, 'Não confirmada', NULL),
-    (2, 'Origem autoritativa - nome', 'baixo'),
-    (3, 'Origem autoritativa - parcial', 'baixo'),
-    (4, 'Parcial - fotointerpretação', 'baixo'),
-    (5, 'Parcial - cruzamento nome', 'baixo'),
-    (6, 'Parcial - cruzamento temático', 'medio'),
-    (7, 'Parcial - cruzamento múltiplo', 'medio'),
-    (8, 'Parcial - campo', 'medio'),
-    (9, 'Completa - cruzamento', 'alto'),
-    (10, 'Completa - campo', 'alto'),
-    (9999, 'A SER PREENCHIDO', NULL)
+    (1, 'Não confirmada (1)', NULL),
+    (2, 'Origem autoritativa - nome (2)', 'baixo'),
+    (3, 'Origem autoritativa - parcial (3)', 'baixo'),
+    (4, 'Parcial - fotointerpretação (4)', 'baixo'),
+    (5, 'Parcial - cruzamento nome (5)', 'baixo'),
+    (6, 'Parcial - cruzamento temático (6)', 'medio'),
+    (7, 'Parcial - cruzamento múltiplo (7)', 'medio'),
+    (8, 'Parcial - campo (8)', 'medio'),
+    (9, 'Completa - cruzamento (9)', 'alto'),
+    (10, 'Completa - campo (10)', 'alto'),
+    (9999, 'A SER PREENCHIDO (9999)', NULL)
 ON CONFLICT DO NOTHING;
 
 -- 2.5 dominios.metodo_aquisicao (tabela de referência — usada dentro do JSON fontes)
@@ -182,16 +182,16 @@ CREATE TABLE IF NOT EXISTS dominios.metodo_aquisicao (
 );
 
 INSERT INTO dominios.metodo_aquisicao (code, code_name) VALUES
-    (1, 'Extração por fotointerpretação'),
-    (2, 'Levantamento de campo'),
-    (3, 'Digitalização de carta'),
-    (4, 'Insumo colaborativo'),
-    (5, 'Insumo autoritativo'),
-    (6, 'Insumo cooperativo'),
-    (7, 'Insumo concessionária'),
-    (8, 'Extração automática'),
-    (9, 'Geocodificação'),
-    (9999, 'A SER PREENCHIDO')
+    (1, 'Extração por fotointerpretação (1)'),
+    (2, 'Levantamento de campo (2)'),
+    (3, 'Digitalização de carta (3)'),
+    (4, 'Insumo colaborativo (4)'),
+    (5, 'Insumo autoritativo (5)'),
+    (6, 'Insumo cooperativo (6)'),
+    (7, 'Insumo concessionária (7)'),
+    (8, 'Extração automática (8)'),
+    (9, 'Geocodificação (9)'),
+    (9999, 'A SER PREENCHIDO (9999)')
 ON CONFLICT DO NOTHING;
 
 --########################################################
@@ -457,11 +457,11 @@ CREATE TABLE IF NOT EXISTS dominios.confiabilidade (
 -- sao os que qualificam para INDE (ver public.linha_derivacao). O nivel novo,
 -- Muito Alta, separa o confirmado em campo de alta acuracia do meramente confirmado.
 INSERT INTO dominios.confiabilidade (code, code_name) VALUES
-    (1, 'Muito Alta'),
-    (2, 'Alta'),
-    (3, 'Média'),
-    (4, 'Baixa'),
-    (5, 'Indeterminada')
+    (1, 'Muito Alta (1)'),
+    (2, 'Alta (2)'),
+    (3, 'Média (3)'),
+    (4, 'Baixa (4)'),
+    (5, 'Indeterminada (5)')
 ON CONFLICT DO NOTHING;
 
 -- 8.2 dominios.nivel_completude (Apêndice F.2.3). Hierarquia cumulativa;
@@ -473,12 +473,12 @@ CREATE TABLE IF NOT EXISTS dominios.nivel_completude (
 );
 
 INSERT INTO dominios.nivel_completude (code, code_name) VALUES
-    (1, 'Não verificada'),
-    (2, 'Ausência confirmada'),
-    (3, 'Verificada 1:250.000'),
-    (4, 'Verificada 1:100.000'),
-    (5, 'Verificada 1:50.000'),
-    (6, 'Verificada 1:25.000')
+    (1, 'Não verificada (1)'),
+    (2, 'Ausência confirmada (2)'),
+    (3, 'Verificada 1:250.000 (3)'),
+    (4, 'Verificada 1:100.000 (4)'),
+    (5, 'Verificada 1:50.000 (5)'),
+    (6, 'Verificada 1:25.000 (6)')
 ON CONFLICT DO NOTHING;
 
 -- 8.3 Colunas confiabilidade (FK, nullable: feição depreciada não recebe)
