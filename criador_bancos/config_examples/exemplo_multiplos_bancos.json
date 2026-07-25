@@ -26,8 +26,5 @@
       "model": "edgv_300",
       "srid": 4674
     }
-  ],
-  "options": {
-    "overwrite": false
-  }
+  ]
 }

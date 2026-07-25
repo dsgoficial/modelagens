@@ -2,6 +2,11 @@
 
 Cria bancos PostgreSQL/PostGIS com a estrutura EDGV a partir dos arquivos SQL do repositorio.
 
+> **Esta ferramenta so cria banco.** Ela nao derruba banco nenhum, em nenhuma
+> circunstancia: nao existe flag, chave de config nem combinacao das duas que a
+> faca dar `DROP DATABASE`. Banco que ja existe e ignorado e a execucao segue
+> para os demais. Recriar um banco e ato manual, feito fora daqui.
+
 ## Instalacao
 
 Precisa de Python 3.10 ou superior.
@@ -22,8 +27,8 @@ python -m criador_bancos.main meu_config.json
 
 ## Antes de rodar: `--dry-run`
 
-Mostra o que SERIA feito, sem criar nem derrubar nada. Diz quais bancos seriam
-criados, quais ja existem (e seriam ignorados) e quais seriam DERRUBADOS.
+Mostra o que SERIA feito, sem criar nada. Diz quais bancos seriam criados e
+quais ja existem (e seriam ignorados).
 
 ```bash
 python -m criador_bancos.main meu_config.json --dry-run
@@ -43,8 +48,9 @@ O contrato do arquivo de configuracao e um JSON Schema versionado em
 python -m criador_bancos.main --schema
 ```
 
-Toda execucao valida o config contra ele. Campo com nome errado (`optionss` em
-vez de `options`) e recusado em vez de ignorado em silencio.
+Toda execucao valida o config contra ele. Campo com nome errado (`databses` em
+vez de `databases`, ou um `srid` solto na raiz) e recusado em vez de ignorado
+em silencio.
 
 ## Casos de uso
 
@@ -107,67 +113,40 @@ Copie `config_examples/exemplo_multiplos_bancos.json` e edite:
       "model": "edgv_300",
       "srid": 4674
     }
-  ],
-  "options": {
-    "overwrite": false
-  }
+  ]
 }
 ```
 
-### 3. Recriar bancos existentes (DESTRUTIVO)
+### 3. Recriar um banco que ja existe
 
-Derrubar um banco exige DUAS coisas, e o arquivo de configuracao sozinho **nao
-basta**:
+O criador **nao faz isso**, de proposito. Se o banco ja existe, ele sai como
+`ignorado`, intacto, e os outros bancos do config continuam sendo criados
+normalmente.
 
-1. `"overwrite": true` no config, que declara a intencao;
-2. `--overwrite <nome_do_banco>` na linha de comando, um por banco, que
-   autoriza aquele banco especifico.
-
-O motivo e que config se copia, se versiona e se reusa. Um `"overwrite": true`
-esquecido num config aproveitado de outra rodada apagaria um banco de producao
-sem ninguem pedir. A autorizacao mora na linha de comando porque so ela e
-digitada na hora, para aquela execucao.
-
-```json
-{
-  "connection": {
-    "host": "localhost",
-    "port": 5432,
-    "user": "postgres",
-    "password": "postgres"
-  },
-  "databases": [
-    {
-      "name": "pit2026_1q_palmas_pr_25k_31982_edgvorto25_edicao",
-      "model": "edgv_300_orto_25",
-      "srid": 31982
-    }
-  ],
-  "options": {
-    "overwrite": true
-  }
-}
-```
+Para recriar, derrube o banco voce mesmo, fora desta ferramenta, e rode o
+comando de novo:
 
 ```bash
-# Confira primeiro o que seria destruido:
-python -m criador_bancos.main meu_config.json --dry-run \
-    --overwrite pit2026_1q_palmas_pr_25k_31982_edgvorto25_edicao
+# 1. Confira quem depende do banco antes (producao, edicao em curso, backup
+#    feito). Isso e irreversivel e derruba as sessoes abertas.
+dropdb -h localhost -U postgres pit2026_1q_palmas_pr_25k_31982_edgvorto25_edicao
 
-# Depois execute de verdade:
-python -m criador_bancos.main meu_config.json \
-    --overwrite pit2026_1q_palmas_pr_25k_31982_edgvorto25_edicao
+# 2. Agora o criador ve o banco como inexistente e cria do zero:
+python -m criador_bancos.main meu_config.json
 ```
 
-Sem a confirmacao, o CLI **recusa a execucao inteira** (nada e criado tambem) e
-imprime o comando exato que confirmaria.
+O motivo de a capacidade ter saido: config se copia, se versiona e se reusa, e
+os configs versionados aqui nomeiam bancos de producao com trabalho de campo
+dentro. Nenhuma confirmacao por flag impede que o config errado seja rodado por
+engano, e um `DROP DATABASE` disparado por engano e perda irrecuperavel.
+Destruir banco passou a exigir um ato humano deliberado.
 
-> `DROP DATABASE` e irreversivel e **mata as sessoes ativas** do banco
-> (`pg_terminate_backend`): quem estiver editando cai na hora e perde o
-> trabalho nao salvo.
+### Configs antigos com `options`
 
-Para so criar o que falta e deixar intacto o que ja existe, use
-`"overwrite": false` (ou omita `options`): banco existente e ignorado.
+Config de rodada anterior com `"options": {"overwrite": ...}` **continua
+funcionando**: a chave nao existe mais, entao o criador avisa que esta
+ignorando ela e segue criando o que falta. Pode apagar o bloco `options` do seu
+config, ele nao tem mais uso.
 
 ## Modelos disponiveis
 
@@ -223,7 +202,7 @@ Criados: 4
 |---|---|
 | `0` | Tudo certo (ou `--dry-run`, ou `--schema`) |
 | `1` | Algum banco falhou ao executar o SQL do modelo |
-| `2` | Config invalido, ou overwrite pedido sem confirmacao na linha de comando |
+| `2` | Config invalido (JSON quebrado, campo faltando, campo desconhecido, modelo inexistente) |
 
 ## Testes
 
