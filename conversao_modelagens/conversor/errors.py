@@ -5,6 +5,42 @@ from dataclasses import dataclass, field
 logger = logging.getLogger(__name__)
 
 
+class DestinoNaoVazioError(Exception):
+    """Destino PostGIS já tem feições e a política de reexecução é 'abortar'.
+
+    A gravação é sempre em APPEND, então rodar a mesma conversão duas vezes
+    duplicaria as feições sem levantar erro nenhum. Esta exceção existe para
+    que essa duplicação exija uma decisão explícita em vez de acontecer em
+    silêncio.
+    """
+
+    def __init__(self, schema: str, contagens: dict):
+        self.schema = schema
+        self.contagens = contagens
+        super().__init__(self._mensagem())
+
+    def _mensagem(self) -> str:
+        linhas = [
+            f"Destino não está vazio: {len(self.contagens)} tabela(s) do schema "
+            f"'{self.schema}' já têm feições, e a gravação é em APPEND "
+            "(rodar de novo DUPLICA as feições, sem erro).",
+            "",
+        ]
+        for tabela, n in sorted(self.contagens.items(), key=lambda kv: -kv[1])[:10]:
+            linhas.append(f"  {self.schema}.{tabela}: {n} feição(ões)")
+        if len(self.contagens) > 10:
+            linhas.append(f"  ... e mais {len(self.contagens) - 10} tabela(s)")
+        linhas += [
+            "",
+            "Nada foi escrito. Decida explicitamente com --se-existir:",
+            "  --se-existir abortar   (padrão) não escreve nada",
+            "  --se-existir replace   esvazia essas tabelas (DELETE, preserva a "
+            "estrutura EDGV) e grava",
+            "  --se-existir append    acrescenta mesmo assim, aceitando a duplicação",
+        ]
+        return "\n".join(linhas)
+
+
 @dataclass
 class ConversionError:
     source_table: str

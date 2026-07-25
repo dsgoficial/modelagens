@@ -1,1 +1,4 @@
 psycopg2-binary>=2.9
+# Opcional: valida o config contra config_schema.json. Sem ele o CLI
+# continua funcionando, so avisa que pulou a validacao declarativa.
+jsonschema>=4.0

@@ -1,0 +1,188 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Config do Conversor de Modelagens EDGV",
+  "description": "Arquivo de configuração aceito por `python -m conversor.main <config.json>`. Imprima este schema com `python -m conversor.main --schema`. Caminhos relativos (mapping_file, path de shapefile, clip_file, log_file) resolvem a partir da PASTA DO ARQUIVO DE CONFIG, não do diretório de trabalho.",
+  "type": "object",
+  "definitions": {
+    "fonte_dados": {
+      "type": "object",
+      "description": "Origem ou destino dos dados. Os campos válidos dependem de 'type'.",
+      "properties": {
+        "__comment": { "type": "string" },
+        "type": { "type": "string", "enum": ["postgis", "shapefile"] },
+        "host": { "type": "string" },
+        "port": { "type": "integer", "minimum": 1, "maximum": 65535, "default": 5432 },
+        "database": { "type": "string" },
+        "user": { "type": "string" },
+        "password": { "type": "string" },
+        "schema": { "type": "string", "default": "public" },
+        "srid": {
+          "type": "integer",
+          "description": "EPSG dos dados. Na origem, é o CRS assumido para o que for lido; no destino, o CRS para o qual a saída é forçada antes de gravar.",
+          "default": 4326
+        },
+        "tables": {
+          "type": "array",
+          "description": "Só na origem. Lista branca de tabelas (postgis) ou de shapefiles (com ou sem .shp). Vazia ou ausente significa TODAS as tabelas com geometria do schema.",
+          "items": { "type": "string" }
+        },
+        "path": {
+          "type": "string",
+          "description": "Só para type=shapefile. PASTA (não arquivo) de leitura ou escrita dos .shp."
+        },
+        "encoding": { "type": "string", "default": "UTF-8" },
+        "zip": {
+          "type": "boolean",
+          "default": false,
+          "description": "Só no destino shapefile. Zipa a pasta de saída e apaga os .shp originais. No modo batch_clip gera um .zip por moldura."
+        }
+      },
+      "required": ["type"],
+      "allOf": [
+        {
+          "if": { "properties": { "type": { "const": "postgis" } }, "required": ["type"] },
+          "then": { "required": ["host", "database", "user", "password"] }
+        },
+        {
+          "if": { "properties": { "type": { "const": "shapefile" } }, "required": ["type"] },
+          "then": { "required": ["path"] }
+        }
+      ],
+      "additionalProperties": false
+    },
+    "fonte_molduras": {
+      "type": "object",
+      "description": "Tabela ou shapefile de molduras (tipicamente aux_moldura_a) usado para recortar ou segmentar.",
+      "properties": {
+        "__comment": { "type": "string" },
+        "type": { "type": "string", "enum": ["postgis", "shapefile"] },
+        "host": { "type": "string" },
+        "port": { "type": "integer", "minimum": 1, "maximum": 65535, "default": 5432 },
+        "database": { "type": "string" },
+        "user": { "type": "string" },
+        "password": { "type": "string" },
+        "schema": { "type": "string", "default": "public" },
+        "table": { "type": "string" },
+        "geom_column": { "type": "string", "default": "geom" },
+        "path": { "type": "string" },
+        "encoding": { "type": "string", "default": "UTF-8" },
+        "folder_attribute": {
+          "type": "string",
+          "description": "Só em batch_clip. Coluna das molduras cujo valor vira o nome da subpasta (ou do .zip) de saída, uma por moldura. Tipicamente 'inom' ou 'mi'."
+        }
+      },
+      "required": ["type"],
+      "allOf": [
+        {
+          "if": { "properties": { "type": { "const": "postgis" } }, "required": ["type"] },
+          "then": { "required": ["host", "database", "user", "password", "table"] }
+        },
+        {
+          "if": { "properties": { "type": { "const": "shapefile" } }, "required": ["type"] },
+          "then": { "required": ["path"] }
+        }
+      ],
+      "additionalProperties": false
+    },
+    "quality_metadata": {
+      "type": "object",
+      "description": "Metadados de qualidade injetados em TODA feição convertida pelo estágio (colunas do EDGV Topo 2.0). O bloco 'fontes' é gravado como JSON string.",
+      "properties": {
+        "__comment": { "type": "string" },
+        "fonte": { "type": "string", "default": "Desconhecida" },
+        "metodo_aquisicao": { "type": "integer", "default": 9999 },
+        "data_aquisicao": { "type": ["string", "null"] },
+        "escala_fonte": { "type": ["string", "number", "null"] },
+        "acuracia_planimetrica": { "type": ["number", "null"] },
+        "observacao": { "type": ["string", "null"] },
+        "status_ciclo_vida": { "type": "integer", "default": 1 },
+        "validacao": { "type": "integer", "default": 1 },
+        "confirmacao_geometria": { "type": "integer", "default": 1 },
+        "confirmacao_atributos": { "type": "integer", "default": 1 }
+      },
+      "additionalProperties": false
+    },
+    "estagio": {
+      "type": "object",
+      "properties": {
+        "__comment": { "type": "string" },
+        "mapping_file": {
+          "type": ["string", "null"],
+          "description": "Caminho do arquivo de mapeamento (schema em conversao_modelagens/arquivo_mapeamento_schema.json), relativo à pasta do config. Nulo ou ausente é passthrough (sem remodelagem), permitido só num pipeline de UM estágio e apenas no modo segment_clip."
+        },
+        "direction": {
+          "type": ["string", "null"],
+          "enum": ["A=>B", "B=>A", null],
+          "description": "Sentido em que o mapeamento é aplicado. Quem é A e quem é B está em 'metadados.modelo_A'/'modelo_B' do arquivo de mapeamento. Obrigatório quando há mapping_file."
+        },
+        "quality_metadata": { "$ref": "#/definitions/quality_metadata" }
+      },
+      "additionalProperties": false
+    },
+    "opcoes": {
+      "type": "object",
+      "properties": {
+        "__comment": { "type": "string" },
+        "clip_geometry": {
+          "type": ["string", "null"],
+          "description": "WKT de um recorte único, no CRS da origem. Ignorado nos modos batch_clip e segment_clip."
+        },
+        "clip_file": {
+          "type": ["string", "null"],
+          "description": "Arquivo vetorial de recorte único (a união de todas as feições vira a máscara). Ignorado nos modos batch_clip e segment_clip."
+        },
+        "reproject_to": {
+          "type": ["integer", "null"],
+          "description": "EPSG de destino da reprojeção, aplicada só na escrita final (não entre estágios encadeados). Tipicamente o fuso UTM do banco de edição, ex.: 31982."
+        },
+        "log_file": { "type": ["string", "null"] },
+        "error_action": {
+          "type": "string",
+          "enum": ["skip", "fail"],
+          "default": "skip",
+          "description": "'skip' registra a feição problemática no relatório e segue; 'fail' aborta na primeira falha de conversão."
+        },
+        "batch_size": {
+          "type": "integer",
+          "description": "Presente nos exemplos versionados, mas NÃO lido pelo código atual: a escrita não é paginada. Mantido no schema só para não invalidar os configs existentes."
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "properties": {
+    "__comment": { "type": "string" },
+    "source": { "$ref": "#/definitions/fonte_dados" },
+    "destination": { "$ref": "#/definitions/fonte_dados" },
+    "mapping_file": {
+      "type": ["string", "null"],
+      "description": "Forma legada de um único estágio. Equivale a 'stages' com um item. Não pode coexistir com 'stages'."
+    },
+    "direction": {
+      "type": ["string", "null"],
+      "enum": ["A=>B", "B=>A", null],
+      "description": "Sentido do mapping_file legado. Não pode coexistir com 'stages'."
+    },
+    "quality_metadata": { "$ref": "#/definitions/quality_metadata" },
+    "stages": {
+      "type": "array",
+      "minItems": 1,
+      "description": "Pipeline encadeado. Cada estágio aplica seu mapeamento em ordem, alimentando o próximo EM MEMÓRIA (sem banco intermediário). Só o último estágio escreve em 'destination' e honra batch_clip/segment_clip/reproject_to.",
+      "items": { "$ref": "#/definitions/estagio" }
+    },
+    "batch_clip": {
+      "description": "Modo lote: recorta a saída por cada moldura e escreve numa subpasta por moldura. Exige 'folder_attribute' e destino do tipo shapefile. Mutuamente exclusivo com segment_clip (segment_clip vence).",
+      "allOf": [
+        { "$ref": "#/definitions/fonte_molduras" },
+        { "required": ["folder_attribute"] }
+      ]
+    },
+    "segment_clip": {
+      "description": "Modo segmentação: corta cada feição nas bordas de cada moldura e grava tudo num destino único (banco contínuo vira contíguo). Uma feição que cruza N molduras vira N feições.",
+      "allOf": [{ "$ref": "#/definitions/fonte_molduras" }]
+    },
+    "options": { "$ref": "#/definitions/opcoes" }
+  },
+  "required": ["source", "destination"],
+  "additionalProperties": false
+}

@@ -3,6 +3,9 @@ Orquestrador principal do conversor de modelagens EDGV.
 
 Uso:
     python -m conversor.main config.json
+    python -m conversor.main config.json --dry-run
+    python -m conversor.main config.json --se-existir replace
+    python -m conversor.main --schema
 """
 import argparse
 import json
@@ -15,12 +18,14 @@ import geopandas as gpd
 import pandas as pd
 from shapely import wkt
 
-from .config import load_config, load_mapping
+from .config import VALID_SE_EXISTIR, load_config, load_mapping
 from .converter import FeatureConverter
-from .errors import ConversionError, ConversionReport
+from .dryrun import imprimir_plano, montar_plano
+from .errors import ConversionError, ConversionReport, DestinoNaoVazioError
 from .geometry import aggregate, clip, detect_geom_type, ensure_crs, reproject, split_multi
 from .readers.postgis import read_postgis, _build_postgis_url
 from .readers.shapefile import read_shapefiles
+from .schema import schema_text
 from .writers.postgis import write_postgis
 from .writers.shapefile import write_shapefiles
 
@@ -58,10 +63,14 @@ def _read_source(config: dict) -> dict[str, gpd.GeoDataFrame]:
         raise ValueError(f"Tipo de fonte não suportado: {src['type']}")
 
 
-def _write_destination(data: dict[str, gpd.GeoDataFrame], dest_config: dict):
+def _write_destination(
+    data: dict[str, gpd.GeoDataFrame], dest_config: dict, se_existir: str = "abortar",
+):
     if dest_config["type"] == "postgis":
-        write_postgis(data, dest_config)
+        write_postgis(data, dest_config, se_existir=se_existir)
     elif dest_config["type"] == "shapefile":
+        # Shapefile não acumula: `to_file` reescreve o arquivo inteiro, então a
+        # política de reexecução não se aplica.
         write_shapefiles(data, dest_config)
     else:
         raise ValueError(f"Tipo de destino não suportado: {dest_config['type']}")
@@ -452,7 +461,7 @@ def _run_stage_transform(
     return _convert_source_data(data, converter, report, error_action, quality_meta)
 
 
-def run(config_path: str):
+def run(config_path: str, se_existir: str = "abortar"):
     config = load_config(config_path)
     _setup_logging(config)
 
@@ -502,26 +511,26 @@ def run(config_path: str):
     logger.info("Processadas %d feições", len(converted))
 
     if "segment_clip" in config:
-        _run_segment(config, converted, source_srid, target_srid, report)
+        _run_segment(config, converted, source_srid, target_srid, report, se_existir)
     elif "batch_clip" in config:
-        _run_batch(config, converted, source_srid, target_srid, report)
+        _run_batch(config, converted, source_srid, target_srid, report, se_existir)
     else:
-        _run_single(config, converted, source_srid, target_srid, report)
+        _run_single(config, converted, source_srid, target_srid, report, se_existir)
 
 
-def _run_single(config, converted, source_srid, target_srid, report):
+def _run_single(config, converted, source_srid, target_srid, report, se_existir="abortar"):
     """Modo normal: clip único opcional + escrita em um destino."""
     clip_geom = _load_clip_geometry(config)
 
     output_gdfs = _clip_and_build_gdfs(converted, clip_geom, source_srid, target_srid)
 
     logger.info("Escrevendo %d classes destino...", len(output_gdfs))
-    _write_destination(output_gdfs, config["destination"])
+    _write_destination(output_gdfs, config["destination"], se_existir)
 
     _export_report(report, config)
 
 
-def _run_batch(config, converted, source_srid, target_srid, report):
+def _run_batch(config, converted, source_srid, target_srid, report, se_existir="abortar"):
     """Modo batch: para cada moldura, recorta e escreve em subpasta separada."""
     clips = _load_batch_clips(config)
     dest_config = config["destination"]
@@ -556,7 +565,7 @@ def _run_batch(config, converted, source_srid, target_srid, report):
             "  Escrevendo %d classes (%d feições) em %s",
             len(output_gdfs), feat_count, clip_dest["path"],
         )
-        _write_destination(output_gdfs, clip_dest)
+        _write_destination(output_gdfs, clip_dest, se_existir)
         total_written += feat_count
 
     logger.info(
@@ -566,7 +575,7 @@ def _run_batch(config, converted, source_srid, target_srid, report):
     _export_report(report, config)
 
 
-def _run_segment(config, converted, source_srid, target_srid, report):
+def _run_segment(config, converted, source_srid, target_srid, report, se_existir="abortar"):
     """Modo segmentação: recorta cada feição por cada moldura, resultado unificado.
 
     Transforma um banco contínuo em contíguo — feições são segmentadas nas
@@ -586,19 +595,80 @@ def _run_segment(config, converted, source_srid, target_srid, report):
         len(output_gdfs), feat_count, len(converted),
     )
 
-    _write_destination(output_gdfs, config["destination"])
+    _write_destination(output_gdfs, config["destination"], se_existir)
     _export_report(report, config)
 
 
-def main():
+def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(
-        description="Conversor de modelagens EDGV — Python puro",
+        description="Conversor de modelagens EDGV, Python puro",
+        formatter_class=argparse.RawDescriptionHelpFormatter,
+        epilog=(
+            "A gravação em PostGIS é sempre em append, então rodar a mesma "
+            "conversão duas vezes duplicaria as feições. Por isso --se-existir "
+            "vem como 'abortar': tabela de destino não vazia exige decisão "
+            "explícita. Use --dry-run para ver o estado antes de converter."
+        ),
     )
     parser.add_argument(
-        "config", help="Caminho para o arquivo de configuração JSON",
+        "config", nargs="?", help="Caminho para o arquivo de configuração JSON",
     )
+    parser.add_argument(
+        "--dry-run", action="store_true",
+        help="Valida o config e mostra o que SERIA feito, sem ler nem escrever feição",
+    )
+    parser.add_argument(
+        "--se-existir", choices=VALID_SE_EXISTIR, default="abortar", dest="se_existir",
+        help=(
+            "O que fazer quando a tabela de destino (PostGIS) já tem feições: "
+            "abortar (padrão), replace (esvazia antes de gravar) ou append "
+            "(acrescenta, duplicando)"
+        ),
+    )
+    parser.add_argument(
+        "--schema", action="store_true",
+        help="Imprime o JSON Schema do arquivo de configuração e sai",
+    )
+    parser.add_argument(
+        "--json", action="store_true", dest="json_out",
+        help="Saída em JSON (vale para --dry-run)",
+    )
+    return parser
+
+
+def main():
+    parser = build_parser()
     args = parser.parse_args()
-    run(args.config)
+
+    if args.schema:
+        print(schema_text())
+        sys.exit(0)
+
+    if not args.config:
+        parser.error("informe o arquivo de configuração (ou use --schema)")
+
+    if args.dry_run:
+        try:
+            config = load_config(args.config)
+        except (ValueError, FileNotFoundError, json.JSONDecodeError) as e:
+            print(f"ERRO: {e}", file=sys.stderr)
+            sys.exit(2)
+        plano = montar_plano(config, args.config, args.se_existir)
+        if args.json_out:
+            print(json.dumps(plano, ensure_ascii=False, indent=2))
+        else:
+            imprimir_plano(plano)
+        sys.exit(0)
+
+    try:
+        run(args.config, se_existir=args.se_existir)
+    except DestinoNaoVazioError as e:
+        # Guarda de reexecução: não é falha de conversão, é decisão pendente.
+        print(f"\n{e}", file=sys.stderr)
+        sys.exit(2)
+    except (ValueError, FileNotFoundError, json.JSONDecodeError) as e:
+        print(f"ERRO: {e}", file=sys.stderr)
+        sys.exit(2)
 
 
 if __name__ == "__main__":

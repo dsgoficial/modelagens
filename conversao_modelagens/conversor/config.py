@@ -1,11 +1,16 @@
+import copy
 import json
 import os
 import logging
+
+from .schema import validate_against_schema
 
 logger = logging.getLogger(__name__)
 
 VALID_DIRECTIONS = {"A=>B", "B=>A"}
 VALID_SOURCE_TYPES = {"postgis", "shapefile"}
+
+VALID_SE_EXISTIR = ("abortar", "append", "replace")
 
 DEFAULT_OPTIONS = {
     "clip_geometry": None,
@@ -25,7 +30,25 @@ def load_config(config_path: str) -> dict:
         config = json.load(f)
 
     config_dir = os.path.dirname(config_path)
+
+    # O schema descreve o arquivo COMO ESCRITO. `_validate_config` normaliza a
+    # config (injeta 'stages') e `_apply_defaults` preenche campos, então a
+    # cópia precisa ser tirada antes, ou o schema julgaria algo que o usuário
+    # nunca escreveu.
+    raw = copy.deepcopy(config)
+
+    # Imperativo primeiro: ele tem as mensagens boas do caminho comum.
     _validate_config(config, config_dir)
+
+    # Schema depois, como camada adicional: pega o que o imperativo não vê,
+    # tipicamente campo com nome errado que passaria despercebido e seria
+    # ignorado em silêncio na execução.
+    erros = validate_against_schema(raw)
+    if erros:
+        raise ValueError(
+            "Config não bate com config_schema.json:\n  " + "\n  ".join(erros)
+        )
+
     _resolve_paths(config, config_dir)
     _apply_defaults(config)
 

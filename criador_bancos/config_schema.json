@@ -1,0 +1,74 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Config do Criador de Bancos EDGV",
+  "description": "Arquivo de configuração aceito por `python -m criador_bancos.main <config.json>`. Imprima este schema com `python -m criador_bancos.main --schema`.",
+  "type": "object",
+  "definitions": {
+    "conexao": {
+      "type": "object",
+      "description": "Conexão administrativa. O criador conecta primeiro no banco 'postgres' para criar/derrubar, depois no banco recém-criado para rodar o SQL do modelo.",
+      "properties": {
+        "__comment": { "type": "string" },
+        "host": { "type": "string", "default": "localhost" },
+        "port": { "type": "integer", "minimum": 1, "maximum": 65535, "default": 5432 },
+        "user": { "type": "string", "default": "postgres" },
+        "password": { "type": "string", "default": "postgres" }
+      },
+      "additionalProperties": false
+    },
+    "banco": {
+      "type": "object",
+      "properties": {
+        "__comment": { "type": "string" },
+        "name": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Nome do banco a criar. É interpolado direto no CREATE/DROP DATABASE entre aspas duplas, então evite aspas duplas no nome."
+        },
+        "model": {
+          "type": "string",
+          "description": "Chave do modelo EDGV em criador_bancos/models.py, que aponta o .sql e o _extension.sql a executar.",
+          "enum": [
+            "edgv_300",
+            "edgv_300_topo_14",
+            "edgv_300_topo_20",
+            "edgv_300_orto_25",
+            "edgv_300_orto_30"
+          ]
+        },
+        "srid": {
+          "type": "integer",
+          "description": "EPSG das colunas de geometria. Se omitido, usa o default_srid do modelo (4674). Valor diferente reescreve o SRID no DDL antes de executar.",
+          "minimum": 1024
+        }
+      },
+      "required": ["name", "model"],
+      "additionalProperties": false
+    },
+    "opcoes": {
+      "type": "object",
+      "properties": {
+        "__comment": { "type": "string" },
+        "overwrite": {
+          "type": "boolean",
+          "default": false,
+          "description": "Declara a INTENÇÃO de recriar bancos que já existem. Não basta: cada banco a derrubar precisa ser confirmado também na linha de comando com --overwrite <nome>. Sem essa confirmação o CLI recusa a execução inteira."
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "properties": {
+    "__comment": { "type": "string" },
+    "connection": { "$ref": "#/definitions/conexao" },
+    "databases": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": { "$ref": "#/definitions/banco" }
+    },
+    "options": { "$ref": "#/definitions/opcoes" }
+  },
+  "required": ["connection", "databases"],
+  "additionalProperties": false
+}

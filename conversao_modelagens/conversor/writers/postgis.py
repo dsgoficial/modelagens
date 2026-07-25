@@ -9,8 +9,9 @@ import logging
 
 import geopandas as gpd
 import pandas as pd
-from sqlalchemy import create_engine, inspect
+from sqlalchemy import create_engine, inspect, text
 
+from ..errors import DestinoNaoVazioError
 from ..geometry import ensure_crs
 from ..readers.postgis import _build_postgis_url
 
@@ -21,6 +22,52 @@ RETRY_CHUNK_SIZE = 100
 
 def _strip_schema(name: str) -> str:
     return name.split(".", 1)[1] if "." in name else name
+
+
+def _contar_linhas_existentes(engine, schema: str, table_names) -> dict:
+    """Conta as feições já presentes em cada tabela de destino, para as tabelas
+    que já existem. Devolve só as não vazias.
+
+    Contagem exata, não estimativa de `reltuples`: uma tabela recém-carregada e
+    nunca analisada reporta 0 em `reltuples`, e um falso "está vazia" aqui
+    liberaria justamente a duplicação que esta checagem existe para impedir.
+    """
+    try:
+        existentes = set(inspect(engine).get_table_names(schema=schema))
+    except Exception as e:
+        # Sem introspecção não dá para afirmar que o destino está vazio.
+        # Avisar e seguir é melhor do que travar a conversão por isso.
+        logger.warning("Falha ao listar tabelas de %s: %s", schema, e)
+        return {}
+
+    contagens = {}
+    with engine.connect() as conn:
+        for tabela in table_names:
+            if tabela not in existentes:
+                continue
+            n = conn.execute(
+                text(f'SELECT count(*) FROM "{schema}"."{tabela}"')
+            ).scalar()
+            if n:
+                contagens[tabela] = int(n)
+    return contagens
+
+
+def _esvaziar_tabelas(engine, schema: str, tabelas):
+    """Esvazia as tabelas com DELETE, numa transação só.
+
+    DELETE e não `to_postgis(if_exists='replace')`: o replace do geopandas
+    DERRUBA a tabela e a recria a partir do GeoDataFrame, perdendo chave
+    primária, domínios, constraints e triggers do DDL EDGV. O banco continuaria
+    de pé, mas deixaria de ser EDGV.
+    """
+    with engine.begin() as conn:
+        for tabela in tabelas:
+            conn.execute(text(f'DELETE FROM "{schema}"."{tabela}"'))
+    logger.info(
+        "Esvaziadas %d tabela(s) de %s antes de gravar (--se-existir replace)",
+        len(tabelas), schema,
+    )
 
 
 def _get_dest_columns(engine, schema, table_name):
@@ -89,11 +136,37 @@ def _write_with_chunked_retry(gdf, table_name, engine, schema):
     return ok
 
 
-def write_postgis(data: dict[str, gpd.GeoDataFrame], dest_config: dict):
+def write_postgis(
+    data: dict[str, gpd.GeoDataFrame],
+    dest_config: dict,
+    se_existir: str = "abortar",
+):
+    """Escreve as classes convertidas no destino PostGIS.
+
+    `se_existir` decide o que fazer quando a tabela de destino já tem feições:
+    'abortar' (padrão, não escreve nada), 'replace' (esvazia antes) ou
+    'append' (acrescenta, duplicando). A checagem roda ANTES de qualquer
+    escrita, para o abort não deixar o destino meio gravado.
+    """
     schema = dest_config.get("schema", "public")
     srid = dest_config.get("srid", 4326)
 
     engine = create_engine(_build_postgis_url(dest_config))
+
+    alvos = [_strip_schema(ft) for ft, gdf in data.items() if not gdf.empty]
+    ocupadas = _contar_linhas_existentes(engine, schema, alvos)
+    if ocupadas:
+        if se_existir == "abortar":
+            engine.dispose()
+            raise DestinoNaoVazioError(schema, ocupadas)
+        if se_existir == "replace":
+            _esvaziar_tabelas(engine, schema, sorted(ocupadas))
+        else:
+            logger.warning(
+                "--se-existir append: %d tabela(s) de destino já tinham feições "
+                "(%d no total). As novas serão ACRESCENTADAS, não substituídas.",
+                len(ocupadas), sum(ocupadas.values()),
+            )
 
     for feature_type, gdf in data.items():
         if gdf.empty:

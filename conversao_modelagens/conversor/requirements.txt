@@ -4,3 +4,6 @@ shapely>=2.0
 sqlalchemy>=2.0
 fiona>=1.9
 pyproj>=3.6
+# Opcional: valida o config contra config_schema.json. Sem ele o CLI
+# continua funcionando, so avisa que pulou a validacao declarativa.
+jsonschema>=4.0
