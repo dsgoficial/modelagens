@@ -1,10 +1,10 @@
 {
   "metadata": {
-    "version": "1.8",
-    "date": "2026-07-15",
+    "version": "1.9",
+    "date": "2026-07-28",
     "source": "OpenStreetMap",
-    "target": "EDGV Topo 2.0 v0.14.0",
-    "description": "Mapeamento OSM para EDGV Topo 2.0. Rev 1.8: preserva feicoes com o valor EDGV mais proximo, elimina 9999 explicitos e registra aproximacoes em observacao.",
+    "target": "EDGV Topo 2.0 v0.15.0",
+    "description": "Mapeamento OSM para EDGV Topo 2.0. Rev 1.9: fecha as lacunas de atributo que deixavam 9999 no banco. Origem: auditoria do ebgeo_osm_4674_edgvtopo20 em 2026-07-28, com 33 colunas e 50.033.584 celulas em 9999. Acrescenta forma_extracao e tipo_produto na extracao mineral, revestimento e uso_pista na pista de pouso, finalidade e tipo_exposicao no deposito, material_construcao na delimitacao fisica, situacao_fisica na energia e na infraestrutura, e cota_comprovada no ponto cotado. Os padroes de via, ferrovia, drenagem e vala dependem da ausencia de tag e vivem no fme_osm_edgv_topo20.py.",
     "total_rules": 296,
     "match_strategy": "first_match_wins"
   },
@@ -978,10 +978,20 @@
       "edgv_target": {
         "table": "llp_delimitacao_fisica_l",
         "attributes": {
-          "tipo": 1
+          "tipo": 1,
+          "material_construcao": 0
         }
       },
-      "osm_attribute_mapping": {},
+      "osm_attribute_mapping": {
+        "barrier": {
+          "column": "material_construcao",
+          "map": {
+            "wall": 1,
+            "fence": 0,
+            "hedge": 98
+          }
+        }
+      },
       "confidence": "high",
       "note": "Cerca"
     },
@@ -998,7 +1008,8 @@
       "edgv_target": {
         "table": "llp_delimitacao_fisica_l",
         "attributes": {
-          "tipo": 2
+          "tipo": 2,
+          "material_construcao": 1
         }
       },
       "osm_attribute_mapping": {},
@@ -1018,7 +1029,8 @@
       "edgv_target": {
         "table": "llp_delimitacao_fisica_l",
         "attributes": {
-          "tipo": 1
+          "tipo": 1,
+          "material_construcao": 98
         }
       },
       "osm_attribute_mapping": {},
@@ -2862,7 +2874,8 @@
       "edgv_target": {
         "table": "infra_elemento_infraestrutura_l",
         "attributes": {
-          "tipo": 1501
+          "tipo": 1501,
+          "situacao_fisica": 3
         }
       },
       "osm_attribute_mapping": {
@@ -3166,7 +3179,8 @@
       "edgv_target": {
         "table": "infra_elemento_energia_p",
         "attributes": {
-          "tipo": 1401
+          "tipo": 1401,
+          "situacao_fisica": 3
         }
       },
       "osm_attribute_mapping": {
@@ -3189,7 +3203,8 @@
         "table": "infra_elemento_energia_p",
         "attributes": {
           "tipo": 1401,
-          "observacao": "Aproximacao OSM: poste convertido para torre de energia, tipo estrutural mais proximo disponivel."
+          "observacao": "Aproximacao OSM: poste convertido para torre de energia, tipo estrutural mais proximo disponivel.",
+          "situacao_fisica": 3
         }
       },
       "osm_attribute_mapping": {
@@ -3287,7 +3302,8 @@
       "edgv_target": {
         "table": "infra_elemento_energia_p",
         "attributes": {
-          "tipo": 1701
+          "tipo": 1701,
+          "situacao_fisica": 3
         }
       },
       "osm_attribute_mapping": {
@@ -3310,7 +3326,8 @@
       "edgv_target": {
         "table": "infra_elemento_energia_p",
         "attributes": {
-          "tipo": 406
+          "tipo": 406,
+          "situacao_fisica": 3
         }
       },
       "osm_attribute_mapping": {
@@ -3333,7 +3350,8 @@
       "edgv_target": {
         "table": "infra_elemento_energia_a",
         "attributes": {
-          "tipo": 406
+          "tipo": 406,
+          "situacao_fisica": 3
         }
       },
       "osm_attribute_mapping": {
@@ -3355,7 +3373,8 @@
       "edgv_target": {
         "table": "infra_elemento_energia_p",
         "attributes": {
-          "tipo": 1701
+          "tipo": 1701,
+          "situacao_fisica": 3
         }
       },
       "osm_attribute_mapping": {
@@ -3741,11 +3760,46 @@
       "edgv_target": {
         "table": "infra_pista_pouso_l",
         "attributes": {
-          "tipo": 9
+          "tipo": 9,
+          "revestimento": 0,
+          "uso_pista": 0
         }
       },
       "osm_attribute_mapping": {
-        "name": "nome"
+        "name": "nome",
+        "surface": {
+          "column": "revestimento",
+          "map": {
+            "paved": 3,
+            "asphalt": 3,
+            "concrete": 3,
+            "concrete:plates": 3,
+            "chipseal": 3,
+            "bitumen": 3,
+            "paving_stones": 3,
+            "cobblestone": 3,
+            "sett": 3,
+            "gravel": 2,
+            "fine_gravel": 2,
+            "compacted": 2,
+            "pebblestone": 2,
+            "ground": 1,
+            "dirt": 1,
+            "earth": 1,
+            "sand": 1,
+            "grass": 1,
+            "mud": 1,
+            "unpaved": 0
+          }
+        },
+        "military": {
+          "column": "uso_pista",
+          "map": {
+            "airfield": 12,
+            "airport": 12,
+            "yes": 12
+          }
+        }
       },
       "confidence": "high",
       "note": "Pista de pouso (linha)"
@@ -3763,11 +3817,46 @@
       "edgv_target": {
         "table": "infra_pista_pouso_a",
         "attributes": {
-          "tipo": 9
+          "tipo": 9,
+          "revestimento": 0,
+          "uso_pista": 0
         }
       },
       "osm_attribute_mapping": {
-        "name": "nome"
+        "name": "nome",
+        "surface": {
+          "column": "revestimento",
+          "map": {
+            "paved": 3,
+            "asphalt": 3,
+            "concrete": 3,
+            "concrete:plates": 3,
+            "chipseal": 3,
+            "bitumen": 3,
+            "paving_stones": 3,
+            "cobblestone": 3,
+            "sett": 3,
+            "gravel": 2,
+            "fine_gravel": 2,
+            "compacted": 2,
+            "pebblestone": 2,
+            "ground": 1,
+            "dirt": 1,
+            "earth": 1,
+            "sand": 1,
+            "grass": 1,
+            "mud": 1,
+            "unpaved": 0
+          }
+        },
+        "military": {
+          "column": "uso_pista",
+          "map": {
+            "airfield": 12,
+            "airport": 12,
+            "yes": 12
+          }
+        }
       },
       "confidence": "high",
       "note": "Pista de pouso (polígono)"
@@ -3785,11 +3874,38 @@
       "edgv_target": {
         "table": "infra_pista_pouso_l",
         "attributes": {
-          "tipo": 10
+          "tipo": 10,
+          "revestimento": 0,
+          "uso_pista": 0
         }
       },
       "osm_attribute_mapping": {
-        "name": "nome"
+        "name": "nome",
+        "surface": {
+          "column": "revestimento",
+          "map": {
+            "paved": 3,
+            "asphalt": 3,
+            "concrete": 3,
+            "concrete:plates": 3,
+            "chipseal": 3,
+            "bitumen": 3,
+            "paving_stones": 3,
+            "cobblestone": 3,
+            "sett": 3,
+            "gravel": 2,
+            "fine_gravel": 2,
+            "compacted": 2,
+            "pebblestone": 2,
+            "ground": 1,
+            "dirt": 1,
+            "earth": 1,
+            "sand": 1,
+            "grass": 1,
+            "mud": 1,
+            "unpaved": 0
+          }
+        }
       },
       "confidence": "high",
       "note": "Pista de táxi (linha)"
@@ -3807,11 +3923,38 @@
       "edgv_target": {
         "table": "infra_pista_pouso_a",
         "attributes": {
-          "tipo": 10
+          "tipo": 10,
+          "revestimento": 0,
+          "uso_pista": 0
         }
       },
       "osm_attribute_mapping": {
-        "name": "nome"
+        "name": "nome",
+        "surface": {
+          "column": "revestimento",
+          "map": {
+            "paved": 3,
+            "asphalt": 3,
+            "concrete": 3,
+            "concrete:plates": 3,
+            "chipseal": 3,
+            "bitumen": 3,
+            "paving_stones": 3,
+            "cobblestone": 3,
+            "sett": 3,
+            "gravel": 2,
+            "fine_gravel": 2,
+            "compacted": 2,
+            "pebblestone": 2,
+            "ground": 1,
+            "dirt": 1,
+            "earth": 1,
+            "sand": 1,
+            "grass": 1,
+            "mud": 1,
+            "unpaved": 0
+          }
+        }
       },
       "confidence": "high",
       "note": "Pista de táxi (polígono)"
@@ -3887,11 +4030,38 @@
       "edgv_target": {
         "table": "infra_pista_pouso_p",
         "attributes": {
-          "tipo": 11
+          "tipo": 11,
+          "revestimento": 0,
+          "uso_pista": 0
         }
       },
       "osm_attribute_mapping": {
-        "name": "nome"
+        "name": "nome",
+        "surface": {
+          "column": "revestimento",
+          "map": {
+            "paved": 3,
+            "asphalt": 3,
+            "concrete": 3,
+            "concrete:plates": 3,
+            "chipseal": 3,
+            "bitumen": 3,
+            "paving_stones": 3,
+            "cobblestone": 3,
+            "sett": 3,
+            "gravel": 2,
+            "fine_gravel": 2,
+            "compacted": 2,
+            "pebblestone": 2,
+            "ground": 1,
+            "dirt": 1,
+            "earth": 1,
+            "sand": 1,
+            "grass": 1,
+            "mud": 1,
+            "unpaved": 0
+          }
+        }
       },
       "confidence": "high",
       "note": "Heliponto"
@@ -3931,7 +4101,8 @@
       "edgv_target": {
         "table": "infra_elemento_infraestrutura_l",
         "attributes": {
-          "tipo": 701
+          "tipo": 701,
+          "situacao_fisica": 3
         }
       },
       "osm_attribute_mapping": {
@@ -3953,7 +4124,8 @@
       "edgv_target": {
         "table": "infra_elemento_infraestrutura_a",
         "attributes": {
-          "tipo": 701
+          "tipo": 701,
+          "situacao_fisica": 3
         }
       },
       "osm_attribute_mapping": {
@@ -3975,7 +4147,8 @@
       "edgv_target": {
         "table": "infra_elemento_infraestrutura_l",
         "attributes": {
-          "tipo": 801
+          "tipo": 801,
+          "situacao_fisica": 3
         }
       },
       "osm_attribute_mapping": {
@@ -3997,7 +4170,8 @@
       "edgv_target": {
         "table": "infra_elemento_infraestrutura_l",
         "attributes": {
-          "tipo": 1942
+          "tipo": 1942,
+          "situacao_fisica": 3
         }
       },
       "osm_attribute_mapping": {
@@ -4019,7 +4193,8 @@
       "edgv_target": {
         "table": "infra_elemento_infraestrutura_a",
         "attributes": {
-          "tipo": 1942
+          "tipo": 1942,
+          "situacao_fisica": 3
         }
       },
       "osm_attribute_mapping": {
@@ -4041,7 +4216,8 @@
       "edgv_target": {
         "table": "infra_elemento_infraestrutura_l",
         "attributes": {
-          "tipo": 1938
+          "tipo": 1938,
+          "situacao_fisica": 3
         }
       },
       "osm_attribute_mapping": {
@@ -4085,7 +4261,8 @@
       "edgv_target": {
         "table": "infra_elemento_infraestrutura_p",
         "attributes": {
-          "tipo": 1201
+          "tipo": 1201,
+          "situacao_fisica": 3
         }
       },
       "osm_attribute_mapping": {
@@ -4108,7 +4285,8 @@
       "edgv_target": {
         "table": "infra_elemento_infraestrutura_p",
         "attributes": {
-          "tipo": 1201
+          "tipo": 1201,
+          "situacao_fisica": 3
         }
       },
       "osm_attribute_mapping": {
@@ -4130,7 +4308,8 @@
       "edgv_target": {
         "table": "infra_elemento_infraestrutura_p",
         "attributes": {
-          "tipo": 1301
+          "tipo": 1301,
+          "situacao_fisica": 3
         }
       },
       "osm_attribute_mapping": {
@@ -4152,7 +4331,8 @@
       "edgv_target": {
         "table": "infra_elemento_infraestrutura_p",
         "attributes": {
-          "tipo": 901
+          "tipo": 901,
+          "situacao_fisica": 3
         }
       },
       "osm_attribute_mapping": {
@@ -4219,7 +4399,8 @@
       "edgv_target": {
         "table": "infra_elemento_infraestrutura_l",
         "attributes": {
-          "tipo": 2001
+          "tipo": 2001,
+          "situacao_fisica": 3
         }
       },
       "osm_attribute_mapping": {
@@ -4241,7 +4422,8 @@
       "edgv_target": {
         "table": "infra_elemento_infraestrutura_l",
         "attributes": {
-          "tipo": 2001
+          "tipo": 2001,
+          "situacao_fisica": 3
         }
       },
       "osm_attribute_mapping": {
@@ -4263,7 +4445,8 @@
       "edgv_target": {
         "table": "infra_elemento_infraestrutura_l",
         "attributes": {
-          "tipo": 2098
+          "tipo": 2098,
+          "situacao_fisica": 3
         }
       },
       "osm_attribute_mapping": {
@@ -4292,7 +4475,8 @@
       "edgv_target": {
         "table": "infra_elemento_infraestrutura_l",
         "attributes": {
-          "tipo": 2098
+          "tipo": 2098,
+          "situacao_fisica": 3
         }
       },
       "osm_attribute_mapping": {
@@ -4886,7 +5070,9 @@
       },
       "edgv_target": {
         "table": "elemnat_ponto_cotado_p",
-        "attributes": {}
+        "attributes": {
+          "cota_comprovada": 2
+        }
       },
       "osm_attribute_mapping": {
         "ele": "cota"
@@ -6850,7 +7036,9 @@
       "edgv_target": {
         "table": "constr_deposito_a",
         "attributes": {
-          "tipo": 132
+          "tipo": 132,
+          "finalidade": 8,
+          "tipo_exposicao": 3
         }
       },
       "osm_attribute_mapping": {
@@ -6908,7 +7096,9 @@
       "edgv_target": {
         "table": "constr_deposito_a",
         "attributes": {
-          "tipo": 108
+          "tipo": 108,
+          "finalidade": 8,
+          "tipo_exposicao": 3
         }
       },
       "osm_attribute_mapping": {
@@ -7389,7 +7579,9 @@
       "edgv_target": {
         "table": "constr_deposito_a",
         "attributes": {
-          "tipo": 305
+          "tipo": 305,
+          "finalidade": 0,
+          "tipo_exposicao": 5
         }
       },
       "osm_attribute_mapping": {
@@ -7418,7 +7610,9 @@
       "edgv_target": {
         "table": "constr_deposito_p",
         "attributes": {
-          "tipo": 109
+          "tipo": 109,
+          "finalidade": 8,
+          "tipo_exposicao": 3
         }
       },
       "osm_attribute_mapping": {
@@ -7447,7 +7641,9 @@
       "edgv_target": {
         "table": "constr_deposito_a",
         "attributes": {
-          "tipo": 113
+          "tipo": 113,
+          "finalidade": 8,
+          "tipo_exposicao": 3
         }
       },
       "osm_attribute_mapping": {
@@ -7501,11 +7697,113 @@
       "edgv_target": {
         "table": "constr_extracao_mineral_a",
         "attributes": {
-          "tipo": 4
+          "tipo": 4,
+          "forma_extracao": 5,
+          "tipo_produto": 0
         }
       },
       "osm_attribute_mapping": {
-        "name": "nome"
+        "name": "nome",
+        "resource": {
+          "column": "tipo_produto",
+          "map": {
+            "oil": 3,
+            "petroleum": 3,
+            "petroleo": 3,
+            "gas": 5,
+            "natural_gas": 5,
+            "coal": 33,
+            "iron": 35,
+            "iron_ore": 35,
+            "gold": 37,
+            "copper": 32,
+            "bauxite": 25,
+            "manganese": 26,
+            "tin": 68,
+            "nickel": 81,
+            "zinc": 94,
+            "lead": 59,
+            "silver": 39,
+            "diamond": 38,
+            "salt": 34,
+            "limestone": 55,
+            "clay": 52,
+            "sand": 42,
+            "gravel": 18,
+            "granite": 23,
+            "marble": 24,
+            "phosphate": 70,
+            "uranium": 92,
+            "lithium": 74,
+            "niobium": 80,
+            "graphite": 72,
+            "gypsum": 71,
+            "kaolin": 57,
+            "talc": 27,
+            "quartz": 62,
+            "tungsten": 89,
+            "chromium": 63,
+            "titanium": 86,
+            "magnesite": 78,
+            "mica": 79,
+            "barite": 53,
+            "bentonite": 54,
+            "feldspar": 69,
+            "peat": 90,
+            "vermiculite": 93,
+            "zircon": 100
+          }
+        },
+        "substance": {
+          "column": "tipo_produto",
+          "map": {
+            "oil": 3,
+            "petroleum": 3,
+            "petroleo": 3,
+            "gas": 5,
+            "natural_gas": 5,
+            "coal": 33,
+            "iron": 35,
+            "iron_ore": 35,
+            "gold": 37,
+            "copper": 32,
+            "bauxite": 25,
+            "manganese": 26,
+            "tin": 68,
+            "nickel": 81,
+            "zinc": 94,
+            "lead": 59,
+            "silver": 39,
+            "diamond": 38,
+            "salt": 34,
+            "limestone": 55,
+            "clay": 52,
+            "sand": 42,
+            "gravel": 18,
+            "granite": 23,
+            "marble": 24,
+            "phosphate": 70,
+            "uranium": 92,
+            "lithium": 74,
+            "niobium": 80,
+            "graphite": 72,
+            "gypsum": 71,
+            "kaolin": 57,
+            "talc": 27,
+            "quartz": 62,
+            "tungsten": 89,
+            "chromium": 63,
+            "titanium": 86,
+            "magnesite": 78,
+            "mica": 79,
+            "barite": 53,
+            "bentonite": 54,
+            "feldspar": 69,
+            "peat": 90,
+            "vermiculite": 93,
+            "zircon": 100
+          }
+        }
       },
       "confidence": "high",
       "note": "Pedreira / mina"
@@ -7523,11 +7821,113 @@
       "edgv_target": {
         "table": "constr_extracao_mineral_a",
         "attributes": {
-          "tipo": 4
+          "tipo": 4,
+          "forma_extracao": 5,
+          "tipo_produto": 0
         }
       },
       "osm_attribute_mapping": {
-        "name": "nome"
+        "name": "nome",
+        "resource": {
+          "column": "tipo_produto",
+          "map": {
+            "oil": 3,
+            "petroleum": 3,
+            "petroleo": 3,
+            "gas": 5,
+            "natural_gas": 5,
+            "coal": 33,
+            "iron": 35,
+            "iron_ore": 35,
+            "gold": 37,
+            "copper": 32,
+            "bauxite": 25,
+            "manganese": 26,
+            "tin": 68,
+            "nickel": 81,
+            "zinc": 94,
+            "lead": 59,
+            "silver": 39,
+            "diamond": 38,
+            "salt": 34,
+            "limestone": 55,
+            "clay": 52,
+            "sand": 42,
+            "gravel": 18,
+            "granite": 23,
+            "marble": 24,
+            "phosphate": 70,
+            "uranium": 92,
+            "lithium": 74,
+            "niobium": 80,
+            "graphite": 72,
+            "gypsum": 71,
+            "kaolin": 57,
+            "talc": 27,
+            "quartz": 62,
+            "tungsten": 89,
+            "chromium": 63,
+            "titanium": 86,
+            "magnesite": 78,
+            "mica": 79,
+            "barite": 53,
+            "bentonite": 54,
+            "feldspar": 69,
+            "peat": 90,
+            "vermiculite": 93,
+            "zircon": 100
+          }
+        },
+        "substance": {
+          "column": "tipo_produto",
+          "map": {
+            "oil": 3,
+            "petroleum": 3,
+            "petroleo": 3,
+            "gas": 5,
+            "natural_gas": 5,
+            "coal": 33,
+            "iron": 35,
+            "iron_ore": 35,
+            "gold": 37,
+            "copper": 32,
+            "bauxite": 25,
+            "manganese": 26,
+            "tin": 68,
+            "nickel": 81,
+            "zinc": 94,
+            "lead": 59,
+            "silver": 39,
+            "diamond": 38,
+            "salt": 34,
+            "limestone": 55,
+            "clay": 52,
+            "sand": 42,
+            "gravel": 18,
+            "granite": 23,
+            "marble": 24,
+            "phosphate": 70,
+            "uranium": 92,
+            "lithium": 74,
+            "niobium": 80,
+            "graphite": 72,
+            "gypsum": 71,
+            "kaolin": 57,
+            "talc": 27,
+            "quartz": 62,
+            "tungsten": 89,
+            "chromium": 63,
+            "titanium": 86,
+            "magnesite": 78,
+            "mica": 79,
+            "barite": 53,
+            "bentonite": 54,
+            "feldspar": 69,
+            "peat": 90,
+            "vermiculite": 93,
+            "zircon": 100
+          }
+        }
       },
       "confidence": "high",
       "note": "Mineração"
@@ -7545,7 +7945,9 @@
       "edgv_target": {
         "table": "constr_extracao_mineral_a",
         "attributes": {
-          "tipo": 6
+          "tipo": 6,
+          "forma_extracao": 5,
+          "tipo_produto": 34
         }
       },
       "osm_attribute_mapping": {
@@ -7570,11 +7972,63 @@
       "edgv_target": {
         "table": "constr_extracao_mineral_p",
         "attributes": {
-          "tipo": 8
+          "tipo": 8,
+          "forma_extracao": 6,
+          "tipo_produto": 3
         }
       },
       "osm_attribute_mapping": {
-        "name": "nome"
+        "name": "nome",
+        "substance": {
+          "column": "tipo_produto",
+          "map": {
+            "oil": 3,
+            "petroleum": 3,
+            "petroleo": 3,
+            "gas": 5,
+            "natural_gas": 5,
+            "coal": 33,
+            "iron": 35,
+            "iron_ore": 35,
+            "gold": 37,
+            "copper": 32,
+            "bauxite": 25,
+            "manganese": 26,
+            "tin": 68,
+            "nickel": 81,
+            "zinc": 94,
+            "lead": 59,
+            "silver": 39,
+            "diamond": 38,
+            "salt": 34,
+            "limestone": 55,
+            "clay": 52,
+            "sand": 42,
+            "gravel": 18,
+            "granite": 23,
+            "marble": 24,
+            "phosphate": 70,
+            "uranium": 92,
+            "lithium": 74,
+            "niobium": 80,
+            "graphite": 72,
+            "gypsum": 71,
+            "kaolin": 57,
+            "talc": 27,
+            "quartz": 62,
+            "tungsten": 89,
+            "chromium": 63,
+            "titanium": 86,
+            "magnesite": 78,
+            "mica": 79,
+            "barite": 53,
+            "bentonite": 54,
+            "feldspar": 69,
+            "peat": 90,
+            "vermiculite": 93,
+            "zircon": 100
+          }
+        }
       },
       "confidence": "high",
       "note": "Poço de petróleo"
@@ -7592,7 +8046,8 @@
       "edgv_target": {
         "table": "infra_elemento_infraestrutura_p",
         "attributes": {
-          "tipo": 1400
+          "tipo": 1400,
+          "situacao_fisica": 3
         }
       },
       "osm_attribute_mapping": {
@@ -7614,7 +8069,8 @@
       "edgv_target": {
         "table": "infra_elemento_infraestrutura_p",
         "attributes": {
-          "tipo": 1401
+          "tipo": 1401,
+          "situacao_fisica": 3
         }
       },
       "osm_attribute_mapping": {
@@ -7639,11 +8095,63 @@
       "edgv_target": {
         "table": "constr_extracao_mineral_p",
         "attributes": {
-          "tipo": 4
+          "tipo": 4,
+          "forma_extracao": 6,
+          "tipo_produto": 0
         }
       },
       "osm_attribute_mapping": {
-        "name": "nome"
+        "name": "nome",
+        "substance": {
+          "column": "tipo_produto",
+          "map": {
+            "oil": 3,
+            "petroleum": 3,
+            "petroleo": 3,
+            "gas": 5,
+            "natural_gas": 5,
+            "coal": 33,
+            "iron": 35,
+            "iron_ore": 35,
+            "gold": 37,
+            "copper": 32,
+            "bauxite": 25,
+            "manganese": 26,
+            "tin": 68,
+            "nickel": 81,
+            "zinc": 94,
+            "lead": 59,
+            "silver": 39,
+            "diamond": 38,
+            "salt": 34,
+            "limestone": 55,
+            "clay": 52,
+            "sand": 42,
+            "gravel": 18,
+            "granite": 23,
+            "marble": 24,
+            "phosphate": 70,
+            "uranium": 92,
+            "lithium": 74,
+            "niobium": 80,
+            "graphite": 72,
+            "gypsum": 71,
+            "kaolin": 57,
+            "talc": 27,
+            "quartz": 62,
+            "tungsten": 89,
+            "chromium": 63,
+            "titanium": 86,
+            "magnesite": 78,
+            "mica": 79,
+            "barite": 53,
+            "bentonite": 54,
+            "feldspar": 69,
+            "peat": 90,
+            "vermiculite": 93,
+            "zircon": 100
+          }
+        }
       },
       "confidence": "high",
       "note": "Poço/galeria de mina"
