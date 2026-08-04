@@ -19,6 +19,46 @@ logger = logging.getLogger(__name__)
 
 RETRY_CHUNK_SIZE = 100
 
+# EDGV sentinel para atributo de dominio "desconhecido"
+_EDGV_UNKNOWN = 9999
+
+
+def _get_notnull_cols(engine, schema, table_name):
+    """Return list of (column_name, data_type) for NOT NULL columns of the table."""
+    try:
+        q = text("""SELECT column_name, data_type
+                    FROM information_schema.columns
+                    WHERE table_schema=:s AND table_name=:t AND is_nullable='NO'""")
+        with engine.connect() as con:
+            return [(r[0], r[1]) for r in con.execute(q, {"s": schema, "t": table_name}).fetchall()]
+    except Exception as e:
+        logger.warning("Falha ao ler NOT NULL de %s.%s: %s", schema, table_name, e)
+        return []
+
+
+def _fill_required_nulls(gdf, notnull_cols, table_name):
+    """Fill nulls in NOT NULL destination columns with the EDGV domain default
+    (boolean -> False, numeric -> 9999). Prevents silent row drops on write
+    when the mapping emits an explicit NULL for a required domain attribute."""
+    geom_col = gdf.geometry.name
+    filled = []
+    for cn, dt in notnull_cols:
+        if cn == geom_col or cn not in gdf.columns:
+            continue
+        if not gdf[cn].isna().any():
+            continue
+        if dt == "boolean":
+            gdf[cn] = gdf[cn].fillna(False)
+            filled.append(cn)
+        elif dt in ("smallint", "integer", "bigint", "numeric", "double precision", "real"):
+            gdf[cn] = gdf[cn].fillna(_EDGV_UNKNOWN)
+            filled.append(cn)
+        elif dt == "uuid" and gdf[cn].isna().all():
+            gdf = gdf.drop(columns=[cn])  # deixa o default do banco (uuid_generate_v4) agir
+    if filled:
+        logger.info("  %s: null-fill em coluna(s) NOT NULL: %s", table_name, ", ".join(sorted(filled)))
+    return gdf
+
 
 def _strip_schema(name: str) -> str:
     return name.split(".", 1)[1] if "." in name else name
@@ -184,6 +224,11 @@ def write_postgis(
         dest_cols = _get_dest_columns(engine, schema, table_name)
         if dest_cols:
             gdf = _align_gdf_to_dest(gdf, dest_cols, table_name)
+
+        # Preenche colunas NOT NULL que o mapa deixou nulas (evita descarte silencioso)
+        notnull_cols = _get_notnull_cols(engine, schema, table_name)
+        if notnull_cols:
+            gdf = _fill_required_nulls(gdf, notnull_cols, table_name)
 
         try:
             _write_gdf(gdf, table_name, engine, schema)
