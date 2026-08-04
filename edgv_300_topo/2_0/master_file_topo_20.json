@@ -1,6 +1,6 @@
 {
   "modelo": "EDGV Topo 2.0",
-  "versao": "0.15.0",
+  "versao": "0.16.0",
   "schema_dados": "edgv",
   "schema_dominios": "dominios",
   "a_ser_preenchido": {
@@ -7466,6 +7466,17 @@
           "primitivas": [
             "MultiPoint"
           ]
+        },
+        {
+          "nome": "simb_ponto",
+          "tipo": "smallint",
+          "cardinalidade": "1..1",
+          "mapa_valor": "booleano",
+          "primitivas": [
+            "MultiPolygon",
+            "MultiLinestring"
+          ],
+          "descricao": "Indica que a pista deve ser desenhada por símbolo de ponto na carta, e não pelo traçado real da linha ou do polígono, conforme o domínio booleano."
         }
       ],
       "descricao": "Infraestrutura aeroportuária de pouso e decolagem: pista de pouso, pista de táxi e heliponto. Representada por polígono, linha ou ponto conforme a escala. Carrega o revestimento, o uso (público, militar) e a altitude."

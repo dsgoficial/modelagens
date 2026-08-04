@@ -13160,6 +13160,11 @@
     {
       "nome_atributo": "sobreposto_transportes",
       "valor": 9999
+    },
+    {
+      "__comment": "Rev 0.16.0: a EDGV 3.0 não tem simb_ponto. Default 2 (Não) faz a pista desenhar pelo traçado real; 9999 não casa nenhuma regra do QML e a pista some da carta. Só infra_pista_pouso_l e _a têm a coluna.",
+      "nome_atributo": "simb_ponto",
+      "valor": 2
     }
   ],
   "atributos_default_A": [

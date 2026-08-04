@@ -5978,6 +5978,10 @@
     {
       "nome_atributo": "exibir_linha_rotulo",
       "valor": 2
+    },
+    {
+      "nome_atributo": "simb_ponto",
+      "valor": 2
     }
   ]
 }

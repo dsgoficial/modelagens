@@ -14229,6 +14229,10 @@
     {
       "nome_atributo": "trafego",
       "valor": 9999
+    },
+    {
+      "nome_atributo": "simb_ponto",
+      "valor": 2
     }
   ]
 }

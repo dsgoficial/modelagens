@@ -95,6 +95,23 @@ Aporte do cruzamento com a ET-EDGV SPU 4.0 (ver `analysis/comparativo_edgvspu40_
 |--------|--------|------|--------------|-----------|
 | `infra_trecho_hidroviario_l` | `calado_max_seca` | real | — | Calado máximo na seca em metros (EDGV 3.0 `caladomaxseca`) |
 
+### 1.4 Rev 0.16.0 (2026-08-04) — `simb_ponto` restaurado
+
+A Topo 1.4 tinha `simb_ponto` em `infra_pista_pouso_l` e `infra_pista_pouso_a`. A coluna sumiu da Topo 2.0 sem entrada de remoção e sem justificativa: foi perda silenciosa, não decisão. Esta revisão a repõe com a mesma definição da 1.4.
+
+| Tabela | Coluna | Tipo | FK / domínio | Descrição |
+|--------|--------|------|--------------|-----------|
+| `infra_pista_pouso_l` | `simb_ponto` | smallint | `dominios.booleano` | Desenhar a pista por símbolo de ponto, não pelo traçado real |
+| `infra_pista_pouso_a` | `simb_ponto` | smallint | `dominios.booleano` | Idem, na pista de área |
+
+`infra_pista_pouso_p` NÃO recebe a coluna: o ponto já é o próprio símbolo.
+
+Por que importa: os estilos QML do `ferramentas_edicao` (`map/` e `mapEdition/`, produto topoMap) separam as regras da pista por `simb_ponto in (1)` e `simb_ponto in (2)`. Sem a coluna, nenhuma regra casa e a pista some da carta, sem erro visível. A auditoria de estilos já registrava o defeito (`docs/auditoria_estilos_topomap.md`, família B: campo citado que a classe não tem).
+
+Regra de valor: `1` (Sim) troca o traçado pelo símbolo de ponto, decisão de edição folha a folha; `2` (Não) desenha o traçado real. O DEFAULT do modelo continua `9999`, como em toda coluna com FK de domínio, e `schema/scripts/atualiza_atributos_edicao.sql` grava `2` na carga, junto com `visivel` e `justificativa_txt`.
+
+Propagação: crosswalk da Topo 1.4 volta a ser 1:1 (auto-map de nome); EDGV 3.0, MGCP, MUVD e as bases do IBGE, que não têm o atributo na origem, injetam o default `2`; os tiles não recebem a coluna (`COLUMNS_TO_DROP` em `schema/scripts/config.py`, junto de `simb_rot`).
+
 ---
 
 ## 2. Novas tabelas
@@ -242,6 +259,13 @@ Pontos cotados batimétricos (profundidade). Espelha `elemnat_ponto_cotado_p`. O
 | `geom` | MultiPoint, 4674 | índice GiST |
 
 ---
+
+> **Impacto nos estilos.** Toda remoção ou mudança de primitiva desta seção
+> precisa ser conferida contra os estilos do plugin [[ferramentas-edicao]], que
+> vivem em OUTRO repositório (`dsgoficial/ferramentas_edicao`) e não acompanham
+> este changelog automaticamente. O método de conferência e o histórico dos
+> defeitos encontrados estão na seção 8 do `edgv_orto_30_changelog.md`, que vale
+> para os dois produtos.
 
 ## 3. Tabelas removidas
 
@@ -463,7 +487,40 @@ Bug originado em `mastergen.py`: o gerador anexa `9999` aos valores do CHECK sem
 | Campo | 1.4 | 2.0 |
 |-------|-----|-----|
 | `edgvversion` | EDGV 3.0 Topo | EDGV Topo 2.0 |
-| `dbimplversion` | 1.4.4 | 0.14.0 |
+| `dbimplversion` | 1.4.4 | 0.16.0 |
+
+> Rev 2026-07-26: `dbimplversion` corrigido para 0.15.0. A tabela dizia 0.14.0
+> enquanto o `edgv_topo_20.sql` já gravava 0.15.0 desde as revisões do cemitério
+> genérico (código 100) e do assentamento rural (tipo 4).
+
+### 7.1 Propagação para os tiles e estilos (auditoria de 2026-07-26)
+
+Auditoria de propagação: cada item das seções 1–6 conferido contra
+`edgv_topo_20_tile_spec.yaml`, `scripts/01_export_geojson.py` e os dois estilos
+MapLibre. Cinco mudanças de modelo tinham parado antes do tile, e foram
+corrigidas na mesma data:
+
+| Mudança de modelo | Onde parou | Correção |
+|---|---|---|
+| `tipo_ocupacao_solo` 100 Cemitério - Desconhecido (0.15.0) | caso `cemiterio` era `tipo BETWEEN 101 AND 108`; o 100 caía no fallback | faixa passa a `100 AND 108` (e o fallback a excluí-la) |
+| `tipo_localidade` 11 Bairro (0.14.0) | sem caso nas `zoom_rules` **e** sem regra em `RANK_LOCALIDADE_RULES` — sem rank, nenhuma camada de rótulo casava | caso `bairro` (z13) + rank 12 + camada `label-localidade-bairro` |
+| `tipo_trecho_duto` 311/312 Gás de transporte/distribuição | o estilo casava `tipo_texto` por string literal, com o texto errado (`"Gás - Transporte"` ≠ `"Gás de transporte"`) | cor passa a sair do `caso`, que as `zoom_rules` já resolvem por código |
+| `elemnat_ponto_cotado_batimetrico_p` e `elemnat_curva_batimetrica_l` | as camadas liam `cota`; as tabelas batimétricas têm `profundidade` — texto vazio, e na cor marrom de terreno | camadas próprias `ponto-cotado-batimetrico` e `curva-batimetrica-label`, na cor batimétrica |
+| `tipo_limite_especial` 3 Território quilombola e 4 Assentamento rural | o `match` do fill só nomeava terra indígena e área militar; o resto caía no verde de unidade de conservação | caso `assentamento_rural` + cores próprias para o bloco 2-3-4 (destinação fundiária) |
+
+Propagaram corretamente, sem ação necessária: todas as tabelas novas da seção 2
+(inclusive as auxiliares `aux_*`, corretamente FORA do tile_spec), a remoção de
+`infra_travessia_hidroviaria_p`, e os domínios `tipo_limite_legal` (+5),
+`tipo_via_deslocamento` (0 e 7), `tipo_elemento_viario` (205),
+`tipo_elemento_energia` (410/411), `tipo_elemento_infraestrutura` (1101–1198),
+`tipo_ocupacao_solo` (1401–1404), `tipo_alteracao_fisiografica` (24),
+`posicao_relativa` (0) e os 14 códigos novos de `tipo_edificacao`.
+
+Sem cobertura por decisão, não por esquecimento: os 5 códigos novos de
+`tipo_veg` (1101, 1005, 1200, 195, 198) não têm `caso` porque a camada
+`vegetacao` não tem `zoom_rules` desde a decisão de 2026-07-12 sobre o
+`land_cover` do Overture. Estão no modelo e no tileset, apenas não classificados
+nem estilizados.
 
 ---
 
@@ -941,4 +998,60 @@ INSERT INTO dominios.tipo_localidade (code, code_name) VALUES
 
 UPDATE public.db_metadata SET dbimplversion = '0.14.0';
 ALTER TABLE public.db_metadata ALTER COLUMN dbimplversion SET DEFAULT '0.14.0';
+
+-- ===========================================
+-- Incremento 0.15.0 (2026-07-19 / 2026-07-22)
+-- Cemiterio generico e assentamento rural. O `edgv_topo_20.sql` ja nascia em
+-- 0.15.0; este incremento estava faltando para quem migra de uma base 0.14.0.
+-- ===========================================
+
+-- 1) Cemiterio - Desconhecido: o grupo tinha 101-108, todos declarando tradicao
+-- religiosa ou forma construtiva, e nenhum para "e cemiterio, o tipo nao se
+-- sabe". Slot x00, a convencao do modelo para o generico de um grupo.
+INSERT INTO dominios.tipo_ocupacao_solo (code, code_name, filter) VALUES
+    (100, 'Cemitério - Desconhecido (100)', 'Cemitério');
+
+-- constr_ocupacao_solo_a / _p TEM CHECK de tipo: precisa recriar com o 100
+ALTER TABLE edgv.constr_ocupacao_solo_a DROP CONSTRAINT IF EXISTS constr_ocupacao_solo_a_tipo_check;
+ALTER TABLE edgv.constr_ocupacao_solo_a
+     ADD CONSTRAINT constr_ocupacao_solo_a_tipo_check
+     CHECK (tipo = ANY(ARRAY[100 :: SMALLINT, 101 :: SMALLINT, 102 :: SMALLINT, 103 :: SMALLINT, 104 :: SMALLINT, 105 :: SMALLINT, 106 :: SMALLINT, 107 :: SMALLINT, 108 :: SMALLINT, 201 :: SMALLINT, 202 :: SMALLINT, 203 :: SMALLINT, 204 :: SMALLINT, 205 :: SMALLINT, 206 :: SMALLINT, 207 :: SMALLINT, 298 :: SMALLINT, 404 :: SMALLINT, 405 :: SMALLINT, 406 :: SMALLINT, 409 :: SMALLINT, 414 :: SMALLINT, 415 :: SMALLINT, 416 :: SMALLINT, 501 :: SMALLINT, 601 :: SMALLINT, 701 :: SMALLINT, 801 :: SMALLINT, 802 :: SMALLINT, 804 :: SMALLINT, 803 :: SMALLINT, 805 :: SMALLINT, 806 :: SMALLINT, 901 :: SMALLINT, 1001 :: SMALLINT, 1201 :: SMALLINT, 1202 :: SMALLINT, 1401 :: SMALLINT, 1402 :: SMALLINT, 1403 :: SMALLINT, 1404 :: SMALLINT, 9999 :: SMALLINT]));
+
+ALTER TABLE edgv.constr_ocupacao_solo_p DROP CONSTRAINT IF EXISTS constr_ocupacao_solo_p_tipo_check;
+ALTER TABLE edgv.constr_ocupacao_solo_p
+     ADD CONSTRAINT constr_ocupacao_solo_p_tipo_check
+     CHECK (tipo = ANY(ARRAY[100 :: SMALLINT, 101 :: SMALLINT, 102 :: SMALLINT, 103 :: SMALLINT, 104 :: SMALLINT, 105 :: SMALLINT, 106 :: SMALLINT, 107 :: SMALLINT, 108 :: SMALLINT, 201 :: SMALLINT, 202 :: SMALLINT, 203 :: SMALLINT, 204 :: SMALLINT, 205 :: SMALLINT, 206 :: SMALLINT, 207 :: SMALLINT, 298 :: SMALLINT, 701 :: SMALLINT, 801 :: SMALLINT, 802 :: SMALLINT, 804 :: SMALLINT, 803 :: SMALLINT, 805 :: SMALLINT, 806 :: SMALLINT, 1101 :: SMALLINT, 1201 :: SMALLINT, 1202 :: SMALLINT, 1601 :: SMALLINT, 1602 :: SMALLINT, 1603 :: SMALLINT, 1604 :: SMALLINT, 1605 :: SMALLINT, 1606 :: SMALLINT, 1607 :: SMALLINT, 1608 :: SMALLINT, 1609 :: SMALLINT, 1610 :: SMALLINT, 1611 :: SMALLINT, 1612 :: SMALLINT, 1613 :: SMALLINT, 1614 :: SMALLINT, 9999 :: SMALLINT]));
+
+-- 2) Assentamento rural: alvo das 6.444 feicoes do Acervo Fundiario do INCRA.
+-- llp_limite_especial_a nao tem CHECK de tipo (so FK) -- basta o INSERT.
+INSERT INTO dominios.tipo_limite_especial (code, code_name) VALUES
+    (4, 'Assentamento rural (4)');
+
+UPDATE public.db_metadata SET dbimplversion = '0.15.0';
+ALTER TABLE public.db_metadata ALTER COLUMN dbimplversion SET DEFAULT '0.15.0';
+
+-- ===========================================
+-- Incremento 0.16.0 (2026-08-04)
+-- simb_ponto de volta em infra_pista_pouso_l e _a. A coluna existia na Topo 1.4
+-- e sumiu da 2.0 sem entrada de remocao. Os QML do ferramentas_edicao filtram
+-- por ela; sem a coluna a pista nao desenha.
+-- ===========================================
+
+ALTER TABLE edgv.infra_pista_pouso_l ADD COLUMN IF NOT EXISTS simb_ponto smallint NOT NULL DEFAULT 9999;
+ALTER TABLE edgv.infra_pista_pouso_a ADD COLUMN IF NOT EXISTS simb_ponto smallint NOT NULL DEFAULT 9999;
+
+ALTER TABLE edgv.infra_pista_pouso_l
+    ADD CONSTRAINT infra_pista_pouso_l_simb_ponto_fk
+    FOREIGN KEY (simb_ponto) REFERENCES dominios.booleano (code);
+ALTER TABLE edgv.infra_pista_pouso_a
+    ADD CONSTRAINT infra_pista_pouso_a_simb_ponto_fk
+    FOREIGN KEY (simb_ponto) REFERENCES dominios.booleano (code);
+
+-- Base ja carregada: 2 (Nao) desenha a pista pelo tracado real. O 1 (Sim), que
+-- troca o tracado pelo simbolo de ponto, e decisao de edicao folha a folha.
+UPDATE edgv.infra_pista_pouso_l SET simb_ponto = 2 WHERE simb_ponto = 9999;
+UPDATE edgv.infra_pista_pouso_a SET simb_ponto = 2 WHERE simb_ponto = 9999;
+
+UPDATE public.db_metadata SET dbimplversion = '0.16.0';
+ALTER TABLE public.db_metadata ALTER COLUMN dbimplversion SET DEFAULT '0.16.0';
 ```
