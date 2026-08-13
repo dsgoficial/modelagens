@@ -48,7 +48,26 @@
     },
     {
       "classe_A": "constr_edificacao",
-      "classe_B": "constr_edificacao"
+      "classe_B": "constr_edificacao",
+      "mapeamento_atributos": [
+        {
+          "__comment": "A Topo 2.0 tem 198 codigos de tipo_edificacao e a Topo 1.4 tem 183. Sem estes pares a feicao viola a chave estrangeira e o destino a recusa em silencio. Medido em Porto Alegre (moldura 10k do Beira-Rio): 22 do tipo 2102 e 3 do tipo 2214, em constr_edificacao_p. O 2102 (Ssoc - Equipamento publico de protecao social) vai para 2101 (Ssoc - Servico Social), o UNICO Ssoc que a 1.4 tem, e os nomes confirmam (Abrigo Conego Paulo De Nadal, Asilo Padre Cacique). O 2214 (Rod - Rodoviaria) vai para 2209 (Rod - Terminal urbano), nao para 2208 (interestadual) nem para 2298 (Rod - Outros), porque os tres nomes sao terminais urbanos de Porto Alegre (Estacao Castelo, Terminal Azenha, Terminal Sul Diario de Noticias). So no sentido B=>A: a Topo 2.0 tem os dois codigos.",
+          "attr_A": "tipo",
+          "attr_B": "tipo",
+          "traducao": [
+            {
+              "valor_A": 2101,
+              "valor_B": 2102,
+              "sentido": "B=>A"
+            },
+            {
+              "valor_A": 2209,
+              "valor_B": 2214,
+              "sentido": "B=>A"
+            }
+          ]
+        }
+      ]
     },
     {
       "classe_A": "constr_extracao_mineral",
@@ -242,7 +261,21 @@
     },
     {
       "classe_A": "llp_localidade",
-      "classe_B": "llp_localidade"
+      "classe_B": "llp_localidade",
+      "mapeamento_atributos": [
+        {
+          "__comment": "A Topo 2.0 tem tipo_localidade 9 (Aldeia indigena), 10 (Comunidade quilombola) e 11 (Bairro). A Topo 1.4 nao tem nenhum dos tres: o dominio dela vai de 1 a 8 mais 9999. Medido em Porto Alegre (moldura 10k do Beira-Rio): 18 feicoes do tipo 11, vindas do Overture com subtype=neighborhood (Quilombo do Areal, Vila Cabo Rocha, Vila Uniao, Vila Santa Rita). O 11 vai para 8 (Nome local) porque as 8 irmas da mesma tabela, vindas de macrohood e microhood, JA entram como 8: as 26 ficam no mesmo tipo. Perde-se a distincao bairro contra nome local, que a 1.4 nao sabe guardar. So no sentido B=>A: a Topo 2.0 tem o codigo proprio.",
+          "attr_A": "tipo",
+          "attr_B": "tipo",
+          "traducao": [
+            {
+              "valor_A": 8,
+              "valor_B": 11,
+              "sentido": "B=>A"
+            }
+          ]
+        }
+      ]
     },
     {
       "classe_A": "llp_ponto_controle",
