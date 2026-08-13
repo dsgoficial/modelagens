@@ -158,7 +158,26 @@
     },
     {
       "classe_A": "infra_via_deslocamento",
-      "classe_B": "infra_via_deslocamento"
+      "classe_B": "infra_via_deslocamento",
+      "mapeamento_atributos": [
+        {
+          "__comment": "A Topo 1.4 nao tem os codigos 0 e 7 de tipo_via_deslocamento, entao sem estes dois pares a feicao viola a chave estrangeira e o destino a recusa em silencio. Medido em Porto Alegre: 164 do tipo 0 e 60 do tipo 7, de 3770. O 7 (Alca de acesso / Rotatoria) vai para 2 (Estrada/Rodovia) porque as 60 tem classe Overture secondary, tertiary ou primary, que este mesmo mapeamento ja manda para 2. O 0 (Desconhecido) vai para 9999 (A SER PREENCHIDO). So no sentido B=>A: a Topo 2.0 tem os dois codigos.",
+          "attr_A": "tipo",
+          "attr_B": "tipo",
+          "traducao": [
+            {
+              "valor_A": 2,
+              "valor_B": 7,
+              "sentido": "B=>A"
+            },
+            {
+              "valor_A": 9999,
+              "valor_B": 0,
+              "sentido": "B=>A"
+            }
+          ]
+        }
+      ]
     },
     {
       "__comment": "llp - limites, localidades e pontos de controle (7 classes, 7 tabelas na 1.4; +3 tabelas novas na 2.0: localidade_a, delimitacao_fisica_l, limite_legal_a — sem mapeamento da 1.4)",
