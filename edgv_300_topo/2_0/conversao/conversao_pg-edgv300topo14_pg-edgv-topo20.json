@@ -201,7 +201,21 @@
     {
       "__comment": "llp - limites, localidades e pontos de controle (7 classes, 7 tabelas na 1.4; +3 tabelas novas na 2.0: localidade_a, delimitacao_fisica_l, limite_legal_a — sem mapeamento da 1.4)",
       "classe_A": "llp_limite_legal",
-      "classe_B": "llp_limite_legal"
+      "classe_B": "llp_limite_legal",
+      "filtro_B": {
+        "$not": {
+          "$or": [
+            {
+              "nome_atributo": "tipo",
+              "valor": 1
+            },
+            {
+              "nome_atributo": "tipo",
+              "valor": 2
+            }
+          ]
+        }
+      }
     },
     {
       "classe_A": "llp_limite_especial",
@@ -211,6 +225,10 @@
       "__comment": "Rev 0.10.0: llp_unidade_federacao_a removida; UF consolidada em llp_limite_legal_a com tipo=2. Sigla traduzida do dominio smallint sigla_uf para a string de llp_limite_legal.sigla via `traducao` (1=AC ... 27=TO); demais atributos por auto-map de nome.",
       "classe_A": "llp_unidade_federacao",
       "classe_B": "llp_limite_legal",
+      "filtro_B": {
+        "nome_atributo": "tipo",
+        "valor": 2
+      },
       "geom_A": [
         "POLYGON"
       ],
@@ -285,6 +303,10 @@
       "__comment": "Rev 0.10.0: llp_pais_a removida; Pais consolidado em llp_limite_legal_a com tipo=1. sigla (varchar) mapeia direto para llp_limite_legal.sigla (varchar 10).",
       "classe_A": "llp_pais",
       "classe_B": "llp_limite_legal",
+      "filtro_B": {
+        "nome_atributo": "tipo",
+        "valor": 1
+      },
       "geom_A": [
         "POLYGON"
       ],

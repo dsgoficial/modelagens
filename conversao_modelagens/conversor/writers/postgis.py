@@ -12,7 +12,11 @@ import geopandas as gpd
 import pandas as pd
 from sqlalchemy import create_engine, inspect, text
 
-from ..errors import ConversionError, DestinoNaoVazioError
+from ..errors import (
+    ConversionError,
+    DestinoNaoVazioError,
+    TabelaDestinoAusenteError,
+)
 from ..geometry import ensure_crs
 from ..readers.postgis import _build_postgis_url
 
@@ -89,6 +93,30 @@ def _parece_uuid(serie) -> bool:
 
 def _strip_schema(name: str) -> str:
     return name.split(".", 1)[1] if "." in name else name
+
+
+def _tabelas_ausentes(engine, schema: str, data) -> dict:
+    """Devolve {tabela: n_feicoes} das classes de saída que o destino NÃO tem.
+
+    A checagem roda ANTES de qualquer escrita, para o abort não deixar o
+    destino meio gravado, e usa a mesma introspecção do resto do writer.
+    """
+    try:
+        existentes = set(inspect(engine).get_table_names(schema=schema))
+    except Exception as e:
+        # Sem introspecção não dá para afirmar que a tabela falta. Avisar e
+        # seguir é melhor do que abortar uma conversão boa por isso.
+        logger.warning("Falha ao listar tabelas de %s: %s", schema, e)
+        return {}
+
+    ausentes = {}
+    for feature_type, gdf in data.items():
+        if gdf.empty:
+            continue
+        tabela = _strip_schema(feature_type)
+        if tabela not in existentes:
+            ausentes[tabela] = len(gdf)
+    return ausentes
 
 
 def _contar_linhas_existentes(engine, schema: str, table_names) -> dict:
@@ -227,6 +255,14 @@ def write_postgis(
     engine = create_engine(_build_postgis_url(dest_config))
 
     alvos = [_strip_schema(ft) for ft, gdf in data.items() if not gdf.empty]
+
+    # Antes de qualquer escrita: toda classe de saída tem de existir no destino.
+    # O to_postgis criaria a que falta, crua e sem nada do DDL EDGV.
+    ausentes = _tabelas_ausentes(engine, schema, data)
+    if ausentes:
+        engine.dispose()
+        raise TabelaDestinoAusenteError(schema, ausentes)
+
     ocupadas = _contar_linhas_existentes(engine, schema, alvos)
     if ocupadas:
         if se_existir == "abortar":

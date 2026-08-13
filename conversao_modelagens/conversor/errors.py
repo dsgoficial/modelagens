@@ -41,6 +41,44 @@ class DestinoNaoVazioError(Exception):
         return "\n".join(linhas)
 
 
+class TabelaDestinoAusenteError(Exception):
+    """A conversão produziu classe que não existe no schema de destino.
+
+    Sem esta checagem o `to_postgis(if_exists="append")` CRIA a tabela, e ela
+    nasce crua: sem chave primária, sem domínio, sem CHECK e sem gatilho, com
+    as colunas do modelo de ORIGEM. O banco continua de pé e deixa de ser
+    EDGV, em silêncio. Medido em 2026-08-13: uma carga Overture plantou
+    `edgv.llp_limite_legal_a` num banco Topo 1.4, que tem 95 classes e passou
+    a ter 96.
+
+    A causa quase sempre é mapeamento sem discriminador: duas ou mais classes
+    de origem apontam para a mesma classe de destino e nenhuma traz filtro, ou
+    o afixo de geometria gera um nome que o modelo de destino não tem.
+    """
+
+    def __init__(self, schema: str, ausentes: dict):
+        self.schema = schema
+        self.ausentes = ausentes
+        super().__init__(self._mensagem())
+
+    def _mensagem(self) -> str:
+        linhas = [
+            f"A conversão produziu {len(self.ausentes)} classe(s) que NÃO existem "
+            f"no schema '{self.schema}' do destino. Nada foi escrito.",
+            "",
+        ]
+        for tabela, n in sorted(self.ausentes.items(), key=lambda kv: -kv[1]):
+            linhas.append(f"  {self.schema}.{tabela}: {n} feição(ões) sem onde entrar")
+        linhas += [
+            "",
+            "O destino NÃO é o modelo que o mapeamento supõe, ou o mapeamento manda",
+            "duas classes de origem para a mesma classe de destino sem discriminador.",
+            "Confira, no mapeamento, se essas classes têm filtro de classe, e se o",
+            "afixo de geometria gera um nome que o modelo de destino tem de fato.",
+        ]
+        return "\n".join(linhas)
+
+
 @dataclass
 class ConversionError:
     source_table: str
