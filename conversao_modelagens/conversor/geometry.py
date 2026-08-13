@@ -54,7 +54,13 @@ def aggregate(geometries: list, geom_type: str = None):
 
     multi_cls = _MULTI_TYPES.get(geom_type)
     if multi_cls is not None:
-        return multi_cls(geometries)
+        # As entradas podem já ser multiparte (o clip promove LineString a
+        # MultiLineString quando a feição cruza a borda duas vezes), e o
+        # construtor Multi* do shapely não aceita membro multiparte.
+        partes = []
+        for geom in geometries:
+            partes.extend(split_multi(geom))
+        return multi_cls(partes)
     return unary_union(geometries)
 
 

@@ -6,12 +6,13 @@ that don't exist in the target, avoiding "column does not exist" errors.
 Also casts numeric types to match target column types.
 """
 import logging
+import uuid
 
 import geopandas as gpd
 import pandas as pd
 from sqlalchemy import create_engine, inspect, text
 
-from ..errors import DestinoNaoVazioError
+from ..errors import ConversionError, DestinoNaoVazioError
 from ..geometry import ensure_crs
 from ..readers.postgis import _build_postgis_url
 
@@ -45,6 +46,16 @@ def _fill_required_nulls(gdf, notnull_cols, table_name):
     for cn, dt in notnull_cols:
         if cn == geom_col or cn not in gdf.columns:
             continue
+        # uuid antes do atalho de "não há nulo": a origem legada traz `id`
+        # inteiro e cheio, que não é nulo e não é uuid. Mantê-lo faz o COPY
+        # inteiro falhar. Descartar deixa o default do banco agir.
+        if dt == "uuid" and not _parece_uuid(gdf[cn]):
+            gdf = gdf.drop(columns=[cn])
+            logger.info(
+                "  %s: coluna %s descartada (destino é uuid e a origem não traz "
+                "uuid); o default do banco vai gerar o valor.", table_name, cn,
+            )
+            continue
         if not gdf[cn].isna().any():
             continue
         if dt == "boolean":
@@ -53,11 +64,27 @@ def _fill_required_nulls(gdf, notnull_cols, table_name):
         elif dt in ("smallint", "integer", "bigint", "numeric", "double precision", "real"):
             gdf[cn] = gdf[cn].fillna(_EDGV_UNKNOWN)
             filled.append(cn)
-        elif dt == "uuid" and gdf[cn].isna().all():
-            gdf = gdf.drop(columns=[cn])  # deixa o default do banco (uuid_generate_v4) agir
     if filled:
         logger.info("  %s: null-fill em coluna(s) NOT NULL: %s", table_name, ", ".join(sorted(filled)))
     return gdf
+
+
+def _parece_uuid(serie) -> bool:
+    """Diz se a coluna traz uuid de verdade.
+
+    Coluna toda nula conta como uuid (o writer a descarta e o default do banco
+    gera o valor). Um só valor que não parseia como uuid reprova a coluna
+    inteira: basta ele para o COPY do lote falhar.
+    """
+    validos = serie.dropna()
+    if validos.empty:
+        return False
+    for valor in validos:
+        try:
+            uuid.UUID(str(valor))
+        except (ValueError, AttributeError, TypeError):
+            return False
+    return True
 
 
 def _strip_schema(name: str) -> str:
@@ -154,9 +181,16 @@ def _write_gdf(gdf, table_name, engine, schema):
 
 
 def _write_with_chunked_retry(gdf, table_name, engine, schema):
-    """Retry failed bulk insert in chunks, then row-by-row for failed chunks."""
+    """Retry failed bulk insert in chunks, then row-by-row for failed chunks.
+
+    Devolve `(ok, falhas)`, em que `falhas` é a lista de `(indice, mensagem)`
+    das linhas que o destino recusou. Quem chama PRECISA registrar essas
+    falhas no relatório: linha recusada pelo destino é perda de dado, e
+    reportá-la só no log deixa o resumo dizer "Erros: 0" sobre uma escrita
+    incompleta.
+    """
     ok = 0
-    fail = 0
+    falhas = []
     for start in range(0, len(gdf), RETRY_CHUNK_SIZE):
         chunk = gdf.iloc[start:start + RETRY_CHUNK_SIZE]
         try:
@@ -169,17 +203,16 @@ def _write_with_chunked_retry(gdf, table_name, engine, schema):
                     _write_gdf(chunk.iloc[[i]], table_name, engine, schema)
                     ok += 1
                 except Exception as row_err:
-                    fail += 1
-                    if fail <= 10:
-                        logger.debug("  Row %d falhou: %s", start + i, row_err)
-    logger.info("Retry %s.%s: %d ok, %d falhas", schema, table_name, ok, fail)
-    return ok
+                    falhas.append((start + i, str(row_err)))
+    logger.info("Retry %s.%s: %d ok, %d falhas", schema, table_name, ok, len(falhas))
+    return ok, falhas
 
 
 def write_postgis(
     data: dict[str, gpd.GeoDataFrame],
     dest_config: dict,
     se_existir: str = "abortar",
+    report=None,
 ):
     """Escreve as classes convertidas no destino PostGIS.
 
@@ -233,9 +266,26 @@ def write_postgis(
         try:
             _write_gdf(gdf, table_name, engine, schema)
             logger.info("Escrita tabela %s.%s: %d feições", schema, table_name, len(gdf))
+            if report is not None:
+                report.written_features += len(gdf)
         except Exception as e:
             logger.warning("Bulk insert falhou para %s.%s (%s). Retry em chunks...",
                            schema, table_name, e)
-            _write_with_chunked_retry(gdf, table_name, engine, schema)
+            ok, falhas = _write_with_chunked_retry(gdf, table_name, engine, schema)
+            if report is not None:
+                report.written_features += ok
+                for idx, msg in falhas:
+                    report.add_error(ConversionError(
+                        source_table=f"{schema}.{table_name}",
+                        feature_index=idx,
+                        error_type="WRITE_ERROR",
+                        message=msg,
+                    ))
+            elif falhas:
+                logger.error(
+                    "%s.%s: %d feição(ões) RECUSADAS pelo destino e não "
+                    "registradas no relatório (writer chamado sem report).",
+                    schema, table_name, len(falhas),
+                )
 
     engine.dispose()

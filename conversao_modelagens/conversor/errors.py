@@ -53,6 +53,7 @@ class ConversionError:
 class ConversionReport:
     total_features: int = 0
     converted_features: int = 0
+    written_features: int = 0
     skipped_class_not_found: int = 0
     skipped_invalid_geom: int = 0
     errors: list = field(default_factory=list)
@@ -69,6 +70,7 @@ class ConversionReport:
             "=== Relatório de Conversão ===",
             f"Total de feições processadas: {self.total_features}",
             f"Feições convertidas: {self.converted_features}",
+            f"Feições GRAVADAS no destino: {self.written_features}",
             f"Ignoradas (classe não encontrada): {self.skipped_class_not_found}",
             f"Ignoradas (geometria inválida): {self.skipped_invalid_geom}",
             f"Erros: {len(self.errors)}",
@@ -86,6 +88,7 @@ class ConversionReport:
         return {
             "total_features": self.total_features,
             "converted_features": self.converted_features,
+            "written_features": self.written_features,
             "skipped_class_not_found": self.skipped_class_not_found,
             "skipped_invalid_geom": self.skipped_invalid_geom,
             "errors": [

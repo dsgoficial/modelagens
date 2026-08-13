@@ -65,9 +65,10 @@ def _read_source(config: dict) -> dict[str, gpd.GeoDataFrame]:
 
 def _write_destination(
     data: dict[str, gpd.GeoDataFrame], dest_config: dict, se_existir: str = "abortar",
+    report: ConversionReport = None,
 ):
     if dest_config["type"] == "postgis":
-        write_postgis(data, dest_config, se_existir=se_existir)
+        write_postgis(data, dest_config, se_existir=se_existir, report=report)
     elif dest_config["type"] == "shapefile":
         # Shapefile não acumula: `to_file` reescreve o arquivo inteiro, então a
         # política de reexecução não se aplica.
@@ -525,7 +526,7 @@ def _run_single(config, converted, source_srid, target_srid, report, se_existir=
     output_gdfs = _clip_and_build_gdfs(converted, clip_geom, source_srid, target_srid)
 
     logger.info("Escrevendo %d classes destino...", len(output_gdfs))
-    _write_destination(output_gdfs, config["destination"], se_existir)
+    _write_destination(output_gdfs, config["destination"], se_existir, report)
 
     _export_report(report, config)
 
@@ -565,7 +566,7 @@ def _run_batch(config, converted, source_srid, target_srid, report, se_existir="
             "  Escrevendo %d classes (%d feições) em %s",
             len(output_gdfs), feat_count, clip_dest["path"],
         )
-        _write_destination(output_gdfs, clip_dest, se_existir)
+        _write_destination(output_gdfs, clip_dest, se_existir, report)
         total_written += feat_count
 
     logger.info(
@@ -595,7 +596,7 @@ def _run_segment(config, converted, source_srid, target_srid, report, se_existir
         len(output_gdfs), feat_count, len(converted),
     )
 
-    _write_destination(output_gdfs, config["destination"], se_existir)
+    _write_destination(output_gdfs, config["destination"], se_existir, report)
     _export_report(report, config)
 
 

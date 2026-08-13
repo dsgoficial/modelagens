@@ -5496,6 +5496,10 @@
             {
               "valor_A": 97,
               "valor_B": 0
+            },
+            {
+              "valor_A": 23,
+              "valor_B": 23
             }
           ]
         }
@@ -5531,6 +5535,10 @@
             {
               "valor_A": 97,
               "valor_B": 0
+            },
+            {
+              "valor_A": 23,
+              "valor_B": 23
             }
           ]
         }
