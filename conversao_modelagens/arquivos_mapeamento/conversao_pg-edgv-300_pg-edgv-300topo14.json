@@ -677,11 +677,13 @@
             },
             {
               "valor_A": 25,
-              "valor_B": 525
+              "valor_B": 525,
+              "sentido": "A=>B"
             },
             {
               "valor_A": 98,
-              "valor_B": 525
+              "valor_B": 525,
+              "sentido": "A=>B"
             }
           ]
         }
@@ -2815,19 +2817,23 @@
           "traducao": [
             {
               "valor_A": 4,
-              "valor_B": 98
+              "valor_B": 98,
+              "sentido": "A=>B"
             },
             {
               "valor_A": 8,
-              "valor_B": 98
+              "valor_B": 98,
+              "sentido": "A=>B"
             },
             {
               "valor_A": 99,
-              "valor_B": 98
+              "valor_B": 98,
+              "sentido": "A=>B"
             },
             {
               "valor_A": 23,
-              "valor_B": 98
+              "valor_B": 98,
+              "sentido": "A=>B"
             }
           ]
         }
@@ -2894,7 +2900,8 @@
           "traducao": [
             {
               "valor_A": 0,
-              "valor_B": 298
+              "valor_B": 298,
+              "sentido": "A=>B"
             },
             {
               "valor_A": 0,
@@ -2919,7 +2926,8 @@
             },
             {
               "valor_A": 99,
-              "valor_B": 298
+              "valor_B": 298,
+              "sentido": "A=>B"
             }
           ]
         },
@@ -2943,19 +2951,23 @@
           "traducao": [
             {
               "valor_A": 4,
-              "valor_B": 98
+              "valor_B": 98,
+              "sentido": "A=>B"
             },
             {
               "valor_A": 8,
-              "valor_B": 98
+              "valor_B": 98,
+              "sentido": "A=>B"
             },
             {
               "valor_A": 99,
-              "valor_B": 98
+              "valor_B": 98,
+              "sentido": "A=>B"
             },
             {
               "valor_A": 23,
-              "valor_B": 98
+              "valor_B": 98,
+              "sentido": "A=>B"
             }
           ]
         }
@@ -3838,11 +3850,13 @@
             },
             {
               "valor_A": 99,
-              "valor_B": 1098
+              "valor_B": 1098,
+              "sentido": "A=>B"
             },
             {
               "valor_A": 9999,
-              "valor_B": 1098
+              "valor_B": 1098,
+              "sentido": "A=>B"
             }
           ]
         }
@@ -5372,11 +5386,13 @@
           "traducao": [
             {
               "valor_A": 0,
-              "valor_B": 401
+              "valor_B": 401,
+              "sentido": "A=>B"
             },
             {
               "valor_A": 1,
-              "valor_B": 401
+              "valor_B": 401,
+              "sentido": "A=>B"
             },
             {
               "valor_A": 2,
@@ -5487,15 +5503,18 @@
           "traducao": [
             {
               "valor_A": 8,
-              "valor_B": 0
+              "valor_B": 0,
+              "sentido": "A=>B"
             },
             {
               "valor_A": 99,
-              "valor_B": 0
+              "valor_B": 0,
+              "sentido": "A=>B"
             },
             {
               "valor_A": 97,
-              "valor_B": 0
+              "valor_B": 0,
+              "sentido": "A=>B"
             },
             {
               "valor_A": 23,
@@ -5526,15 +5545,18 @@
           "traducao": [
             {
               "valor_A": 8,
-              "valor_B": 0
+              "valor_B": 0,
+              "sentido": "A=>B"
             },
             {
               "valor_A": 99,
-              "valor_B": 0
+              "valor_B": 0,
+              "sentido": "A=>B"
             },
             {
               "valor_A": 97,
-              "valor_B": 0
+              "valor_B": 0,
+              "sentido": "A=>B"
             },
             {
               "valor_A": 23,
@@ -5891,11 +5913,13 @@
             },
             {
               "valor_A": 4,
-              "valor_B": 9999
+              "valor_B": 9999,
+              "sentido": "A=>B"
             },
             {
               "valor_A": 99,
-              "valor_B": 9999
+              "valor_B": 9999,
+              "sentido": "A=>B"
             }
           ]
         },
@@ -5905,15 +5929,18 @@
           "traducao": [
             {
               "valor_A": 3,
-              "valor_B": 0
+              "valor_B": 0,
+              "sentido": "A=>B"
             },
             {
               "valor_A": 15,
-              "valor_B": 0
+              "valor_B": 0,
+              "sentido": "A=>B"
             },
             {
               "valor_A": 97,
-              "valor_B": 0
+              "valor_B": 0,
+              "sentido": "A=>B"
             }
           ]
         },
@@ -5923,15 +5950,18 @@
           "traducao": [
             {
               "valor_A": 3,
-              "valor_B": 0
+              "valor_B": 0,
+              "sentido": "A=>B"
             },
             {
               "valor_A": 4,
-              "valor_B": 0
+              "valor_B": 0,
+              "sentido": "A=>B"
             },
             {
               "valor_A": 8,
-              "valor_B": 0
+              "valor_B": 0,
+              "sentido": "A=>B"
             }
           ]
         }
@@ -6033,11 +6063,13 @@
             },
             {
               "valor_A": 4,
-              "valor_B": 9999
+              "valor_B": 9999,
+              "sentido": "A=>B"
             },
             {
               "valor_A": 99,
-              "valor_B": 9999
+              "valor_B": 9999,
+              "sentido": "A=>B"
             }
           ]
         },
@@ -6047,15 +6079,18 @@
           "traducao": [
             {
               "valor_A": 3,
-              "valor_B": 0
+              "valor_B": 0,
+              "sentido": "A=>B"
             },
             {
               "valor_A": 15,
-              "valor_B": 0
+              "valor_B": 0,
+              "sentido": "A=>B"
             },
             {
               "valor_A": 97,
-              "valor_B": 0
+              "valor_B": 0,
+              "sentido": "A=>B"
             }
           ]
         },
@@ -6065,15 +6100,18 @@
           "traducao": [
             {
               "valor_A": 3,
-              "valor_B": 0
+              "valor_B": 0,
+              "sentido": "A=>B"
             },
             {
               "valor_A": 4,
-              "valor_B": 0
+              "valor_B": 0,
+              "sentido": "A=>B"
             },
             {
               "valor_A": 8,
-              "valor_B": 0
+              "valor_B": 0,
+              "sentido": "A=>B"
             }
           ]
         }
@@ -8067,6 +8105,10 @@
           "traducao": [
             {
               "valor_A": 15,
+              "valor_B": 20
+            },
+            {
+              "valor_A": 20,
               "valor_B": 19
             }
           ]
@@ -8523,7 +8565,8 @@
           "traducao": [
             {
               "valor_A": 0,
-              "valor_B": 104
+              "valor_B": 104,
+              "sentido": "A=>B"
             },
             {
               "valor_A": 1,
@@ -8539,7 +8582,8 @@
             },
             {
               "valor_A": 4,
-              "valor_B": 104
+              "valor_B": 104,
+              "sentido": "A=>B"
             },
             {
               "valor_A": 5,
@@ -10487,15 +10531,23 @@
       "traducao": [
         {
           "valor_A": 8,
-          "valor_B": 98
+          "valor_B": 98,
+          "sentido": "A=>B"
         },
         {
           "valor_A": 99,
-          "valor_B": 98
+          "valor_B": 98,
+          "sentido": "A=>B"
         },
         {
           "valor_A": 23,
-          "valor_B": 98
+          "valor_B": 98,
+          "sentido": "A=>B"
+        },
+        {
+          "valor_A": 99,
+          "valor_B": 98,
+          "sentido": "B=>A"
         }
       ]
     },

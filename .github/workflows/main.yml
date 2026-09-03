@@ -1,26 +1,137 @@
-name: Validate JSON
+name: Valida mapeamentos
 
-on: 
+# O workflow anterior chamava `jq --argfile b path_to_your_schema.json`, e esse
+# arquivo nao existe no repo. A expressao ainda comparava o mapeamento com o
+# schema por IGUALDADE, o que nao e validacao. Ou seja: a CI que dizia validar
+# os mapeamentos nao validava nada desde que foi escrita.
+
+on:
   push:
     paths:
-      - 'conversao_modelagens/arquivos_mapeamento/*.json'
+      - 'conversao_modelagens/**'
+      - 'edgv_300*/**'
+      - 'modelagens_legadas/**'
+  pull_request:
+  workflow_dispatch:
 
 jobs:
-  validate:
+  schema:
+    name: Mapeamentos contra o JSON Schema
     runs-on: ubuntu-latest
-
     steps:
-    - name: Check out the code
-      uses: actions/checkout@v2
-      
-    - name: Install JSON schema validator
-      run: |
-        sudo apt-get install -y jq
-        # Instale outras ferramentas ou dependências necessárias
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: pip install jsonschema
+      - name: Validar arquivos_mapeamento e config_examples
+        working-directory: conversao_modelagens
+        run: |
+          python - <<'EOF'
+          import glob, json, sys
+          import jsonschema
 
-    - name: Validate JSON files in arquivos_mapeamento
-      run: |
-        for file in $(git diff --name-only --diff-filter=AM ${{ github.event.before }} ${{ github.sha }} | grep 'arquivos_mapeamento/.*\.json$'); do
-          # Use a ferramenta de validação aqui, por exemplo:
-          jq --argfile a $file --argfile b path_to_your_schema.json '. as $dot | $a | if ($dot == $b) then . else error("Schema validation failed") end'
-        done
+          falhas = 0
+          pares = [
+              ("arquivo_mapeamento_schema.json", "arquivos_mapeamento/*.json"),
+              ("conversor/config_schema.json", "conversor/config_examples/*.json"),
+          ]
+          for caminho_schema, padrao in pares:
+              schema = json.load(open(caminho_schema, encoding="utf-8"))
+              arquivos = sorted(glob.glob(padrao))
+              if not arquivos:
+                  print(f"FALHA: nenhum arquivo em {padrao}")
+                  falhas += 1
+                  continue
+              for arq in arquivos:
+                  try:
+                      jsonschema.validate(
+                          json.load(open(arq, encoding="utf-8")), schema
+                      )
+                      print(f"ok    {arq}")
+                  except Exception as e:
+                      print(f"FALHA {arq}: {str(e).splitlines()[0]}")
+                      falhas += 1
+          sys.exit(1 if falhas else 0)
+          EOF
+
+  dominios:
+    name: Dominio de origem contra dominio de destino
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Checagem estatica dos pares versionados
+        working-directory: conversao_modelagens
+        run: |
+          python - <<'EOF'
+          import sys
+          from conversor.checar_dominios import analisar, checar_traducoes
+
+          M = ".."
+          AM = "arquivos_mapeamento/"
+          PARES = [
+              (f"{M}/modelagens_legadas/edgv_300_topo/1_3/edgv_300_topo_13.sql",
+               f"{M}/edgv_300_topo/1_4/edgv_300_topo_14.sql",
+               AM + "conversao_pg-edgv300topo13_pg-edgv-300topo14.json"),
+              (f"{M}/edgv_300/edgv_300.sql",
+               f"{M}/edgv_300_topo/1_4/edgv_300_topo_14.sql",
+               AM + "conversao_pg-edgv-300_pg-edgv-300topo14.json"),
+              (f"{M}/edgv_300_topo/1_4/edgv_300_topo_14.sql",
+               f"{M}/edgv_300_orto/2_5/edgv_300_orto_25.sql",
+               AM + "conversao_pg-edgv-300topo14_pg-edgv-300orto25.json"),
+              (f"{M}/modelagens_legadas/edgv_300_orto/2_4/edgv_300_orto_24.sql",
+               f"{M}/edgv_300_orto/2_5/edgv_300_orto_25.sql",
+               AM + "conversao_pg-edgv300orto24_pg-edgv-300orto25.json"),
+          ]
+          # A checagem estatica ainda acusa em pares que ninguem fechou, entao
+          # o job REPORTA e nao derruba a CI. O que ele impede e a regressao:
+          # o numero abaixo so pode CAIR. Suba-o e o job passa a cobrar mais.
+          TETO = {}  # mapeamento -> maximo de recusas aceito hoje
+          import json, os
+          if os.path.exists("conversor/teto_dominio.json"):
+              TETO = json.load(open("conversor/teto_dominio.json", encoding="utf-8"))
+
+          falhou = False
+          for ddl_o, ddl_d, mapa in PARES:
+              for direcao in ("A=>B", "B=>A"):
+                  a, b = (ddl_o, ddl_d) if direcao == "A=>B" else (ddl_d, ddl_o)
+                  achados = analisar(a, b, mapa, direcao)
+                  graves = [x for x in achados if x["default_no_destino"] is None]
+                  susp, amb = checar_traducoes(a, b, mapa, direcao)
+                  chave = f"{os.path.basename(mapa)} {direcao}"
+                  teto = TETO.get(chave, 0)
+                  marca = "ok   " if len(graves) <= teto else "PIOROU"
+                  if len(graves) > teto:
+                      falhou = True
+                  print(f"{marca} {chave}: {len(graves)} recusa(s) "
+                        f"(teto {teto}), {len(susp)} suspeita(s), "
+                        f"{len(amb)} ambigua(s)")
+                  for x in graves:
+                      print(f"        {x['tabela_origem']}.{x['coluna_origem']} -> "
+                            f"{x['tabela_destino']}.{x['coluna_destino']}: "
+                            f"{x['codigos_sem_destino']} ({x['barreira']})")
+                  # Ambiguidade nao tem teto: e sempre defeito, porque o
+                  # conversor escolhe o ultimo em silencio.
+                  if amb:
+                      falhou = True
+                      for x in amb:
+                          print(f"        AMBIGUA {x['escopo']} {x['attr']}: "
+                                f"{x['valor_origem']} -> {x['destinos']}")
+          sys.exit(1 if falhou else 0)
+          EOF
+
+  testes:
+    name: Testes do conversor
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: pip install pytest jsonschema
+      - name: Testes que nao tocam banco nem GDAL
+        working-directory: conversao_modelagens
+        run: pytest conversor/tests/test_checagem_dominio.py -q

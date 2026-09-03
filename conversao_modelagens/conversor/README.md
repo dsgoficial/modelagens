@@ -395,12 +395,68 @@ Erros: 0
 
 Se `log_file` estiver configurado nas opcoes, um arquivo `.log` e um `_report.json` sao gerados.
 
+## Checagem de dominio
+
+Antes de ler qualquer feicao, o conversor confere se a origem guarda valor que o
+dominio ou o CHECK do destino recusa. Se guardar, ele para e nao escreve nada.
+
+A checagem le o modelo do BANCO de destino, nao do arquivo `.sql`: o DDL diz
+como o banco deveria ter nascido, e o que interessa aqui e o que ele aceita
+agora. Custa um `SELECT DISTINCT` por coluna com dominio, e nao escreve nada.
+
+O que ela pega, e que a comparacao de modelo com modelo nao pega:
+
+- valor fora do dominio da PROPRIA origem (FK derrubada para uma carga, dominio
+  estendido a mao, dado de linhagem legada);
+- coluna que guarda texto onde o destino quer codigo, como o `sigla` de
+  `llp_unidade_federacao_a`, que era `varchar` na Topo 1.3 e virou `smallint`
+  com FK na 1.4;
+- codigo que a FK aceita e o CHECK daquela classe recusa.
+
+Ela existe por um caso medido em 2026-09-03, numa conversao Topo 1.3 para 1.4:
+`llp_limite_legal_l` gravou **0 de 10** feicoes, porque o dado trazia `tipo = 3`
+e nenhum dos dois modelos declara esse codigo. A conversao rodou por quatro
+minutos, o retry linha a linha virou aviso no log, e o resumo terminou sem dizer
+que uma classe inteira tinha saido vazia.
+
+Ao acusar, ela nomeia as tres saidas: declarar a traducao no mapeamento,
+declarar um filtro se o conceito nao existe no destino, ou `--ignorar-dominio`
+para converter assim mesmo, aceitando a perda. O `--dry-run` mostra a lista sem
+converter.
+
+Fora do conversor, os mesmos criterios rodam sozinhos contra os arquivos:
+
+```bash
+py -m conversor.checar_dominios estatico ORIGEM.sql DESTINO.sql MAPA.json [A=>B]
+py -m conversor.checar_dominios traducoes ORIGEM.sql DESTINO.sql MAPA.json [A=>B]
+```
+
+O modo `estatico` compara os dois DDL ao longo do mapeamento e pega o dominio
+que encolheu entre os modelos. O modo `traducoes` confere cada `traducao` contra
+o ROTULO dos dois dominios: acusa a que manda 'Fibra' para 'Outros' quando o
+destino tem 'Fibra', e a que declara dois destinos para o mesmo valor de origem.
+Nem toda suspeita e defeito, entao ela pede julgamento: neste repo, as 43
+traducoes que partem do codigo 0 ('Desconhecido') nunca vao para 0, e isso e
+convencao deliberada.
+
+## Relatorio: o que se perdeu
+
+Alem das contagens, o resumo separa tres coisas que antes viravam um numero so:
+
+- **Descartadas por FILTRO declarado**: o mapeamento tirou de proposito. E
+  decisao, e o relatorio diz de qual classe.
+- **Classes de origem SEM entrada no mapeamento**: perda que ninguem declarou,
+  e quase sempre defeito.
+- **ESCRITA INCOMPLETA**: o destino recusou feicao. Classe que sai com zero vem
+  marcada `<-- CLASSE VAZIA`.
+
 ## Codigos de saida
 
 | Codigo | Quando |
 |---|---|
 | `0` | Tudo certo (ou `--dry-run`, ou `--schema`) |
-| `2` | Config invalido, ou destino nao vazio com `--se-existir abortar` |
+| `1` | Houve PERDA: feicao recusada pelo destino, escrita incompleta, ou classe de origem sem entrada no mapeamento |
+| `2` | Config invalido, destino nao vazio com `--se-existir abortar`, ou valor fora do dominio do destino |
 
 ## Testes
 

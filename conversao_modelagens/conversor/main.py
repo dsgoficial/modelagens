@@ -21,7 +21,12 @@ from shapely import wkt
 from .config import VALID_SE_EXISTIR, load_config, load_mapping
 from .converter import FeatureConverter
 from .dryrun import imprimir_plano, montar_plano
-from .errors import ConversionError, ConversionReport, DestinoNaoVazioError
+from .errors import (
+    ConversionError,
+    ConversionReport,
+    DestinoNaoVazioError,
+    ValorForaDeDominioError,
+)
 from .geometry import aggregate, clip, detect_geom_type, ensure_crs, reproject, split_multi
 from .readers.postgis import read_postgis, _build_postgis_url
 from .readers.shapefile import read_shapefiles
@@ -32,7 +37,7 @@ from .writers.shapefile import write_shapefiles
 logger = logging.getLogger("conversor")
 
 _INTERNAL_KEYS = frozenset({
-    "$GEOM_TYPE", "INVALID_GEOM", "CLASS_NOT_FOUND",
+    "$GEOM_TYPE", "INVALID_GEOM", "CLASS_NOT_FOUND", "CLASS_FILTERED",
     "AGGREGATE_GEOM", "feature_type", "feature_type_original",
     "feature_type_sem_schema", "feature_type_sem_afixo",
 })
@@ -143,6 +148,9 @@ def _convert_source_data(
 
                 if mapped.get("CLASS_NOT_FOUND"):
                     report.skipped_class_not_found += 1
+                    report.registrar_descarte(
+                        table_name, bool(mapped.get("CLASS_FILTERED")),
+                    )
                     continue
 
                 dest_type = mapped.get("feature_type", table_name)
@@ -462,7 +470,43 @@ def _run_stage_transform(
     return _convert_source_data(data, converter, report, error_action, quality_meta)
 
 
-def run(config_path: str, se_existir: str = "abortar"):
+def _portao_dominio(config: dict, ignorar: bool):
+    """Confere, ANTES de ler feição, se a origem guarda valor que o destino
+    recusa. Só leitura, nos dois bancos.
+
+    Existe porque a descoberta vinha tarde demais: a conversão rodava inteira,
+    o retry linha a linha do escritor virava aviso no log, e uma classe podia
+    terminar com zero feição no destino. Medido em 2026-09-03 numa conversão
+    Topo 1.3 para 1.4, em `llp_limite_legal_l`.
+
+    Falha de conexão aqui não aborta a conversão: avisa e segue, porque um
+    portão que derruba trabalho bom por indisponibilidade de rede vira a
+    primeira coisa que se desliga.
+    """
+    from .checar_dominios import checar_config, resumo_checagem
+
+    try:
+        achados, textos, motivo = checar_config(config)
+    except Exception as e:
+        logger.warning("Checagem de domínio não pôde rodar (%s). Seguindo.", e)
+        return
+
+    for linha in resumo_checagem(achados, textos, motivo):
+        logger.info(linha)
+    graves = [a for a in achados if a["default_no_destino"] is None]
+    if not graves and not textos:
+        return
+    if ignorar:
+        logger.warning(
+            "--ignorar-dominio: seguindo mesmo com %d coluna(s) que o destino "
+            "recusa. As feições correspondentes SERÃO perdidas.",
+            len(graves) + len(textos),
+        )
+        return
+    raise ValorForaDeDominioError(graves, textos)
+
+
+def run(config_path: str, se_existir: str = "abortar", ignorar_dominio: bool = False):
     config = load_config(config_path)
     _setup_logging(config)
 
@@ -473,6 +517,8 @@ def run(config_path: str, se_existir: str = "abortar"):
 
     logger.info("Carregando configuração de: %s", config_path)
     logger.info("Pipeline com %d estágio(s)", len(stages))
+
+    _portao_dominio(config, ignorar_dominio)
 
     # Read source data (uma única vez)
     logger.info("Lendo dados de origem...")
@@ -517,6 +563,8 @@ def run(config_path: str, se_existir: str = "abortar"):
         _run_batch(config, converted, source_srid, target_srid, report, se_existir)
     else:
         _run_single(config, converted, source_srid, target_srid, report, se_existir)
+
+    return report
 
 
 def _run_single(config, converted, source_srid, target_srid, report, se_existir="abortar"):
@@ -634,6 +682,14 @@ def build_parser() -> argparse.ArgumentParser:
         "--json", action="store_true", dest="json_out",
         help="Saída em JSON (vale para --dry-run)",
     )
+    parser.add_argument(
+        "--ignorar-dominio", action="store_true", dest="ignorar_dominio",
+        help=(
+            "Converte mesmo que a origem tenha valor que o destino recusa. "
+            "As feições correspondentes serão perdidas, uma a uma, e o "
+            "relatório dirá quais"
+        ),
+    )
     return parser
 
 
@@ -662,7 +718,14 @@ def main():
         sys.exit(0)
 
     try:
-        run(args.config, se_existir=args.se_existir)
+        report = run(
+            args.config, se_existir=args.se_existir,
+            ignorar_dominio=args.ignorar_dominio,
+        )
+    except ValorForaDeDominioError as e:
+        # Não é falha de conversão, é decisão pendente, como o destino não vazio.
+        print(f"\n{e}", file=sys.stderr)
+        sys.exit(2)
     except DestinoNaoVazioError as e:
         # Guarda de reexecução: não é falha de conversão, é decisão pendente.
         print(f"\n{e}", file=sys.stderr)
@@ -670,6 +733,11 @@ def main():
     except (ValueError, FileNotFoundError, json.JSONDecodeError) as e:
         print(f"ERRO: {e}", file=sys.stderr)
         sys.exit(2)
+
+    # Perda de feição não pode sair com 0: quem chama por script precisa saber
+    # que o destino ficou incompleto sem ler o log inteiro.
+    if report is not None and report.houve_perda():
+        sys.exit(1)
 
 
 if __name__ == "__main__":

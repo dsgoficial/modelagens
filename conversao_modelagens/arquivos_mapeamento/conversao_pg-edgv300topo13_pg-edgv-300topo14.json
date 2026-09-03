@@ -62,6 +62,29 @@
           "nome_atributo": "config_comprimento_simb",
           "valor": 9999
         }
+      ],
+      "mapeamento_atributos": [
+        {
+          "attr_A": "modal_uso",
+          "attr_B": "modal_uso",
+          "traducao": [
+            {
+              "valor_A": 7,
+              "valor_B": 97,
+              "sentido": "A=>B"
+            },
+            {
+              "valor_A": 10,
+              "valor_B": 97,
+              "sentido": "A=>B"
+            },
+            {
+              "valor_A": 14,
+              "valor_B": 97,
+              "sentido": "A=>B"
+            }
+          ]
+        }
       ]
     },
     {
@@ -186,7 +209,13 @@
     },
     {
       "classe_A": "edicao_limite_legal",
-      "classe_B": "llp_limite_legal"
+      "classe_B": "llp_limite_legal",
+      "filtro_A": {
+        "$not": {
+          "nome_atributo": "tipo",
+          "valor": 3
+        }
+      }
     },
     {
       "classe_A": "edicao_area_sem_dados",
@@ -558,11 +587,133 @@
           "nome_atributo": "visivel",
           "valor": 1
         }
-      ]
+      ],
+      "filtro_A": {
+        "$not": {
+          "nome_atributo": "tipo",
+          "valor": 1
+        }
+      }
     },
     {
       "classe_A": "llp_unidade_federacao",
-      "classe_B": "llp_unidade_federacao"
+      "classe_B": "llp_unidade_federacao",
+      "mapeamento_atributos": [
+        {
+          "attr_A": "sigla",
+          "attr_B": "sigla",
+          "traducao": [
+            {
+              "valor_A": "AC",
+              "valor_B": 1
+            },
+            {
+              "valor_A": "AL",
+              "valor_B": 2
+            },
+            {
+              "valor_A": "AM",
+              "valor_B": 3
+            },
+            {
+              "valor_A": "AP",
+              "valor_B": 4
+            },
+            {
+              "valor_A": "BA",
+              "valor_B": 5
+            },
+            {
+              "valor_A": "CE",
+              "valor_B": 6
+            },
+            {
+              "valor_A": "DF",
+              "valor_B": 7
+            },
+            {
+              "valor_A": "ES",
+              "valor_B": 8
+            },
+            {
+              "valor_A": "GO",
+              "valor_B": 9
+            },
+            {
+              "valor_A": "MA",
+              "valor_B": 10
+            },
+            {
+              "valor_A": "MG",
+              "valor_B": 11
+            },
+            {
+              "valor_A": "MS",
+              "valor_B": 12
+            },
+            {
+              "valor_A": "MT",
+              "valor_B": 13
+            },
+            {
+              "valor_A": "PA",
+              "valor_B": 14
+            },
+            {
+              "valor_A": "PB",
+              "valor_B": 15
+            },
+            {
+              "valor_A": "PE",
+              "valor_B": 16
+            },
+            {
+              "valor_A": "PI",
+              "valor_B": 17
+            },
+            {
+              "valor_A": "PR",
+              "valor_B": 18
+            },
+            {
+              "valor_A": "RJ",
+              "valor_B": 19
+            },
+            {
+              "valor_A": "RN",
+              "valor_B": 20
+            },
+            {
+              "valor_A": "RO",
+              "valor_B": 21
+            },
+            {
+              "valor_A": "RR",
+              "valor_B": 22
+            },
+            {
+              "valor_A": "RS",
+              "valor_B": 23
+            },
+            {
+              "valor_A": "SC",
+              "valor_B": 24
+            },
+            {
+              "valor_A": "SE",
+              "valor_B": 25
+            },
+            {
+              "valor_A": "SP",
+              "valor_B": 26
+            },
+            {
+              "valor_A": "TO",
+              "valor_B": 27
+            }
+          ]
+        }
+      ]
     },
     {
       "classe_A": "llp_localidade",
@@ -570,7 +721,35 @@
     },
     {
       "classe_A": "llp_ponto_controle",
-      "classe_B": "llp_ponto_controle"
+      "classe_B": "llp_ponto_controle",
+      "mapeamento_atributos": [
+        {
+          "attr_A": "tipo",
+          "attr_B": "tipo",
+          "traducao": [
+            {
+              "valor_A": 12,
+              "valor_B": 9,
+              "sentido": "A=>B"
+            },
+            {
+              "valor_A": 13,
+              "valor_B": 9,
+              "sentido": "A=>B"
+            }
+          ]
+        },
+        {
+          "attr_A": "referencial_altim",
+          "attr_B": "referencial_altim",
+          "traducao": [
+            {
+              "valor_A": 4,
+              "valor_B": 99
+            }
+          ]
+        }
+      ]
     },
     {
       "classe_A": "llp_pais",
@@ -578,7 +757,13 @@
     },
     {
       "classe_A": "edicao_limite_especial",
-      "classe_B": "edicao_limite_especial"
+      "classe_B": "edicao_limite_especial",
+      "filtro_A": {
+        "$not": {
+          "nome_atributo": "tipo",
+          "valor": 1
+        }
+      }
     },
     {
       "classe_A": "centroide_area_sem_dados",
@@ -679,7 +864,13 @@
     },
     {
       "classe_A": "centroide_limite_especial",
-      "classe_B": "centroide_limite_especial"
+      "classe_B": "centroide_limite_especial",
+      "filtro_A": {
+        "$not": {
+          "nome_atributo": "tipo",
+          "valor": 1
+        }
+      }
     },
     {
       "classe_A": "edicao_texto_generico",

@@ -167,11 +167,17 @@ class FeatureConverter:
 
         # Find matching class (single pass)
         matched_classmap = None
+        # Guardar se o NOME bateu importa: feicao descartada porque o mapeamento
+        # nao conhece a classe e defeito, e feicao descartada por um filtro
+        # declarado e decisao. As duas caiam no mesmo balde
+        # (`skipped_class_not_found`), e o relatorio nao distinguia.
+        nome_bateu = False
         for classmap in md["mapeamento_classes"]:
             if "sentido" in classmap and classmap["sentido"] != self.direction:
                 continue
             class_name = self._resolve_class_name(classmap, feat_dict)
             if classmap[self.k_class_o] == class_name:
+                nome_bateu = True
                 if self.k_filter in classmap:
                     if not self.evaluate_filter(feat_dict, classmap[self.k_filter]):
                         continue
@@ -180,6 +186,7 @@ class FeatureConverter:
 
         if matched_classmap is None:
             feat_dict["CLASS_NOT_FOUND"] = True
+            feat_dict["CLASS_FILTERED"] = nome_bateu
             return feat_dict
 
         # Build mapped feature

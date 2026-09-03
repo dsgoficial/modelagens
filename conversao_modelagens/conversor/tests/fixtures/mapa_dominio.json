@@ -1,0 +1,41 @@
+{
+  "metadados": {
+    "versao_arquivo": "0.1",
+    "modelo_A": "TESTE",
+    "versao_modelo_A": "1",
+    "modelo_B": "TESTE",
+    "versao_modelo_B": "2"
+  },
+  "schema_A": "edgv",
+  "schema_B": "edgv",
+  "afixo_geom_A": { "tipo": "sufixo", "POINT": "_p", "LINESTRING": "_l", "POLYGON": "_a" },
+  "afixo_geom_B": { "tipo": "sufixo", "POINT": "_p", "LINESTRING": "_l", "POLYGON": "_a" },
+  "mapeamento_classes": [
+    {
+      "classe_A": "classe_velha",
+      "classe_B": "classe_nova",
+      "filtro_A": {
+        "$not": {
+          "$or": [
+            { "nome_atributo": "tipo_filtrado", "valor": 3 },
+            { "nome_atributo": "tipo_filtrado", "valor": 4 }
+          ]
+        }
+      },
+      "atributos_default_B": [
+        { "nome_atributo": "tipo_default", "valor": 9999 }
+      ],
+      "mapeamento_atributos": [
+        { "attr_A": "tipo_renomeado", "attr_B": "tipo_novo_nome" },
+        {
+          "attr_A": "tipo_traduzido",
+          "attr_B": "tipo_traduzido",
+          "traducao": [
+            { "valor_A": 3, "valor_B": 1 },
+            { "valor_A": 4, "valor_B": 2 }
+          ]
+        }
+      ]
+    }
+  ]
+}

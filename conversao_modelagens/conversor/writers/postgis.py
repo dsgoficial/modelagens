@@ -304,12 +304,19 @@ def write_postgis(
             logger.info("Escrita tabela %s.%s: %d feições", schema, table_name, len(gdf))
             if report is not None:
                 report.written_features += len(gdf)
+                report.registrar_escrita(f"{schema}.{table_name}", len(gdf), len(gdf))
         except Exception as e:
             logger.warning("Bulk insert falhou para %s.%s (%s). Retry em chunks...",
                            schema, table_name, e)
             ok, falhas = _write_with_chunked_retry(gdf, table_name, engine, schema)
             if report is not None:
                 report.written_features += ok
+                # A contagem do que ENTROU contra o que se pretendia gravar. O
+                # retry linha a linha transforma recusa do banco em log, e uma
+                # classe pode sair com ZERO feicao sem nada no resumo. Medido em
+                # 2026-09-03: llp_limite_legal_l gravou 0 de 10 e a conversao
+                # terminou dizendo que estava tudo certo.
+                report.registrar_escrita(f"{schema}.{table_name}", len(gdf), ok)
                 for idx, msg in falhas:
                     report.add_error(ConversionError(
                         source_table=f"{schema}.{table_name}",

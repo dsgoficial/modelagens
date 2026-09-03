@@ -280,6 +280,31 @@ def montar_plano(config: dict, config_path: str, se_existir: str) -> dict:
     except Exception as e:
         plano["classes_destino"] = {"erro": _msg_erro(e)}
 
+    # --- dominio ---
+    # A pergunta que o dry-run nao respondia e que custou uma conversao inteira:
+    # a origem guarda valor que o destino recusa? Ate 2026-09-03 o plano falava
+    # de modo, contagem e destino ocupado, e de dominio nao falava nada.
+    try:
+        from .checar_dominios import checar_config, resumo_checagem
+
+        achados, textos, motivo = checar_config(config)
+        graves = [a for a in achados if a["default_no_destino"] is None]
+        plano["dominio"] = {
+            "checado": motivo is None,
+            "motivo": motivo,
+            "colunas_recusadas": len(graves),
+            "colunas_com_texto": len(textos),
+            "linhas": resumo_checagem(achados, textos, motivo),
+        }
+        if graves or textos:
+            plano["avisos"].append(
+                f"{len(graves) + len(textos)} coluna(s) da origem levam valor que "
+                "o destino RECUSA: a execucao real perderia essas feicoes."
+            )
+    except Exception as e:
+        plano["dominio"] = {"checado": False, "erro": _msg_erro(e),
+                            "linhas": [f"Dominio: nao checado ({_msg_erro(e)})"]}
+
     return plano
 
 
@@ -347,6 +372,9 @@ def imprimir_plano(plano: dict):
         exemplos = ", ".join(classes["exemplos"])
         print(f"Classes de destino no mapeamento final: {classes['total']} "
               f"(ex.: {exemplos})")
+
+    for linha in plano.get("dominio", {}).get("linhas", []):
+        print(linha)
 
     for aviso in plano["avisos"]:
         print(f"AVISO: {aviso}")
