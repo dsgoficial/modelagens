@@ -2,6 +2,7 @@ psycopg2-binary>=2.9
 geopandas>=0.14
 shapely>=2.0
 sqlalchemy>=2.0
+geoalchemy2>=0.14
 fiona>=1.9
 pyproj>=3.6
 # Opcional: valida o config contra config_schema.json. Sem ele o CLI
