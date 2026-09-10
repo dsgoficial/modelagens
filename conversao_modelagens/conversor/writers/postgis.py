@@ -17,7 +17,7 @@ from ..errors import (
     DestinoNaoVazioError,
     TabelaDestinoAusenteError,
 )
-from ..geometry import ensure_crs
+from ..geometry import ensure_crs, force_2d, tem_z
 from ..readers.postgis import _build_postgis_url
 
 logger = logging.getLogger(__name__)
@@ -176,6 +176,44 @@ def _get_dest_columns(engine, schema, table_name):
         return None
 
 
+
+def _dimensao_destino(engine, schema, table_name, geom_col="geom"):
+    """Devolve a dimensão de coordenada declarada na coluna de geometria do
+    destino (2 ou 3), ou None quando não dá para ler.
+
+    Lê `geometry_columns`, que é a declaração viva da coluna, e não o DDL:
+    o que importa é o que o banco aceita AGORA.
+    """
+    try:
+        q = text("""SELECT coord_dimension FROM geometry_columns
+                    WHERE f_table_schema=:s AND f_table_name=:t
+                      AND f_geometry_column=:g""")
+        with engine.connect() as con:
+            r = con.execute(q, {"s": schema, "t": table_name, "g": geom_col}).scalar()
+        return int(r) if r is not None else None
+    except Exception as e:
+        logger.warning("Falha ao ler dimensão de %s.%s: %s", schema, table_name, e)
+        return None
+
+
+def _achatar_se_destino_2d(gdf, engine, schema, table_name):
+    """Achata a geometria quando ela traz Z e a coluna de destino é 2D.
+
+    Sem isto, o destino recusa TODAS as linhas ("Geometry has Z dimension but
+    column does not") e a classe sai vazia. Só achata quando o destino é mesmo
+    2D: se um dia houver coluna 3D, o Z passa intacto.
+    """
+    if not tem_z(gdf):
+        return gdf
+    dim = _dimensao_destino(engine, schema, table_name, gdf.geometry.name)
+    if dim is not None and dim > 2:
+        return gdf
+    logger.info(
+        "  %s: origem tem Z e a coluna de destino é 2D; achatando %d feição(ões).",
+        table_name, len(gdf),
+    )
+    return force_2d(gdf)
+
 def _align_gdf_to_dest(gdf, dest_cols, table_name):
     """Drop columns not in destination, cast types where needed."""
     geom_col = gdf.geometry.name
@@ -288,6 +326,9 @@ def write_postgis(
         # Rename geometry column to match destination table (typically "geom")
         if gdf.geometry.name != "geom":
             gdf = gdf.rename_geometry("geom")
+
+        # Achata Z antes de qualquer coisa: coluna 2D recusa a linha inteira.
+        gdf = _achatar_se_destino_2d(gdf, engine, schema, table_name)
 
         # Introspect destination and align columns
         dest_cols = _get_dest_columns(engine, schema, table_name)

@@ -4412,16 +4412,17 @@
                 {   "attr_A": "nome",
                     "attr_B": "nomelocal"
                 },
-                {   "attr_A": "tipoaglomrurisol",
+                {   "__comment": "Confira pelo ROTULO, nao pelo numero: a 2.1.3 tem 5 Povoado e 6 Nucleo, e a 3.0 tem 1 Nucleo e 2 Povoado. Estava 5=>1 e 6=>2, que trocava um pelo outro em silencio ate a Topo 1.4.",
+                    "attr_A": "tipoaglomrurisol",
                     "attr_B": "tipolocalidade",
                     "traducao": [
                         {
                             "valor_A": 5,
-                            "valor_B": 1
+                            "valor_B": 2
                         },
                         {
                             "valor_A": 6,
-                            "valor_B": 2
+                            "valor_B": 1
                         },
                         {
                             "valor_A": 7,

@@ -102,16 +102,43 @@ def _origem_shapefile(cfg: dict) -> dict:
 
     tabelas = []
     for fname in nomes:
-        try:
-            import fiona
-
-            with fiona.open(os.path.join(path, fname)) as src:
-                n = len(src)
-        except Exception:
-            # Contar é um luxo do dry-run; não vale abortar o plano por isso.
-            n = None
-        tabelas.append({"nome": os.path.splitext(fname)[0], "feicoes_estimadas": n})
+        n, tem_z = _info_shapefile(os.path.join(path, fname))
+        tabelas.append({
+            "nome": os.path.splitext(fname)[0],
+            "feicoes_estimadas": n,
+            "tem_z": tem_z,
+        })
     return {"tabelas": tabelas}
+
+
+def _info_shapefile(caminho: str):
+    """Lê do CABEÇALHO do shapefile o número de feições e se a geometria tem Z.
+
+    Tenta o pyogrio antes do fiona porque é ele o motor padrão do geopandas 1.x,
+    e o fiona pode simplesmente não estar instalado. Com o `except Exception`
+    engolindo o ImportError, todo dry-run de origem shapefile respondia
+    "~? feições", que é o mesmo que não responder.
+
+    O Z aparece aqui porque é a informação que decide se o writer vai achatar:
+    dizer isso ANTES da execução é o que o dry-run existe para fazer.
+    """
+    try:
+        import pyogrio
+
+        info = pyogrio.read_info(caminho)
+        tipo = str(info.get("geometry_type") or "")
+        return int(info["features"]), tipo.endswith(" Z") or tipo.endswith("Z")
+    except Exception:
+        pass
+    try:
+        import fiona
+
+        with fiona.open(caminho) as src:
+            tipo = str(src.schema.get("geometry", ""))
+            return len(src), "3D" in tipo or tipo.endswith("Z")
+    except Exception:
+        # Contar é um luxo do dry-run; não vale abortar o plano por isso.
+        return None, None
 
 
 def _destino_postgis_ocupado(cfg: dict) -> dict:
@@ -335,6 +362,11 @@ def imprimir_plano(plano: dict):
         )[:5]
         for t in maiores:
             print(f"    {t['nome']}: ~{t['feicoes_estimadas']}")
+        com_z = [t["nome"] for t in origem["tabelas"] if t.get("tem_z")]
+        if com_z:
+            print(f"  {len(com_z)} camada(s) com geometria 3D; o Z será achatado "
+                  f"se a coluna de destino for 2D: {', '.join(com_z[:5])}"
+                  f"{' ...' if len(com_z) > 5 else ''}")
 
     destino = plano["destino"]
     print(f"Destino: {destino['descricao']}")

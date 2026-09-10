@@ -4,6 +4,7 @@ Utilitários de geometria usando shapely.
 import logging
 
 import geopandas as gpd
+import shapely
 from shapely.geometry import (
     MultiLineString,
     MultiPoint,
@@ -104,3 +105,26 @@ def reproject(gdf: gpd.GeoDataFrame, target_srid: int) -> gpd.GeoDataFrame:
     if gdf.crs.to_epsg() == target_srid:
         return gdf
     return gdf.to_crs(target_crs)
+
+
+def force_2d(gdf: gpd.GeoDataFrame) -> gpd.GeoDataFrame:
+    """Descarta a dimensão Z (e M) das geometrias, devolvendo uma cópia.
+
+    Existe porque produto entregue em Shapefile costuma vir como PointZ,
+    PolylineZ ou PolygonZ, e NENHUMA tabela de dado dos modelos EDGV (3.0,
+    Topo 1.4, Topo 2.0, Orto 2.5/3.0) declara coluna 3D. Sem achatar, o COPY
+    do PostGIS recusa cada linha com "Geometry has Z dimension but column does
+    not" e a classe sai vazia.
+    """
+    if gdf.empty:
+        return gdf
+    gdf = gdf.copy()
+    gdf[gdf.geometry.name] = shapely.force_2d(gdf.geometry)
+    return gdf
+
+
+def tem_z(gdf: gpd.GeoDataFrame) -> bool:
+    """Diz se alguma geometria do GeoDataFrame carrega Z."""
+    if gdf.empty:
+        return False
+    return bool(shapely.has_z(gdf.geometry).any())

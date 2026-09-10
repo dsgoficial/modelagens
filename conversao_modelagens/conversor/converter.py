@@ -34,6 +34,26 @@ _DIRECTION_KEYS = {
 }
 
 
+def mesmo_valor(a, b) -> bool:
+    """Compara dois valores de domínio como o mapeamento os escreve.
+
+    A comparação é por string, como sempre foi, mas ignorando espaço nas bordas
+    e CAIXA. O motivo é medido: o mapeamento copia fielmente o rótulo do DDL do
+    modelo (a EDGV 2.1.3 grava 'Meandro Abandonado'), e o produto entregue em
+    Shapefile escreve 'Meandro abandonado'. Sem isto a tradução não casa, o
+    rótulo cru atravessa a cadeia e o destino grava 9999 ou recusa a linha.
+
+    Varridos os 34 arquivos de mapeamento do repositório, nenhum domínio tem
+    dois rótulos que colidam sob esta normalização, então ela não pode fundir
+    dois códigos distintos.
+    """
+    return _norm(a) == _norm(b)
+
+
+def _norm(v) -> str:
+    return str(v).strip().casefold()
+
+
 class FeatureConverter:
     def __init__(self, mapping_dict: dict, direction: str):
         self.mapping_dict = mapping_dict
@@ -86,7 +106,7 @@ class FeatureConverter:
                 feat_dict[expression["nome_atributo"]] is None
                 or feat_dict[expression["nome_atributo"]] == ""
             )
-        return str(feat_dict[expression["nome_atributo"]]) == str(expression["valor"])
+        return mesmo_valor(feat_dict[expression["nome_atributo"]], expression["valor"])
 
     def evaluate_filter(self, feat_dict: dict, filter_condition: dict) -> bool:
         if "$and" in filter_condition:
@@ -106,15 +126,23 @@ class FeatureConverter:
         for attmap in attmaps:
             if attmap[self.k_attr_o] not in feat_dict:
                 continue
-            if check_existing and attmap[self.k_attr_d] in mapped:
-                pass  # don't overwrite existing value, but still check traducao
-            else:
+            tem_traducao = "traducao" in attmap
+            # O guard existe para a regra de CLASSE não desfazer o que a
+            # tradução global já resolveu. Ele não pode valer para regra SEM
+            # tradução, que é renomeio puro: como `mapped` nasce cópia da
+            # origem inteira, um destino cujo NOME também é coluna da origem
+            # aparecia como "já preenchido" e a regra virava no-op silencioso.
+            # Medido na 2.1.3 para 3.0: `tipotrechomassa -> tipomassadagua`
+            # nunca disparava, e 29 trechos de massa d'água de uma folha
+            # chegaram à Topo 1.4 com tipo 9999 em vez de Rio.
+            bloqueado = check_existing and tem_traducao and attmap[self.k_attr_d] in mapped
+            if not bloqueado:
                 mapped[attmap[self.k_attr_d]] = feat_dict[attmap[self.k_attr_o]]
-            if "traducao" in attmap:
-                orig_val = str(feat_dict[attmap[self.k_attr_o]])
+            if tem_traducao:
+                orig_val = feat_dict[attmap[self.k_attr_o]]
                 for valuemap in attmap["traducao"]:
                     if (
-                        str(valuemap[self.k_val_o]) == orig_val
+                        mesmo_valor(valuemap[self.k_val_o], orig_val)
                         and ("sentido" not in valuemap or valuemap["sentido"] == self.direction)
                     ):
                         mapped[attmap[self.k_attr_d]] = valuemap[self.k_val_d]
