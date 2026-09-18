@@ -130,3 +130,6 @@ venv.bak/
 *.odt#
 
 node_modules
+
+#pasta de logs da conversão de modelagens
+conversao_modelagens/conversor/config_examples/logs/
