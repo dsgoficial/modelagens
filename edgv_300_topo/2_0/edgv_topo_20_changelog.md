@@ -112,6 +112,25 @@ Regra de valor: `1` (Sim) troca o traçado pelo símbolo de ponto, decisão de e
 
 Propagação: crosswalk da Topo 1.4 volta a ser 1:1 (auto-map de nome); EDGV 3.0, MGCP, MUVD e as bases do IBGE, que não têm o atributo na origem, injetam o default `2`; os tiles não recebem a coluna (`COLUMNS_TO_DROP` em `schema/scripts/config.py`, junto de `simb_rot`).
 
+### 1.5 Rev 0.17.0 (2026-09-19): limites por delimitador e centroide
+
+O limite legal ganha o par delimitador e centroide (tabelas na seção 2), e o delimitador do limite especial ganha `tipo`. As duas classes passam a se construir como as demais áreas estruturadas, pelo algoritmo "Build Polygons From Center Points and Boundaries" do DSGTools, que poligoniza as linhas e dá a cada face o atributo do centroide contido nela.
+
+| Tabela | Coluna | Tipo | FK / domínio | Descrição |
+|--------|--------|------|--------------|-----------|
+| `delimitador_limite_especial_l` | `tipo` | smallint | `dominios.tipo_limite_especial` | Regime cuja área a linha delimita |
+
+O delimitador das outras classes não tem atributo, e o destas duas tem, porque a poligonização só funciona sobre uma partição plana e nenhum dos dois limites é partição simples.
+
+- **O limite legal é hierárquico.** Cada trecho existe uma vez só em `delimitador_limite_legal_l`, no nível mais alto em que ocorre, de modo que a divisa estadual que é também municipal fica só como estadual. A UF se constrói com as linhas de `tipo IN (1, 2)` e o município com as de `tipo IN (1, 2, 3)`, e sem o `tipo` no delimitador não haveria filtro que separasse os níveis.
+- **O limite especial se sobrepõe.** Unidade de conservação sobre terra indígena e APA sobre parque são sobreposição real, e a regra é preservá-la como feições distintas. Numa poligonização única a face comum recebe dois centroides de atributos diferentes, e o DSGTools a reprova ("Polygon with more than one center point with conflicting attributes", `layerHandler.py`). Com `tipo` no delimitador a construção roda por regime, cada rodada com o seu filtro, e a divisa comum a dois regimes entra uma vez em cada.
+
+A sobreposição dentro de um mesmo `tipo`, como uma APA federal sobre uma APA estadual, continua sem construção por este caminho, pois o filtro não as separa, e esses casos seguem por polígono direto em `llp_limite_especial_a`.
+
+A costa e as divisas entre mares moram em `delimitador_massa_dagua_l`, com o centroide em `centroide_massa_dagua_p` tipo 3 (Oceano), como já fazia o `gadm_ibge_to_edgv.py`, e entram na construção do limite legal como camada de restrição. Num banco que tenha também lago e rio em `delimitador_massa_dagua_l`, a restrição passa a ser o polígono já construído `cobter_massa_dagua_a` com `tipo = 3`, porque a linha de água interior partiria o município em faces sem centroide.
+
+`llp_limite_legal_l` continua sendo a linha da carta, com os atributos de edição (`sobreposto`, `em_litigio`, `texto_edicao`), no papel que `edicao_limite_especial_l` tem para o limite especial. Os atributos que não entram na chave da face (`id`, `geocodigo`, `fontes`, metadados de produção) vão na lista "Fields to ignore" do algoritmo; do contrário cada centroide vira um conjunto de atributos próprio.
+
 ---
 
 ## 2. Novas tabelas
@@ -228,6 +247,34 @@ Polígonos de limites político-administrativos unificados: país, UF, municípi
 | `geometria_aproximada` | smallint | NOT NULL, FK → `dominios.booleano`, DEFAULT 9999 |
 | `observacao` | varchar(255) | nullable |
 | `geom` | MultiPolygon, 4674 | índice GiST |
+
+### `delimitador_limite_legal_l`
+
+Linha de construção do limite legal (rev 0.17.0). Cada trecho existe uma vez, no nível mais alto em que ocorre, e o `tipo` é o filtro da construção por nível (seção 1.5).
+
+| Coluna | Tipo | Constraints |
+|--------|------|-------------|
+| `id` | uuid | PK, DEFAULT uuid_generate_v4() |
+| `tipo` | smallint | NOT NULL, FK → `dominios.tipo_limite_legal`, DEFAULT 9999 |
+| `observacao` | varchar(255) | nullable |
+| `geom` | MultiLinestring, 4674 | índice GiST |
+
+### `centroide_limite_legal_p`
+
+Ponto que carrega os atributos do polígono de limite legal (rev 0.17.0), um por parte de multipolígono, pois a poligonização devolve cada ilha e cada exclave como face própria. As colunas são as de `llp_limite_legal_a` sem as de edição, e o polígono construído as recebe do centroide.
+
+| Coluna | Tipo | Constraints |
+|--------|------|-------------|
+| `id` | uuid | PK, DEFAULT uuid_generate_v4() |
+| `nome` | varchar(255) | nullable |
+| `tipo` | smallint | NOT NULL, FK → `dominios.tipo_limite_legal`, DEFAULT 9999 |
+| `geometria_aproximada` | smallint | NOT NULL, FK → `dominios.booleano`, DEFAULT 9999 |
+| `sigla` | varchar(10) | nullable |
+| `geocodigo_ibge` | varchar(15) | nullable |
+| `cod_iso` | varchar(3) | nullable |
+| `populacao` | integer | nullable |
+| `observacao` | varchar(255) | nullable |
+| `geom` | MultiPoint, 4674 | índice GiST |
 
 ### `elemnat_curva_batimetrica_l`
 
@@ -487,7 +534,7 @@ Bug originado em `mastergen.py`: o gerador anexa `9999` aos valores do CHECK sem
 | Campo | 1.4 | 2.0 |
 |-------|-----|-----|
 | `edgvversion` | EDGV 3.0 Topo | EDGV Topo 2.0 |
-| `dbimplversion` | 1.4.4 | 0.16.0 |
+| `dbimplversion` | 1.4.4 | 0.17.0 |
 
 > Rev 2026-07-26: `dbimplversion` corrigido para 0.15.0. A tabela dizia 0.14.0
 > enquanto o `edgv_topo_20.sql` já gravava 0.15.0 desde as revisões do cemitério
@@ -1054,4 +1101,52 @@ UPDATE edgv.infra_pista_pouso_a SET simb_ponto = 2 WHERE simb_ponto = 9999;
 
 UPDATE public.db_metadata SET dbimplversion = '0.16.0';
 ALTER TABLE public.db_metadata ALTER COLUMN dbimplversion SET DEFAULT '0.16.0';
+
+-- ===========================================
+-- Incremento 0.17.0 (2026-09-19)
+-- Limite legal por delimitador e centroide, e tipo no delimitador do limite
+-- especial, para construir por nivel (legal) e por regime (especial).
+-- ===========================================
+
+ALTER TABLE edgv.delimitador_limite_especial_l ADD COLUMN IF NOT EXISTS tipo smallint NOT NULL DEFAULT 9999;
+ALTER TABLE edgv.delimitador_limite_especial_l
+    ADD CONSTRAINT delimitador_limite_especial_l_tipo_fk
+    FOREIGN KEY (tipo) REFERENCES dominios.tipo_limite_especial (code) MATCH FULL;
+
+CREATE TABLE edgv.delimitador_limite_legal_l(
+	 id uuid NOT NULL DEFAULT uuid_generate_v4(),
+	 tipo smallint NOT NULL DEFAULT 9999,
+	 observacao varchar(255),
+	 geom geometry(MultiLinestring, 4674),
+	 CONSTRAINT delimitador_limite_legal_l_pk PRIMARY KEY (id) WITH (FILLFACTOR = 80),
+	 CONSTRAINT delimitador_limite_legal_l_tipo_fk FOREIGN KEY (tipo)
+	 REFERENCES dominios.tipo_limite_legal (code) MATCH FULL
+);
+CREATE INDEX delimitador_limite_legal_l_geom ON edgv.delimitador_limite_legal_l USING gist (geom);
+
+CREATE TABLE edgv.centroide_limite_legal_p(
+	 id uuid NOT NULL DEFAULT uuid_generate_v4(),
+	 nome varchar(255),
+	 tipo smallint NOT NULL DEFAULT 9999,
+	 geometria_aproximada smallint NOT NULL DEFAULT 9999,
+	 sigla varchar(10),
+	 geocodigo_ibge varchar(15),
+	 cod_iso varchar(3),
+	 populacao integer,
+	 observacao varchar(255),
+	 geom geometry(MultiPoint, 4674),
+	 CONSTRAINT centroide_limite_legal_p_pk PRIMARY KEY (id) WITH (FILLFACTOR = 80),
+	 CONSTRAINT centroide_limite_legal_p_tipo_fk FOREIGN KEY (tipo)
+	 REFERENCES dominios.tipo_limite_legal (code) MATCH FULL,
+	 CONSTRAINT centroide_limite_legal_p_geometria_aproximada_fk FOREIGN KEY (geometria_aproximada)
+	 REFERENCES dominios.booleano (code) MATCH FULL
+);
+CREATE INDEX centroide_limite_legal_p_geom ON edgv.centroide_limite_legal_p USING gist (geom);
+
+-- As duas tabelas novas recebem colunas de qualidade, gatilhos e metadados de
+-- producao reaplicando edgv_topo_20_extension.sql, cujos lacos percorrem
+-- geometry_columns e sao idempotentes.
+
+UPDATE public.db_metadata SET dbimplversion = '0.17.0';
+ALTER TABLE public.db_metadata ALTER COLUMN dbimplversion SET DEFAULT '0.17.0';
 ```

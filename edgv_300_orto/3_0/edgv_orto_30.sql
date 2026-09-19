@@ -7,10 +7,10 @@ SET search_path TO pg_catalog,public,edgv,dominios;
 
 CREATE TABLE public.db_metadata(
 	 edgvversion varchar(50) NOT NULL DEFAULT 'EDGV Orto 3.0',
-	 dbimplversion varchar(50) NOT NULL DEFAULT '3.0.0',
+	 dbimplversion varchar(50) NOT NULL DEFAULT '3.0.1',
 	 CONSTRAINT edgvversioncheck CHECK (edgvversion = 'EDGV Orto 3.0')
 );
-INSERT INTO public.db_metadata (edgvversion, dbimplversion) VALUES ('EDGV Orto 3.0','3.0.0');
+INSERT INTO public.db_metadata (edgvversion, dbimplversion) VALUES ('EDGV Orto 3.0','3.0.1');
 
 CREATE TABLE dominios.tipo_obstaculo (
 	 code smallint NOT NULL,
@@ -638,6 +638,7 @@ CREATE TABLE dominios.tipo_limite_especial (
 
 INSERT INTO dominios.tipo_limite_especial (code,code_name) VALUES (2,'Terra indígena (2)');
 INSERT INTO dominios.tipo_limite_especial (code,code_name) VALUES (3,'Território quilombola (3)');
+INSERT INTO dominios.tipo_limite_especial (code,code_name) VALUES (4,'Assentamento rural (4)');
 INSERT INTO dominios.tipo_limite_especial (code,code_name) VALUES (5,'Unidade de Conservação (5)');
 INSERT INTO dominios.tipo_limite_especial (code,code_name) VALUES (24,'Área de Proteção Ambiental – APA (24)');
 INSERT INTO dominios.tipo_limite_especial (code,code_name) VALUES (25,'Área de Relevante Interesse Ecológico – ARIE (25)');
@@ -1967,6 +1968,7 @@ CREATE TABLE edgv.infra_pista_pouso_a(
 	 label_x real,
 	 label_y real,
 	 justificativa_txt smallint NOT NULL,
+	 simb_ponto smallint NOT NULL,
 	 observacao varchar(255),
 	 geom geometry(MultiPolygon, 4674),
 	 CONSTRAINT infra_pista_pouso_a_pk PRIMARY KEY (id)
@@ -2026,6 +2028,13 @@ ALTER TABLE edgv.infra_pista_pouso_a
 
 ALTER TABLE edgv.infra_pista_pouso_a ALTER COLUMN justificativa_txt SET DEFAULT 9999;
 
+ALTER TABLE edgv.infra_pista_pouso_a
+	 ADD CONSTRAINT infra_pista_pouso_a_simb_ponto_fk FOREIGN KEY (simb_ponto)
+	 REFERENCES dominios.booleano (code) MATCH FULL
+	 ON UPDATE NO ACTION ON DELETE NO ACTION;
+
+ALTER TABLE edgv.infra_pista_pouso_a ALTER COLUMN simb_ponto SET DEFAULT 9999;
+
 CREATE TABLE edgv.infra_pista_pouso_l(
 	 id uuid NOT NULL DEFAULT uuid_generate_v4(),
 	 nome varchar(255),
@@ -2039,6 +2048,7 @@ CREATE TABLE edgv.infra_pista_pouso_l(
 	 label_x real,
 	 label_y real,
 	 justificativa_txt smallint NOT NULL,
+	 simb_ponto smallint NOT NULL,
 	 observacao varchar(255),
 	 geom geometry(MultiLinestring, 4674),
 	 CONSTRAINT infra_pista_pouso_l_pk PRIMARY KEY (id)
@@ -2097,6 +2107,13 @@ ALTER TABLE edgv.infra_pista_pouso_l
 	 ON UPDATE NO ACTION ON DELETE NO ACTION;
 
 ALTER TABLE edgv.infra_pista_pouso_l ALTER COLUMN justificativa_txt SET DEFAULT 9999;
+
+ALTER TABLE edgv.infra_pista_pouso_l
+	 ADD CONSTRAINT infra_pista_pouso_l_simb_ponto_fk FOREIGN KEY (simb_ponto)
+	 REFERENCES dominios.booleano (code) MATCH FULL
+	 ON UPDATE NO ACTION ON DELETE NO ACTION;
+
+ALTER TABLE edgv.infra_pista_pouso_l ALTER COLUMN simb_ponto SET DEFAULT 9999;
 
 CREATE TABLE edgv.infra_pista_pouso_p(
 	 id uuid NOT NULL DEFAULT uuid_generate_v4(),
@@ -3293,6 +3310,7 @@ ALTER TABLE edgv.edicao_texto_generico_l OWNER TO postgres;
 
 CREATE TABLE edgv.delimitador_limite_especial_l(
 	 id uuid NOT NULL DEFAULT uuid_generate_v4(),
+	 tipo smallint NOT NULL,
 	 observacao varchar(255),
 	 geom geometry(MultiLinestring, 4674),
 	 CONSTRAINT delimitador_limite_especial_l_pk PRIMARY KEY (id)
@@ -3301,6 +3319,13 @@ CREATE TABLE edgv.delimitador_limite_especial_l(
 CREATE INDEX delimitador_limite_especial_l_geom ON edgv.delimitador_limite_especial_l USING gist (geom);
 
 ALTER TABLE edgv.delimitador_limite_especial_l OWNER TO postgres;
+
+ALTER TABLE edgv.delimitador_limite_especial_l
+	 ADD CONSTRAINT delimitador_limite_especial_l_tipo_fk FOREIGN KEY (tipo)
+	 REFERENCES dominios.tipo_limite_especial (code) MATCH FULL
+	 ON UPDATE NO ACTION ON DELETE NO ACTION;
+
+ALTER TABLE edgv.delimitador_limite_especial_l ALTER COLUMN tipo SET DEFAULT 9999;
 
 CREATE TABLE edgv.centroide_area_sem_dados_p(
 	 id uuid NOT NULL DEFAULT uuid_generate_v4(),
@@ -3360,3 +3385,54 @@ ALTER TABLE edgv.edicao_simb_area_p
 	 ON UPDATE NO ACTION ON DELETE NO ACTION;
 
 ALTER TABLE edgv.edicao_simb_area_p ALTER COLUMN tipo SET DEFAULT 9999;
+
+CREATE TABLE edgv.delimitador_limite_legal_l(
+	 id uuid NOT NULL DEFAULT uuid_generate_v4(),
+	 tipo smallint NOT NULL,
+	 observacao varchar(255),
+	 geom geometry(MultiLinestring, 4674),
+	 CONSTRAINT delimitador_limite_legal_l_pk PRIMARY KEY (id)
+	 WITH (FILLFACTOR = 80)
+);
+CREATE INDEX delimitador_limite_legal_l_geom ON edgv.delimitador_limite_legal_l USING gist (geom);
+
+ALTER TABLE edgv.delimitador_limite_legal_l OWNER TO postgres;
+
+ALTER TABLE edgv.delimitador_limite_legal_l
+	 ADD CONSTRAINT delimitador_limite_legal_l_tipo_fk FOREIGN KEY (tipo)
+	 REFERENCES dominios.tipo_limite_legal (code) MATCH FULL
+	 ON UPDATE NO ACTION ON DELETE NO ACTION;
+
+ALTER TABLE edgv.delimitador_limite_legal_l ALTER COLUMN tipo SET DEFAULT 9999;
+
+CREATE TABLE edgv.centroide_limite_legal_p(
+	 id uuid NOT NULL DEFAULT uuid_generate_v4(),
+	 nome varchar(255),
+	 tipo smallint NOT NULL,
+	 geometria_aproximada smallint NOT NULL,
+	 sigla varchar(10),
+	 geocodigo_ibge varchar(15),
+	 cod_iso varchar(3),
+	 populacao integer,
+	 observacao varchar(255),
+	 geom geometry(MultiPoint, 4674),
+	 CONSTRAINT centroide_limite_legal_p_pk PRIMARY KEY (id)
+	 WITH (FILLFACTOR = 80)
+);
+CREATE INDEX centroide_limite_legal_p_geom ON edgv.centroide_limite_legal_p USING gist (geom);
+
+ALTER TABLE edgv.centroide_limite_legal_p OWNER TO postgres;
+
+ALTER TABLE edgv.centroide_limite_legal_p
+	 ADD CONSTRAINT centroide_limite_legal_p_tipo_fk FOREIGN KEY (tipo)
+	 REFERENCES dominios.tipo_limite_legal (code) MATCH FULL
+	 ON UPDATE NO ACTION ON DELETE NO ACTION;
+
+ALTER TABLE edgv.centroide_limite_legal_p ALTER COLUMN tipo SET DEFAULT 9999;
+
+ALTER TABLE edgv.centroide_limite_legal_p
+	 ADD CONSTRAINT centroide_limite_legal_p_geometria_aproximada_fk FOREIGN KEY (geometria_aproximada)
+	 REFERENCES dominios.booleano (code) MATCH FULL
+	 ON UPDATE NO ACTION ON DELETE NO ACTION;
+
+ALTER TABLE edgv.centroide_limite_legal_p ALTER COLUMN geometria_aproximada SET DEFAULT 9999;

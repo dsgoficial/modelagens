@@ -32,8 +32,8 @@ ROOT = os.path.abspath(os.path.join(HERE, "..", ".."))
 TOPO_MASTER = os.path.join(ROOT, "edgv_300_topo", "2_0", "master_file_topo_20.json")
 ORTO25_MASTER = os.path.join(ROOT, "edgv_300_orto", "2_5", "master_file_300_orto_25.json")
 
-VERSAO_ORTO = "3.0.0"
-VERSAO_TOPO = "0.14.0"
+VERSAO_ORTO = "3.0.1"
+VERSAO_TOPO = "0.17.0"
 VERSAO_ORTO25 = "2.5.4"
 
 # Split Topo 2.0 -> Orto 3.0: classes do Topo unificadas (limite_especial,
@@ -56,6 +56,12 @@ CONSOLIDA_LL = {
     "llp_pais": 1,               # Pais -> llp_limite_legal tipo 1 (Internacional)
     "llp_unidade_federacao": 2,  # UF   -> llp_limite_legal tipo 2 (Estadual)
 }
+
+# Auxiliares que o Orto 3.0 ganha do Topo 2.0 alem das 24 do Orto 2.5. O Orto
+# 3.0 tem llp_limite_legal (pais/UF consolidados), e o Topo 2.0 0.17.0 passou a
+# construi-lo por delimitador e centroide; sem o par, o orto nao o constroi.
+# Nao tem origem no Orto 2.5, entao fica fora da conversao 2.5 -> 3.0.
+EXT_NOVAS_DO_TOPO = ["delimitador_limite_legal", "centroide_limite_legal"]
 
 # Classes auxiliares proprias do produto orto, sem fonte no Topo 2.0.
 ORTO_ONLY_EXT = {
@@ -150,6 +156,10 @@ def main():
         else:
             out_ext.append(clone(c))               # propria do orto -> verbatim
             rep["from25_ext"].append(k)
+    for k in EXT_NOVAS_DO_TOPO:                    # ganhas do Topo, sem origem no 2.5
+        if k not in topo_ext:
+            raise SystemExit(f"{k} ausente no master do Topo 2.0: o Topo e anterior a 0.17.0?")
+        out_ext.append(clone(topo_ext[k]))
 
     # ---- atributos do Orto 2.5 sem destino no Orto 3.0 ----
     # Nas classes comuns rebaseadas no Topo 2.0, atributos que o 2.5 tinha e o
@@ -245,7 +255,7 @@ def write_conv_orto25(orto_them, orto_ext, rep, sigla_uf_trad=None):
     mape = []
     for i, k in enumerate(orto_them):
         mape.append(entry(k, "classes tematicas (1:1). Orto 3.0 herda os atributos integrais do Topo 2.0." if i == 0 else ""))
-    for i, k in enumerate(orto_ext):
+    for i, k in enumerate(k for k in orto_ext if k not in EXT_NOVAS_DO_TOPO):
         mape.append(entry(k, "classes auxiliares (1:1)." if i == 0 else ""))
     # pais/UF do Orto 2.5 -> llp_limite_legal (consolidacao, segue Topo 2.0 0.10.0)
     for k, tipo in CONSOLIDA_LL.items():

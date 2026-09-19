@@ -12,12 +12,12 @@
 
 | | Orto 2.5 | **Orto 3.0** |
 |---|---|---|
-| Modelo base | EDGV 3.0 | **EDGV Topo 2.0 v0.11.0** (regerado 2026-07-03; antes 0.9.0) |
-| Versão | 2.5.4 | **3.0.0** |
+| Modelo base | EDGV 3.0 | **EDGV Topo 2.0 v0.17.0** (regerado 2026-09-19; antes 0.14.0, 0.11.0 e 0.9.0) |
+| Versão | 2.5.4 | **3.0.1** |
 | Classes temáticas | 27 | **25** (`pais`/`unidade_federacao` consolidados em `llp_limite_legal`) |
-| Classes auxiliares (`extension_classes`) | 24 | **24** (mesmas) |
+| Classes auxiliares (`extension_classes`) | 24 | **26** (as 24 do 2.5 mais `delimitador_limite_legal` e `centroide_limite_legal`, rev 3.0.1) |
 | Domínios | 42 | **41** (rebaseados no Topo 2.0; `sigla_uf` sai com a UF) |
-| SQL DDL | ❌ não existia | ✅ **gerado** — 68 tabelas `edgv` + 41 `dominios` |
+| SQL DDL | ❌ não existia | ✅ **gerado** — 70 tabelas `edgv` + 41 `dominios` |
 | Extensão de qualidade | básica (179 linhas) | ✅ **completa** (geocódigo, `fontes` JSON, ciclo de vida, acurácias, triggers, SAP) |
 | CRS | 4674 (SIRGAS 2000) | 4674 (SIRGAS 2000) |
 
@@ -130,3 +130,18 @@ python rotinas/mastergen.py \
 psql -d edgv_orto_30 -f edgv_300_orto/3_0/edgv_orto_30.sql
 psql -d edgv_orto_30 -f edgv_300_orto/3_0/edgv_orto_30_extension.sql
 ```
+
+## 7.1 Rev 3.0.1 (2026-09-19): limites por delimitador e centroide
+
+Regerado sobre a Topo 2.0 v0.17.0. A versão anterior tinha sido gerada da 0.14.0, e por isso a regeneração traz três mudanças da Topo que o Orto ainda não tinha, mais uma própria:
+
+| Mudança | Origem na Topo 2.0 | Efeito no Orto 3.0 |
+|---|---|---|
+| `tipo_limite_especial` 4 (Assentamento rural) | 0.15.0 | domínio +1 |
+| `simb_ponto` em `infra_pista_pouso_l` e `_a` | 0.16.0 | os estilos filtram a pista por essa coluna; sem ela a pista não desenha |
+| `tipo` em `delimitador_limite_especial_l` | 0.17.0 | a construção de `llp_terra_indigena`, `llp_unidade_conservacao` e `llp_area_pub_militar` pode rodar por classe, filtrando o delimitador pelos mesmos códigos do split (§6.2) |
+| `delimitador_limite_legal_l` e `centroide_limite_legal_p` | 0.17.0 | auxiliares NOVAS, fora do conjunto do Orto 2.5: o Orto 3.0 tem `llp_limite_legal`, e o par é o que o constrói |
+
+As duas auxiliares novas entram pela constante `EXT_NOVAS_DO_TOPO` do `build_orto30_from_topo20.py`, com mapeamento 1:1 na conversão Topo 2.0 ⇄ Orto 3.0 e fora da conversão Orto 2.5 → 3.0, que não tem de onde tirá-las. A justificativa do `tipo` no delimitador está na seção 1.5 do changelog da Topo 2.0.
+
+Banco existente na 3.0.0: da seção 8 do changelog da Topo 2.0 servem só os comandos das tabelas que o Orto tem, ou seja, o `INSERT` do código 4 em `dominios.tipo_limite_especial` (0.15.0), o bloco do `simb_ponto` (0.16.0) e o incremento 0.17.0 inteiro. As linhas de `db_metadata` daqueles incrementos gravam versão da Topo e não se aplicam: no Orto, o fecho é `UPDATE public.db_metadata SET dbimplversion = '3.0.1'`, seguido da reaplicação de `edgv_orto_30_extension.sql`.

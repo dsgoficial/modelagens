@@ -4,7 +4,7 @@
     "modelo_A": "EDGV 3.0 Topo",
     "versao_modelo_A": "1.4.0",
     "modelo_B": "EDGV Topo 2.0",
-    "versao_modelo_B": "0.16.0"
+    "versao_modelo_B": "0.17.0"
   },
   "__comment": "UTF-8. Conversao Topo 1.4 para Topo 2.0 v0.16. 66 classes 1:1 + llp_pais e llp_unidade_federacao consolidados em llp_limite_legal_a (tipo=1/2, rev 0.10.0). Rev 0.11.0: as feicoes continentais novas (vulcao/cratera, crosta salina, vegetacao arbustiva) nao existem na Topo 1.4, entao nao ha mapeamento a adicionar; alinhado a 0.11.0 sem mudanca de conteudo. Rev 0.16.0: simb_ponto restaurado em infra_pista_pouso_l/_a; a conversao volta a ser 1:1 em todos os atributos da classe.",
   "schema_A": "edgv",
@@ -375,7 +375,7 @@
       "classe_B": "edicao_grid_numerico"
     },
     {
-      "__comment": "centroide - centroides topologicos (7 classes, 7 tabelas)",
+      "__comment": "centroide - centroides topologicos (7 classes, 7 tabelas; a 2.0 tem ainda centroide_limite_legal (0.17.0), sem par na 1.4, onde o limite legal e so linha)",
       "classe_A": "centroide_area_sem_dados",
       "classe_B": "centroide_area_sem_dados"
     },
@@ -404,7 +404,7 @@
       "classe_B": "centroide_limite_especial"
     },
     {
-      "__comment": "delimitador - delimitadores topologicos (6 classes, 6 tabelas)",
+      "__comment": "delimitador - delimitadores topologicos (6 classes, 6 tabelas; a 2.0 tem ainda delimitador_limite_legal (0.17.0), sem par na 1.4. No sentido A=>B, delimitador_limite_especial chega sem tipo e fica no DEFAULT 9999, porque a 1.4 nao guarda o regime na linha)",
       "classe_A": "delimitador_area_sem_dados",
       "classe_B": "delimitador_area_sem_dados"
     },

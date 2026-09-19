@@ -7,10 +7,10 @@ SET search_path TO pg_catalog,public,edgv,dominios;
 
 CREATE TABLE public.db_metadata(
 	 edgvversion varchar(50) NOT NULL DEFAULT 'EDGV Topo 2.0',
-	 dbimplversion varchar(50) NOT NULL DEFAULT '0.16.0',
+	 dbimplversion varchar(50) NOT NULL DEFAULT '0.17.0',
 	 CONSTRAINT edgvversioncheck CHECK (edgvversion = 'EDGV Topo 2.0')
 );
-INSERT INTO public.db_metadata (edgvversion, dbimplversion) VALUES ('EDGV Topo 2.0','0.16.0');
+INSERT INTO public.db_metadata (edgvversion, dbimplversion) VALUES ('EDGV Topo 2.0','0.17.0');
 
 CREATE TABLE dominios.sigla_uf (
 	 code smallint NOT NULL,
@@ -4857,6 +4857,7 @@ ALTER TABLE edgv.delimitador_elemento_hidrografico_l OWNER TO postgres;
 
 CREATE TABLE edgv.delimitador_limite_especial_l(
 	 id uuid NOT NULL DEFAULT uuid_generate_v4(),
+	 tipo smallint NOT NULL,
 	 observacao varchar(255),
 	 geom geometry(MultiLinestring, 4674),
 	 CONSTRAINT delimitador_limite_especial_l_pk PRIMARY KEY (id)
@@ -4865,6 +4866,32 @@ CREATE TABLE edgv.delimitador_limite_especial_l(
 CREATE INDEX delimitador_limite_especial_l_geom ON edgv.delimitador_limite_especial_l USING gist (geom);
 
 ALTER TABLE edgv.delimitador_limite_especial_l OWNER TO postgres;
+
+ALTER TABLE edgv.delimitador_limite_especial_l
+	 ADD CONSTRAINT delimitador_limite_especial_l_tipo_fk FOREIGN KEY (tipo)
+	 REFERENCES dominios.tipo_limite_especial (code) MATCH FULL
+	 ON UPDATE NO ACTION ON DELETE NO ACTION;
+
+ALTER TABLE edgv.delimitador_limite_especial_l ALTER COLUMN tipo SET DEFAULT 9999;
+
+CREATE TABLE edgv.delimitador_limite_legal_l(
+	 id uuid NOT NULL DEFAULT uuid_generate_v4(),
+	 tipo smallint NOT NULL,
+	 observacao varchar(255),
+	 geom geometry(MultiLinestring, 4674),
+	 CONSTRAINT delimitador_limite_legal_l_pk PRIMARY KEY (id)
+	 WITH (FILLFACTOR = 80)
+);
+CREATE INDEX delimitador_limite_legal_l_geom ON edgv.delimitador_limite_legal_l USING gist (geom);
+
+ALTER TABLE edgv.delimitador_limite_legal_l OWNER TO postgres;
+
+ALTER TABLE edgv.delimitador_limite_legal_l
+	 ADD CONSTRAINT delimitador_limite_legal_l_tipo_fk FOREIGN KEY (tipo)
+	 REFERENCES dominios.tipo_limite_legal (code) MATCH FULL
+	 ON UPDATE NO ACTION ON DELETE NO ACTION;
+
+ALTER TABLE edgv.delimitador_limite_legal_l ALTER COLUMN tipo SET DEFAULT 9999;
 
 CREATE TABLE edgv.centroide_vegetacao_p(
 	 id uuid NOT NULL DEFAULT uuid_generate_v4(),
@@ -5011,6 +5038,38 @@ ALTER TABLE edgv.centroide_limite_especial_p
 	 ON UPDATE NO ACTION ON DELETE NO ACTION;
 
 ALTER TABLE edgv.centroide_limite_especial_p ALTER COLUMN geometria_aproximada SET DEFAULT 9999;
+
+CREATE TABLE edgv.centroide_limite_legal_p(
+	 id uuid NOT NULL DEFAULT uuid_generate_v4(),
+	 nome varchar(255),
+	 tipo smallint NOT NULL,
+	 geometria_aproximada smallint NOT NULL,
+	 sigla varchar(10),
+	 geocodigo_ibge varchar(15),
+	 cod_iso varchar(3),
+	 populacao integer,
+	 observacao varchar(255),
+	 geom geometry(MultiPoint, 4674),
+	 CONSTRAINT centroide_limite_legal_p_pk PRIMARY KEY (id)
+	 WITH (FILLFACTOR = 80)
+);
+CREATE INDEX centroide_limite_legal_p_geom ON edgv.centroide_limite_legal_p USING gist (geom);
+
+ALTER TABLE edgv.centroide_limite_legal_p OWNER TO postgres;
+
+ALTER TABLE edgv.centroide_limite_legal_p
+	 ADD CONSTRAINT centroide_limite_legal_p_tipo_fk FOREIGN KEY (tipo)
+	 REFERENCES dominios.tipo_limite_legal (code) MATCH FULL
+	 ON UPDATE NO ACTION ON DELETE NO ACTION;
+
+ALTER TABLE edgv.centroide_limite_legal_p ALTER COLUMN tipo SET DEFAULT 9999;
+
+ALTER TABLE edgv.centroide_limite_legal_p
+	 ADD CONSTRAINT centroide_limite_legal_p_geometria_aproximada_fk FOREIGN KEY (geometria_aproximada)
+	 REFERENCES dominios.booleano (code) MATCH FULL
+	 ON UPDATE NO ACTION ON DELETE NO ACTION;
+
+ALTER TABLE edgv.centroide_limite_legal_p ALTER COLUMN geometria_aproximada SET DEFAULT 9999;
 
 CREATE TABLE edgv.edicao_texto_generico_p(
 	 id uuid NOT NULL DEFAULT uuid_generate_v4(),

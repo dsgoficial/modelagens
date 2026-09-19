@@ -1,6 +1,6 @@
 {
   "modelo": "EDGV Topo 2.0",
-  "versao": "0.16.0",
+  "versao": "0.17.0",
   "schema_dados": "edgv",
   "schema_dominios": "dominios",
   "a_ser_preenchido": {
@@ -8711,7 +8711,29 @@
       "primitivas": [
         "MultiLinestring"
       ],
-      "atributos": []
+      "atributos": [
+        {
+          "nome": "tipo",
+          "tipo": "smallint",
+          "cardinalidade": "1..1",
+          "mapa_valor": "tipo_limite_especial"
+        }
+      ]
+    },
+    {
+      "nome": "limite_legal",
+      "categoria": "delimitador",
+      "primitivas": [
+        "MultiLinestring"
+      ],
+      "atributos": [
+        {
+          "nome": "tipo",
+          "tipo": "smallint",
+          "cardinalidade": "1..1",
+          "mapa_valor": "tipo_limite_legal"
+        }
+      ]
     },
     {
       "nome": "vegetacao",
@@ -8849,6 +8871,52 @@
           "tipo": "smallint",
           "cardinalidade": "1..1",
           "mapa_valor": "booleano"
+        }
+      ]
+    },
+    {
+      "nome": "limite_legal",
+      "categoria": "centroide",
+      "primitivas": [
+        "MultiPoint"
+      ],
+      "atributos": [
+        {
+          "nome": "nome",
+          "tipo": "varchar(255)",
+          "cardinalidade": "0..1"
+        },
+        {
+          "nome": "tipo",
+          "tipo": "smallint",
+          "cardinalidade": "1..1",
+          "mapa_valor": "tipo_limite_legal"
+        },
+        {
+          "nome": "geometria_aproximada",
+          "tipo": "smallint",
+          "cardinalidade": "1..1",
+          "mapa_valor": "booleano"
+        },
+        {
+          "nome": "sigla",
+          "tipo": "varchar(10)",
+          "cardinalidade": "0..1"
+        },
+        {
+          "nome": "geocodigo_ibge",
+          "tipo": "varchar(15)",
+          "cardinalidade": "0..1"
+        },
+        {
+          "nome": "cod_iso",
+          "tipo": "varchar(3)",
+          "cardinalidade": "0..1"
+        },
+        {
+          "nome": "populacao",
+          "tipo": "integer",
+          "cardinalidade": "0..1"
         }
       ]
     },

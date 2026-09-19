@@ -1,7 +1,7 @@
 {
   "modelo": "EDGV Orto 3.0",
   "comentario": "Perfil ortoimagem. Espelha o conjunto de classes do Orto 2.5 (classes separadas) rebaseado nas definicoes do Topo 2.0. Gerado por build_orto30_from_topo20.py — nao editar a mao.",
-  "versao": "3.0.0",
+  "versao": "3.0.1",
   "schema_dados": "edgv",
   "schema_dominios": "dominios",
   "a_ser_preenchido": {
@@ -1671,6 +1671,11 @@
           "code": 3,
           "value": "Território quilombola",
           "descricao": "Território quilombola: área titulada a comunidade remanescente de quilombo, sob domínio coletivo."
+        },
+        {
+          "code": 4,
+          "value": "Assentamento rural",
+          "descricao": "Assentamento rural: área destinada pelo poder público a projeto de reforma agrária, com parcelamento em lotes familiares e restrição de alienação, sob regime do INCRA ou de órgão fundiário estadual."
         },
         {
           "code": 5,
@@ -3463,6 +3468,17 @@
           "primitivas": [
             "MultiPoint"
           ]
+        },
+        {
+          "nome": "simb_ponto",
+          "tipo": "smallint",
+          "cardinalidade": "1..1",
+          "mapa_valor": "booleano",
+          "primitivas": [
+            "MultiPolygon",
+            "MultiLinestring"
+          ],
+          "descricao": "Indica que a pista deve ser desenhada por símbolo de ponto na carta, e não pelo traçado real da linha ou do polígono, conforme o domínio booleano."
         }
       ],
       "descricao": "Infraestrutura aeroportuária de pouso e decolagem: pista de pouso, pista de táxi e heliponto. Representada por polígono, linha ou ponto conforme a escala. Carrega o revestimento, o uso (público, militar) e a altitude."
@@ -4790,7 +4806,14 @@
       "primitivas": [
         "MultiLinestring"
       ],
-      "atributos": []
+      "atributos": [
+        {
+          "nome": "tipo",
+          "tipo": "smallint",
+          "cardinalidade": "1..1",
+          "mapa_valor": "tipo_limite_especial"
+        }
+      ]
     },
     {
       "nome": "area_sem_dados",
@@ -4842,6 +4865,67 @@
         {
           "nome": "simb_rot",
           "tipo": "real",
+          "cardinalidade": "0..1"
+        }
+      ]
+    },
+    {
+      "nome": "limite_legal",
+      "categoria": "delimitador",
+      "primitivas": [
+        "MultiLinestring"
+      ],
+      "atributos": [
+        {
+          "nome": "tipo",
+          "tipo": "smallint",
+          "cardinalidade": "1..1",
+          "mapa_valor": "tipo_limite_legal"
+        }
+      ]
+    },
+    {
+      "nome": "limite_legal",
+      "categoria": "centroide",
+      "primitivas": [
+        "MultiPoint"
+      ],
+      "atributos": [
+        {
+          "nome": "nome",
+          "tipo": "varchar(255)",
+          "cardinalidade": "0..1"
+        },
+        {
+          "nome": "tipo",
+          "tipo": "smallint",
+          "cardinalidade": "1..1",
+          "mapa_valor": "tipo_limite_legal"
+        },
+        {
+          "nome": "geometria_aproximada",
+          "tipo": "smallint",
+          "cardinalidade": "1..1",
+          "mapa_valor": "booleano"
+        },
+        {
+          "nome": "sigla",
+          "tipo": "varchar(10)",
+          "cardinalidade": "0..1"
+        },
+        {
+          "nome": "geocodigo_ibge",
+          "tipo": "varchar(15)",
+          "cardinalidade": "0..1"
+        },
+        {
+          "nome": "cod_iso",
+          "tipo": "varchar(3)",
+          "cardinalidade": "0..1"
+        },
+        {
+          "nome": "populacao",
+          "tipo": "integer",
           "cardinalidade": "0..1"
         }
       ]

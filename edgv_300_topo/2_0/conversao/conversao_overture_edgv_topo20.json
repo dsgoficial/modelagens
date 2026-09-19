@@ -1,11 +1,11 @@
 {
   "metadata": {
-    "version": "1.7",
-    "date": "2026-07-22",
+    "version": "1.8",
+    "date": "2026-09-13",
     "source": "Overture Maps Foundation",
     "target": "EDGV Topo 2.0 v0.13.0",
-    "description": "Mapeamento Overture Maps para EDGV Topo 2.0. Consumido por overture_to_edgv.py. Rev 1.3 (2026-07-11): passos 1-4 e 7 do plano (analysis/overture_referencia_e_mapeamento_topo20.md). Base (land_cover/infrastructure/land/water), buildings (completado + reorganizado: specific -> subtype-fallback -> catch-all, corrigindo o bldg_generic que sombreava as regras de deposito) e divisions (referencia). Passo 5 (transportation rules) e enriquecimento de atributo dependente do ETL, registrado no plano e no gap doc, nao como regra. places (passo 6, refeito) mapeado por NO da taxonomia (category_node, cobertura 100% das 2117 categorias verificada), sem geoswarm. Gaps em schema/overture_sem_correspondencia.md. ETL: land_cover/land/infrastructure/divisions ainda precisam de THEME_QUERIES em overture_to_edgv.py. Rev 1.7 (2026-07-22): fecha o gap de `constr_ocupacao_solo` (cemiterio, campo/quadra, area verde publica, estacionamento, piscina, sitio, ruina, pista de competicao), `elemnat_elemento_hidrografico_l`, `infra_vala_l` e `infra_travessia_hidroviaria_l`. A raiz do gap era o tipo `land_use` do tema base NUNCA ter sido baixado pelo download_overture_sul.py; o sem_correspondencia registrava o adiamento ('area/outro tema') que nunca fechou. Reguas de porte medidas nas 6 folhas do prototipo Topo 2.0.",
-    "total_rules": 390,
+    "description": "Mapeamento Overture Maps para EDGV Topo 2.0. Consumido por overture_to_edgv.py. Rev 1.3 (2026-07-11): passos 1-4 e 7 do plano (analysis/overture_referencia_e_mapeamento_topo20.md). Base (land_cover/infrastructure/land/water), buildings (completado + reorganizado: specific -> subtype-fallback -> catch-all, corrigindo o bldg_generic que sombreava as regras de deposito) e divisions (referencia). Passo 5 (transportation rules) e enriquecimento de atributo dependente do ETL, registrado no plano e no gap doc, nao como regra. places (passo 6, refeito) mapeado por NO da taxonomia (category_node, cobertura 100% das 2117 categorias verificada), sem geoswarm. Gaps em schema/overture_sem_correspondencia.md. ETL: land_cover/land/infrastructure/divisions ainda precisam de THEME_QUERIES em overture_to_edgv.py. Rev 1.7 (2026-07-22): fecha o gap de `constr_ocupacao_solo` (cemiterio, campo/quadra, area verde publica, estacionamento, piscina, sitio, ruina, pista de competicao), `elemnat_elemento_hidrografico_l`, `infra_vala_l` e `infra_travessia_hidroviaria_l`. A raiz do gap era o tipo `land_use` do tema base NUNCA ter sido baixado pelo download_overture_sul.py; o sem_correspondencia registrava o adiamento ('area/outro tema') que nunca fechou. Reguas de porte medidas nas 6 folhas do prototipo Topo 2.0. Rev 1.8 (2026-09-13): saem 5 regras mortas de nascenca (filtravam valor que nao existe em enum nenhum do Overture), 4 filtros perdem o valor inexistente, `ditch` e `drain` se separam (tinham filtro identico e a segunda regra nunca casava), o `map` de `is_disputed` passa `false` de 0 para 2 porque o dominio booleano nao tem 0, e `total_rules` volta a bater com a contagem real. Detalhe em overture_2_0/analise/.",
+    "total_rules": 409,
     "match_strategy": "first_match_wins",
     "source_release": "2026-06-17.0",
     "edit_attributes_by_source": {
@@ -3723,7 +3723,6 @@
         "theme": "base",
         "type": "water",
         "class": [
-          "ditch",
           "drain"
         ],
         "geometry": [
@@ -3741,7 +3740,7 @@
         "names.primary": "nome"
       },
       "confidence": "high",
-      "note": "Vala/dreno"
+      "note": "Dreno: canal artificial de agua pluvial ou efluente, o que e o codigo 3 (Trecho pluvial). Separado de `ditch` em 2026-09-13: as duas regras tinham filtro IDENTICO `['ditch','drain']` e, com first_match_wins, a `water_vala` nunca casava."
     },
     {
       "_comment": "=== BASE land_cover (WorldCover) -> cobter_vegetacao / cobter_area_edificada === (passo 1)"
@@ -7071,12 +7070,12 @@
           "column": "em_litigio",
           "map": {
             "true": 1,
-            "false": 0
+            "false": 2
           }
         }
       },
       "confidence": "high",
-      "note": "Limite Internacional (fronteira Brasil x pais vizinho, class=land)."
+      "note": "Limite Internacional (fronteira Brasil x pais vizinho, class=land). Em 2026-09-13 o `false` passou de 0 para 2 (Nao): `dominios.booleano` tem 1, 2 e 9999, com FK, e nao tem o 0, entao a escrita seria recusada se a chave casasse."
     },
     {
       "id": "div_boundary_country_maritime",
@@ -7102,12 +7101,12 @@
           "column": "em_litigio",
           "map": {
             "true": 1,
-            "false": 0
+            "false": 2
           }
         }
       },
       "confidence": "medium",
-      "note": "Limite maritimo nacional -> Mar Territorial (12 MN). ATENCAO: Overture tem uma unica class 'maritime'; nao separa Mar Territorial (5) de Zona Contigua (6) e ZEE (7). Default 5; 6 e 7 registrados no gap doc (sub-determinados pela fonte)."
+      "note": "Limite maritimo nacional -> Mar Territorial (12 MN). ATENCAO: Overture tem uma unica class 'maritime'; nao separa Mar Territorial (5) de Zona Contigua (6) e ZEE (7). Default 5; 6 e 7 registrados no gap doc (sub-determinados pela fonte). Em 2026-09-13 o `false` passou de 0 para 2 (Nao): `dominios.booleano` tem 1, 2 e 9999, com FK, e nao tem o 0, entao a escrita seria recusada se a chave casasse."
     },
     {
       "id": "div_boundary_region_land",
@@ -7133,12 +7132,12 @@
           "column": "em_litigio",
           "map": {
             "true": 1,
-            "false": 0
+            "false": 2
           }
         }
       },
       "confidence": "high",
-      "note": "Limite Estadual (divisa entre UFs, class=land). region=ISO 3166-2 BR-XX."
+      "note": "Limite Estadual (divisa entre UFs, class=land). region=ISO 3166-2 BR-XX. Em 2026-09-13 o `false` passou de 0 para 2 (Nao): `dominios.booleano` tem 1, 2 e 9999, com FK, e nao tem o 0, entao a escrita seria recusada se a chave casasse."
     },
     {
       "id": "div_boundary_county_land",
@@ -7164,12 +7163,12 @@
           "column": "em_litigio",
           "map": {
             "true": 1,
-            "false": 0
+            "false": 2
           }
         }
       },
       "confidence": "high",
-      "note": "Limite Municipal (divisa entre municipios, class=land)."
+      "note": "Limite Municipal (divisa entre municipios, class=land). Em 2026-09-13 o `false` passou de 0 para 2 (Nao): `dominios.booleano` tem 1, 2 e 9999, com FK, e nao tem o 0, entao a escrita seria recusada se a chave casasse."
     },
     {
       "id": "div_area_country_land",
@@ -10822,9 +10821,7 @@
         "theme": "base",
         "type": "land",
         "class": [
-          "wetland",
-          "marsh",
-          "swamp"
+          "wetland"
         ],
         "geometry": [
           "polygon"
@@ -10838,7 +10835,7 @@
       },
       "overture_attribute_mapping": {},
       "confidence": "high",
-      "note": "Brejo/pantano (301). Tipo fisico-hidrologico, mais especializado que o porte."
+      "note": "Brejo/pantano (301). Tipo fisico-hidrologico, mais especializado que o porte. Removidos do filtro em 2026-09-13: ['marsh', 'swamp'], que nao existem em enum nenhum do Overture, nem no 1.18.0 nem no 2.0.0."
     },
     {
       "id": "land_shrub_a",
@@ -10969,8 +10966,7 @@
         "class": [
           "pitch",
           "recreation_ground",
-          "stadium",
-          "sports_centre"
+          "stadium"
         ],
         "geometry": [
           "polygon"
@@ -10986,7 +10982,7 @@
         "name": "nome"
       },
       "confidence": "high",
-      "note": "Campo ou quadra sem esporte declarado -> 298 (Outras quadras esportivas). Com `sport` declarado, refinar: futebol 201, basquete 202, volei 203, polo 204, hipismo 205, poliesportiva 206, tenis 207. Pista de competicao em AREA entra como 298 por regra do padrao 25k."
+      "note": "Campo ou quadra sem esporte declarado -> 298 (Outras quadras esportivas). Com `sport` declarado, refinar: futebol 201, basquete 202, volei 203, polo 204, hipismo 205, poliesportiva 206, tenis 207. Pista de competicao em AREA entra como 298 por regra do padrao 25k. Removidos do filtro em 2026-09-13: ['sports_centre'], que nao existem em enum nenhum do Overture, nem no 1.18.0 nem no 2.0.0."
     },
     {
       "id": "landuse_parque_urbano",
@@ -11043,7 +11039,6 @@
         "theme": "base",
         "type": "land_use",
         "class": [
-          "square",
           "plaza"
         ],
         "geometry": [
@@ -11060,103 +11055,7 @@
         "name": "nome"
       },
       "confidence": "medium",
-      "note": "Praca. Largo (1402) nao e distinguivel do 1401 pela fonte."
-    },
-    {
-      "id": "landuse_estacionamento",
-      "overture_filter": {
-        "theme": "base",
-        "type": "land_use",
-        "class": [
-          "parking"
-        ],
-        "geometry": [
-          "polygon"
-        ]
-      },
-      "edgv_target": {
-        "table": "constr_ocupacao_solo_a",
-        "attributes": {
-          "tipo": 901
-        }
-      },
-      "overture_attribute_mapping": {
-        "name": "nome"
-      },
-      "confidence": "medium",
-      "note": "Estacionamento SO de GRANDE PORTE: minimo 2.500 m2 (regra do chefe, 2026-07-22; o padrao 25k pede grande porte). Medido em Palmas: 130 acima de 625 m2 com mediana de 1.609 m2, que e estacionamento de comercio de esquina; acima de 2.500 m2 restam 22."
-    },
-    {
-      "id": "landuse_piscina",
-      "overture_filter": {
-        "theme": "base",
-        "type": "land_use",
-        "class": [
-          "swimming_pool"
-        ],
-        "geometry": [
-          "polygon"
-        ]
-      },
-      "edgv_target": {
-        "table": "constr_ocupacao_solo_a",
-        "attributes": {
-          "tipo": 501
-        }
-      },
-      "overture_attribute_mapping": {
-        "name": "nome"
-      },
-      "confidence": "medium",
-      "note": "Piscina: so grande porte publico (padrao 25k, 25k-only). Minimo 625 m2."
-    },
-    {
-      "id": "land_sitio_arqueologico",
-      "overture_filter": {
-        "theme": "base",
-        "type": "land",
-        "class": [
-          "archaeological_site"
-        ],
-        "geometry": [
-          "polygon"
-        ]
-      },
-      "edgv_target": {
-        "table": "constr_ocupacao_solo_a",
-        "attributes": {
-          "tipo": 601
-        }
-      },
-      "overture_attribute_mapping": {
-        "name": "nome"
-      },
-      "confidence": "medium",
-      "note": "Sitio arqueologico."
-    },
-    {
-      "id": "land_ruina",
-      "overture_filter": {
-        "theme": "base",
-        "type": "land",
-        "class": [
-          "ruins"
-        ],
-        "geometry": [
-          "polygon"
-        ]
-      },
-      "edgv_target": {
-        "table": "constr_ocupacao_solo_a",
-        "attributes": {
-          "tipo": 701
-        }
-      },
-      "overture_attribute_mapping": {
-        "name": "nome"
-      },
-      "confidence": "medium",
-      "note": "Ruina."
+      "note": "Praca. Largo (1402) nao e distinguivel do 1401 pela fonte. Removidos do filtro em 2026-09-13: ['square'], que nao existem em enum nenhum do Overture, nem no 1.18.0 nem no 2.0.0."
     },
     {
       "id": "landuse_pista_competicao_l",
@@ -11164,8 +11063,7 @@
         "theme": "base",
         "type": "land_use",
         "class": [
-          "track",
-          "raceway"
+          "track"
         ],
         "geometry": [
           "line"
@@ -11181,7 +11079,7 @@
         "name": "nome"
       },
       "confidence": "medium",
-      "note": "Pista de competicao em LINHA -> 398 (Outras pistas). Com `sport` declarado, refinar: atletismo 301, ciclismo 302, motociclismo 303, automobilismo 304, corrida de cavalos 305, bicicross 306, motocross 307."
+      "note": "Pista de competicao em LINHA -> 398 (Outras pistas). Com `sport` declarado, refinar: atletismo 301, ciclismo 302, motociclismo 303, automobilismo 304, corrida de cavalos 305, bicicross 306, motocross 307. Removidos do filtro em 2026-09-13: ['raceway'], que nao existem em enum nenhum do Overture, nem no 1.18.0 nem no 2.0.0."
     },
     {
       "id": "water_cachoeira_l",
@@ -11208,37 +11106,12 @@
       "note": "Cachoeira em linha. Salto (10), Catarata (11) e Corredeira (12) nao sao distinguiveis da fonte; 9 e o generico do grupo de queda."
     },
     {
-      "id": "water_corredeira_l",
-      "overture_filter": {
-        "theme": "base",
-        "type": "water",
-        "class": [
-          "rapids"
-        ],
-        "geometry": [
-          "line"
-        ]
-      },
-      "edgv_target": {
-        "table": "elemnat_elemento_hidrografico_l",
-        "attributes": {
-          "tipo": 12
-        }
-      },
-      "overture_attribute_mapping": {
-        "name": "nome"
-      },
-      "confidence": "medium",
-      "note": "Corredeira."
-    },
-    {
       "id": "water_vala",
       "overture_filter": {
         "theme": "base",
         "type": "water",
         "class": [
-          "ditch",
-          "drain"
+          "ditch"
         ],
         "geometry": [
           "line"
@@ -11248,11 +11121,9 @@
         "table": "infra_vala_l",
         "attributes": {}
       },
-      "overture_attribute_mapping": {
-        "name": "nome"
-      },
+      "overture_attribute_mapping": {},
       "confidence": "medium",
-      "note": "Vala e dreno construido -> infra_vala_l, alternativa que o proprio overture_sem_correspondencia.md ja apontava para `ditch`/`drain`. Classe 25k-only: na 50k reclassifica como canal. A classe nao tem `tipo`; `em_galeria_bueiro` fica 9999 (a fonte nao informa)."
+      "note": "Vala: canal escavado, que e a classe `infra_vala_l`. Separado de `drain` em 2026-09-13, quando as duas regras tinham filtro identico. O mapeamento de `nome` saiu porque `infra_vala_l` nao tem essa coluna (id, texto_edicao, em_galeria_bueiro, visivel, observacao)."
     }
   ]
 }
