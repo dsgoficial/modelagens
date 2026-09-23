@@ -57,6 +57,28 @@ Classes ou valores fora do mapa sao ignorados (campo, tipo 901, vira terreno abe
 
 (As mesmas decisoes estao no `convertEDGV3Topo14ToMASACODE.py` do EBGeo Desktop.)
 
+## Ponte em ponto -> Bridge em linha (extensao alem do EBGeo, 2026-09-23)
+
+A EDGV 3.0 Pro grava ponte pequena como PONTO (`infra_elemento_viario_p`), classe que a Topo 1.4 nao
+tem e que o algoritmo do EBGeo nao le. No bloco ARANDU 1:50.000 eram 71 pontes em ponto contra 4 em
+linha, e o Bridge saia com 4 feicoes. A rotina agora converte o ponto (tipo 201 a 204) em linha:
+
+- A linha que a ponte carrega sai do `modal_uso`: 4 (rodoviario) usa `infra_via_deslocamento_l`, 5
+  (ferroviario) usa `infra_ferrovia_l`, outro valor usa as duas.
+- O centro e o cruzamento dessa linha com `elemnat_trecho_drenagem_l` ou com a borda de
+  `cobter_massa_dagua_a` mais proximo do ponto, ate `--raio-ponte-ponto` (padrao 50 m, 1 mm a
+  1:50.000). Sobre massa d'agua a ponte cobre o trecho dentro do poligono.
+- A Bridge e o trecho da propria linha, com `--comprimento-ponte-ponto` (padrao 30 m, convencao: a
+  base nao traz a extensao da ponte em ponto), cortado na ponta da linha quando ela acaba antes.
+- Sem cruzamento no raio, a ponte centra na projecao do ponto na linha mais proxima. Ponto a ate o
+  raio de uma ponte ja gravada em linha e pulado, para nao duplicar. Viaduto (302) fica de fora, como
+  na classe linha.
+- `--sem-ponte-ponto` desliga a extensao (no config: `ponte_ponto`, `raio_ponte_ponto_m`,
+  `comprimento_ponte_ponto_m`). Testes em `tests/test_pontes_ponto.py`.
+
+O algoritmo do EBGeo Desktop ainda nao tem esta extensao, e a paridade entre os dois vale so para as
+classes da tabela acima.
+
 ## Funcionamento
 
 Para cada classe: le do PostGIS; descarta Z e M; explode multipartes em feicoes simples; mapeia

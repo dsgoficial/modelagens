@@ -16,6 +16,11 @@ Mapeamento (fiel ao EBGeo Desktop, com as decisoes correntes da DGEO):
   - Rodovia (infra_via_deslocamento tipo 2 Estrada/Rodovia e 4 Auto-estrada) -> name vem da sigla
     (ex.: BR-101), nao do campo nome. Demais vias mantem o nome.
 
+Extensao alem do EBGeo (2026-09-23): ponte gravada como PONTO (infra_elemento_viario_p tipo 201-204,
+classe da EDGV 3.0 Pro que a Topo 1.4 nao tem) vira Bridge em LINHA. A linha e o trecho da via
+(modal_uso 4) ou da ferrovia (modal_uso 5) que a ponte carrega, centrado no cruzamento dela com a
+drenagem ou com a massa d'agua mais proximo do ponto, ate RAIO_PONTE_PONTO_M. Ver pontes_de_ponto().
+
 Uso:
   python conversao_modelagens/masacode/converte_edgv_topo14_masacode.py --config .../config_masacode_exemplo.json
   python conversao_modelagens/masacode/converte_edgv_topo14_masacode.py --host localhost --port 5432 \
@@ -27,9 +32,15 @@ import argparse
 import json
 import os
 
+import math
+
 import geopandas as gpd
 import pandas as pd
+import shapely
+from pyproj import Geod
 from shapely import force_2d
+from shapely.geometry import Point
+from shapely.ops import substring
 from sqlalchemy import create_engine, text
 
 # --- Mapeamento classe EDGV Topo 1.4 -> (MASACODE, arquivo de saida) ---
@@ -125,31 +136,184 @@ def _classify(table, gdf):
     return g[['MASACODE', 'name', 'geometry', '__out']]
 
 
-def convert(conn, schema, out_folder, keep_attributes=False):
+# --- Ponte em PONTO -> Bridge em LINHA (extensao alem do EBGeo) ---
+PONTOS_PONTE = 'infra_elemento_viario_p'
+PONTE_TIPOS = (201, 202, 203, 204)  # os mesmos codigos que viram Bridge na classe linha
+MODAL_RODOVIARIO = 4
+MODAL_FERROVIARIO = 5
+RAIO_PONTE_PONTO_M = 50.0          # ponto a ate isso do cruzamento (1 mm a 1:50.000)
+COMPRIMENTO_PONTE_PONTO_M = 30.0   # a base nao traz a extensao da ponte em ponto; convencao
+_GEOD = Geod(ellps='GRS80')
+
+
+def _medidor(crs):
+    """(distancia entre dois pontos, comprimento de linha) em metros, conforme o SRC."""
+    if crs is not None and crs.is_geographic:
+        return (lambda a, b: _GEOD.inv(a.x, a.y, b.x, b.y)[2],
+                lambda g: _GEOD.geometry_length(g))
+    return (lambda a, b: a.distance(b), lambda g: g.length)
+
+
+def _janela(p, raio_m, geografico):
+    """Raio de busca na unidade do SRC, folgado para nao perder candidato."""
+    if not geografico:
+        return raio_m * 1.01
+    return 1.5 * raio_m / (111320.0 * max(math.cos(math.radians(p.y)), 0.2))
+
+
+def _linhas_simples(gdf):
+    if gdf is None or len(gdf) == 0:
+        return []
+    return [g for g in shapely.get_parts(gdf.geometry.values) if g.geom_type == 'LineString' and not g.is_empty]
+
+
+def _trecho(linha, s_ini, s_fim, meio_m, comprimento):
+    """Trecho de `linha` de s_ini a s_fim (unidade do SRC) estendido meio_m em metros de cada lado."""
+    total = linha.length
+    if total == 0:
+        return None
+    # escala local (metros por unidade do SRC) medida no proprio trecho, alargado se for curto
+    d = max(s_fim - s_ini, total * 1e-3, 1e-12)
+    a, b = max(0.0, s_ini - d), min(total, s_fim + d)
+    k = comprimento(substring(linha, a, b)) / (b - a) if b > a else 1.0
+    delta = meio_m / k if k > 0 else 0.0
+    return substring(linha, max(0.0, s_ini - delta), min(total, s_fim + delta))
+
+
+def pontes_de_ponto(pontos, vias, ferrovias, drenagem, massa, pontes_linha,
+                    raio_m=RAIO_PONTE_PONTO_M, comprimento_m=COMPRIMENTO_PONTE_PONTO_M):
+    """Converte ponte em ponto (tipo 201-204) em Bridge (20005) em linha.
+
+    A linha que a ponte carrega sai do modal_uso: 4 via, 5 ferrovia, outro as duas. O centro e o
+    cruzamento dessa linha com a drenagem ou com a borda da massa d'agua mais proximo do ponto, ate
+    raio_m. Sobre massa d'agua a ponte cobre o trecho dentro do poligono. Sem cruzamento no raio, a
+    ponte centra na projecao do ponto na linha mais proxima (status 'sem_cruzamento'). Ponto a ate
+    raio_m de ponte ja gravada em linha e pulado ('ja_em_linha'). Devolve (GeoDataFrame, relatorio).
+    """
+    vazio = gpd.GeoDataFrame({'MASACODE': [], 'name': []}, geometry=[], crs=None if pontos is None else pontos.crs)
+    if pontos is None or len(pontos) == 0:
+        return vazio, []
+    crs = pontos.crs
+    geografico = crs is not None and crs.is_geographic
+    dist, comprimento = _medidor(crs)
+    meio = comprimento_m / 2.0
+    lin = {'via': _linhas_simples(vias), 'ferrovia': _linhas_simples(ferrovias)}
+    arv = {k: shapely.STRtree(v) if v else None for k, v in lin.items()}
+    obst_l = _linhas_simples(drenagem)
+    polis = [] if massa is None or len(massa) == 0 else [
+        g for g in shapely.get_parts(massa.geometry.values) if g.geom_type == 'Polygon']
+    obst_l += [p.exterior for p in polis] + [r for p in polis for r in p.interiors]
+    arv_obst = shapely.STRtree(obst_l) if obst_l else None
+    arv_poli = shapely.STRtree(polis) if polis else None
+    ja = _linhas_simples(None if pontes_linha is None or len(pontes_linha) == 0 else
+                         pontes_linha[pontes_linha['tipo'].isin(PONTE_TIPOS)])
+    arv_ja = shapely.STRtree(ja) if ja else None
+
+    saida, rel = [], []
+    for _, f in pontos.iterrows():
+        if int(f['tipo']) not in PONTE_TIPOS:
+            continue
+        for p in shapely.get_parts(f.geometry):
+            reg = {'id': str(f.get('id')), 'tipo': int(f['tipo']), 'modal_uso': f.get('modal_uso'),
+                   'lon_x': p.x, 'lat_y': p.y}
+            modal = f.get('modal_uso')
+            modal = int(modal) if modal is not None and not pd.isna(modal) else None
+            camadas = ['via'] if modal == MODAL_RODOVIARIO else ['ferrovia'] if modal == MODAL_FERROVIARIO else ['via', 'ferrovia']
+            w = p.buffer(_janela(p, raio_m, geografico))
+            cand = [(k, lin[k][i]) for k in camadas if arv[k] is not None for i in arv[k].query(w)]
+            if not cand:
+                rel.append({**reg, 'status': 'sem_linha_no_raio'})
+                continue
+            # cruzamento mais proximo do ponto
+            melhor = None
+            obst = [obst_l[i] for i in arv_obst.query(w)] if arv_obst is not None else []
+            for k, c in cand:
+                for o in obst:
+                    for x in shapely.get_parts(c.intersection(o)):
+                        if x.geom_type != 'Point':
+                            continue
+                        d = dist(p, x)
+                        if d <= raio_m and (melhor is None or d < melhor[0]):
+                            melhor = (d, c, x)
+            status = 'cruzamento'
+            if melhor is None:
+                d, c = min(((dist(p, c.interpolate(c.project(p))), c) for _, c in cand), key=lambda t: t[0])
+                if d > raio_m:
+                    rel.append({**reg, 'status': 'sem_linha_no_raio', 'dist_m': round(d, 2)})
+                    continue
+                melhor = (d, c, c.interpolate(c.project(p)))
+                status = 'sem_cruzamento'
+            d, c, x = melhor
+            if arv_ja is not None and any(dist(x, j.interpolate(j.project(x))) <= raio_m for j in (ja[i] for i in arv_ja.query(w))):
+                rel.append({**reg, 'status': 'ja_em_linha', 'dist_m': round(d, 2)})
+                continue
+            s = c.project(x)
+            s_ini = s_fim = s
+            if arv_poli is not None and status == 'cruzamento':
+                for i in arv_poli.query(x.buffer(_janela(x, 1.0, geografico))):
+                    dentro = c.intersection(polis[i])
+                    tol = 1e-7 if geografico else 0.01  # ~1 cm
+                    partes = [g for g in shapely.get_parts(dentro) if g.geom_type == 'LineString' and g.distance(x) <= tol]
+                    for g in partes:
+                        a, b = c.project(Point(g.coords[0])), c.project(Point(g.coords[-1]))
+                        s_ini, s_fim = min(s_ini, a, b), max(s_fim, a, b)
+            ponte = _trecho(c, s_ini, s_fim, meio, comprimento)
+            if ponte is None or ponte.is_empty or ponte.geom_type != 'LineString':
+                rel.append({**reg, 'status': 'trecho_vazio', 'dist_m': round(d, 2)})
+                continue
+            saida.append({'MASACODE': 20005, 'name': f.get('nome'), 'geometry': ponte})
+            rel.append({**reg, 'status': status, 'dist_m': round(d, 2), 'comprimento_m': round(comprimento(ponte), 2)})
+    if not saida:
+        return vazio, rel
+    return gpd.GeoDataFrame(saida, geometry='geometry', crs=crs), rel
+
+
+def _ler(engine, schema, table):
+    try:
+        gdf = gpd.read_postgis(text(f'SELECT * FROM {schema}.{table}'), engine, geom_col='geom')
+    except Exception as e:
+        print(f'[skip] {table}: {e}')
+        return None
+    if gdf is None or len(gdf) == 0:
+        print(f'[vazio] {table}')
+        return None
+    # geometria ativa passa a se chamar 'geometry'; descarta Z/M
+    gdf = gdf.rename_geometry('geometry')
+    gdf['geometry'] = gpd.GeoSeries(force_2d(gdf.geometry.values), index=gdf.index, crs=gdf.crs)
+    return gdf.set_geometry('geometry')
+
+
+def convert(conn, schema, out_folder, keep_attributes=False, ponte_ponto=True,
+            raio_ponte_m=RAIO_PONTE_PONTO_M, comprimento_ponte_m=COMPRIMENTO_PONTE_PONTO_M):
     url = "postgresql+psycopg2://{user}:{password}@{host}:{port}/{database}".format(**conn)
     engine = create_engine(url)
     os.makedirs(out_folder, exist_ok=True)
 
     outputs = {}  # arquivo -> lista de GeoDataFrames
+    lidas = {}
     for table in TABLES:
-        try:
-            gdf = gpd.read_postgis(text(f'SELECT * FROM {schema}.{table}'), engine, geom_col='geom')
-        except Exception as e:
-            print(f'[skip] {table}: {e}')
+        gdf = _ler(engine, schema, table)
+        if gdf is None:
             continue
-        if gdf is None or len(gdf) == 0:
-            print(f'[vazio] {table}')
-            continue
-        # geometria ativa passa a se chamar 'geometry'; descarta Z/M
-        gdf = gdf.rename_geometry('geometry')
-        gdf['geometry'] = gpd.GeoSeries(force_2d(gdf.geometry.values), index=gdf.index, crs=gdf.crs)
-        gdf = gdf.set_geometry('geometry')
+        lidas[table] = gdf
         res = _classify(table, gdf)
         if res is None or len(res) == 0:
             continue
         res = res.explode(index_parts=False, ignore_index=True)  # multipartes -> simples
         for out_name, sub in res.groupby('__out'):
             outputs.setdefault(out_name, []).append(sub.drop(columns='__out'))
+
+    if ponte_ponto:
+        pontos = _ler(engine, schema, PONTOS_PONTE)
+        pontes, rel = pontes_de_ponto(
+            pontos, lidas.get('infra_via_deslocamento_l'), lidas.get('infra_ferrovia_l'),
+            lidas.get('elemnat_trecho_drenagem_l'), lidas.get('cobter_massa_dagua_a'),
+            lidas.get('infra_elemento_viario_l'), raio_ponte_m, comprimento_ponte_m)
+        if len(pontes):
+            outputs.setdefault('Bridge', []).append(pontes)
+        if rel:
+            cont = pd.Series([r['status'] for r in rel]).value_counts().to_dict()
+            print(f'Pontes em ponto -> Bridge: {len(pontes)} de {len(rel)} ({cont})')
 
     summary = {}
     for out_name, parts in outputs.items():
@@ -173,7 +337,15 @@ def main():
     ap.add_argument('--db'); ap.add_argument('--user'); ap.add_argument('--password')
     ap.add_argument('--schema', default='edgv'); ap.add_argument('--out')
     ap.add_argument('--keep-attributes', action='store_true')
+    ap.add_argument('--sem-ponte-ponto', action='store_true',
+                    help='nao converte ponte em ponto (infra_elemento_viario_p) em Bridge')
+    ap.add_argument('--raio-ponte-ponto', type=float, default=RAIO_PONTE_PONTO_M,
+                    help='distancia maxima, em metros, do ponto ao cruzamento (padrao %(default)s)')
+    ap.add_argument('--comprimento-ponte-ponto', type=float, default=COMPRIMENTO_PONTE_PONTO_M,
+                    help='comprimento, em metros, da Bridge gerada de ponto (padrao %(default)s)')
     a = ap.parse_args()
+    ponte = {'ponte_ponto': not a.sem_ponte_ponto, 'raio_ponte_m': a.raio_ponte_ponto,
+             'comprimento_ponte_m': a.comprimento_ponte_ponto}
 
     if a.config:
         with open(a.config, encoding='utf-8') as f:
@@ -182,6 +354,9 @@ def main():
         schema = conn.get('schema', cfg.get('schema', 'edgv'))
         out_folder = cfg['output_folder']
         keep = cfg.get('keep_attributes', False)
+        ponte = {'ponte_ponto': cfg.get('ponte_ponto', ponte['ponte_ponto']),
+                 'raio_ponte_m': cfg.get('raio_ponte_ponto_m', ponte['raio_ponte_m']),
+                 'comprimento_ponte_m': cfg.get('comprimento_ponte_ponto_m', ponte['comprimento_ponte_m'])}
     else:
         if not (a.db and a.user and a.host and a.out):
             ap.error('sem --config, informe --host --db --user --password --out')
@@ -190,7 +365,7 @@ def main():
         out_folder = a.out
         keep = a.keep_attributes
 
-    convert(conn, schema, out_folder, keep)
+    convert(conn, schema, out_folder, keep, **ponte)
 
 
 if __name__ == '__main__':
