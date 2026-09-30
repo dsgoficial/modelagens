@@ -157,6 +157,26 @@ A junção por `codigo_uf` e a dissolução não existem no algoritmo do DSGTool
 - a área sem dados usa o delimitador próprio e as linhas marcadas como limite;
 - o terreno sujeito a inundação é a vegetação filtrada por `sujeito_inundacao` = Sim no centroide.
 
+### 1.7 Rev 0.19.0 (2026-09-30): o histórico passa ao DSG Versioning
+
+A base contínua passa a ser versionada pelo DSG Versioning (1cgeo/dsg_versioning), e a extensão deixa de manter o que agora é fato do histórico. A razão é mecânica: trigger que grava usuário e relógio na linha faz dois clones divergirem mesmo quando editam campos diferentes, grava o integrador como autor na aplicação do merge, e a recomputação periódica da escala produz atualizações em massa sem edição humana. Decisão D019 do DSG Versioning.
+
+| Grupo | Campos | Onde passa a morar |
+|-------|--------|--------------------|
+| Identidade e linhagem | `geocodigo`, divisão, fusão, migração, depreciação | DSG Versioning, num único evento por operação; o `geocodigo` continua na linha, protegido por `preserva_geocodigo()` |
+| Autoria e datas de edição | `operador_criacao`, `data_criacao`, `operador_atualizacao`, `data_atualizacao` | Histórico do DSG Versioning; as colunas saem do modelo |
+| Afirmações sobre o dado | `fontes`, acurácias, `validacao`, `confirmacao_*`, `data_confirmacao`, `status_ciclo_vida` | Colunas da linha, versionadas e mescladas como qualquer atributo |
+| Valores calculados | `confiabilidade`, `escala_maxima_autoritativa` | Funções na leitura: `public.confiabilidade_feicao()` e `public.escala_maxima_autoritativa()` |
+
+- **Saem** as colunas `operador_*`, `data_criacao`, `data_atualizacao`, `confiabilidade` e `escala_maxima_autoritativa`, o trigger `preenche_metadado()`, o trigger `computa_qualidade()`, a rotina `recomputa_escala_idade()`, a tabela `edgv.linhagem_feicao` e o valor 4 (Depreciado) de `dominios.status_ciclo_vida`.
+- **Fica** `data_confirmacao`, agora informada por quem confirma: a data da verificação em campo pode ser anterior à edição, e nenhum trigger a preenche.
+- **A idade da escala máxima autoritativa passa a contar da `data_confirmacao`**, e não da última edição. Todo limiar do Apêndice C.5 exige confirmação, e corrigir um nome não torna a informação mais atual. Sem `data_confirmacao` a feição não tem escala máxima.
+- **`dominios.confiabilidade` fica** como tabela de códigos do valor calculado.
+- `linha_derivacao()` deixa de tratar o status 4.
+- `escala_minima_derivacao` e `completude_subfase` não mudam.
+
+Banco existente na 0.18.0: aplique o incremento 0.19.0 da seção 8 e reaplique `edgv_topo_20_extension.sql`. O incremento recusa seguir se houver feição com status 4 ou linha em `edgv.linhagem_feicao`, e apaga a autoria e as datas gravadas: numa base viva, leve-as antes para a importação inicial do DSG Versioning.
+
 ---
 
 ## 2. Novas tabelas
@@ -565,7 +585,7 @@ Bug originado em `mastergen.py`: o gerador anexa `9999` aos valores do CHECK sem
 | Campo | 1.4 | 2.0 |
 |-------|-----|-----|
 | `edgvversion` | EDGV 3.0 Topo | EDGV Topo 2.0 |
-| `dbimplversion` | 1.4.4 | 0.18.0 |
+| `dbimplversion` | 1.4.4 | 0.19.0 |
 
 > Rev 2026-07-26: `dbimplversion` corrigido para 0.15.0. A tabela dizia 0.14.0
 > enquanto o `edgv_topo_20.sql` já gravava 0.15.0 desde as revisões do cemitério
@@ -1269,4 +1289,54 @@ ALTER TABLE edgv.llp_limite_legal_a ADD COLUMN IF NOT EXISTS codigo_uf varchar(2
 
 UPDATE public.db_metadata SET dbimplversion = '0.18.0';
 ALTER TABLE public.db_metadata ALTER COLUMN dbimplversion SET DEFAULT '0.18.0';
+
+-- ===========================================
+-- Incremento 0.19.0 (2026-09-30)
+-- Autoria, datas de edição, linhagem e depreciação passam ao histórico do
+-- DSG Versioning (seção 1.7); confiabilidade e escala máxima autoritativa
+-- passam a ser calculadas na leitura. Depois deste bloco, reaplique
+-- edgv_topo_20_extension.sql.
+-- ATENCAO: o DROP das colunas operador_*, data_criacao e data_atualizacao
+-- apaga a autoria e as datas gravadas. Numa base viva, exporte-as antes para
+-- a importação inicial do DSG Versioning.
+-- ===========================================
+
+DO $$DECLARE r record; n bigint;
+BEGIN
+    IF to_regclass('edgv.linhagem_feicao') IS NOT NULL THEN
+        EXECUTE 'SELECT count(*) FROM edgv.linhagem_feicao' INTO n;
+        IF n > 0 THEN
+            RAISE EXCEPTION 'edgv.linhagem_feicao tem % linhas: registre a linhagem no DSG Versioning antes', n;
+        END IF;
+    END IF;
+    FOR r IN SELECT table_name AS f_table_name FROM information_schema.columns
+             WHERE table_schema = 'edgv' AND column_name = 'status_ciclo_vida' LOOP
+        EXECUTE format('SELECT count(*) FROM edgv.%I WHERE status_ciclo_vida = 4', r.f_table_name) INTO n;
+        IF n > 0 THEN
+            RAISE EXCEPTION 'edgv.% tem % feicoes depreciadas: registre a depreciacao no DSG Versioning antes', r.f_table_name, n;
+        END IF;
+    END LOOP;
+END$$;
+
+DO $$DECLARE r record;
+BEGIN
+    FOR r IN SELECT f_table_name FROM public.geometry_columns WHERE f_table_schema = 'edgv' LOOP
+        EXECUTE format('DROP TRIGGER IF EXISTS b_preenche_metadado ON edgv.%I', r.f_table_name);
+        EXECUTE format('DROP TRIGGER IF EXISTS c_computa_qualidade ON edgv.%I', r.f_table_name);
+        EXECUTE format('ALTER TABLE edgv.%I'
+            ' DROP COLUMN IF EXISTS operador_criacao, DROP COLUMN IF EXISTS data_criacao,'
+            ' DROP COLUMN IF EXISTS operador_atualizacao, DROP COLUMN IF EXISTS data_atualizacao,'
+            ' DROP COLUMN IF EXISTS confiabilidade, DROP COLUMN IF EXISTS escala_maxima_autoritativa',
+            r.f_table_name);
+    END LOOP;
+END$$;
+
+DROP FUNCTION IF EXISTS public.preenche_metadado();
+DROP FUNCTION IF EXISTS public.computa_qualidade();
+DROP FUNCTION IF EXISTS public.recomputa_escala_idade();
+DROP TABLE IF EXISTS edgv.linhagem_feicao;
+DELETE FROM dominios.status_ciclo_vida WHERE code = 4;
+
+UPDATE public.db_metadata SET dbimplversion = '0.19.0';
+ALTER TABLE public.db_metadata ALTER COLUMN dbimplversion SET DEFAULT '0.19.0';
 ```

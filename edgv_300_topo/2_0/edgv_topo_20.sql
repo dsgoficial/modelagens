@@ -7,10 +7,10 @@ SET search_path TO pg_catalog,public,edgv,dominios;
 
 CREATE TABLE public.db_metadata(
 	 edgvversion varchar(50) NOT NULL DEFAULT 'EDGV Topo 2.0',
-	 dbimplversion varchar(50) NOT NULL DEFAULT '0.18.0',
+	 dbimplversion varchar(50) NOT NULL DEFAULT '0.19.0',
 	 CONSTRAINT edgvversioncheck CHECK (edgvversion = 'EDGV Topo 2.0')
 );
-INSERT INTO public.db_metadata (edgvversion, dbimplversion) VALUES ('EDGV Topo 2.0','0.18.0');
+INSERT INTO public.db_metadata (edgvversion, dbimplversion) VALUES ('EDGV Topo 2.0','0.19.0');
 
 CREATE TABLE dominios.sigla_uf (
 	 code smallint NOT NULL,

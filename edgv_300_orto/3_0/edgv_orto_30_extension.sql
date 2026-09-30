@@ -6,8 +6,8 @@
 --   1. Função explode_geom() + triggers
 --   2. Domínios de qualidade e linhagem
 --   3. Colunas de qualidade e linhagem (todas as tabelas edgv)
---   4. Metadados de produção (operador/data)
---   5. Trigger preenche_metadado() (produção + geocodigo)
+--   4. Autoria e datas de edição: histórico do DSG Versioning (rev 3.0.3)
+--   5. Trigger preserva_geocodigo()
 --   6. Tabela de estilos (layer_styles)
 --   7. Tabelas auxiliares SAP / revisão / track
 --================================================================
@@ -114,7 +114,6 @@ INSERT INTO dominios.status_ciclo_vida (code, code_name) VALUES
     (1, 'Ativo (1)'),
     (2, 'Em validação (2)'),
     (3, 'Sob verificação (3)'),
-    (4, 'Depreciado (4)'),
     (9999, 'A SER PREENCHIDO (9999)')
 ON CONFLICT DO NOTHING;
 
@@ -228,61 +227,21 @@ BEGIN
 END$$;
 
 --########################################################
--- 4. Metadados de produção (operador/data)
+-- 4. Autoria e datas de edição (rev 3.0.3, espelho da Topo 2.0 0.19.0)
+--    As colunas operador_criacao, data_criacao, operador_atualizacao e
+--    data_atualizacao saíram do modelo: quem editou e quando são eventos do
+--    histórico do DSG Versioning (1cgeo/dsg_versioning, decisão D019), que
+--    separa autor, responsável pela resolução e integrador. Trigger que grava
+--    usuário e relógio na linha divergiria entre clones e gravaria o
+--    integrador como autor. A depreciação também passou ao histórico.
 --########################################################
 
-DO $$DECLARE r record;
-BEGIN
-	FOR r in select f_table_schema, f_table_name from public.geometry_columns
-    LOOP
-	IF r.f_table_schema = 'edgv' THEN
-		EXECUTE 'ALTER TABLE edgv.' || quote_ident(r.f_table_name) || ' ADD COLUMN IF NOT EXISTS operador_criacao VARCHAR(255);';
-		EXECUTE 'ALTER TABLE edgv.' || quote_ident(r.f_table_name) || ' ADD COLUMN IF NOT EXISTS data_criacao timestamp with time zone;';
-		EXECUTE 'ALTER TABLE edgv.' || quote_ident(r.f_table_name) || ' ADD COLUMN IF NOT EXISTS operador_atualizacao VARCHAR(255);';
-		EXECUTE 'ALTER TABLE edgv.' || quote_ident(r.f_table_name) || ' ADD COLUMN IF NOT EXISTS data_atualizacao timestamp with time zone;';
-	END IF;
-    END LOOP;
-END$$;
-
 --########################################################
--- 5. Triggers preenche_metadado() e preserva_geocodigo()
---    preenche_metadado: operador/data de criação e atualização
---                       (aplicada a todas as tabelas edgv)
---    preserva_geocodigo: preserva geocodigo em UPDATE e garante
---                        valor em INSERT (fallback para DEFAULT).
---                        Aplicada só nas tabelas edgv que possuem
---                        a coluna geocodigo (não-edição).
+-- 5. Trigger preserva_geocodigo()
+--    Preserva geocodigo em UPDATE e garante valor em INSERT (fallback para
+--    DEFAULT). Aplicado só nas tabelas edgv que possuem a coluna geocodigo
+--    (não-edição). Usa só a própria linha, sem usuário nem relógio.
 --########################################################
-
-CREATE OR REPLACE FUNCTION public.preenche_metadado()
-  RETURNS trigger AS
-$BODY$
-    BEGIN
-
-		IF TG_OP = 'UPDATE' THEN
-			NEW.operador_atualizacao = CURRENT_USER;
-			NEW.data_atualizacao = CURRENT_TIMESTAMP;
-			NEW.operador_criacao = OLD.operador_criacao;
-			NEW.data_criacao = OLD.data_criacao;
-		ELSIF TG_OP = 'INSERT' THEN
-			-- Só preenche se não vier valor (permite preservar dados de migração)
-			IF NEW.operador_criacao IS NULL THEN
-				NEW.operador_criacao = CURRENT_USER;
-			END IF;
-			IF NEW.data_criacao IS NULL THEN
-				NEW.data_criacao = CURRENT_TIMESTAMP;
-			END IF;
-		END IF;
-
-		RETURN NEW;
-	END;
-$BODY$
-  LANGUAGE plpgsql VOLATILE
-  COST 100;
-ALTER FUNCTION public.preenche_metadado()
-  OWNER TO postgres;
-
-GRANT EXECUTE ON FUNCTION public.preenche_metadado() TO PUBLIC;
 
 CREATE OR REPLACE FUNCTION public.preserva_geocodigo()
   RETURNS trigger AS
@@ -309,8 +268,8 @@ ALTER FUNCTION public.preserva_geocodigo()
 
 GRANT EXECUTE ON FUNCTION public.preserva_geocodigo() TO PUBLIC;
 
--- Cria triggers em todas as tabelas edgv.
--- preenche_metadado em todas; preserva_geocodigo só nas não-edição.
+-- Cria o trigger nas tabelas edgv não-edição e remove o b_preenche_metadado
+-- da 3.0.2, para que reaplicar esta extensão atualize um banco existente.
 
 DO $$DECLARE r record;
 BEGIN
@@ -318,8 +277,6 @@ BEGIN
     LOOP
 	IF r.f_table_schema = 'edgv' THEN
 		EXECUTE 'DROP TRIGGER IF EXISTS b_preenche_metadado ON edgv.' || quote_ident(r.f_table_name);
-		EXECUTE 'CREATE TRIGGER b_preenche_metadado BEFORE INSERT OR UPDATE ON edgv.' || quote_ident(r.f_table_name) || ' FOR EACH ROW EXECUTE PROCEDURE public.preenche_metadado()';
-
 		EXECUTE 'DROP TRIGGER IF EXISTS c_preserva_geocodigo ON edgv.' || quote_ident(r.f_table_name);
 		IF r.f_table_name NOT LIKE 'edicao\_%' ESCAPE '\' THEN
 			EXECUTE 'CREATE TRIGGER c_preserva_geocodigo BEFORE INSERT OR UPDATE ON edgv.' || quote_ident(r.f_table_name) || ' FOR EACH ROW EXECUTE PROCEDURE public.preserva_geocodigo()';
@@ -327,6 +284,8 @@ BEGIN
 	END IF;
     END LOOP;
 END$$;
+
+DROP FUNCTION IF EXISTS public.preenche_metadado();
 
 --########################################################
 -- 6. Tabela de estilos (layer_styles)

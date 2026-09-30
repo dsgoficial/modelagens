@@ -7,10 +7,10 @@ SET search_path TO pg_catalog,public,edgv,dominios;
 
 CREATE TABLE public.db_metadata(
 	 edgvversion varchar(50) NOT NULL DEFAULT 'EDGV Orto 3.0',
-	 dbimplversion varchar(50) NOT NULL DEFAULT '3.0.2',
+	 dbimplversion varchar(50) NOT NULL DEFAULT '3.0.3',
 	 CONSTRAINT edgvversioncheck CHECK (edgvversion = 'EDGV Orto 3.0')
 );
-INSERT INTO public.db_metadata (edgvversion, dbimplversion) VALUES ('EDGV Orto 3.0','3.0.2');
+INSERT INTO public.db_metadata (edgvversion, dbimplversion) VALUES ('EDGV Orto 3.0','3.0.3');
 
 CREATE TABLE dominios.tipo_obstaculo (
 	 code smallint NOT NULL,

@@ -13,7 +13,7 @@
 | | Orto 2.5 | **Orto 3.0** |
 |---|---|---|
 | Modelo base | EDGV 3.0 | **EDGV Topo 2.0 v0.18.0** (regerado 2026-09-29; antes 0.17.0, 0.14.0, 0.11.0 e 0.9.0) |
-| Versão | 2.5.4 | **3.0.2** |
+| Versão | 2.5.4 | **3.0.3** |
 | Classes temáticas | 27 | **25** (`pais`/`unidade_federacao` consolidados em `llp_limite_legal`) |
 | Classes auxiliares (`extension_classes`) | 24 | **26** (as 24 do 2.5 mais `delimitador_limite_legal` e `centroide_limite_legal`, rev 3.0.1) |
 | Domínios | 42 | **41** (rebaseados no Topo 2.0; `sigla_uf` sai com a UF) |
@@ -157,3 +157,17 @@ Regerado sobre a Topo 2.0 v0.18.0. Justificativa na seção 1.6 do changelog da 
 | `codigo_uf` em `centroide_limite_legal_p` e `llp_limite_legal_a` | a UF é a junção dos municípios por essa chave |
 
 Banco existente na 3.0.1: da seção 8 do changelog da Topo 2.0 serve o incremento 0.18.0 sem as três linhas de `llp_delimitacao_fisica_l` e sem as de `db_metadata`. O fecho é `UPDATE public.db_metadata SET dbimplversion = '3.0.2'`, seguido da reaplicação de `edgv_orto_30_extension.sql`.
+
+## 7.3 Rev 3.0.3 (2026-09-30): o histórico passa ao DSG Versioning
+
+Regerado sobre a Topo 2.0 v0.19.0. Justificativa na seção 1.7 do changelog da Topo 2.0: a base versionada pelo DSG Versioning não pode ter trigger que grave usuário e relógio na linha.
+
+| Mudança | Efeito no Orto 3.0 |
+|---|---|
+| Saem `operador_criacao`, `data_criacao`, `operador_atualizacao`, `data_atualizacao` e o trigger `preenche_metadado()` | quem editou e quando passam a ser eventos do histórico do DSG Versioning |
+| Sai o valor 4 (Depreciado) de `dominios.status_ciclo_vida` | a depreciação é evento do histórico, com a linhagem |
+| `preserva_geocodigo()` continua nas tabelas não-edição | a identidade segue protegida contra troca acidental |
+
+O Orto não tem as colunas `confiabilidade` e `escala_maxima_autoritativa` nem a tabela `linhagem_feicao`, então a parte de qualidade calculada da 0.19.0 não se aplica.
+
+Banco existente na 3.0.2: serve o incremento 0.19.0 da seção 8 do changelog da Topo 2.0, que usa `IF EXISTS` e passa pelos objetos que o Orto não tem, trocando as duas linhas de `db_metadata` por `UPDATE public.db_metadata SET dbimplversion = '3.0.3'` e `ALTER TABLE public.db_metadata ALTER COLUMN dbimplversion SET DEFAULT '3.0.3'`. Em seguida, reaplique `edgv_orto_30_extension.sql`.

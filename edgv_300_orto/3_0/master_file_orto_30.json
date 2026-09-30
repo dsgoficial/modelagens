@@ -1,7 +1,7 @@
 {
   "modelo": "EDGV Orto 3.0",
   "comentario": "Perfil ortoimagem. Espelha o conjunto de classes do Orto 2.5 (classes separadas) rebaseado nas definicoes do Topo 2.0. Gerado por build_orto30_from_topo20.py — nao editar a mao.",
-  "versao": "3.0.2",
+  "versao": "3.0.3",
   "schema_dados": "edgv",
   "schema_dominios": "dominios",
   "a_ser_preenchido": {

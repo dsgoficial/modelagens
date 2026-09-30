@@ -6,12 +6,20 @@
 --   1. Função explode_geom() + triggers
 --   2. Domínios de qualidade e linhagem
 --   3. Colunas de qualidade e linhagem (todas as tabelas edgv)
---   4. Metadados de produção (operador/data)
---   5. Trigger preenche_metadado() (produção + geocodigo)
+--   4. Autoria e datas de edição: histórico do DSG Versioning (rev 0.19.0)
+--   5. Trigger preserva_geocodigo()
 --   6. Tabela de estilos (layer_styles)
 --   7. Tabelas auxiliares SAP / revisão / track
 --   8. Metadados de qualidade da base contínua
---      (confiabilidade, escala máxima autoritativa, linhagem, completude por subfase)
+--      (confiabilidade e escala máxima autoritativa calculadas na leitura,
+--       completude por subfase; linhagem e depreciação no DSG Versioning)
+--
+-- Rev 0.19.0: esta extensão não mantém mais autoria, datas de edição,
+-- linhagem nem depreciação. Numa base versionada pelo DSG Versioning
+-- (1cgeo/dsg_versioning, decisão D019), esses fatos são eventos do histórico.
+-- Trigger que altera a linha com usuário ou relógio divergiria entre clones e
+-- gravaria o integrador como autor; por isso os triggers restantes só usam a
+-- própria linha.
 --================================================================
 
 -- Coluna 'fontes' é TEXT contendo um array JSON serializado (compatibilidade QGIS).
@@ -116,7 +124,6 @@ INSERT INTO dominios.status_ciclo_vida (code, code_name) VALUES
     (1, 'Ativo (1)'),
     (2, 'Em validação (2)'),
     (3, 'Sob verificação (3)'),
-    (4, 'Depreciado (4)'),
     (9999, 'A SER PREENCHIDO (9999)')
 ON CONFLICT DO NOTHING;
 
@@ -228,49 +235,30 @@ BEGIN
 END$$;
 
 --########################################################
--- 4. Metadados de produção (operador/data)
+-- 4. Autoria e datas de edição (rev 0.19.0)
+--    As colunas operador_criacao, data_criacao, operador_atualizacao e
+--    data_atualizacao saíram do modelo: quem editou e quando são eventos do
+--    histórico do DSG Versioning, que separa autor, responsável pela
+--    resolução e integrador. O produto que precisar delas as projeta do
+--    histórico.
 --########################################################
 
-DO $$DECLARE r record;
-BEGIN
-	FOR r in select f_table_schema, f_table_name from public.geometry_columns
-    LOOP
-	IF r.f_table_schema = 'edgv' THEN
-		EXECUTE 'ALTER TABLE edgv.' || quote_ident(r.f_table_name) || ' ADD COLUMN IF NOT EXISTS operador_criacao VARCHAR(255);';
-		EXECUTE 'ALTER TABLE edgv.' || quote_ident(r.f_table_name) || ' ADD COLUMN IF NOT EXISTS data_criacao timestamp with time zone;';
-		EXECUTE 'ALTER TABLE edgv.' || quote_ident(r.f_table_name) || ' ADD COLUMN IF NOT EXISTS operador_atualizacao VARCHAR(255);';
-		EXECUTE 'ALTER TABLE edgv.' || quote_ident(r.f_table_name) || ' ADD COLUMN IF NOT EXISTS data_atualizacao timestamp with time zone;';
-	END IF;
-    END LOOP;
-END$$;
-
 --########################################################
--- 5. Trigger preenche_metadado()
---    Preenche operador/data de criação e atualização
+-- 5. Trigger preserva_geocodigo()
 --    Preserva geocodigo em UPDATE (impede alteração acidental)
 --    Garante geocodigo em INSERT (fallback para DEFAULT)
+--    Usa só a própria linha, sem usuário nem relógio.
 --########################################################
 
-CREATE OR REPLACE FUNCTION public.preenche_metadado()
+CREATE OR REPLACE FUNCTION public.preserva_geocodigo()
   RETURNS trigger AS
 $BODY$
     BEGIN
 
 		IF TG_OP = 'UPDATE' THEN
-			NEW.operador_atualizacao = CURRENT_USER;
-			NEW.data_atualizacao = CURRENT_TIMESTAMP;
-			NEW.operador_criacao = OLD.operador_criacao;
-			NEW.data_criacao = OLD.data_criacao;
 			-- Preserva geocodigo: impede alteração acidental
 			NEW.geocodigo = OLD.geocodigo;
 		ELSIF TG_OP = 'INSERT' THEN
-			-- Só preenche se não vier valor (permite preservar dados de migração)
-			IF NEW.operador_criacao IS NULL THEN
-				NEW.operador_criacao = CURRENT_USER;
-			END IF;
-			IF NEW.data_criacao IS NULL THEN
-				NEW.data_criacao = CURRENT_TIMESTAMP;
-			END IF;
 			-- Garante geocodigo se NULL (fallback para o DEFAULT)
 			IF NEW.geocodigo IS NULL THEN
 				NEW.geocodigo = uuid_generate_v4();
@@ -282,12 +270,14 @@ $BODY$
 $BODY$
   LANGUAGE plpgsql VOLATILE
   COST 100;
-ALTER FUNCTION public.preenche_metadado()
+ALTER FUNCTION public.preserva_geocodigo()
   OWNER TO postgres;
 
-GRANT EXECUTE ON FUNCTION public.preenche_metadado() TO PUBLIC;
+GRANT EXECUTE ON FUNCTION public.preserva_geocodigo() TO PUBLIC;
 
--- Cria trigger de metadados em todas as tabelas edgv
+-- Cria o trigger em todas as tabelas edgv e remove os da 0.18.0
+-- (b_preenche_metadado, c_computa_qualidade), para que reaplicar esta
+-- extensão atualize um banco existente.
 
 DO $$DECLARE r record;
 BEGIN
@@ -295,10 +285,14 @@ BEGIN
     LOOP
 	IF r.f_table_schema = 'edgv' THEN
 		EXECUTE 'DROP TRIGGER IF EXISTS b_preenche_metadado ON edgv.' || quote_ident(r.f_table_name);
-		EXECUTE 'CREATE TRIGGER b_preenche_metadado BEFORE INSERT OR UPDATE ON edgv.' || quote_ident(r.f_table_name) || ' FOR EACH ROW EXECUTE PROCEDURE public.preenche_metadado()';
+		EXECUTE 'DROP TRIGGER IF EXISTS c_computa_qualidade ON edgv.' || quote_ident(r.f_table_name);
+		EXECUTE 'DROP TRIGGER IF EXISTS b_preserva_geocodigo ON edgv.' || quote_ident(r.f_table_name);
+		EXECUTE 'CREATE TRIGGER b_preserva_geocodigo BEFORE INSERT OR UPDATE ON edgv.' || quote_ident(r.f_table_name) || ' FOR EACH ROW EXECUTE PROCEDURE public.preserva_geocodigo()';
 	END IF;
     END LOOP;
 END$$;
+
+DROP FUNCTION IF EXISTS public.preenche_metadado();
 
 --########################################################
 -- 6. Tabela de estilos (layer_styles)
@@ -442,8 +436,9 @@ GRANT SELECT ON TABLE public.aux_track_l TO public;
 --########################################################
 -- 8. Metadados de qualidade da base contínua
 --    Materializa o Apêndice C (confiabilidade, escala máxima autoritativa,
---    escala mínima de derivação, data de confirmação), o Apêndice G (linhagem)
---    e o Apêndice F.2.3 (completude por subfase) do RT 08/2026.
+--    escala mínima de derivação, data de confirmação) e o Apêndice F.2.3
+--    (completude por subfase) do RT 08/2026. A linhagem (Apêndices C.7 e G.4)
+--    e a depreciação passaram ao DSG Versioning na rev 0.19.0.
 --########################################################
 
 -- 8.1 dominios.confiabilidade (Apêndice C.4)
@@ -481,8 +476,13 @@ INSERT INTO dominios.nivel_completude (code, code_name) VALUES
     (6, 'Verificada 1:25.000 (6)')
 ON CONFLICT DO NOTHING;
 
--- 8.3 Colunas confiabilidade (FK, nullable: feição depreciada não recebe)
---     e escala_maxima_autoritativa, em todas as tabelas edgv com geometria
+-- 8.3 Colunas data_confirmacao e escala_minima_derivacao, em todas as tabelas
+--     edgv com geometria. confiabilidade e escala_maxima_autoritativa não são
+--     mais colunas (rev 0.19.0): são calculadas na leitura pelas funções de 8.4,
+--     porque valor derivado gravado na linha geraria conflito falso no merge
+--     e a escala expira com a idade, sem edição.
+--     data_confirmacao é informada por quem confirma (a data da verificação
+--     pode ser anterior à edição); nenhum trigger a preenche.
 DO $$DECLARE r record; t text;
 BEGIN
     FOR r in select f_table_name from public.geometry_columns
@@ -490,124 +490,91 @@ BEGIN
     LOOP
         t := r.f_table_name;
         EXECUTE 'ALTER TABLE edgv.' || quote_ident(t)
-            || ' ADD COLUMN IF NOT EXISTS confiabilidade SMALLINT'
-            || ', ADD COLUMN IF NOT EXISTS escala_maxima_autoritativa INTEGER'
-            || ', ADD COLUMN IF NOT EXISTS data_confirmacao DATE'
+            || ' ADD COLUMN IF NOT EXISTS data_confirmacao DATE'
             || ', ADD COLUMN IF NOT EXISTS escala_minima_derivacao INTEGER;';
-        BEGIN EXECUTE 'ALTER TABLE edgv.' || quote_ident(t) || ' ADD CONSTRAINT ' || t || '_conf_fk FOREIGN KEY (confiabilidade) REFERENCES dominios.confiabilidade(code);';
-        EXCEPTION WHEN duplicate_object THEN NULL; END;
     END LOOP;
 END$$;
 
--- 8.4 computa_qualidade(): computa e PERSISTE confiabilidade e
---     escala_maxima_autoritativa a partir dos campos de qualidade, e mantém
---     data_confirmacao (data da confirmação mais recente da feição).
---     Regras: Apêndice C.4 (confiabilidade) e C.5 (escala).
-CREATE OR REPLACE FUNCTION public.computa_qualidade()
-  RETURNS trigger AS
+-- 8.4 Funções de qualidade calculadas na leitura (Apêndices C.4 e C.5).
+--     Substituem o trigger computa_qualidade() e a rotina
+--     recomputa_escala_idade() da 0.18.0. Uso, por feição:
+--       public.confiabilidade_feicao(status_ciclo_vida, confirmacao_geometria,
+--           confirmacao_atributos, acuracia_planimetrica)
+--       public.escala_maxima_autoritativa(status_ciclo_vida, validacao,
+--           confirmacao_geometria, confirmacao_atributos, acuracia_planimetrica,
+--           data_confirmacao)
+--     A idade da escala máxima conta da data_confirmacao: todo limiar de C.5
+--     exige confirmação, e a última edição não mede a atualidade da
+--     informação. Sem data_confirmacao não há escala máxima.
+
+CREATE OR REPLACE FUNCTION public.nivel_confirmacao(p_nivel text)
+  RETURNS smallint AS
 $BODY$
-    DECLARE
-        g_ord smallint;
-        a_ord smallint;
-        idade_anos double precision;
-        esc integer;
-    BEGIN
-        -- Ordinal do nível de confirmação: 0 nenhum, 1 baixo, 2 medio, 3 alto
-        SELECT CASE nivel WHEN 'alto' THEN 3 WHEN 'medio' THEN 2 WHEN 'baixo' THEN 1 ELSE 0 END
-          INTO g_ord FROM dominios.confirmacao_geometria WHERE code = NEW.confirmacao_geometria;
-        SELECT CASE nivel WHEN 'alto' THEN 3 WHEN 'medio' THEN 2 WHEN 'baixo' THEN 1 ELSE 0 END
-          INTO a_ord FROM dominios.confirmacao_atributos WHERE code = NEW.confirmacao_atributos;
-        g_ord := coalesce(g_ord, 0);
-        a_ord := coalesce(a_ord, 0);
-
-        -- Confiabilidade (C.4, revisao 2026-07-12: 5 niveis; os dois mais altos = INDE).
-        -- So confirmacao + acuracia (a temporalidade e criterio ORTOGONAL, aplicado
-        -- na derivacao do produto por public.linha_derivacao, nao aqui).
-        -- Depreciada (status 4): sem classificação (NULL).
-        IF NEW.status_ciclo_vida = 4 THEN
-            NEW.confiabilidade := NULL;
-        ELSIF NEW.status_ciclo_vida = 3 THEN
-            NEW.confiabilidade := 5;   -- Indeterminada (sob verificação)
-        ELSIF g_ord >= 3 AND a_ord >= 3 AND NEW.acuracia_planimetrica IS NOT NULL AND NEW.acuracia_planimetrica <= 12.5 THEN
-            NEW.confiabilidade := 1;   -- Muito Alta (confirmação em campo + acurácia ótima)
-        ELSIF g_ord >= 2 AND a_ord >= 2 AND NEW.acuracia_planimetrica IS NOT NULL AND NEW.acuracia_planimetrica <= 25 THEN
-            NEW.confiabilidade := 2;   -- Alta
-        ELSIF g_ord >= 1 OR a_ord >= 1 THEN
-            NEW.confiabilidade := 3;   -- Média (ao menos uma confirmação independente)
-        ELSE
-            NEW.confiabilidade := 4;   -- Baixa (sem confirmação independente)
-        END IF;
-
-        -- Escala máxima autoritativa (C.5). Só feição ativa, validação completa.
-        esc := NULL;
-        IF NEW.status_ciclo_vida = 1 AND NEW.validacao = 4 AND NEW.acuracia_planimetrica IS NOT NULL THEN
-            idade_anos := extract(epoch FROM (CURRENT_TIMESTAMP - coalesce(NEW.data_atualizacao, NEW.data_criacao, CURRENT_TIMESTAMP))) / 31557600.0;
-            IF    g_ord >= 2 AND a_ord >= 2 AND NEW.acuracia_planimetrica <= 12.5 AND idade_anos <= 5  THEN esc := 25000;
-            ELSIF g_ord >= 2 AND a_ord >= 2 AND NEW.acuracia_planimetrica <= 25   AND idade_anos <= 7  THEN esc := 50000;
-            ELSIF g_ord >= 1 AND a_ord >= 1 AND NEW.acuracia_planimetrica <= 50   AND idade_anos <= 8  THEN esc := 100000;
-            ELSIF g_ord >= 1 AND a_ord >= 1 AND NEW.acuracia_planimetrica <= 125  AND idade_anos <= 10 THEN esc := 250000;
-            END IF;
-        END IF;
-        NEW.escala_maxima_autoritativa := esc;
-
-        -- data_confirmacao: data da confirmação mais recente da feição. Atualizada
-        -- quando uma confirmação de geometria ou de atributos passa a valor confirmado.
-        IF TG_OP = 'INSERT' THEN
-            IF (NEW.confirmacao_geometria <> 1 OR NEW.confirmacao_atributos <> 1) AND NEW.data_confirmacao IS NULL THEN
-                NEW.data_confirmacao := CURRENT_DATE;
-            END IF;
-        ELSIF TG_OP = 'UPDATE' THEN
-            IF (NEW.confirmacao_geometria IS DISTINCT FROM OLD.confirmacao_geometria AND NEW.confirmacao_geometria <> 1)
-               OR (NEW.confirmacao_atributos IS DISTINCT FROM OLD.confirmacao_atributos AND NEW.confirmacao_atributos <> 1) THEN
-                NEW.data_confirmacao := CURRENT_DATE;
-            END IF;
-        END IF;
-
-        RETURN NEW;
-    END;
+    SELECT CASE p_nivel WHEN 'alto' THEN 3 WHEN 'medio' THEN 2 WHEN 'baixo' THEN 1 ELSE 0 END::smallint;
 $BODY$
-  LANGUAGE plpgsql VOLATILE
-  COST 100;
-ALTER FUNCTION public.computa_qualidade() OWNER TO postgres;
-GRANT EXECUTE ON FUNCTION public.computa_qualidade() TO PUBLIC;
+  LANGUAGE sql IMMUTABLE;
+ALTER FUNCTION public.nivel_confirmacao(text) OWNER TO postgres;
+GRANT EXECUTE ON FUNCTION public.nivel_confirmacao(text) TO PUBLIC;
 
--- Trigger c_computa_qualidade: roda APÓS b_preenche_metadado (ordem alfabética)
-DO $$DECLARE r record;
-BEGIN
-	FOR r in select f_table_schema, f_table_name from public.geometry_columns
-    LOOP
-	IF r.f_table_schema = 'edgv' THEN
-		EXECUTE 'DROP TRIGGER IF EXISTS c_computa_qualidade ON edgv.' || quote_ident(r.f_table_name);
-		EXECUTE 'CREATE TRIGGER c_computa_qualidade BEFORE INSERT OR UPDATE ON edgv.' || quote_ident(r.f_table_name) || ' FOR EACH ROW EXECUTE PROCEDURE public.computa_qualidade()';
-	END IF;
-    END LOOP;
-END$$;
+-- Confiabilidade (C.4, revisao 2026-07-12: 5 niveis; os dois mais altos = INDE).
+-- So confirmacao + acuracia (a temporalidade e criterio ORTOGONAL, aplicado
+-- na derivacao do produto por public.linha_derivacao, nao aqui).
+CREATE OR REPLACE FUNCTION public.confiabilidade_feicao(
+    p_status_ciclo_vida smallint,
+    p_confirmacao_geometria smallint,
+    p_confirmacao_atributos smallint,
+    p_acuracia_planimetrica real)
+  RETURNS smallint AS
+$BODY$
+    WITH n AS (
+        SELECT coalesce((SELECT public.nivel_confirmacao(nivel) FROM dominios.confirmacao_geometria WHERE code = p_confirmacao_geometria), 0) AS g,
+               coalesce((SELECT public.nivel_confirmacao(nivel) FROM dominios.confirmacao_atributos WHERE code = p_confirmacao_atributos), 0) AS a
+    )
+    SELECT CASE
+        WHEN p_status_ciclo_vida = 3 THEN 5   -- Indeterminada (sob verificação)
+        WHEN g >= 3 AND a >= 3 AND p_acuracia_planimetrica <= 12.5 THEN 1   -- Muito Alta
+        WHEN g >= 2 AND a >= 2 AND p_acuracia_planimetrica <= 25 THEN 2     -- Alta
+        WHEN g >= 1 OR a >= 1 THEN 3                                        -- Média
+        ELSE 4                                                              -- Baixa
+    END::smallint FROM n;
+$BODY$
+  LANGUAGE sql STABLE;
+ALTER FUNCTION public.confiabilidade_feicao(smallint, smallint, smallint, real) OWNER TO postgres;
+GRANT EXECUTE ON FUNCTION public.confiabilidade_feicao(smallint, smallint, smallint, real) TO PUBLIC;
 
--- 8.5 recomputa_escala_idade(): job periódico (ex.: diário).
---     A aptidão pode expirar por envelhecimento sem nova edição; o trigger
---     só dispara na escrita, então esta rotina reavalia as feições aptas.
---     Desabilita b_preenche_metadado durante o UPDATE para NÃO tocar
---     data_atualizacao (transacional: rollback restaura o trigger).
-CREATE OR REPLACE FUNCTION public.recomputa_escala_idade()
-  RETURNS void AS
+-- Escala máxima autoritativa (C.5). Só feição ativa, validação completa.
+CREATE OR REPLACE FUNCTION public.escala_maxima_autoritativa(
+    p_status_ciclo_vida smallint,
+    p_validacao smallint,
+    p_confirmacao_geometria smallint,
+    p_confirmacao_atributos smallint,
+    p_acuracia_planimetrica real,
+    p_data_confirmacao date,
+    p_data_referencia date DEFAULT CURRENT_DATE)
+  RETURNS integer AS
 $BODY$
-    DECLARE r record;
-    BEGIN
-        FOR r in select f_table_name from public.geometry_columns
-                  WHERE f_table_schema = 'edgv'
-        LOOP
-            EXECUTE 'ALTER TABLE edgv.' || quote_ident(r.f_table_name) || ' DISABLE TRIGGER b_preenche_metadado';
-            EXECUTE 'UPDATE edgv.' || quote_ident(r.f_table_name)
-                 || ' SET escala_maxima_autoritativa = escala_maxima_autoritativa'
-                 || ' WHERE escala_maxima_autoritativa IS NOT NULL';
-            EXECUTE 'ALTER TABLE edgv.' || quote_ident(r.f_table_name) || ' ENABLE TRIGGER b_preenche_metadado';
-        END LOOP;
-    END;
+    WITH n AS (
+        SELECT coalesce((SELECT public.nivel_confirmacao(nivel) FROM dominios.confirmacao_geometria WHERE code = p_confirmacao_geometria), 0) AS g,
+               coalesce((SELECT public.nivel_confirmacao(nivel) FROM dominios.confirmacao_atributos WHERE code = p_confirmacao_atributos), 0) AS a,
+               (p_data_referencia - p_data_confirmacao) / 365.25 AS idade_anos
+    )
+    SELECT CASE
+        WHEN p_status_ciclo_vida IS DISTINCT FROM 1 OR p_validacao IS DISTINCT FROM 4
+             OR p_acuracia_planimetrica IS NULL OR p_data_confirmacao IS NULL THEN NULL
+        WHEN g >= 2 AND a >= 2 AND p_acuracia_planimetrica <= 12.5 AND idade_anos <= 5  THEN 25000
+        WHEN g >= 2 AND a >= 2 AND p_acuracia_planimetrica <= 25   AND idade_anos <= 7  THEN 50000
+        WHEN g >= 1 AND a >= 1 AND p_acuracia_planimetrica <= 50   AND idade_anos <= 8  THEN 100000
+        WHEN g >= 1 AND a >= 1 AND p_acuracia_planimetrica <= 125  AND idade_anos <= 10 THEN 250000
+    END FROM n;
 $BODY$
-  LANGUAGE plpgsql VOLATILE
-  COST 100;
-ALTER FUNCTION public.recomputa_escala_idade() OWNER TO postgres;
-GRANT EXECUTE ON FUNCTION public.recomputa_escala_idade() TO PUBLIC;
+  LANGUAGE sql STABLE;
+ALTER FUNCTION public.escala_maxima_autoritativa(smallint, smallint, smallint, smallint, real, date, date) OWNER TO postgres;
+GRANT EXECUTE ON FUNCTION public.escala_maxima_autoritativa(smallint, smallint, smallint, smallint, real, date, date) TO PUBLIC;
+
+-- 8.5 Remoção dos objetos da 0.18.0 que gravavam valores derivados
+--     (os triggers c_computa_qualidade já foram removidos na seção 5).
+DROP FUNCTION IF EXISTS public.computa_qualidade();
+DROP FUNCTION IF EXISTS public.recomputa_escala_idade();
 
 -- linha_derivacao(): linha de derivacao do produto POR FEICAO (revisao 2026-07-12,
 --     ajustada na mesma data apos reflexao). A aptidao por feicao COLAPSA na
@@ -616,7 +583,7 @@ GRANT EXECUTE ON FUNCTION public.recomputa_escala_idade() TO PUBLIC;
 --     duplicava a escala_maxima e a CONTRADIZIA nas escalas grosseiras (100k/250k, que o
 --     C.5 admite em confiabilidade Media). INDE quando a feicao e ativa e tem
 --     escala_maxima_autoritativa (apta a alguma escala do SCN); senao Militar/expedito,
---     desde que o status nao seja sob verificacao (3) nem depreciada (4). A confiabilidade
+--     desde que o status nao seja sob verificacao (3). A confiabilidade
 --     fica como rotulo legivel (top-2 Muito Alta/Alta = INDE de detalhe 25k/50k; Media =
 --     INDE grosseiro 100k/250k). O TERRITORIO e criterio de AREA (nao aqui): fora do
 --     Brasil e sempre llp_area_sem_dados_a para o INDE (obrigatorio; INDE nao tem dado
@@ -628,7 +595,7 @@ CREATE OR REPLACE FUNCTION public.linha_derivacao(
   RETURNS text AS
 $BODY$
     SELECT CASE
-        WHEN p_status_ciclo_vida IN (3, 4) THEN NULL   -- sob verificacao / depreciada: sem produto
+        WHEN p_status_ciclo_vida = 3 THEN NULL   -- sob verificacao: sem produto
         WHEN p_status_ciclo_vida = 1 AND p_escala_maxima_autoritativa IS NOT NULL THEN 'INDE'
         ELSE 'MILITAR'
     END;
@@ -662,21 +629,11 @@ $BODY$
 ALTER FUNCTION public.celula_publicavel_inde(smallint, integer) OWNER TO postgres;
 GRANT EXECUTE ON FUNCTION public.celula_publicavel_inde(smallint, integer) TO PUBLIC;
 
--- 8.6 edgv.linhagem_feicao (Apêndice C.7 / G.4): predecessor -> sucessor
-CREATE TABLE IF NOT EXISTS edgv.linhagem_feicao (
-    id BIGSERIAL PRIMARY KEY,
-    geocodigo_origem UUID NOT NULL,
-    geocodigo_destino UUID NOT NULL,
-    tipo_evento VARCHAR(30) NOT NULL,
-    data_evento timestamp with time zone NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    operador VARCHAR(255),
-    CONSTRAINT linhagem_tipo_evento_chk CHECK (tipo_evento IN ('divisao','fusao','migracao'))
-);
-CREATE INDEX IF NOT EXISTS linhagem_feicao_origem_idx ON edgv.linhagem_feicao (geocodigo_origem);
-CREATE INDEX IF NOT EXISTS linhagem_feicao_destino_idx ON edgv.linhagem_feicao (geocodigo_destino);
-ALTER TABLE edgv.linhagem_feicao OWNER TO postgres;
-GRANT ALL ON TABLE edgv.linhagem_feicao TO public;
-GRANT USAGE, SELECT ON SEQUENCE edgv.linhagem_feicao_id_seq TO public;
+-- 8.6 Linhagem (Apêndices C.7 e G.4): desde a rev 0.19.0 a relação entre
+--     predecessores e sucessores na divisão, na fusão e na migração é
+--     registrada pelo DSG Versioning no mesmo evento da operação, com a
+--     depreciação do original. A tabela edgv.linhagem_feicao saiu do modelo;
+--     o incremento 0.19.0 do changelog a remove só se estiver vazia.
 
 -- 8.7 edgv.completude_subfase (Apêndice F.2.3): verificação de completude
 --     por subfase da linha de produção, na granularidade da MI 1:25.000.
@@ -704,8 +661,7 @@ GRANT USAGE, SELECT ON SEQUENCE edgv.completude_subfase_id_seq TO public;
 --     o bastante. Uma feição compõe a carta de escala S quando, em denominador,
 --     escala_maxima_autoritativa <= S <= escala_minima_derivacao.
 --
---     A coluna (adicionada em 8.3) NÃO é preenchida pelo trigger genérico de
---     qualidade: o valor depende de atributos temáticos POR CLASSE (hierarquia
+--     A coluna (adicionada em 8.3) NÃO é preenchida por trigger: o valor depende de atributos temáticos POR CLASSE (hierarquia
 --     viária, população, dimensões, presença de nome), vários deles derivados
 --     no build, exatamente como o min_zoom. Por isso é computada pelo mesmo
 --     motor de regras por classe (zoom_model / pipeline de tiles), e não por
