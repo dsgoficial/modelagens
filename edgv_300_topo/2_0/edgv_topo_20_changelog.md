@@ -131,6 +131,32 @@ A costa e as divisas entre mares moram em `delimitador_massa_dagua_l`, com o cen
 
 `llp_limite_legal_l` continua sendo a linha da carta, com os atributos de edição (`sobreposto`, `em_litigio`, `texto_edicao`), no papel que `edicao_limite_especial_l` tem para o limite especial. Os atributos que não entram na chave da face (`id`, `geocodigo`, `fontes`, metadados de produção) vão na lista "Fields to ignore" do algoritmo; do contrário cada centroide vira um conjunto de atributos próprio.
 
+### 1.6 Rev 0.18.0 (2026-09-29): a linha que já existe marca o limite
+
+O operador deixa de desenhar o limite por cima do rio, da margem, da via, da ferrovia ou da cerca. Ele corrige a linha que já existe no terreno e a marca como limite. Três atributos do domínio `booleano` entram nas cinco classes que delimitam os limites:
+
+| Tabela | Colunas novas (smallint, NOT NULL, FK → `dominios.booleano`, DEFAULT 9999) |
+|--------|------|
+| `elemnat_trecho_drenagem_l` | `limite_legal`, `limite_especial`, `em_litigio` |
+| `delimitador_massa_dagua_l` | `limite_legal`, `limite_especial`, `em_litigio` |
+| `infra_via_deslocamento_l` | `limite_legal`, `limite_especial`, `em_litigio` |
+| `infra_ferrovia_l` | `limite_legal`, `limite_especial`, `em_litigio` |
+| `llp_delimitacao_fisica_l` | `limite_legal`, `limite_especial`, `em_litigio` |
+
+Os delimitadores próprios ficam para a divisa que não é feição no terreno. `delimitador_limite_legal_l` perde o `tipo` e fica só com `em_litigio`, e `delimitador_limite_especial_l` perde o `tipo` que ganhou na 0.17.0 e fica sem atributo. `centroide_limite_legal_p` e `llp_limite_legal_a` ganham `codigo_uf` (varchar(20), nullable).
+
+- **A marca é Sim ou Não, sem nível e sem regime.** O rio que é ao mesmo tempo fronteira, divisa estadual e divisa municipal, e ainda limite de uma unidade de conservação, recebe `limite_legal = 1` e `limite_especial = 1`, uma vez só.
+- **O nível do limite legal sai do centroide.** Toda linha de limite legal delimita o município. A UF é a junção dos municípios pelo `codigo_uf` (código IBGE de 2 dígitos no Brasil, `GID_1` do GADM fora dele), com os atributos do centroide de UF que cai dentro dela, e o país é a junção das UFs pelo `cod_iso`. Por isso a UF não precisa de um centroide por município.
+- **O limite especial se constrói por regime**, uma passada por `tipo` do centroide, com todo limite especial e todo limite legal como linha. O limite legal delimita sempre o especial, e o contrário nunca. Onde a linha de outro regime ou uma divisa corta a área, entra um centroide a mais, e a construção dissolve as faces vizinhas de centroides iguais. A sobreposição dentro do mesmo `tipo` continua fora deste caminho, como na 0.17.0.
+- **A costa** é o `delimitador_massa_dagua_l` marcado com `limite_legal = 1`. Isso substitui a restrição por `cobter_massa_dagua_a` tipo 3 descrita na 0.17.0.
+- **`geometria_aproximada` fica só no centroide.** `em_litigio` é do trecho e vai na linha.
+- `llp_limite_legal_l` e `edicao_limite_especial_l` não mudam: são a linha da carta, derivada na passagem para a edição.
+
+A junção por `codigo_uf` e a dissolução não existem no algoritmo do DSGTools, e a construção destas classes passa ao motor de topologia 1cgeo/dsg_topology, cujas regras também mudam nesta revisão (fora do DDL):
+- a delimitação física passa a delimitar a área edificada, a vegetação e os limites;
+- a área sem dados usa o delimitador próprio e as linhas marcadas como limite;
+- o terreno sujeito a inundação é a vegetação filtrada por `sujeito_inundacao` = Sim no centroide.
+
 ---
 
 ## 2. Novas tabelas
@@ -229,6 +255,9 @@ Delimitações físicas — cercas e muros.
 | `tipo` | smallint | NOT NULL, FK → `dominios.tipo_delimitacao_fisica`, DEFAULT 9999 |
 | `material_construcao` | smallint | NOT NULL, FK → `dominios.material_construcao`, DEFAULT 9999 |
 | `visivel` | smallint | NOT NULL, FK → `dominios.booleano`, DEFAULT 9999 |
+| `limite_legal` | smallint | NOT NULL, FK → `dominios.booleano`, DEFAULT 9999 (rev 0.18.0) |
+| `limite_especial` | smallint | NOT NULL, FK → `dominios.booleano`, DEFAULT 9999 (rev 0.18.0) |
+| `em_litigio` | smallint | NOT NULL, FK → `dominios.booleano`, DEFAULT 9999 (rev 0.18.0) |
 | `observacao` | varchar(255) | nullable |
 | `geom` | MultiLinestring, 4674 | índice GiST |
 
@@ -244,18 +273,19 @@ Polígonos de limites político-administrativos unificados: país, UF, municípi
 | `sigla` | varchar(10) | nullable (ex: "BR", "SP") |
 | `geocodigo_ibge` | varchar(15) | nullable (código IBGE: UF 2 dígitos, município 7, distrito 9) |
 | `cod_iso` | varchar(3) | nullable (ISO 3166-1 alpha-3 do país; cobertura América do Sul; adicionado na rev 0.13.0, antes sobrecarregado em `sigla`) |
+| `codigo_uf` | varchar(20) | nullable (chave da UF: a própria na UF, a que contém no município; rev 0.18.0) |
 | `geometria_aproximada` | smallint | NOT NULL, FK → `dominios.booleano`, DEFAULT 9999 |
 | `observacao` | varchar(255) | nullable |
 | `geom` | MultiPolygon, 4674 | índice GiST |
 
 ### `delimitador_limite_legal_l`
 
-Linha de construção do limite legal (rev 0.17.0). Cada trecho existe uma vez, no nível mais alto em que ocorre, e o `tipo` é o filtro da construção por nível (seção 1.5).
+Linha de construção do limite legal (rev 0.17.0) onde a divisa não é feição no terreno. Na 0.17.0 o `tipo` guardava o nível; desde a 0.18.0 o nível sai do centroide, e a linha guarda só o litígio do trecho (seção 1.6).
 
 | Coluna | Tipo | Constraints |
 |--------|------|-------------|
 | `id` | uuid | PK, DEFAULT uuid_generate_v4() |
-| `tipo` | smallint | NOT NULL, FK → `dominios.tipo_limite_legal`, DEFAULT 9999 |
+| `em_litigio` | smallint | NOT NULL, FK → `dominios.booleano`, DEFAULT 9999 (rev 0.18.0) |
 | `observacao` | varchar(255) | nullable |
 | `geom` | MultiLinestring, 4674 | índice GiST |
 
@@ -272,6 +302,7 @@ Ponto que carrega os atributos do polígono de limite legal (rev 0.17.0), um por
 | `sigla` | varchar(10) | nullable |
 | `geocodigo_ibge` | varchar(15) | nullable |
 | `cod_iso` | varchar(3) | nullable |
+| `codigo_uf` | varchar(20) | nullable (rev 0.18.0) |
 | `populacao` | integer | nullable |
 | `observacao` | varchar(255) | nullable |
 | `geom` | MultiPoint, 4674 | índice GiST |
@@ -534,7 +565,7 @@ Bug originado em `mastergen.py`: o gerador anexa `9999` aos valores do CHECK sem
 | Campo | 1.4 | 2.0 |
 |-------|-----|-----|
 | `edgvversion` | EDGV 3.0 Topo | EDGV Topo 2.0 |
-| `dbimplversion` | 1.4.4 | 0.17.0 |
+| `dbimplversion` | 1.4.4 | 0.18.0 |
 
 > Rev 2026-07-26: `dbimplversion` corrigido para 0.15.0. A tabela dizia 0.14.0
 > enquanto o `edgv_topo_20.sql` já gravava 0.15.0 desde as revisões do cemitério
@@ -1149,4 +1180,93 @@ CREATE INDEX centroide_limite_legal_p_geom ON edgv.centroide_limite_legal_p USIN
 
 UPDATE public.db_metadata SET dbimplversion = '0.17.0';
 ALTER TABLE public.db_metadata ALTER COLUMN dbimplversion SET DEFAULT '0.17.0';
+
+-- ===========================================
+-- Incremento 0.18.0 (2026-09-29)
+-- A linha natural marca o limite (limite_legal, limite_especial, em_litigio),
+-- os delimitadores de limite perdem o tipo e o centroide ganha codigo_uf.
+-- ATENCAO: o DROP de tipo apaga o nivel das divisas. Numa base viva, prove
+-- antes que a UF juntada pelo codigo_uf iguala a UF construida pelo tipo.
+-- ===========================================
+
+ALTER TABLE edgv.elemnat_trecho_drenagem_l ADD COLUMN IF NOT EXISTS limite_legal smallint NOT NULL DEFAULT 9999;
+ALTER TABLE edgv.elemnat_trecho_drenagem_l
+    ADD CONSTRAINT elemnat_trecho_drenagem_l_limite_legal_fk
+    FOREIGN KEY (limite_legal) REFERENCES dominios.booleano (code) MATCH FULL;
+ALTER TABLE edgv.elemnat_trecho_drenagem_l ADD COLUMN IF NOT EXISTS limite_especial smallint NOT NULL DEFAULT 9999;
+ALTER TABLE edgv.elemnat_trecho_drenagem_l
+    ADD CONSTRAINT elemnat_trecho_drenagem_l_limite_especial_fk
+    FOREIGN KEY (limite_especial) REFERENCES dominios.booleano (code) MATCH FULL;
+ALTER TABLE edgv.elemnat_trecho_drenagem_l ADD COLUMN IF NOT EXISTS em_litigio smallint NOT NULL DEFAULT 9999;
+ALTER TABLE edgv.elemnat_trecho_drenagem_l
+    ADD CONSTRAINT elemnat_trecho_drenagem_l_em_litigio_fk
+    FOREIGN KEY (em_litigio) REFERENCES dominios.booleano (code) MATCH FULL;
+
+ALTER TABLE edgv.delimitador_massa_dagua_l ADD COLUMN IF NOT EXISTS limite_legal smallint NOT NULL DEFAULT 9999;
+ALTER TABLE edgv.delimitador_massa_dagua_l
+    ADD CONSTRAINT delimitador_massa_dagua_l_limite_legal_fk
+    FOREIGN KEY (limite_legal) REFERENCES dominios.booleano (code) MATCH FULL;
+ALTER TABLE edgv.delimitador_massa_dagua_l ADD COLUMN IF NOT EXISTS limite_especial smallint NOT NULL DEFAULT 9999;
+ALTER TABLE edgv.delimitador_massa_dagua_l
+    ADD CONSTRAINT delimitador_massa_dagua_l_limite_especial_fk
+    FOREIGN KEY (limite_especial) REFERENCES dominios.booleano (code) MATCH FULL;
+ALTER TABLE edgv.delimitador_massa_dagua_l ADD COLUMN IF NOT EXISTS em_litigio smallint NOT NULL DEFAULT 9999;
+ALTER TABLE edgv.delimitador_massa_dagua_l
+    ADD CONSTRAINT delimitador_massa_dagua_l_em_litigio_fk
+    FOREIGN KEY (em_litigio) REFERENCES dominios.booleano (code) MATCH FULL;
+
+ALTER TABLE edgv.infra_via_deslocamento_l ADD COLUMN IF NOT EXISTS limite_legal smallint NOT NULL DEFAULT 9999;
+ALTER TABLE edgv.infra_via_deslocamento_l
+    ADD CONSTRAINT infra_via_deslocamento_l_limite_legal_fk
+    FOREIGN KEY (limite_legal) REFERENCES dominios.booleano (code) MATCH FULL;
+ALTER TABLE edgv.infra_via_deslocamento_l ADD COLUMN IF NOT EXISTS limite_especial smallint NOT NULL DEFAULT 9999;
+ALTER TABLE edgv.infra_via_deslocamento_l
+    ADD CONSTRAINT infra_via_deslocamento_l_limite_especial_fk
+    FOREIGN KEY (limite_especial) REFERENCES dominios.booleano (code) MATCH FULL;
+ALTER TABLE edgv.infra_via_deslocamento_l ADD COLUMN IF NOT EXISTS em_litigio smallint NOT NULL DEFAULT 9999;
+ALTER TABLE edgv.infra_via_deslocamento_l
+    ADD CONSTRAINT infra_via_deslocamento_l_em_litigio_fk
+    FOREIGN KEY (em_litigio) REFERENCES dominios.booleano (code) MATCH FULL;
+
+ALTER TABLE edgv.infra_ferrovia_l ADD COLUMN IF NOT EXISTS limite_legal smallint NOT NULL DEFAULT 9999;
+ALTER TABLE edgv.infra_ferrovia_l
+    ADD CONSTRAINT infra_ferrovia_l_limite_legal_fk
+    FOREIGN KEY (limite_legal) REFERENCES dominios.booleano (code) MATCH FULL;
+ALTER TABLE edgv.infra_ferrovia_l ADD COLUMN IF NOT EXISTS limite_especial smallint NOT NULL DEFAULT 9999;
+ALTER TABLE edgv.infra_ferrovia_l
+    ADD CONSTRAINT infra_ferrovia_l_limite_especial_fk
+    FOREIGN KEY (limite_especial) REFERENCES dominios.booleano (code) MATCH FULL;
+ALTER TABLE edgv.infra_ferrovia_l ADD COLUMN IF NOT EXISTS em_litigio smallint NOT NULL DEFAULT 9999;
+ALTER TABLE edgv.infra_ferrovia_l
+    ADD CONSTRAINT infra_ferrovia_l_em_litigio_fk
+    FOREIGN KEY (em_litigio) REFERENCES dominios.booleano (code) MATCH FULL;
+
+ALTER TABLE edgv.llp_delimitacao_fisica_l ADD COLUMN IF NOT EXISTS limite_legal smallint NOT NULL DEFAULT 9999;
+ALTER TABLE edgv.llp_delimitacao_fisica_l
+    ADD CONSTRAINT llp_delimitacao_fisica_l_limite_legal_fk
+    FOREIGN KEY (limite_legal) REFERENCES dominios.booleano (code) MATCH FULL;
+ALTER TABLE edgv.llp_delimitacao_fisica_l ADD COLUMN IF NOT EXISTS limite_especial smallint NOT NULL DEFAULT 9999;
+ALTER TABLE edgv.llp_delimitacao_fisica_l
+    ADD CONSTRAINT llp_delimitacao_fisica_l_limite_especial_fk
+    FOREIGN KEY (limite_especial) REFERENCES dominios.booleano (code) MATCH FULL;
+ALTER TABLE edgv.llp_delimitacao_fisica_l ADD COLUMN IF NOT EXISTS em_litigio smallint NOT NULL DEFAULT 9999;
+ALTER TABLE edgv.llp_delimitacao_fisica_l
+    ADD CONSTRAINT llp_delimitacao_fisica_l_em_litigio_fk
+    FOREIGN KEY (em_litigio) REFERENCES dominios.booleano (code) MATCH FULL;
+
+ALTER TABLE edgv.delimitador_limite_legal_l DROP CONSTRAINT IF EXISTS delimitador_limite_legal_l_tipo_fk;
+ALTER TABLE edgv.delimitador_limite_legal_l DROP COLUMN IF EXISTS tipo;
+ALTER TABLE edgv.delimitador_limite_legal_l ADD COLUMN IF NOT EXISTS em_litigio smallint NOT NULL DEFAULT 9999;
+ALTER TABLE edgv.delimitador_limite_legal_l
+    ADD CONSTRAINT delimitador_limite_legal_l_em_litigio_fk
+    FOREIGN KEY (em_litigio) REFERENCES dominios.booleano (code) MATCH FULL;
+
+ALTER TABLE edgv.delimitador_limite_especial_l DROP CONSTRAINT IF EXISTS delimitador_limite_especial_l_tipo_fk;
+ALTER TABLE edgv.delimitador_limite_especial_l DROP COLUMN IF EXISTS tipo;
+
+ALTER TABLE edgv.centroide_limite_legal_p ADD COLUMN IF NOT EXISTS codigo_uf varchar(20);
+ALTER TABLE edgv.llp_limite_legal_a ADD COLUMN IF NOT EXISTS codigo_uf varchar(20);
+
+UPDATE public.db_metadata SET dbimplversion = '0.18.0';
+ALTER TABLE public.db_metadata ALTER COLUMN dbimplversion SET DEFAULT '0.18.0';
 ```

@@ -7,10 +7,10 @@ SET search_path TO pg_catalog,public,edgv,dominios;
 
 CREATE TABLE public.db_metadata(
 	 edgvversion varchar(50) NOT NULL DEFAULT 'EDGV Topo 2.0',
-	 dbimplversion varchar(50) NOT NULL DEFAULT '0.17.0',
+	 dbimplversion varchar(50) NOT NULL DEFAULT '0.18.0',
 	 CONSTRAINT edgvversioncheck CHECK (edgvversion = 'EDGV Topo 2.0')
 );
-INSERT INTO public.db_metadata (edgvversion, dbimplversion) VALUES ('EDGV Topo 2.0','0.17.0');
+INSERT INTO public.db_metadata (edgvversion, dbimplversion) VALUES ('EDGV Topo 2.0','0.18.0');
 
 CREATE TABLE dominios.sigla_uf (
 	 code smallint NOT NULL,
@@ -2740,6 +2740,9 @@ CREATE TABLE edgv.elemnat_trecho_drenagem_l(
 	 direcao_fixada smallint NOT NULL,
 	 ordem_strahler smallint,
 	 largura real,
+	 limite_legal smallint NOT NULL,
+	 limite_especial smallint NOT NULL,
+	 em_litigio smallint NOT NULL,
 	 observacao varchar(255),
 	 geom geometry(MultiLinestring, 4674),
 	 CONSTRAINT elemnat_trecho_drenagem_l_pk PRIMARY KEY (id)
@@ -2797,6 +2800,27 @@ ALTER TABLE edgv.elemnat_trecho_drenagem_l
 	 ON UPDATE NO ACTION ON DELETE NO ACTION;
 
 ALTER TABLE edgv.elemnat_trecho_drenagem_l ALTER COLUMN direcao_fixada SET DEFAULT 9999;
+
+ALTER TABLE edgv.elemnat_trecho_drenagem_l
+	 ADD CONSTRAINT elemnat_trecho_drenagem_l_limite_legal_fk FOREIGN KEY (limite_legal)
+	 REFERENCES dominios.booleano (code) MATCH FULL
+	 ON UPDATE NO ACTION ON DELETE NO ACTION;
+
+ALTER TABLE edgv.elemnat_trecho_drenagem_l ALTER COLUMN limite_legal SET DEFAULT 9999;
+
+ALTER TABLE edgv.elemnat_trecho_drenagem_l
+	 ADD CONSTRAINT elemnat_trecho_drenagem_l_limite_especial_fk FOREIGN KEY (limite_especial)
+	 REFERENCES dominios.booleano (code) MATCH FULL
+	 ON UPDATE NO ACTION ON DELETE NO ACTION;
+
+ALTER TABLE edgv.elemnat_trecho_drenagem_l ALTER COLUMN limite_especial SET DEFAULT 9999;
+
+ALTER TABLE edgv.elemnat_trecho_drenagem_l
+	 ADD CONSTRAINT elemnat_trecho_drenagem_l_em_litigio_fk FOREIGN KEY (em_litigio)
+	 REFERENCES dominios.booleano (code) MATCH FULL
+	 ON UPDATE NO ACTION ON DELETE NO ACTION;
+
+ALTER TABLE edgv.elemnat_trecho_drenagem_l ALTER COLUMN em_litigio SET DEFAULT 9999;
 
 CREATE TABLE edgv.elemnat_sumidouro_vertedouro_p(
 	 id uuid NOT NULL DEFAULT uuid_generate_v4(),
@@ -3412,6 +3436,9 @@ CREATE TABLE edgv.infra_ferrovia_l(
 	 gabarito_vertical real,
 	 largura real,
 	 vao_livre real,
+	 limite_legal smallint NOT NULL,
+	 limite_especial smallint NOT NULL,
+	 em_litigio smallint NOT NULL,
 	 observacao varchar(255),
 	 geom geometry(MultiLinestring, 4674),
 	 CONSTRAINT infra_ferrovia_l_pk PRIMARY KEY (id)
@@ -3516,6 +3543,27 @@ ALTER TABLE edgv.infra_ferrovia_l
 	 ON UPDATE NO ACTION ON DELETE NO ACTION;
 
 ALTER TABLE edgv.infra_ferrovia_l ALTER COLUMN visivel SET DEFAULT 9999;
+
+ALTER TABLE edgv.infra_ferrovia_l
+	 ADD CONSTRAINT infra_ferrovia_l_limite_legal_fk FOREIGN KEY (limite_legal)
+	 REFERENCES dominios.booleano (code) MATCH FULL
+	 ON UPDATE NO ACTION ON DELETE NO ACTION;
+
+ALTER TABLE edgv.infra_ferrovia_l ALTER COLUMN limite_legal SET DEFAULT 9999;
+
+ALTER TABLE edgv.infra_ferrovia_l
+	 ADD CONSTRAINT infra_ferrovia_l_limite_especial_fk FOREIGN KEY (limite_especial)
+	 REFERENCES dominios.booleano (code) MATCH FULL
+	 ON UPDATE NO ACTION ON DELETE NO ACTION;
+
+ALTER TABLE edgv.infra_ferrovia_l ALTER COLUMN limite_especial SET DEFAULT 9999;
+
+ALTER TABLE edgv.infra_ferrovia_l
+	 ADD CONSTRAINT infra_ferrovia_l_em_litigio_fk FOREIGN KEY (em_litigio)
+	 REFERENCES dominios.booleano (code) MATCH FULL
+	 ON UPDATE NO ACTION ON DELETE NO ACTION;
+
+ALTER TABLE edgv.infra_ferrovia_l ALTER COLUMN em_litigio SET DEFAULT 9999;
 
 CREATE TABLE edgv.infra_mobilidade_urbana_l(
 	 id uuid NOT NULL DEFAULT uuid_generate_v4(),
@@ -3953,6 +4001,9 @@ CREATE TABLE edgv.infra_via_deslocamento_l(
 	 gabarito_vertical real,
 	 largura real,
 	 vao_livre real,
+	 limite_legal smallint NOT NULL,
+	 limite_especial smallint NOT NULL,
+	 em_litigio smallint NOT NULL,
 	 observacao varchar(255),
 	 geom geometry(MultiLinestring, 4674),
 	 CONSTRAINT infra_via_deslocamento_l_pk PRIMARY KEY (id)
@@ -4046,6 +4097,27 @@ ALTER TABLE edgv.infra_via_deslocamento_l
 	 ON UPDATE NO ACTION ON DELETE NO ACTION;
 
 ALTER TABLE edgv.infra_via_deslocamento_l ALTER COLUMN visivel SET DEFAULT 9999;
+
+ALTER TABLE edgv.infra_via_deslocamento_l
+	 ADD CONSTRAINT infra_via_deslocamento_l_limite_legal_fk FOREIGN KEY (limite_legal)
+	 REFERENCES dominios.booleano (code) MATCH FULL
+	 ON UPDATE NO ACTION ON DELETE NO ACTION;
+
+ALTER TABLE edgv.infra_via_deslocamento_l ALTER COLUMN limite_legal SET DEFAULT 9999;
+
+ALTER TABLE edgv.infra_via_deslocamento_l
+	 ADD CONSTRAINT infra_via_deslocamento_l_limite_especial_fk FOREIGN KEY (limite_especial)
+	 REFERENCES dominios.booleano (code) MATCH FULL
+	 ON UPDATE NO ACTION ON DELETE NO ACTION;
+
+ALTER TABLE edgv.infra_via_deslocamento_l ALTER COLUMN limite_especial SET DEFAULT 9999;
+
+ALTER TABLE edgv.infra_via_deslocamento_l
+	 ADD CONSTRAINT infra_via_deslocamento_l_em_litigio_fk FOREIGN KEY (em_litigio)
+	 REFERENCES dominios.booleano (code) MATCH FULL
+	 ON UPDATE NO ACTION ON DELETE NO ACTION;
+
+ALTER TABLE edgv.infra_via_deslocamento_l ALTER COLUMN em_litigio SET DEFAULT 9999;
 
 CREATE TABLE edgv.llp_limite_especial_a(
 	 id uuid NOT NULL DEFAULT uuid_generate_v4(),
@@ -4335,6 +4407,7 @@ CREATE TABLE edgv.llp_limite_legal_a(
 	 sigla varchar(10),
 	 geocodigo_ibge varchar(15),
 	 cod_iso varchar(3),
+	 codigo_uf varchar(20),
 	 populacao integer,
 	 observacao varchar(255),
 	 geom geometry(MultiPolygon, 4674),
@@ -4403,6 +4476,9 @@ CREATE TABLE edgv.llp_delimitacao_fisica_l(
 	 tipo smallint NOT NULL,
 	 material_construcao smallint NOT NULL,
 	 visivel smallint NOT NULL,
+	 limite_legal smallint NOT NULL,
+	 limite_especial smallint NOT NULL,
+	 em_litigio smallint NOT NULL,
 	 observacao varchar(255),
 	 geom geometry(MultiLinestring, 4674),
 	 CONSTRAINT llp_delimitacao_fisica_l_pk PRIMARY KEY (id)
@@ -4436,6 +4512,27 @@ ALTER TABLE edgv.llp_delimitacao_fisica_l
 	 ON UPDATE NO ACTION ON DELETE NO ACTION;
 
 ALTER TABLE edgv.llp_delimitacao_fisica_l ALTER COLUMN visivel SET DEFAULT 9999;
+
+ALTER TABLE edgv.llp_delimitacao_fisica_l
+	 ADD CONSTRAINT llp_delimitacao_fisica_l_limite_legal_fk FOREIGN KEY (limite_legal)
+	 REFERENCES dominios.booleano (code) MATCH FULL
+	 ON UPDATE NO ACTION ON DELETE NO ACTION;
+
+ALTER TABLE edgv.llp_delimitacao_fisica_l ALTER COLUMN limite_legal SET DEFAULT 9999;
+
+ALTER TABLE edgv.llp_delimitacao_fisica_l
+	 ADD CONSTRAINT llp_delimitacao_fisica_l_limite_especial_fk FOREIGN KEY (limite_especial)
+	 REFERENCES dominios.booleano (code) MATCH FULL
+	 ON UPDATE NO ACTION ON DELETE NO ACTION;
+
+ALTER TABLE edgv.llp_delimitacao_fisica_l ALTER COLUMN limite_especial SET DEFAULT 9999;
+
+ALTER TABLE edgv.llp_delimitacao_fisica_l
+	 ADD CONSTRAINT llp_delimitacao_fisica_l_em_litigio_fk FOREIGN KEY (em_litigio)
+	 REFERENCES dominios.booleano (code) MATCH FULL
+	 ON UPDATE NO ACTION ON DELETE NO ACTION;
+
+ALTER TABLE edgv.llp_delimitacao_fisica_l ALTER COLUMN em_litigio SET DEFAULT 9999;
 
 CREATE TABLE edgv.elemnat_curva_batimetrica_l(
 	 id uuid NOT NULL DEFAULT uuid_generate_v4(),
@@ -4824,6 +4921,9 @@ ALTER TABLE edgv.delimitador_vegetacao_l OWNER TO postgres;
 
 CREATE TABLE edgv.delimitador_massa_dagua_l(
 	 id uuid NOT NULL DEFAULT uuid_generate_v4(),
+	 limite_legal smallint NOT NULL,
+	 limite_especial smallint NOT NULL,
+	 em_litigio smallint NOT NULL,
 	 observacao varchar(255),
 	 geom geometry(MultiLinestring, 4674),
 	 CONSTRAINT delimitador_massa_dagua_l_pk PRIMARY KEY (id)
@@ -4832,6 +4932,27 @@ CREATE TABLE edgv.delimitador_massa_dagua_l(
 CREATE INDEX delimitador_massa_dagua_l_geom ON edgv.delimitador_massa_dagua_l USING gist (geom);
 
 ALTER TABLE edgv.delimitador_massa_dagua_l OWNER TO postgres;
+
+ALTER TABLE edgv.delimitador_massa_dagua_l
+	 ADD CONSTRAINT delimitador_massa_dagua_l_limite_legal_fk FOREIGN KEY (limite_legal)
+	 REFERENCES dominios.booleano (code) MATCH FULL
+	 ON UPDATE NO ACTION ON DELETE NO ACTION;
+
+ALTER TABLE edgv.delimitador_massa_dagua_l ALTER COLUMN limite_legal SET DEFAULT 9999;
+
+ALTER TABLE edgv.delimitador_massa_dagua_l
+	 ADD CONSTRAINT delimitador_massa_dagua_l_limite_especial_fk FOREIGN KEY (limite_especial)
+	 REFERENCES dominios.booleano (code) MATCH FULL
+	 ON UPDATE NO ACTION ON DELETE NO ACTION;
+
+ALTER TABLE edgv.delimitador_massa_dagua_l ALTER COLUMN limite_especial SET DEFAULT 9999;
+
+ALTER TABLE edgv.delimitador_massa_dagua_l
+	 ADD CONSTRAINT delimitador_massa_dagua_l_em_litigio_fk FOREIGN KEY (em_litigio)
+	 REFERENCES dominios.booleano (code) MATCH FULL
+	 ON UPDATE NO ACTION ON DELETE NO ACTION;
+
+ALTER TABLE edgv.delimitador_massa_dagua_l ALTER COLUMN em_litigio SET DEFAULT 9999;
 
 CREATE TABLE edgv.delimitador_area_edificada_l(
 	 id uuid NOT NULL DEFAULT uuid_generate_v4(),
@@ -4857,7 +4978,6 @@ ALTER TABLE edgv.delimitador_elemento_hidrografico_l OWNER TO postgres;
 
 CREATE TABLE edgv.delimitador_limite_especial_l(
 	 id uuid NOT NULL DEFAULT uuid_generate_v4(),
-	 tipo smallint NOT NULL,
 	 observacao varchar(255),
 	 geom geometry(MultiLinestring, 4674),
 	 CONSTRAINT delimitador_limite_especial_l_pk PRIMARY KEY (id)
@@ -4867,16 +4987,9 @@ CREATE INDEX delimitador_limite_especial_l_geom ON edgv.delimitador_limite_espec
 
 ALTER TABLE edgv.delimitador_limite_especial_l OWNER TO postgres;
 
-ALTER TABLE edgv.delimitador_limite_especial_l
-	 ADD CONSTRAINT delimitador_limite_especial_l_tipo_fk FOREIGN KEY (tipo)
-	 REFERENCES dominios.tipo_limite_especial (code) MATCH FULL
-	 ON UPDATE NO ACTION ON DELETE NO ACTION;
-
-ALTER TABLE edgv.delimitador_limite_especial_l ALTER COLUMN tipo SET DEFAULT 9999;
-
 CREATE TABLE edgv.delimitador_limite_legal_l(
 	 id uuid NOT NULL DEFAULT uuid_generate_v4(),
-	 tipo smallint NOT NULL,
+	 em_litigio smallint NOT NULL,
 	 observacao varchar(255),
 	 geom geometry(MultiLinestring, 4674),
 	 CONSTRAINT delimitador_limite_legal_l_pk PRIMARY KEY (id)
@@ -4887,11 +5000,11 @@ CREATE INDEX delimitador_limite_legal_l_geom ON edgv.delimitador_limite_legal_l 
 ALTER TABLE edgv.delimitador_limite_legal_l OWNER TO postgres;
 
 ALTER TABLE edgv.delimitador_limite_legal_l
-	 ADD CONSTRAINT delimitador_limite_legal_l_tipo_fk FOREIGN KEY (tipo)
-	 REFERENCES dominios.tipo_limite_legal (code) MATCH FULL
+	 ADD CONSTRAINT delimitador_limite_legal_l_em_litigio_fk FOREIGN KEY (em_litigio)
+	 REFERENCES dominios.booleano (code) MATCH FULL
 	 ON UPDATE NO ACTION ON DELETE NO ACTION;
 
-ALTER TABLE edgv.delimitador_limite_legal_l ALTER COLUMN tipo SET DEFAULT 9999;
+ALTER TABLE edgv.delimitador_limite_legal_l ALTER COLUMN em_litigio SET DEFAULT 9999;
 
 CREATE TABLE edgv.centroide_vegetacao_p(
 	 id uuid NOT NULL DEFAULT uuid_generate_v4(),
@@ -5047,6 +5160,7 @@ CREATE TABLE edgv.centroide_limite_legal_p(
 	 sigla varchar(10),
 	 geocodigo_ibge varchar(15),
 	 cod_iso varchar(3),
+	 codigo_uf varchar(20),
 	 populacao integer,
 	 observacao varchar(255),
 	 geom geometry(MultiPoint, 4674),

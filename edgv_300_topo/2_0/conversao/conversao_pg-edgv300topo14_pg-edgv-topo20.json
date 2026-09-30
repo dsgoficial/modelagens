@@ -404,7 +404,7 @@
       "classe_B": "centroide_limite_especial"
     },
     {
-      "__comment": "delimitador - delimitadores topologicos (6 classes, 6 tabelas; a 2.0 tem ainda delimitador_limite_legal (0.17.0), sem par na 1.4. No sentido A=>B, delimitador_limite_especial chega sem tipo e fica no DEFAULT 9999, porque a 1.4 nao guarda o regime na linha)",
+      "__comment": "delimitador - delimitadores topologicos (6 classes, 6 tabelas; a 2.0 tem ainda delimitador_limite_legal (0.17.0), sem par na 1.4. Desde a 0.18.0 os delimitadores de limite nao tem tipo, e drenagem, margem, via e ferrovia chegam com limite_legal, limite_especial e em_litigio no DEFAULT 9999, porque a 1.4 nao marca a linha natural como limite)",
       "classe_A": "delimitador_area_sem_dados",
       "classe_B": "delimitador_area_sem_dados"
     },

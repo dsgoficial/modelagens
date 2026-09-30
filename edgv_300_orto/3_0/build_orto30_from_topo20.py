@@ -32,8 +32,8 @@ ROOT = os.path.abspath(os.path.join(HERE, "..", ".."))
 TOPO_MASTER = os.path.join(ROOT, "edgv_300_topo", "2_0", "master_file_topo_20.json")
 ORTO25_MASTER = os.path.join(ROOT, "edgv_300_orto", "2_5", "master_file_300_orto_25.json")
 
-VERSAO_ORTO = "3.0.1"
-VERSAO_TOPO = "0.17.0"
+VERSAO_ORTO = "3.0.2"
+VERSAO_TOPO = "0.18.0"
 VERSAO_ORTO25 = "2.5.4"
 
 # Split Topo 2.0 -> Orto 3.0: classes do Topo unificadas (limite_especial,

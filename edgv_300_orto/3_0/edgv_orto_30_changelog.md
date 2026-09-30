@@ -12,8 +12,8 @@
 
 | | Orto 2.5 | **Orto 3.0** |
 |---|---|---|
-| Modelo base | EDGV 3.0 | **EDGV Topo 2.0 v0.17.0** (regerado 2026-09-19; antes 0.14.0, 0.11.0 e 0.9.0) |
-| Versão | 2.5.4 | **3.0.1** |
+| Modelo base | EDGV 3.0 | **EDGV Topo 2.0 v0.18.0** (regerado 2026-09-29; antes 0.17.0, 0.14.0, 0.11.0 e 0.9.0) |
+| Versão | 2.5.4 | **3.0.2** |
 | Classes temáticas | 27 | **25** (`pais`/`unidade_federacao` consolidados em `llp_limite_legal`) |
 | Classes auxiliares (`extension_classes`) | 24 | **26** (as 24 do 2.5 mais `delimitador_limite_legal` e `centroide_limite_legal`, rev 3.0.1) |
 | Domínios | 42 | **41** (rebaseados no Topo 2.0; `sigla_uf` sai com a UF) |
@@ -145,3 +145,15 @@ Regerado sobre a Topo 2.0 v0.17.0. A versão anterior tinha sido gerada da 0.14.
 As duas auxiliares novas entram pela constante `EXT_NOVAS_DO_TOPO` do `build_orto30_from_topo20.py`, com mapeamento 1:1 na conversão Topo 2.0 ⇄ Orto 3.0 e fora da conversão Orto 2.5 → 3.0, que não tem de onde tirá-las. A justificativa do `tipo` no delimitador está na seção 1.5 do changelog da Topo 2.0.
 
 Banco existente na 3.0.0: da seção 8 do changelog da Topo 2.0 servem só os comandos das tabelas que o Orto tem, ou seja, o `INSERT` do código 4 em `dominios.tipo_limite_especial` (0.15.0), o bloco do `simb_ponto` (0.16.0) e o incremento 0.17.0 inteiro. As linhas de `db_metadata` daqueles incrementos gravam versão da Topo e não se aplicam: no Orto, o fecho é `UPDATE public.db_metadata SET dbimplversion = '3.0.1'`, seguido da reaplicação de `edgv_orto_30_extension.sql`.
+
+## 7.2 Rev 3.0.2 (2026-09-29): a linha que já existe marca o limite
+
+Regerado sobre a Topo 2.0 v0.18.0. Justificativa na seção 1.6 do changelog da Topo 2.0.
+
+| Mudança | Efeito no Orto 3.0 |
+|---|---|
+| `limite_legal`, `limite_especial` e `em_litigio` (`booleano`) em `elemnat_trecho_drenagem_l`, `delimitador_massa_dagua_l`, `infra_via_deslocamento_l` e `infra_ferrovia_l` | a divisa sobre rio, margem, via ou ferrovia deixa de ser linha sobreposta: a linha que já existe recebe a marca. O Orto não tem `llp_delimitacao_fisica_l`, a quinta classe marcada na Topo |
+| `tipo` sai de `delimitador_limite_especial_l` e de `delimitador_limite_legal_l`; o segundo ganha `em_litigio` | a construção de `llp_terra_indigena`, `llp_unidade_conservacao` e `llp_area_pub_militar` deixa de filtrar o delimitador por código, como fazia a 3.0.1: cada classe usa todo limite especial e todo limite legal como linha, e o regime vem do centroide |
+| `codigo_uf` em `centroide_limite_legal_p` e `llp_limite_legal_a` | a UF é a junção dos municípios por essa chave |
+
+Banco existente na 3.0.1: da seção 8 do changelog da Topo 2.0 serve o incremento 0.18.0 sem as três linhas de `llp_delimitacao_fisica_l` e sem as de `db_metadata`. O fecho é `UPDATE public.db_metadata SET dbimplversion = '3.0.2'`, seguido da reaplicação de `edgv_orto_30_extension.sql`.

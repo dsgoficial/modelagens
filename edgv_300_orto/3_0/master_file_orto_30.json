@@ -1,7 +1,7 @@
 {
   "modelo": "EDGV Orto 3.0",
   "comentario": "Perfil ortoimagem. Espelha o conjunto de classes do Orto 2.5 (classes separadas) rebaseado nas definicoes do Topo 2.0. Gerado por build_orto30_from_topo20.py — nao editar a mao.",
-  "versao": "3.0.1",
+  "versao": "3.0.2",
   "schema_dados": "edgv",
   "schema_dominios": "dominios",
   "a_ser_preenchido": {
@@ -2679,6 +2679,27 @@
           "tipo": "real",
           "cardinalidade": "0..1",
           "descricao": "Largura do curso d'agua em metros"
+        },
+        {
+          "nome": "limite_legal",
+          "tipo": "smallint",
+          "cardinalidade": "1..1",
+          "mapa_valor": "booleano",
+          "descricao": "Indica que a linha é também divisa político-administrativa (país, UF, município ou distrito) e entra na construção do limite legal, conforme o domínio booleano. O nível da divisa não fica na linha: sai dos centroides de limite legal das faces dos dois lados."
+        },
+        {
+          "nome": "limite_especial",
+          "tipo": "smallint",
+          "cardinalidade": "1..1",
+          "mapa_valor": "booleano",
+          "descricao": "Indica que a linha é também limite de área especial (terra indígena, território quilombola, assentamento, unidade de conservação, área militar) e entra na construção do limite especial de todos os regimes, conforme o domínio booleano."
+        },
+        {
+          "nome": "em_litigio",
+          "tipo": "smallint",
+          "cardinalidade": "1..1",
+          "mapa_valor": "booleano",
+          "descricao": "Indica que o trecho, quando é limite legal, é fronteira ou divisa disputada, conforme o domínio booleano."
         }
       ],
       "descricao": "Segmento de curso d'água natural ou artificial representado por linha (o eixo do fluxo), unidade básica da rede de drenagem. O tipo separa rio, canal e trecho pluvial; o regime informa a permanência da água e a ordem_strahler dá a hierarquia na rede. Quando o curso é largo o bastante para virar área, o trecho corre dentro da massa_dagua (ver situacao_em_poligono)."
@@ -3357,6 +3378,27 @@
           "tipo": "real",
           "cardinalidade": "0..1",
           "descricao": "Maior vão livre entre apoios da obra de arte no trecho, em metros."
+        },
+        {
+          "nome": "limite_legal",
+          "tipo": "smallint",
+          "cardinalidade": "1..1",
+          "mapa_valor": "booleano",
+          "descricao": "Indica que a linha é também divisa político-administrativa (país, UF, município ou distrito) e entra na construção do limite legal, conforme o domínio booleano. O nível da divisa não fica na linha: sai dos centroides de limite legal das faces dos dois lados."
+        },
+        {
+          "nome": "limite_especial",
+          "tipo": "smallint",
+          "cardinalidade": "1..1",
+          "mapa_valor": "booleano",
+          "descricao": "Indica que a linha é também limite de área especial (terra indígena, território quilombola, assentamento, unidade de conservação, área militar) e entra na construção do limite especial de todos os regimes, conforme o domínio booleano."
+        },
+        {
+          "nome": "em_litigio",
+          "tipo": "smallint",
+          "cardinalidade": "1..1",
+          "mapa_valor": "booleano",
+          "descricao": "Indica que o trecho, quando é limite legal, é fronteira ou divisa disputada, conforme o domínio booleano."
         }
       ],
       "descricao": "Via permanente de transporte sobre trilhos: trem, metrô, bonde e aeromóvel. Representada por linha. Distingue-se da via_deslocamento (rodovia) por trafegar sobre trilhos; carrega a bitola, o número de linhas, a eletrificação e a administração."
@@ -3683,6 +3725,27 @@
           "tipo": "real",
           "cardinalidade": "0..1",
           "descricao": "Maior vão livre entre apoios da obra de arte no trecho, em metros."
+        },
+        {
+          "nome": "limite_legal",
+          "tipo": "smallint",
+          "cardinalidade": "1..1",
+          "mapa_valor": "booleano",
+          "descricao": "Indica que a linha é também divisa político-administrativa (país, UF, município ou distrito) e entra na construção do limite legal, conforme o domínio booleano. O nível da divisa não fica na linha: sai dos centroides de limite legal das faces dos dois lados."
+        },
+        {
+          "nome": "limite_especial",
+          "tipo": "smallint",
+          "cardinalidade": "1..1",
+          "mapa_valor": "booleano",
+          "descricao": "Indica que a linha é também limite de área especial (terra indígena, território quilombola, assentamento, unidade de conservação, área militar) e entra na construção do limite especial de todos os regimes, conforme o domínio booleano."
+        },
+        {
+          "nome": "em_litigio",
+          "tipo": "smallint",
+          "cardinalidade": "1..1",
+          "mapa_valor": "booleano",
+          "descricao": "Indica que o trecho, quando é limite legal, é fronteira ou divisa disputada, conforme o domínio booleano."
         }
       ],
       "descricao": "Via terrestre de deslocamento: rodovia, estrada, auto-estrada, caminho carroçável, arruamento, trilha e alça de acesso. Representada por linha; é a classe principal do sistema rodoviário e carrega revestimento, tráfego, número de faixas, jurisdição e a sigla oficial da rodovia."
@@ -4155,6 +4218,15 @@
           "descricao": "Código do país no padrão ISO 3166-1 alpha-3 (por exemplo, BRA), usado nos limites internacionais."
         },
         {
+          "nome": "codigo_uf",
+          "tipo": "varchar(20)",
+          "cardinalidade": "0..1",
+          "primitivas": [
+            "MultiPolygon"
+          ],
+          "descricao": "Chave da UF a que a unidade pertence: na UF, o código da própria UF; no município, o da UF que o contém (código IBGE de 2 dígitos no Brasil, GID_1 do GADM fora dele). É a chave pela qual a UF se constrói juntando os municípios."
+        },
+        {
           "nome": "populacao",
           "tipo": "integer",
           "cardinalidade": "0..1",
@@ -4573,7 +4645,29 @@
       "primitivas": [
         "MultiLinestring"
       ],
-      "atributos": []
+      "atributos": [
+        {
+          "nome": "limite_legal",
+          "tipo": "smallint",
+          "cardinalidade": "1..1",
+          "mapa_valor": "booleano",
+          "descricao": "Indica que a linha é também divisa político-administrativa (país, UF, município ou distrito) e entra na construção do limite legal, conforme o domínio booleano. O nível da divisa não fica na linha: sai dos centroides de limite legal das faces dos dois lados."
+        },
+        {
+          "nome": "limite_especial",
+          "tipo": "smallint",
+          "cardinalidade": "1..1",
+          "mapa_valor": "booleano",
+          "descricao": "Indica que a linha é também limite de área especial (terra indígena, território quilombola, assentamento, unidade de conservação, área militar) e entra na construção do limite especial de todos os regimes, conforme o domínio booleano."
+        },
+        {
+          "nome": "em_litigio",
+          "tipo": "smallint",
+          "cardinalidade": "1..1",
+          "mapa_valor": "booleano",
+          "descricao": "Indica que o trecho, quando é limite legal, é fronteira ou divisa disputada, conforme o domínio booleano."
+        }
+      ]
     },
     {
       "nome": "elemento_hidrografico",
@@ -4806,14 +4900,7 @@
       "primitivas": [
         "MultiLinestring"
       ],
-      "atributos": [
-        {
-          "nome": "tipo",
-          "tipo": "smallint",
-          "cardinalidade": "1..1",
-          "mapa_valor": "tipo_limite_especial"
-        }
-      ]
+      "atributos": []
     },
     {
       "nome": "area_sem_dados",
@@ -4877,10 +4964,10 @@
       ],
       "atributos": [
         {
-          "nome": "tipo",
+          "nome": "em_litigio",
           "tipo": "smallint",
           "cardinalidade": "1..1",
-          "mapa_valor": "tipo_limite_legal"
+          "mapa_valor": "booleano"
         }
       ]
     },
@@ -4921,6 +5008,11 @@
         {
           "nome": "cod_iso",
           "tipo": "varchar(3)",
+          "cardinalidade": "0..1"
+        },
+        {
+          "nome": "codigo_uf",
+          "tipo": "varchar(20)",
           "cardinalidade": "0..1"
         },
         {
