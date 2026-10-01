@@ -1,6 +1,6 @@
 {
   "modelo": "EDGV Topo 2.0",
-  "versao": "0.19.0",
+  "versao": "0.20.0",
   "schema_dados": "edgv",
   "schema_dominios": "dominios",
   "a_ser_preenchido": {
@@ -3634,6 +3634,30 @@
           "descricao": "Galeria ou bueiro: conduto sob o aterro da via que dá passagem à água de um lado a outro."
         },
         {
+          "code": 601,
+          "value": "Barragem",
+          "valor_filtro": "Barragem",
+          "descricao": "Trecho da via ou ferrovia que corre sobre o coroamento de uma barragem; a barragem é este trecho, e o nome e o material dela vão no nome e no material do elemento viário."
+        },
+        {
+          "code": 602,
+          "value": "Dique",
+          "valor_filtro": "Barragem",
+          "descricao": "Trecho da via ou ferrovia que corre sobre um dique; o dique é este trecho."
+        },
+        {
+          "code": 701,
+          "value": "Corte",
+          "valor_filtro": "Alteração fisiográfica",
+          "descricao": "Trecho da via ou ferrovia em corte: plataforma aberta pela retirada de terra."
+        },
+        {
+          "code": 702,
+          "value": "Aterro",
+          "valor_filtro": "Alteração fisiográfica",
+          "descricao": "Trecho da via ou ferrovia em aterro: plataforma elevada com material trazido."
+        },
+        {
           "code": 97,
           "value": "Não aplicável",
           "valor_filtro": "Não aplicável",
@@ -3854,6 +3878,11 @@
           "code": 7,
           "value": "Zona Econômica Exclusiva (200 MN)",
           "descricao": "Faixa de mar até 200 milhas náuticas da linha de base, onde o país tem direito exclusivo sobre os recursos naturais, mas não soberania territorial."
+        },
+        {
+          "code": 97,
+          "value": "Não aplicável",
+          "descricao": "A linha não é limite legal. Só vale na marca limite_legal das linhas que podem ser divisa."
         }
       ]
     },
@@ -6374,11 +6403,37 @@
           "descricao": "Largura do curso d'agua em metros"
         },
         {
-          "nome": "limite_legal",
+          "nome": "hidrovia",
           "tipo": "smallint",
           "cardinalidade": "1..1",
           "mapa_valor": "booleano",
-          "descricao": "Indica que a linha é também divisa político-administrativa (país, UF, município ou distrito) e entra na construção do limite legal, conforme o domínio booleano. O nível da divisa não fica na linha: sai dos centroides de limite legal das faces dos dois lados."
+          "descricao": "Indica que o trecho é também trecho de hidrovia, conforme o domínio booleano. A hidrovia sobre a drenagem não se desenha: a drenagem a carrega; a classe trecho_hidroviario fica para a hidrovia em água sem eixo de drenagem."
+        },
+        {
+          "nome": "nome_hidrovia",
+          "tipo": "varchar(255)",
+          "cardinalidade": "0..1",
+          "descricao": "Nome da hidrovia que passa pelo trecho, quando a drenagem é hidrovia."
+        },
+        {
+          "nome": "calado_max_seca",
+          "tipo": "real",
+          "cardinalidade": "0..1",
+          "descricao": "Calado máximo na seca, em metros, da hidrovia que passa pelo trecho."
+        },
+        {
+          "nome": "limite_legal",
+          "tipo": "smallint",
+          "cardinalidade": "1..1",
+          "mapa_valor": "tipo_limite_legal",
+          "valores": [
+            1,
+            2,
+            3,
+            4,
+            97
+          ],
+          "descricao": "Nível da divisa político-administrativa que corre sobre a linha, o mais alto em que ela ocorre (internacional, estadual, municipal ou distrital), conforme o domínio tipo_limite_legal; Não aplicável quando a linha não é limite. A divisa sobre a feição não se desenha: a feição a carrega."
         },
         {
           "nome": "limite_especial",
@@ -7276,6 +7331,10 @@
             205,
             301,
             302,
+            601,
+            602,
+            701,
+            702,
             97
           ],
           "descricao": "Tipo de obra de arte que o trecho de ferrovia atravessa (ponte, túnel, viaduto), conforme o domínio tipo_elemento_viario; usa não aplicável quando não há obra de arte."
@@ -7298,6 +7357,7 @@
             3,
             4,
             5,
+            23,
             97,
             98
           ],
@@ -7344,8 +7404,15 @@
           "nome": "limite_legal",
           "tipo": "smallint",
           "cardinalidade": "1..1",
-          "mapa_valor": "booleano",
-          "descricao": "Indica que a linha é também divisa político-administrativa (país, UF, município ou distrito) e entra na construção do limite legal, conforme o domínio booleano. O nível da divisa não fica na linha: sai dos centroides de limite legal das faces dos dois lados."
+          "mapa_valor": "tipo_limite_legal",
+          "valores": [
+            1,
+            2,
+            3,
+            4,
+            97
+          ],
+          "descricao": "Nível da divisa político-administrativa que corre sobre a linha, o mais alto em que ela ocorre (internacional, estadual, municipal ou distrital), conforme o domínio tipo_limite_legal; Não aplicável quando a linha não é limite. A divisa sobre a feição não se desenha: a feição a carrega."
         },
         {
           "nome": "limite_especial",
@@ -7642,13 +7709,6 @@
           "descricao": "Nome oficial ou consagrado da feição."
         },
         {
-          "nome": "situacao_fisica",
-          "tipo": "smallint",
-          "cardinalidade": "1..1",
-          "mapa_valor": "situacao_fisica",
-          "descricao": "Situação física do trecho hidroviário, conforme o domínio situacao_fisica."
-        },
-        {
           "nome": "calado_max_seca",
           "tipo": "real",
           "cardinalidade": "0..1",
@@ -7825,6 +7885,10 @@
             302,
             401,
             402,
+            601,
+            602,
+            701,
+            702,
             97
           ],
           "descricao": "Tipo de obra de arte que o trecho de via atravessa (ponte, túnel, viaduto), conforme o domínio tipo_elemento_viario; usa não aplicável quando não há obra de arte."
@@ -7854,6 +7918,7 @@
             3,
             4,
             5,
+            23,
             97,
             98
           ],
@@ -7905,8 +7970,15 @@
           "nome": "limite_legal",
           "tipo": "smallint",
           "cardinalidade": "1..1",
-          "mapa_valor": "booleano",
-          "descricao": "Indica que a linha é também divisa político-administrativa (país, UF, município ou distrito) e entra na construção do limite legal, conforme o domínio booleano. O nível da divisa não fica na linha: sai dos centroides de limite legal das faces dos dois lados."
+          "mapa_valor": "tipo_limite_legal",
+          "valores": [
+            1,
+            2,
+            3,
+            4,
+            97
+          ],
+          "descricao": "Nível da divisa político-administrativa que corre sobre a linha, o mais alto em que ela ocorre (internacional, estadual, municipal ou distrital), conforme o domínio tipo_limite_legal; Não aplicável quando a linha não é limite. A divisa sobre a feição não se desenha: a feição a carrega."
         },
         {
           "nome": "limite_especial",
@@ -8228,7 +8300,16 @@
           "tipo": "smallint",
           "cardinalidade": "1..1",
           "mapa_valor": "tipo_limite_legal",
-          "descricao": "Nível do limite político-administrativo ou faixa marítima, conforme o domínio tipo_limite_legal; governa a partir de que escala o limite aparece."
+          "descricao": "Nível do limite político-administrativo ou faixa marítima, conforme o domínio tipo_limite_legal; governa a partir de que escala o limite aparece.",
+          "valores": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ]
         },
         {
           "nome": "geometria_aproximada",
@@ -8421,8 +8502,15 @@
           "nome": "limite_legal",
           "tipo": "smallint",
           "cardinalidade": "1..1",
-          "mapa_valor": "booleano",
-          "descricao": "Indica que a linha é também divisa político-administrativa (país, UF, município ou distrito) e entra na construção do limite legal, conforme o domínio booleano. O nível da divisa não fica na linha: sai dos centroides de limite legal das faces dos dois lados."
+          "mapa_valor": "tipo_limite_legal",
+          "valores": [
+            1,
+            2,
+            3,
+            4,
+            97
+          ],
+          "descricao": "Nível da divisa político-administrativa que corre sobre a linha, o mais alto em que ela ocorre (internacional, estadual, municipal ou distrital), conforme o domínio tipo_limite_legal; Não aplicável quando a linha não é limite. A divisa sobre a feição não se desenha: a feição a carrega."
         },
         {
           "nome": "limite_especial",
@@ -8785,8 +8873,14 @@
           "nome": "limite_legal",
           "tipo": "smallint",
           "cardinalidade": "1..1",
-          "mapa_valor": "booleano",
-          "descricao": "Indica que a linha é também divisa político-administrativa (país, UF, município ou distrito) e entra na construção do limite legal, conforme o domínio booleano. O nível da divisa não fica na linha: sai dos centroides de limite legal das faces dos dois lados."
+          "mapa_valor": "tipo_limite_legal",
+          "valores": [
+            1,
+            2,
+            3,
+            4,
+            97
+          ]
         },
         {
           "nome": "limite_especial",
@@ -8835,6 +8929,18 @@
         "MultiLinestring"
       ],
       "atributos": [
+        {
+          "nome": "tipo",
+          "tipo": "smallint",
+          "cardinalidade": "1..1",
+          "mapa_valor": "tipo_limite_legal",
+          "valores": [
+            1,
+            2,
+            3,
+            4
+          ]
+        },
         {
           "nome": "em_litigio",
           "tipo": "smallint",
@@ -8998,7 +9104,13 @@
           "nome": "tipo",
           "tipo": "smallint",
           "cardinalidade": "1..1",
-          "mapa_valor": "tipo_limite_legal"
+          "mapa_valor": "tipo_limite_legal",
+          "valores": [
+            1,
+            2,
+            3,
+            4
+          ]
         },
         {
           "nome": "geometria_aproximada",

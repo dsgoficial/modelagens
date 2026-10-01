@@ -4,7 +4,7 @@
     "modelo_A": "EDGV 3.0 Orto",
     "versao_modelo_A": "2.5.4",
     "modelo_B": "EDGV Orto 3.0",
-    "versao_modelo_B": "3.0.3"
+    "versao_modelo_B": "3.0.4"
   },
   "__comment": "UTF-8. Orto 2.5 -> Orto 3.0. Conjuntos de classes espelhados (1:1 por nome). Atributos alinham por nome; o 3.0 herda os dominios/definicoes do Topo 2.0 (codigos de dominio sao identicos, sem traducao de valores). 4 atributos do 2.5 sem destino no 3.0 (sem equivalente no Topo 2.0) estao anotados por classe nos respectivos __comment. O 3.0 ganha atributos do Topo 2.0 ausentes no 2.5 (preenchidos como NULL/9999 na conversao A=>B).",
   "schema_A": "edgv",

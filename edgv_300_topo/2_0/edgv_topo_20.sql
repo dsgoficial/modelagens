@@ -7,10 +7,10 @@ SET search_path TO pg_catalog,public,edgv,dominios;
 
 CREATE TABLE public.db_metadata(
 	 edgvversion varchar(50) NOT NULL DEFAULT 'EDGV Topo 2.0',
-	 dbimplversion varchar(50) NOT NULL DEFAULT '0.19.0',
+	 dbimplversion varchar(50) NOT NULL DEFAULT '0.20.0',
 	 CONSTRAINT edgvversioncheck CHECK (edgvversion = 'EDGV Topo 2.0')
 );
-INSERT INTO public.db_metadata (edgvversion, dbimplversion) VALUES ('EDGV Topo 2.0','0.19.0');
+INSERT INTO public.db_metadata (edgvversion, dbimplversion) VALUES ('EDGV Topo 2.0','0.20.0');
 
 CREATE TABLE dominios.sigla_uf (
 	 code smallint NOT NULL,
@@ -1122,6 +1122,10 @@ INSERT INTO dominios.tipo_elemento_viario (code,code_name, filter) VALUES (302,'
 INSERT INTO dominios.tipo_elemento_viario (code,code_name, filter) VALUES (401,'Travessia - Vau natural (401)','Travessia');
 INSERT INTO dominios.tipo_elemento_viario (code,code_name, filter) VALUES (402,'Travessia - Vau construído (402)','Travessia');
 INSERT INTO dominios.tipo_elemento_viario (code,code_name, filter) VALUES (501,'Galeria/Bueiro (501)','Galeria/Bueiro');
+INSERT INTO dominios.tipo_elemento_viario (code,code_name, filter) VALUES (601,'Barragem (601)','Barragem');
+INSERT INTO dominios.tipo_elemento_viario (code,code_name, filter) VALUES (602,'Dique (602)','Barragem');
+INSERT INTO dominios.tipo_elemento_viario (code,code_name, filter) VALUES (701,'Corte (701)','Alteração fisiográfica');
+INSERT INTO dominios.tipo_elemento_viario (code,code_name, filter) VALUES (702,'Aterro (702)','Alteração fisiográfica');
 INSERT INTO dominios.tipo_elemento_viario (code,code_name, filter) VALUES (97,'Não aplicável (97)','Não aplicável');
 INSERT INTO dominios.tipo_elemento_viario (code,code_name, filter) VALUES (9999,'A SER PREENCHIDO (9999)','A SER PREENCHIDO (9999)');
 
@@ -1211,6 +1215,7 @@ INSERT INTO dominios.tipo_limite_legal (code,code_name) VALUES (4,'Limite Distri
 INSERT INTO dominios.tipo_limite_legal (code,code_name) VALUES (5,'Mar Territorial (12 MN) (5)');
 INSERT INTO dominios.tipo_limite_legal (code,code_name) VALUES (6,'Zona Contígua (24 MN) (6)');
 INSERT INTO dominios.tipo_limite_legal (code,code_name) VALUES (7,'Zona Econômica Exclusiva (200 MN) (7)');
+INSERT INTO dominios.tipo_limite_legal (code,code_name) VALUES (97,'Não aplicável (97)');
 INSERT INTO dominios.tipo_limite_legal (code,code_name) VALUES (9999,'A SER PREENCHIDO (9999)');
 
 ALTER TABLE dominios.tipo_limite_legal OWNER TO postgres;
@@ -2740,6 +2745,9 @@ CREATE TABLE edgv.elemnat_trecho_drenagem_l(
 	 direcao_fixada smallint NOT NULL,
 	 ordem_strahler smallint,
 	 largura real,
+	 hidrovia smallint NOT NULL,
+	 nome_hidrovia varchar(255),
+	 calado_max_seca real,
 	 limite_legal smallint NOT NULL,
 	 limite_especial smallint NOT NULL,
 	 em_litigio smallint NOT NULL,
@@ -2802,9 +2810,20 @@ ALTER TABLE edgv.elemnat_trecho_drenagem_l
 ALTER TABLE edgv.elemnat_trecho_drenagem_l ALTER COLUMN direcao_fixada SET DEFAULT 9999;
 
 ALTER TABLE edgv.elemnat_trecho_drenagem_l
-	 ADD CONSTRAINT elemnat_trecho_drenagem_l_limite_legal_fk FOREIGN KEY (limite_legal)
+	 ADD CONSTRAINT elemnat_trecho_drenagem_l_hidrovia_fk FOREIGN KEY (hidrovia)
 	 REFERENCES dominios.booleano (code) MATCH FULL
 	 ON UPDATE NO ACTION ON DELETE NO ACTION;
+
+ALTER TABLE edgv.elemnat_trecho_drenagem_l ALTER COLUMN hidrovia SET DEFAULT 9999;
+
+ALTER TABLE edgv.elemnat_trecho_drenagem_l
+	 ADD CONSTRAINT elemnat_trecho_drenagem_l_limite_legal_fk FOREIGN KEY (limite_legal)
+	 REFERENCES dominios.tipo_limite_legal (code) MATCH FULL
+	 ON UPDATE NO ACTION ON DELETE NO ACTION;
+
+ALTER TABLE edgv.elemnat_trecho_drenagem_l
+	 ADD CONSTRAINT elemnat_trecho_drenagem_l_limite_legal_check 
+	 CHECK (limite_legal = ANY(ARRAY[1 :: SMALLINT, 2 :: SMALLINT, 3 :: SMALLINT, 4 :: SMALLINT, 97 :: SMALLINT, 9999 :: SMALLINT])); 
 
 ALTER TABLE edgv.elemnat_trecho_drenagem_l ALTER COLUMN limite_legal SET DEFAULT 9999;
 
@@ -3522,7 +3541,7 @@ ALTER TABLE edgv.infra_ferrovia_l
 
 ALTER TABLE edgv.infra_ferrovia_l
 	 ADD CONSTRAINT infra_ferrovia_l_tipo_elemento_viario_check 
-	 CHECK (tipo_elemento_viario = ANY(ARRAY[101 :: SMALLINT, 102 :: SMALLINT, 201 :: SMALLINT, 202 :: SMALLINT, 203 :: SMALLINT, 204 :: SMALLINT, 205 :: SMALLINT, 301 :: SMALLINT, 302 :: SMALLINT, 97 :: SMALLINT, 9999 :: SMALLINT])); 
+	 CHECK (tipo_elemento_viario = ANY(ARRAY[101 :: SMALLINT, 102 :: SMALLINT, 201 :: SMALLINT, 202 :: SMALLINT, 203 :: SMALLINT, 204 :: SMALLINT, 205 :: SMALLINT, 301 :: SMALLINT, 302 :: SMALLINT, 601 :: SMALLINT, 602 :: SMALLINT, 701 :: SMALLINT, 702 :: SMALLINT, 97 :: SMALLINT, 9999 :: SMALLINT])); 
 
 ALTER TABLE edgv.infra_ferrovia_l ALTER COLUMN tipo_elemento_viario SET DEFAULT 9999;
 
@@ -3533,7 +3552,7 @@ ALTER TABLE edgv.infra_ferrovia_l
 
 ALTER TABLE edgv.infra_ferrovia_l
 	 ADD CONSTRAINT infra_ferrovia_l_material_construcao_elemento_viario_check 
-	 CHECK (material_construcao_elemento_viario = ANY(ARRAY[0 :: SMALLINT, 1 :: SMALLINT, 2 :: SMALLINT, 3 :: SMALLINT, 4 :: SMALLINT, 5 :: SMALLINT, 97 :: SMALLINT, 98 :: SMALLINT, 9999 :: SMALLINT])); 
+	 CHECK (material_construcao_elemento_viario = ANY(ARRAY[0 :: SMALLINT, 1 :: SMALLINT, 2 :: SMALLINT, 3 :: SMALLINT, 4 :: SMALLINT, 5 :: SMALLINT, 23 :: SMALLINT, 97 :: SMALLINT, 98 :: SMALLINT, 9999 :: SMALLINT])); 
 
 ALTER TABLE edgv.infra_ferrovia_l ALTER COLUMN material_construcao_elemento_viario SET DEFAULT 9999;
 
@@ -3546,8 +3565,12 @@ ALTER TABLE edgv.infra_ferrovia_l ALTER COLUMN visivel SET DEFAULT 9999;
 
 ALTER TABLE edgv.infra_ferrovia_l
 	 ADD CONSTRAINT infra_ferrovia_l_limite_legal_fk FOREIGN KEY (limite_legal)
-	 REFERENCES dominios.booleano (code) MATCH FULL
+	 REFERENCES dominios.tipo_limite_legal (code) MATCH FULL
 	 ON UPDATE NO ACTION ON DELETE NO ACTION;
+
+ALTER TABLE edgv.infra_ferrovia_l
+	 ADD CONSTRAINT infra_ferrovia_l_limite_legal_check 
+	 CHECK (limite_legal = ANY(ARRAY[1 :: SMALLINT, 2 :: SMALLINT, 3 :: SMALLINT, 4 :: SMALLINT, 97 :: SMALLINT, 9999 :: SMALLINT])); 
 
 ALTER TABLE edgv.infra_ferrovia_l ALTER COLUMN limite_legal SET DEFAULT 9999;
 
@@ -3921,7 +3944,6 @@ ALTER TABLE edgv.infra_trecho_duto_l ALTER COLUMN visivel SET DEFAULT 9999;
 CREATE TABLE edgv.infra_trecho_hidroviario_l(
 	 id uuid NOT NULL DEFAULT uuid_generate_v4(),
 	 nome varchar(255),
-	 situacao_fisica smallint NOT NULL,
 	 calado_max_seca real,
 	 texto_edicao varchar(255),
 	 visivel smallint NOT NULL,
@@ -3933,13 +3955,6 @@ CREATE TABLE edgv.infra_trecho_hidroviario_l(
 CREATE INDEX infra_trecho_hidroviario_l_geom ON edgv.infra_trecho_hidroviario_l USING gist (geom);
 
 ALTER TABLE edgv.infra_trecho_hidroviario_l OWNER TO postgres;
-
-ALTER TABLE edgv.infra_trecho_hidroviario_l
-	 ADD CONSTRAINT infra_trecho_hidroviario_l_situacao_fisica_fk FOREIGN KEY (situacao_fisica)
-	 REFERENCES dominios.situacao_fisica (code) MATCH FULL
-	 ON UPDATE NO ACTION ON DELETE NO ACTION;
-
-ALTER TABLE edgv.infra_trecho_hidroviario_l ALTER COLUMN situacao_fisica SET DEFAULT 9999;
 
 ALTER TABLE edgv.infra_trecho_hidroviario_l
 	 ADD CONSTRAINT infra_trecho_hidroviario_l_visivel_fk FOREIGN KEY (visivel)
@@ -4069,7 +4084,7 @@ ALTER TABLE edgv.infra_via_deslocamento_l
 
 ALTER TABLE edgv.infra_via_deslocamento_l
 	 ADD CONSTRAINT infra_via_deslocamento_l_tipo_elemento_viario_check 
-	 CHECK (tipo_elemento_viario = ANY(ARRAY[101 :: SMALLINT, 102 :: SMALLINT, 201 :: SMALLINT, 202 :: SMALLINT, 203 :: SMALLINT, 204 :: SMALLINT, 205 :: SMALLINT, 301 :: SMALLINT, 302 :: SMALLINT, 401 :: SMALLINT, 402 :: SMALLINT, 97 :: SMALLINT, 9999 :: SMALLINT])); 
+	 CHECK (tipo_elemento_viario = ANY(ARRAY[101 :: SMALLINT, 102 :: SMALLINT, 201 :: SMALLINT, 202 :: SMALLINT, 203 :: SMALLINT, 204 :: SMALLINT, 205 :: SMALLINT, 301 :: SMALLINT, 302 :: SMALLINT, 401 :: SMALLINT, 402 :: SMALLINT, 601 :: SMALLINT, 602 :: SMALLINT, 701 :: SMALLINT, 702 :: SMALLINT, 97 :: SMALLINT, 9999 :: SMALLINT])); 
 
 ALTER TABLE edgv.infra_via_deslocamento_l ALTER COLUMN tipo_elemento_viario SET DEFAULT 9999;
 
@@ -4087,7 +4102,7 @@ ALTER TABLE edgv.infra_via_deslocamento_l
 
 ALTER TABLE edgv.infra_via_deslocamento_l
 	 ADD CONSTRAINT infra_via_deslocamento_l_material_construcao_ele_f3bda3e2_check 
-	 CHECK (material_construcao_elemento_viario = ANY(ARRAY[0 :: SMALLINT, 1 :: SMALLINT, 2 :: SMALLINT, 3 :: SMALLINT, 4 :: SMALLINT, 5 :: SMALLINT, 97 :: SMALLINT, 98 :: SMALLINT, 9999 :: SMALLINT])); 
+	 CHECK (material_construcao_elemento_viario = ANY(ARRAY[0 :: SMALLINT, 1 :: SMALLINT, 2 :: SMALLINT, 3 :: SMALLINT, 4 :: SMALLINT, 5 :: SMALLINT, 23 :: SMALLINT, 97 :: SMALLINT, 98 :: SMALLINT, 9999 :: SMALLINT])); 
 
 ALTER TABLE edgv.infra_via_deslocamento_l ALTER COLUMN material_construcao_elemento_viario SET DEFAULT 9999;
 
@@ -4100,8 +4115,12 @@ ALTER TABLE edgv.infra_via_deslocamento_l ALTER COLUMN visivel SET DEFAULT 9999;
 
 ALTER TABLE edgv.infra_via_deslocamento_l
 	 ADD CONSTRAINT infra_via_deslocamento_l_limite_legal_fk FOREIGN KEY (limite_legal)
-	 REFERENCES dominios.booleano (code) MATCH FULL
+	 REFERENCES dominios.tipo_limite_legal (code) MATCH FULL
 	 ON UPDATE NO ACTION ON DELETE NO ACTION;
+
+ALTER TABLE edgv.infra_via_deslocamento_l
+	 ADD CONSTRAINT infra_via_deslocamento_l_limite_legal_check 
+	 CHECK (limite_legal = ANY(ARRAY[1 :: SMALLINT, 2 :: SMALLINT, 3 :: SMALLINT, 4 :: SMALLINT, 97 :: SMALLINT, 9999 :: SMALLINT])); 
 
 ALTER TABLE edgv.infra_via_deslocamento_l ALTER COLUMN limite_legal SET DEFAULT 9999;
 
@@ -4369,6 +4388,10 @@ ALTER TABLE edgv.llp_limite_legal_l
 	 REFERENCES dominios.tipo_limite_legal (code) MATCH FULL
 	 ON UPDATE NO ACTION ON DELETE NO ACTION;
 
+ALTER TABLE edgv.llp_limite_legal_l
+	 ADD CONSTRAINT llp_limite_legal_l_tipo_check 
+	 CHECK (tipo = ANY(ARRAY[1 :: SMALLINT, 2 :: SMALLINT, 3 :: SMALLINT, 4 :: SMALLINT, 5 :: SMALLINT, 6 :: SMALLINT, 7 :: SMALLINT, 9999 :: SMALLINT])); 
+
 ALTER TABLE edgv.llp_limite_legal_l ALTER COLUMN tipo SET DEFAULT 9999;
 
 ALTER TABLE edgv.llp_limite_legal_l
@@ -4422,6 +4445,10 @@ ALTER TABLE edgv.llp_limite_legal_a
 	 ADD CONSTRAINT llp_limite_legal_a_tipo_fk FOREIGN KEY (tipo)
 	 REFERENCES dominios.tipo_limite_legal (code) MATCH FULL
 	 ON UPDATE NO ACTION ON DELETE NO ACTION;
+
+ALTER TABLE edgv.llp_limite_legal_a
+	 ADD CONSTRAINT llp_limite_legal_a_tipo_check 
+	 CHECK (tipo = ANY(ARRAY[1 :: SMALLINT, 2 :: SMALLINT, 3 :: SMALLINT, 4 :: SMALLINT, 5 :: SMALLINT, 6 :: SMALLINT, 7 :: SMALLINT, 9999 :: SMALLINT])); 
 
 ALTER TABLE edgv.llp_limite_legal_a ALTER COLUMN tipo SET DEFAULT 9999;
 
@@ -4515,8 +4542,12 @@ ALTER TABLE edgv.llp_delimitacao_fisica_l ALTER COLUMN visivel SET DEFAULT 9999;
 
 ALTER TABLE edgv.llp_delimitacao_fisica_l
 	 ADD CONSTRAINT llp_delimitacao_fisica_l_limite_legal_fk FOREIGN KEY (limite_legal)
-	 REFERENCES dominios.booleano (code) MATCH FULL
+	 REFERENCES dominios.tipo_limite_legal (code) MATCH FULL
 	 ON UPDATE NO ACTION ON DELETE NO ACTION;
+
+ALTER TABLE edgv.llp_delimitacao_fisica_l
+	 ADD CONSTRAINT llp_delimitacao_fisica_l_limite_legal_check 
+	 CHECK (limite_legal = ANY(ARRAY[1 :: SMALLINT, 2 :: SMALLINT, 3 :: SMALLINT, 4 :: SMALLINT, 97 :: SMALLINT, 9999 :: SMALLINT])); 
 
 ALTER TABLE edgv.llp_delimitacao_fisica_l ALTER COLUMN limite_legal SET DEFAULT 9999;
 
@@ -4935,8 +4966,12 @@ ALTER TABLE edgv.delimitador_massa_dagua_l OWNER TO postgres;
 
 ALTER TABLE edgv.delimitador_massa_dagua_l
 	 ADD CONSTRAINT delimitador_massa_dagua_l_limite_legal_fk FOREIGN KEY (limite_legal)
-	 REFERENCES dominios.booleano (code) MATCH FULL
+	 REFERENCES dominios.tipo_limite_legal (code) MATCH FULL
 	 ON UPDATE NO ACTION ON DELETE NO ACTION;
+
+ALTER TABLE edgv.delimitador_massa_dagua_l
+	 ADD CONSTRAINT delimitador_massa_dagua_l_limite_legal_check 
+	 CHECK (limite_legal = ANY(ARRAY[1 :: SMALLINT, 2 :: SMALLINT, 3 :: SMALLINT, 4 :: SMALLINT, 97 :: SMALLINT, 9999 :: SMALLINT])); 
 
 ALTER TABLE edgv.delimitador_massa_dagua_l ALTER COLUMN limite_legal SET DEFAULT 9999;
 
@@ -4989,6 +5024,7 @@ ALTER TABLE edgv.delimitador_limite_especial_l OWNER TO postgres;
 
 CREATE TABLE edgv.delimitador_limite_legal_l(
 	 id uuid NOT NULL DEFAULT uuid_generate_v4(),
+	 tipo smallint NOT NULL,
 	 em_litigio smallint NOT NULL,
 	 observacao varchar(255),
 	 geom geometry(MultiLinestring, 4674),
@@ -4998,6 +5034,17 @@ CREATE TABLE edgv.delimitador_limite_legal_l(
 CREATE INDEX delimitador_limite_legal_l_geom ON edgv.delimitador_limite_legal_l USING gist (geom);
 
 ALTER TABLE edgv.delimitador_limite_legal_l OWNER TO postgres;
+
+ALTER TABLE edgv.delimitador_limite_legal_l
+	 ADD CONSTRAINT delimitador_limite_legal_l_tipo_fk FOREIGN KEY (tipo)
+	 REFERENCES dominios.tipo_limite_legal (code) MATCH FULL
+	 ON UPDATE NO ACTION ON DELETE NO ACTION;
+
+ALTER TABLE edgv.delimitador_limite_legal_l
+	 ADD CONSTRAINT delimitador_limite_legal_l_tipo_check 
+	 CHECK (tipo = ANY(ARRAY[1 :: SMALLINT, 2 :: SMALLINT, 3 :: SMALLINT, 4 :: SMALLINT, 9999 :: SMALLINT])); 
+
+ALTER TABLE edgv.delimitador_limite_legal_l ALTER COLUMN tipo SET DEFAULT 9999;
 
 ALTER TABLE edgv.delimitador_limite_legal_l
 	 ADD CONSTRAINT delimitador_limite_legal_l_em_litigio_fk FOREIGN KEY (em_litigio)
@@ -5175,6 +5222,10 @@ ALTER TABLE edgv.centroide_limite_legal_p
 	 ADD CONSTRAINT centroide_limite_legal_p_tipo_fk FOREIGN KEY (tipo)
 	 REFERENCES dominios.tipo_limite_legal (code) MATCH FULL
 	 ON UPDATE NO ACTION ON DELETE NO ACTION;
+
+ALTER TABLE edgv.centroide_limite_legal_p
+	 ADD CONSTRAINT centroide_limite_legal_p_tipo_check 
+	 CHECK (tipo = ANY(ARRAY[1 :: SMALLINT, 2 :: SMALLINT, 3 :: SMALLINT, 4 :: SMALLINT, 9999 :: SMALLINT])); 
 
 ALTER TABLE edgv.centroide_limite_legal_p ALTER COLUMN tipo SET DEFAULT 9999;
 

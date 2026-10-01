@@ -12,8 +12,8 @@
 
 | | Orto 2.5 | **Orto 3.0** |
 |---|---|---|
-| Modelo base | EDGV 3.0 | **EDGV Topo 2.0 v0.18.0** (regerado 2026-09-29; antes 0.17.0, 0.14.0, 0.11.0 e 0.9.0) |
-| Versão | 2.5.4 | **3.0.3** |
+| Modelo base | EDGV 3.0 | **EDGV Topo 2.0 v0.20.0** (regerado 2026-09-30; antes 0.19.0, 0.18.0, 0.17.0, 0.14.0, 0.11.0 e 0.9.0) |
+| Versão | 2.5.4 | **3.0.4** |
 | Classes temáticas | 27 | **25** (`pais`/`unidade_federacao` consolidados em `llp_limite_legal`) |
 | Classes auxiliares (`extension_classes`) | 24 | **26** (as 24 do 2.5 mais `delimitador_limite_legal` e `centroide_limite_legal`, rev 3.0.1) |
 | Domínios | 42 | **41** (rebaseados no Topo 2.0; `sigla_uf` sai com a UF) |
@@ -171,3 +171,16 @@ Regerado sobre a Topo 2.0 v0.19.0. Justificativa na seção 1.7 do changelog da 
 O Orto não tem as colunas `confiabilidade` e `escala_maxima_autoritativa` nem a tabela `linhagem_feicao`, então a parte de qualidade calculada da 0.19.0 não se aplica.
 
 Banco existente na 3.0.2: serve o incremento 0.19.0 da seção 8 do changelog da Topo 2.0, que usa `IF EXISTS` e passa pelos objetos que o Orto não tem, trocando as duas linhas de `db_metadata` por `UPDATE public.db_metadata SET dbimplversion = '3.0.3'` e `ALTER TABLE public.db_metadata ALTER COLUMN dbimplversion SET DEFAULT '3.0.3'`. Em seguida, reaplique `edgv_orto_30_extension.sql`.
+
+## 7.4 Rev 3.0.4 (2026-09-30): o nível volta à linha, e hidrovia, barragem, corte e aterro viram atributo
+
+Regerado sobre a Topo 2.0 v0.20.0. Justificativa na seção 1.8 do changelog da Topo 2.0.
+
+| Mudança | Efeito no Orto 3.0 |
+|---|---|
+| `delimitador_limite_legal_l` volta a ter `tipo` (1 a 4) | a UF e o município voltam a se construir pelo nível da linha |
+| `limite_legal` com o domínio `tipo_limite_legal` (1 a 4, 97) na drenagem, na margem, na via e na ferrovia | a marca passa a dizer o nível da divisa |
+| `hidrovia`, `nome_hidrovia` e `calado_max_seca` em `elemnat_trecho_drenagem_l` | a hidrovia sobre o rio passa a ser atributo da drenagem; o Orto não tem a classe de hidrovia pura |
+| `tipo_elemento_viario` 601, 602, 701 e 702, e o 23 (Terra) no material do elemento viário | barragem, dique, corte e aterro sob a via ou a ferrovia viram atributo do trecho |
+
+Banco existente na 3.0.3: aplique o incremento 0.20.0 da seção 8 do changelog da Topo 2.0, sem as linhas de `llp_delimitacao_fisica_l` e de `infra_trecho_hidroviario_l` (classes que o Orto não tem) e sem as de `db_metadata`; o fecho é `UPDATE public.db_metadata SET dbimplversion = '3.0.4'`.

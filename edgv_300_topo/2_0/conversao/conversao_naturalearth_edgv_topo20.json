@@ -699,9 +699,7 @@
       },
       "edgv_target": {
         "table": "infra_trecho_hidroviario_l",
-        "attributes": {
-          "situacao_fisica": 3
-        }
+        "attributes": {}
       },
       "ne_attribute_mapping": {
         "name": "nome"
@@ -713,7 +711,7 @@
         "length_km": "comprimento_km"
       },
       "confidence": "medium",
-      "note": "Travessias/balsas. Mapeado para trecho_hidroviario. situacao_fisica=3 (construida). 288 features."
+      "note": "Travessias/balsas. Mapeado para trecho_hidroviario. 288 features. Rev 0.20.0: situacao_fisica saiu da hidrovia."
     },
     {
       "_comment": "=== RAILROADS → infra_ferrovia_l ==="

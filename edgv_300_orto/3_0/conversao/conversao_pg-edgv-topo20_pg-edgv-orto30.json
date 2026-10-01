@@ -2,9 +2,9 @@
   "metadados": {
     "versao_arquivo": "1.1",
     "modelo_A": "EDGV Topo 2.0",
-    "versao_modelo_A": "0.19.0",
+    "versao_modelo_A": "0.20.0",
     "modelo_B": "EDGV Orto 3.0",
-    "versao_modelo_B": "3.0.3"
+    "versao_modelo_B": "3.0.4"
   },
   "__comment": "UTF-8. Topo 2.0 <-> Orto 3.0. Comuns: 1:1 por nome. As areas especiais e localidades, unificadas no Topo 2.0 (limite_especial/localidade), sao classes SEPARADAS no Orto e mapeadas por filtro sobre 'tipo'. Atributos auxiliares proprios do orto (edicao_articulacao_imagem, edicao das areas especiais) nao tem fonte no Topo 2.0 — ver orto30_topo20_sem_correspondencia.md.",
   "schema_A": "edgv",

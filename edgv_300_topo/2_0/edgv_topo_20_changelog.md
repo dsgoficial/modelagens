@@ -179,6 +179,27 @@ Banco existente na 0.18.0: aplique o incremento 0.19.0 da seção 8 e reaplique 
 
 ---
 
+### 1.8 Rev 0.20.0 (2026-09-30): o nível volta à linha, e mais três sobreposições viram atributo
+
+Fecha as quatro sobreposições de linha que o operador ainda desenhava. Em cada uma, a feição que já existe carrega a outra como atributo, e a classe própria fica para o caso puro.
+
+| Caso | Onde passa a morar | Classe que fica para o caso puro |
+|------|--------------------|----------------------------------|
+| Limite legal sobre drenagem, margem, via, ferrovia ou delimitação física | `limite_legal` com o domínio `tipo_limite_legal`: o nível mais alto da divisa (1 a 4), 97 Não aplicável quando não é limite | `delimitador_limite_legal_l`, que volta a ter `tipo` (1 a 4) e mantém `em_litigio` |
+| Hidrovia sobre o eixo da drenagem | `elemnat_trecho_drenagem_l.hidrovia` (booleano), `nome_hidrovia`, `calado_max_seca` | `infra_trecho_hidroviario_l`, em água sem eixo de drenagem (mar, costa, lagoa); sai `situacao_fisica` |
+| Via ou ferrovia sobre barragem ou dique | `tipo_elemento_viario` 601 Barragem e 602 Dique; nome em `nome_elemento_viario`, material em `material_construcao_elemento_viario`, que passa a aceitar 23 (Terra) | `infra_barragem_l` e `_a`, com `sobreposto_transportes` de edição |
+| Corte ou aterro sob via ou ferrovia | `tipo_elemento_viario` 701 Corte e 702 Aterro | `infra_alteracao_fisiografica_antropica_l` (caixa de empréstimo, corte e aterro fora de via), com `sobreposto_transportes` de edição |
+
+- **O nível do limite legal volta à linha.** A marca Sim ou Não da 0.18.0 obrigava a UF a ser a junção dos municípios pelo `codigo_uf`, e o símbolo da divisa a ser deduzido das faces. Com o nível na linha, a UF é a partição das linhas de nível 1 e 2, o município das de 1 a 3 e o país das de 1, e o rio que é fronteira, divisa estadual e municipal recebe 1, porque os níveis são aninhados. `codigo_uf` e `cod_iso` ficam no centroide para conferir o nível pelas faces dos dois lados e sugeri-lo na carga.
+- **`limite_especial` e `em_litigio` não mudam** (booleano), e `delimitador_limite_especial_l` continua sem atributo.
+- **A costa** é a margem com `limite_legal` = 1, que fecha país, UF e município; na passagem para a edição, o trecho com oceano do outro lado não se desenha como divisa.
+- **A barragem sobre a via delimita a massa d'água.** No motor de topologia, a via e a ferrovia com 601 ou 602 entram nas classes que a barragem delimita (massa d'água, ilha, elemento hidrográfico, área sem dados).
+- Na passagem para a edição, a barragem e a alteração fisiográfica saem do trecho marcado com `sobreposto_transportes` = Sim, e a hidrovia sai da drenagem marcada.
+- `llp_limite_legal_l` e `_a` passam a aceitar `tipo` de 1 a 7 e `centroide_limite_legal_p` de 1 a 4: o 97 é só da marca na linha.
+- As conversões do IBGE (BC25, BC100, BC250) e da Natural Earth deixam de gravar `situacao_fisica` na hidrovia. Levar uma hidrovia de origem para a drenagem pede conflação e não é feito pelos crosswalks.
+
+O incremento não toca autoria, datas nem gatilhos, e aplica-se também sobre um banco ainda na 0.18.0.
+
 ## 2. Novas tabelas
 
 ### `aux_elemento_viario_p`
@@ -275,7 +296,7 @@ Delimitações físicas — cercas e muros.
 | `tipo` | smallint | NOT NULL, FK → `dominios.tipo_delimitacao_fisica`, DEFAULT 9999 |
 | `material_construcao` | smallint | NOT NULL, FK → `dominios.material_construcao`, DEFAULT 9999 |
 | `visivel` | smallint | NOT NULL, FK → `dominios.booleano`, DEFAULT 9999 |
-| `limite_legal` | smallint | NOT NULL, FK → `dominios.booleano`, DEFAULT 9999 (rev 0.18.0) |
+| `limite_legal` | smallint | NOT NULL, FK → `dominios.tipo_limite_legal`, CHECK 1 a 4 e 97, DEFAULT 9999 (rev 0.18.0; nível desde a 0.20.0) |
 | `limite_especial` | smallint | NOT NULL, FK → `dominios.booleano`, DEFAULT 9999 (rev 0.18.0) |
 | `em_litigio` | smallint | NOT NULL, FK → `dominios.booleano`, DEFAULT 9999 (rev 0.18.0) |
 | `observacao` | varchar(255) | nullable |
@@ -300,11 +321,12 @@ Polígonos de limites político-administrativos unificados: país, UF, municípi
 
 ### `delimitador_limite_legal_l`
 
-Linha de construção do limite legal (rev 0.17.0) onde a divisa não é feição no terreno. Na 0.17.0 o `tipo` guardava o nível; desde a 0.18.0 o nível sai do centroide, e a linha guarda só o litígio do trecho (seção 1.6).
+Linha de construção do limite legal (rev 0.17.0) onde a divisa não é feição no terreno. O `tipo` guarda o nível mais alto da divisa; saiu na 0.18.0 e voltou na 0.20.0 (seções 1.6 e 1.8).
 
 | Coluna | Tipo | Constraints |
 |--------|------|-------------|
 | `id` | uuid | PK, DEFAULT uuid_generate_v4() |
+| `tipo` | smallint | NOT NULL, FK → `dominios.tipo_limite_legal`, CHECK 1 a 4, DEFAULT 9999 (rev 0.20.0) |
 | `em_litigio` | smallint | NOT NULL, FK → `dominios.booleano`, DEFAULT 9999 (rev 0.18.0) |
 | `observacao` | varchar(255) | nullable |
 | `geom` | MultiLinestring, 4674 | índice GiST |
@@ -585,7 +607,7 @@ Bug originado em `mastergen.py`: o gerador anexa `9999` aos valores do CHECK sem
 | Campo | 1.4 | 2.0 |
 |-------|-----|-----|
 | `edgvversion` | EDGV 3.0 Topo | EDGV Topo 2.0 |
-| `dbimplversion` | 1.4.4 | 0.19.0 |
+| `dbimplversion` | 1.4.4 | 0.20.0 |
 
 > Rev 2026-07-26: `dbimplversion` corrigido para 0.15.0. A tabela dizia 0.14.0
 > enquanto o `edgv_topo_20.sql` já gravava 0.15.0 desde as revisões do cemitério
@@ -1339,4 +1361,90 @@ DELETE FROM dominios.status_ciclo_vida WHERE code = 4;
 
 UPDATE public.db_metadata SET dbimplversion = '0.19.0';
 ALTER TABLE public.db_metadata ALTER COLUMN dbimplversion SET DEFAULT '0.19.0';
+
+-- ===========================================
+-- Incremento 0.20.0 (2026-09-30)
+-- Nível do limite legal de volta à linha (tipo no delimitador, limite_legal
+-- com o domínio tipo_limite_legal), hidrovia na drenagem, barragem, dique,
+-- corte e aterro em tipo_elemento_viario. Não toca autoria, datas nem
+-- gatilhos: aplica-se também sobre um banco ainda na 0.18.0.
+-- ===========================================
+
+INSERT INTO dominios.tipo_elemento_viario (code, code_name, filter) VALUES
+    (601, 'Barragem (601)', 'Barragem'), (602, 'Dique (602)', 'Barragem'),
+    (701, 'Corte (701)', 'Alteração fisiográfica'), (702, 'Aterro (702)', 'Alteração fisiográfica');
+INSERT INTO dominios.tipo_limite_legal (code, code_name) VALUES (97, 'Não aplicável (97)');
+
+ALTER TABLE edgv.infra_via_deslocamento_l DROP CONSTRAINT IF EXISTS infra_via_deslocamento_l_tipo_elemento_viario_check;
+ALTER TABLE edgv.infra_via_deslocamento_l
+	 ADD CONSTRAINT infra_via_deslocamento_l_tipo_elemento_viario_check 
+	 CHECK (tipo_elemento_viario = ANY(ARRAY[101 :: SMALLINT, 102 :: SMALLINT, 201 :: SMALLINT, 202 :: SMALLINT, 203 :: SMALLINT, 204 :: SMALLINT, 205 :: SMALLINT, 301 :: SMALLINT, 302 :: SMALLINT, 401 :: SMALLINT, 402 :: SMALLINT, 601 :: SMALLINT, 602 :: SMALLINT, 701 :: SMALLINT, 702 :: SMALLINT, 97 :: SMALLINT, 9999 :: SMALLINT]));
+ALTER TABLE edgv.infra_via_deslocamento_l DROP CONSTRAINT IF EXISTS infra_via_deslocamento_l_material_construcao_ele_f3bda3e2_check;
+ALTER TABLE edgv.infra_via_deslocamento_l
+	 ADD CONSTRAINT infra_via_deslocamento_l_material_construcao_ele_f3bda3e2_check 
+	 CHECK (material_construcao_elemento_viario = ANY(ARRAY[0 :: SMALLINT, 1 :: SMALLINT, 2 :: SMALLINT, 3 :: SMALLINT, 4 :: SMALLINT, 5 :: SMALLINT, 23 :: SMALLINT, 97 :: SMALLINT, 98 :: SMALLINT, 9999 :: SMALLINT]));
+ALTER TABLE edgv.infra_ferrovia_l DROP CONSTRAINT IF EXISTS infra_ferrovia_l_tipo_elemento_viario_check;
+ALTER TABLE edgv.infra_ferrovia_l
+	 ADD CONSTRAINT infra_ferrovia_l_tipo_elemento_viario_check 
+	 CHECK (tipo_elemento_viario = ANY(ARRAY[101 :: SMALLINT, 102 :: SMALLINT, 201 :: SMALLINT, 202 :: SMALLINT, 203 :: SMALLINT, 204 :: SMALLINT, 205 :: SMALLINT, 301 :: SMALLINT, 302 :: SMALLINT, 601 :: SMALLINT, 602 :: SMALLINT, 701 :: SMALLINT, 702 :: SMALLINT, 97 :: SMALLINT, 9999 :: SMALLINT]));
+ALTER TABLE edgv.infra_ferrovia_l DROP CONSTRAINT IF EXISTS infra_ferrovia_l_material_construcao_elemento_viario_check;
+ALTER TABLE edgv.infra_ferrovia_l
+	 ADD CONSTRAINT infra_ferrovia_l_material_construcao_elemento_viario_check 
+	 CHECK (material_construcao_elemento_viario = ANY(ARRAY[0 :: SMALLINT, 1 :: SMALLINT, 2 :: SMALLINT, 3 :: SMALLINT, 4 :: SMALLINT, 5 :: SMALLINT, 23 :: SMALLINT, 97 :: SMALLINT, 98 :: SMALLINT, 9999 :: SMALLINT]));
+
+ALTER TABLE edgv.elemnat_trecho_drenagem_l DROP CONSTRAINT IF EXISTS elemnat_trecho_drenagem_l_limite_legal_fk;
+ALTER TABLE edgv.elemnat_trecho_drenagem_l ADD CONSTRAINT elemnat_trecho_drenagem_l_limite_legal_fk FOREIGN KEY (limite_legal) REFERENCES dominios.tipo_limite_legal (code) MATCH FULL;
+ALTER TABLE edgv.elemnat_trecho_drenagem_l
+	 ADD CONSTRAINT elemnat_trecho_drenagem_l_limite_legal_check 
+	 CHECK (limite_legal = ANY(ARRAY[1 :: SMALLINT, 2 :: SMALLINT, 3 :: SMALLINT, 4 :: SMALLINT, 97 :: SMALLINT, 9999 :: SMALLINT]));
+ALTER TABLE edgv.infra_via_deslocamento_l DROP CONSTRAINT IF EXISTS infra_via_deslocamento_l_limite_legal_fk;
+ALTER TABLE edgv.infra_via_deslocamento_l ADD CONSTRAINT infra_via_deslocamento_l_limite_legal_fk FOREIGN KEY (limite_legal) REFERENCES dominios.tipo_limite_legal (code) MATCH FULL;
+ALTER TABLE edgv.infra_via_deslocamento_l
+	 ADD CONSTRAINT infra_via_deslocamento_l_limite_legal_check 
+	 CHECK (limite_legal = ANY(ARRAY[1 :: SMALLINT, 2 :: SMALLINT, 3 :: SMALLINT, 4 :: SMALLINT, 97 :: SMALLINT, 9999 :: SMALLINT]));
+ALTER TABLE edgv.infra_ferrovia_l DROP CONSTRAINT IF EXISTS infra_ferrovia_l_limite_legal_fk;
+ALTER TABLE edgv.infra_ferrovia_l ADD CONSTRAINT infra_ferrovia_l_limite_legal_fk FOREIGN KEY (limite_legal) REFERENCES dominios.tipo_limite_legal (code) MATCH FULL;
+ALTER TABLE edgv.infra_ferrovia_l
+	 ADD CONSTRAINT infra_ferrovia_l_limite_legal_check 
+	 CHECK (limite_legal = ANY(ARRAY[1 :: SMALLINT, 2 :: SMALLINT, 3 :: SMALLINT, 4 :: SMALLINT, 97 :: SMALLINT, 9999 :: SMALLINT]));
+ALTER TABLE edgv.llp_delimitacao_fisica_l DROP CONSTRAINT IF EXISTS llp_delimitacao_fisica_l_limite_legal_fk;
+ALTER TABLE edgv.llp_delimitacao_fisica_l ADD CONSTRAINT llp_delimitacao_fisica_l_limite_legal_fk FOREIGN KEY (limite_legal) REFERENCES dominios.tipo_limite_legal (code) MATCH FULL;
+ALTER TABLE edgv.llp_delimitacao_fisica_l
+	 ADD CONSTRAINT llp_delimitacao_fisica_l_limite_legal_check 
+	 CHECK (limite_legal = ANY(ARRAY[1 :: SMALLINT, 2 :: SMALLINT, 3 :: SMALLINT, 4 :: SMALLINT, 97 :: SMALLINT, 9999 :: SMALLINT]));
+ALTER TABLE edgv.delimitador_massa_dagua_l DROP CONSTRAINT IF EXISTS delimitador_massa_dagua_l_limite_legal_fk;
+ALTER TABLE edgv.delimitador_massa_dagua_l ADD CONSTRAINT delimitador_massa_dagua_l_limite_legal_fk FOREIGN KEY (limite_legal) REFERENCES dominios.tipo_limite_legal (code) MATCH FULL;
+ALTER TABLE edgv.delimitador_massa_dagua_l
+	 ADD CONSTRAINT delimitador_massa_dagua_l_limite_legal_check 
+	 CHECK (limite_legal = ANY(ARRAY[1 :: SMALLINT, 2 :: SMALLINT, 3 :: SMALLINT, 4 :: SMALLINT, 97 :: SMALLINT, 9999 :: SMALLINT]));
+
+ALTER TABLE edgv.llp_limite_legal_l DROP CONSTRAINT IF EXISTS llp_limite_legal_l_tipo_check;
+ALTER TABLE edgv.llp_limite_legal_l
+	 ADD CONSTRAINT llp_limite_legal_l_tipo_check 
+	 CHECK (tipo = ANY(ARRAY[1 :: SMALLINT, 2 :: SMALLINT, 3 :: SMALLINT, 4 :: SMALLINT, 5 :: SMALLINT, 6 :: SMALLINT, 7 :: SMALLINT, 9999 :: SMALLINT]));
+ALTER TABLE edgv.llp_limite_legal_a DROP CONSTRAINT IF EXISTS llp_limite_legal_a_tipo_check;
+ALTER TABLE edgv.llp_limite_legal_a
+	 ADD CONSTRAINT llp_limite_legal_a_tipo_check 
+	 CHECK (tipo = ANY(ARRAY[1 :: SMALLINT, 2 :: SMALLINT, 3 :: SMALLINT, 4 :: SMALLINT, 5 :: SMALLINT, 6 :: SMALLINT, 7 :: SMALLINT, 9999 :: SMALLINT]));
+ALTER TABLE edgv.centroide_limite_legal_p DROP CONSTRAINT IF EXISTS centroide_limite_legal_p_tipo_check;
+ALTER TABLE edgv.centroide_limite_legal_p
+	 ADD CONSTRAINT centroide_limite_legal_p_tipo_check 
+	 CHECK (tipo = ANY(ARRAY[1 :: SMALLINT, 2 :: SMALLINT, 3 :: SMALLINT, 4 :: SMALLINT, 9999 :: SMALLINT]));
+
+ALTER TABLE edgv.delimitador_limite_legal_l ADD COLUMN IF NOT EXISTS tipo smallint NOT NULL DEFAULT 9999;
+ALTER TABLE edgv.delimitador_limite_legal_l ADD CONSTRAINT delimitador_limite_legal_l_tipo_fk FOREIGN KEY (tipo) REFERENCES dominios.tipo_limite_legal (code) MATCH FULL;
+ALTER TABLE edgv.delimitador_limite_legal_l
+	 ADD CONSTRAINT delimitador_limite_legal_l_tipo_check 
+	 CHECK (tipo = ANY(ARRAY[1 :: SMALLINT, 2 :: SMALLINT, 3 :: SMALLINT, 4 :: SMALLINT, 9999 :: SMALLINT]));
+
+ALTER TABLE edgv.elemnat_trecho_drenagem_l ADD COLUMN IF NOT EXISTS hidrovia smallint NOT NULL DEFAULT 9999;
+ALTER TABLE edgv.elemnat_trecho_drenagem_l ADD CONSTRAINT elemnat_trecho_drenagem_l_hidrovia_fk FOREIGN KEY (hidrovia) REFERENCES dominios.booleano (code) MATCH FULL;
+ALTER TABLE edgv.elemnat_trecho_drenagem_l ADD COLUMN IF NOT EXISTS nome_hidrovia varchar(255);
+ALTER TABLE edgv.elemnat_trecho_drenagem_l ADD COLUMN IF NOT EXISTS calado_max_seca real;
+
+ALTER TABLE edgv.infra_trecho_hidroviario_l DROP CONSTRAINT IF EXISTS infra_trecho_hidroviario_l_situacao_fisica_fk;
+ALTER TABLE edgv.infra_trecho_hidroviario_l DROP COLUMN IF EXISTS situacao_fisica;
+
+UPDATE public.db_metadata SET dbimplversion = '0.20.0';
+ALTER TABLE public.db_metadata ALTER COLUMN dbimplversion SET DEFAULT '0.20.0';
 ```
